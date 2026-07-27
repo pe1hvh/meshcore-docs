@@ -1,0 +1,43 @@
+<svg style="width:100%;margin:1rem 0" viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg">
+<style>
+:root{--bg:#FFFFFF; --grid:#023E8A; --line:#0096C7; --wave:#0096C7; --node:#0077B6; --outer:#0096C7; --text-primary:#0a2540; --text-secondary:#3d6380; --text-muted:#7a9bb5; --link-color:#0077B6; --link-hover:#023E8A; --heading-color:#0077B6; --border-subtle:rgba(0,119,182,0.12); --card-bg:rgba(0,119,182,0.03); --card-border:rgba(0,119,182,0.12); --card-hover:rgba(0,119,182,0.07); --code-bg:rgba(0,119,182,0.04); --code-border:rgba(0,119,182,0.12); --info-bg:rgba(0,119,182,0.04); --info-border:rgba(0,119,182,0.15); --table-header:rgba(0,119,182,0.06); --table-row-alt:rgba(0,119,182,0.02); --table-border:rgba(0,119,182,0.1); --timeline-line:#0096C7; --timeline-dot:#0077B6; --tag-green:rgba(16,185,129,0.1); --tag-green-text:#059669; --tag-red:rgba(239,68,68,0.08); --tag-red-text:#dc2626; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}
+@media (prefers-color-scheme: dark){:root{--bg:#0A1628; --grid:#0077B6; --line:#0077B6; --wave:#48CAE4; --node:#00B4D8; --outer:#0077B6; --text-primary:#e0f0f8; --text-secondary:#8badc4; --text-muted:#4a6a80; --link-color:#48CAE4; --link-hover:#90E0EF; --heading-color:#48CAE4; --border-subtle:rgba(0,119,182,0.15); --card-bg:rgba(0,119,182,0.06); --card-border:rgba(0,119,182,0.15); --card-hover:rgba(0,119,182,0.12); --code-bg:rgba(0,119,182,0.08); --code-border:rgba(0,119,182,0.2); --info-bg:rgba(72,202,228,0.06); --info-border:rgba(72,202,228,0.2); --table-header:rgba(0,119,182,0.1); --table-row-alt:rgba(0,119,182,0.04); --table-border:rgba(0,119,182,0.12); --timeline-line:#0077B6; --timeline-dot:#00B4D8; --tag-green:rgba(16,185,129,0.15); --tag-green-text:#6ee7b7; --tag-red:rgba(239,68,68,0.12); --tag-red-text:#fca5a5; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}}
+</style>
+<rect x="0" y="0" width="700" height="220" fill="var(--bg)"/>
+
+<text fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="350" y="15">FFT Resultaat — Symbool 3, 7 van 10 samples ontvangen (30% verlies)</text>
+<!-- Y-axis -->
+<line opacity="0.4" stroke="var(--text-muted)" stroke-width="1" x1="80" x2="80" y1="30" y2="190"></line>
+<text fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="8" text-anchor="end" x="72" y="190">0</text>
+<text fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="8" text-anchor="end" x="72" y="158">2</text>
+<text fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="8" text-anchor="end" x="72" y="126">4</text>
+<text fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="8" text-anchor="end" x="72" y="94">6</text>
+<text fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="8" text-anchor="end" x="72" y="62">8</text>
+<text fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="8" text-anchor="end" x="72" y="35">10</text>
+<!-- X-axis -->
+<line opacity="0.4" stroke="var(--text-muted)" stroke-width="1" x1="80" x2="660" y1="190" y2="190"></line>
+<!-- Bars: bin 3 = 7, rest = 0 -->
+<rect fill="var(--text-muted)" height="3" opacity="0.2" rx="1" width="42" x="100" y="187"></rect>
+<rect fill="var(--text-muted)" height="3" opacity="0.2" rx="1" width="42" x="158" y="187"></rect>
+<rect fill="var(--text-muted)" height="3" opacity="0.2" rx="1" width="42" x="216" y="187"></rect>
+<rect fill="var(--link-color)" height="112" opacity="0.8" rx="2" width="42" x="274" y="78"></rect>
+<rect fill="var(--text-muted)" height="3" opacity="0.2" rx="1" width="42" x="332" y="187"></rect>
+<rect fill="var(--text-muted)" height="3" opacity="0.2" rx="1" width="42" x="390" y="187"></rect>
+<rect fill="var(--text-muted)" height="3" opacity="0.2" rx="1" width="42" x="448" y="187"></rect>
+<rect fill="var(--text-muted)" height="3" opacity="0.2" rx="1" width="42" x="506" y="187"></rect>
+<rect fill="var(--text-muted)" height="3" opacity="0.2" rx="1" width="42" x="564" y="187"></rect>
+<rect fill="var(--text-muted)" height="3" opacity="0.2" rx="1" width="42" x="622" y="187"></rect>
+<text fill="var(--link-color)" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" text-anchor="middle" x="295" y="73">7 ← nog steeds dominant</text>
+<!-- X labels -->
+<text fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="9" text-anchor="middle" x="121" y="205">0</text>
+<text fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="9" text-anchor="middle" x="179" y="205">1</text>
+<text fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="9" text-anchor="middle" x="237" y="205">2</text>
+<text fill="var(--link-color)" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700" text-anchor="middle" x="295" y="205">3</text>
+<text fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="9" text-anchor="middle" x="353" y="205">4</text>
+<text fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="9" text-anchor="middle" x="411" y="205">5</text>
+<text fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="9" text-anchor="middle" x="469" y="205">6</text>
+<text fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="9" text-anchor="middle" x="527" y="205">7</text>
+<text fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="9" text-anchor="middle" x="585" y="205">8</text>
+<text fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="9" text-anchor="middle" x="643" y="205">9</text>
+<text fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="8" text-anchor="middle" x="370" y="218">FFT Bin (= gedetecteerd symbool)</text>
+</svg>

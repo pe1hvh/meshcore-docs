@@ -1,0 +1,34 @@
+<svg aria-label="Dode zone onder een hoog geplaatste collineair" role="img" viewBox="0 0 680 280" xmlns="http://www.w3.org/2000/svg">
+<style>
+:root{--bg:#FFFFFF; --grid:#023E8A; --line:#0096C7; --wave:#0096C7; --node:#0077B6; --outer:#0096C7; --text-primary:#0a2540; --text-secondary:#3d6380; --text-muted:#7a9bb5; --link-color:#0077B6; --link-hover:#023E8A; --heading-color:#0077B6; --border-subtle:rgba(0,119,182,0.12); --card-bg:rgba(0,119,182,0.03); --card-border:rgba(0,119,182,0.12); --card-hover:rgba(0,119,182,0.07); --code-bg:rgba(0,119,182,0.04); --code-border:rgba(0,119,182,0.12); --info-bg:rgba(0,119,182,0.04); --info-border:rgba(0,119,182,0.15); --table-header:rgba(0,119,182,0.06); --table-row-alt:rgba(0,119,182,0.02); --table-border:rgba(0,119,182,0.1); --timeline-line:#0096C7; --timeline-dot:#0077B6; --tag-green:rgba(16,185,129,0.1); --tag-green-text:#059669; --tag-red:rgba(239,68,68,0.08); --tag-red-text:#dc2626; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}
+@media (prefers-color-scheme: dark){:root{--bg:#0A1628; --grid:#0077B6; --line:#0077B6; --wave:#48CAE4; --node:#00B4D8; --outer:#0077B6; --text-primary:#e0f0f8; --text-secondary:#8badc4; --text-muted:#4a6a80; --link-color:#48CAE4; --link-hover:#90E0EF; --heading-color:#48CAE4; --border-subtle:rgba(0,119,182,0.15); --card-bg:rgba(0,119,182,0.06); --card-border:rgba(0,119,182,0.15); --card-hover:rgba(0,119,182,0.12); --code-bg:rgba(0,119,182,0.08); --code-border:rgba(0,119,182,0.2); --info-bg:rgba(72,202,228,0.06); --info-border:rgba(72,202,228,0.2); --table-header:rgba(0,119,182,0.1); --table-row-alt:rgba(0,119,182,0.04); --table-border:rgba(0,119,182,0.12); --timeline-line:#0077B6; --timeline-dot:#00B4D8; --tag-green:rgba(16,185,129,0.15); --tag-green-text:#6ee7b7; --tag-red:rgba(239,68,68,0.12); --tag-red-text:#fca5a5; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}}
+</style>
+<rect x="0" y="0" width="680" height="280" fill="var(--bg)"/>
+
+<title>Dode zone</title>
+<line stroke="var(--text-secondary)" stroke-width="1" x1="20" x2="660" y1="240" y2="240"></line>
+<text fill="var(--text-secondary)" font-size="11" x="640" y="256">grond</text>
+<line stroke="var(--text-primary)" stroke-width="3" x1="340" x2="340" y1="240" y2="60"></line>
+<line stroke="var(--text-primary)" stroke-width="2" x1="334" x2="346" y1="58" y2="58"></line>
+<text fill="var(--text-primary)" font-size="12" font-weight="500" x="352" y="55">6 dBi</text>
+<ellipse cx="260" cy="65" fill="#F59E0B" fill-opacity="0.6" rx="80" ry="12" stroke="#854F0B" stroke-width="0.8"></ellipse>
+<ellipse cx="420" cy="65" fill="#F59E0B" fill-opacity="0.6" rx="80" ry="12" stroke="#854F0B" stroke-width="0.8"></ellipse>
+<path d="M 340 65 L 180 240 L 500 240 Z" fill="#A32D2D" fill-opacity="0.18" stroke="#A32D2D" stroke-dasharray="4 3" stroke-width="0.8"></path>
+<text fill="#E36060" font-size="13" font-weight="700" text-anchor="middle" x="340" y="170">dode zone</text>
+<text fill="#E36060" font-size="11" text-anchor="middle" x="340" y="188">lokale nodes vallen hier buiten bereik</text>
+<g transform="translate(100,210)">
+<polygon fill="var(--card-bg)" points="0,-18 14,-28 28,-18" stroke="var(--text-primary)" stroke-width="1"></polygon>
+<rect fill="var(--card-bg)" height="18" stroke="var(--text-primary)" stroke-width="1" width="24" x="2" y="-18"></rect>
+</g>
+<text fill="#4ADE80" font-size="11" font-weight="600" text-anchor="middle" x="114" y="230">bereik ✓</text>
+<g transform="translate(330,210)">
+<polygon fill="var(--card-bg)" points="0,-18 14,-28 28,-18" stroke="var(--text-primary)" stroke-width="1"></polygon>
+<rect fill="var(--card-bg)" height="18" stroke="var(--text-primary)" stroke-width="1" width="24" x="2" y="-18"></rect>
+</g>
+<text fill="#E36060" font-size="11" font-weight="600" text-anchor="middle" x="344" y="230">geen bereik ✗</text>
+<g transform="translate(560,210)">
+<polygon fill="var(--card-bg)" points="0,-18 14,-28 28,-18" stroke="var(--text-primary)" stroke-width="1"></polygon>
+<rect fill="var(--card-bg)" height="18" stroke="var(--text-primary)" stroke-width="1" width="24" x="2" y="-18"></rect>
+</g>
+<text fill="#4ADE80" font-size="11" font-weight="600" text-anchor="middle" x="574" y="230">bereik ✓</text>
+</svg>

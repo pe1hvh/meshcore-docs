@@ -1,0 +1,115 @@
+<svg viewBox="0 0 880 1030" width="100%" xmlns="http://www.w3.org/2000/svg">
+<style>
+:root{--bg:#FFFFFF; --grid:#023E8A; --line:#0096C7; --wave:#0096C7; --node:#0077B6; --outer:#0096C7; --text-primary:#0a2540; --text-secondary:#3d6380; --text-muted:#7a9bb5; --link-color:#0077B6; --link-hover:#023E8A; --heading-color:#0077B6; --border-subtle:rgba(0,119,182,0.12); --card-bg:rgba(0,119,182,0.03); --card-border:rgba(0,119,182,0.12); --card-hover:rgba(0,119,182,0.07); --code-bg:rgba(0,119,182,0.04); --code-border:rgba(0,119,182,0.12); --info-bg:rgba(0,119,182,0.04); --info-border:rgba(0,119,182,0.15); --table-header:rgba(0,119,182,0.06); --table-row-alt:rgba(0,119,182,0.02); --table-border:rgba(0,119,182,0.1); --timeline-line:#0096C7; --timeline-dot:#0077B6; --tag-green:rgba(16,185,129,0.1); --tag-green-text:#059669; --tag-red:rgba(239,68,68,0.08); --tag-red-text:#dc2626; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}
+@media (prefers-color-scheme: dark){:root{--bg:#0A1628; --grid:#0077B6; --line:#0077B6; --wave:#48CAE4; --node:#00B4D8; --outer:#0077B6; --text-primary:#e0f0f8; --text-secondary:#8badc4; --text-muted:#4a6a80; --link-color:#48CAE4; --link-hover:#90E0EF; --heading-color:#48CAE4; --border-subtle:rgba(0,119,182,0.15); --card-bg:rgba(0,119,182,0.06); --card-border:rgba(0,119,182,0.15); --card-hover:rgba(0,119,182,0.12); --code-bg:rgba(0,119,182,0.08); --code-border:rgba(0,119,182,0.2); --info-bg:rgba(72,202,228,0.06); --info-border:rgba(72,202,228,0.2); --table-header:rgba(0,119,182,0.1); --table-row-alt:rgba(0,119,182,0.04); --table-border:rgba(0,119,182,0.12); --timeline-line:#0077B6; --timeline-dot:#00B4D8; --tag-green:rgba(16,185,129,0.15); --tag-green-text:#6ee7b7; --tag-red:rgba(239,68,68,0.12); --tag-red-text:#fca5a5; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}}
+</style>
+<rect x="0" y="0" width="880" height="1030" fill="var(--bg)"/>
+<text x="440" y="24" fill="var(--heading-color)" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" text-anchor="middle" dominant-baseline="central">Hoe een repeater een kanaalbericht afhandelt</text>
+<text x="440" y="42" fill="var(--text-secondary)" font-family="Arial,Helvetica,sans-serif" font-size="10" font-weight="400" text-anchor="middle" dominant-baseline="central">Repeater kent regio nl-ov-zwo · kent het kanaal #zwolle niet</text>
+<rect x="180.0" y="62" width="300" height="54" rx="8" fill="#FDE9D0" stroke="#BA7517" stroke-width="1.5"/>
+<text x="330" y="82" fill="#7F4000" font-family="Arial,Helvetica,sans-serif" font-size="11.5" font-weight="700" text-anchor="middle" dominant-baseline="central">LoRa-chip levert frame af</text>
+<text x="330" y="100" fill="#7F4000" font-family="'JetBrains Mono',monospace" font-size="9.5" font-weight="400" text-anchor="middle" dominant-baseline="central">preamble/sync/CRC er al af</text>
+<path d="M330,116 L330,142" fill="none" stroke="#666" stroke-width="1.5"/>
+<path d="M330,142 L325.4,134.3" stroke="#666" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M330,142 L334.6,134.3" stroke="#666" stroke-width="1.5" stroke-linecap="round"/>
+<rect x="180.0" y="142" width="300" height="54" rx="8" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.5"/>
+<text x="330" y="162" fill="#1F3864" font-family="Arial,Helvetica,sans-serif" font-size="11.5" font-weight="700" text-anchor="middle" dominant-baseline="central">tryParsePacket()</text>
+<text x="330" y="180" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="9.5" font-weight="400" text-anchor="middle" dominant-baseline="central">header  →  0x14</text>
+<path d="M330,196 L330,222" fill="none" stroke="#666" stroke-width="1.5"/>
+<path d="M330,222 L325.4,214.3" stroke="#666" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M330,222 L334.6,214.3" stroke="#666" stroke-width="1.5" stroke-linecap="round"/>
+<polygon points="330,222 448,256 330,290 212,256" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.5"/>
+<text x="330" y="248" fill="#1F3864" font-family="Arial,Helvetica,sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" dominant-baseline="central">payload versie</text>
+<text x="330" y="264" fill="#1F3864" font-family="Arial,Helvetica,sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" dominant-baseline="central">≤ v1 ?</text>
+<path d="M448,256 L716,256" fill="none" stroke="#8B0000" stroke-width="1.5"/>
+<path d="M716,256 L708.3,260.6" stroke="#8B0000" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M716,256 L708.3,251.4" stroke="#8B0000" stroke-width="1.5" stroke-linecap="round"/>
+<text x="584.0" y="246" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="9.5" font-weight="700" text-anchor="middle" dominant-baseline="central">nee</text>
+<rect x="719" y="233" width="158" height="46" rx="8" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.5"/>
+<text x="798" y="250" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" dominant-baseline="central">verwerpen</text>
+<text x="798" y="265" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="400" text-anchor="middle" dominant-baseline="central">unsupported version</text>
+<path d="M330,290 L330,318" fill="none" stroke="#1E6B3A" stroke-width="1.5"/>
+<path d="M330,318 L325.4,310.3" stroke="#1E6B3A" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M330,318 L334.6,310.3" stroke="#1E6B3A" stroke-width="1.5" stroke-linecap="round"/>
+<text x="346" y="304" fill="#1E6B3A" font-family="Arial,Helvetica,sans-serif" font-size="9.5" font-weight="700" text-anchor="middle" dominant-baseline="central">ja</text>
+<polygon points="330,318 448,352 330,386 212,352" fill="#D9EFE2" stroke="#1E6B3A" stroke-width="1.5"/>
+<text x="330" y="344" fill="#0F6E56" font-family="Arial,Helvetica,sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" dominant-baseline="central">route type =</text>
+<text x="330" y="360" fill="#0F6E56" font-family="Arial,Helvetica,sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" dominant-baseline="central">0x00 of 0x03 ?</text>
+<path d="M448,352 L716,352" fill="none" stroke="#7a9bb5" stroke-width="1.5"/>
+<path d="M716,352 L708.3,356.6" stroke="#7a9bb5" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M716,352 L708.3,347.4" stroke="#7a9bb5" stroke-width="1.5" stroke-linecap="round"/>
+<text x="584.0" y="342" fill="#7a9bb5" font-family="Arial,Helvetica,sans-serif" font-size="9.5" font-weight="700" text-anchor="middle" dominant-baseline="central">nee</text>
+<rect x="719" y="329" width="158" height="46" rx="8" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="1.5"/>
+<text x="798" y="346" fill="var(--text-secondary)" font-family="Arial,Helvetica,sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" dominant-baseline="central">geen codes</text>
+<text x="798" y="361" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="400" text-anchor="middle" dominant-baseline="central">→ wildcard *</text>
+<path d="M330,386 L330,414" fill="none" stroke="#1E6B3A" stroke-width="1.5"/>
+<path d="M330,414 L325.4,406.3" stroke="#1E6B3A" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M330,414 L334.6,406.3" stroke="#1E6B3A" stroke-width="1.5" stroke-linecap="round"/>
+<text x="346" y="400" fill="#1E6B3A" font-family="Arial,Helvetica,sans-serif" font-size="9.5" font-weight="700" text-anchor="middle" dominant-baseline="central">ja</text>
+<rect x="180.0" y="414" width="300" height="58" rx="8" fill="#D9EFE2" stroke="#1E6B3A" stroke-width="1.5"/>
+<text x="330" y="434" fill="#0F6E56" font-family="Arial,Helvetica,sans-serif" font-size="11.5" font-weight="700" text-anchor="middle" dominant-baseline="central">findMatch() — herbereken, niet opzoeken</text>
+<text x="330" y="452" fill="#0F6E56" font-family="'JetBrains Mono',monospace" font-size="9.5" font-weight="400" text-anchor="middle" dominant-baseline="central">per regio: HMAC(sleutel, 0x05 ‖ payload)[:2]</text>
+<path d="M330,472 L330,498" fill="none" stroke="#666" stroke-width="1.5"/>
+<path d="M330,498 L325.4,490.3" stroke="#666" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M330,498 L334.6,490.3" stroke="#666" stroke-width="1.5" stroke-linecap="round"/>
+<polygon points="330,498 448,532 330,566 212,532" fill="#D9EFE2" stroke="#1E6B3A" stroke-width="1.5"/>
+<text x="330" y="524" fill="#0F6E56" font-family="Arial,Helvetica,sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" dominant-baseline="central">code gelijk aan</text>
+<text x="330" y="540" fill="#0F6E56" font-family="Arial,Helvetica,sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" dominant-baseline="central">81 73 ?</text>
+<path d="M448,532 L716,532" fill="none" stroke="#8B0000" stroke-width="1.5"/>
+<path d="M716,532 L708.3,536.6" stroke="#8B0000" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M716,532 L708.3,527.4" stroke="#8B0000" stroke-width="1.5" stroke-linecap="round"/>
+<text x="584.0" y="522" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="9.5" font-weight="700" text-anchor="middle" dominant-baseline="central">nee</text>
+<rect x="719" y="509" width="158" height="46" rx="8" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.5"/>
+<text x="798" y="526" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" dominant-baseline="central">niet doorsturen</text>
+<text x="798" y="541" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="400" text-anchor="middle" dominant-baseline="central">onbekende regio</text>
+<path d="M330,566 L330,594" fill="none" stroke="#1E6B3A" stroke-width="1.5"/>
+<path d="M330,594 L325.4,586.3" stroke="#1E6B3A" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M330,594 L334.6,586.3" stroke="#1E6B3A" stroke-width="1.5" stroke-linecap="round"/>
+<text x="346" y="580" fill="#1E6B3A" font-family="Arial,Helvetica,sans-serif" font-size="9.5" font-weight="700" text-anchor="middle" dominant-baseline="central">ja</text>
+<rect x="180.0" y="594" width="300" height="58" rx="8" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.5"/>
+<text x="330" y="614" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="11.5" font-weight="700" text-anchor="middle" dominant-baseline="central">searchChannelsByHash(0xC3)</text>
+<text x="330" y="632" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="9.5" font-weight="400" text-anchor="middle" dominant-baseline="central">repeater kent dit kanaal niet → 0 treffers</text>
+<rect x="719" y="600" width="158" height="46" rx="8" fill="var(--info-bg)" stroke="var(--info-border)" stroke-width="1.5"/>
+<text x="798" y="617" fill="var(--text-primary)" font-family="Arial,Helvetica,sans-serif" font-size="10" font-weight="700" text-anchor="middle" dominant-baseline="central">geen PSK nodig</text>
+<text x="798" y="632" fill="var(--text-secondary)" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="400" text-anchor="middle" dominant-baseline="central">payload blijft dicht</text>
+<path d="M480,623 L716,623" fill="none" stroke="#7a9bb5" stroke-width="1.5" stroke-dasharray="4,3"/>
+<path d="M716,623 L708.3,627.6" stroke="#7a9bb5" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M716,623 L708.3,618.4" stroke="#7a9bb5" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M330,652 L330,678" fill="none" stroke="#666" stroke-width="1.5"/>
+<path d="M330,678 L325.4,670.3" stroke="#666" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M330,678 L334.6,670.3" stroke="#666" stroke-width="1.5" stroke-linecap="round"/>
+<polygon points="330,678 448,712 330,746 212,712" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.5"/>
+<text x="330" y="704" fill="#1F3864" font-family="Arial,Helvetica,sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" dominant-baseline="central">hasSeen()</text>
+<text x="330" y="720" fill="#1F3864" font-family="Arial,Helvetica,sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" dominant-baseline="central">al gezien ?</text>
+<path d="M448,712 L716,712" fill="none" stroke="#8B0000" stroke-width="1.5"/>
+<path d="M716,712 L708.3,716.6" stroke="#8B0000" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M716,712 L708.3,707.4" stroke="#8B0000" stroke-width="1.5" stroke-linecap="round"/>
+<text x="584.0" y="702" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="9.5" font-weight="700" text-anchor="middle" dominant-baseline="central">ja</text>
+<rect x="719" y="689" width="158" height="46" rx="8" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.5"/>
+<text x="798" y="706" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" dominant-baseline="central">verwerpen</text>
+<text x="798" y="721" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="400" text-anchor="middle" dominant-baseline="central">duplicaat via andere route</text>
+<path d="M330,746 L330,774" fill="none" stroke="#1E6B3A" stroke-width="1.5"/>
+<path d="M330,774 L325.4,766.3" stroke="#1E6B3A" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M330,774 L334.6,766.3" stroke="#1E6B3A" stroke-width="1.5" stroke-linecap="round"/>
+<text x="348" y="760" fill="#1E6B3A" font-family="Arial,Helvetica,sans-serif" font-size="9.5" font-weight="700" text-anchor="middle" dominant-baseline="central">nee</text>
+<polygon points="330,774 448,808 330,842 212,808" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.5"/>
+<text x="330" y="800" fill="#1F3864" font-family="Arial,Helvetica,sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" dominant-baseline="central">hop-limieten</text>
+<text x="330" y="816" fill="#1F3864" font-family="Arial,Helvetica,sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" dominant-baseline="central">flood.max e.d. ?</text>
+<path d="M448,808 L716,808" fill="none" stroke="#8B0000" stroke-width="1.5"/>
+<path d="M716,808 L708.3,812.6" stroke="#8B0000" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M716,808 L708.3,803.4" stroke="#8B0000" stroke-width="1.5" stroke-linecap="round"/>
+<text x="584.0" y="798" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="9.5" font-weight="700" text-anchor="middle" dominant-baseline="central">bereikt</text>
+<rect x="719" y="785" width="158" height="46" rx="8" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.5"/>
+<text x="798" y="802" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="10.5" font-weight="700" text-anchor="middle" dominant-baseline="central">niet doorsturen</text>
+<text x="798" y="817" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="400" text-anchor="middle" dominant-baseline="central">te ver van de bron</text>
+<path d="M330,842 L330,870" fill="none" stroke="#1E6B3A" stroke-width="1.5"/>
+<path d="M330,870 L325.4,862.3" stroke="#1E6B3A" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M330,870 L334.6,862.3" stroke="#1E6B3A" stroke-width="1.5" stroke-linecap="round"/>
+<text x="364" y="856" fill="#1E6B3A" font-family="Arial,Helvetica,sans-serif" font-size="9.5" font-weight="700" text-anchor="middle" dominant-baseline="central">ruimte</text>
+<rect x="180.0" y="870" width="300" height="58" rx="8" fill="#D9EFE2" stroke="#1E6B3A" stroke-width="1.5"/>
+<text x="330" y="890" fill="#0F6E56" font-family="Arial,Helvetica,sans-serif" font-size="11.5" font-weight="700" text-anchor="middle" dominant-baseline="central">eigen hash aan pad, opnieuw uitzenden</text>
+<text x="330" y="908" fill="#0F6E56" font-family="'JetBrains Mono',monospace" font-size="9.5" font-weight="400" text-anchor="middle" dominant-baseline="central">02 A3 7F  →  03 A3 7F 5C</text>
+<rect x="24" y="946" width="832" height="62" rx="5" fill="var(--info-bg)" stroke="var(--info-border)" stroke-width="1.5"/>
+<text x="44" y="966" fill="var(--text-primary)" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700" text-anchor="start" dominant-baseline="central">De repeater ontsleutelt niets — maar leest wel alles</text>
+<text x="44" y="986" fill="var(--text-secondary)" font-family="Arial,Helvetica,sans-serif" font-size="9.5" font-weight="400" text-anchor="start" dominant-baseline="central">Hij haalt de hele payload door de HMAC om de code te herberekenen, maar mist de PSK van #zwolle. Hij leest dus alles en begrijpt niets.</text>
+</svg>

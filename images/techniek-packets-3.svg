@@ -1,0 +1,101 @@
+<svg viewBox="0 0 880 610" width="100%" xmlns="http://www.w3.org/2000/svg">
+<style>
+:root{--bg:#FFFFFF; --grid:#023E8A; --line:#0096C7; --wave:#0096C7; --node:#0077B6; --outer:#0096C7; --text-primary:#0a2540; --text-secondary:#3d6380; --text-muted:#7a9bb5; --link-color:#0077B6; --link-hover:#023E8A; --heading-color:#0077B6; --border-subtle:rgba(0,119,182,0.12); --card-bg:rgba(0,119,182,0.03); --card-border:rgba(0,119,182,0.12); --card-hover:rgba(0,119,182,0.07); --code-bg:rgba(0,119,182,0.04); --code-border:rgba(0,119,182,0.12); --info-bg:rgba(0,119,182,0.04); --info-border:rgba(0,119,182,0.15); --table-header:rgba(0,119,182,0.06); --table-row-alt:rgba(0,119,182,0.02); --table-border:rgba(0,119,182,0.1); --timeline-line:#0096C7; --timeline-dot:#0077B6; --tag-green:rgba(16,185,129,0.1); --tag-green-text:#059669; --tag-red:rgba(239,68,68,0.08); --tag-red-text:#dc2626; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}
+@media (prefers-color-scheme: dark){:root{--bg:#0A1628; --grid:#0077B6; --line:#0077B6; --wave:#48CAE4; --node:#00B4D8; --outer:#0077B6; --text-primary:#e0f0f8; --text-secondary:#8badc4; --text-muted:#4a6a80; --link-color:#48CAE4; --link-hover:#90E0EF; --heading-color:#48CAE4; --border-subtle:rgba(0,119,182,0.15); --card-bg:rgba(0,119,182,0.06); --card-border:rgba(0,119,182,0.15); --card-hover:rgba(0,119,182,0.12); --code-bg:rgba(0,119,182,0.08); --code-border:rgba(0,119,182,0.2); --info-bg:rgba(72,202,228,0.06); --info-border:rgba(72,202,228,0.2); --table-header:rgba(0,119,182,0.1); --table-row-alt:rgba(0,119,182,0.04); --table-border:rgba(0,119,182,0.12); --timeline-line:#0077B6; --timeline-dot:#00B4D8; --tag-green:rgba(16,185,129,0.15); --tag-green-text:#6ee7b7; --tag-red:rgba(239,68,68,0.12); --tag-red-text:#fca5a5; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}}
+</style>
+<rect x="0" y="0" width="880" height="610" fill="var(--bg)"/>
+<text x="440" y="24" fill="var(--heading-color)" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" text-anchor="middle" dominant-baseline="central">Een kanaalbericht op de lucht — waar zit wat</text>
+<text x="440" y="42" fill="var(--text-secondary)" font-family="Arial,Helvetica,sans-serif" font-size="10" font-weight="400" text-anchor="middle" dominant-baseline="central">#zwolle · scope nl-ov-zwo · na 2 hops · 59 bytes</text>
+<rect x="24" y="76" width="41" height="34" rx="3" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.2"/>
+<text x="44.5" y="93" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="400" text-anchor="middle" dominant-baseline="central">14</text>
+<text x="44.5" y="65" fill="var(--text-muted)" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="400" text-anchor="middle" dominant-baseline="central">0</text>
+<rect x="68" y="76" width="41" height="34" rx="3" fill="#D9EFE2" stroke="#1E6B3A" stroke-width="2.5"/>
+<text x="88.5" y="93" fill="#0F6E56" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" text-anchor="middle" dominant-baseline="central">81</text>
+<text x="88.5" y="65" fill="var(--text-muted)" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="400" text-anchor="middle" dominant-baseline="central">1</text>
+<rect x="112" y="76" width="41" height="34" rx="3" fill="#D9EFE2" stroke="#1E6B3A" stroke-width="2.5"/>
+<text x="132.5" y="93" fill="#0F6E56" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" text-anchor="middle" dominant-baseline="central">73</text>
+<text x="132.5" y="65" fill="var(--text-muted)" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="400" text-anchor="middle" dominant-baseline="central">2</text>
+<rect x="156" y="76" width="41" height="34" rx="3" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.2" stroke-dasharray="4,2"/>
+<text x="176.5" y="93" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="400" text-anchor="middle" dominant-baseline="central">00</text>
+<text x="176.5" y="65" fill="var(--text-muted)" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="400" text-anchor="middle" dominant-baseline="central">3</text>
+<rect x="200" y="76" width="41" height="34" rx="3" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.2" stroke-dasharray="4,2"/>
+<text x="220.5" y="93" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="400" text-anchor="middle" dominant-baseline="central">00</text>
+<text x="220.5" y="65" fill="var(--text-muted)" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="400" text-anchor="middle" dominant-baseline="central">4</text>
+<rect x="244" y="76" width="41" height="34" rx="3" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.2"/>
+<text x="264.5" y="93" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="400" text-anchor="middle" dominant-baseline="central">02</text>
+<text x="264.5" y="65" fill="var(--text-muted)" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="400" text-anchor="middle" dominant-baseline="central">5</text>
+<rect x="288" y="76" width="41" height="34" rx="3" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.2"/>
+<text x="308.5" y="93" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="400" text-anchor="middle" dominant-baseline="central">A3</text>
+<text x="308.5" y="65" fill="var(--text-muted)" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="400" text-anchor="middle" dominant-baseline="central">6</text>
+<rect x="332" y="76" width="41" height="34" rx="3" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.2"/>
+<text x="352.5" y="93" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="400" text-anchor="middle" dominant-baseline="central">7F</text>
+<text x="352.5" y="65" fill="var(--text-muted)" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="400" text-anchor="middle" dominant-baseline="central">7</text>
+<rect x="376" y="76" width="41" height="34" rx="3" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.2"/>
+<text x="396.5" y="93" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="400" text-anchor="middle" dominant-baseline="central">C3</text>
+<text x="396.5" y="65" fill="var(--text-muted)" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="400" text-anchor="middle" dominant-baseline="central">8</text>
+<rect x="420" y="76" width="41" height="34" rx="3" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.2"/>
+<text x="440.5" y="93" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="400" text-anchor="middle" dominant-baseline="central">34</text>
+<text x="440.5" y="65" fill="var(--text-muted)" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="400" text-anchor="middle" dominant-baseline="central">9</text>
+<rect x="464" y="76" width="41" height="34" rx="3" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.2"/>
+<text x="484.5" y="93" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="400" text-anchor="middle" dominant-baseline="central">30</text>
+<text x="484.5" y="65" fill="var(--text-muted)" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="400" text-anchor="middle" dominant-baseline="central">10</text>
+<rect x="508" y="76" width="348" height="34" rx="3" fill="#FDF0F0" stroke="#8B0000" stroke-width="1.2"/>
+<text x="682.0" y="93" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400" text-anchor="middle" dominant-baseline="central">97 5A 1E 28 F2 D4 9A AF …  F3 27 E8</text>
+<rect x="24" y="122" width="41" height="44" rx="4" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.2"/>
+<text x="44.5" y="138" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="8.5" font-weight="700" text-anchor="middle" dominant-baseline="central">header</text>
+<text x="44.5" y="153" fill="#1F3864" font-family="Arial,Helvetica,sans-serif" font-size="8" font-weight="400" text-anchor="middle" dominant-baseline="central">route + type</text>
+<rect x="68" y="122" width="85" height="44" rx="4" fill="#D9EFE2" stroke="#1E6B3A" stroke-width="2.5"/>
+<text x="110.5" y="138" fill="#0F6E56" font-family="'JetBrains Mono',monospace" font-size="8.5" font-weight="700" text-anchor="middle" dominant-baseline="central">transport_code_1</text>
+<text x="110.5" y="153" fill="#0F6E56" font-family="Arial,Helvetica,sans-serif" font-size="8" font-weight="400" text-anchor="middle" dominant-baseline="central">DE REGIOCODE</text>
+<rect x="156" y="122" width="85" height="44" rx="4" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.2" stroke-dasharray="4,2"/>
+<text x="198.5" y="138" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="8.5" font-weight="700" text-anchor="middle" dominant-baseline="central">transport_code_2</text>
+<text x="198.5" y="153" fill="#1F3864" font-family="Arial,Helvetica,sans-serif" font-size="8" font-weight="400" text-anchor="middle" dominant-baseline="central">gereserveerd</text>
+<rect x="244" y="122" width="41" height="44" rx="4" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.2"/>
+<text x="264.5" y="138" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="8.5" font-weight="700" text-anchor="middle" dominant-baseline="central">path_len</text>
+<text x="264.5" y="153" fill="#1F3864" font-family="Arial,Helvetica,sans-serif" font-size="8" font-weight="400" text-anchor="middle" dominant-baseline="central">2 hops</text>
+<rect x="288" y="122" width="85" height="44" rx="4" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.2"/>
+<text x="330.5" y="138" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="8.5" font-weight="700" text-anchor="middle" dominant-baseline="central">path</text>
+<text x="330.5" y="153" fill="#1F3864" font-family="Arial,Helvetica,sans-serif" font-size="8" font-weight="400" text-anchor="middle" dominant-baseline="central">2 repeaters</text>
+<rect x="376" y="122" width="41" height="44" rx="4" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.2"/>
+<text x="396.5" y="138" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="8.5" font-weight="700" text-anchor="middle" dominant-baseline="central">ch.hash</text>
+<text x="396.5" y="153" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="8" font-weight="400" text-anchor="middle" dominant-baseline="central">kanaal</text>
+<rect x="420" y="122" width="85" height="44" rx="4" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.2"/>
+<text x="462.5" y="138" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="8.5" font-weight="700" text-anchor="middle" dominant-baseline="central">MAC</text>
+<text x="462.5" y="153" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="8" font-weight="400" text-anchor="middle" dominant-baseline="central">2 bytes</text>
+<rect x="508" y="122" width="348" height="44" rx="4" fill="#FDF0F0" stroke="#8B0000" stroke-width="1.2"/>
+<text x="682.0" y="138" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="10" font-weight="700" text-anchor="middle" dominant-baseline="central">cijfertekst  ·  bytes 11-58  ·  48 bytes</text>
+<text x="682.0" y="153" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="9" font-weight="400" text-anchor="middle" dominant-baseline="central">AES-128, 3 blokken</text>
+<path d="M374,52 L374,176" stroke="#7a9bb5" stroke-width="1.4" stroke-dasharray="6,4"/>
+<text x="366" y="186" fill="#7a9bb5" font-family="Arial,Helvetica,sans-serif" font-size="9" font-weight="400" text-anchor="end" dominant-baseline="central">routeergedeelte — elke repeater leest dit</text>
+<text x="382" y="186" fill="#7a9bb5" font-family="Arial,Helvetica,sans-serif" font-size="9" font-weight="400" text-anchor="start" dominant-baseline="central">payload — alleen leesbaar met de kanaal-PSK</text>
+<text x="24" y="242" fill="var(--text-primary)" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="700" text-anchor="start" dominant-baseline="central">Twee verschillende sleutels vullen twee verschillende plekken</text>
+<rect x="24" y="256" width="404" height="148" rx="5" fill="#D9EFE2" stroke="#1E6B3A" stroke-width="2"/>
+<text x="40" y="276" fill="#0F6E56" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700" text-anchor="start" dominant-baseline="central" letter-spacing="1.2">REGIONAAM</text>
+<text x="40" y="292" fill="#0F6E56" font-family="Arial,Helvetica,sans-serif" font-size="9.5" font-weight="400" text-anchor="start" dominant-baseline="central">"nl-ov-zwo"</text>
+<text x="40" y="316" fill="#0F6E56" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="400" text-anchor="start" dominant-baseline="central">SHA-256(naam)  →  transport key, 16 bytes</text>
+<text x="40" y="333" fill="#0F6E56" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="400" text-anchor="start" dominant-baseline="central">HMAC-SHA256(key, type ‖ payload)</text>
+<text x="40" y="350" fill="#0F6E56" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="400" text-anchor="start" dominant-baseline="central">afgekapt op 2 bytes</text>
+<text x="40" y="385" fill="#0F6E56" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="start" dominant-baseline="central">→  bytes 1-2</text>
+<text x="274" y="385" fill="#0F6E56" font-family="Arial,Helvetica,sans-serif" font-size="9" font-weight="400" text-anchor="start" dominant-baseline="central">verandert per bericht</text>
+<rect x="452" y="256" width="404" height="148" rx="5" fill="#FAE0E0" stroke="#8B0000" stroke-width="2"/>
+<text x="468" y="276" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700" text-anchor="start" dominant-baseline="central" letter-spacing="1.2">KANAAL-PSK</text>
+<text x="468" y="292" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="9.5" font-weight="400" text-anchor="start" dominant-baseline="central">"#zwolle", 16 bytes</text>
+<text x="468" y="316" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="400" text-anchor="start" dominant-baseline="central">SHA-256(PSK)[0]  →  kanaal-hash</text>
+<text x="468" y="333" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="400" text-anchor="start" dominant-baseline="central">AES-128(PSK, tijd ‖ flags ‖ tekst)</text>
+<text x="468" y="350" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="400" text-anchor="start" dominant-baseline="central">HMAC(PSK, cijfertekst) → MAC</text>
+<text x="468" y="385" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="start" dominant-baseline="central">→  bytes 8, 9-10 en 11-58</text>
+<text x="702" y="385" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="9" font-weight="400" text-anchor="start" dominant-baseline="central">hash blijft gelijk</text>
+<rect x="24" y="428" width="832" height="74" rx="5" fill="var(--info-bg)" stroke="var(--info-border)" stroke-width="1.5"/>
+<text x="44" y="450" fill="var(--text-primary)" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="700" text-anchor="start" dominant-baseline="central">De regiocode zit niet in het kanaal en niet in de payload</text>
+<text x="44" y="470" fill="var(--text-secondary)" font-family="Arial,Helvetica,sans-serif" font-size="9.5" font-weight="400" text-anchor="start" dominant-baseline="central">Hij wordt bij verzenden toegevoegd vanuit de default scope van de zendende node, buiten de versleutelde payload om.</text>
+<text x="44" y="486" fill="var(--text-secondary)" font-family="Arial,Helvetica,sans-serif" font-size="9.5" font-weight="400" text-anchor="start" dominant-baseline="central">Eén kanaal kan dus met verschillende scopes verstuurd worden, en een repeater filtert op de scope zonder ooit de PSK te kennen.</text>
+<rect x="24" y="528" width="14" height="14" rx="3" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.2"/>
+<text x="44" y="535" fill="var(--text-secondary)" font-family="Arial,Helvetica,sans-serif" font-size="10" font-weight="400" text-anchor="start" dominant-baseline="central">MeshCore-protocol</text>
+<rect x="161.2" y="528" width="14" height="14" rx="3" fill="#D9EFE2" stroke="#1E6B3A" stroke-width="1.2"/>
+<text x="181.2" y="535" fill="var(--text-secondary)" font-family="Arial,Helvetica,sans-serif" font-size="10" font-weight="400" text-anchor="start" dominant-baseline="central">regio / scope</text>
+<rect x="276.0" y="528" width="14" height="14" rx="3" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.2"/>
+<text x="296.0" y="535" fill="var(--text-secondary)" font-family="Arial,Helvetica,sans-serif" font-size="10" font-weight="400" text-anchor="start" dominant-baseline="central">kanaal-PSK</text>
+<rect x="374.0" y="528" width="14" height="14" rx="3" fill="#FDE9D0" stroke="#BA7517" stroke-width="1.2"/>
+<text x="394.0" y="535" fill="var(--text-secondary)" font-family="Arial,Helvetica,sans-serif" font-size="10" font-weight="400" text-anchor="start" dominant-baseline="central">LoRa-hardware (niet in dit beeld)</text>
+<text x="24" y="566" fill="var(--text-muted)" font-family="Arial,Helvetica,sans-serif" font-size="9" font-weight="400" text-anchor="start" dominant-baseline="central">Niet op schaal wat de payload betreft: die kan tot 184 bytes lopen.</text>
+</svg>

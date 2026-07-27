@@ -1,0 +1,104 @@
+<svg viewBox="0 0 880 520" width="100%" xmlns="http://www.w3.org/2000/svg">
+<style>
+:root{--bg:#FFFFFF; --grid:#023E8A; --line:#0096C7; --wave:#0096C7; --node:#0077B6; --outer:#0096C7; --text-primary:#0a2540; --text-secondary:#3d6380; --text-muted:#7a9bb5; --link-color:#0077B6; --link-hover:#023E8A; --heading-color:#0077B6; --border-subtle:rgba(0,119,182,0.12); --card-bg:rgba(0,119,182,0.03); --card-border:rgba(0,119,182,0.12); --card-hover:rgba(0,119,182,0.07); --code-bg:rgba(0,119,182,0.04); --code-border:rgba(0,119,182,0.12); --info-bg:rgba(0,119,182,0.04); --info-border:rgba(0,119,182,0.15); --table-header:rgba(0,119,182,0.06); --table-row-alt:rgba(0,119,182,0.02); --table-border:rgba(0,119,182,0.1); --timeline-line:#0096C7; --timeline-dot:#0077B6; --tag-green:rgba(16,185,129,0.1); --tag-green-text:#059669; --tag-red:rgba(239,68,68,0.08); --tag-red-text:#dc2626; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}
+@media (prefers-color-scheme: dark){:root{--bg:#0A1628; --grid:#0077B6; --line:#0077B6; --wave:#48CAE4; --node:#00B4D8; --outer:#0077B6; --text-primary:#e0f0f8; --text-secondary:#8badc4; --text-muted:#4a6a80; --link-color:#48CAE4; --link-hover:#90E0EF; --heading-color:#48CAE4; --border-subtle:rgba(0,119,182,0.15); --card-bg:rgba(0,119,182,0.06); --card-border:rgba(0,119,182,0.15); --card-hover:rgba(0,119,182,0.12); --code-bg:rgba(0,119,182,0.08); --code-border:rgba(0,119,182,0.2); --info-bg:rgba(72,202,228,0.06); --info-border:rgba(72,202,228,0.2); --table-header:rgba(0,119,182,0.1); --table-row-alt:rgba(0,119,182,0.04); --table-border:rgba(0,119,182,0.12); --timeline-line:#0077B6; --timeline-dot:#00B4D8; --tag-green:rgba(16,185,129,0.15); --tag-green-text:#6ee7b7; --tag-red:rgba(239,68,68,0.12); --tag-red-text:#fca5a5; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}}
+</style>
+<rect x="0" y="0" width="880" height="520" fill="var(--bg)"/>
+<text x="440" y="24" fill="var(--heading-color)" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" text-anchor="middle" dominant-baseline="central">Two channels, with and without a region code</text>
+<text x="440" y="42" fill="var(--text-secondary)" font-family="Arial,Helvetica,sans-serif" font-size="10" font-weight="400" text-anchor="middle" dominant-baseline="central">message "Op Woensdag a.s. Blauwvingerdagen" · scope nl-ov-zwo · after 2 hops</text>
+<text x="173.0" y="68" fill="var(--text-muted)" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="400" text-anchor="middle" dominant-baseline="central">header</text>
+<text x="235.0" y="68" fill="var(--text-muted)" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="400" text-anchor="middle" dominant-baseline="central">tc_1</text>
+<text x="313.0" y="68" fill="var(--text-muted)" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="400" text-anchor="middle" dominant-baseline="central">tc_2</text>
+<text x="375.0" y="68" fill="var(--text-muted)" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="400" text-anchor="middle" dominant-baseline="central">p_len</text>
+<text x="437.0" y="68" fill="var(--text-muted)" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="400" text-anchor="middle" dominant-baseline="central">path</text>
+<text x="499.0" y="68" fill="var(--text-muted)" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="400" text-anchor="middle" dominant-baseline="central">hash</text>
+<text x="561.0" y="68" fill="var(--text-muted)" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="400" text-anchor="middle" dominant-baseline="central">MAC</text>
+<text x="728.0" y="68" fill="var(--text-muted)" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="400" text-anchor="middle" dominant-baseline="central">ciphertext (48 bytes)</text>
+<text x="24" y="100" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="start" dominant-baseline="central">#zwolle</text>
+<text x="24" y="116" fill="#0F6E56" font-family="Arial,Helvetica,sans-serif" font-size="9" font-weight="700" text-anchor="start" dominant-baseline="central">WITH region code</text>
+<rect x="150" y="86" width="43" height="42" rx="3" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.2"/>
+<text x="171.5" y="107.0" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="middle" dominant-baseline="central">14</text>
+<rect x="196" y="86" width="75" height="42" rx="3" fill="#D9EFE2" stroke="#1E6B3A" stroke-width="2.5"/>
+<text x="233.5" y="107.0" fill="#0F6E56" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="middle" dominant-baseline="central">81 73</text>
+<rect x="274" y="86" width="75" height="42" rx="3" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.2" stroke-dasharray="4,2"/>
+<text x="311.5" y="107.0" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">00 00</text>
+<rect x="352" y="86" width="43" height="42" rx="3" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.2"/>
+<text x="373.5" y="107.0" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">02</text>
+<rect x="398" y="86" width="75" height="42" rx="3" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.2"/>
+<text x="435.5" y="107.0" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">A3 7F</text>
+<rect x="476" y="86" width="43" height="42" rx="3" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.2"/>
+<text x="497.5" y="107.0" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">C3</text>
+<rect x="522" y="86" width="75" height="42" rx="3" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.2"/>
+<text x="559.5" y="107.0" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">34 30</text>
+<rect x="600" y="86" width="256" height="42" rx="3" fill="#FDF0F0" stroke="#8B0000" stroke-width="1.2"/>
+<text x="728.0" y="101" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="9.5" font-weight="400" text-anchor="middle" dominant-baseline="central">97 5A 1E 28 …  F3 27 E8</text>
+<text x="728.0" y="117" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="400" text-anchor="middle" dominant-baseline="central">59 bytes total</text>
+<text x="24" y="154" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="start" dominant-baseline="central">#zwolle</text>
+<text x="24" y="170" fill="#7a9bb5" font-family="Arial,Helvetica,sans-serif" font-size="9" font-weight="400" text-anchor="start" dominant-baseline="central">without</text>
+<rect x="150" y="140" width="43" height="42" rx="3" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.2"/>
+<text x="171.5" y="161.0" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="middle" dominant-baseline="central">15</text>
+<rect x="196" y="140" width="153" height="42" rx="3" fill="none" stroke="#7a9bb5" stroke-width="1.2" stroke-dasharray="3,4"/>
+<text x="272.5" y="161.0" fill="#7a9bb5" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="400" text-anchor="middle" dominant-baseline="central">four bytes absent</text>
+<rect x="352" y="140" width="43" height="42" rx="3" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.2"/>
+<text x="373.5" y="161.0" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">02</text>
+<rect x="398" y="140" width="75" height="42" rx="3" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.2"/>
+<text x="435.5" y="161.0" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">A3 7F</text>
+<rect x="476" y="140" width="43" height="42" rx="3" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.2"/>
+<text x="497.5" y="161.0" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">C3</text>
+<rect x="522" y="140" width="75" height="42" rx="3" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.2"/>
+<text x="559.5" y="161.0" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">34 30</text>
+<rect x="600" y="140" width="256" height="42" rx="3" fill="#FDF0F0" stroke="#8B0000" stroke-width="1.2"/>
+<text x="728.0" y="155" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="9.5" font-weight="400" text-anchor="middle" dominant-baseline="central">97 5A 1E 28 …  F3 27 E8</text>
+<text x="728.0" y="171" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="400" text-anchor="middle" dominant-baseline="central">55 bytes total</text>
+<text x="24" y="230" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="start" dominant-baseline="central">zwolle</text>
+<text x="24" y="246" fill="#0F6E56" font-family="Arial,Helvetica,sans-serif" font-size="9" font-weight="700" text-anchor="start" dominant-baseline="central">WITH region code</text>
+<rect x="150" y="216" width="43" height="42" rx="3" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.2"/>
+<text x="171.5" y="237.0" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="middle" dominant-baseline="central">14</text>
+<rect x="196" y="216" width="75" height="42" rx="3" fill="#D9EFE2" stroke="#1E6B3A" stroke-width="2.5"/>
+<text x="233.5" y="237.0" fill="#0F6E56" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="middle" dominant-baseline="central">A1 35</text>
+<rect x="274" y="216" width="75" height="42" rx="3" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.2" stroke-dasharray="4,2"/>
+<text x="311.5" y="237.0" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">00 00</text>
+<rect x="352" y="216" width="43" height="42" rx="3" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.2"/>
+<text x="373.5" y="237.0" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">02</text>
+<rect x="398" y="216" width="75" height="42" rx="3" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.2"/>
+<text x="435.5" y="237.0" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">A3 7F</text>
+<rect x="476" y="216" width="43" height="42" rx="3" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.2"/>
+<text x="497.5" y="237.0" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">DB</text>
+<rect x="522" y="216" width="75" height="42" rx="3" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.2"/>
+<text x="559.5" y="237.0" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">B4 EA</text>
+<rect x="600" y="216" width="256" height="42" rx="3" fill="#FDF0F0" stroke="#8B0000" stroke-width="1.2"/>
+<text x="728.0" y="231" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="9.5" font-weight="400" text-anchor="middle" dominant-baseline="central">F8 52 03 83 …  8E C5 21</text>
+<text x="728.0" y="247" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="400" text-anchor="middle" dominant-baseline="central">59 bytes total</text>
+<text x="24" y="284" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="start" dominant-baseline="central">zwolle</text>
+<text x="24" y="300" fill="#7a9bb5" font-family="Arial,Helvetica,sans-serif" font-size="9" font-weight="400" text-anchor="start" dominant-baseline="central">without</text>
+<rect x="150" y="270" width="43" height="42" rx="3" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.2"/>
+<text x="171.5" y="291.0" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="middle" dominant-baseline="central">15</text>
+<rect x="196" y="270" width="153" height="42" rx="3" fill="none" stroke="#7a9bb5" stroke-width="1.2" stroke-dasharray="3,4"/>
+<text x="272.5" y="291.0" fill="#7a9bb5" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="400" text-anchor="middle" dominant-baseline="central">four bytes absent</text>
+<rect x="352" y="270" width="43" height="42" rx="3" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.2"/>
+<text x="373.5" y="291.0" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">02</text>
+<rect x="398" y="270" width="75" height="42" rx="3" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.2"/>
+<text x="435.5" y="291.0" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">A3 7F</text>
+<rect x="476" y="270" width="43" height="42" rx="3" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.2"/>
+<text x="497.5" y="291.0" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">DB</text>
+<rect x="522" y="270" width="75" height="42" rx="3" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.2"/>
+<text x="559.5" y="291.0" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">B4 EA</text>
+<rect x="600" y="270" width="256" height="42" rx="3" fill="#FDF0F0" stroke="#8B0000" stroke-width="1.2"/>
+<text x="728.0" y="285" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="9.5" font-weight="400" text-anchor="middle" dominant-baseline="central">F8 52 03 83 …  8E C5 21</text>
+<text x="728.0" y="301" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="400" text-anchor="middle" dominant-baseline="central">55 bytes total</text>
+<path d="M142,86 L136,86 L136,182 L142,182" fill="none" stroke="#7a9bb5" stroke-width="1.2"/>
+<path d="M142,216 L136,216 L136,312 L142,312" fill="none" stroke="#7a9bb5" stroke-width="1.2"/>
+<rect x="24" y="336" width="412" height="78" rx="5" fill="#D9EFE2" stroke="#1E6B3A" stroke-width="1.5"/>
+<text x="40" y="356" fill="#0F6E56" font-family="Arial,Helvetica,sans-serif" font-size="10.5" font-weight="700" text-anchor="start" dominant-baseline="central">Horizontally: scope or no scope</text>
+<text x="40" y="374" fill="#0F6E56" font-family="Arial,Helvetica,sans-serif" font-size="9" font-weight="400" text-anchor="start" dominant-baseline="central">· Header 14 → 15, four bytes disappear entirely.</text>
+<text x="40" y="389" fill="#0F6E56" font-family="Arial,Helvetica,sans-serif" font-size="9" font-weight="400" text-anchor="start" dominant-baseline="central">· Channel hash, MAC, and ciphertext stay identical.</text>
+<text x="40" y="404" fill="#0F6E56" font-family="Arial,Helvetica,sans-serif" font-size="9" font-weight="400" text-anchor="start" dominant-baseline="central">· Encryption and scope do not touch each other.</text>
+<rect x="452" y="336" width="404" height="78" rx="5" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.5"/>
+<text x="468" y="356" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="10.5" font-weight="700" text-anchor="start" dominant-baseline="central">Vertically: different channel</text>
+<text x="468" y="374" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="9" font-weight="400" text-anchor="start" dominant-baseline="central">· Different PSK → different hash, MAC, ciphertext.</text>
+<text x="468" y="389" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="9" font-weight="400" text-anchor="start" dominant-baseline="central">· Different region code (81 73 vs A1 35) …</text>
+<text x="468" y="404" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="9" font-weight="400" text-anchor="start" dominant-baseline="central">· … while the region is the same in all four.</text>
+<rect x="24" y="428" width="832" height="56" rx="5" fill="var(--info-bg)" stroke="var(--info-border)" stroke-width="1.5"/>
+<text x="44" y="448" fill="var(--text-primary)" font-family="Arial,Helvetica,sans-serif" font-size="10.5" font-weight="700" text-anchor="start" dominant-baseline="central">The region code depends on the payload, not just on the region</text>
+<text x="44" y="467" fill="var(--text-secondary)" font-family="Arial,Helvetica,sans-serif" font-size="9" font-weight="400" text-anchor="start" dominant-baseline="central">It is an HMAC over payload type and payload. Two channels sharing a scope therefore get different codes, and so do two consecutive messages on one channel.</text>
+</svg>
