@@ -10,6 +10,10 @@ Comprehensive source list organised by category.
 |---|---|---|
 | [SX1276/77/78/79 Datasheet](https://cdn-shop.adafruit.com/product-files/3179/sx1276_77_78_79.pdf) | Semtech | Official datasheet for legacy SX127x LoRa transceivers with spreading factors and modulation specs |
 | [SX1262 Product Page](https://www.semtech.com/products/wireless-rf/lora-connect/sx1262) | Semtech | Product information for the newer SX1262 LoRa transceiver |
+| [RP2040 Datasheet](https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf) | Raspberry Pi Ltd | Clock speed, SRAM and flash of the RP2040; these figures are not present in the MeshCore repo |
+| [ESP32 Series Datasheets](https://www.espressif.com/en/support/documents/technical-documents) | Espressif | Specifications per ESP32 sub-SoC: classic ESP32, S3, C3 and C6 |
+| [nRF52840 Product Specification](https://docs.nordicsemi.com/bundle/ps_nrf52840/page/keyfeatures_html5.html) | Nordic Semiconductor | Reference for the nRF52840 SoC and its SoftDevice-based BLE stack |
+| [STM32WLE5 Datasheet](https://www.st.com/en/microcontrollers-microprocessors/stm32wle5cc.html) | STMicroelectronics | Reference for the STM32WLE5 with the SubGHz LoRa radio on the die |
 
 ## Application Notes
 

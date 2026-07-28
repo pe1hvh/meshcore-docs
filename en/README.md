@@ -24,6 +24,7 @@ Off-grid mesh communication over LoRa radio.
 - [MeshCore Packet Structure](technical/packet-structure.md)
 - [Regions and Scopes](technical/regions-and-scopes.md)
 - [Regions: intent and practice](technical/regions-in-practice.md)
+- [Direct Messages](technical/direct-messages.md)
 - [Private & Public Key Encryption](technical/key-encryption.md)
 - [Channel Structure & PSK](technical/channel-structure.md)
 - [BLE Architecture](technical/ble-architecture.md)
@@ -32,6 +33,11 @@ Off-grid mesh communication over LoRa radio.
 - [Repeater TX/RX flow](technical/repeater-flow.md)
 - [SenseCap DFU](technical/sensecap-dfu.md)
 - [Higher and stronger isn't always better](technical/dead-zone.md)
+
+## Platform
+
+- [MeshCore Platforms](platform/platforms.md)
+- [The Four Platform Families](platform/platform-families.md)
 
 ## Reference
 

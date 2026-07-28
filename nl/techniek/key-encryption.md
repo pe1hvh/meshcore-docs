@@ -141,7 +141,9 @@ Na decryptie met het ECDH shared secret:
 
 ### Routing en bevestiging
 
-Anders dan channels kunnen DM's zowel **flood-** als **direct-routed** zijn. Als het mesh eerder een pad naar de ontvanger heeft geleerd, volgt het bericht dat specifieke pad — efficiënter en minder belastend voor het netwerk. De ontvanger stuurt een **ACK** terug: een 4-byte SHA256-hash over timestamp, tekst en de public key van de afzender, als bewijs dat het bericht ongewijzigd is aangekomen.
+Anders dan channels kunnen DM's zowel **flood-** als **direct-routed** zijn. Als het mesh eerder een pad naar de ontvanger heeft geleerd, volgt het bericht dat specifieke pad — efficiënter en minder belastend voor het netwerk. De ontvanger stuurt een **ACK** terug als bewijs dat het bericht ongewijzigd is aangekomen: SHA256 over timestamp, flags, tekst en de public key van de afzender, afgekapt op 4 bytes. De ACK-payload van een gewone DM is 6 bytes — die 4 hash-bytes plus een byte met het pogingnummer en een willekeurige byte, die de pakkethash uniek houden. Alleen de eerste 4 bytes worden vergeleken.
+
+Hoe het pad geleerd wordt en waarom een direct gerouteerde DM geen regiocode draagt, staat in [Direct Messages](direct-messages.md).
 
 ## Room Servers: groepschat met geheugen én anonimiteit
 

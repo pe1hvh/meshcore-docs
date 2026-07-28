@@ -1,0 +1,70 @@
+<svg viewBox="0 0 700 620" width="100%" style="width:100%;margin:1rem 0" xmlns="http://www.w3.org/2000/svg">
+<style>
+:root{--bg:#FFFFFF; --grid:#023E8A; --line:#0096C7; --wave:#0096C7; --node:#0077B6; --outer:#0096C7; --text-primary:#0a2540; --text-secondary:#3d6380; --text-muted:#7a9bb5; --link-color:#0077B6; --link-hover:#023E8A; --heading-color:#0077B6; --border-subtle:rgba(0,119,182,0.12); --card-bg:rgba(0,119,182,0.03); --card-border:rgba(0,119,182,0.12); --card-hover:rgba(0,119,182,0.07); --code-bg:rgba(0,119,182,0.04); --code-border:rgba(0,119,182,0.12); --info-bg:rgba(0,119,182,0.04); --info-border:rgba(0,119,182,0.15); --table-header:rgba(0,119,182,0.06); --table-row-alt:rgba(0,119,182,0.02); --table-border:rgba(0,119,182,0.1); --timeline-line:#0096C7; --timeline-dot:#0077B6; --tag-green:rgba(16,185,129,0.1); --tag-green-text:#059669; --tag-red:rgba(239,68,68,0.08); --tag-red-text:#dc2626; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}
+@media (prefers-color-scheme: dark){:root{--bg:#0A1628; --grid:#0077B6; --line:#0077B6; --wave:#48CAE4; --node:#00B4D8; --outer:#0077B6; --text-primary:#e0f0f8; --text-secondary:#8badc4; --text-muted:#4a6a80; --link-color:#48CAE4; --link-hover:#90E0EF; --heading-color:#48CAE4; --border-subtle:rgba(0,119,182,0.15); --card-bg:rgba(0,119,182,0.06); --card-border:rgba(0,119,182,0.15); --card-hover:rgba(0,119,182,0.12); --code-bg:rgba(0,119,182,0.08); --code-border:rgba(0,119,182,0.2); --info-bg:rgba(72,202,228,0.06); --info-border:rgba(72,202,228,0.2); --table-header:rgba(0,119,182,0.1); --table-row-alt:rgba(0,119,182,0.04); --table-border:rgba(0,119,182,0.12); --timeline-line:#0077B6; --timeline-dot:#00B4D8; --tag-green:rgba(16,185,129,0.15); --tag-green-text:#6ee7b7; --tag-red:rgba(239,68,68,0.12); --tag-red-text:#fca5a5; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}}
+</style>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--text-secondary)"/></marker><marker id="arg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1E6B3A"/></marker><marker id="arb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2E75B6"/></marker><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#8B0000"/></marker></defs>
+<rect x="0" y="0" width="700" height="620" fill="var(--bg)"/>
+<text x="350.0" y="26" fill="var(--heading-color)" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" text-anchor="middle" dominant-baseline="central">Wat een repeater met een binnengekomen pakket doet</text>
+<text x="350.0" y="48" fill="var(--text-secondary)" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">de regiovraag hangt uitsluitend aan de floodkant</text>
+<rect x="260.0" y="70" width="180" height="34" rx="4" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.4"/>
+<text x="350.0" y="87.0" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="12.5" font-weight="700" text-anchor="middle" dominant-baseline="central">pakket ontvangen</text>
+<line x1="350.0" y1="104" x2="350.0" y2="126" stroke="var(--text-secondary)" stroke-width="1.4" marker-end="url(#ar)"/>
+<rect x="260.0" y="126" width="180" height="34" rx="4" fill="#FEF3C7" stroke="#B45309" stroke-width="1.4"/>
+<text x="350.0" y="143.0" fill="#78350F" font-family="'JetBrains Mono',monospace" font-size="12.5" font-weight="700" text-anchor="middle" dominant-baseline="central">route type?</text>
+<line x1="350.0" y1="160" x2="350.0" y2="180" stroke="var(--text-secondary)" stroke-width="1.4"/>
+<line x1="178" y1="180" x2="522" y2="180" stroke="var(--text-secondary)" stroke-width="1.4"/>
+<line x1="178" y1="180" x2="178" y2="214" stroke="var(--text-secondary)" stroke-width="1.4" marker-end="url(#ar)"/>
+<line x1="522" y1="180" x2="522" y2="214" stroke="var(--text-secondary)" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="178" y="194" fill="#0F6E56" font-family="'JetBrains Mono',monospace" font-size="11.5" font-weight="700" text-anchor="middle" dominant-baseline="central">FLOOD (0x00 / 0x01)</text>
+<text x="522" y="194" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="11.5" font-weight="700" text-anchor="middle" dominant-baseline="central">DIRECT (0x02)</text>
+<rect x="10" y="210" width="336" height="300" rx="10" fill="rgba(30,107,58,0.05)" stroke="#1E6B3A" stroke-width="1.2" stroke-dasharray="5,4"/>
+<text x="178" y="226" fill="#0F6E56" font-family="'JetBrains Mono',monospace" font-size="11.5" font-weight="700" text-anchor="middle" dominant-baseline="central">REGIOFILTER</text>
+<rect x="28.0" y="240" width="300" height="62" rx="4" fill="#D9EFE2" stroke="#1E6B3A" stroke-width="1.4"/>
+<text x="178" y="255.0" fill="#0F6E56" font-family="Arial,Helvetica,sans-serif" font-size="11.5" font-weight="400" text-anchor="middle" dominant-baseline="central">findMatch(): herken ik</text>
+<text x="178" y="271.0" fill="#0F6E56" font-family="Arial,Helvetica,sans-serif" font-size="11.5" font-weight="400" text-anchor="middle" dominant-baseline="central">de transport code als een</text>
+<text x="178" y="287.0" fill="#0F6E56" font-family="Arial,Helvetica,sans-serif" font-size="11.5" font-weight="400" text-anchor="middle" dominant-baseline="central">van mijn regio's?</text>
+<line x1="178" y1="302" x2="178" y2="326" stroke="#1E6B3A" stroke-width="1.4" marker-end="url(#arg)"/>
+<rect x="28.0" y="326" width="300" height="46" rx="4" fill="#D9EFE2" stroke="#1E6B3A" stroke-width="1.4"/>
+<text x="178" y="341.0" fill="#0F6E56" font-family="Arial,Helvetica,sans-serif" font-size="11.5" font-weight="400" text-anchor="middle" dominant-baseline="central">hoplimiet nog niet</text>
+<text x="178" y="357.0" fill="#0F6E56" font-family="Arial,Helvetica,sans-serif" font-size="11.5" font-weight="400" text-anchor="middle" dominant-baseline="central">bereikt?</text>
+<line x1="178" y1="372" x2="178" y2="392" stroke="#1E6B3A" stroke-width="1.4"/>
+<line x1="178" y1="392" x2="100" y2="392" stroke="#1E6B3A" stroke-width="1.4"/>
+<line x1="100" y1="392" x2="100" y2="420" stroke="#1E6B3A" stroke-width="1.4" marker-end="url(#arg)"/>
+<text x="168" y="384" fill="#0F6E56" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="400" text-anchor="end" dominant-baseline="central">ja</text>
+<rect x="15.0" y="420" width="170" height="36" rx="4" fill="#D9EFE2" stroke="#1E6B3A" stroke-width="1.4"/>
+<text x="100" y="438.0" fill="#0F6E56" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" text-anchor="middle" dominant-baseline="central">doorsturen</text>
+<line x1="328" y1="271" x2="330" y2="271" stroke="#8B0000" stroke-width="1.4" stroke-dasharray="5,3"/>
+<line x1="328" y1="349" x2="330" y2="349" stroke="#8B0000" stroke-width="1.4" stroke-dasharray="5,3"/>
+<line x1="330" y1="271" x2="330" y2="400" stroke="#8B0000" stroke-width="1.4" stroke-dasharray="5,3"/>
+<line x1="330" y1="400" x2="274" y2="400" stroke="#8B0000" stroke-width="1.4" stroke-dasharray="5,3"/>
+<line x1="274" y1="400" x2="274" y2="420" stroke="#8B0000" stroke-width="1.4" stroke-dasharray="5,3" marker-end="url(#arr)"/>
+<text x="324" y="259" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="400" text-anchor="end" dominant-baseline="central">nee</text>
+<rect x="216.0" y="420" width="116" height="36" rx="4" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.4"/>
+<text x="274" y="438.0" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" text-anchor="middle" dominant-baseline="central">weggooien</text>
+<rect x="354" y="210" width="336" height="300" rx="10" fill="rgba(46,117,182,0.05)" stroke="#2E75B6" stroke-width="1.2" stroke-dasharray="5,4"/>
+<text x="522" y="226" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="11.5" font-weight="700" text-anchor="middle" dominant-baseline="central">GEEN REGIOFILTER</text>
+<rect x="372.0" y="240" width="300" height="62" rx="4" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.4"/>
+<text x="522" y="263.0" fill="#1F3864" font-family="Arial,Helvetica,sans-serif" font-size="11.5" font-weight="400" text-anchor="middle" dominant-baseline="central">is de eerste hash</text>
+<text x="522" y="279.0" fill="#1F3864" font-family="Arial,Helvetica,sans-serif" font-size="11.5" font-weight="400" text-anchor="middle" dominant-baseline="central">in het pad de mijne?</text>
+<line x1="522" y1="302" x2="522" y2="326" stroke="#2E75B6" stroke-width="1.4" marker-end="url(#arb)"/>
+<rect x="372.0" y="326" width="300" height="46" rx="4" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.4"/>
+<text x="522" y="341.0" fill="#1F3864" font-family="Arial,Helvetica,sans-serif" font-size="11.5" font-weight="400" text-anchor="middle" dominant-baseline="central">haal jezelf uit het pad,</text>
+<text x="522" y="357.0" fill="#1F3864" font-family="Arial,Helvetica,sans-serif" font-size="11.5" font-weight="400" text-anchor="middle" dominant-baseline="central">schuif de rest naar voren</text>
+<line x1="522" y1="372" x2="522" y2="392" stroke="#2E75B6" stroke-width="1.4"/>
+<line x1="522" y1="392" x2="444" y2="392" stroke="#2E75B6" stroke-width="1.4"/>
+<line x1="444" y1="392" x2="444" y2="420" stroke="#2E75B6" stroke-width="1.4" marker-end="url(#arb)"/>
+<text x="512" y="384" fill="#1F3864" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="400" text-anchor="end" dominant-baseline="central">ja</text>
+<rect x="354.0" y="420" width="180" height="36" rx="4" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.4"/>
+<text x="444" y="438.0" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" text-anchor="middle" dominant-baseline="central">doorsturen · prio hoog</text>
+<line x1="672" y1="271" x2="674" y2="271" stroke="#8B0000" stroke-width="1.4" stroke-dasharray="5,3"/>
+<line x1="672" y1="349" x2="674" y2="349" stroke="#8B0000" stroke-width="1.4" stroke-dasharray="5,3"/>
+<line x1="674" y1="271" x2="674" y2="400" stroke="#8B0000" stroke-width="1.4" stroke-dasharray="5,3"/>
+<line x1="674" y1="400" x2="618" y2="400" stroke="#8B0000" stroke-width="1.4" stroke-dasharray="5,3"/>
+<line x1="618" y1="400" x2="618" y2="420" stroke="#8B0000" stroke-width="1.4" stroke-dasharray="5,3" marker-end="url(#arr)"/>
+<text x="668" y="259" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="400" text-anchor="end" dominant-baseline="central">nee</text>
+<rect x="560.0" y="420" width="116" height="36" rx="4" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.4"/>
+<text x="618" y="438.0" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" text-anchor="middle" dominant-baseline="central">weggooien</text>
+<text x="350.0" y="548" fill="var(--text-secondary)" font-family="Arial,Helvetica,sans-serif" font-size="11.5" font-weight="400" text-anchor="middle" dominant-baseline="central">REGION_DENY_DIRECT (0x02) bestaat als constante, maar staat als</text>
+<text x="350.0" y="565" fill="var(--text-secondary)" font-family="Arial,Helvetica,sans-serif" font-size="11.5" font-weight="400" text-anchor="middle" dominant-baseline="central">"reserved for future" en wordt nergens gelezen.</text>
+</svg>

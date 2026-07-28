@@ -5,6 +5,181 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
 
 ---
 
+## [Unreleased]
+
+### Added
+
+- **Direct Messages** (`nl/techniek/direct-messages.md`,
+  `en/technical/direct-messages.md`): nieuw techniekhoofdstuk dat de vier fasen
+  van een DM beschrijft — eerste bericht als gescoopte flood, PATH-antwoord,
+  geleerd pad, bevestiging — en de vraag beantwoordt waarom een direct
+  gerouteerde DM geen transport code draagt. Die vraag werd tot nu toe alleen in
+  één tabelregel van `regions-and-scopes.md` aangestipt, zonder onderbouwing.
+  Het hoofdstuk benoemt ook de keerzijde: de padontdekking eromheen is wél
+  gescoped, waardoor een regiofout DM's naar nieuwe contacten breekt.
+- Beide hoofdstukken opgenomen in `nl/README.md` en `en/README.md` onder
+  *Techniek* / *Technical*, direct na *Regio's: bedoeling en praktijk*.
+- Drie diagrammen in `images/nl/` en `images/en/`:
+  `direct-messages-1.svg` (de vier fasen), `direct-messages-2.svg` (hetzelfde
+  pakket in beide routetypes, byte voor byte) en `direct-messages-3.svg` (de
+  beslisboom van een repeater, die laat zien dat de regiotak alleen aan de
+  floodkant hangt).
+- `tools/dm-example.py`: reproduceert het DM-voorbeeld uit het nieuwe
+  hoofdstuk — klaartekst, cijfertekst, transport code, beide framelengtes en de
+  ACK — met dezelfde voorbeelddata als `tools/example-calculation.py`.
+- Zeven termen toegevoegd aan `nl/naslag/terminology.md` en
+  `en/reference/terminology.md`: *Dest hash / Src hash*, *Direct routing*,
+  *Encrypt-then-MAC*, *First packet wins*, *out_path*, *PATH-pakket* en
+  *Zero-hop*.
+- **MeshCore Platforms** (`nl/techniek/platforms.md`,
+  `en/technical/platforms.md`): nieuw techniekhoofdstuk over de vier
+  platformfamilies waar MeshCore op bouwt — ESP32, nRF52840, RP2040 en
+  STM32WL. Het beantwoordt de vraag waarom niet elke node hetzelfde kan:
+  dezelfde firmware, maar per familie andere transporten, opslag, displays,
+  updatemethoden en flashartefacten. De docs beschreven tot nu toe wel
+  apparaten (`gebruik/hardware.md`), maar nergens de chip erachter.
+- Het hoofdstuk gebruikt bewust de term *platform* en niet *microcontroller*.
+  De firmware zelf spreekt van platforms (`ESP32_PLATFORM`, `NRF52_PLATFORM`,
+  `RP2040_PLATFORM`, `STM32_PLATFORM`, `platformio.ini` r.63, 90, 104, 113),
+  en drie van de vier chips zijn een SoC en geen kale microcontroller.
+- Beide hoofdstukken opgenomen in `nl/README.md` en `en/README.md` onder
+  *Techniek* / *Technical*, direct na *SenseCap DFU*.
+- Drie diagrammen in `images/nl/` en `images/en/`: `platforms-1.svg` (de vier
+  families naast elkaar, met per familie wat er wel en niet is),
+  `platforms-2.svg` (losse SX1262 over SPI tegenover de SubGHz-radio op de
+  STM32WL-die) en `platforms-3.svg` (beslisboom voor de platformkeuze).
+- `tools/platform-overview.py`: genereert de drie tellingstabellen uit een
+  kloon van `meshcore-dev/MeshCore` en een opgeslagen pagina van de web
+  flasher, zodat het hoofdstuk narekenbaar blijft bij een volgende release.
+  Het script controleert ook de aannames in de tekst, zoals dat
+  `framework = arduino` precies één keer in de repo staat.
+- Vijfentwintig termen toegevoegd aan `nl/naslag/terminology.md` en
+  `en/reference/terminology.md`: *Arduino-core*, *bootloader*, *build flag*,
+  *Cortex-M0+/M4/M4F*, *ESP-IDF*, *ESP-NOW*, *HAL*, *LittleFS*, *LPCOMP*,
+  *Platform*, *Platformfamilie*, *PlatformIO environment*, *PSRAM*, *RISC-V*,
+  *RP2040*, *SoC*, *SoftDevice*, *SPIFFS*, *ST-Link*, *STM32WLE5*,
+  *SubGHz-radio*, *SYSTEMOFF*, *UF2*, *Variant* en *Xtensa*.
+- Vier externe datasheets toegevoegd aan `nl/naslag/references.md` en
+  `en/reference/references.md`: RP2040, ESP32-serie, nRF52840 en STM32WLE5.
+  De RP2040-cijfers in het hoofdstuk komen daar vandaan en niet uit de
+  firmware-repo; dat staat ook zo in een voetnoot bij de tabel.
+- **De vier platformfamilies** (`nl/platform/platform-families.md`,
+  `en/platform/platform-families.md`): nieuw hoofdstuk in de rubriek
+  `platform/`, met de vier
+  familiebeschrijvingen — ESP32, nRF52840, RP2040 en STM32WL — die tot nu toe
+  in `platforms.md` stonden. Reden voor de splitsing: dat bestand diende twee
+  verschillende leesdoelen. Wie *vergelijkt en kiest* heeft andere tekst nodig
+  dan wie zich *per familie verdiept*, en die twee stonden door elkaar heen.
+  Een opsplitsing per processor is overwogen en afgevallen: slechts 29 % van
+  de tekst is aan één familie toe te wijzen, dus vier pagina's zouden
+  grotendeels uit boilerplate bestaan en het bron-blok van twee naar tien
+  plekken gaan. Het resultaat is twee volwaardige hoofdstukken van circa 1900
+  en 1050 woorden, geen stubs.
+- Beide taalversies opgenomen in `nl/README.md` en `en/README.md` onder een
+  nieuw kopje *Platform*, tussen *Techniek* / *Technical* en *Naslag* /
+  *Reference*. De twee hoofdstukken stonden eerst in de Techniek-lijst; nu de
+  rubriek `platform/` bestaat, volgt de inhoudsopgave de mapstructuur.
+  `README.md` en `CLAUDE.md` noemen `platform/` ook in hun
+  structuuroverzicht — daar ontbrak de map nog.
+- Vier kruisverwijzingen tussen de twee hoofdstukken: van *MeshCore Platforms*
+  naar *De vier platformfamilies* onderaan de inleiding en aan het eind van
+  *De vier families in één oogopslag*, en terug vanuit de inleiding en de
+  STM32WL-sectie van het nieuwe hoofdstuk.
+
+### Changed
+
+- `nl/techniek/regions-and-scopes.md`, `en/technical/regions-and-scopes.md`: de
+  tabelregel over directe routes verwijst nu door naar het nieuwe hoofdstuk voor
+  de onderbouwing.
+- `nl/gebruik/communication.md`, `en/usage/communication.md`: de sectie *Direct
+  Messages* verwijst onderaan naar het techniekhoofdstuk. Het gebruikersverhaal
+  blijft hier staan.
+- `nl/techniek/key-encryption.md`, `en/technical/key-encryption.md`: de sectie
+  *Routing en bevestiging* verwijst door naar het nieuwe hoofdstuk voor padleren
+  en routering. ECDH blijft hier, zodat er geen tweede beschrijving ontstaat.
+- `nl/gebruik/hardware.md`, `en/usage/hardware.md`: een NOTE-blok boven de
+  vergelijkingstabel scheidt de twee onderwerpen. Deze pagina blijft over
+  apparaten gaan; de chip erin en wat die bepaalt staat vanaf nu in
+  *MeshCore Platforms*.
+- `nl/naslag/terminology.md`, `en/reference/terminology.md`: de regel *DFU*
+  beschreef alleen de Bluetooth-variant. DFU is breder — op STM32 gaat het via
+  USB — en de regel is daarop verruimd.
+- `CLAUDE.md`: de conventies zijn gelijkgetrokken met de repo. Slugs zijn
+  Engels en zonder rubrieksprefix (het document schreef nog Nederlandse slugs
+  voor), diagrammen staan per taal in `images/nl/` en `images/en/` onder
+  dezelfde naam (het document beschreef een gedeelde map met `-en.svg`-
+  varianten), en de bestandsnamen `terminology.md` en `references.md` zijn
+  gecorrigeerd. Toegevoegd: commits pinnen in bronlinks in plaats van `main`,
+  externe cijfers markeren, en de regel dat de repo wint als dit document de
+  repo tegenspreekt.
+- **MeshCore Platforms** is verplaatst van `nl/techniek/platforms.md` en
+  `en/technical/platforms.md` naar `nl/platform/platforms.md` en
+  `en/platform/platforms.md`. De twee platformhoofdstukken staan daarmee in
+  hun eigen rubriek `platform/`, die in beide taalbomen dezelfde naam draagt.
+  De slug `platforms` is ongewijzigd. Links vanuit `nl/README.md`,
+  `en/README.md`, `nl/gebruik/hardware.md` en `en/usage/hardware.md` wijzen
+  mee.
+- `nl/platform/platforms.md`, `en/platform/platforms.md`: ingekort tot het
+  vergelijkende deel. De vier familiesecties zijn woord voor woord verhuisd
+  naar `platform-families.md`; wat blijft staan is *waarom het platform
+  uitmaakt*, de vier families in één oogopslag, de vergelijking op zes assen,
+  de rollentabel, de flasherlijst, hoe de firmware de verschillen opvangt en
+  de keuzehulp. De subtitel is `*VERGELIJKEN · KIEZEN · WAT DE CHIP BEPAALT*`
+  geworden, de inleiding belooft niet langer wat nu op de andere pagina staat.
+  De voetnoot bij de RP2040-cijfers en de NOTE over de ontbrekende
+  mA-getallen blijven hier, bij de tabellen waar ze bij horen.
+- `images/nl/platforms-2.svg` en `images/en/platforms-2.svg` zijn hernoemd
+  naar `platform-families-1.svg`. Het diagram hoort bij het nieuwe hoofdstuk,
+  en de conventie is `images/<taal>/<slug>-<n>.svg`. De inhoud van de
+  SVG-bestanden is niet gewijzigd, alleen de naam en de verwijzing.
+- `nl/gebruik/hardware.md`, `en/usage/hardware.md`: het NOTE-blok boven de
+  vergelijkingstabel verwijst nu naar beide hoofdstukken — naar *MeshCore
+  Platforms* voor wat de chip bepaalt, en naar *De vier platformfamilies*
+  voor wat er per familie in zit.
+- Geen enkel cijfer is bij deze wijziging veranderd. Dit is een herindeling
+  van bestaande, al geverifieerde tekst, geen herverificatie: de firmware-repo
+  is niet opnieuw opgehaald en `tools/platform-overview.py` niet opnieuw
+  gedraaid. Beide hoofdstukken pinnen dezelfde commit `03b6ef4` (28 juli 2026,
+  v1.16.0) en vermelden dat de tellingen ook op `a3a1aa5` identiek zijn.
+- `CLAUDE.md`: bestandsnamen zijn nu expliciet altijd Engels, kebab-case, ook
+  in de Nederlandse boom en ook voor scripts en diagrammen. Dat stond er nog
+  niet: de regel gold alleen voor hoofdstukslugs, en bij `tools/` stond zelfs
+  het tegendeel — die naamconventie schreef Nederlands voor. De drie
+  bestaande scripts en twee verweesde SVG's met een `techniek-`-prefix
+  voldoen nog niet en staan als valkuil genoteerd; hernoemen raakt links in
+  `README.md`, `CHANGELOG.md` en vier hoofdstukken en is een aparte opdracht.
+  De regel gaat expliciet over bestanden, niet over mappen: mapnamen volgen
+  de rubrieksmapping, die is aangevuld met `platform` ↔ `platform`.
+- De drie scripts in `tools/` zijn hernoemd naar Engelse namen:
+  `bereken-voorbeeld.py` → `example-calculation.py`, `dm-voorbeeld.py` →
+  `dm-example.py` en `platform-overzicht.py` → `platform-overview.py`. De
+  code zelf is niet gewijzigd; alleen twee zelfverwijzingen in commentaar en
+  in de usage-regel zijn meegetrokken. Meeverhuisd zijn de verwijzingen in
+  `README.md`, `CLAUDE.md`, `nl/techniek/direct-messages.md`,
+  `en/technical/direct-messages.md`, de vier platformhoofdstukken en het
+  bijschrift in `images/nl/direct-messages-2.svg` en
+  `images/en/direct-messages-2.svg`, waar de scriptnaam in het diagram staat.
+
+### Fixed
+
+- `nl/gebruik/communication.md`, `en/usage/communication.md`: de waarschuwing
+  *"Adverts worden NIET doorgestuurd door repeaters. Beide nodes moeten elkaar
+  direct kunnen horen voor de key-uitwisseling"* was onjuist. Repeaters sturen
+  flood-adverts wél door, tot de aparte hoplimiet `flood.max.advert` en met
+  verlaagde prioriteit; alleen een *zero-hop* advert blijft bij de buren. De
+  oude tekst stuurde lezers naar een verkeerd beeld van hoe contacten elkaar
+  vinden.
+- `nl/techniek/key-encryption.md`, `en/technical/key-encryption.md`: de ACK werd
+  beschreven als *"een 4-byte SHA256-hash"*. Voor een gewone DM is de
+  ACK-payload 6 bytes: 4 hash-bytes, 1 byte pogingnummer en 1 willekeurige byte,
+  waarvan alleen de eerste 4 worden vergeleken.
+- `nl/techniek/regions-and-scopes.md`, `en/technical/regions-and-scopes.md`,
+  `nl/naslag/terminology.md`, `en/reference/terminology.md`: dode links naar
+  `techniek-locode.md`, een bestand dat niet in de repo staat. De verwijzingen
+  wijzen nu naar `regions-in-practice.md`, waar de naamgevingsafspraken staan.
+
+---
+
 ## [2026-07-27] Removed
 - Deleted unlinked files
 

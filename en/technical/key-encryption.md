@@ -141,7 +141,9 @@ After decryption with the ECDH shared secret:
 
 ### Routing and confirmation
 
-Unlike channels, DMs' can be either **flood-** or **direct-routed**. If the mesh has previously learned a path to the recipient, the message follows that specific path — more efficient and less demanding on the network. The receiver sends back an **ACK**: a 4-byte SHA256 hash over the timestamp, text, and the sender's public key, as proof that the message arrived unchanged.
+Unlike channels, DMs can be either **flood-** or **direct-routed**. If the mesh has previously learned a path to the recipient, the message follows that specific path — more efficient and less demanding on the network. The receiver sends back an **ACK** as proof that the message arrived unchanged: SHA256 over the timestamp, flags, text, and the sender's public key, truncated to 4 bytes. The ACK payload of an ordinary DM is 6 bytes — those 4 hash bytes plus a byte with the attempt number and a random byte, which keep the packet hash unique. Only the first 4 bytes are compared.
+
+How the path is learned and why a directly routed DM carries no region code is covered in [Direct Messages](direct-messages.md).
 
 ## Room Servers: group chat with memory and anonymity
 

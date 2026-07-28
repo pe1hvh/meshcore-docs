@@ -18,11 +18,10 @@ key over this one packet**.
 
 This chapter covers the protocol side of that: where the scope sits in the packet,
 how it is derived, and what a repeater bases its decision on. For configuring
-regions on your own node, see [Getting Started](../usage/getting-started.md). For the
-naming conventions within NoodNet Overijssel, see
-[Regions: intent and practice](regions-in-practice.md), and
-[UN/LOCODE Region Codes](techniek-locode.md) — that covers what regions are
-*called*, this chapter covers what technically *happens* with them.
+regions on your own node, see [Getting Started](../usage/getting-started.md). The
+naming conventions within NoodNet Overijssel cover what nodes and regions are
+*called*, this chapter covers what technically *happens* with them; for those
+conventions, see [Regions: intent and practice](regions-in-practice.md).
 
 > [!NOTE]
 > **Source.** Verified against `MeshCore` v1.16.0, commit `a3a1aa5`, 19 July 2026
@@ -35,8 +34,8 @@ naming conventions within NoodNet Overijssel, see
 ## Where is the transport code?
 
 > [!NOTE]
-> **Two different things are both called a "region code".** In
-> [UN/LOCODE Region Codes](techniek-locode.md) a region code is a *name*:
+> **Two different things are both called a "region code".** In the
+> UN/LOCODE naming convention a region code is a *name*:
 > `nl-ov-zwo`. It lives on your node and never goes on air. What does go on air
 > is a 16-bit **transport code**, which is something else entirely. This chapter
 > therefore says "transport code" for the bytes in the packet and leaves "region
@@ -396,7 +395,7 @@ When a flood packet arrives, the repeater first determines the region
 | `ROUTE_TYPE_TRANSPORT_FLOOD` | For every known region that permits flooding, the code is recomputed and compared with `transport_codes[0]`. First match wins |
 | `ROUTE_TYPE_FLOOD` (no codes) | Falls under the wildcard region `*`. If that carries `denyf`, there is no match |
 | No match | `allowPacketForward` returns `false` — the packet is **not** forwarded |
-| Direct routes | Not filtered by region; the supplied path determines the route |
+| Direct routes | Not filtered by region; the supplied path determines the route. Why that is so is covered in [Direct Messages](direct-messages.md) |
 | Codes `{0x0000, 0x0000}` | Means "send nowhere"; used among other things when sharing a contact, so such an advert is not counted as a neighbour |
 
 When the repeater replies itself, the reply goes back with the same scope as the

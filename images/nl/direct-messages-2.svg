@@ -1,0 +1,98 @@
+<svg viewBox="0 0 700 430" width="100%" style="width:100%;margin:1rem 0" xmlns="http://www.w3.org/2000/svg">
+<style>
+:root{--bg:#FFFFFF; --grid:#023E8A; --line:#0096C7; --wave:#0096C7; --node:#0077B6; --outer:#0096C7; --text-primary:#0a2540; --text-secondary:#3d6380; --text-muted:#7a9bb5; --link-color:#0077B6; --link-hover:#023E8A; --heading-color:#0077B6; --border-subtle:rgba(0,119,182,0.12); --card-bg:rgba(0,119,182,0.03); --card-border:rgba(0,119,182,0.12); --card-hover:rgba(0,119,182,0.07); --code-bg:rgba(0,119,182,0.04); --code-border:rgba(0,119,182,0.12); --info-bg:rgba(0,119,182,0.04); --info-border:rgba(0,119,182,0.15); --table-header:rgba(0,119,182,0.06); --table-row-alt:rgba(0,119,182,0.02); --table-border:rgba(0,119,182,0.1); --timeline-line:#0096C7; --timeline-dot:#0077B6; --tag-green:rgba(16,185,129,0.1); --tag-green-text:#059669; --tag-red:rgba(239,68,68,0.08); --tag-red-text:#dc2626; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}
+@media (prefers-color-scheme: dark){:root{--bg:#0A1628; --grid:#0077B6; --line:#0077B6; --wave:#48CAE4; --node:#00B4D8; --outer:#0077B6; --text-primary:#e0f0f8; --text-secondary:#8badc4; --text-muted:#4a6a80; --link-color:#48CAE4; --link-hover:#90E0EF; --heading-color:#48CAE4; --border-subtle:rgba(0,119,182,0.15); --card-bg:rgba(0,119,182,0.06); --card-border:rgba(0,119,182,0.15); --card-hover:rgba(0,119,182,0.12); --code-bg:rgba(0,119,182,0.08); --code-border:rgba(0,119,182,0.2); --info-bg:rgba(72,202,228,0.06); --info-border:rgba(72,202,228,0.2); --table-header:rgba(0,119,182,0.1); --table-row-alt:rgba(0,119,182,0.04); --table-border:rgba(0,119,182,0.12); --timeline-line:#0077B6; --timeline-dot:#00B4D8; --tag-green:rgba(16,185,129,0.15); --tag-green-text:#6ee7b7; --tag-red:rgba(239,68,68,0.12); --tag-red-text:#fca5a5; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}}
+</style>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--text-secondary)"/></marker><marker id="arg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#1E6B3A"/></marker><marker id="arb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2E75B6"/></marker><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#8B0000"/></marker></defs>
+<rect x="0" y="0" width="700" height="430" fill="var(--bg)"/>
+<text x="350.0" y="26" fill="var(--heading-color)" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" text-anchor="middle" dominant-baseline="central">Dezelfde DM in twee routetypes</text>
+<text x="350.0" y="48" fill="var(--text-secondary)" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">PE1HVH → PE1RDP · 33 tekens · 2 hops · narekenbaar met tools/dm-example.py</text>
+<text x="20" y="82" fill="var(--text-primary)" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" text-anchor="start" dominant-baseline="central">flood mét scope — 60 bytes</text>
+<text x="20" y="98" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="start" dominant-baseline="central">ROUTE_TYPE_TRANSPORT_FLOOD (0x00)</text>
+<rect x="20" y="112" width="52" height="42" rx="4" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.4"/>
+<text x="46.0" y="133" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="14" font-weight="400" text-anchor="middle" dominant-baseline="central">08</text>
+<rect x="20" y="158" width="52" height="40" rx="4" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.4"/>
+<text x="46.0" y="171" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="11.5" font-weight="700" text-anchor="middle" dominant-baseline="central">header</text>
+<rect x="72" y="112" width="76" height="42" rx="4" fill="#D9EFE2" stroke="#1E6B3A" stroke-width="2.6"/>
+<text x="110.0" y="133" fill="#0F6E56" font-family="'JetBrains Mono',monospace" font-size="14" font-weight="700" text-anchor="middle" dominant-baseline="central">1E 80</text>
+<rect x="72" y="158" width="76" height="40" rx="4" fill="#D9EFE2" stroke="#1E6B3A" stroke-width="2.6"/>
+<text x="110.0" y="171" fill="#0F6E56" font-family="'JetBrains Mono',monospace" font-size="11.5" font-weight="700" text-anchor="middle" dominant-baseline="central">transport</text>
+<text x="110.0" y="186" fill="#0F6E56" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">code_1</text>
+<rect x="148" y="112" width="76" height="42" rx="4" fill="#D9EFE2" stroke="#1E6B3A" stroke-width="2.6"/>
+<text x="186.0" y="133" fill="#0F6E56" font-family="'JetBrains Mono',monospace" font-size="14" font-weight="700" text-anchor="middle" dominant-baseline="central">00 00</text>
+<rect x="148" y="158" width="76" height="40" rx="4" fill="#D9EFE2" stroke="#1E6B3A" stroke-width="2.6"/>
+<text x="186.0" y="171" fill="#0F6E56" font-family="'JetBrains Mono',monospace" font-size="11.5" font-weight="700" text-anchor="middle" dominant-baseline="central">transport</text>
+<text x="186.0" y="186" fill="#0F6E56" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">code_2</text>
+<rect x="224" y="112" width="52" height="42" rx="4" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.4"/>
+<text x="250.0" y="133" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="14" font-weight="400" text-anchor="middle" dominant-baseline="central">02</text>
+<rect x="224" y="158" width="52" height="40" rx="4" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.4"/>
+<text x="250.0" y="171" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="11.5" font-weight="700" text-anchor="middle" dominant-baseline="central">path</text>
+<text x="250.0" y="186" fill="#1F3864" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">length</text>
+<rect x="276" y="112" width="68" height="42" rx="4" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.4"/>
+<text x="310.0" y="133" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="14" font-weight="400" text-anchor="middle" dominant-baseline="central">A3 7F</text>
+<rect x="276" y="158" width="68" height="40" rx="4" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.4"/>
+<text x="310.0" y="171" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="11.5" font-weight="700" text-anchor="middle" dominant-baseline="central">path</text>
+<text x="310.0" y="186" fill="#1F3864" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">2 hops</text>
+<rect x="344" y="112" width="44" height="42" rx="4" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.4"/>
+<text x="366.0" y="133" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="14" font-weight="400" text-anchor="middle" dominant-baseline="central">E3</text>
+<rect x="344" y="158" width="44" height="40" rx="4" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.4"/>
+<text x="366.0" y="171" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="11.5" font-weight="700" text-anchor="middle" dominant-baseline="central">dest</text>
+<text x="366.0" y="186" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">hash</text>
+<rect x="388" y="112" width="44" height="42" rx="4" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.4"/>
+<text x="410.0" y="133" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="14" font-weight="400" text-anchor="middle" dominant-baseline="central">EA</text>
+<rect x="388" y="158" width="44" height="40" rx="4" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.4"/>
+<text x="410.0" y="171" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="11.5" font-weight="700" text-anchor="middle" dominant-baseline="central">src</text>
+<text x="410.0" y="186" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">hash</text>
+<rect x="432" y="112" width="68" height="42" rx="4" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.4"/>
+<text x="466.0" y="133" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="14" font-weight="400" text-anchor="middle" dominant-baseline="central">D8 FE</text>
+<rect x="432" y="158" width="68" height="40" rx="4" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.4"/>
+<text x="466.0" y="171" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="11.5" font-weight="700" text-anchor="middle" dominant-baseline="central">cipher</text>
+<text x="466.0" y="186" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">MAC</text>
+<rect x="500" y="112" width="166" height="42" rx="4" fill="#FDF0F0" stroke="#8B0000" stroke-width="1.4"/>
+<text x="583.0" y="133" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="11.5" font-weight="400" text-anchor="middle" dominant-baseline="central">21 AB … 58 B3</text>
+<rect x="500" y="158" width="166" height="40" rx="4" fill="#FDF0F0" stroke="#8B0000" stroke-width="1.4"/>
+<text x="583.0" y="171" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="11.5" font-weight="700" text-anchor="middle" dominant-baseline="central">ciphertext</text>
+<text x="583.0" y="186" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">48 bytes</text>
+<text x="20" y="238" fill="var(--text-primary)" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="700" text-anchor="start" dominant-baseline="central">direct — 56 bytes</text>
+<text x="20" y="254" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="start" dominant-baseline="central">ROUTE_TYPE_DIRECT (0x02)</text>
+<rect x="20" y="268" width="52" height="42" rx="4" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.4"/>
+<text x="46.0" y="289" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="14" font-weight="400" text-anchor="middle" dominant-baseline="central">0A</text>
+<rect x="20" y="314" width="52" height="40" rx="4" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.4"/>
+<text x="46.0" y="327" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="11.5" font-weight="700" text-anchor="middle" dominant-baseline="central">header</text>
+<rect x="72" y="268" width="152" height="42" rx="4" fill="none" stroke="#9A9A93" stroke-width="1.4" stroke-dasharray="6,4"/>
+<text x="148.0" y="289" fill="#6B6B63" font-family="Arial,Helvetica,sans-serif" font-size="11.5" font-weight="700" text-anchor="middle" dominant-baseline="central">4 bytes afwezig</text>
+<rect x="72" y="314" width="152" height="40" rx="4" fill="none" stroke="#9A9A93" stroke-width="1.4" stroke-dasharray="6,4"/>
+<text x="148.0" y="334" fill="#6B6B63" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="400" text-anchor="middle" dominant-baseline="central">—</text>
+<rect x="224" y="268" width="52" height="42" rx="4" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.4"/>
+<text x="250.0" y="289" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="14" font-weight="400" text-anchor="middle" dominant-baseline="central">02</text>
+<rect x="224" y="314" width="52" height="40" rx="4" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.4"/>
+<text x="250.0" y="327" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="11.5" font-weight="700" text-anchor="middle" dominant-baseline="central">path</text>
+<text x="250.0" y="342" fill="#1F3864" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">length</text>
+<rect x="276" y="268" width="68" height="42" rx="4" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.4"/>
+<text x="310.0" y="289" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="14" font-weight="400" text-anchor="middle" dominant-baseline="central">A3 7F</text>
+<rect x="276" y="314" width="68" height="40" rx="4" fill="#D6E4F0" stroke="#2E75B6" stroke-width="1.4"/>
+<text x="310.0" y="327" fill="#1F3864" font-family="'JetBrains Mono',monospace" font-size="11.5" font-weight="700" text-anchor="middle" dominant-baseline="central">path</text>
+<text x="310.0" y="342" fill="#1F3864" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">2 hops</text>
+<rect x="344" y="268" width="44" height="42" rx="4" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.4"/>
+<text x="366.0" y="289" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="14" font-weight="400" text-anchor="middle" dominant-baseline="central">E3</text>
+<rect x="344" y="314" width="44" height="40" rx="4" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.4"/>
+<text x="366.0" y="327" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="11.5" font-weight="700" text-anchor="middle" dominant-baseline="central">dest</text>
+<text x="366.0" y="342" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">hash</text>
+<rect x="388" y="268" width="44" height="42" rx="4" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.4"/>
+<text x="410.0" y="289" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="14" font-weight="400" text-anchor="middle" dominant-baseline="central">EA</text>
+<rect x="388" y="314" width="44" height="40" rx="4" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.4"/>
+<text x="410.0" y="327" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="11.5" font-weight="700" text-anchor="middle" dominant-baseline="central">src</text>
+<text x="410.0" y="342" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">hash</text>
+<rect x="432" y="268" width="68" height="42" rx="4" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.4"/>
+<text x="466.0" y="289" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="14" font-weight="400" text-anchor="middle" dominant-baseline="central">D8 FE</text>
+<rect x="432" y="314" width="68" height="40" rx="4" fill="#FAE0E0" stroke="#8B0000" stroke-width="1.4"/>
+<text x="466.0" y="327" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="11.5" font-weight="700" text-anchor="middle" dominant-baseline="central">cipher</text>
+<text x="466.0" y="342" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">MAC</text>
+<rect x="500" y="268" width="166" height="42" rx="4" fill="#FDF0F0" stroke="#8B0000" stroke-width="1.4"/>
+<text x="583.0" y="289" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="11.5" font-weight="400" text-anchor="middle" dominant-baseline="central">21 AB … 58 B3</text>
+<rect x="500" y="314" width="166" height="40" rx="4" fill="#FDF0F0" stroke="#8B0000" stroke-width="1.4"/>
+<text x="583.0" y="327" fill="#8B0000" font-family="'JetBrains Mono',monospace" font-size="11.5" font-weight="700" text-anchor="middle" dominant-baseline="central">ciphertext</text>
+<text x="583.0" y="342" fill="#8B0000" font-family="Arial,Helvetica,sans-serif" font-size="11" font-weight="400" text-anchor="middle" dominant-baseline="central">48 bytes</text>
+<line x1="224" y1="100" x2="224" y2="366" stroke="var(--text-muted)" stroke-width="1.2" stroke-dasharray="4,4"/>
+<text x="350.0" y="398" fill="var(--text-secondary)" font-family="Arial,Helvetica,sans-serif" font-size="11.5" font-weight="400" text-anchor="middle" dominant-baseline="central">Rechts van de streep is alles identiek. Het verschil is de scope.</text>
+</svg>

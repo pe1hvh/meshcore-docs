@@ -58,6 +58,9 @@ MeshCore ondersteunt een breed scala aan hardware. De apparaten zijn in te delen
 
 **Beste voor:** Compacte companion radio met GPS
 
+> [!NOTE]
+> **Chip versus bord.** Deze pagina gaat over apparaten. Waarom de chip erin bepaalt wat het apparaat kan — BLE, WiFi, display, OTA, flashmethode — staat in [MeshCore Platforms](../platform/platforms.md). Wat er per familie precies in de chip zit, staat in [De vier platformfamilies](../platform/platform-families.md).
+
 ## Vergelijkingstabel
 
 | Apparaat | Chip | Display | GPS | WiFi | Prijs |

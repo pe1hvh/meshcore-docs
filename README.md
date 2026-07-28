@@ -46,7 +46,7 @@ een stap verder, en dat is bewust:
   firmwareversie en commit waartegen ze zijn gecontroleerd, met verwijzing naar
   het betreffende bestand in `meshcore-dev/MeshCore`.
 - **Narekenbaar.** De voorbeelden in [Regio's en Scopes](nl/techniek/regions-and-scopes.md)
-  zijn met [`tools/bereken-voorbeeld.py`](tools/bereken-voorbeeld.py) te
+  zijn met [`tools/example-calculation.py`](tools/example-calculation.py) te
   reproduceren. Klopt de tekst niet, dan zie je dat zelf.
 - **Ook wat níet werkt.** Stub-implementaties, `TODO`'s in de firmware en
   onbeschreven commando's staan er gewoon in.
@@ -93,7 +93,7 @@ further, deliberately so:
   commit they were checked against, pointing at the relevant file in
   `meshcore-dev/MeshCore`.
 - **Reproducible.** The examples in [Regions and Scopes](en/technical/regions-and-scopes.md)
-  can be recomputed with [`tools/bereken-voorbeeld.py`](tools/bereken-voorbeeld.py).
+  can be recomputed with [`tools/example-calculation.py`](tools/example-calculation.py).
 - **Including what does not work.** Stub implementations, firmware `TODO`s and
   undocumented commands are described as such.
 
@@ -113,11 +113,13 @@ further, deliberately so:
 ├── nl/                 Nederlandse hoofdstukken
 │   ├── gebruik/          gebruik, hardware, regelgeving
 │   ├── techniek/         protocol, pakketten, encryptie, repeaters
+│   ├── platform/         de vier platformfamilies en de keuze ertussen
 │   ├── naslag/           terminologie, referenties, links
 │   └── project/          over DOMCA, GitHub-overzicht
 ├── en/                 English chapters (same structure)
-│   ├── usage/ 
+│   ├── usage/
 │   ├── technical/
+│   ├── platform/
 │   ├── reference/
 │   └── project/
 ├── images/

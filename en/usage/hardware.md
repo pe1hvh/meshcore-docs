@@ -58,6 +58,9 @@ MeshCore supports a wide range of hardware. Devices fall into three categories: 
 
 **Best for:** Compact companion radio with GPS
 
+> [!NOTE]
+> **Chip versus board.** This page is about devices. Why the chip inside decides what the device can do — BLE, WiFi, display, OTA, flashing method — is covered in [MeshCore Platforms](../platform/platforms.md). What each family puts in the chip is covered in [The Four Platform Families](../platform/platform-families.md).
+
 ## Comparison table
 
 | Device | Chip | Display | GPS | WiFi | Price |

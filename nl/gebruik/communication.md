@@ -42,8 +42,17 @@ Privéberichten tussen twee specifieke nodes. DM's zijn **end-to-end versleuteld
 3. Node B kan nu een versleuteld DM naar Node A sturen
 4. Voor tweerichtingsverkeer moet Node B ook een advert uitzenden
 
-> [!WARNING]
-> **Belangrijk:** Adverts worden NIET doorgestuurd door repeaters. Beide nodes moeten elkaar direct kunnen "horen" voor de key-uitwisseling.
+> [!NOTE]
+> **Zero-hop of flood.** Een advert kan op twee manieren de lucht in. Een
+> *zero-hop* advert blijft bij de directe buren: niemand stuurt hem door. Een
+> *flood* advert wordt wél door repeaters doorgegeven, tot een eigen hoplimiet
+> (`flood.max.advert`) en met verlaagde prioriteit. Nodes hoeven elkaar dus niet
+> per se direct te kunnen horen voor de key-uitwisseling; dat hangt af van hoe de
+> advert is verstuurd.
+
+Voor de techniek achter een DM — hoe het pad wordt geleerd, hoe het pakket eruit
+ziet en waarom er geen regiocode in zit — zie
+[Direct Messages](../techniek/direct-messages.md).
 
 ## Channels vs. Rooms vs. DM's
 

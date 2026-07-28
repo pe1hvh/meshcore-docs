@@ -18,11 +18,10 @@ maar een **handtekening die met de regiosleutel over dit ene pakket is gezet**.
 Dit hoofdstuk beschrijft de protocolkant daarvan: waar die scope in het pakket
 zit, hoe hij wordt berekend, en waarop een repeater zijn beslissing baseert. Voor
 het instellen van regio's op je eigen node, zie
-[Aan de Slag](../gebruik/getting-started.md). Voor de naamgevingsafspraken binnen
-NoodNet Overijssel, zie [UN/LOCODE Regiocodes](techniek-locode.md) — dat gaat
-over hoe *knooppunten* heten, dit hoofdstuk over wat er technisch met regio's
-gebeurt. Voor de vraag wat de Nederlandse naamgevingsafspraak voor regio's doet
-met de eigenschappen van dit mechanisme, zie
+[Aan de Slag](../gebruik/getting-started.md). De naamgevingsafspraken binnen
+NoodNet Overijssel gaan over hoe *knooppunten en regio's heten*, dit hoofdstuk
+over wat er technisch met regio's gebeurt; voor die afspraken en voor de vraag
+wat ze doen met de eigenschappen van dit mechanisme, zie
 [Regio's: bedoeling en praktijk](regions-in-practice.md).
 
 > [!NOTE]
@@ -35,8 +34,8 @@ met de eigenschappen van dit mechanisme, zie
 ## Waar zit de transport code?
 
 > [!NOTE]
-> **Twee dingen die allebei "regiocode" heten.** In
-> [UN/LOCODE Regiocodes](techniek-locode.md) is een regiocode een *naam*:
+> **Twee dingen die allebei "regiocode" heten.** In de
+> UN/LOCODE-naamgeving is een regiocode een *naam*:
 > `nl-ov-zwo`. Die staat op je node en gaat nooit de lucht in. Wat wél de lucht
 > in gaat is een 16-bits **transport code**, en dat is iets heel anders. Dit
 > hoofdstuk gebruikt daarom consequent "transport code" voor de bytes in het
@@ -396,7 +395,7 @@ Bij binnenkomst van een flood-pakket bepaalt de repeater eerst de regio
 | `ROUTE_TYPE_TRANSPORT_FLOOD` | Voor elke bekende regio die flood toestaat wordt de code herberekend en vergeleken met `transport_codes[0]`. Eerste match wint |
 | `ROUTE_TYPE_FLOOD` (geen codes) | Valt onder de wildcard-regio `*`. Staat daar `denyf` op, dan is er geen match |
 | Geen match | `allowPacketForward` geeft `false` — het pakket wordt **niet** doorgestuurd |
-| Directe routes | Worden niet op regio gefilterd; het meegegeven pad bepaalt de route |
+| Directe routes | Worden niet op regio gefilterd; het meegegeven pad bepaalt de route. Waarom dat zo is, staat in [Direct Messages](direct-messages.md) |
 | Codes `{0x0000, 0x0000}` | Betekent "stuur nergens heen"; wordt onder meer gebruikt bij het delen van een contact, zodat zo'n advert niet als buur wordt geteld |
 
 Antwoordt de repeater zelf, dan gaat het antwoord terug met dezelfde scope als

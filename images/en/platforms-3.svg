@@ -1,0 +1,39 @@
+<svg style="width:100%;margin:1rem 0" viewBox="0 0 660 330" xmlns="http://www.w3.org/2000/svg">
+<style>
+:root{--bg:#FFFFFF; --grid:#023E8A; --line:#0096C7; --wave:#0096C7; --node:#0077B6; --outer:#0096C7; --text-primary:#0a2540; --text-secondary:#3d6380; --text-muted:#7a9bb5; --link-color:#0077B6; --link-hover:#023E8A; --heading-color:#0077B6; --border-subtle:rgba(0,119,182,0.12); --card-bg:rgba(0,119,182,0.03); --card-border:rgba(0,119,182,0.12); --card-hover:rgba(0,119,182,0.07); --code-bg:rgba(0,119,182,0.04); --code-border:rgba(0,119,182,0.12); --info-bg:rgba(0,119,182,0.04); --info-border:rgba(0,119,182,0.15); --table-header:rgba(0,119,182,0.06); --table-row-alt:rgba(0,119,182,0.02); --table-border:rgba(0,119,182,0.1); --timeline-line:#0096C7; --timeline-dot:#0077B6; --tag-green:rgba(16,185,129,0.1); --tag-green-text:#059669; --tag-red:rgba(239,68,68,0.08); --tag-red-text:#dc2626; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}
+@media (prefers-color-scheme: dark){:root{--bg:#0A1628; --grid:#0077B6; --line:#0077B6; --wave:#48CAE4; --node:#00B4D8; --outer:#0077B6; --text-primary:#e0f0f8; --text-secondary:#8badc4; --text-muted:#4a6a80; --link-color:#48CAE4; --link-hover:#90E0EF; --heading-color:#48CAE4; --border-subtle:rgba(0,119,182,0.15); --card-bg:rgba(0,119,182,0.06); --card-border:rgba(0,119,182,0.15); --card-hover:rgba(0,119,182,0.12); --code-bg:rgba(0,119,182,0.08); --code-border:rgba(0,119,182,0.2); --info-bg:rgba(72,202,228,0.06); --info-border:rgba(72,202,228,0.2); --table-header:rgba(0,119,182,0.1); --table-row-alt:rgba(0,119,182,0.04); --table-border:rgba(0,119,182,0.12); --timeline-line:#0077B6; --timeline-dot:#00B4D8; --tag-green:rgba(16,185,129,0.15); --tag-green-text:#6ee7b7; --tag-red:rgba(239,68,68,0.12); --tag-red-text:#fca5a5; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}}
+</style>
+<rect x="0" y="0" width="660" height="330" fill="var(--bg)"/>
+<text x="20" y="26" fill="var(--heading-color)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" letter-spacing="2">WHICH PLATFORM</text>
+<rect x="170" y="44" width="320" height="42" rx="6" fill="var(--info-bg)" stroke="var(--info-border)" stroke-width="1.5"/>
+<text x="182" y="70" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700">Does the node need to talk to a phone?</text>
+<path d="M 250 86 L 250 114 L 120 114 L 120 142" fill="none" stroke="var(--line)" stroke-width="1.2"/>
+<text x="196" y="110" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="8">yes</text>
+<path d="M 410 86 L 410 114 L 540 114 L 540 142" fill="none" stroke="var(--line)" stroke-width="1.2"/>
+<text x="424" y="110" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="8">no</text>
+<rect x="20" y="142" width="200" height="42" rx="6" fill="var(--info-bg)" stroke="var(--info-border)" stroke-width="1.5"/>
+<text x="32" y="168" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700">Is battery life important?</text>
+<rect x="440" y="142" width="200" height="42" rx="6" fill="var(--info-bg)" stroke="var(--info-border)" stroke-width="1.5"/>
+<text x="452" y="168" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="700">Need WiFi, OTA or ESP-NOW?</text>
+<path d="M 70 184 L 70 212 L 85 212 L 85 240" fill="none" stroke="var(--line)" stroke-width="1.2"/>
+<text x="34" y="208" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="8">yes</text>
+<path d="M 170 184 L 170 212 L 255 212 L 255 240" fill="none" stroke="var(--line)" stroke-width="1.2"/>
+<text x="182" y="208" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="8">no</text>
+<path d="M 490 184 L 490 212 L 405 212 L 405 240" fill="none" stroke="var(--line)" stroke-width="1.2"/>
+<text x="428" y="208" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="8">yes</text>
+<path d="M 590 184 L 590 212 L 585 212 L 585 240" fill="none" stroke="var(--line)" stroke-width="1.2"/>
+<text x="600" y="208" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="8">no</text>
+<rect x="20" y="240" width="130" height="46" rx="6" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="1.5"/>
+<text x="32" y="262" fill="var(--link-color)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700">nRF52840</text>
+<text x="32" y="278" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="8">lowest power, most BLE targets</text>
+<rect x="190" y="240" width="130" height="46" rx="6" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="1.5"/>
+<text x="202" y="262" fill="var(--link-color)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700">ESP32</text>
+<text x="202" y="278" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="8">fastest, most peripherals</text>
+<rect x="340" y="240" width="130" height="46" rx="6" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="1.5"/>
+<text x="352" y="262" fill="var(--link-color)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700">ESP32</text>
+<text x="352" y="278" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="8">fastest, most peripherals</text>
+<rect x="520" y="240" width="120" height="46" rx="6" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="1.5"/>
+<text x="532" y="262" fill="var(--link-color)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700">STM32WL</text>
+<text x="532" y="278" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="8">only if you build and flash yourself</text>
+<text x="20" y="316" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="8">RP2040: USB only, no display</text>
+</svg>

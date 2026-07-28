@@ -42,8 +42,16 @@ Private messages between two specific nodes. DMs are **end-to-end encrypted** an
 3. Node B can now send an encrypted DM to Node A
 4. For two-way communication, Node B must also broadcast an advert
 
-> [!WARNING]
-> **Important:** Adverts are NOT forwarded by repeaters. Both nodes must be able to directly "hear" each other for key exchange.
+> [!NOTE]
+> **Zero-hop or flood.** An advert can go on air in two ways. A *zero-hop*
+> advert stays with the direct neighbours: nobody forwards it. A *flood* advert
+> **is** passed on by repeaters, up to its own hop limit (`flood.max.advert`) and
+> at reduced priority. Nodes therefore do not necessarily have to hear each other
+> directly for the key exchange; it depends on how the advert was sent.
+
+For the technical side of a DM — how the path is learned, what the packet looks
+like and why it carries no region code — see
+[Direct Messages](../technical/direct-messages.md).
 
 ## Channels vs. Rooms vs. DMs
 
