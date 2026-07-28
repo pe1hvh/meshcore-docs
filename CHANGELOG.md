@@ -5,7 +5,10 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
 
 ---
 
-## [2026-07-27]
+## [2026-07-27] Removed
+- Deleted unlinked files
+
+## [2026-07-27] Major changes
 
 ### Added
 
