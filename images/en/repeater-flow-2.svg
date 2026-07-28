@@ -1,0 +1,213 @@
+<svg aria-label="Sequence diagram MeshCore repeater RX-TX flow" role="img" viewBox="0 0 1140 1400" xmlns="http://www.w3.org/2000/svg">
+<style>
+:root{--bg:#FFFFFF; --grid:#023E8A; --line:#0096C7; --wave:#0096C7; --node:#0077B6; --outer:#0096C7; --text-primary:#0a2540; --text-secondary:#3d6380; --text-muted:#7a9bb5; --link-color:#0077B6; --link-hover:#023E8A; --heading-color:#0077B6; --border-subtle:rgba(0,119,182,0.12); --card-bg:rgba(0,119,182,0.03); --card-border:rgba(0,119,182,0.12); --card-hover:rgba(0,119,182,0.07); --code-bg:rgba(0,119,182,0.04); --code-border:rgba(0,119,182,0.12); --info-bg:rgba(0,119,182,0.04); --info-border:rgba(0,119,182,0.15); --table-header:rgba(0,119,182,0.06); --table-row-alt:rgba(0,119,182,0.02); --table-border:rgba(0,119,182,0.1); --timeline-line:#0096C7; --timeline-dot:#0077B6; --tag-green:rgba(16,185,129,0.1); --tag-green-text:#059669; --tag-red:rgba(239,68,68,0.08); --tag-red-text:#dc2626; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}
+@media (prefers-color-scheme: dark){:root{--bg:#0A1628; --grid:#0077B6; --line:#0077B6; --wave:#48CAE4; --node:#00B4D8; --outer:#0077B6; --text-primary:#e0f0f8; --text-secondary:#8badc4; --text-muted:#4a6a80; --link-color:#48CAE4; --link-hover:#90E0EF; --heading-color:#48CAE4; --border-subtle:rgba(0,119,182,0.15); --card-bg:rgba(0,119,182,0.06); --card-border:rgba(0,119,182,0.15); --card-hover:rgba(0,119,182,0.12); --code-bg:rgba(0,119,182,0.08); --code-border:rgba(0,119,182,0.2); --info-bg:rgba(72,202,228,0.06); --info-border:rgba(72,202,228,0.2); --table-header:rgba(0,119,182,0.1); --table-row-alt:rgba(0,119,182,0.04); --table-border:rgba(0,119,182,0.12); --timeline-line:#0077B6; --timeline-dot:#00B4D8; --tag-green:rgba(16,185,129,0.15); --tag-green-text:#6ee7b7; --tag-red:rgba(239,68,68,0.12); --tag-red-text:#fca5a5; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}}
+</style>
+<rect x="0" y="0" width="1140" height="1400" fill="var(--bg)"/>
+
+<defs>
+<marker id="ah2-hw" markerHeight="6" markerWidth="6" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="var(--flow-hw)"></path>
+</marker>
+<marker id="ah2-sw" markerHeight="6" markerWidth="6" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="var(--flow-sw)"></path>
+</marker>
+<marker id="ah2-ink" markerHeight="6" markerWidth="6" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="var(--flow-ink)"></path>
+</marker>
+<marker id="ah2-warn" markerHeight="6" markerWidth="6" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="var(--flow-warn)"></path>
+</marker>
+</defs>
+<!-- Lane positions -->
+<!-- 1: Other Node  x=90  (HW peer)         -->
+<!-- 2: LoRa-chip   x=290 (HW)              -->
+<!-- 3: Wrapper     x=510 (SW)              -->
+<!-- 4: Dispatcher  x=730 (SW)              -->
+<!-- 5: Mesh/Queue  x=970 (SW)              -->
+<!-- Lane headers -->
+<g>
+<!-- Other node (HW peer) -->
+<rect fill="var(--flow-hw-fill)" height="48" rx="3" stroke="var(--flow-hw-edge)" stroke-width="1.5" width="120" x="30" y="20"></rect>
+<text class="lbl-mono" fill="var(--flow-hw-edge)" font-size="11.5" font-weight="600" text-anchor="middle" x="90" y="42">Other node</text>
+<text class="lbl-mono" fill="var(--flow-hw-edge)" font-size="9.5" text-anchor="middle" x="90" y="58">(transmitter + receiver)</text>
+<!-- LoRa chip -->
+<rect fill="var(--flow-hw-fill)" height="48" rx="3" stroke="var(--flow-hw-edge)" stroke-width="1.5" width="120" x="230" y="20"></rect>
+<text class="lbl-mono" fill="var(--flow-hw-edge)" font-size="11.5" font-weight="600" text-anchor="middle" x="290" y="42">LoRa chip</text>
+<text class="lbl-mono" fill="var(--flow-hw-edge)" font-size="9.5" text-anchor="middle" x="290" y="58">SX1262 (HW)</text>
+<!-- Wrapper -->
+<rect fill="var(--flow-sw-fill)" height="48" rx="3" stroke="var(--flow-sw-edge)" stroke-width="1.5" width="120" x="450" y="20"></rect>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="11.5" font-weight="600" text-anchor="middle" x="510" y="42">RadioLib-</text>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="11.5" font-weight="600" text-anchor="middle" x="510" y="58">Wrapper (SW)</text>
+<!-- Dispatcher -->
+<rect fill="var(--flow-sw-fill)" height="48" rx="3" stroke="var(--flow-sw-edge)" stroke-width="1.5" width="120" x="670" y="20"></rect>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="11.5" font-weight="600" text-anchor="middle" x="730" y="42">Dispatcher</text>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="9.5" text-anchor="middle" x="730" y="58">(SW)</text>
+<!-- Mesh / Queue -->
+<rect fill="var(--flow-sw-fill)" height="48" rx="3" stroke="var(--flow-sw-edge)" stroke-width="1.5" width="120" x="910" y="20"></rect>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="11.5" font-weight="600" text-anchor="middle" x="970" y="42">Mesh + Queue</text>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="9.5" text-anchor="middle" x="970" y="58">(SW)</text>
+</g>
+<!-- Lifelines -->
+<line opacity="0.7" stroke="var(--flow-hw-edge)" stroke-dasharray="3 3" stroke-width="1" x1="90" x2="90" y1="68" y2="1380"></line>
+<line opacity="0.7" stroke="var(--flow-hw-edge)" stroke-dasharray="3 3" stroke-width="1" x1="290" x2="290" y1="68" y2="1360"></line>
+<line opacity="0.7" stroke="var(--flow-sw-edge)" stroke-dasharray="3 3" stroke-width="1" x1="510" x2="510" y1="68" y2="1380"></line>
+<line opacity="0.7" stroke="var(--flow-sw-edge)" stroke-dasharray="3 3" stroke-width="1" x1="730" x2="730" y1="68" y2="1360"></line>
+<line opacity="0.7" stroke="var(--flow-sw-edge)" stroke-dasharray="3 3" stroke-width="1" x1="970" x2="970" y1="68" y2="1360"></line>
+<!-- HW/SW vertical divider -->
+<line opacity="0.25" stroke="var(--flow-ink)" stroke-width="0.8" x1="400" x2="400" y1="10" y2="1380"></line>
+<text class="lbl-mono" fill="var(--flow-hw-edge)" font-size="9.5" letter-spacing="0.05em" text-anchor="end" x="395" y="86">◄ HARDWARE</text>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="9.5" letter-spacing="0.05em" x="405" y="86">SOFTWARE ►</text>
+<!-- ============ PHASE 1: RECEIVE (HW) ============ -->
+<g>
+<rect fill="var(--flow-hw-tint)" height="180" opacity="0.6" width="1140" x="0" y="100"></rect>
+<rect fill="var(--flow-hw)" height="180" width="6" x="0" y="100"></rect>
+<text class="lbl-mono" fill="var(--flow-hw-edge)" font-size="11" font-weight="600" letter-spacing="0.05em" x="20" y="118">PHASE 1 — RX (hardware does the work)</text>
+</g>
+<!-- 1: Other → chip: RF transmission -->
+<line marker-end="url(#ah2-hw)" stroke="var(--flow-hw)" stroke-width="2" x1="90" x2="284" y1="138" y2="138"></line>
+<text class="lbl-mono" fill="var(--flow-hw-edge)" font-size="10.5" text-anchor="middle" x="187" y="132">① RF: LoRa packet (preamble + header + payload)</text>
+<!-- 2: chip self-loop: preamble detected -->
+<path d="M 290 162 C 326 162 326 178 290 178" fill="none" marker-end="url(#ah2-hw)" stroke="var(--flow-hw)" stroke-width="1.8"></path>
+<text class="lbl-mono" fill="var(--flow-hw-edge)" font-size="10.5" x="334" y="172">② correlator → PREAMBLE_DETECTED ← flag</text>
+<!-- 3: chip self-loop: header valid -->
+<path d="M 290 198 C 326 198 326 214 290 214" fill="none" marker-end="url(#ah2-hw)" stroke="var(--flow-hw)" stroke-width="1.8"></path>
+<text class="lbl-mono" fill="var(--flow-hw-edge)" font-size="10.5" x="334" y="208">③ header valid → HEADER_VALID ← flag</text>
+<!-- 4: chip self-loop: rx done -->
+<path d="M 290 234 C 326 234 326 250 290 250" fill="none" marker-end="url(#ah2-hw)" stroke="var(--flow-hw)" stroke-width="1.8"></path>
+<text class="lbl-mono" fill="var(--flow-hw-edge)" font-size="10.5" x="334" y="244">④ complete packet → RX_DONE ← flag</text>
+<!-- 5: chip → wrapper: IRQ via DIO1 -->
+<line marker-end="url(#ah2-warn)" stroke="var(--flow-warn)" stroke-dasharray="6 4" stroke-width="2" x1="296" x2="504" y1="272" y2="272"></line>
+<text class="lbl-mono" fill="var(--flow-warn)" font-size="10.5" text-anchor="middle" x="400" y="266">⑤ IRQ-pin → setFlag() → state |= INT_READY</text>
+<!-- ============ PHASE 2: PROCESS (SW reads & parses) ============ -->
+<g>
+<rect fill="var(--flow-sw-tint)" height="200" opacity="0.55" width="1140" x="0" y="296"></rect>
+<rect fill="var(--flow-sw)" height="200" width="6" x="0" y="296"></rect>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="11" font-weight="600" letter-spacing="0.05em" x="20" y="314">PHASE 2 — software reads and parses</text>
+</g>
+<!-- 6: Dispatcher polls (self) - checkRecv -->
+<path d="M 730 334 C 766 334 766 350 730 350" fill="none" marker-end="url(#ah2-sw)" stroke="var(--flow-sw)" stroke-width="1.8"></path>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="10.5" x="774" y="346">⑥ loop() → checkRecv()</text>
+<!-- 7: Dispatcher → Wrapper: recvRaw -->
+<line marker-end="url(#ah2-sw)" stroke="var(--flow-sw)" stroke-width="1.7" x1="724" x2="516" y1="372" y2="372"></line>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="10.5" text-anchor="middle" x="620" y="366">⑦ recvRaw(buf, sz)</text>
+<!-- 8: Wrapper → chip: SPI read packet bytes -->
+<line marker-end="url(#ah2-sw)" stroke="var(--flow-sw)" stroke-width="1.7" x1="504" x2="296" y1="394" y2="394"></line>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="10.5" text-anchor="middle" x="400" y="388">⑧ SPI: readData() — fetch packet bytes</text>
+<!-- 9: chip → wrapper: bytes returned -->
+<line marker-end="url(#ah2-hw)" stroke="var(--flow-hw)" stroke-width="1.7" x1="296" x2="504" y1="414" y2="414"></line>
+<text class="lbl-mono" fill="var(--flow-hw-edge)" font-size="10.5" text-anchor="middle" x="400" y="408">⑨ ← bytes (raw frame)</text>
+<!-- 10: Wrapper → Dispatcher: return len -->
+<line marker-end="url(#ah2-sw)" stroke="var(--flow-sw)" stroke-width="1.7" x1="516" x2="724" y1="436" y2="436"></line>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="10.5" text-anchor="middle" x="620" y="430">⑩ return length</text>
+<!-- 11: Dispatcher → Mesh: tryParse + onRecvPacket -->
+<line marker-end="url(#ah2-sw)" stroke="var(--flow-sw)" stroke-width="1.7" x1="736" x2="964" y1="464" y2="464"></line>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="10.5" text-anchor="middle" x="850" y="458">⑪ tryParsePacket() + Mesh::onRecvPacket()</text>
+<text class="lbl-mono" fill="var(--flow-sw)" font-size="9.5" font-style="italic" text-anchor="middle" x="850" y="486">decision: ACTION_RETRANSMIT (priority from packet type or hop-count)</text>
+<!-- ============ PHASE 3: QUEUE (SW) ============ -->
+<g>
+<rect fill="var(--flow-sw-tint)" height="110" opacity="0.55" width="1140" x="0" y="510"></rect>
+<rect fill="var(--flow-sw)" height="110" width="6" x="0" y="510"></rect>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="11" font-weight="600" letter-spacing="0.05em" x="20" y="528">PHASE 3 — compute TX delay + queue</text>
+</g>
+<!-- 12: Mesh self-call: getRetransmitDelay -->
+<path d="M 970 548 C 1006 548 1006 564 970 564" fill="none" marker-end="url(#ah2-sw)" stroke="var(--flow-sw)" stroke-width="1.8"></path>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="10.5" text-anchor="end" x="958" y="558">⑫ getRetransmitDelay() →</text>
+<text class="lbl-mono" fill="var(--flow-sw)" font-size="9.5" text-anchor="end" x="958" y="572">t = airtime × tx_delay_factor; delay = random(0, 5·t+1)</text>
+<!-- 13: Mesh → Queue: queueOutbound -->
+<path d="M 970 596 C 1006 596 1006 610 970 610" fill="none" marker-end="url(#ah2-sw)" stroke="var(--flow-sw)" stroke-width="1.8"></path>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="10.5" text-anchor="end" x="958" y="606">⑬ queueOutbound(pkt, prio, schedule = now + delay)</text>
+<!-- ============ PHASE 4: WAIT ============ -->
+<g>
+<rect fill="var(--flow-bg-wait)" height="70" width="1140" x="0" y="630"></rect>
+<rect fill="var(--flow-ink-soft)" height="70" width="6" x="0" y="630"></rect>
+<text class="lbl-mono" fill="var(--flow-ink-soft)" font-size="11" font-weight="600" letter-spacing="0.05em" x="20" y="648">PHASE 4 — wait until scheduled_for</text>
+<text class="lbl-mono" fill="var(--flow-ink-mute)" font-size="10" font-style="italic" x="20" y="664">packet sits in queue; loop keeps running, other packets can slip in between</text>
+<!-- Hatched wait segments on each lifeline -->
+<line opacity="0.5" stroke="var(--flow-sw)" stroke-dasharray="2 4" stroke-width="4" x1="970" x2="970" y1="678" y2="696"></line>
+<line opacity="0.5" stroke="var(--flow-sw)" stroke-dasharray="2 4" stroke-width="4" x1="730" x2="730" y1="678" y2="696"></line>
+<text class="lbl-mono" fill="var(--flow-ink-soft)" font-size="10" x="990" y="688">… wait …</text>
+</g>
+<!-- ============ PHASE 5: TX ATTEMPT ============ -->
+<g>
+<rect fill="var(--flow-sw-tint)" height="290" opacity="0.55" width="1140" x="0" y="710"></rect>
+<rect fill="var(--flow-sw)" height="290" width="6" x="0" y="710"></rect>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="11" font-weight="600" letter-spacing="0.05em" x="20" y="728">PHASE 5 — TX attempt with CAD + LBT</text>
+</g>
+<!-- 14: Dispatcher self-call: checkSend / next_tx_time? -->
+<path d="M 730 748 C 766 748 766 764 730 764" fill="none" marker-end="url(#ah2-sw)" stroke="var(--flow-sw)" stroke-width="1.8"></path>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="10.5" x="774" y="760">⑭ checkSend() — next_tx_time reached? (airtime budget × 2.0)</text>
+<!-- 15: Dispatcher → Queue: getNextOutbound -->
+<line marker-end="url(#ah2-sw)" stroke="var(--flow-sw)" stroke-width="1.7" x1="736" x2="964" y1="784" y2="784"></line>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="10.5" text-anchor="middle" x="850" y="778">⑮ getNextOutbound(now)</text>
+<line marker-end="url(#ah2-sw)" stroke="var(--flow-sw)" stroke-width="1.7" x1="964" x2="736" y1="802" y2="802"></line>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="10.5" text-anchor="middle" x="850" y="796">← packet with lowest prio (= fewest hops)</text>
+<!-- 16: Dispatcher → Wrapper: isReceiving() -->
+<line marker-end="url(#ah2-sw)" stroke="var(--flow-sw)" stroke-width="1.7" x1="724" x2="516" y1="828" y2="828"></line>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="10.5" text-anchor="middle" x="620" y="822">⑯ isReceiving()? — CAD + LBT</text>
+<!-- 17: Wrapper → chip: read IRQ flags (CAD) -->
+<line marker-end="url(#ah2-sw)" stroke="var(--flow-sw)" stroke-width="1.7" x1="504" x2="296" y1="852" y2="852"></line>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="10.5" text-anchor="middle" x="400" y="846">⑰ SPI: getIrqFlags()</text>
+<text class="lbl-mono" fill="var(--flow-sw)" font-size="9.5" font-style="italic" text-anchor="middle" x="400" y="864">CAD check: PREAMBLE_DETECTED or HEADER_VALID?</text>
+<line marker-end="url(#ah2-hw)" stroke="var(--flow-hw)" stroke-width="1.7" x1="296" x2="504" y1="880" y2="880"></line>
+<text class="lbl-mono" fill="var(--flow-hw-edge)" font-size="10.5" text-anchor="middle" x="400" y="874">⑱ ← flags</text>
+<!-- 19: Wrapper → chip: read RSSI (LBT, optional) -->
+<line marker-end="url(#ah2-sw)" opacity="0.7" stroke="var(--flow-sw)" stroke-dasharray="4 3" stroke-width="1.7" x1="504" x2="296" y1="906" y2="906"></line>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="10.5" text-anchor="middle" x="400" y="900">⑲ SPI: getRSSI() — only if int.thresh &gt; 0</text>
+<text class="lbl-mono" fill="var(--flow-sw)" font-size="9.5" font-style="italic" text-anchor="middle" x="400" y="918">LBT check: RSSI &gt; noise_floor + int.thresh?</text>
+<!-- 20: Decision branch -->
+<line marker-end="url(#ah2-sw)" stroke="var(--flow-sw)" stroke-width="1.7" x1="516" x2="724" y1="945" y2="945"></line>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="10.5" text-anchor="middle" x="620" y="939">⑳ return: channel free or busy?</text>
+<!-- Decision diamond -->
+<g transform="translate(730,960)">
+<path d="M 0 0 L 30 18 L 0 36 L -30 18 z" fill="var(--flow-hw-fill)" stroke="var(--flow-ink)" stroke-width="1.3"></path>
+<text class="lbl-mono" fill="var(--flow-ink)" font-size="9.5" font-weight="600" text-anchor="middle" x="0" y="22">free?</text>
+</g>
+<!-- Branch BUSY (left) -->
+<path d="M 700 978 L 580 978 L 580 1000" fill="none" marker-end="url(#ah2-warn)" stroke="var(--flow-warn)" stroke-width="1.7"></path>
+<text class="lbl-mono" fill="var(--flow-warn)" font-size="10" text-anchor="middle" x="640" y="972">no</text>
+<g>
+<rect fill="var(--flow-warn-fill)" height="60" rx="3" stroke="var(--flow-warn)" stroke-width="1.3" width="260" x="450" y="1004"></rect>
+<text class="lbl-mono" fill="var(--flow-warn)" font-size="11" font-weight="600" text-anchor="middle" x="580" y="1024">㉑ wait 200ms, go back to ⑭</text>
+<text class="lbl-mono" fill="var(--flow-warn)" font-size="10" text-anchor="middle" x="580" y="1042">after 4s continuously busy:</text>
+<text class="lbl-mono" fill="var(--flow-warn)" font-size="10" font-weight="600" text-anchor="middle" x="580" y="1056">FORCE SEND + ERR_EVENT_CAD_TIMEOUT</text>
+</g>
+<!-- Branch CLEAR (right) -->
+<path d="M 760 978 L 880 978 L 880 1000" fill="none" marker-end="url(#ah2-sw)" stroke="var(--flow-ok)" stroke-width="1.7"></path>
+<text class="lbl-mono" fill="var(--flow-ok)" font-size="10" text-anchor="middle" x="820" y="972">yes</text>
+<!-- ============ PHASE 6: TRANSMIT ============ -->
+<g>
+<rect fill="var(--flow-hw-tint)" height="330" opacity="0.55" width="1140" x="0" y="1010"></rect>
+<rect fill="var(--flow-hw)" height="330" width="6" x="0" y="1010"></rect>
+<text class="lbl-mono" fill="var(--flow-hw-edge)" font-size="11" font-weight="600" letter-spacing="0.05em" x="20" y="1028">PHASE 6 — transmit (hardware does the work again)</text>
+</g>
+<!-- 22: Dispatcher → Wrapper: startSendRaw -->
+<line marker-end="url(#ah2-sw)" stroke="var(--flow-sw)" stroke-width="1.7" x1="724" x2="516" y1="1082" y2="1082"></line>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="10.5" text-anchor="middle" x="620" y="1076">㉒ startSendRaw(bytes, len)</text>
+<!-- 23: Wrapper → chip: SPI startTransmit -->
+<line marker-end="url(#ah2-sw)" stroke="var(--flow-sw)" stroke-width="1.7" x1="504" x2="296" y1="1106" y2="1106"></line>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="10.5" text-anchor="middle" x="400" y="1100">㉓ SPI: startTransmit()</text>
+<!-- 24: chip self: modulate + transmit -->
+<rect fill="var(--flow-hw)" height="44" rx="1" width="16" x="282" y="1122"></rect>
+<text class="lbl-mono" fill="var(--flow-hw-edge)" font-size="10.5" x="310" y="1138">㉔ chirp modulation + PA → RF</text>
+<text class="lbl-mono" fill="var(--flow-hw-text-italic)" font-size="9.5" font-style="italic" x="310" y="1156">during this phase the chip is BUSY, no RX possible</text>
+<!-- 25: chip → other node: RF -->
+<line marker-end="url(#ah2-hw)" stroke="var(--flow-hw)" stroke-width="2" x1="284" x2="96" y1="1182" y2="1182"></line>
+<text class="lbl-mono" fill="var(--flow-hw-edge)" font-size="10.5" text-anchor="middle" x="190" y="1176">㉕ RF to next node(s)</text>
+<!-- 26: chip → wrapper: TX_DONE IRQ -->
+<line marker-end="url(#ah2-warn)" stroke="var(--flow-warn)" stroke-dasharray="6 4" stroke-width="2" x1="296" x2="504" y1="1212" y2="1212"></line>
+<text class="lbl-mono" fill="var(--flow-warn)" font-size="10.5" text-anchor="middle" x="400" y="1206">㉖ TX_DONE IRQ → setFlag()</text>
+<!-- 27: Dispatcher polls isSendComplete -->
+<line marker-end="url(#ah2-sw)" stroke="var(--flow-sw)" stroke-width="1.7" x1="516" x2="724" y1="1238" y2="1238"></line>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="10.5" text-anchor="middle" x="620" y="1232">㉗ isSendComplete() → true</text>
+<!-- 28: Dispatcher self: update next_tx_time -->
+<path d="M 730 1260 C 766 1260 766 1276 730 1276" fill="none" marker-end="url(#ah2-sw)" stroke="var(--flow-sw)" stroke-width="1.8"></path>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="10.5" x="774" y="1272">㉘ next_tx_time = now + airtime × 2.0 (duty 33%)</text>
+<!-- 29: Dispatcher → Wrapper: terug naar RX -->
+<line marker-end="url(#ah2-sw)" stroke="var(--flow-sw)" stroke-width="1.7" x1="724" x2="516" y1="1304" y2="1304"></line>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="10.5" text-anchor="middle" x="620" y="1298">㉙ onSendFinished() / startReceive()</text>
+<!-- 30: chip back to RX -->
+<line marker-end="url(#ah2-sw)" stroke="var(--flow-sw)" stroke-width="1.7" x1="504" x2="296" y1="1328" y2="1328"></line>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="10.5" text-anchor="middle" x="400" y="1322">㉚ SPI: startReceive() — back to continuous RX</text>
+<text class="lbl-mono" fill="var(--flow-hw-edge)" font-size="10.5" font-style="italic" text-anchor="middle" x="290" y="1366">… chip listens again for new preambles</text>
+</svg>

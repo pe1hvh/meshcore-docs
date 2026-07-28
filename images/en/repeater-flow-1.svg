@@ -1,0 +1,198 @@
+<svg aria-label="Blokschema MeshCore repeater" role="img" viewBox="0 0 1140 780" xmlns="http://www.w3.org/2000/svg">
+<style>
+:root{--bg:#FFFFFF; --grid:#023E8A; --line:#0096C7; --wave:#0096C7; --node:#0077B6; --outer:#0096C7; --text-primary:#0a2540; --text-secondary:#3d6380; --text-muted:#7a9bb5; --link-color:#0077B6; --link-hover:#023E8A; --heading-color:#0077B6; --border-subtle:rgba(0,119,182,0.12); --card-bg:rgba(0,119,182,0.03); --card-border:rgba(0,119,182,0.12); --card-hover:rgba(0,119,182,0.07); --code-bg:rgba(0,119,182,0.04); --code-border:rgba(0,119,182,0.12); --info-bg:rgba(0,119,182,0.04); --info-border:rgba(0,119,182,0.15); --table-header:rgba(0,119,182,0.06); --table-row-alt:rgba(0,119,182,0.02); --table-border:rgba(0,119,182,0.1); --timeline-line:#0096C7; --timeline-dot:#0077B6; --tag-green:rgba(16,185,129,0.1); --tag-green-text:#059669; --tag-red:rgba(239,68,68,0.08); --tag-red-text:#dc2626; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}
+@media (prefers-color-scheme: dark){:root{--bg:#0A1628; --grid:#0077B6; --line:#0077B6; --wave:#48CAE4; --node:#00B4D8; --outer:#0077B6; --text-primary:#e0f0f8; --text-secondary:#8badc4; --text-muted:#4a6a80; --link-color:#48CAE4; --link-hover:#90E0EF; --heading-color:#48CAE4; --border-subtle:rgba(0,119,182,0.15); --card-bg:rgba(0,119,182,0.06); --card-border:rgba(0,119,182,0.15); --card-hover:rgba(0,119,182,0.12); --code-bg:rgba(0,119,182,0.08); --code-border:rgba(0,119,182,0.2); --info-bg:rgba(72,202,228,0.06); --info-border:rgba(72,202,228,0.2); --table-header:rgba(0,119,182,0.1); --table-row-alt:rgba(0,119,182,0.04); --table-border:rgba(0,119,182,0.12); --timeline-line:#0077B6; --timeline-dot:#00B4D8; --tag-green:rgba(16,185,129,0.15); --tag-green-text:#6ee7b7; --tag-red:rgba(239,68,68,0.12); --tag-red-text:#fca5a5; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}}
+</style>
+<rect x="0" y="0" width="1140" height="780" fill="var(--bg)"/>
+
+<defs>
+<!-- Arrowheads -->
+<marker id="ah-hw" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="var(--flow-hw)"></path>
+</marker>
+<marker id="ah-sw" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="var(--flow-sw)"></path>
+</marker>
+<marker id="ah-warn" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="var(--flow-warn)"></path>
+</marker>
+<marker id="ah-ink" markerHeight="7" markerWidth="7" orient="auto-start-reverse" refX="9" refY="5" viewBox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="var(--flow-ink)"></path>
+</marker>
+</defs>
+<!-- ============ HARDWARE BAND ============ -->
+<rect fill="var(--flow-hw-tint)" height="290" width="1140" x="0" y="0"></rect>
+<rect fill="none" height="290" stroke="var(--flow-hw-edge)" stroke-width="1.5" width="1140" x="0" y="0"></rect>
+<!-- Hardware label -->
+<rect fill="var(--flow-hw)" height="26" width="180" x="20" y="14"></rect>
+<text class="lbl-mono" fill="var(--flow-hw-tint)" font-size="13" font-weight="600" letter-spacing="0.05em" x="30" y="32">HARDWARE — LoRa chip</text>
+<!-- Antenna -->
+<g transform="translate(50,80)">
+<path d="M 40 80 L 40 50 M 20 30 L 40 50 L 60 30 M 25 40 L 55 40" fill="none" stroke="var(--flow-hw-edge)" stroke-linecap="round" stroke-width="2"></path>
+<text class="lbl-mono" fill="var(--flow-hw-edge)" font-size="11" text-anchor="middle" x="40" y="110">antenna</text>
+</g>
+<!-- RF Front-End / RSSI -->
+<g>
+<rect fill="var(--flow-hw-fill)" height="120" rx="3" stroke="var(--flow-hw-edge)" stroke-width="1.8" width="180" x="170" y="80"></rect>
+<text class="lbl-mono" fill="var(--flow-hw-edge)" font-size="13" font-weight="600" text-anchor="middle" x="260" y="105">RF front-end</text>
+<text class="lbl-mono" fill="var(--flow-hw-text-soft)" font-size="11" text-anchor="middle" x="260" y="125">LNA · mixer · ADC</text>
+<line stroke="var(--flow-hw-divider)" stroke-width="0.8" x1="190" x2="330" y1="138" y2="138"></line>
+<text class="lbl-mono" fill="var(--flow-hw-text-soft)" font-size="11" text-anchor="middle" x="260" y="158">continuous RSSI meter</text>
+<text class="lbl-mono" fill="var(--flow-hw-text-italic)" font-size="10" font-style="italic" text-anchor="middle" x="260" y="178">(readable via SPI)</text>
+</g>
+<!-- LoRa Demodulator -->
+<g>
+<rect fill="var(--flow-hw-fill)" height="120" rx="3" stroke="var(--flow-hw-edge)" stroke-width="1.8" width="240" x="380" y="80"></rect>
+<text class="lbl-mono" fill="var(--flow-hw-edge)" font-size="13" font-weight="600" text-anchor="middle" x="500" y="105">LoRa demodulator</text>
+<text class="lbl-mono" fill="var(--flow-hw-text-soft)" font-size="11" text-anchor="middle" x="500" y="125">chirp-correlator · header decode</text>
+<line stroke="var(--flow-hw-divider)" stroke-width="0.8" x1="400" x2="600" y1="138" y2="138"></line>
+<text class="lbl-mono" fill="var(--flow-hw-text-soft)" font-size="11" text-anchor="middle" x="500" y="158">processing gain → detects</text>
+<text class="lbl-mono" fill="var(--flow-hw-text-soft)" font-size="11" text-anchor="middle" x="500" y="174">signals below the noise floor</text>
+<text class="lbl-mono" fill="var(--flow-hw-text-italic)" font-size="10" font-style="italic" text-anchor="middle" x="500" y="192">(always on in RX mode)</text>
+</g>
+<!-- IRQ flag register -->
+<g>
+<rect fill="var(--flow-hw-fill)" height="170" rx="3" stroke="var(--flow-hw-edge)" stroke-width="1.8" width="220" x="650" y="80"></rect>
+<text class="lbl-mono" fill="var(--flow-hw-edge)" font-size="13" font-weight="600" text-anchor="middle" x="760" y="103">IRQ-flag register</text>
+<line stroke="var(--flow-hw-divider)" stroke-width="0.8" x1="670" x2="850" y1="115" y2="115"></line>
+<text class="lbl-mono" fill="var(--flow-hw-text-soft)" font-size="11" x="670" y="135">• PREAMBLE_DETECTED</text>
+<text class="lbl-mono" fill="var(--flow-hw-text-soft)" font-size="11" x="670" y="153">• HEADER_VALID</text>
+<text class="lbl-mono" fill="var(--flow-hw-text-soft)" font-size="11" x="670" y="171">• RX_DONE</text>
+<text class="lbl-mono" fill="var(--flow-hw-text-soft)" font-size="11" x="670" y="189">• TX_DONE</text>
+<line stroke="var(--flow-hw-divider)" stroke-width="0.8" x1="670" x2="850" y1="200" y2="200"></line>
+<text class="lbl-mono" fill="var(--flow-hw-text-italic)" font-size="10" text-anchor="middle" x="760" y="218">DIO1-pin = IRQ-trigger</text>
+<text class="lbl-mono" fill="var(--flow-hw-text-italic)" font-size="10" font-style="italic" text-anchor="middle" x="760" y="234">to MCU</text>
+</g>
+<!-- TX Modulator -->
+<g>
+<rect fill="var(--flow-hw-fill)" height="120" rx="3" stroke="var(--flow-hw-edge)" stroke-width="1.8" width="200" x="900" y="80"></rect>
+<text class="lbl-mono" fill="var(--flow-hw-edge)" font-size="13" font-weight="600" text-anchor="middle" x="1000" y="105">TX modulator + PA</text>
+<text class="lbl-mono" fill="var(--flow-hw-text-soft)" font-size="11" text-anchor="middle" x="1000" y="125">chirp modulation</text>
+<line stroke="var(--flow-hw-divider)" stroke-width="0.8" x1="920" x2="1080" y1="138" y2="138"></line>
+<text class="lbl-mono" fill="var(--flow-hw-text-soft)" font-size="11" text-anchor="middle" x="1000" y="158">only active after</text>
+<text class="lbl-mono" fill="var(--flow-hw-text-soft)" font-size="11" text-anchor="middle" x="1000" y="174">SPI startTransmit()</text>
+</g>
+<!-- Arrows in HW band -->
+<!-- Antenna to RF -->
+<line marker-end="url(#ah-hw)" stroke="var(--flow-hw)" stroke-width="2" x1="110" x2="165" y1="120" y2="120"></line>
+<text class="lbl-mono" fill="var(--flow-hw-edge)" font-size="9.5" text-anchor="middle" x="138" y="113">RF in</text>
+<!-- RF to demod -->
+<line marker-end="url(#ah-hw)" stroke="var(--flow-hw)" stroke-width="2" x1="350" x2="376" y1="135" y2="135"></line>
+<!-- Demod to IRQ flags -->
+<line marker-end="url(#ah-hw)" stroke="var(--flow-hw)" stroke-width="2" x1="620" x2="646" y1="135" y2="135"></line>
+<text class="lbl-mono" fill="var(--flow-hw-edge)" font-size="9" text-anchor="middle" x="633" y="128">set</text>
+<!-- TX modulator → antenna (curve back) -->
+<path d="M 900 150 Q 90 270 90 175" fill="none" marker-end="url(#ah-hw)" opacity="0.55" stroke="var(--flow-hw)" stroke-dasharray="0" stroke-width="2"></path>
+<text class="lbl-mono" fill="var(--flow-hw-edge)" font-size="10" opacity="0.85" text-anchor="middle" x="500" y="262">RF out (TX_DONE → IRQ)</text>
+<!-- ============ INTERFACE BAND ============ -->
+<g>
+<rect fill="var(--flow-interface-bg)" height="62" width="1140" x="0" y="290"></rect>
+<line stroke="var(--flow-ink)" stroke-width="1.5" x1="0" x2="1140" y1="290" y2="290"></line>
+<line stroke="var(--flow-ink)" stroke-width="1.5" x1="0" x2="1140" y1="352" y2="352"></line>
+<!-- SPI bus -->
+<line stroke="var(--flow-ink)" stroke-width="1.5" x1="60" x2="1080" y1="310" y2="310"></line>
+<line marker-end="url(#ah-ink)" marker-start="url(#ah-ink)" stroke="var(--flow-ink)" stroke-width="1.5" x1="60" x2="80" y1="310" y2="310"></line>
+<line marker-end="url(#ah-ink)" marker-start="url(#ah-ink)" stroke="var(--flow-ink)" stroke-width="1.5" x1="1060" x2="1080" y1="310" y2="310"></line>
+<text class="lbl-mono" fill="var(--flow-ink)" font-size="10.5" font-weight="600" x="30" y="314">SPI</text>
+<text class="lbl-mono" fill="var(--flow-ink)" font-size="10.5" font-weight="600" x="1090" y="314">bus</text>
+<text class="lbl-mono" fill="var(--flow-ink)" font-size="10" text-anchor="middle" x="570" y="305">bi-directional: commands, register values, packet data</text>
+<!-- IRQ line -->
+<line stroke="var(--flow-warn)" stroke-dasharray="6 4" stroke-width="1.5" x1="60" x2="1080" y1="338" y2="338"></line>
+<text class="lbl-mono" fill="var(--flow-warn)" font-size="10.5" font-weight="600" x="30" y="342">IRQ</text>
+<text class="lbl-mono" fill="var(--flow-warn)" font-size="10.5" font-weight="600" x="1090" y="342">→ MCU</text>
+<text class="lbl-mono" fill="var(--flow-warn)" font-size="10" text-anchor="middle" x="570" y="346">async: chip → firmware (setFlag callback)</text>
+</g>
+<!-- ============ SOFTWARE BAND ============ -->
+<rect fill="var(--flow-sw-tint)" height="428" width="1140" x="0" y="352"></rect>
+<rect fill="none" height="428" stroke="var(--flow-sw-edge)" stroke-width="1.5" width="1140" x="0" y="352"></rect>
+<!-- Software label -->
+<rect fill="var(--flow-sw)" height="26" width="220" x="20" y="366"></rect>
+<text class="lbl-mono" fill="var(--flow-sw-tint)" font-size="13" font-weight="600" letter-spacing="0.05em" x="30" y="384">SOFTWARE — MeshCore firmware</text>
+<!-- Central: Dispatcher::loop() -->
+<g>
+<rect fill="var(--flow-sw)" height="44" rx="3" stroke="var(--flow-sw-edge)" stroke-width="1.5" width="280" x="430" y="406"></rect>
+<text class="lbl-mono" fill="var(--flow-sw-tint)" font-size="13" font-weight="600" text-anchor="middle" x="570" y="423">Dispatcher::loop()</text>
+<text class="lbl-mono" fill="var(--flow-sw-fill)" font-size="11" text-anchor="middle" x="570" y="440">main polling loop (Arduino loop)</text>
+</g>
+<!-- RX PATH (left) -->
+<g>
+<rect fill="var(--flow-sw-fill)" height="262" rx="3" stroke="var(--flow-sw-edge)" stroke-width="1.5" width="320" x="40" y="476"></rect>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="13" font-weight="600" text-anchor="middle" x="200" y="500">RX path</text>
+<line stroke="var(--flow-sw-divider)" stroke-width="0.8" x1="60" x2="340" y1="510" y2="510"></line>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="11.5" x="60" y="532">checkRecv()</text>
+<text class="lbl-mono" fill="var(--flow-sw)" font-size="10.5" x="74" y="548">└ recvRaw() — SPI read</text>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="11.5" x="60" y="572">tryParsePacket()</text>
+<text class="lbl-mono" fill="var(--flow-sw)" font-size="10.5" x="74" y="588">└ header / path / payload</text>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="11.5" x="60" y="612">Mesh::onRecvPacket()</text>
+<text class="lbl-mono" fill="var(--flow-sw)" font-size="10.5" x="74" y="628">└ routing decision:</text>
+<text class="lbl-mono" fill="var(--flow-sw)" font-size="10.5" x="88" y="644">RELEASE / RETRANSMIT</text>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="11.5" x="60" y="672">getRetransmitDelay()</text>
+<text class="lbl-mono" fill="var(--flow-sw)" font-size="10.5" x="74" y="688">└ t = airtime × tx_delay_factor</text>
+<text class="lbl-mono" fill="var(--flow-sw)" font-size="10.5" x="74" y="704">└ delay = random(0, 5·t+1)</text>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="11.5" x="60" y="726">queueOutbound(pkt, prio, schedule)</text>
+</g>
+<!-- QUEUE (center bottom) -->
+<g>
+<rect fill="var(--flow-sw-fill)" height="120" rx="3" stroke="var(--flow-sw-edge)" stroke-width="1.5" width="340" x="400" y="476"></rect>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="13" font-weight="600" text-anchor="middle" x="570" y="500">Queue — PacketQueue</text>
+<line stroke="var(--flow-sw-divider)" stroke-width="0.8" x1="420" x2="720" y1="510" y2="510"></line>
+<text class="lbl-mono" fill="var(--flow-sw)" font-size="11" text-anchor="middle" x="570" y="530">32 slots (repeater) / 16 (companion)</text>
+<text class="lbl-mono" fill="var(--flow-sw)" font-size="11" text-anchor="middle" x="570" y="546">sorting: 1) scheduled_for, 2) priority, 3) FIFO</text>
+<text class="lbl-mono" fill="var(--flow-sw)" font-size="10.5" text-anchor="middle" x="570" y="562">priority per packet type (0–5);</text>
+<text class="lbl-mono" fill="var(--flow-sw)" font-size="10.5" text-anchor="middle" x="570" y="576">flooded retransmits use hop-count</text>
+<text class="lbl-mono" fill="var(--flow-warn)" font-size="10.5" font-style="italic" text-anchor="middle" x="570" y="592">full → new packet dropped (not old)</text>
+</g>
+<!-- BACKGROUND PROCESS: Noise floor (center upper) -->
+<g>
+<rect fill="var(--flow-sw-fill)" height="118" rx="3" stroke="var(--flow-sw-edge)" stroke-width="1.5" width="340" x="400" y="620"></rect>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="13" font-weight="600" text-anchor="middle" x="570" y="644">Noise-floor sampler (background)</text>
+<line stroke="var(--flow-sw-divider)" stroke-width="0.8" x1="420" x2="720" y1="654" y2="654"></line>
+<text class="lbl-mono" fill="var(--flow-sw)" font-size="10.5" x="420" y="674">in RadioLibWrapper::loop():</text>
+<text class="lbl-mono" fill="var(--flow-sw)" font-size="10.5" x="420" y="690">└ if !isReceivingPacket() → sample RSSI</text>
+<text class="lbl-mono" fill="var(--flow-sw)" font-size="10.5" x="420" y="706">└ after 64 samples: avg → noise_floor</text>
+<text class="lbl-mono" fill="var(--flow-sw)" font-size="10.5" x="420" y="722">every 2s: trigger resets sampler</text>
+</g>
+<!-- TX PATH (right) -->
+<g>
+<rect fill="var(--flow-sw-fill)" height="262" rx="3" stroke="var(--flow-sw-edge)" stroke-width="1.5" width="320" x="780" y="476"></rect>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="13" font-weight="600" text-anchor="middle" x="940" y="500">TX path — checkSend()</text>
+<line stroke="var(--flow-sw-divider)" stroke-width="0.8" x1="800" x2="1080" y1="510" y2="510"></line>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="11" x="800" y="532">1. budget: next_tx_time reached?</text>
+<text class="lbl-mono" fill="var(--flow-sw)" font-size="10" x="814" y="548">└ airtime × factor 2.0 = 33% duty</text>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="11" x="800" y="572">2. queue: getNextOutbound(now)?</text>
+<text class="lbl-mono" fill="var(--flow-sw-edge)" font-size="11" x="800" y="596">3. isReceiving()?</text>
+<text class="lbl-mono" fill="var(--flow-sw)" font-size="10" x="814" y="612">└ CAD: IRQ-flag PREAMBLE/HEADER</text>
+<text class="lbl-mono" fill="var(--flow-sw)" font-size="10" x="814" y="628">└ LBT: RSSI &gt; floor + threshold?</text>
+<text class="lbl-mono" fill="var(--flow-sw)" font-size="9.5" font-style="italic" x="828" y="644">(off when threshold=0 — default)</text>
+<text class="lbl-mono" fill="var(--flow-warn)" font-size="11" x="800" y="668">4. busy? → wait 200ms, retry</text>
+<text class="lbl-mono" fill="var(--flow-warn)" font-size="11" x="800" y="684">   busy &gt;4s? → force send</text>
+<text class="lbl-mono" fill="var(--flow-ok)" font-size="11" x="800" y="708">5. free? → startSendRaw()</text>
+<text class="lbl-mono" fill="var(--flow-sw)" font-size="10" x="814" y="724">└ SPI startTransmit()</text>
+</g>
+<!-- Arrows in SW band -->
+<!-- Loop → RX -->
+<path d="M 460 450 L 460 470 L 200 470 L 200 474" fill="none" marker-end="url(#ah-sw)" stroke="var(--flow-sw)" stroke-width="1.7"></path>
+<!-- Loop → TX -->
+<path d="M 680 450 L 680 470 L 940 470 L 940 474" fill="none" marker-end="url(#ah-sw)" stroke="var(--flow-sw)" stroke-width="1.7"></path>
+<!-- Loop → Queue (drop down) -->
+<path d="M 570 452 L 570 474" fill="none" marker-end="url(#ah-sw)" stroke="var(--flow-sw)" stroke-dasharray="3 3" stroke-width="1.7"></path>
+<!-- RX path → Queue (push) -->
+<path d="M 360 720 L 380 720 L 380 540 L 398 540" fill="none" marker-end="url(#ah-sw)" stroke="var(--flow-sw)" stroke-width="1.7"></path>
+<text class="lbl-mono" fill="var(--flow-sw)" font-size="9.5" text-anchor="end" x="376" y="555">push</text>
+<!-- Queue → TX (pull) -->
+<path d="M 740 540 L 758 540 L 758 575 L 778 575" fill="none" marker-end="url(#ah-sw)" stroke="var(--flow-sw)" stroke-width="1.7"></path>
+<text class="lbl-mono" fill="var(--flow-sw)" font-size="9.5" x="762" y="555">pull</text>
+<!-- ============ Cross-band arrows (HW ↔ SW) ============ -->
+<!-- IRQ from chip → SW (RX_DONE triggers setFlag) -->
+<path d="M 760 250 L 760 310 L 200 310 L 200 474" fill="none" marker-end="url(#ah-warn)" opacity="0.85" stroke="var(--flow-warn)" stroke-dasharray="6 4" stroke-width="1.7"></path>
+<text class="lbl-mono" fill="var(--flow-warn)" font-size="10" x="208" y="305">IRQ → setFlag()</text>
+<!-- SPI read packet (SW → HW → SW) - from RX path up -->
+<path d="M 200 474 L 200 350 L 260 350 L 260 200" fill="none" marker-end="url(#ah-sw)" opacity="0.75" stroke="var(--flow-sw)" stroke-width="1.5"></path>
+<text class="lbl-mono" fill="var(--flow-sw)" font-size="10" x="212" y="370">SPI recvRaw</text>
+<!-- SW reading IRQ-flags & RSSI for CAD/LBT -->
+<path d="M 940 474 L 940 350 L 760 350 L 760 252" fill="none" marker-end="url(#ah-sw)" opacity="0.75" stroke="var(--flow-sw)" stroke-width="1.5"></path>
+<text class="lbl-mono" fill="var(--flow-sw)" font-size="10" text-anchor="middle" x="850" y="370">SPI read flags / RSSI (CAD+LBT)</text>
+<!-- SW startTransmit → TX modulator -->
+<path d="M 1000 474 L 1000 350 L 1000 202" fill="none" marker-end="url(#ah-sw)" opacity="0.75" stroke="var(--flow-sw)" stroke-width="1.5"></path>
+<text class="lbl-mono" fill="var(--flow-sw)" font-size="10" x="1012" y="370">SPI startTransmit</text>
+</svg>

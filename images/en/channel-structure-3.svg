@@ -1,0 +1,45 @@
+<svg viewBox="0 0 860 368" width="100%" xmlns="http://www.w3.org/2000/svg">
+<style>
+:root{--bg:#FFFFFF; --grid:#023E8A; --line:#0096C7; --wave:#0096C7; --node:#0077B6; --outer:#0096C7; --text-primary:#0a2540; --text-secondary:#3d6380; --text-muted:#7a9bb5; --link-color:#0077B6; --link-hover:#023E8A; --heading-color:#0077B6; --border-subtle:rgba(0,119,182,0.12); --card-bg:rgba(0,119,182,0.03); --card-border:rgba(0,119,182,0.12); --card-hover:rgba(0,119,182,0.07); --code-bg:rgba(0,119,182,0.04); --code-border:rgba(0,119,182,0.12); --info-bg:rgba(0,119,182,0.04); --info-border:rgba(0,119,182,0.15); --table-header:rgba(0,119,182,0.06); --table-row-alt:rgba(0,119,182,0.02); --table-border:rgba(0,119,182,0.1); --timeline-line:#0096C7; --timeline-dot:#0077B6; --tag-green:rgba(16,185,129,0.1); --tag-green-text:#059669; --tag-red:rgba(239,68,68,0.08); --tag-red-text:#dc2626; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}
+@media (prefers-color-scheme: dark){:root{--bg:#0A1628; --grid:#0077B6; --line:#0077B6; --wave:#48CAE4; --node:#00B4D8; --outer:#0077B6; --text-primary:#e0f0f8; --text-secondary:#8badc4; --text-muted:#4a6a80; --link-color:#48CAE4; --link-hover:#90E0EF; --heading-color:#48CAE4; --border-subtle:rgba(0,119,182,0.15); --card-bg:rgba(0,119,182,0.06); --card-border:rgba(0,119,182,0.15); --card-hover:rgba(0,119,182,0.12); --code-bg:rgba(0,119,182,0.08); --code-border:rgba(0,119,182,0.2); --info-bg:rgba(72,202,228,0.06); --info-border:rgba(72,202,228,0.2); --table-header:rgba(0,119,182,0.1); --table-row-alt:rgba(0,119,182,0.04); --table-border:rgba(0,119,182,0.12); --timeline-line:#0077B6; --timeline-dot:#00B4D8; --tag-green:rgba(16,185,129,0.15); --tag-green-text:#6ee7b7; --tag-red:rgba(239,68,68,0.12); --tag-red-text:#fca5a5; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}}
+</style>
+<rect x="0" y="0" width="860" height="368" fill="var(--bg)"/>
+
+<defs><marker id="fa3" markerHeight="6" markerWidth="6" orient="auto-start-reverse" refX="8" refY="5" viewBox="0 0 10 10"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></marker></defs>
+<rect fill="#FFF8F0" height="332" stroke="#EDD8C0" stroke-width="1" width="287" x="0" y="0"></rect>
+<rect fill="#F0FAF5" height="332" stroke="#C0E0D0" stroke-width="1" width="286" x="287" y="0"></rect>
+<rect fill="#F0F5FC" height="332" stroke="#C8DAEA" stroke-width="1" width="287" x="573" y="0"></rect>
+<text fill="#7F4000" font-family="Arial" font-size="12" font-weight="700" text-anchor="middle" x="143" y="20">Radio (LoRa)</text>
+<text fill="#1E6B3A" font-family="Arial" font-size="12" font-weight="700" text-anchor="middle" x="430" y="20">Device (firmware)</text>
+<text fill="#2E75B6" font-family="Arial" font-size="12" font-weight="700" text-anchor="middle" x="716" y="20">GUI</text>
+<rect fill="#FDE9D0" height="52" rx="8" stroke="#BA7517" stroke-width="1.5" width="259" x="14" y="36"></rect>
+<text dominant-baseline="central" fill="#7F4000" font-family="Arial" font-size="12" font-weight="700" text-anchor="middle" x="143" y="57">LoRa packet received</text>
+<text dominant-baseline="central" fill="#7F4000" font-family="Arial" font-size="10" text-anchor="middle" x="143" y="75">Raw encrypted bytes from the radio</text>
+<line marker-end="url(#fa3)" stroke="#1E6B3A" stroke-width="1.5" x1="273" x2="301" y1="62" y2="62"></line>
+<rect fill="#D9EFE2" height="52" rx="8" stroke="#1E6B3A" stroke-width="1.5" width="258" x="301" y="36"></rect>
+<text dominant-baseline="central" fill="#1E6B3A" font-family="Arial" font-size="12" font-weight="700" text-anchor="middle" x="430" y="57">Parse packet header</text>
+<text dominant-baseline="central" fill="#1E6B3A" font-family="Arial" font-size="10" text-anchor="middle" x="430" y="75">type=CHANNEL_MSG · read hash byte</text>
+<line marker-end="url(#fa3)" stroke="#1E6B3A" stroke-width="1.5" x1="430" x2="430" y1="88" y2="110"></line>
+<rect fill="#D9EFE2" height="62" rx="8" stroke="#1E6B3A" stroke-width="1.5" width="258" x="301" y="110"></rect>
+<text dominant-baseline="central" fill="#1E6B3A" font-family="Arial" font-size="12" font-weight="700" text-anchor="middle" x="430" y="131">Hash scan: all slots</text>
+<text dominant-baseline="central" fill="#1E6B3A" font-family="Arial" font-size="10" text-anchor="middle" x="430" y="149">for i in 0..max_channels:</text>
+<text dominant-baseline="central" fill="#1E6B3A" font-family="Arial" font-size="10" text-anchor="middle" x="430" y="164">  pkt.hash == channels[i].hash?</text>
+<line marker-end="url(#fa3)" stroke="#1E6B3A" stroke-width="1.5" x1="430" x2="430" y1="172" y2="192"></line>
+<polygon fill="#FDE9D0" points="430,192 530,222 430,252 330,222" stroke="#BA7517" stroke-width="1.5"></polygon>
+<text dominant-baseline="central" fill="#7F4000" font-family="Arial" font-size="12" font-weight="700" text-anchor="middle" x="430" y="222">Match?</text>
+<line marker-end="url(#fa3)" stroke="#8B0000" stroke-width="1.5" x1="330" x2="275" y1="222" y2="222"></line>
+<text fill="#8B0000" font-family="Arial" font-size="10" text-anchor="middle" x="299" y="212">No</text>
+<rect fill="#FAE0E0" height="48" rx="8" stroke="#8B0000" stroke-width="1.5" width="180" x="14" y="198"></rect>
+<text dominant-baseline="central" fill="#8B0000" font-family="Arial" font-size="12" font-weight="700" text-anchor="middle" x="104" y="219">Ignore packet</text>
+<text dominant-baseline="central" fill="#8B0000" font-family="Arial" font-size="10" text-anchor="middle" x="104" y="237">Not our channel</text>
+<line marker-end="url(#fa3)" stroke="#1E6B3A" stroke-width="1.5" x1="430" x2="430" y1="252" y2="274"></line>
+<text fill="#1E6B3A" font-family="Arial" font-size="10" x="442" y="265">Yes</text>
+<rect fill="#D9EFE2" height="52" rx="8" stroke="#1E6B3A" stroke-width="1.5" width="258" x="301" y="274"></rect>
+<text dominant-baseline="central" fill="#1E6B3A" font-family="Arial" font-size="12" font-weight="700" text-anchor="middle" x="430" y="295">AES-128 decrypt</text>
+<text dominant-baseline="central" fill="#1E6B3A" font-family="Arial" font-size="10" text-anchor="middle" x="430" y="313">key = channels[i].secret[0..15]</text>
+<text fill="#2E75B6" font-family="Arial" font-size="9" text-anchor="middle" x="680" y="282">PUSH_MSG_WAITING → CMD_SYNC</text>
+<line marker-end="url(#fa3)" stroke="#2E75B6" stroke-width="1.5" x1="559" x2="587" y1="300" y2="300"></line>
+<rect fill="#1F3864" height="52" rx="8" width="259" x="587" y="274"></rect>
+<text dominant-baseline="central" fill="#fff" font-family="Arial" font-size="12" font-weight="700" text-anchor="middle" x="716" y="295">Show message in GUI</text>
+<text dominant-baseline="central" fill="#aac" font-family="Arial" font-size="10" text-anchor="middle" x="716" y="313">Channel name + sender + text</text>
+</svg>

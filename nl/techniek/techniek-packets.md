@@ -21,7 +21,7 @@ bouwt zijn eigen frame; MeshCore levert alleen de inhoud daarvan. Dat
 onderscheid is de sleutel tot de rest van deze pagina: een deel van wat op het
 eerste gezicht MeshCore-velden lijken, hoort bij de radiochip.
 
-![Het volledige LoRa-frame, met daarbinnen het MeshCore-frame uitgeklapt](../../images/techniek-packets-1.svg)
+![Het volledige LoRa-frame, met daarbinnen het MeshCore-frame uitgeklapt](../../images/nl/techniek-packets-1.svg)
 
 | Laag | Wie levert het | Velden | Ziet MeshCore dit? |
 |---|---|---|---|
@@ -71,7 +71,7 @@ komen nooit in de MeshCore-firmware terecht.
 Eén byte, gelezen als `0bVVPPPPRR` — `V` = versie, `P` = payload type,
 `R` = route type. Bit 0 is de meest rechtse bit.
 
-![De header-byte opgesplitst in bitgroepen, met het route type uitgelicht](../../images/techniek-packets-2.svg)
+![De header-byte opgesplitst in bitgroepen, met het route type uitgelicht](../../images/nl/techniek-packets-2.svg)
 
 | Bits | Masker | Veld |
 |---|---|---|
@@ -317,7 +317,7 @@ een kanaal aan en blijft gelijk. De transport code is een handtekening over deze
 payload en verandert bij elk bericht — zie
 [Regio's en Scopes](techniek-scope.md).
 
-![Byte-voor-byte opbouw van een kanaalbericht, met de transport code uitgelicht](../../images/techniek-packets-3.svg)
+![Byte-voor-byte opbouw van een kanaalbericht, met de transport code uitgelicht](../../images/nl/techniek-packets-3.svg)
 
 Hetzelfde in tabelvorm:
 

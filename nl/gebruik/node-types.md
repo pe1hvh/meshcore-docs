@@ -21,4 +21,4 @@ In de praktijk bestaat een netwerk uit een combinatie van deze node types. Een t
 
 Network diagram SVG
 
-![Diagram 1 bij node-types](../../images/node-types-1.svg)
+![Diagram 1 bij node-types](../../images/nl/node-types-1.svg)

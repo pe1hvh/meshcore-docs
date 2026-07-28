@@ -29,7 +29,7 @@ Every MeshCore node simultaneously acts as:
 > service layer with calls like `gpio.toggle`, `uart.send`, or `i2c.read`, and no
 > COMMAND packet type. What does exist:
 >
-> - **CLI over the mesh** — an encrypted text message with `txt_type` = CLI command (see [MeshCore Packet Structure](techniek-packets.md)). A logged-in admin can send any CLI command to a remote node this way.
+> - **CLI over the mesh** — an encrypted text message with `txt_type` = CLI command (see [MeshCore Packet Structure](packet-structure.md)). A logged-in admin can send any CLI command to a remote node this way.
 > - **Requests** — `REQ` with sub-types for status, telemetry, neighbour table, and access list.
 > - **Sensors** — `sensor get` / `sensor set`, and telemetry in Cayenne LPP, provided sensor support is compiled in.
 > - **Custom extensions** — `PAYLOAD_TYPE_RAW_CUSTOM` (`0x0F`) permits free-form bytes with your own encryption, and the firmware is structured so you can add your own handling.

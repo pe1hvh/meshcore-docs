@@ -18,9 +18,9 @@ key over this one packet**.
 
 This chapter covers the protocol side of that: where the scope sits in the packet,
 how it is derived, and what a repeater bases its decision on. For configuring
-regions on your own node, see [Getting Started](../usage/aan-de-slag.md). For the
+regions on your own node, see [Getting Started](../usage/getting-started.md). For the
 naming conventions within NoodNet Overijssel, see
-[Regions: intent and practice](techniek-regios-praktijk.md), and
+[Regions: intent and practice](regions-in-practice.md), and
 [UN/LOCODE Region Codes](techniek-locode.md) — that covers what regions are
 *called*, this chapter covers what technically *happens* with them.
 
@@ -30,7 +30,7 @@ naming conventions within NoodNet Overijssel, see
 > `src/helpers/CommonCLI.cpp`, `examples/simple_repeater/MyMesh.cpp`,
 > `examples/companion_radio/MyMesh.cpp`, and `docs/cli_commands.md`.
 > The packet layout these codes live in is described in
-> [MeshCore Packet Structure](techniek-packets.md).
+> [MeshCore Packet Structure](packet-structure.md).
 
 ## Where is the transport code?
 
@@ -83,7 +83,7 @@ optional transport-code block, directly after the header.
 
 Both fields are `uint16_t` and go over the air **little-endian**. For a fully
 worked record with real bytes, see
-[the channel message further down](techniek-packets.md).
+[the channel message further down](packet-structure.md).
 
 ### How the code is calculated
 
@@ -195,7 +195,7 @@ sits in a different place each time.
 | Channel hash | `C3` | `DB` |
 | Transport code for scope `nl-ov-zwo` | `0x7381` | `0x35A1` |
 
-![Four frames compared: two channels, with and without a transport code](../../images/techniek-packets-5-en.svg)
+![Four frames compared: two channels, with and without a transport code](../../images/en/packet-structure-5.svg)
 
 The values were computed with the algorithms from the firmware, for the message
 `"Op Woensdag a.s. Blauwvingerdagen"` from sender `PE1HVH` at timestamp
@@ -342,7 +342,7 @@ job, and the PSK's alone.
 
 ## How a repeater decides
 
-![Decision path of a repeater receiving a channel message](../../images/techniek-packets-4-en.svg)
+![Decision path of a repeater receiving a channel message](../../images/en/packet-structure-4.svg)
 
 ### The core: `findMatch()` computes, it does not look up
 
@@ -515,7 +515,7 @@ hierarchy up to 8 levels deep. A repeater command line is 160 characters; split
 larger trees across multiple `region def` commands.
 
 For the practical side — which regions to configure and with what tools — see
-[Getting Started](../usage/aan-de-slag.md).
+[Getting Started](../usage/getting-started.md).
 
 ## Sources
 

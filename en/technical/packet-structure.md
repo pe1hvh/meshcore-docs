@@ -21,7 +21,7 @@ radio chip builds its own frame; MeshCore supplies only the contents of it. That
 distinction is the key to the rest of this page: several fields that look like
 MeshCore fields at first glance belong to the radio chip.
 
-![The complete LoRa frame, with the MeshCore frame expanded inside it](../../images/techniek-packets-1-en.svg)
+![The complete LoRa frame, with the MeshCore frame expanded inside it](../../images/en/packet-structure-1.svg)
 
 | Layer | Who provides it | Fields | Does MeshCore see this? |
 |---|---|---|---|
@@ -49,7 +49,7 @@ Everything below concerns the MeshCore part — the blue block in the diagram.
 | Field | Bytes | Description | Layer |
 |---|---|---|---|
 | `header` | 1 | Route type, payload type, and payload version in a single byte | MeshCore |
-| `transport_codes` | 4 (optional) | Two 16-bit codes; present **only** for the two TRANSPORT route types. This is where the transport code (the **scope**) sits — see [Regions and Scopes](techniek-scope.md) | MeshCore |
+| `transport_codes` | 4 (optional) | Two 16-bit codes; present **only** for the two TRANSPORT route types. This is where the transport code (the **scope**) sits — see [Regions and Scopes](regions-and-scopes.md) | MeshCore |
 | `path_length` | 1 | Hop count (bits 0-5) **and** hash size (bits 6-7) | MeshCore |
 | `path` | 0-64 | `hop_count × hash_size` bytes of node hashes | MeshCore |
 | `payload` | 0-184 | Type-dependent content, see [Payloads by type](#payloads-by-type) | MeshCore |
@@ -71,7 +71,7 @@ never reach the MeshCore firmware.
 One byte, read as `0bVVPPPPRR` — `V` = version, `P` = payload type,
 `R` = route type. Bit 0 is the rightmost bit.
 
-![The header byte split into bit groups, with the route type highlighted](../../images/techniek-packets-2-en.svg)
+![The header byte split into bit groups, with the route type highlighted](../../images/en/packet-structure-2.svg)
 
 | Bits | Mask | Field |
 |---|---|---|
@@ -92,7 +92,7 @@ The two TRANSPORT variants are the only ones that carry the four transport-code
 bytes. For `ROUTE_TYPE_FLOOD` and `ROUTE_TYPE_DIRECT` they are absent entirely —
 the packet is four bytes shorter. Those four bytes hold the transport code; how it is
 derived and what a repeater does with it is covered in
-[Regions and Scopes](techniek-scope.md).
+[Regions and Scopes](regions-and-scopes.md).
 
 ### Payload type (bits 2-5)
 
@@ -148,8 +148,8 @@ The actual number of path bytes is `hop_count × hash_size`:
 
 A node hash is the **first byte of that node's public key** (the first 2 or 3
 bytes in the larger hash modes). It is the same 1-byte identifier described in
-[Private & Public Key Encryption](techniek-keys.md) and
-[Route Tracing](route-traceren.md).
+[Private & Public Key Encryption](key-encryption.md) and
+[Route Tracing](route-tracing.md).
 
 > [!WARNING]
 > There is no 4-byte Node-ID in the protocol. Where older DOMCA pages speak of a
@@ -315,9 +315,9 @@ fields that are often confused: the **channel hash** and the **transport code**.
 They come from different keys and sit in different places in the record. Only the
 first is an identifier: the channel hash points at a channel and stays constant.
 The transport code is a signature over this payload and changes with every
-message — see [Regions and Scopes](techniek-scope.md).
+message — see [Regions and Scopes](regions-and-scopes.md).
 
-![Byte-by-byte layout of a channel message, with the transport code highlighted](../../images/techniek-packets-3-en.svg)
+![Byte-by-byte layout of a channel message, with the transport code highlighted](../../images/en/packet-structure-3.svg)
 
 The same thing in table form:
 
@@ -336,7 +336,7 @@ The same thing in table form:
 preamble, sync word, PHY header, and CRC — those are not counted in these 59.
 
 Bytes 1-2 are the most interesting here, and they get their own chapter:
-[Regions and Scopes](techniek-scope.md) covers how that code is derived, why it
+[Regions and Scopes](regions-and-scopes.md) covers how that code is derived, why it
 changes per message, and how a repeater filters on it.
 
 ## Sources

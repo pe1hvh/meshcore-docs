@@ -14,7 +14,7 @@ and it has never been stated as one. This chapter sets out what the design buys,
 what became of it, and what that costs.
 
 For the mechanism itself — where the bytes sit and how a repeater decides — see
-[Regions and Scopes](techniek-scope.md). For the convention itself see
+[Regions and Scopes](regions-and-scopes.md). For the convention itself see
 [MeshWiki — Regio en scope](https://www.meshwiki.nl/wiki/Regio_en_scope). This
 chapter is about the tension between the two.
 
@@ -321,4 +321,4 @@ Until then there is no good way out — only a choice:
 - [MeshWiki — Regio en scope](https://www.meshwiki.nl/wiki/Regio_en_scope) — the convention
 - [MeshWiki — Lijst van regio's](https://www.meshwiki.nl/wiki/Lijst_van_regio%27s) — the code list
 - [LocalMesh.nl — MeshCore region layout](https://www.localmesh.nl/meshcore-regio-indeling/)
-- [Regions and Scopes](techniek-scope.md) — the mechanism itself
+- [Regions and Scopes](regions-and-scopes.md) — the mechanism itself

@@ -14,7 +14,7 @@ De vorm van die donut is niet vast. Hij hangt af van de *elektrische lengte* van
 - Een **collineair** (meerdere gestapelde halve-golven in fase, bijvoorbeeld 5/8 over 5/8, of 2×5/8) heeft een *plattere, smallere* donut. De energie wordt meer naar de horizon gericht.
 - Een **hoge-gain collineair** van 9 of 12 dBi heeft een nog veel plattere donut — soms niet meer dan een paar graden breed in verticale richting.
 
-![Vergelijking van donut-vormen bij drie verschillende antenne-gains](../../images/dode-zone-1.svg)
+![Vergelijking van donut-vormen bij drie verschillende antenne-gains](../../images/nl/dode-zone-1.svg)
 
 *Zijaanzicht van het stralingspatroon. Hoe meer dBi, hoe platter de donut en hoe groter het gebied recht onder de antenne waar geen signaal komt.*
 
@@ -38,7 +38,7 @@ Die laatste kolom is het pijnpunt: bij 45° elevatie (oftewel een node recht naa
 
 Direct onder elke omni-antenne zit een gebied waar vrijwel geen signaal komt. Dit heet de **dode zone** — in de Engelstalige literatuur bekend als *cone of silence*, een term die oorspronkelijk uit de radar- en radionavigatiewereld komt voor de zone boven een grondstation waar de patroongeometrie ongunstig is. Voor een gewone omni-repeater is het beeld hetzelfde: hoe platter de donut, hoe breder die dode zone op de grond wordt.
 
-![Dode zone onder een hoog geplaatste collineair](../../images/dode-zone-2.svg)
+![Dode zone onder een hoog geplaatste collineair](../../images/nl/dode-zone-2.svg)
 
 *Op afstand staan huizen prima binnen de lob, maar een node vlakbij de mast valt in de dode zone. Hoger plaatsen maakt die zone groter.*
 
@@ -72,7 +72,7 @@ Twee aanpassingen veranderden dat radicaal:
 
 Beide aanpassingen op zich waren overleefbaar geweest. De *combinatie* was fataal: de hoek werd steiler terwijl de lob smaller werd. Het patroonverlies sprong van in de orde van ~4 dB naar ~20 dB — aan beide kanten van de link, want antennepatronen zijn reciprook. Totaal verlies in het linkbudget: in de orde van 30 dB extra ten opzichte van de oude situatie. Dit zijn engineering-inschattingen op basis van de trend van de patroonvorm; de exacte getallen vergen de verticale patroonplots van precies de gebruikte antennes.
 
-![Vergelijking oude en nieuwe opstelling bij gebouw in Zwolle](../../images/dode-zone-3.svg)
+![Vergelijking oude en nieuwe opstelling bij gebouw in Zwolle](../../images/nl/dode-zone-3.svg)
 
 *Dezelfde geografie, twee configuraties. De combinatie van hogere mast en smallere lob tilt de thuisnodes precies in de dode zone.*
 

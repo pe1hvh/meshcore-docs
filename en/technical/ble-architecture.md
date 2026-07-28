@@ -21,7 +21,7 @@ The T1000-E is a **BLE-only** device. Your smartphone is dual-mode: it talks to 
 
 BLE Stack SVG
 
-![Diagram 1 bij ble-architectuur](../../images/ble-architectuur-1.svg)
+![Diagram 1 bij ble-architectuur](../../images/en/ble-architecture-1.svg)
 
 ## GATT — Generic Attribute Profile
 

@@ -150,7 +150,7 @@ payload
 
 ### Flow 1 — Device opstarten & kanaalinitialisatie
 
-![Diagram 1 bij techniek-channels](../../images/techniek-channels-1.svg)
+![Diagram 1 bij techniek-channels](../../images/nl/techniek-channels-1.svg)
 
 Figuur 1 — Device-opstartsequentie: laden van /channels2, hash-berekening, Public auto-add bij afwezigheid
 
@@ -158,7 +158,7 @@ Figuur 1 — Device-opstartsequentie: laden van /channels2, hash-berekening, Pub
 
 Het verzendpad bij public en private kanalen is identiek. Het verschil zit uitsluitend in de PSK.
 
-![Diagram 2 bij techniek-channels](../../images/techniek-channels-2.svg)
+![Diagram 2 bij techniek-channels](../../images/nl/techniek-channels-2.svg)
 
 Figuur 2 — Verzendpad: GUI → AES-128 versleuteling → LoRa TX.
 
@@ -166,7 +166,7 @@ Figuur 2 — Verzendpad: GUI → AES-128 versleuteling → LoRa TX.
 
 De hash-scan maakt het systeem efficiënt: het device vergelijkt één byte per slot vóórdat het de zwaardere AES-decrypt uitvoert.
 
-![Diagram 3 bij techniek-channels](../../images/techniek-channels-3.svg)
+![Diagram 3 bij techniek-channels](../../images/nl/techniek-channels-3.svg)
 
 Figuur 3 — Ontvangstpad: LoRa RX → hash-scan → AES-128 decrypt → GUI.
 
@@ -174,7 +174,7 @@ Figuur 3 — Ontvangstpad: LoRa RX → hash-scan → AES-128 decrypt → GUI.
 
 Alleen private slots (idx ≥ 1) mogen worden beschreven. De GUI is verantwoordelijk voor de slot 0-beveiliging.
 
-![Diagram 4 bij techniek-channels](../../images/techniek-channels-4.svg)
+![Diagram 4 bij techniek-channels](../../images/nl/techniek-channels-4.svg)
 
 Figuur 4 — Preset schrijven: GUI → CMD_SET_CHANNEL → RAM + hash → /channels2 → bevestiging terug naar GUI
 

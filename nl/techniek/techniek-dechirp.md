@@ -99,7 +99,7 @@ Alle 10 samples dragen bij aan bin 3. Bin 3 krijgt daardoor een piekhoogte van 1
 
 FFT Bar Chart: Ideal signal
 
-![Diagram 1 bij techniek-dechirp](../../images/techniek-dechirp-1.svg)
+![Diagram 1 bij techniek-dechirp](../../images/nl/techniek-dechirp-1.svg)
 
 ### Met 30% sample verlies
 
@@ -107,7 +107,7 @@ Zelfs met 3 gemiste samples blijft de piek bij bin 3 dominant. Het symbool wordt
 
 FFT Bar Chart: 30% loss
 
-![Diagram 2 bij techniek-dechirp](../../images/techniek-dechirp-2.svg)
+![Diagram 2 bij techniek-dechirp](../../images/nl/techniek-dechirp-2.svg)
 
 ### Met ruis/interferentie
 
@@ -115,7 +115,7 @@ Ruis en fouten landen in willekeurige bins. Ze zijn verspreid en kunnen de signa
 
 FFT Bar Chart: With noise
 
-![Diagram 3 bij techniek-dechirp](../../images/techniek-dechirp-3.svg)
+![Diagram 3 bij techniek-dechirp](../../images/nl/techniek-dechirp-3.svg)
 
 ## Het kernprincipe
 

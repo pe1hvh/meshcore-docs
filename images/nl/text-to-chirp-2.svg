@@ -1,0 +1,50 @@
+<svg style="width:100%;margin:1rem 0" viewBox="0 0 700 680" xmlns="http://www.w3.org/2000/svg">
+<style>
+:root{--bg:#FFFFFF; --grid:#023E8A; --line:#0096C7; --wave:#0096C7; --node:#0077B6; --outer:#0096C7; --text-primary:#0a2540; --text-secondary:#3d6380; --text-muted:#7a9bb5; --link-color:#0077B6; --link-hover:#023E8A; --heading-color:#0077B6; --border-subtle:rgba(0,119,182,0.12); --card-bg:rgba(0,119,182,0.03); --card-border:rgba(0,119,182,0.12); --card-hover:rgba(0,119,182,0.07); --code-bg:rgba(0,119,182,0.04); --code-border:rgba(0,119,182,0.12); --info-bg:rgba(0,119,182,0.04); --info-border:rgba(0,119,182,0.15); --table-header:rgba(0,119,182,0.06); --table-row-alt:rgba(0,119,182,0.02); --table-border:rgba(0,119,182,0.1); --timeline-line:#0096C7; --timeline-dot:#0077B6; --tag-green:rgba(16,185,129,0.1); --tag-green-text:#059669; --tag-red:rgba(239,68,68,0.08); --tag-red-text:#dc2626; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}
+@media (prefers-color-scheme: dark){:root{--bg:#0A1628; --grid:#0077B6; --line:#0077B6; --wave:#48CAE4; --node:#00B4D8; --outer:#0077B6; --text-primary:#e0f0f8; --text-secondary:#8badc4; --text-muted:#4a6a80; --link-color:#48CAE4; --link-hover:#90E0EF; --heading-color:#48CAE4; --border-subtle:rgba(0,119,182,0.15); --card-bg:rgba(0,119,182,0.06); --card-border:rgba(0,119,182,0.15); --card-hover:rgba(0,119,182,0.12); --code-bg:rgba(0,119,182,0.08); --code-border:rgba(0,119,182,0.2); --info-bg:rgba(72,202,228,0.06); --info-border:rgba(72,202,228,0.2); --table-header:rgba(0,119,182,0.1); --table-row-alt:rgba(0,119,182,0.04); --table-border:rgba(0,119,182,0.12); --timeline-line:#0077B6; --timeline-dot:#00B4D8; --tag-green:rgba(16,185,129,0.15); --tag-green-text:#6ee7b7; --tag-red:rgba(239,68,68,0.12); --tag-red-text:#fca5a5; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}}
+</style>
+<rect x="0" y="0" width="700" height="680" fill="var(--bg)"/>
+
+<!-- Y-axis (frequentie) -->
+<line opacity="0.5" stroke="var(--text-muted)" stroke-width="1.5" x1="100" x2="100" y1="630" y2="30"></line>
+<!-- X-axis (symbolen) -->
+<line opacity="0.5" stroke="var(--text-muted)" stroke-width="1.5" x1="100" x2="620" y1="630" y2="630"></line>
+<!-- Horizontal grid lines: 0=630, 1024=480, 2048=330, 3072=180, 4095=30 -->
+<line opacity="0.15" stroke="var(--text-muted)" stroke-width="1" x1="95" x2="620" y1="630" y2="630"></line>
+<line opacity="0.15" stroke="var(--text-muted)" stroke-width="1" x1="95" x2="620" y1="480" y2="480"></line>
+<line opacity="0.15" stroke="var(--text-muted)" stroke-width="1" x1="95" x2="620" y1="330" y2="330"></line>
+<line opacity="0.15" stroke="var(--text-muted)" stroke-width="1" x1="95" x2="620" y1="180" y2="180"></line>
+<line opacity="0.15" stroke="var(--text-muted)" stroke-width="1" x1="95" x2="620" y1="30" y2="30"></line>
+<!-- Y-axis labels -->
+<text fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="11" text-anchor="end" x="88" y="634">0</text>
+<text fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="11" text-anchor="end" x="88" y="484">1024</text>
+<text fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="11" text-anchor="end" x="88" y="334">2048</text>
+<text fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="11" text-anchor="end" x="88" y="184">3072</text>
+<text fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="11" text-anchor="end" x="88" y="34">4095</text>
+<!-- Y-axis title -->
+<text fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="11" text-anchor="middle" transform="rotate(-90,28,330)" x="28" y="330">FREQUENTIE (trede) ↑</text>
+<!-- X-axis title -->
+<text fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="11" text-anchor="middle" x="360" y="670">SYMBOLEN (verzonden in volgorde) →</text>
+<!-- X-axis tick marks and labels -->
+<line opacity="0.5" stroke="var(--text-muted)" stroke-width="1" x1="200" x2="200" y1="630" y2="637"></line>
+<text fill="var(--link-color)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="middle" x="200" y="652">Symbool 1</text>
+<line opacity="0.5" stroke="var(--text-muted)" stroke-width="1" x1="380" x2="380" y1="630" y2="637"></line>
+<text fill="var(--timeline-dot)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="middle" x="380" y="652">Symbool 2</text>
+<line opacity="0.5" stroke="var(--text-muted)" stroke-width="1" x1="540" x2="540" y1="630" y2="637"></line>
+<text fill="var(--node)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="middle" x="540" y="652">Symbool 3</text>
+<!-- Symbool 1350: y = 630 - (1350/4095)*600 = 432 -->
+<circle cx="200" cy="432" fill="var(--link-color)" r="7"></circle>
+<line opacity="0.4" stroke="var(--link-color)" stroke-dasharray="3 3" stroke-width="1" x1="200" x2="200" y1="439" y2="630"></line>
+<line opacity="0.4" stroke="var(--link-color)" stroke-dasharray="3 3" stroke-width="1" x1="100" x2="193" y1="432" y2="432"></line>
+<text fill="var(--link-color)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" x="210" y="428">trede 1350</text>
+<!-- Symbool 1395: y = 630 - (1395/4095)*600 = 426 -->
+<circle cx="380" cy="426" fill="var(--timeline-dot)" r="7"></circle>
+<line opacity="0.4" stroke="var(--timeline-dot)" stroke-dasharray="3 3" stroke-width="1" x1="380" x2="380" y1="433" y2="630"></line>
+<line opacity="0.4" stroke="var(--timeline-dot)" stroke-dasharray="3 3" stroke-width="1" x1="100" x2="373" y1="426" y2="426"></line>
+<text fill="var(--timeline-dot)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" x="390" y="422">trede 1395</text>
+<!-- Symbool 1860: y = 630 - (1860/4095)*600 = 358 -->
+<circle cx="540" cy="358" fill="var(--node)" r="7"></circle>
+<line opacity="0.4" stroke="var(--node)" stroke-dasharray="3 3" stroke-width="1" x1="540" x2="540" y1="365" y2="630"></line>
+<line opacity="0.4" stroke="var(--node)" stroke-dasharray="3 3" stroke-width="1" x1="100" x2="533" y1="358" y2="358"></line>
+<text fill="var(--node)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" x="550" y="354">trede 1860</text>
+</svg>

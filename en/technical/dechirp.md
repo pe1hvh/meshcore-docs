@@ -99,7 +99,7 @@ All 10 samples contribute to bin 3. Bin 3 therefore gets a peak height of 10, th
 
 FFT Bar Chart: Ideal signal
 
-![Diagram 1 bij techniek-dechirp](../../images/techniek-dechirp-1.svg)
+![Diagram 1 bij techniek-dechirp](../../images/en/dechirp-1.svg)
 
 ### With 30% sample loss
 
@@ -107,7 +107,7 @@ Even with 3 missed samples the peak at bin 3 remains dominant. The symbol is cor
 
 FFT Bar Chart: 30% loss
 
-![Diagram 2 bij techniek-dechirp](../../images/techniek-dechirp-2.svg)
+![Diagram 2 bij techniek-dechirp](../../images/en/dechirp-2.svg)
 
 ### Met ruis/interferentie
 
@@ -115,7 +115,7 @@ Noise and errors land in random bins. They are spread out and cannot exceed the 
 
 FFT Bar Chart: With noise
 
-![Diagram 3 bij techniek-dechirp](../../images/techniek-dechirp-3.svg)
+![Diagram 3 bij techniek-dechirp](../../images/en/dechirp-3.svg)
 
 ## The Basic
 

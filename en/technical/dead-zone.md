@@ -14,7 +14,7 @@ The shape of that donut isn't fixed. It depends on the *electrical length* of th
 - A **collinear** (multiple stacked half-waves in phase, e.g. 5/8 over 5/8, or 2×5/8) has a *flatter, narrower* donut. The energy is concentrated more towards the horizon.
 - A **high-gain collinear** of 9 or 12 dBi has an even flatter donut — sometimes only a few degrees wide vertically.
 
-![Comparison of donut shapes for three different antenna gains](../../images/dode-zone-1.svg)
+![Comparison of donut shapes for three different antenna gains](../../images/en/dead-zone-1.svg)
 
 *Side view of the radiation pattern. The more dBi, the flatter the donut and the larger the region directly below the antenna with no signal.*
 
@@ -38,7 +38,7 @@ That last column is the pain point: at 45° elevation (meaning a node right next
 
 Directly below every omni antenna there is a region where almost no signal arrives. This is called the **dead zone** — known in English-language literature as the *cone of silence*, a term that originated in radar and radio-navigation for the zone above a ground station where the pattern geometry is unfavourable. For an ordinary omni repeater the picture is the same: the flatter the donut, the wider that dead zone becomes on the ground.
 
-![Dead zone under a high-mounted collinear](../../images/dode-zone-2.svg)
+![Dead zone under a high-mounted collinear](../../images/en/dead-zone-2.svg)
 
 *At a distance, houses sit nicely inside the lobe, but a node close to the mast falls in the dead zone. Mounting higher makes that zone larger.*
 
@@ -72,7 +72,7 @@ Two changes altered this radically:
 
 Either change on its own would have been survivable. The *combination* was fatal: the angle became steeper while the lobe became narrower. The pattern loss jumped from around ~4 dB to ~20 dB — on both sides of the link, because antenna patterns are reciprocal. Total link-budget loss: on the order of 30 dB more than before. These are engineering estimates based on the trend of the pattern shape; the exact numbers require the vertical pattern plots of the specific antennas used.
 
-![Comparison of old and new setup at a building in Zwolle](../../images/dode-zone-3.svg)
+![Comparison of old and new setup at a building in Zwolle](../../images/en/dead-zone-3.svg)
 
 *Same geography, two configurations. The combination of a higher mast and a narrower lobe tips the home nodes precisely into the dead zone.*
 

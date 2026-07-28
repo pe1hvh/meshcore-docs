@@ -75,7 +75,7 @@ A gentler intermediate step is `set flood.max.unscoped 3`. Unscoped traffic keep
 working locally but no longer travels across the whole country — without cutting
 off nodes that have no region configured at all.
 
-In the Companion App you set a scope per channel (for example national, provincial or local); the community agrees on local codes among themselves. The app sends the 16-byte key to the node rather than the name, and sets it per transmission. What goes over the air is a 16-bit code computed from that key and the message content — see [MeshCore Packet Structure](../technical/techniek-packets.md). For the current configuration and tools:
+In the Companion App you set a scope per channel (for example national, provincial or local); the community agrees on local codes among themselves. The app sends the 16-byte key to the node rather than the name, and sets it per transmission. What goes over the air is a 16-bit code computed from that key and the message content — see [MeshCore Packet Structure](../technical/packet-structure.md). For the current configuration and tools:
 
 - Setting region codes (step-by-step configurator): mesh-up.nl/tools/regiocodes-instellen
 - Dashboard configurator: dashboard-elburg.f3dp.nl (tab “region-configurator”)

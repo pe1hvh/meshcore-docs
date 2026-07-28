@@ -4,7 +4,7 @@
 
 ## Official Websites
 
-- [meshcore.co.uk](https://meshcore.co.uk/) — Official MeshCore website
+- [meshcore.io](https://meshcore.io/) — Official MeshCore website
 - [GitHub: MeshCore](https://github.com/meshcore-dev/MeshCore) — Source code
 
 ## Web Tools
@@ -23,5 +23,6 @@
 
 - [Discord Server](https://discord.gg/ZVH2ujy9ex) — MeshCore community
 - [LocalMesh NL](https://www.localmesh.nl/) — Dutch community
+- [MeshWiki NL](https://www.meshwiki.nl/) — Dutch Wiki
 
 Translated from Dutch by Anthropic Claude

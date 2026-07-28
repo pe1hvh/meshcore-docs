@@ -18,7 +18,7 @@ BLOCK DIAGRAM
 
 De LoRa-chip draait continu in RX-modus en doet zelf preamble-detectie en demodulatie in hardware. De MCU/firmware ziet daarvan alleen het resultaat via Interrupt Request (IRQ)-flags en Serial Peripheral Interface (SPI)-uitlezingen. Voor het zenden geldt het omgekeerde: de firmware besluit wanneer en wat, de chip doet de daadwerkelijke modulatie en Radio Frequency (RF)-uitvoer.
 
-![Blokschema MeshCore repeater](../../images/repeater-flow-1.svg)
+![Blokschema MeshCore repeater](../../images/nl/repeater-flow-1.svg)
 
 ### Wat hier opvalt
 
@@ -56,7 +56,7 @@ SEQUENCE DIAGRAM
 
 De tijd loopt van boven naar beneden. Elke verticale lijn is een actor (HW of SW). Pijlen zijn aanroepen of signalen tussen actors. De gestreepte stukken zijn wacht-/polling-periodes waarin de firmware doorgaat met andere werk maar dit pakket nog niet aan de beurt is.
 
-![Sequence diagram MeshCore repeater RX-TX flow](../../images/repeater-flow-2.svg)
+![Sequence diagram MeshCore repeater RX-TX flow](../../images/nl/repeater-flow-2.svg)
 
 ### Lezen van het sequence diagram
 

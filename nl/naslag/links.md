@@ -4,7 +4,7 @@
 
 ## Officiële Websites
 
-- [meshcore.co.uk](https://meshcore.co.uk/) — Officiële MeshCore website
+- [meshcore.io](https://meshcore.io/) — Officiële MeshCore website
 - [GitHub: MeshCore](https://github.com/meshcore-dev/MeshCore) — Broncode
 
 ## Web Tools
@@ -23,3 +23,4 @@
 
 - [Discord Server](https://discord.gg/ZVH2ujy9ex) — MeshCore community
 - [LocalMesh NL](https://www.localmesh.nl/) — Nederlandse community
+- [MeshWiki NL](https://www.meshwiki.nl/) — Nederlandse Wiki

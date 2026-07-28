@@ -19,6 +19,6 @@ In practice, a network consists of a combination of these node types. A typical 
 > [!NOTE]
 > **Example:** 2–4 Companion Radios for family members, 1 Repeater at a high point for better coverage, and 1 Room Server at home for store-and-forward.
 
-![Diagram 1 bij node-types](../../images/node-types-1.svg)
+![Diagram 1 bij node-types](../../images/en/node-types-1.svg)
 
 Translated from Dutch by Anthropic Claude

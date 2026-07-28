@@ -8,7 +8,7 @@ MeshCore is opgebouwd uit vier strikt gescheiden lagen, elk met een specifieke f
 
 Layer stack SVG
 
-![Diagram 1 bij techniek-lagen](../../images/techniek-lagen-1.svg)
+![Diagram 1 bij techniek-lagen](../../images/nl/techniek-lagen-1.svg)
 
 ## Laag 1: RF-hardware
 

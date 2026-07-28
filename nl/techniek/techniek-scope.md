@@ -195,7 +195,7 @@ telkens op een andere plek.
 | Kanaal-hash | `C3` | `DB` |
 | Transport code bij scope `nl-ov-zwo` | `0x7381` | `0x35A1` |
 
-![Vier frames vergeleken: twee kanalen, met en zonder transport code](../../images/techniek-packets-5.svg)
+![Vier frames vergeleken: twee kanalen, met en zonder transport code](../../images/nl/techniek-packets-5.svg)
 
 De waarden zijn berekend met de algoritmen uit de firmware, voor het bericht
 `"Op Woensdag a.s. Blauwvingerdagen"` van afzender `PE1HVH` op tijdstempel
@@ -342,7 +342,7 @@ speelt de PSK, en die alleen.
 
 ## Hoe een repeater beslist
 
-![Beslisboom van een repeater bij een binnenkomend kanaalbericht](../../images/techniek-packets-4.svg)
+![Beslisboom van een repeater bij een binnenkomend kanaalbericht](../../images/nl/techniek-packets-4.svg)
 
 ### De kern: `findMatch()` rekent, hij zoekt niet op
 

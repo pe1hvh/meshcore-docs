@@ -1,0 +1,32 @@
+<svg style="width:100%;margin:1rem 0" viewBox="0 0 680 380" xmlns="http://www.w3.org/2000/svg">
+<style>
+:root{--bg:#FFFFFF; --grid:#023E8A; --line:#0096C7; --wave:#0096C7; --node:#0077B6; --outer:#0096C7; --text-primary:#0a2540; --text-secondary:#3d6380; --text-muted:#7a9bb5; --link-color:#0077B6; --link-hover:#023E8A; --heading-color:#0077B6; --border-subtle:rgba(0,119,182,0.12); --card-bg:rgba(0,119,182,0.03); --card-border:rgba(0,119,182,0.12); --card-hover:rgba(0,119,182,0.07); --code-bg:rgba(0,119,182,0.04); --code-border:rgba(0,119,182,0.12); --info-bg:rgba(0,119,182,0.04); --info-border:rgba(0,119,182,0.15); --table-header:rgba(0,119,182,0.06); --table-row-alt:rgba(0,119,182,0.02); --table-border:rgba(0,119,182,0.1); --timeline-line:#0096C7; --timeline-dot:#0077B6; --tag-green:rgba(16,185,129,0.1); --tag-green-text:#059669; --tag-red:rgba(239,68,68,0.08); --tag-red-text:#dc2626; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}
+@media (prefers-color-scheme: dark){:root{--bg:#0A1628; --grid:#0077B6; --line:#0077B6; --wave:#48CAE4; --node:#00B4D8; --outer:#0077B6; --text-primary:#e0f0f8; --text-secondary:#8badc4; --text-muted:#4a6a80; --link-color:#48CAE4; --link-hover:#90E0EF; --heading-color:#48CAE4; --border-subtle:rgba(0,119,182,0.15); --card-bg:rgba(0,119,182,0.06); --card-border:rgba(0,119,182,0.15); --card-hover:rgba(0,119,182,0.12); --code-bg:rgba(0,119,182,0.08); --code-border:rgba(0,119,182,0.2); --info-bg:rgba(72,202,228,0.06); --info-border:rgba(72,202,228,0.2); --table-header:rgba(0,119,182,0.1); --table-row-alt:rgba(0,119,182,0.04); --table-border:rgba(0,119,182,0.12); --timeline-line:#0077B6; --timeline-dot:#00B4D8; --tag-green:rgba(16,185,129,0.15); --tag-green-text:#6ee7b7; --tag-red:rgba(239,68,68,0.12); --tag-red-text:#fca5a5; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}}
+</style>
+<rect x="0" y="0" width="680" height="380" fill="var(--bg)"/>
+
+<rect fill="var(--info-bg)" height="44" rx="5" stroke="var(--info-border)" stroke-width="1.5" width="560" x="60" y="10"></rect>
+<text fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" x="80" y="37">Application</text>
+<text fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="9" x="380" y="37">MeshCore Companion Protocol</text>
+<rect fill="var(--info-bg)" height="44" rx="5" stroke="var(--info-border)" stroke-width="1.2" width="560" x="60" y="60"></rect>
+<text fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" x="80" y="87">Profiles / GATT Services</text>
+<text fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="9" x="380" y="87">NUS (Nordic UART Service)</text>
+<rect fill="var(--card-bg)" height="44" rx="5" stroke="var(--card-border)" stroke-width="1.2" width="560" x="60" y="110"></rect>
+<text fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" x="80" y="137">Protocols</text>
+<text fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="9" x="380" y="137">ATT, L2CAP, GATT</text>
+<rect fill="var(--card-bg)" height="44" rx="5" stroke="var(--card-border)" stroke-width="1.2" width="560" x="60" y="160"></rect>
+<text fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" x="80" y="187">Host Controller Interface</text>
+<text fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="9" x="380" y="187">← Software / firmware boundary</text>
+<rect fill="var(--code-bg)" height="44" rx="5" stroke="var(--code-border)" stroke-width="1.2" width="560" x="60" y="216"></rect>
+<text fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" x="80" y="243">Link Layer / Controller</text>
+<text fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="9" x="380" y="243">State machine, firmware</text>
+<rect fill="var(--code-bg)" height="44" rx="5" stroke="var(--code-border)" stroke-width="1.2" width="560" x="60" y="266"></rect>
+<text fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" x="80" y="293">Radio (2.4 GHz)</text>
+<text fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="9" x="380" y="293">GFSK modulation, 40 channels</text>
+<rect fill="var(--code-bg)" height="44" rx="5" stroke="var(--code-border)" stroke-width="1.2" width="560" x="60" y="316"></rect>
+<text fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" x="80" y="343">Antenna</text>
+<text fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="9" x="380" y="343">Hardware</text>
+<!-- Labels -->
+<text fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="8" text-anchor="end" transform="rotate(-90,25,180)" x="40" y="67">SOFTWARE</text>
+<text fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="8" text-anchor="end" transform="rotate(-90,25,310)" x="40" y="300">HARDWARE</text>
+</svg>

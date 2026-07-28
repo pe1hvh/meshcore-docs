@@ -31,7 +31,7 @@ We pakken onze 32 bits en verdelen ze in groepjes van 12. Het woord "Test" wordt
 
 Bit grouping visualization
 
-![Diagram 1 bij techniek-chirp](../../images/techniek-chirp-1.svg)
+![Diagram 1 bij techniek-chirp](../../images/nl/techniek-chirp-1.svg)
 
 ## Symbolen worden chirps
 
@@ -43,7 +43,7 @@ Stel je de 125 kHz bandbreedte voor als een ladder met **4096 treden**. Elk symb
 
 Frequency ladder diagram (tall version for visibility)
 
-![Diagram 2 bij techniek-chirp](../../images/techniek-chirp-2.svg)
+![Diagram 2 bij techniek-chirp](../../images/nl/techniek-chirp-2.svg)
 
 ### De chirp loopt de ladder op
 
@@ -51,7 +51,7 @@ Een chirp begint op zijn startpositie en loopt dan alle treden af, omhoog. Bij d
 
 Two chirps: symbol 0 (no wrap) vs symbol N (with wrap)
 
-![Diagram 3 bij techniek-chirp](../../images/techniek-chirp-3.svg)
+![Diagram 3 bij techniek-chirp](../../images/nl/techniek-chirp-3.svg)
 
 ## Hoe weet de ontvanger welk symbool het was?
 
@@ -61,7 +61,7 @@ Stijgende frequentie × dalende frequentie = **constante toon**. De hoogte van d
 
 Dechirp process diagram
 
-![Diagram 4 bij techniek-chirp](../../images/techniek-chirp-4.svg)
+![Diagram 4 bij techniek-chirp](../../images/nl/techniek-chirp-4.svg)
 
 De **FFT** (Fast Fourier Transform) analyseert de toon en geeft een spectrum met 4096 bins. De bin waar de energie geconcentreerd is = het symboolnummer.
 
@@ -75,4 +75,4 @@ De complete keten van tekst naar radiosignaal:
 
 Pipeline flow diagram
 
-![Diagram 5 bij techniek-chirp](../../images/techniek-chirp-5.svg)
+![Diagram 5 bij techniek-chirp](../../images/nl/techniek-chirp-5.svg)

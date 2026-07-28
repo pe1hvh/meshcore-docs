@@ -19,19 +19,19 @@ zonder abonnement. **DOMCA** is een initiatief om die kennis toegankelijk te
 maken voor de Nederlandse community.
 
 Deze repository bevat de volledige documentatie: 30 hoofdstukken in het
-Nederlands, dezelfde 30 in het Engels, met 50 diagrammen.
+Nederlands, dezelfde 30 in het Engels, met 25 diagrammen per taal.
 
 ### Beginnen
 
 | Ik wil… | Begin hier |
 |---|---|
-| weten waar dit over gaat | [Wat is MeshCore?](nl/gebruik/wat-is-meshcore.md) |
-| een node aan de praat krijgen | [Aan de Slag](nl/gebruik/aan-de-slag.md) · [Hardware](nl/gebruik/hardware.md) |
-| weten wat mag binnen de regels | [Regelgeving & Duty Cycle](nl/gebruik/regelgeving.md) |
-| begrijpen hoe het écht werkt | [Het Lagenmodel](nl/techniek/techniek-lagen.md) → [Packet Structuur](nl/techniek/techniek-packets.md) |
-| een repeater goed instellen | [Regio's en Scopes](nl/techniek/techniek-scope.md) · [Repeater TX/RX flow](nl/techniek/repeater-flow.md) |
-| weten waarom regio's zijn zoals ze zijn | [Regio's: bedoeling en praktijk](nl/techniek/techniek-regios-praktijk.md) |
-| een term opzoeken | [Terminologie](nl/naslag/terminologie.md) |
+| weten waar dit over gaat | [Wat is MeshCore?](nl/gebruik/what-is-meshcore.md) |
+| een node aan de praat krijgen | [Aan de Slag](nl/gebruik/getting-started.md) · [Hardware](nl/gebruik/hardware.md) |
+| weten wat mag binnen de regels | [Regelgeving & Duty Cycle](nl/gebruik/regulations.md) |
+| begrijpen hoe het écht werkt | [Het Lagenmodel](nl/techniek/layer-model.md) → [Packet Structuur](nl/techniek/packet-structure.md) |
+| een repeater goed instellen | [Regio's en Scopes](nl/techniek/regions-and-scopes.md) · [Repeater TX/RX flow](nl/techniek/repeater-flow.md) |
+| weten waarom regio's zijn zoals ze zijn | [Regio's: bedoeling en praktijk](nl/techniek/regions-in-practice.md) |
+| een term opzoeken | [Terminologie](nl/naslag/terminology.md) |
 
 Het volledige overzicht staat in **[nl/README.md](nl/README.md)**.
 
@@ -45,7 +45,7 @@ een stap verder, en dat is bewust:
 - **Geverifieerd tegen de broncode.** Technische claims vermelden de
   firmwareversie en commit waartegen ze zijn gecontroleerd, met verwijzing naar
   het betreffende bestand in `meshcore-dev/MeshCore`.
-- **Narekenbaar.** De voorbeelden in [Regio's en Scopes](nl/techniek/techniek-scope.md)
+- **Narekenbaar.** De voorbeelden in [Regio's en Scopes](nl/techniek/regions-and-scopes.md)
   zijn met [`tools/bereken-voorbeeld.py`](tools/bereken-voorbeeld.py) te
   reproduceren. Klopt de tekst niet, dan zie je dat zelf.
 - **Ook wat níet werkt.** Stub-implementaties, `TODO`'s in de firmware en
@@ -67,19 +67,19 @@ MeshCore turns inexpensive LoRa radios into a network of their own. Messages hop
 from node to node until they arrive — no internet, no cell towers, no
 subscription. **DOMCA** (Dutch Open MeshCore Activity) exists to make that
 knowledge accessible, and this repository holds the full documentation: 30
-chapters in Dutch, the same 30 in English, with 50 diagrams.
+chapters in Dutch, the same 30 in English, with 25 diagrams per language.
 
 ### Getting started
 
 | I want to… | Start here |
 |---|---|
-| know what this is about | [What is MeshCore?](en/usage/wat-is-meshcore.md) |
-| get a node running | [Getting Started](en/usage/aan-de-slag.md) · [Hardware](en/usage/hardware.md) |
-| stay within the rules | [Regulations & Duty Cycle](en/usage/regelgeving.md) |
-| understand how it really works | [The Layer Model](en/technical/techniek-lagen.md) → [Packet Structure](en/technical/techniek-packets.md) |
-| configure a repeater properly | [Regions and Scopes](en/technical/techniek-scope.md) · [Repeater TX/RX flow](en/technical/repeater-flow.md) |
-| know why regions are the way they are | [Regions: intent and practice](en/technical/techniek-regios-praktijk.md) |
-| look up a term | [Terminology](en/reference/terminologie.md) |
+| know what this is about | [What is MeshCore?](en/usage/what-is-meshcore.md) |
+| get a node running | [Getting Started](en/usage/getting-started.md) · [Hardware](en/usage/hardware.md) |
+| stay within the rules | [Regulations & Duty Cycle](en/usage/regulations.md) |
+| understand how it really works | [The Layer Model](en/technical/layer-model.md) → [Packet Structure](en/technical/packet-structure.md) |
+| configure a repeater properly | [Regions and Scopes](en/technical/regions-and-scopes.md) · [Repeater TX/RX flow](en/technical/repeater-flow.md) |
+| know why regions are the way they are | [Regions: intent and practice](en/technical/regions-in-practice.md) |
+| look up a term | [Terminology](en/reference/terminology.md) |
 
 The full index is in **[en/README.md](en/README.md)**.
 
@@ -92,7 +92,7 @@ further, deliberately so:
 - **Verified against the source.** Technical claims name the firmware version and
   commit they were checked against, pointing at the relevant file in
   `meshcore-dev/MeshCore`.
-- **Reproducible.** The examples in [Regions and Scopes](en/technical/techniek-scope.md)
+- **Reproducible.** The examples in [Regions and Scopes](en/technical/regions-and-scopes.md)
   can be recomputed with [`tools/bereken-voorbeeld.py`](tools/bereken-voorbeeld.py).
 - **Including what does not work.** Stub implementations, firmware `TODO`s and
   undocumented commands are described as such.
@@ -120,7 +120,9 @@ further, deliberately so:
 │   ├── technical/
 │   ├── reference/
 │   └── project/
-├── images/             diagrammen (SVG) en foto's
+├── images/
+│   ├── nl/               diagrammen met Nederlandse tekst
+│   └── en/               diagrammen met Engelse tekst
 ├── tools/              narekenscripts bij de techniekhoofdstukken
 └── LICENSE             CC BY-SA 4.0
 ```

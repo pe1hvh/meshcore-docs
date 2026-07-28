@@ -6,7 +6,7 @@ MeshCore is built from four strictly separated layers, each with a specific func
 
 ## The four layers
 
-![Diagram 1 bij techniek-lagen](../../images/techniek-lagen-1.svg)
+![Diagram 1 bij techniek-lagen](../../images/en/layer-model-1.svg)
 
 ## Layer 1: RF Hardware
 
@@ -18,7 +18,7 @@ The modem layer translates bits into radio signals via Chirp Spread Spectrum. Ba
 
 ## Layer 3: Firmware and Network Stack
 
-MeshCore firmware handles routing, message processing, and network management. Every node has its own identity in the form of an Ed25519 keypair; in packets and paths that node is identified by the **first byte of its public key** (see [MeshCore Packet Structure](techniek-packets.md)). Nodes can learn routes to other nodes: **intelligent routing** instead of flooding ensures efficient network traffic.
+MeshCore firmware handles routing, message processing, and network management. Every node has its own identity in the form of an Ed25519 keypair; in packets and paths that node is identified by the **first byte of its public key** (see [MeshCore Packet Structure](packet-structure.md)). Nodes can learn routes to other nodes: **intelligent routing** instead of flooding ensures efficient network traffic.
 
 ## Layer 4: Legal mode
 
