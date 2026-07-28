@@ -38,6 +38,7 @@ Off-grid mesh communication over LoRa radio.
 
 - [MeshCore Platforms](platform/platforms.md)
 - [The Four Platform Families](platform/platform-families.md)
+- [Node Matrix](platform/node-matrix.md)
 
 ## Reference
 

@@ -6,6 +6,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 
 | Term | Meaning |
 |---|---|
+| 18650 | Cylindrical lithium-ion cell of 18 by 65 mm; on nodes either a loose cell in a holder or built in |
 | 70 cm band | Amateur radio band 430–440 MHz, licence required |
 | 868 MHz | ISM band frequency for Europe |
 | ACK | Acknowledgement — confirmation that a message has been received |
@@ -33,6 +34,8 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | DM | Direct Message — private message between two nodes, end-to-end encrypted |
 | Duty Cycle | Percentage of transmit time allowed (EU: max 1% on 868 MHz) |
 | E2E | End-to-End encryption — only sender and receiver can read messages |
+| e-ink | Electronic paper; holds its image without power and reads well in daylight, but refreshes slowly |
+| Power amplifier (PA) | Amplifier stage behind the radio chip that raises the transmit power, for example from 22 to 30 dBm |
 | EIRP | Effective Isotropic Radiated Power — effective radiated power including antenna |
 | Encrypt-then-MAC | Encrypt first, then compute the MAC over the ciphertext |
 | ERP | Effective Radiated Power — effective radiated power including antenna gain |
@@ -58,6 +61,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | LittleFS | Compact filesystem for microcontrollers, resilient to power loss; used on nRF52, RP2040 and STM32WL |
 | LoRa | Long Range — patented modulation technique for long-range communication |
 | LPCOMP | Low-Power Comparator in the nRF52 — can wake the chip from `SYSTEMOFF` on a voltage change |
+| LR1110 | Semtech transceiver combining LoRa with GNSS and WiFi scanning for positioning without a separate GPS module |
 | MAC (cipher) | Message Authentication Code — HMAC-SHA256 over the ciphertext, truncated to 2 bytes. MeshCore does not use the term MIC |
 | MCU | Microcontroller Unit — the central processor of a node |
 | Mesh | Network where every device can forward messages to others |
@@ -99,6 +103,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | SoftDevice | Precompiled Bluetooth stack from Nordic that sits alongside the application in an nRF52's flash |
 | SPI | Serial Peripheral Interface — fast bus for LoRa chip and SD card |
 | SPIFFS | Simple filesystem for flash memory; used on ESP32 for identity and contacts |
+| Standalone | Firmware role for a node with its own display and keyboard, working without a companion app |
 | ST-Link | Programming and debug adapter from STMicroelectronics; the usual way to flash an STM32WL |
 | STM32WLE5 | SoC from STMicroelectronics with a Cortex-M4 and the LoRa radio (SubGHz) on the same die |
 | Store-and-forward | Storing messages until the recipient is reachable |

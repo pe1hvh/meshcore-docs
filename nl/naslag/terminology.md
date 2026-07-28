@@ -6,6 +6,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 
 | Term | Betekenis |
 |---|---|
+| 18650 | Cilindrische lithium-ioncel van 18 bij 65 mm; op nodes als losse cel in een houder of vast ingebouwd |
 | 70 cm-band | Amateur radioband 430–440 MHz, licentie vereist |
 | 868 MHz | ISM-band frequentie voor Europa |
 | ACK | Acknowledgement — bevestiging dat een bericht is ontvangen |
@@ -33,6 +34,8 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | DM | Direct Message — privébericht tussen twee nodes, end-to-end versleuteld |
 | Duty Cycle | Percentage zendtijd dat is toegestaan (EU: max 1% op 868 MHz) |
 | E2E | End-to-End encryptie — alleen zender en ontvanger kunnen berichten lezen |
+| Eindtrap (PA) | Power Amplifier — versterkertrap achter de radiochip die het zendvermogen optrekt, bijvoorbeeld van 22 naar 30 dBm |
+| e-ink | Elektronisch papier; houdt het beeld vast zonder stroom en is bij daglicht goed leesbaar, maar ververst traag |
 | EIRP | Effective Isotropic Radiated Power — effectief uitgestraald vermogen incl. antenne |
 | Encrypt-then-MAC | Eerst versleutelen, daarna de MAC over de cijfertekst berekenen |
 | ERP | Effective Radiated Power — effectief uitgestraald vermogen inclusief antenne-winst |
@@ -58,6 +61,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | LittleFS | Compact filesystem voor microcontrollers, bestand tegen stroomuitval; gebruikt op nRF52, RP2040 en STM32WL |
 | LoRa | Long Range — gepatenteerde modulatietechniek voor langeafstandscommunicatie |
 | LPCOMP | Low-Power Comparator in de nRF52 — kan de chip uit `SYSTEMOFF` wekken op een spanningsverandering |
+| LR1110 | Semtech-transceiver die LoRa combineert met GNSS- en WiFi-scanning voor locatiebepaling zonder losse GPS-module |
 | MAC (cipher) | Message Authentication Code — HMAC-SHA256 over de cijfertekst, afgekapt op 2 bytes. MeshCore gebruikt de term MIC niet |
 | MCU | Microcontroller Unit — de centrale processor van een node |
 | Mesh | Netwerk waarbij elk apparaat berichten kan doorsturen naar anderen |
@@ -99,6 +103,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | SoftDevice | Voorgecompileerde Bluetooth-stack van Nordic die naast de applicatie in de flash van een nRF52 staat |
 | SPI | Serial Peripheral Interface — snelle bus voor LoRa chip en SD-kaart |
 | SPIFFS | Eenvoudig filesystem voor flashgeheugen; op ESP32 gebruikt voor identiteit en contacten |
+| Standalone | Firmwarerol voor een node met eigen scherm en toetsenbord, die zonder companion-app werkt |
 | ST-Link | Programmeer- en debugadapter van STMicroelectronics; de gebruikelijke manier om een STM32WL te flashen |
 | STM32WLE5 | SoC van STMicroelectronics met een Cortex-M4 en de LoRa-radio (SubGHz) op dezelfde die |
 | Store-and-forward | Berichten opslaan totdat de ontvanger bereikbaar is |

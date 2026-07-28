@@ -5,6 +5,84 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
 
 ---
 
+## [2026-07-27] Add NodeMatrix
+
+### Added
+
+- **Node Matrix** (`nl/platform/node-matrix.md`, `en/platform/node-matrix.md`):
+  new platform chapter, converted from a standalone HTML page holding the
+  sixty devices of the MeshCore web flasher. Until now the repo counted those
+  devices per family (`platform/platforms.md`) and discussed four of them at
+  length (`gebruik/hardware.md`), but the per-device figures — core, RAM,
+  clock speed, radio IC, TX power, display, GPS, link, battery, enclosure and
+  price — existed nowhere. The chapter is a reference table, not a buying
+  guide, and links to `platforms.md` for the reasoning.
+- The seventeen columns of the HTML page are split into four tables keyed on
+  the node name — identity and MCU, radio and TX power, peripherals, power and
+  price — because a seventeen-column markdown table is unreadable on GitHub.
+  The *Link* column of the HTML page was dropped: on all sixty rows it repeats
+  exactly those of WiFi, BLE and USB that read *yes*. The boolean columns were
+  kept because they also carry *option*, which is what distinguishes the Pico W
+  — the hardware is there, the firmware does not build for it — and the Link
+  column could not express that.
+- Section *To be confirmed* listing all twenty-five devices that carry a `°`,
+  with the reservation quoted in the wording of the source. In the HTML page
+  this was a tooltip, which markdown has no equivalent for. Dropping it would
+  have hidden that roughly 40 % of the rows contain at least one unverified
+  value.
+- Section *Quick filters*: six derived lists (GPS, display, works without a
+  phone app, WiFi, 28 dBm or more, onboard battery) replacing the interactive
+  filter chips of the HTML page, which do not survive the conversion.
+- A `> [!WARNING]` at table 2 stating that TX power is not permission: the
+  value is that of the radio or the power amplifier, not what EU rules allow
+  on 868 MHz. Eight of the sixty devices are at 28 dBm or above.
+- Both chapters listed in `nl/README.md` and `en/README.md` under *Platform* /
+  *Platform*, directly after *De vier platformfamilies* / *The Four Platform
+  Families*.
+- Five terms added to `nl/naslag/terminology.md` and
+  `en/reference/terminology.md`: *18650*, *e-ink*, *Eindtrap (PA)* /
+  *Power amplifier (PA)*, *LR1110* and *Standalone*.
+
+### Fixed
+
+- Prices in `nl/gebruik/hardware.md` and `en/usage/hardware.md`, which
+  contradicted the node matrix. The matrix leads. T-Deck Plus was €70–80 and
+  is now €40–90; Heltec V3/V4 was €20–40 and is now €16–32; RAK WisBlock
+  RAK4631 was €40–60 and is now €26–38; Seeed T1000-E was €30–40 and is now
+  €32–42. Both the section headings and the comparison table were affected.
+- The T-Deck Plus was listed with built-in GPS in `gebruik/hardware.md` and
+  `usage/hardware.md`; the matrix marks GPS on the T-Deck as
+  version-dependent. Bullet and comparison table now say so.
+- The Heltec V4 was listed at 28 dBm TX in both hardware chapters. The matrix
+  gives 27 dBm and marks the exact power of the amplifier as unconfirmed; the
+  text now states both.
+
+### Changed
+
+- The `> [!NOTE]` about chip versus board in `nl/gebruik/hardware.md` and
+  `en/usage/hardware.md` now also points at the node matrix and records that
+  the prices and specifications on that page follow it.
+- This file gained an `[Unreleased]` section. `CLAUDE.md` prescribes one for
+  new entries, but the file only had dated sections; the existing dated
+  sections were left untouched.
+
+### Notes
+
+- `nl/platform/node-matrix.md` and `en/platform/node-matrix.md` carry a source
+  block stating explicitly that the page is **not** verified against the
+  firmware and cannot be: no column comes from `meshcore-dev/MeshCore`. RAM,
+  clock speed and link options come from the Nordic, Espressif and Raspberry
+  Pi datasheets; radio, display, GPS, battery, enclosure and price from
+  manufacturer and community sources; the device list from the saved web
+  flasher page of 27 July 2026, the same page `platforms.md` uses. No script
+  was added to `tools/`, so the figures are marked as an external source
+  instead of being recomputable.
+- No new diagrams; `images/nl/` and `images/en/` are unchanged.
+- The family split in the matrix — 32 ESP32, 27 nRF52840, 1 RP2040, 0 STM32WL
+  — matches the table in `platform/platforms.md` exactly.
+
+---
+
 ## [2026-07-28] Add docs about Direct Messages/Platforms
 
 ### Added

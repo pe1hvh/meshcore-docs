@@ -9,22 +9,22 @@ MeshCore ondersteunt een breed scala aan hardware. De apparaten zijn in te delen
 
 ## Hardware
 
-### LilyGO T-Deck Plus — €70–80
+### LilyGO T-Deck Plus — €40–90
 
 **LilyGO · ESP32-S3** · 2.8" LCD · QWERTY toetsenbord · GPS · Trackball · SMA connector
 
 - ✓ Volledig zelfstandig
 - ✓ Fysiek toetsenbord
-- ✓ GPS ingebouwd
+- ✓ GPS, maar niet op elke uitvoering
 - ✓ Externe antenne mogelijk
 - ✗ Trackball soms gevoelig
 - ✗ Reset knop kan per ongeluk ingedrukt worden
 
 **Beste voor:** Standalone gebruik zonder smartphone
 
-### Heltec WiFi LoRa 32 V3/V4 — €20–40
+### Heltec WiFi LoRa 32 V3/V4 — €16–32
 
-**Heltec · ESP32-S3 · SX1262** · 0.96" OLED · WiFi · BLE · V4: 28dBm TX
+**Heltec · ESP32-S3 · SX1262** · 0.96" OLED · WiFi · BLE · V4: 27 dBm TX (nog te bevestigen)
 
 - ✓ Zeer betaalbaar
 - ✓ Compact, breed ondersteund
@@ -34,7 +34,7 @@ MeshCore ondersteunt een breed scala aan hardware. De apparaten zijn in te delen
 
 **Beste voor:** Budget instap met smartphone
 
-### RAK WisBlock RAK4631 — €40–60
+### RAK WisBlock RAK4631 — €26–38
 
 **RAKwireless · nRF52840** · Modulair systeem · Extreem laag verbruik · Uitbreidingsmodules
 
@@ -46,7 +46,7 @@ MeshCore ondersteunt een breed scala aan hardware. De apparaten zijn in te delen
 
 **Beste voor:** Energiezuinige en modulaire oplossingen
 
-### Seeed Studio T1000-E — €30–40
+### Seeed Studio T1000-E — €32–42
 
 **Seeed Studio · nRF52840** · Creditcard-formaat · GPS · BLE · Laag verbruik
 
@@ -59,16 +59,16 @@ MeshCore ondersteunt een breed scala aan hardware. De apparaten zijn in te delen
 **Beste voor:** Compacte companion radio met GPS
 
 > [!NOTE]
-> **Chip versus bord.** Deze pagina gaat over apparaten. Waarom de chip erin bepaalt wat het apparaat kan — BLE, WiFi, display, OTA, flashmethode — staat in [MeshCore Platforms](../platform/platforms.md). Wat er per familie precies in de chip zit, staat in [De vier platformfamilies](../platform/platform-families.md).
+> **Chip versus bord.** Deze pagina gaat over apparaten. Waarom de chip erin bepaalt wat het apparaat kan — BLE, WiFi, display, OTA, flashmethode — staat in [MeshCore Platforms](../platform/platforms.md). Wat er per familie precies in de chip zit, staat in [De vier platformfamilies](../platform/platform-families.md). Alle zestig apparaten uit de web flasher, met hun cijfers, staan in [Nodematrix](../platform/node-matrix.md); de prijzen en specificaties hieronder volgen die matrix.
 
 ## Vergelijkingstabel
 
 | Apparaat | Chip | Display | GPS | WiFi | Prijs |
 |---|---|---|---|---|---|
-| T-Deck Plus | ESP32-S3 | 2.8" LCD | Ja | Ja | €70–80 |
-| Heltec V3/V4 | ESP32-S3 | 0.96" OLED | Nee | Ja | €20–40 |
-| RAK4631 | nRF52840 | Nee | Module | Nee | €40–60 |
-| T1000-E | nRF52840 | Nee | Ja | Nee | €30–40 |
+| T-Deck Plus | ESP32-S3 | 2.8" LCD | Optie | Ja | €40–90 |
+| Heltec V3/V4 | ESP32-S3 | 0.96" OLED | Nee | Ja | €16–32 |
+| RAK4631 | nRF52840 | Nee | Module | Nee | €26–38 |
+| T1000-E | nRF52840 | Nee | Ja | Nee | €32–42 |
 
 ## Offline Kaarten op T-Deck
 
