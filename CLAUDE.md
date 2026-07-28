@@ -1,108 +1,112 @@
 # meshcore-docs
 
-Tweetalige (NL/EN) documentatie over MeshCore: gebruik, hardware,
-regelgeving en de internals van het LoRa-protocol. Een DOMCA-project
-(Dutch Open MeshCore Activity), gepubliceerd op [domca.nl](https://domca.nl).
+Bilingual (NL/EN) documentation about MeshCore: usage, hardware,
+regulations and the internals of the LoRa protocol. A DOMCA project
+(Dutch Open MeshCore Activity), published at [domca.nl](https://domca.nl).
 
 Repo: `https://github.com/pe1hvh/meshcore-docs` · branch `main` ·
-tekst en diagrammen CC BY-SA 4.0, code in `tools/` MIT.
+text and diagrams CC BY-SA 4.0, code in `tools/` MIT.
 
-## Doel van dit document
+## Purpose of this document
 
-Richt-document voor wie aan deze documentatie werkt: redacteuren,
-vertalers en AI-assistenten (Claude) in vervolgsessies. Bevat de bindende
-regels, conventies en valkuilen die het gedrag bij **elke** taak sturen.
+Guidance document for anyone working on this documentation: editors,
+translators and AI assistants (Claude) in follow-up sessions. It holds the
+binding rules, conventions and pitfalls that steer behaviour in **every**
+task.
 
-Beschrijft **niet** wat MeshCore is of hoe het werkt — dat staat in de
-hoofdstukken zelf. Beschrijft **niet** hoe de website wordt gebouwd.
-Voor de inhoudsopgave: `nl/README.md` en `en/README.md`.
+It does **not** describe what MeshCore is or how it works — that belongs in
+the chapters themselves. It does **not** describe how the website is built.
+For the table of contents: `nl/README.md` and `en/README.md`.
 
-## Repo in één scherm
+## The repo on one screen
 
 ```
-├── nl/                  Nederlandse hoofdstukken (bron)
-│   ├── gebruik/         gebruik, hardware, regelgeving, privacy
-│   ├── techniek/        protocol, pakketten, encryptie, repeaters
-│   ├── platform/        platformfamilies, chipkeuze
-│   ├── naslag/          terminologie, referenties, links
-│   └── project/         over DOMCA, GitHub-overzicht
-├── en/                  Engelse hoofdstukken (vertaling, 1-op-1 spiegel)
+├── nl/                  Dutch chapters (source)
+│   ├── gebruik/         usage, hardware, regulations, privacy
+│   ├── techniek/        protocol, packets, encryption, repeaters
+│   ├── platform/        platform families, chip selection
+│   ├── naslag/          terminology, references, links
+│   └── project/         about DOMCA, GitHub overview
+├── en/                  English chapters (translation, 1-to-1 mirror)
 │   ├── usage/
 │   ├── technical/
 │   ├── platform/
 │   ├── reference/
 │   └── project/
 ├── images/
-│   ├── nl/              diagrammen (SVG) en foto's voor de NL-hoofdstukken
-│   └── en/              diagrammen (SVG) en foto's voor de EN-hoofdstukken
-├── tools/               narekenscripts bij de techniekhoofdstukken
-├── README.md            tweetalige landingspagina
-├── CHANGELOG.md         Keep a Changelog + semver
+│   ├── nl/              diagrams (SVG) and photos for the NL chapters
+│   └── en/              diagrams (SVG) and photos for the EN chapters
+├── tools/               recalculation scripts for the technical chapters
+├── README.md            bilingual landing page
+├── CHANGELOG.md         Keep a Changelog + semver (English only)
 └── LICENSE              CC BY-SA 4.0
 ```
 
-- **NL is de bron, EN is de vertaling.** Inhoudelijke wijzigingen beginnen
-  in het Nederlandse hoofdstuk en landen daarna in het Engelse.
-- **Bestandsnamen zijn altijd Engels**, kebab-case, ook in de
-  Nederlandse boom en ook voor scripts, diagrammen en bijlagen. Dit gaat
-  over bestanden; mapnamen vallen er niet onder en volgen de rubrieks-
-  mapping hieronder. Bestaat er geen gangbare Engelse term, gebruik dan de
-  firmware-term.
-- **Slugs zijn Engels, kebab-case, zonder rubrieksprefix, en in beide talen
-  identiek.** Alleen de mapnaam verschilt: `gebruik` ↔ `usage`,
+- **NL is the source, EN is the translation.** Substantive changes start in
+  the Dutch chapter and land in the English one afterwards.
+- **`CLAUDE.md` and `CHANGELOG.md` are English only.** They are project-wide
+  documents rather than chapters, so they have no Dutch counterpart; see
+  🌐 *Language parity*.
+- **File names are always English**, kebab-case, in the Dutch tree as well
+  and for scripts, diagrams and attachments too. This applies to files;
+  directory names are out of scope and follow the section mapping below. If
+  no common English term exists, use the firmware term.
+- **Slugs are English, kebab-case, without a section prefix, and identical
+  in both languages.** Only the directory name differs: `gebruik` ↔ `usage`,
   `techniek` ↔ `technical`, `naslag` ↔ `reference`, `platform` ↔ `platform`,
-  `project` ↔ `project`. Dus `nl/techniek/packet-structure.md` ↔
+  `project` ↔ `project`. So `nl/techniek/packet-structure.md` ↔
   `en/technical/packet-structure.md`.
-- **Twee inhoudsopgaven.** `nl/README.md` en `en/README.md` bevatten
-  dezelfde hoofdstukken in dezelfde volgorde.
-- **Geen gedeelde beeldmap.** Elk diagram bestaat twee keer, onder
-  dezelfde bestandsnaam: `images/nl/<slug>-<n>.svg` en
-  `images/en/<slug>-<n>.svg`. Ook als er geen tekst in staat.
+- **Two tables of contents.** `nl/README.md` and `en/README.md` list the
+  same chapters in the same order.
+- **No shared image directory.** Every diagram exists twice, under the same
+  file name: `images/nl/<slug>-<n>.svg` and `images/en/<slug>-<n>.svg`. Even
+  when it contains no text.
 
-## Waar deze documentatie op stuurt
+## What this documentation aims for
 
-Vier eigenschappen onderscheiden dit project van een gewone handleiding.
-Ze zijn geen stijlwens maar de reden van bestaan:
+Four properties set this project apart from an ordinary manual. They are
+not a stylistic preference but the reason it exists:
 
-1. **Byte voor byte.** Pakketten worden uitgeschreven met echte waarden,
-   nooit met `XX XX`.
-2. **Geverifieerd tegen de broncode.** Technische claims vermelden de
-   firmwareversie, commit en het bestand waartegen ze zijn gecontroleerd.
-3. **Narekenbaar.** Rekenvoorbeelden zijn te reproduceren met de scripts
-   in `tools/`.
-4. **Ook wat níet werkt.** Stub-implementaties, `TODO`'s in de firmware en
-   onbeschreven commando's staan er gewoon in.
+1. **Byte by byte.** Packets are written out with real values, never with
+   `XX XX`.
+2. **Verified against the source code.** Technical claims state the
+   firmware version, commit and the file they were checked against.
+3. **Recomputable.** Worked examples can be reproduced with the scripts in
+   `tools/`.
+4. **Including what does *not* work.** Stub implementations, `TODO`s in the
+   firmware and undocumented commands are simply included.
 
-## Documentconventies
+## Document conventions
 
-### Pagina-opbouw
+### Page structure
 
-- `#` H1 = paginatitel.
-- Daaronder een cursieve subtitelregel in hoofdletters, gescheiden door
-  `·` — bijvoorbeeld `*HEADER · ROUTE · PATH · PAYLOAD · REGIO-SCOPE*`.
-- Daarna een inleidende alinea (2–5 regels) die de hele pagina samenvat.
-- Secties met `##`, subsecties met `###`. **Geen `####`** op
-  hoofdstukniveau.
-- Technische hoofdstukken eindigen met `## Bronnen` (NL) / `## Sources` (EN).
-- Elk EN-hoofdstuk eindigt met de regel:
+- `#` H1 = page title.
+- Below it an italic subtitle line in capitals, separated by `·` — for
+  example `*HEADER · ROUTE · PATH · PAYLOAD · REGIO-SCOPE*`.
+- Then an introductory paragraph (2–5 lines) summarising the whole page.
+- Sections with `##`, subsections with `###`. **No `####`** at chapter
+  level.
+- Technical chapters end with `## Bronnen` (NL) / `## Sources` (EN).
+- Every EN chapter ends with the line:
   `Translated from Dutch by Anthropic Claude`.
 
-### Tekst
+### Text
 
-- Nieuwe proza harde wrap op ±80 kolommen. (Oudere hoofdstukken hebben nog
-  lange regels; wrap wat je aanraakt, herformatteer niet ongevraagd de rest.)
-- GitHub-alerts: `> [!NOTE]` voor toelichting en bronvermelding,
-  `> [!WARNING]` voor risico's en juridische waarschuwingen.
-- Tabellen met scheidingsrij `|---|---|`; cursieve rijen voor velden die
-  strikt genomen buiten scope vallen (zie `packet-structure.md`).
-- Codeblokken altijd met taal-tag: ` ```text `, ` ```python `, ` ```bash `.
-- Firmware-identifiers, bestandsnamen, commando's en hexwaarden in
+- New prose hard-wrapped at ±80 columns. (Older chapters still have long
+  lines; wrap what you touch, do not reformat the rest unasked.)
+- GitHub alerts: `> [!NOTE]` for clarification and source attribution,
+  `> [!WARNING]` for risks and legal warnings.
+- Tables with a separator row `|---|---|`; italic rows for fields that are
+  strictly speaking out of scope (see `packet-structure.md`).
+- Code blocks always with a language tag: ` ```text `, ` ```python `,
+  ` ```bash `.
+- Firmware identifiers, file names, commands and hex values in
   `` `backticks` ``.
-- Nuchtere toon, geen marketingtaal, geen superlatieven.
+- Matter-of-fact tone, no marketing language, no superlatives.
 
-### Bronvermelding in techniekhoofdstukken
+### Source attribution in technical chapters
 
-Bovenaan, direct na de inleiding:
+At the top, directly after the introduction:
 
 ```markdown
 > [!NOTE]
@@ -112,249 +116,266 @@ Bovenaan, direct na de inleiding:
 > `docs/packet_format.md`.
 ```
 
-Onderaan een `## Bronnen`-lijst met links naar
-`https://github.com/meshcore-dev/MeshCore/blob/<commit>/<pad>`.
+At the bottom a `## Bronnen` list with links to
+`https://github.com/meshcore-dev/MeshCore/blob/<commit>/<path>`.
 
-Pin de commit in de link, niet `main` — `main` verschuift en maakt de
-bronvermelding binnen weken onnauwkeurig.
+Pin the commit in the link, not `main` — `main` moves and makes the source
+attribution inaccurate within weeks.
 
-### Afbeeldingen
+### Images
 
-- Pad vanuit een NL-hoofdstuk: `../../images/nl/<slug>-<n>.svg`.
-- Pad vanuit een EN-hoofdstuk: `../../images/en/<slug>-<n>.svg`.
-- Beide bestanden bestaan altijd en heten hetzelfde. Bevat het diagram
-  geen tekst, dan is de EN-versie een identieke kopie.
-- Alt-tekst is beschrijvend en zelfstandig leesbaar — niet
+- Path from an NL chapter: `../../images/nl/<slug>-<n>.svg`.
+- Path from an EN chapter: `../../images/en/<slug>-<n>.svg`.
+- Both files always exist and carry the same name. If the diagram contains
+  no text, the EN version is an identical copy.
+- Alt text is descriptive and readable on its own — not
   `Diagram 1 bij layer-model`.
-- **Nieuwe diagrammen als SVG**, niet als PNG.
-- SVG-conventie (zie `images/nl/layer-model-1.svg` als referentie):
-  `style="width:100%;margin:1rem 0"`, een `viewBox`, een ingebedde
-  `<style>` met `:root`-variabelen plus een
-  `@media (prefers-color-scheme: dark)`-blok, alle kleuren via
-  `var(--…)`, teksten in `'JetBrains Mono',monospace`.
+- **New diagrams as SVG**, not as PNG.
+- SVG convention (see `images/nl/layer-model-1.svg` as a reference):
+  `style="width:100%;margin:1rem 0"`, a `viewBox`, an embedded `<style>`
+  with `:root` variables plus an `@media (prefers-color-scheme: dark)`
+  block, all colours via `var(--…)`, text in `'JetBrains Mono',monospace`.
 
 ### Links
 
-- Relatieve links binnen dezelfde taalboom. **Nooit** van `nl/` naar `en/`
-  of andersom.
-- Verwijzingen naar de firmware gaan naar het concrete bestand in
-  `meshcore-dev/MeshCore`, niet naar de repo-root.
+- Relative links within the same language tree. **Never** from `nl/` to
+  `en/` or the other way round.
+- References to the firmware point at the concrete file in
+  `meshcore-dev/MeshCore`, not at the repo root.
 
-## Bindende regels
+## Binding rules
 
-### 🛑 Stoppen en vragen
+### 🛑 Stop and ask
 
-**Deze regel gaat boven alle andere in dit hoofdstuk.** Wordt hij overtreden,
-dan is de rest van het werk waardeloos, hoe correct het verder ook is
-uitgevoerd. Er is geen opdracht, deadline of ogenschijnlijke
-vanzelfsprekendheid die hem opzij zet.
+**This rule overrides every other rule in this chapter.** If it is broken,
+the rest of the work is worthless, however correctly it was otherwise
+carried out. No assignment, deadline or apparent self-evidence sets it
+aside.
 
-- **Bij tegenspraak tussen bronnen: stoppen en vragen.** Nooit zelf
-  beslechten, ook niet als één lezing veel waarschijnlijker lijkt. Meld welke
-  bron wat zegt en leg de keuze voor.
-- **Een expliciet signaal wordt nooit wegverklaard.** Staat er iets in de
-  opdracht, in dit document of in de repo dat niet strookt met je eigen
-  waarneming, dan is je waarneming verdacht — niet het signaal. "Dat zal een
-  typefout zijn" en "dat is vast verouderd" zijn verboden conclusies.
-- **Inventariseer volledig.** Lege mappen, verborgen bestanden en mapentries
-  in een archief horen bij de inventaris. Een methode die ze niet toont, is
-  geen inventarisatie: `find -type f` mist lege mappen, `unzip -l` niet.
-- **Lees de woorden van de opdrachtgever letterlijk.** Meervoud is meervoud.
-  Leg een instructie niet langs je eigen indeling van het probleem; botsen
-  die twee, dan wint de instructie.
-- **Een gegeven antwoord is bindend.** Stel je een vraag, dan voer je het
-  antwoord uit — juist als het tegen je eigen aanname ingaat. Anders had je
-  de vraag niet moeten stellen.
-- **Twijfel hoort vóór het bouwen.** Een openstaand punt onder een oplevering
-  zetten is geen vraag stellen: dan is het werk al op een aanname gedaan.
-- **Checkpoint 2 is niet optioneel.** Impactanalyse en bevestiging vóór de
-  eerste regel wordt geschreven, ook — en vooral — bij een opdracht die
-  uitputtend oogt. Hoe gedetailleerder de opdracht, hoe scherper de
-  tegenspraken erin.
-- **Een regel die je hier vastlegt, pas je in dezelfde sessie toe op de
-  repo.** Kan dat niet, dan meld je dat vooraf met de reden. Zelf besluiten
-  dat iets "een aparte opdracht" is, is niet aan de uitvoerder.
+- **When sources contradict each other: stop and ask.** Never settle it
+  yourself, not even when one reading seems far more likely. Report which
+  source says what and put the choice to the client.
+- **An explicit signal is never explained away.** If something in the
+  assignment, in this document or in the repo conflicts with your own
+  observation, then your observation is the suspect — not the signal.
+  "That will be a typo" and "that must be outdated" are forbidden
+  conclusions.
+- **Take a complete inventory.** Empty directories, hidden files and
+  directory entries in an archive are part of the inventory. A method that
+  does not show them is not an inventory: `find -type f` misses empty
+  directories, `unzip -l` does not.
+- **Read the client's words literally.** Plural means plural. Do not hold
+  an instruction up against your own framing of the problem; when the two
+  clash, the instruction wins.
+- **An answer you were given is binding.** If you ask a question, you carry
+  out the answer — especially when it goes against your own assumption.
+  Otherwise you should not have asked.
+- **Doubt belongs before the building.** Putting an open point underneath a
+  delivery is not asking a question: by then the work has already been done
+  on an assumption.
+- **Checkpoint 2 is not optional.** Impact analysis and confirmation before
+  the first line is written, also — and especially — for an assignment that
+  looks exhaustive. The more detailed the assignment, the sharper the
+  contradictions inside it.
+- **A rule you record here, you apply to the repo in the same session.** If
+  that is not possible, report it up front with the reason. Deciding for
+  yourself that something is "a separate assignment" is not the executor's
+  call.
 
-### 🌐 Taalpariteit
+### 🌐 Language parity
 
-- **Elke inhoudelijke wijziging landt in beide talen**, in dezelfde sessie.
-- Kopstructuur, tabelkolommen, alerts, afbeeldingen en volgorde zijn in NL
-  en EN identiek. Alleen de taal verschilt.
-- Slug blijft gelijk; alleen de mapnaam verschilt.
-- Nieuw of hernoemd hoofdstuk → `nl/README.md` **én** `en/README.md`
-  bijwerken, op dezelfde positie in dezelfde rubriek.
-- Raakt een correctie alleen de vertaling (taalfout, ontbrekende sectie),
-  dan mag de EN-versie alleen wijzigen — meld dat expliciet.
+- **Every substantive change lands in both languages**, in the same
+  session.
+- Heading structure, table columns, alerts, images and ordering are
+  identical in NL and EN. Only the language differs.
+- The slug stays the same; only the directory name differs.
+- New or renamed chapter → update `nl/README.md` **and** `en/README.md`, at
+  the same position in the same section.
+- If a correction only affects the translation (language error, missing
+  section), the EN version may change on its own — report that explicitly.
+- **`CLAUDE.md` and `CHANGELOG.md` are maintained in English and delivered
+  in English, always.** They are project-wide documents, not chapters, so
+  language parity does not apply to them: there is no Dutch counterpart and
+  none should be created. This holds regardless of the language of the
+  assignment — a request in Dutch still yields an English `CLAUDE.md` and
+  `CHANGELOG.md`. New entries, new rules and new pitfalls are written in
+  English straight away, not translated afterwards. Content-bound language
+  is left exactly as it is: chapter titles, section names, subtitle lines,
+  quoted chapter text, literal strings and example data keep the language
+  they have in the repo. `README.md` stays bilingual and is not covered by
+  this rule.
 
-### 🔬 Verifieerbaarheid
+### 🔬 Verifiability
 
-- Technische claims worden gecontroleerd tegen de MeshCore-broncode, niet
-  tegen forumberichten of eerdere hoofdstukken.
-- Vermeld firmwareversie, commit-hash, datum en geraadpleegde bestanden.
-- Geen pakketvoorbeelden met `XX XX`: echte, narekenbare waarden.
-- Kun je iets niet verifiëren, schrijf het op als onbevestigd. **Verzin
-  niets** — de disclaimer over AI-hallucinaties in `README.md` is er niet
-  voor niets.
-- Firmware-defaults veranderen per release. Bij het aanraken van een
-  hoofdstuk: controleer of de vermelde versie nog actueel is.
-- Cijfers die **niet** uit de firmware-repo komen (datasheets van
-  Raspberry Pi, Espressif, Nordic, ST; de web flasher; webshops) worden
-  als externe bron gemarkeerd, met een voetnoot bij de tabel of het getal.
+- Technical claims are checked against the MeshCore source code, not
+  against forum posts or earlier chapters.
+- State the firmware version, commit hash, date and files consulted.
+- No packet examples with `XX XX`: real, recomputable values.
+- If you cannot verify something, write it down as unconfirmed. **Invent
+  nothing** — the disclaimer about AI hallucinations in `README.md` is
+  there for a reason.
+- Firmware defaults change from release to release. When touching a
+  chapter: check whether the version stated is still current.
+- Figures that do **not** come from the firmware repo (datasheets from
+  Raspberry Pi, Espressif, Nordic, ST; the web flasher; web shops) are
+  marked as an external source, with a footnote on the table or the figure.
 
-### 🧮 Consistentie van voorbeelden
+### 🧮 Consistency of examples
 
-- De voorbeelddata zijn projectbreed gelijk: regio `nl-ov-zwo`, kanaal
-  `#zwolle`, afzender `PE1HVH`, timestamp `1785412800`, tekst
+- The example data is the same project-wide: region `nl-ov-zwo`, channel
+  `#zwolle`, sender `PE1HVH`, timestamp `1785412800`, text
   `"Op Woensdag a.s. Blauwvingerdagen"`.
-- Wijzigt een voorbeeld, dan wijzigt `tools/example-calculation.py` mee — en
-  omgekeerd.
-- Elk getal in een techniekhoofdstuk moet met een script in `tools/`
-  reproduceerbaar zijn, of expliciet als externe bron gemarkeerd. Klopt de
-  tekst niet met de scriptuitvoer, dan is de tekst fout.
-- Genereert een hoofdstuk zijn tabellen uit de firmware, dan levert het
-  zijn eigen script mee. Naamconventie: Engels, kebab-case, zoals
-  `tools/example-calculation.py` en `tools/dm-example.py`.
+- If an example changes, `tools/example-calculation.py` changes with it —
+  and vice versa.
+- Every figure in a technical chapter must be reproducible with a script in
+  `tools/`, or explicitly marked as an external source. If the text does
+  not match the script output, the text is wrong.
+- If a chapter generates its tables from the firmware, it ships its own
+  script. Naming convention: English, kebab-case, such as
+  `tools/example-calculation.py` and `tools/dm-example.py`.
 
-### 📚 Terminologie en naslag
+### 📚 Terminology and reference
 
-- `nl/naslag/terminology.md` en `en/reference/terminology.md` zijn
-  **alfabetisch gesorteerd** — nieuwe termen worden op hun plaats
-  ingevoegd, niet onderaan geplakt.
-- Introduceer je een afkorting in een hoofdstuk, dan staat die ook in de
-  terminologietabel (beide talen).
-- Nieuwe externe bron → `naslag/references.md` / `reference/references.md`;
-  nieuwe tool of website → `naslag/links.md` / `reference/links.md`.
-- **Neem de woordkeuze van de firmware over waar die eenduidig is.** De
-  repo spreekt van *platforms* (`ESP32_PLATFORM`, `NRF52_PLATFORM`,
-  `RP2040_PLATFORM`, `STM32_PLATFORM`), niet van microcontrollers. Gebruik
-  *platform* en *platformfamilie* voor de vier bouwdoelen, *SoC* voor de
-  chip, en *MCU* alleen waar het echt om de rekenkern gaat. Wijk je
-  bewust af omdat de lezersterm anders is, zet dat dan in het hoofdstuk
-  zelf uit — niet stilzwijgend.
+- `nl/naslag/terminology.md` and `en/reference/terminology.md` are sorted
+  **alphabetically** — new terms are inserted in place, not tacked on at
+  the bottom.
+- If you introduce an abbreviation in a chapter, it also goes into the
+  terminology table (both languages).
+- New external source → `naslag/references.md` / `reference/references.md`;
+  new tool or website → `naslag/links.md` / `reference/links.md`.
+- **Adopt the firmware's wording where it is unambiguous.** The repo speaks
+  of *platforms* (`ESP32_PLATFORM`, `NRF52_PLATFORM`, `RP2040_PLATFORM`,
+  `STM32_PLATFORM`), not of microcontrollers. Use *platform* and *platform
+  family* for the four build targets, *SoC* for the chip, and *MCU* only
+  where the compute core is genuinely the subject. If you deliberately
+  deviate because the reader's term is different, spell that out in the
+  chapter itself — not silently.
 
-### 🛡️ Bestaande inhoud
+### 🛡️ Existing content
 
-- Inventariseer per geraakt bestand wat erin staat vóór je wijzigt.
-- Wat niet in de taak staat wordt niet gewijzigd, verwijderd of herschreven.
-- Geen nieuwe top-level mappen; geen hernoemde of verwijderde bestanden
-  zonder expliciete opdracht.
-- Waarschuwingen over regelgeving, duty cycle en encryptie in HAM-modus
-  worden niet afgezwakt, ingekort of samengevat weggelaten.
-- De AI-disclaimer in `README.md` en `project/about-domca.md` blijft staan.
-- Bij twijfel: **STOP en vraag.**
+- For every file you touch, inventory what is in it before you change
+  anything.
+- Whatever is not in the task is not changed, deleted or rewritten.
+- No new top-level directories; no renamed or deleted files without an
+  explicit instruction.
+- Warnings about regulations, duty cycle and encryption in HAM mode are not
+  softened, shortened or summarised away.
+- The AI disclaimer in `README.md` and `project/about-domca.md` stays.
+- When in doubt: **STOP and ask.**
 
-### 📋 CHANGELOG en commits
+### 📋 CHANGELOG and commits
 
-- `CHANGELOG.md` volgt [Keep a Changelog](https://keepachangelog.com/):
-  secties `Added` / `Changed` / `Fixed` / `Removed` onder `[Unreleased]`.
-- Entries noemen de bestandspaden van **beide** taalversies en leggen uit
-  *waarom* de wijziging is gedaan, niet alleen wat.
-- Feitelijke correcties horen onder `Fixed` met de foute bewering erbij —
-  zodat lezers die de oude tekst kennen weten wat er mis was.
-- Commits volgens Conventional Commits: `docs(regions-and-scopes): …`,
-  `fix(regulations): …`, `chore(images): …`. Scope = hoofdstuk-slug.
+- `CHANGELOG.md` follows [Keep a Changelog](https://keepachangelog.com/):
+  sections `Added` / `Changed` / `Fixed` / `Removed` under `[Unreleased]`.
+- Entries name the file paths of **both** language versions and explain
+  *why* the change was made, not just what.
+- Factual corrections belong under `Fixed` together with the incorrect
+  claim — so that readers who know the old text know what was wrong.
+- Commits follow Conventional Commits: `docs(regions-and-scopes): …`,
+  `fix(regulations): …`, `chore(images): …`. Scope = chapter slug.
 
-## Werkproces in een chat-sessie
+## Working process in a chat session
 
-Drie verplichte checkpoints. Ze vallen alle drie onder 🛑 *Stoppen en
-vragen*: een checkpoint overslaan omdat de opdracht duidelijk lijkt, is zelf
-de fout die die regel adresseert.
+Three mandatory checkpoints. All three fall under 🛑 *Stop and ask*:
+skipping a checkpoint because the assignment looks clear is itself the
+mistake that rule addresses.
 
-1. **Source verification** (eerst, altijd) — inventariseer alle beschikbare
-   sources, inclusief lege mappen en mapentries in een archief; meld welke je
-   ziet met timestamps; vraag welke leidend is. Begin elke inhoudelijke
-   response met *"Werkend met: [bestandsnaam] (uploaded [timestamp])"*.
-2. **Impact analyse** (vóór implementatie) — welke bestanden en mappen worden
-   geraakt (NL, EN, README-indexen, `images/nl/`, `images/en/`,
-   `terminology.md`, `CHANGELOG.md`, `tools/`), wat staat daar nu in, en welke
-   tegenspraken zitten er in de opdracht; vraag bevestiging vóór je begint.
-3. **Delivery validation** (vóór oplevering) — loop de checklist hieronder
-   af en meld het resultaat per punt.
+1. **Source verification** (first, always) — inventory all available
+   sources, including empty directories and directory entries in an
+   archive; report which ones you see with timestamps; ask which one leads.
+   Start every substantive response with *"Working with: [file name]
+   (uploaded [timestamp])"*.
+2. **Impact analysis** (before implementation) — which files and
+   directories are affected (NL, EN, README indexes, `images/nl/`,
+   `images/en/`, `terminology.md`, `CHANGELOG.md`, `tools/`), what is in
+   them now, and which contradictions the assignment contains; ask for
+   confirmation before you start.
+3. **Delivery validation** (before delivery) — walk through the checklist
+   below and report the result per item.
 
-**Delivery-checklist:**
+**Delivery checklist:**
 
-- [ ] NL en EN hebben dezelfde secties, tabellen, alerts en afbeeldingen
-- [ ] EN-bestand eindigt op `Translated from Dutch by Anthropic Claude`
-- [ ] Alle relatieve links wijzen naar bestaande bestanden
-- [ ] Elk diagram bestaat in `images/nl/` **en** `images/en/`, onder
-      dezelfde naam
-- [ ] Nieuwe termen staan alfabetisch in beide terminologiebestanden
-- [ ] Bron-blok en `## Bronnen` kloppen met de gebruikte firmwareversie en
-      commit; de links pinnen die commit
-- [ ] Getallen komen overeen met de uitvoer van `tools/`, of zijn als
-      externe bron gemarkeerd
-- [ ] README-index bijgewerkt indien hoofdstukken toegevoegd/hernoemd
-- [ ] `CHANGELOG.md`-entry onder `[Unreleased]`, beide talen genoemd
-- [ ] Geen resterende HTML→markdown-conversieartefacten
+- [ ] NL and EN have the same sections, tables, alerts and images
+- [ ] EN file ends with `Translated from Dutch by Anthropic Claude`
+- [ ] All relative links point to existing files
+- [ ] Every diagram exists in `images/nl/` **and** `images/en/`, under the
+      same name
+- [ ] New terms appear alphabetically in both terminology files
+- [ ] Source block and `## Bronnen` match the firmware version and commit
+      used; the links pin that commit
+- [ ] Figures match the output of `tools/`, or are marked as an external
+      source
+- [ ] README index updated if chapters were added or renamed
+- [ ] `CHANGELOG.md` entry under `[Unreleased]`, both languages named
+- [ ] No leftover HTML→markdown conversion artefacts
 
-**File-source-priority** (van hoog naar laag): meest recente upload >
-losse bestanden (op upload-tijd) > de repo op GitHub (alleen op verzoek of
-bij ontbreken van uploads) > chat-history (nooit als tekst-source).
-Bij conflict: STOP en vraag. Dat geldt ook voor dit document: spreekt
-`CLAUDE.md` de repo-inhoud tegen, dan is de repo leidend en wordt
-`CLAUDE.md` in dezelfde sessie bijgewerkt.
+**File source priority** (high to low): most recent upload > individual
+files (by upload time) > the repo on GitHub (only on request or when
+uploads are missing) > chat history (never as a text source). On conflict:
+STOP and ask. That applies to this document too: if `CLAUDE.md` contradicts
+the repo contents, the repo leads and `CLAUDE.md` is updated in the same
+session.
 
-## Output- en delivery-conventies
+## Output and delivery conventions
 
-Per bestand: pad vanaf de repo-root, de volledige inhoud, korte uitleg wat
-verandert en waarom, en wat **niet** is veranderd. NL eerst, EN daarna.
+Per file: the path from the repo root, the full content, a short
+explanation of what changes and why, and what has **not** changed. NL
+first, EN after.
 
-Geen fragmenten en geen `…ongewijzigd…`-markeringen in markdown-opleveringen:
-de bestanden worden 1-op-1 in de repo geplakt.
+No fragments and no `…unchanged…` markers in markdown deliveries: the files
+are pasted into the repo one-to-one.
 
-Bij meer dan twee bestanden: één ZIP met de directorystructuur vanaf de
-repo-root (`nl/`, `en/`, `images/`, …), naamconventie
-`meshcore_docs_[onderwerp]_result.zip`. Maximaal 1 ZIP per chat.
+For more than two files: one ZIP with the directory structure from the repo
+root (`nl/`, `en/`, `images/`, …), naming convention
+`meshcore_docs_[onderwerp]_result.zip`. At most 1 ZIP per chat.
 
-## Bekende valkuilen
+## Known pitfalls
 
-- **Twee verweesde SVG's met een Nederlandse rubrieksprefix.**
-  `images/nl/techniek-chirp-2.svg` en `images/en/techniek-chirp-3.svg`
-  voldoen niet aan de regel dat bestandsnamen Engels zijn, en worden
-  bovendien nergens aangehaald — de chirp-hoofdstukken wijzen naar
-  `text-to-chirp-*.svg`. Hernoemen kan niet zonder botsing met die
-  bestaande bestanden; ze horen verwijderd te worden.
-- **Conversieartefacten uit de HTML→markdown-migratie.** Losse regels als
-  `Layer stack SVG` in `layer-model.md`, formules en configuratieblokken
-  die op één regel geplakt staan, en `####`-koppen waar `##` hoort. Fix ze
-  in de bestanden die je toch aanraakt. `regulations.md` heeft in beide
-  talen nog `####`-koppen.
-- **Alt-teksten voldoen nog niet aan de eigen regel.** Meerdere
-  hoofdstukken gebruiken `![Diagram 1 bij …](…)`. Nieuwe hoofdstukken doen
-  het goed; bestaande worden meegenomen bij de eerstvolgende inhoudelijke
-  wijziging.
-- **Dubbele en verweesde afbeeldingen.** Sommige PNG's uit de website-export
-  zijn identiek (`05-group-communication-1.png` en `-2.png`) of worden
-  nergens meer aangehaald. Controleer vóór hergebruik.
-- **Twee naamgevingsstijlen in `images/`.** Legacy-PNG's met
-  nummerprefix (`20-channel-structure-psk-1.png`) naast SVG's met
-  hoofdstuk-slug (`channel-structure-1.svg`). Nieuwe bestanden volgen de
-  slug-stijl.
-- **De transport code is geen regio-identificatie** — hij verandert per
-  bericht. Een veelgemaakte fout in samenvattingen van
-  `packet-structure.md` en `regions-and-scopes.md`.
-- **Firmware-default `set dutycycle` staat op 50 %**, ruim boven H4 (10 %)
-  en H5 (0,1 %). Dat feit mag nergens sneuvelen bij het inkorten van
-  `regulations.md`.
-- **Niet elk hoofdstuk heeft al een Bron-blok.** Ontbreekt het, voeg het toe
-  als je de inhoud verifieert; laat het leeg als je niets hebt kunnen
-  controleren, in plaats van een versie te gokken.
-- **`main` van MeshCore verschuift dagelijks.** Noteer de commit waarop je
-  je baseert, en ga er niet van uit dat tellingen uit een eerdere sessie
-  nog kloppen. Tussen `a3a1aa5` (19 juli 2026) en `03b6ef4` (28 juli 2026)
-  verschoven bijvoorbeeld al twee build-target-tellingen.
+- **Two orphaned SVGs with a Dutch section prefix.**
+  `images/nl/techniek-chirp-2.svg` and `images/en/techniek-chirp-3.svg` do
+  not meet the rule that file names are English, and on top of that are
+  referenced nowhere — the chirp chapters point at `text-to-chirp-*.svg`.
+  Renaming is impossible without colliding with those existing files; they
+  ought to be deleted.
+- **Conversion artefacts from the HTML→markdown migration.** Stray lines
+  such as `Layer stack SVG` in `layer-model.md`, formulas and configuration
+  blocks glued onto a single line, and `####` headings where `##` belongs.
+  Fix them in the files you touch anyway. `regulations.md` still has
+  `####` headings in both languages.
+- **Alt texts do not yet meet the project's own rule.** Several chapters
+  use `![Diagram 1 bij …](…)`. New chapters get it right; existing ones are
+  picked up at the next substantive change.
+- **Duplicate and orphaned images.** Some PNGs from the website export are
+  identical (`05-group-communication-1.png` and `-2.png`) or are no longer
+  referenced anywhere. Check before reusing them.
+- **Two naming styles in `images/`.** Legacy PNGs with a number prefix
+  (`20-channel-structure-psk-1.png`) alongside SVGs with a chapter slug
+  (`channel-structure-1.svg`). New files follow the slug style.
+- **The transport code is not a region identifier** — it changes per
+  message. A common mistake in summaries of `packet-structure.md` and
+  `regions-and-scopes.md`.
+- **The firmware default `set dutycycle` is 50 %**, far above H4 (10 %) and
+  H5 (0.1 %). That fact must not be lost when shortening `regulations.md`.
+- **Not every chapter has a source block yet.** If it is missing, add it
+  when you verify the content; leave it empty if you were unable to check
+  anything, rather than guessing a version.
+- **MeshCore's `main` moves daily.** Note the commit you are basing
+  yourself on, and do not assume that counts from an earlier session still
+  hold. Between `a3a1aa5` (19 July 2026) and `03b6ef4` (28 July 2026), for
+  instance, two build-target counts already shifted.
 
-## Verwijzingen
+## References
 
-- **`nl/README.md` · `en/README.md`** — inhoudsopgave per taal.
-- **`README.md`** — landingspagina, structuuroverzicht, licentie, disclaimer.
-- **`CHANGELOG.md`** — wat er per wijziging is veranderd en waarom.
-- **`tools/example-calculation.py`** — reproduceert de projectbrede
-  voorbeelddata; aangehaald vanuit `README.md`.
-- **`tools/dm-example.py`** — reproduceert het rekenvoorbeeld in
+- **`nl/README.md` · `en/README.md`** — table of contents per language.
+- **`README.md`** — landing page, structure overview, licence, disclaimer.
+- **`CHANGELOG.md`** — what changed per revision and why.
+- **`tools/example-calculation.py`** — reproduces the project-wide example
+  data; referenced from `README.md`.
+- **`tools/dm-example.py`** — reproduces the worked example in
   `direct-messages.md`.
-- **`nl/naslag/terminology.md`** — begrippenlijst, leidend voor woordkeuze.
-- **`nl/naslag/references.md`** — bronnenlijst.
+- **`nl/naslag/terminology.md`** — glossary, authoritative for wording.
+- **`nl/naslag/references.md`** — source list.
 - **[meshcore-dev/MeshCore](https://github.com/meshcore-dev/MeshCore)** —
-  firmware-broncode, de ground truth voor techniekhoofdstukken.
-- **[docs.meshcore.io](https://docs.meshcore.io/)** — officiële documentatie.
+  firmware source code, the ground truth for technical chapters.
+- **[docs.meshcore.io](https://docs.meshcore.io/)** — official
+  documentation.

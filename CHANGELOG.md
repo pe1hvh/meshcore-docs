@@ -5,178 +5,173 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
 
 ---
 
-## [Unreleased]
+## [2026-07-28] Add docs about Direct Messages/Platforms
 
 ### Added
 
 - **Direct Messages** (`nl/techniek/direct-messages.md`,
-  `en/technical/direct-messages.md`): nieuw techniekhoofdstuk dat de vier fasen
-  van een DM beschrijft — eerste bericht als gescoopte flood, PATH-antwoord,
-  geleerd pad, bevestiging — en de vraag beantwoordt waarom een direct
-  gerouteerde DM geen transport code draagt. Die vraag werd tot nu toe alleen in
-  één tabelregel van `regions-and-scopes.md` aangestipt, zonder onderbouwing.
-  Het hoofdstuk benoemt ook de keerzijde: de padontdekking eromheen is wél
-  gescoped, waardoor een regiofout DM's naar nieuwe contacten breekt.
-- Beide hoofdstukken opgenomen in `nl/README.md` en `en/README.md` onder
-  *Techniek* / *Technical*, direct na *Regio's: bedoeling en praktijk*.
-- Drie diagrammen in `images/nl/` en `images/en/`:
-  `direct-messages-1.svg` (de vier fasen), `direct-messages-2.svg` (hetzelfde
-  pakket in beide routetypes, byte voor byte) en `direct-messages-3.svg` (de
-  beslisboom van een repeater, die laat zien dat de regiotak alleen aan de
-  floodkant hangt).
-- `tools/dm-example.py`: reproduceert het DM-voorbeeld uit het nieuwe
-  hoofdstuk — klaartekst, cijfertekst, transport code, beide framelengtes en de
-  ACK — met dezelfde voorbeelddata als `tools/example-calculation.py`.
-- Zeven termen toegevoegd aan `nl/naslag/terminology.md` en
+  `en/technical/direct-messages.md`): new technical chapter describing the four
+  phases of a DM — first message as a scoped flood, PATH reply, learned path,
+  acknowledgement — and answering the question why a directly routed DM carries
+  no transport code. Until now that question was only touched on in a single
+  table row of `regions-and-scopes.md`, without substantiation. The chapter also
+  names the flip side: the path discovery around it *is* scoped, so a region
+  error breaks DMs to new contacts.
+- Both chapters listed in `nl/README.md` and `en/README.md` under
+  *Techniek* / *Technical*, directly after *Regio's: bedoeling en praktijk*.
+- Three diagrams in `images/nl/` and `images/en/`:
+  `direct-messages-1.svg` (the four phases), `direct-messages-2.svg` (the same
+  packet in both route types, byte by byte) and `direct-messages-3.svg` (a
+  repeater's decision tree, showing that the region branch hangs off the flood
+  side only).
+- `tools/dm-example.py`: reproduces the DM example from the new chapter —
+  plaintext, ciphertext, transport code, both frame lengths and the ACK — using
+  the same example data as `tools/example-calculation.py`.
+- Seven terms added to `nl/naslag/terminology.md` and
   `en/reference/terminology.md`: *Dest hash / Src hash*, *Direct routing*,
-  *Encrypt-then-MAC*, *First packet wins*, *out_path*, *PATH-pakket* en
+  *Encrypt-then-MAC*, *First packet wins*, *out_path*, *PATH-pakket* and
   *Zero-hop*.
 - **MeshCore Platforms** (`nl/techniek/platforms.md`,
-  `en/technical/platforms.md`): nieuw techniekhoofdstuk over de vier
-  platformfamilies waar MeshCore op bouwt — ESP32, nRF52840, RP2040 en
-  STM32WL. Het beantwoordt de vraag waarom niet elke node hetzelfde kan:
-  dezelfde firmware, maar per familie andere transporten, opslag, displays,
-  updatemethoden en flashartefacten. De docs beschreven tot nu toe wel
-  apparaten (`gebruik/hardware.md`), maar nergens de chip erachter.
-- Het hoofdstuk gebruikt bewust de term *platform* en niet *microcontroller*.
-  De firmware zelf spreekt van platforms (`ESP32_PLATFORM`, `NRF52_PLATFORM`,
-  `RP2040_PLATFORM`, `STM32_PLATFORM`, `platformio.ini` r.63, 90, 104, 113),
-  en drie van de vier chips zijn een SoC en geen kale microcontroller.
-- Beide hoofdstukken opgenomen in `nl/README.md` en `en/README.md` onder
-  *Techniek* / *Technical*, direct na *SenseCap DFU*.
-- Drie diagrammen in `images/nl/` en `images/en/`: `platforms-1.svg` (de vier
-  families naast elkaar, met per familie wat er wel en niet is),
-  `platforms-2.svg` (losse SX1262 over SPI tegenover de SubGHz-radio op de
-  STM32WL-die) en `platforms-3.svg` (beslisboom voor de platformkeuze).
-- `tools/platform-overview.py`: genereert de drie tellingstabellen uit een
-  kloon van `meshcore-dev/MeshCore` en een opgeslagen pagina van de web
-  flasher, zodat het hoofdstuk narekenbaar blijft bij een volgende release.
-  Het script controleert ook de aannames in de tekst, zoals dat
-  `framework = arduino` precies één keer in de repo staat.
-- Vijfentwintig termen toegevoegd aan `nl/naslag/terminology.md` en
+  `en/technical/platforms.md`): new technical chapter about the four platform
+  families MeshCore builds on — ESP32, nRF52840, RP2040 and STM32WL. It answers
+  the question why not every node can do the same thing: the same firmware, but
+  different transports, storage, displays, update methods and flash artefacts
+  per family. Until now the docs did describe devices (`gebruik/hardware.md`),
+  but nowhere the chip behind them.
+- The chapter deliberately uses the term *platform* and not *microcontroller*.
+  The firmware itself speaks of platforms (`ESP32_PLATFORM`, `NRF52_PLATFORM`,
+  `RP2040_PLATFORM`, `STM32_PLATFORM`, `platformio.ini` lines 63, 90, 104, 113),
+  and three of the four chips are an SoC and not a bare microcontroller.
+- Both chapters listed in `nl/README.md` and `en/README.md` under
+  *Techniek* / *Technical*, directly after *SenseCap DFU*.
+- Three diagrams in `images/nl/` and `images/en/`: `platforms-1.svg` (the four
+  families side by side, showing per family what is and is not there),
+  `platforms-2.svg` (a discrete SX1262 over SPI versus the SubGHz radio on the
+  STM32WL die) and `platforms-3.svg` (decision tree for platform selection).
+- `tools/platform-overview.py`: generates the three count tables from a clone of
+  `meshcore-dev/MeshCore` and a saved page of the web flasher, so that the
+  chapter stays recomputable at the next release. The script also checks the
+  assumptions in the text, such as that `framework = arduino` occurs exactly
+  once in the repo.
+- Twenty-five terms added to `nl/naslag/terminology.md` and
   `en/reference/terminology.md`: *Arduino-core*, *bootloader*, *build flag*,
   *Cortex-M0+/M4/M4F*, *ESP-IDF*, *ESP-NOW*, *HAL*, *LittleFS*, *LPCOMP*,
   *Platform*, *Platformfamilie*, *PlatformIO environment*, *PSRAM*, *RISC-V*,
   *RP2040*, *SoC*, *SoftDevice*, *SPIFFS*, *ST-Link*, *STM32WLE5*,
-  *SubGHz-radio*, *SYSTEMOFF*, *UF2*, *Variant* en *Xtensa*.
-- Vier externe datasheets toegevoegd aan `nl/naslag/references.md` en
-  `en/reference/references.md`: RP2040, ESP32-serie, nRF52840 en STM32WLE5.
-  De RP2040-cijfers in het hoofdstuk komen daar vandaan en niet uit de
-  firmware-repo; dat staat ook zo in een voetnoot bij de tabel.
+  *SubGHz-radio*, *SYSTEMOFF*, *UF2*, *Variant* and *Xtensa*.
+- Four external datasheets added to `nl/naslag/references.md` and
+  `en/reference/references.md`: RP2040, ESP32 series, nRF52840 and STM32WLE5.
+  The RP2040 figures in the chapter come from there and not from the firmware
+  repo; a footnote on the table says so as well.
 - **De vier platformfamilies** (`nl/platform/platform-families.md`,
-  `en/platform/platform-families.md`): nieuw hoofdstuk in de rubriek
-  `platform/`, met de vier
-  familiebeschrijvingen — ESP32, nRF52840, RP2040 en STM32WL — die tot nu toe
-  in `platforms.md` stonden. Reden voor de splitsing: dat bestand diende twee
-  verschillende leesdoelen. Wie *vergelijkt en kiest* heeft andere tekst nodig
-  dan wie zich *per familie verdiept*, en die twee stonden door elkaar heen.
-  Een opsplitsing per processor is overwogen en afgevallen: slechts 29 % van
-  de tekst is aan één familie toe te wijzen, dus vier pagina's zouden
-  grotendeels uit boilerplate bestaan en het bron-blok van twee naar tien
-  plekken gaan. Het resultaat is twee volwaardige hoofdstukken van circa 1900
-  en 1050 woorden, geen stubs.
-- Beide taalversies opgenomen in `nl/README.md` en `en/README.md` onder een
-  nieuw kopje *Platform*, tussen *Techniek* / *Technical* en *Naslag* /
-  *Reference*. De twee hoofdstukken stonden eerst in de Techniek-lijst; nu de
-  rubriek `platform/` bestaat, volgt de inhoudsopgave de mapstructuur.
-  `README.md` en `CLAUDE.md` noemen `platform/` ook in hun
-  structuuroverzicht — daar ontbrak de map nog.
-- Vier kruisverwijzingen tussen de twee hoofdstukken: van *MeshCore Platforms*
-  naar *De vier platformfamilies* onderaan de inleiding en aan het eind van
-  *De vier families in één oogopslag*, en terug vanuit de inleiding en de
-  STM32WL-sectie van het nieuwe hoofdstuk.
+  `en/platform/platform-families.md`): new chapter in the `platform/` section,
+  holding the four family descriptions — ESP32, nRF52840, RP2040 and STM32WL —
+  that used to live in `platforms.md`. Reason for the split: that file served
+  two different reading goals. Someone *comparing and choosing* needs different
+  text from someone *going deep on one family*, and the two were interleaved. A
+  split per processor was considered and rejected: only 29 % of the text can be
+  attributed to a single family, so four pages would consist largely of
+  boilerplate and the source block would go from two places to ten. The result
+  is two full chapters of roughly 1900 and 1050 words, not stubs.
+- Both language versions listed in `nl/README.md` and `en/README.md` under a new
+  heading *Platform*, between *Techniek* / *Technical* and *Naslag* /
+  *Reference*. The two chapters first appeared in the Techniek list; now that
+  the `platform/` directory exists, the table of contents follows the directory
+  structure. `README.md` and `CLAUDE.md` also name `platform/` in their
+  structure overview — the directory was still missing there.
+- Four cross-references between the two chapters: from *MeshCore Platforms* to
+  *De vier platformfamilies* at the bottom of the introduction and at the end of
+  *De vier families in één oogopslag*, and back from the introduction and the
+  STM32WL section of the new chapter.
 
 ### Changed
 
-- `nl/techniek/regions-and-scopes.md`, `en/technical/regions-and-scopes.md`: de
-  tabelregel over directe routes verwijst nu door naar het nieuwe hoofdstuk voor
-  de onderbouwing.
-- `nl/gebruik/communication.md`, `en/usage/communication.md`: de sectie *Direct
-  Messages* verwijst onderaan naar het techniekhoofdstuk. Het gebruikersverhaal
-  blijft hier staan.
-- `nl/techniek/key-encryption.md`, `en/technical/key-encryption.md`: de sectie
-  *Routing en bevestiging* verwijst door naar het nieuwe hoofdstuk voor padleren
-  en routering. ECDH blijft hier, zodat er geen tweede beschrijving ontstaat.
-- `nl/gebruik/hardware.md`, `en/usage/hardware.md`: een NOTE-blok boven de
-  vergelijkingstabel scheidt de twee onderwerpen. Deze pagina blijft over
-  apparaten gaan; de chip erin en wat die bepaalt staat vanaf nu in
-  *MeshCore Platforms*.
-- `nl/naslag/terminology.md`, `en/reference/terminology.md`: de regel *DFU*
-  beschreef alleen de Bluetooth-variant. DFU is breder — op STM32 gaat het via
-  USB — en de regel is daarop verruimd.
-- `CLAUDE.md`: de conventies zijn gelijkgetrokken met de repo. Slugs zijn
-  Engels en zonder rubrieksprefix (het document schreef nog Nederlandse slugs
-  voor), diagrammen staan per taal in `images/nl/` en `images/en/` onder
-  dezelfde naam (het document beschreef een gedeelde map met `-en.svg`-
-  varianten), en de bestandsnamen `terminology.md` en `references.md` zijn
-  gecorrigeerd. Toegevoegd: commits pinnen in bronlinks in plaats van `main`,
-  externe cijfers markeren, en de regel dat de repo wint als dit document de
-  repo tegenspreekt.
-- **MeshCore Platforms** is verplaatst van `nl/techniek/platforms.md` en
-  `en/technical/platforms.md` naar `nl/platform/platforms.md` en
-  `en/platform/platforms.md`. De twee platformhoofdstukken staan daarmee in
-  hun eigen rubriek `platform/`, die in beide taalbomen dezelfde naam draagt.
-  De slug `platforms` is ongewijzigd. Links vanuit `nl/README.md`,
-  `en/README.md`, `nl/gebruik/hardware.md` en `en/usage/hardware.md` wijzen
-  mee.
-- `nl/platform/platforms.md`, `en/platform/platforms.md`: ingekort tot het
-  vergelijkende deel. De vier familiesecties zijn woord voor woord verhuisd
-  naar `platform-families.md`; wat blijft staan is *waarom het platform
-  uitmaakt*, de vier families in één oogopslag, de vergelijking op zes assen,
-  de rollentabel, de flasherlijst, hoe de firmware de verschillen opvangt en
-  de keuzehulp. De subtitel is `*VERGELIJKEN · KIEZEN · WAT DE CHIP BEPAALT*`
-  geworden, de inleiding belooft niet langer wat nu op de andere pagina staat.
-  De voetnoot bij de RP2040-cijfers en de NOTE over de ontbrekende
-  mA-getallen blijven hier, bij de tabellen waar ze bij horen.
-- `images/nl/platforms-2.svg` en `images/en/platforms-2.svg` zijn hernoemd
-  naar `platform-families-1.svg`. Het diagram hoort bij het nieuwe hoofdstuk,
-  en de conventie is `images/<taal>/<slug>-<n>.svg`. De inhoud van de
-  SVG-bestanden is niet gewijzigd, alleen de naam en de verwijzing.
-- `nl/gebruik/hardware.md`, `en/usage/hardware.md`: het NOTE-blok boven de
-  vergelijkingstabel verwijst nu naar beide hoofdstukken — naar *MeshCore
-  Platforms* voor wat de chip bepaalt, en naar *De vier platformfamilies*
-  voor wat er per familie in zit.
-- Geen enkel cijfer is bij deze wijziging veranderd. Dit is een herindeling
-  van bestaande, al geverifieerde tekst, geen herverificatie: de firmware-repo
-  is niet opnieuw opgehaald en `tools/platform-overview.py` niet opnieuw
-  gedraaid. Beide hoofdstukken pinnen dezelfde commit `03b6ef4` (28 juli 2026,
-  v1.16.0) en vermelden dat de tellingen ook op `a3a1aa5` identiek zijn.
-- `CLAUDE.md`: bestandsnamen zijn nu expliciet altijd Engels, kebab-case, ook
-  in de Nederlandse boom en ook voor scripts en diagrammen. Dat stond er nog
-  niet: de regel gold alleen voor hoofdstukslugs, en bij `tools/` stond zelfs
-  het tegendeel — die naamconventie schreef Nederlands voor. De drie
-  bestaande scripts en twee verweesde SVG's met een `techniek-`-prefix
-  voldoen nog niet en staan als valkuil genoteerd; hernoemen raakt links in
-  `README.md`, `CHANGELOG.md` en vier hoofdstukken en is een aparte opdracht.
-  De regel gaat expliciet over bestanden, niet over mappen: mapnamen volgen
-  de rubrieksmapping, die is aangevuld met `platform` ↔ `platform`.
-- De drie scripts in `tools/` zijn hernoemd naar Engelse namen:
+- `nl/techniek/regions-and-scopes.md`, `en/technical/regions-and-scopes.md`: the
+  table row about direct routes now points to the new chapter for the
+  substantiation.
+- `nl/gebruik/communication.md`, `en/usage/communication.md`: the *Direct
+  Messages* section refers to the technical chapter at the bottom. The user
+  story stays here.
+- `nl/techniek/key-encryption.md`, `en/technical/key-encryption.md`: the
+  *Routing en bevestiging* section points to the new chapter for path learning
+  and routing. ECDH stays here, so that no second description arises.
+- `nl/gebruik/hardware.md`, `en/usage/hardware.md`: a NOTE block above the
+  comparison table separates the two subjects. This page continues to be about
+  devices; the chip inside them and what it determines lives in *MeshCore
+  Platforms* from now on.
+- `nl/naslag/terminology.md`, `en/reference/terminology.md`: the *DFU* entry
+  described only the Bluetooth variant. DFU is broader — on STM32 it goes over
+  USB — and the entry was widened accordingly.
+- `CLAUDE.md`: the conventions were brought in line with the repo. Slugs are
+  English and carry no section prefix (the document still prescribed Dutch
+  slugs), diagrams live per language in `images/nl/` and `images/en/` under the
+  same name (the document described a shared directory with `-en.svg` variants),
+  and the file names `terminology.md` and `references.md` were corrected. Added:
+  pinning commits in source links instead of `main`, marking external figures,
+  and the rule that the repo wins when this document contradicts the repo.
+- **MeshCore Platforms** was moved from `nl/techniek/platforms.md` and
+  `en/technical/platforms.md` to `nl/platform/platforms.md` and
+  `en/platform/platforms.md`. The two platform chapters thereby sit in their own
+  `platform/` section, which carries the same name in both language trees. The
+  slug `platforms` is unchanged. Links from `nl/README.md`, `en/README.md`,
+  `nl/gebruik/hardware.md` and `en/usage/hardware.md` moved with it.
+- `nl/platform/platforms.md`, `en/platform/platforms.md`: shortened to the
+  comparative part. The four family sections were moved word for word to
+  `platform-families.md`; what remains is *waarom het platform uitmaakt*, the
+  four families at a glance, the comparison on six axes, the roles table, the
+  flasher list, how the firmware absorbs the differences and the selection
+  guide. The subtitle became `*VERGELIJKEN · KIEZEN · WAT DE CHIP BEPAALT*`, and
+  the introduction no longer promises what now lives on the other page. The
+  footnote on the RP2040 figures and the NOTE about the missing mA values stay
+  here, with the tables they belong to.
+- `images/nl/platforms-2.svg` and `images/en/platforms-2.svg` were renamed to
+  `platform-families-1.svg`. The diagram belongs to the new chapter, and the
+  convention is `images/<language>/<slug>-<n>.svg`. The contents of the SVG
+  files were not changed, only the name and the reference.
+- `nl/gebruik/hardware.md`, `en/usage/hardware.md`: the NOTE block above the
+  comparison table now points to both chapters — to *MeshCore Platforms* for
+  what the chip determines, and to *De vier platformfamilies* for what each
+  family contains.
+- Not a single figure was changed by this revision. This is a reorganisation of
+  existing, already verified text, not a re-verification: the firmware repo was
+  not fetched again and `tools/platform-overview.py` was not run again. Both
+  chapters pin the same commit `03b6ef4` (28 July 2026, v1.16.0) and note that
+  the counts are identical on `a3a1aa5` as well.
+- `CLAUDE.md`: file names are now explicitly always English, kebab-case, in the
+  Dutch tree as well and for scripts and diagrams too. That was not stated yet:
+  the rule applied only to chapter slugs, and for `tools/` it even said the
+  opposite — that naming convention prescribed Dutch. The three existing scripts
+  and two orphaned SVGs with a `techniek-` prefix do not yet comply and are
+  recorded as a pitfall; renaming them touches links in `README.md`,
+  `CHANGELOG.md` and four chapters and is a separate assignment. The rule is
+  explicitly about files, not directories: directory names follow the section
+  mapping, which was extended with `platform` ↔ `platform`.
+- The three scripts in `tools/` were renamed to English names:
   `bereken-voorbeeld.py` → `example-calculation.py`, `dm-voorbeeld.py` →
-  `dm-example.py` en `platform-overzicht.py` → `platform-overview.py`. De
-  code zelf is niet gewijzigd; alleen twee zelfverwijzingen in commentaar en
-  in de usage-regel zijn meegetrokken. Meeverhuisd zijn de verwijzingen in
-  `README.md`, `CLAUDE.md`, `nl/techniek/direct-messages.md`,
-  `en/technical/direct-messages.md`, de vier platformhoofdstukken en het
-  bijschrift in `images/nl/direct-messages-2.svg` en
-  `images/en/direct-messages-2.svg`, waar de scriptnaam in het diagram staat.
+  `dm-example.py` and `platform-overzicht.py` → `platform-overview.py`. The code
+  itself was not changed; only two self-references in comments and in the usage
+  line were carried along. Also moved were the references in `README.md`,
+  `CLAUDE.md`, `nl/techniek/direct-messages.md`,
+  `en/technical/direct-messages.md`, the four platform chapters and the caption
+  in `images/nl/direct-messages-2.svg` and `images/en/direct-messages-2.svg`,
+  where the script name appears in the diagram.
 
 ### Fixed
 
-- `nl/gebruik/communication.md`, `en/usage/communication.md`: de waarschuwing
+- `nl/gebruik/communication.md`, `en/usage/communication.md`: the warning
   *"Adverts worden NIET doorgestuurd door repeaters. Beide nodes moeten elkaar
-  direct kunnen horen voor de key-uitwisseling"* was onjuist. Repeaters sturen
-  flood-adverts wél door, tot de aparte hoplimiet `flood.max.advert` en met
-  verlaagde prioriteit; alleen een *zero-hop* advert blijft bij de buren. De
-  oude tekst stuurde lezers naar een verkeerd beeld van hoe contacten elkaar
-  vinden.
-- `nl/techniek/key-encryption.md`, `en/technical/key-encryption.md`: de ACK werd
-  beschreven als *"een 4-byte SHA256-hash"*. Voor een gewone DM is de
-  ACK-payload 6 bytes: 4 hash-bytes, 1 byte pogingnummer en 1 willekeurige byte,
-  waarvan alleen de eerste 4 worden vergeleken.
+  direct kunnen horen voor de key-uitwisseling"* was incorrect. Repeaters do
+  forward flood adverts, up to the separate hop limit `flood.max.advert` and at
+  reduced priority; only a *zero-hop* advert stays with the neighbours. The old
+  text gave readers a wrong picture of how contacts find each other.
+- `nl/techniek/key-encryption.md`, `en/technical/key-encryption.md`: the ACK was
+  described as *"een 4-byte SHA256-hash"*. For an ordinary DM the ACK payload is
+  6 bytes: 4 hash bytes, 1 byte attempt number and 1 random byte, of which only
+  the first 4 are compared.
 - `nl/techniek/regions-and-scopes.md`, `en/technical/regions-and-scopes.md`,
-  `nl/naslag/terminology.md`, `en/reference/terminology.md`: dode links naar
-  `techniek-locode.md`, een bestand dat niet in de repo staat. De verwijzingen
-  wijzen nu naar `regions-in-practice.md`, waar de naamgevingsafspraken staan.
+  `nl/naslag/terminology.md`, `en/reference/terminology.md`: dead links to
+  `techniek-locode.md`, a file that is not in the repo. The references now point
+  to `regions-in-practice.md`, where the naming agreements live.
 
 ---
 
@@ -188,194 +183,207 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
 ### Added
 
 - **Privacy & Beveiliging** (`nl/gebruik/privacy.md`, `en/usage/privacy.md`):
-  eigen hoofdstuk, afgesplitst uit `regulations.md`. Behandelt wat er altijd
-  zichtbaar is (beacons voor routing), wat in ISM-modus nooit zichtbaar is, en de
-  vergelijkingstabel HAM- versus ISM-modus.
+  its own chapter, split off from `regulations.md`. Covers what is always
+  visible (beacons for routing), what is never visible in ISM mode, and the
+  comparison table of HAM versus ISM mode.
 - **Praktische Toepassingen** (`nl/gebruik/applications.md`,
-  `en/usage/applications.md`): eigen hoofdstuk, afgesplitst uit
-  `what-is-meshcore.md`. Vier scenario's: familie-mesh, Morse-club, Amateur Radio
-  Mesh en Remote Station.
-- Beide hoofdstukken opgenomen in `nl/README.md` en `en/README.md` onder
-  *Gebruik* / *Usage*, direct na *Communicatie* / *Communication*.
-- **Regelgeving & Duty Cycle** (`nl/gebruik/regulations.md`, `en/usage/regulations.md`):
-  nieuwe sectie *Duty cycle in een mesh — wat er anders is dan bij een solo-node*.
-  Behandelt dat de duty cycle per zendend apparaat geldt en niet per netwerk, dat
-  doorgegeven verkeer meetelt in het eigen uurbudget van de repeater, en dat één
-  flood-bericht één transmissie kost bij élke repeater die het hoort. Met een
-  time-on-air-budgettabel (SF7 / BW 62,5 kHz / CR 4/5) en een tabel gedragsregels
-  die de mesh ontlasten.
-- Waarschuwing dat de MeshCore firmware-default `set dutycycle` op **50 %** staat
-  (en de verouderde `set af` op `1.0`, eveneens ~50 %), ruim boven zowel H4 (10 %)
-  als H5 (0,1 %). Een vers geflashte repeater is niet conform tot `set dutycycle 10`
-  is gezet. Gecontroleerd tegen `docs.meshcore.io/cli_commands` (firmware v1.15.0).
-- Toelichting waarom de LBT+AFA-uitweg voor MeshCore in Nederland niet beschikbaar
-  is: AFA vereist frequentie-agility, terwijl MeshCore op één vaste draaggolf draait.
+  `en/usage/applications.md`): its own chapter, split off from
+  `what-is-meshcore.md`. Four scenarios: family mesh, Morse club, Amateur Radio
+  Mesh and Remote Station.
+- Both chapters listed in `nl/README.md` and `en/README.md` under
+  *Gebruik* / *Usage*, directly after *Communicatie* / *Communication*.
+- **Regelgeving & Duty Cycle** (`nl/gebruik/regulations.md`,
+  `en/usage/regulations.md`): new section *Duty cycle in een mesh — wat er
+  anders is dan bij een solo-node*. Covers the fact that the duty cycle applies
+  per transmitting device and not per network, that forwarded traffic counts
+  towards the repeater's own hourly budget, and that one flood message costs one
+  transmission at *every* repeater that hears it. With a time-on-air budget
+  table (SF7 / BW 62.5 kHz / CR 4/5) and a table of behavioural rules that ease
+  the load on the mesh.
+- Warning that the MeshCore firmware default `set dutycycle` is **50 %** (and
+  the deprecated `set af` is `1.0`, likewise ~50 %), far above both H4 (10 %)
+  and H5 (0.1 %). A freshly flashed repeater is non-compliant until
+  `set dutycycle 10` has been set. Checked against
+  `docs.meshcore.io/cli_commands` (firmware v1.15.0).
+- Explanation of why the LBT+AFA escape route is not available to MeshCore in
+  the Netherlands: AFA requires frequency agility, whereas MeshCore runs on a
+  single fixed carrier.
 
 ### Changed
 
-- **Beeldmateriaal per taal gescheiden** (`images/nl/`, `images/en/`): `images/`
-  was één gedeelde map, waardoor de Engelse hoofdstukken op 19 van de 25 plekken
-  een diagram met Nederlandse tekst toonden. Beide talen hebben nu een eigen map
-  met identieke bestandsnamen, zodat beeld dezelfde spiegelregel volgt als de
-  hoofdstukken: alleen de mapnaam verschilt. Alle 50 verwijzingen in `nl/` en
-  `en/` zijn meeverhuisd; er is niets verwijderd.
-- Het achtervoegsel `-en` is vervallen. De vijf `techniek-packets-1..5-en.svg`
-  zijn via `git mv` in `images/en/` terechtgekomen en heten daar inmiddels
-  `packet-structure-1..5.svg`. Dat achtervoegsel was een eenmalige oplossing voor
-  één hoofdstukreeks en week af van de afspraak dat bestandsnamen in beide talen
-  identiek zijn.
-- **Bestandsnamen naar het Engels.** Hoofdstuk- en beeldbestanden droegen
-  Nederlandse of half-Nederlandse namen (`dode-zone.md`, `techniek-packets-1.svg`)
-  terwijl de Engelse mappen al `usage/`, `technical/` en `reference/` heetten. 22
-  van de 30 slugs zijn hernoemd, 8 waren al Engels of neutraal. Het voorvoegsel
-  `techniek-` is vervallen: het herhaalde de mapnaam. De 25 diagrammen volgen hun
-  hoofdstuk, dus `techniek-packets-1.svg` → `packet-structure-1.svg`,
+- **Image material separated per language** (`images/nl/`, `images/en/`):
+  `images/` was one shared directory, which meant the English chapters showed a
+  diagram with Dutch text in 19 of 25 places. Both languages now have their own
+  directory with identical file names, so that images follow the same mirroring
+  rule as the chapters: only the directory name differs. All 50 references in
+  `nl/` and `en/` moved with them; nothing was deleted.
+- The `-en` suffix has been dropped. The five `techniek-packets-1..5-en.svg`
+  ended up in `images/en/` via `git mv` and are now called
+  `packet-structure-1..5.svg`. That suffix was a one-off solution for a single
+  chapter series and departed from the agreement that file names are identical
+  in both languages.
+- **File names to English.** Chapter and image files carried Dutch or half-Dutch
+  names (`dode-zone.md`, `techniek-packets-1.svg`) while the English directories
+  were already called `usage/`, `technical/` and `reference/`. 22 of the 30
+  slugs were renamed, 8 were already English or neutral. The `techniek-` prefix
+  was dropped: it repeated the directory name. The 25 diagrams follow their
+  chapter, so `techniek-packets-1.svg` → `packet-structure-1.svg`,
   `dode-zone-1.svg` → `dead-zone-1.svg`, `techniek-lagen-1.svg` →
-  `layer-model-1.svg`. Alles via `git mv`, beide talen in dezelfde stap, omdat
-  `DocsGenerator` een slug alleen oplevert als hij in `nl/` én `en/` bestaat.
-- De onderliggende afspraak is nu expliciet: **wat gedeeld is tussen de talen staat
-  in het Engels, wat bij één taal hoort staat in die taal.** Bestandsnamen zijn
-  gedeeld en dus Engels; mapnamen horen bij één taal en blijven daarom `gebruik/`
-  naast `usage/`.
-- **Diagrammen in `images/en/` vertaald.** De vertaalronde is uitgevoerd: alle
-  diagrammen met Nederlandse tekst staan nu in het Engels. 176 tekstnodes
-  aangepast, goed voor 731 Nederlandse woorden. De overige tekstnodes in die
-  bestanden waren al Engels — code-identifiers, registernamen, hexbytes, cijfers —
-  en zijn ongemoeid gelaten. `node-types-1.svg` is taalneutraal en de vijf
-  `packet-structure`-diagrammen waren al vertaald; die zes zijn niet aangeraakt.
-- Uitsluitend de tekstinhoud binnen `<text>`-elementen is gewijzigd. Per bestand is
-  geverifieerd dat attributen, coördinaten, CSS-variabelen, opmaak en bytevolgorde
-  identiek zijn gebleven.
-- Het voorbeeldbericht *"Op Woensdag a.s. Blauwvingerdagen"* in
-  `packet-structure-5.svg` blijft onvertaald. Dat is de payload van het
-  voorbeeldpakket, geen interface-tekst; in de Engelse documentpagina staat die
-  regel ook onvertaald.
-- README: structuurblok toont de nieuwe indeling, en de telling *50 diagrammen* is
-  gecorrigeerd naar *25 diagrammen per taal*. De oude telling rekende 20 ongebruikte
-  PNG-bestanden mee.
-- Van die 20 PNG's zijn er 10 opnieuw gegenereerd uit de vertaalde SVG's, op exact
-  hetzelfde formaat: `18-ble-architecture-1`, `20-channel-structure-psk-1..4`,
-  `23-repeater-flow-1..2` en `24-dead-zone-1..3`. De render-parameters zijn
-  gereconstrueerd door de Nederlandse SVG terug te renderen en met het origineel te
-  vergelijken; bij de `20-*`-reeks is die reproductie pixelexact. De twee
-  `23-repeater-flow`-PNG's bleken niet op viewBox-formaat gerenderd maar op 2770 px
-  breed met 25 px witmarge, bij `-2` met de onderste witruimte weggeknipt.
-- De pagina-indeling van de website wordt weer gevolgd: `privacy` en
-  `applications` waren tijdens de HTML→markdown-migratie samengevoegd met
-  `regulations` respectievelijk `what-is-meshcore`. Die samenvoeging is
-  teruggedraaid; beide zijn nu weer losse hoofdstukken, net als op domca.nl.
-  De tekst is ongewijzigd verplaatst — inclusief de eerder aangebrachte
-  correcties op de encryptieregel en de vermogensrij.
-- Koppen in de afgesplitste hoofdstukken van `####` terug naar `##`, en de
-  paginatitel weer als H1 met de subtitelregel eronder, conform de overige
-  hoofdstukken.
-- Configuratieblok bijgewerkt van **SF8 naar SF7** en aangevuld met coding rate,
-  conform de huidige Nederlandse netwerkparameters (BW 62,5 kHz / SF7 / CR 4/5).
-- Vermogensrij in de ISM/HAM-tabel gecorrigeerd van `25 mW ERP (EU)` naar
-  `500 mW e.r.p. (H4) of 25 mW e.r.p. (H5)`; de oude waarde sprak de H4-conclusie
-  van de pagina tegen.
-- Opmerking bij de Ebyte E22-900M30S aangevuld: terugregelen gebeurt via de PA-trap,
-  omdat `set tx` (1–22 dBm) alleen de LoRa-chip aanstuurt.
+  `layer-model-1.svg`. All via `git mv`, both languages in the same step,
+  because `DocsGenerator` only publishes a slug if it exists in `nl/` *and*
+  `en/`.
+- The underlying agreement is now explicit: **what is shared between the
+  languages is in English, what belongs to one language is in that language.**
+  File names are shared and therefore English; directory names belong to one
+  language and therefore remain `gebruik/` alongside `usage/`.
+- **Diagrams in `images/en/` translated.** The translation round has been
+  carried out: all diagrams with Dutch text are now in English. 176 text nodes
+  changed, accounting for 731 Dutch words. The remaining text nodes in those
+  files were already English — code identifiers, register names, hex bytes,
+  figures — and were left untouched. `node-types-1.svg` is language-neutral and
+  the five `packet-structure` diagrams had already been translated; those six
+  were not touched.
+- Only the text content inside `<text>` elements was changed. For each file it
+  was verified that attributes, coordinates, CSS variables, formatting and byte
+  order remained identical.
+- The example message *"Op Woensdag a.s. Blauwvingerdagen"* in
+  `packet-structure-5.svg` stays untranslated. That is the payload of the
+  example packet, not interface text; on the English document page that line is
+  untranslated as well.
+- README: the structure block shows the new layout, and the count *50 diagrams*
+  was corrected to *25 diagrams per language*. The old count included 20 unused
+  PNG files.
+- Of those 20 PNGs, 10 were regenerated from the translated SVGs, at exactly the
+  same size: `18-ble-architecture-1`, `20-channel-structure-psk-1..4`,
+  `23-repeater-flow-1..2` and `24-dead-zone-1..3`. The render parameters were
+  reconstructed by re-rendering the Dutch SVG and comparing it with the
+  original; for the `20-*` series that reproduction is pixel-exact. The two
+  `23-repeater-flow` PNGs turned out not to have been rendered at viewBox size
+  but at 2770 px wide with a 25 px white margin, and for `-2` with the bottom
+  whitespace cropped off.
+- The page layout of the website is being followed again: `privacy` and
+  `applications` had been merged with `regulations` and `what-is-meshcore`
+  respectively during the HTML→markdown migration. That merge has been undone;
+  both are separate chapters again, just as on domca.nl. The text was moved
+  unchanged — including the corrections made earlier to the encryption line and
+  the power row.
+- Headings in the split-off chapters from `####` back to `##`, and the page
+  title as an H1 again with the subtitle line beneath it, in line with the other
+  chapters.
+- Configuration block updated from **SF8 to SF7** and extended with the coding
+  rate, in line with the current Dutch network parameters (BW 62.5 kHz / SF7 /
+  CR 4/5).
+- Power row in the ISM/HAM table corrected from `25 mW ERP (EU)` to
+  `500 mW e.r.p. (H4) of 25 mW e.r.p. (H5)`; the old value contradicted the
+  page's own H4 conclusion.
+- Note on the Ebyte E22-900M30S extended: turning the power down happens via the
+  PA step, because `set tx` (1–22 dBm) only drives the LoRa chip.
 
 ### Fixed
 
-- **Feitelijke fout:** de relatie tussen spreading factor en time-on-air stond
-  omgekeerd ("lagere spreading factors waar pakketten langer in de lucht zijn").
-  Een hógere SF geeft langere time-on-air. Beide taalversies.
-- Conversie-artefacten uit de oorspronkelijke HTML→markdown-migratie hersteld:
-  de duty-cycle-kaarten zijn nu een tabel, en het configuratieblok en de
-  dBi/dBd-formules staan niet langer op één regel geplakt.
-- **Telling van de te vertalen diagrammen gecorrigeerd van 18 naar 19.**
-  `text-to-chirp-5.svg` (voorheen `techniek-chirp-5.svg`) stond eerder als
-  taalneutraal aangemerkt, maar bevat de zesregelige samenvatting van de
-  chirp-keten in het Nederlands (*Tekst → ASCII → Bits*, *Chirp doorloopt alle
-  treden, wrappend bij de top*, enzovoort). Alleen `node-types-1.svg` is werkelijk
-  taalneutraal: dat bevat vier rolbenamingen plus emoji. Het diagram is alsnog
-  meegenomen in de vertaalronde.
-- De opgave *357 tekstnodes* hoorde bij die 18 bestanden; met de twaalf nodes van
-  `text-to-chirp-5.svg` erbij zijn het er 369. Daarvan bevatten er 176 Nederlandse
-  tekst. De schatting *~1140 woorden* telde alle tekstnodes mee; het aantal
-  daadwerkelijk vertaalde Nederlandse woorden is 731.
-- **Dubbele beeldnamen in `images/en/` opgeruimd.** De map telde 47 SVG-bestanden
-  voor 25 unieke diagrammen: 22 byte-identieke paren onder twee naamgevingsschema's,
-  omdat de hernoeming naar Engelse slugs als kopie was uitgevoerd in plaats van als
-  verplaatsing. Er is geen diagram verloren gegaan — de oude namen waren geen tweede
-  afbeelding maar een onafgemaakte `git mv`. Het Engelse schema blijft; dat is wat
-  de 50 verwijzingen in `nl/` en `en/` daadwerkelijk aanroepen. Beide mappen bevatten
-  nu 25 SVG-bestanden met identieke namen.
-- Interne link `../techniek/techniek-locode.md` in `terminology.md` verwijst naar een
-  hoofdstuk dat niet bestaat, in beide taalversies. Nog niet hersteld; zie *Open punten*.
+- **Factual error:** the relationship between spreading factor and time-on-air
+  was stated the wrong way round (*"lagere spreading factors waar pakketten
+  langer in de lucht zijn"*). A *higher* SF gives a longer time-on-air. Both
+  language versions.
+- Conversion artefacts from the original HTML→markdown migration repaired: the
+  duty cycle cards are now a table, and the configuration block and the dBi/dBd
+  formulas are no longer glued onto a single line.
+- **Count of diagrams to be translated corrected from 18 to 19.**
+  `text-to-chirp-5.svg` (formerly `techniek-chirp-5.svg`) had been marked as
+  language-neutral, but contains the six-line summary of the chirp chain in
+  Dutch (*Tekst → ASCII → Bits*, *Chirp doorloopt alle treden, wrappend bij de
+  top*, and so on). Only `node-types-1.svg` is genuinely language-neutral: it
+  contains four role labels plus emoji. The diagram was included in the
+  translation round after all.
+- The figure of *357 tekstnodes* belonged to those 18 files; with the twelve
+  nodes of `text-to-chirp-5.svg` added it is 369. Of those, 176 contain Dutch
+  text. The estimate of *~1140 woorden* counted all text nodes; the number of
+  Dutch words actually translated is 731.
+- **Duplicate image names in `images/en/` cleaned up.** The directory held 47
+  SVG files for 25 unique diagrams: 22 byte-identical pairs under two naming
+  schemes, because the rename to English slugs had been carried out as a copy
+  instead of as a move. No diagram was lost — the old names were not a second
+  image but an unfinished `git mv`. The English scheme stays; that is what the
+  50 references in `nl/` and `en/` actually call. Both directories now contain
+  25 SVG files with identical names.
+- Internal link `../techniek/techniek-locode.md` in `terminology.md` points to a
+  chapter that does not exist, in both language versions. Not yet repaired; see
+  *Open punten*.
 
 ### Removed
 
-- Sectie *De exacte specificaties* / *The exact specifications*. Elk datapunt
-  daaruit stond al in de H-regeltabel erboven, in de openingszin van dezelfde
-  sectie, of in *Wat is een duty cycle?*. Er gaat geen informatie verloren.
+- Section *De exacte specificaties* / *The exact specifications*. Every data
+  point in it already appeared in the H-rule table above it, in the opening
+  sentence of the same section, or in *Wat is een duty cycle?*. No information
+  is lost.
 
 ### Fixed (EN-versie)
 
-- Ontbrekende sectiescheiding vóór *Which regime applies to your node?* hersteld,
-  zodat de EN-versie dezelfde structuur heeft als de NL-versie.
-- Dubbele vertaalvoetnoot verwijderd en de resterende Nederlandstalige `[!NOTE]`
-  over de verwijderde rekenhulp vertaald.
-- Dubbele vertaalvoetnoot in `en/usage/what-is-meshcore.md` verwijderd; die was bij
-  het samenvoegen van `applications` blijven staan.
+- Missing section break before *Which regime applies to your node?* restored, so
+  that the EN version has the same structure as the NL version.
+- Duplicate translation footnote removed and the remaining Dutch-language
+  `[!NOTE]` about the deleted calculation aid translated.
+- Duplicate translation footnote in `en/usage/what-is-meshcore.md` removed; it
+  had been left behind when `applications` was merged in.
 
 ### Open punten
 
-- **De 20 PNG-bestanden volgen het nieuwe naamschema niet.** Ze dragen nog het
-  genummerde schema van vóór de mappenindeling (`18-ble-architecture-1`,
-  `24-dead-zone-1`). Dat schema is wel Engels — het is zelfs de bron waaruit de
-  huidige slugs zijn afgeleid — maar het nummerdeel verwijst naar een
-  hoofdstukvolgorde die niet meer bestaat. Zolang geen enkel hoofdstuk ze aanroept
-  is dat onschadelijk.
-- Tien van de 20 PNG-bestanden bevatten nog Nederlandse tekst en hebben geen
-  SVG-bron in de map: `05-group-communication-1` en `-2` (onderling byte-identiek),
-  `08-practical-applications-1`, `12-text-to-chirp-1..4`, `14-lora-modulation-1`,
-  `15-layer-model-1` en `16-remote-control-1`. Ze zijn in een andere huisstijl
-  gemaakt dan de SVG-set en kunnen niet vertaald worden zonder ze na te bouwen.
-  De inhoud overlapt grotendeels met de SVG-diagrammen die wél gebruikt worden.
-  Er moet nog besloten worden wat ermee gebeurt; de git-historie bewaart ze hoe dan ook.
-- Nog te beantwoorden: waarom zijn tien ongebruikte PNG's opnieuw gegenereerd?
-  Als ze nergens worden aangeroepen, kost het onderhoud zonder dat een lezer ze ziet.
-  Als ze elders wél gebruikt worden — buiten deze repo — dan klopt de aanmerking
-  *ongebruikt* niet en hoort dat hier vastgelegd te worden.
-- In `16-remote-control-1.png` ontbreken lettertekens: `[Phone]`, `[Radio]`,
-  `[Rot]`, `[Rel]` en `[Rig]` staan als letterlijke placeholders in beeld en
-  diverse emoji en vinkjes renderen als lege blokjes. Bestaand renderprobleem, geen
-  vertaalkwestie.
-- `terminology.md` linkt in beide talen naar `techniek-locode.md`, een hoofdstuk dat
-  niet bestaat. Ofwel het hoofdstuk schrijven, ofwel de link weghalen.
+- **The 20 PNG files do not follow the new naming scheme.** They still carry the
+  numbered scheme from before the directory layout (`18-ble-architecture-1`,
+  `24-dead-zone-1`). That scheme is English — it is even the source the current
+  slugs were derived from — but the number part refers to a chapter ordering
+  that no longer exists. As long as no chapter calls them, that is harmless.
+- Ten of the 20 PNG files still contain Dutch text and have no SVG source in the
+  directory: `05-group-communication-1` and `-2` (byte-identical to each other),
+  `08-practical-applications-1`, `12-text-to-chirp-1..4`,
+  `14-lora-modulation-1`, `15-layer-model-1` and `16-remote-control-1`. They
+  were made in a different house style from the SVG set and cannot be translated
+  without rebuilding them. Their content largely overlaps with the SVG diagrams
+  that *are* in use. What happens to them still has to be decided; the git
+  history preserves them either way.
+- Still to be answered: why were ten unused PNGs regenerated? If they are called
+  nowhere, they cost maintenance without any reader seeing them. If they *are*
+  used elsewhere — outside this repo — then marking them as *ongebruikt* is
+  wrong and that belongs on record here.
+- In `16-remote-control-1.png` characters are missing: `[Phone]`, `[Radio]`,
+  `[Rot]`, `[Rel]` and `[Rig]` appear on screen as literal placeholders and
+  various emoji and check marks render as empty boxes. An existing render
+  problem, not a translation matter.
+- `terminology.md` links in both languages to `techniek-locode.md`, a chapter
+  that does not exist. Either write the chapter or remove the link.
 
 ### Voor beheerders van domca.nl
 
-- **`DocsGenerator` is aangepast en meegeleverd.** Hij maakte één
-  `MarkdownConverter` met een vaste `$imageDir` (`docsRoot/images`), buiten de
-  taallus, en wist dus niet in welke taal hij bezig was. Er is nu één converter per
-  taal, met `$this->docsRoot . '/images/' . $config['dir']`; `self::LANGUAGES`
-  bevatte de mapnamen `nl` en `en` al. Het verzamelen van waarschuwingen loopt over
-  alle converters.
-- Toegevoegd: `controleerBeeldmappen()`, aangeroepen aan het begin van `run()`. Die
-  meldt bestanden die wel in `images/nl` staan en niet in `images/en` of andersom.
-  Hoofdstukken hadden die bescherming al; beeld niet, terwijl daar na de splitsing
-  hetzelfde kan misgaan. Zichtbaar bij `--dry-run`, dus vóór het live gaat.
-- **`MarkdownConverter` is nog niet nagekeken.** Herschrijft die alleen paden, dan is
-  er niets te doen. Kopieert hij de bestanden naar de webroot, dan botsen
-  `images/nl/layer-model-1.svg` en `images/en/layer-model-1.svg` op dezelfde
-  doelnaam en moet ook de doelmap per taal gescheiden worden.
-- **Oude fragmenten blijven op de webroot staan.** De generator kent geen opruimstap,
-  dus na de hernoeming staan `content/<oude-slug>.html` en `.en.html` er nog. Dat is
-  gunstig: `navigateTo()` haalt fragmenten rechtstreeks op, buiten het menu om, dus
-  gedeelde links als `#dode-zone` blijven werken. Wel bevriezen ze op de inhoud van
-  vóór de hernoeming. Weghalen kan, maar dan tonen die links *"Deze pagina is nog in
-  ontwikkeling"*.
-- Routing verloopt via `window.location.hash`, dus de slug staat achter een `#` en
-  wordt nooit naar de server gestuurd. De hernoeming kost daarom geen zoekposities.
-- `'live-intro'` in `HANDMATIGE_GROEPEN` valt buiten de hernoeming en buiten de
-  menumarkers in `index.html`. Ongewijzigd, maar het blijft handwerk.
-- **Losstaand probleem: de diagrammen volgen de themaschakelaar niet.** `router.js`
-  zet het thema als `body.light` via `localStorage`, terwijl alle 30 SVG's
-  `@media (prefers-color-scheme: dark)` gebruiken. Die twee zijn niet gekoppeld: de
-  pagina volgt de 🌙☀️-knop, de diagrammen volgen de OS-instelling. Een lezer met een
-  donker besturingssysteem krijgt donkere diagrammen op een lichte pagina. Raakt de
-  vertaling niet, maar wel elk diagram.
+- **`DocsGenerator` has been adjusted and is included.** It created one
+  `MarkdownConverter` with a fixed `$imageDir` (`docsRoot/images`), outside the
+  language loop, and therefore did not know which language it was working in.
+  There is now one converter per language, with
+  `$this->docsRoot . '/images/' . $config['dir']`; `self::LANGUAGES` already
+  contained the directory names `nl` and `en`. Warning collection runs across
+  all converters.
+- Added: `controleerBeeldmappen()`, called at the start of `run()`. It reports
+  files that are in `images/nl` but not in `images/en` or the other way round.
+  Chapters already had that protection; images did not, even though the same
+  thing can go wrong there after the split. Visible with `--dry-run`, so before
+  it goes live.
+- **`MarkdownConverter` has not been reviewed yet.** If it only rewrites paths,
+  there is nothing to do. If it copies the files to the web root, then
+  `images/nl/layer-model-1.svg` and `images/en/layer-model-1.svg` collide on the
+  same target name and the target directory has to be separated per language as
+  well.
+- **Old fragments remain on the web root.** The generator has no cleanup step,
+  so after the rename `content/<old-slug>.html` and `.en.html` are still there.
+  That is convenient: `navigateTo()` fetches fragments directly, bypassing the
+  menu, so shared links such as `#dode-zone` keep working. They do freeze on the
+  content from before the rename, though. Removing them is possible, but then
+  those links show *"Deze pagina is nog in ontwikkeling"*.
+- Routing runs via `window.location.hash`, so the slug sits behind a `#` and is
+  never sent to the server. The rename therefore costs no search rankings.
+- `'live-intro'` in `HANDMATIGE_GROEPEN` falls outside the rename and outside
+  the menu markers in `index.html`. Unchanged, but it remains manual work.
+- **Separate problem: the diagrams do not follow the theme switch.** `router.js`
+  sets the theme as `body.light` via `localStorage`, while all 30 SVGs use
+  `@media (prefers-color-scheme: dark)`. Those two are not linked: the page
+  follows the 🌙☀️ button, the diagrams follow the OS setting. A reader with a
+  dark operating system gets dark diagrams on a light page. It does not affect
+  the translation, but it does affect every diagram.
