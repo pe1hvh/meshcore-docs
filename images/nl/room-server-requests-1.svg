@@ -1,0 +1,44 @@
+<svg style="width:100%;margin:1rem 0" viewBox="0 0 700 434" xmlns="http://www.w3.org/2000/svg">
+<style>
+:root{--bg:#FFFFFF; --grid:#023E8A; --line:#0096C7; --wave:#0096C7; --node:#0077B6; --outer:#0096C7; --text-primary:#0a2540; --text-secondary:#3d6380; --text-muted:#7a9bb5; --link-color:#0077B6; --link-hover:#023E8A; --heading-color:#0077B6; --border-subtle:rgba(0,119,182,0.12); --card-bg:rgba(0,119,182,0.03); --card-border:rgba(0,119,182,0.12); --card-hover:rgba(0,119,182,0.07); --code-bg:rgba(0,119,182,0.04); --code-border:rgba(0,119,182,0.12); --info-bg:rgba(0,119,182,0.04); --info-border:rgba(0,119,182,0.15); --table-header:rgba(0,119,182,0.06); --table-row-alt:rgba(0,119,182,0.02); --table-border:rgba(0,119,182,0.1); --timeline-line:#0096C7; --timeline-dot:#0077B6; --tag-green:rgba(16,185,129,0.1); --tag-green-text:#059669; --tag-red:rgba(239,68,68,0.08); --tag-red-text:#dc2626; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}
+@media (prefers-color-scheme: dark){:root{--bg:#0A1628; --grid:#0077B6; --line:#0077B6; --wave:#48CAE4; --node:#00B4D8; --outer:#0077B6; --text-primary:#e0f0f8; --text-secondary:#8badc4; --text-muted:#4a6a80; --link-color:#48CAE4; --link-hover:#90E0EF; --heading-color:#48CAE4; --border-subtle:rgba(0,119,182,0.15); --card-bg:rgba(0,119,182,0.06); --card-border:rgba(0,119,182,0.15); --card-hover:rgba(0,119,182,0.12); --code-bg:rgba(0,119,182,0.08); --code-border:rgba(0,119,182,0.2); --info-bg:rgba(72,202,228,0.06); --info-border:rgba(72,202,228,0.2); --table-header:rgba(0,119,182,0.1); --table-row-alt:rgba(0,119,182,0.04); --table-border:rgba(0,119,182,0.12); --timeline-line:#0077B6; --timeline-dot:#00B4D8; --tag-green:rgba(16,185,129,0.15); --tag-green-text:#6ee7b7; --tag-red:rgba(239,68,68,0.12); --tag-red-text:#fca5a5; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}}
+</style>
+<rect x="0" y="0" width="700" height="434" fill="var(--bg)"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--line)"/></marker></defs>
+<rect x="30" y="30" width="120" height="46" rx="6" fill="var(--flow-sw-fill)" stroke="var(--flow-sw-edge)" stroke-width="1.5"/>
+<text x="90" y="58" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700">client</text>
+<rect x="550" y="30" width="120" height="46" rx="6" fill="var(--flow-hw-fill)" stroke="var(--flow-hw-edge)" stroke-width="1.5"/>
+<text x="610" y="58" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700">room server</text>
+<line x1="150" y1="53" x2="550" y2="53" stroke="var(--line)" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="30" y="100" width="70" height="40" rx="5" fill="var(--tag-green)" stroke="var(--flow-ok)" stroke-width="1.5"/>
+<text x="65" y="125" text-anchor="middle" fill="var(--flow-ok)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700">0x01</text>
+<rect x="110" y="100" width="130" height="40" rx="6" fill="var(--code-bg)" stroke="var(--code-border)" stroke-width="1.5"/>
+<text x="175" y="125" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700">status</text>
+<text x="260" y="125" text-anchor="start" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">iedereen die is ingelogd</text>
+<rect x="30" y="148" width="70" height="40" rx="5" fill="var(--tag-green)" stroke="var(--flow-ok)" stroke-width="1.5"/>
+<text x="65" y="173" text-anchor="middle" fill="var(--flow-ok)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700">0x02</text>
+<rect x="110" y="148" width="130" height="40" rx="6" fill="var(--code-bg)" stroke="var(--code-border)" stroke-width="1.5"/>
+<text x="175" y="173" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700">keep-alive</text>
+<text x="260" y="173" text-anchor="start" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">alleen direct, ACK draagt de teller</text>
+<rect x="30" y="196" width="70" height="40" rx="5" fill="var(--flow-hw-tint)" stroke="var(--flow-hw-edge)" stroke-width="1.5"/>
+<text x="65" y="221" text-anchor="middle" fill="var(--flow-hw-edge)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700">0x03</text>
+<rect x="110" y="196" width="130" height="40" rx="6" fill="var(--code-bg)" stroke="var(--code-border)" stroke-width="1.5"/>
+<text x="175" y="221" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700">telemetrie</text>
+<text x="260" y="221" text-anchor="start" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">guest krijgt alleen de basiswaarden</text>
+<rect x="30" y="244" width="70" height="40" rx="5" fill="var(--tag-red)" stroke="var(--tag-red-text)" stroke-width="1.5"/>
+<text x="65" y="269" text-anchor="middle" fill="var(--tag-red-text)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700">0x05</text>
+<rect x="110" y="244" width="130" height="40" rx="6" fill="var(--code-bg)" stroke="var(--code-border)" stroke-width="1.5"/>
+<text x="175" y="269" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700">access list</text>
+<text x="260" y="269" text-anchor="start" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">alleen admin, en alleen admins erin</text>
+<rect x="30" y="292" width="70" height="40" rx="5" fill="var(--flow-hw-tint)" stroke="var(--flow-hw-edge)" stroke-width="1.5"/>
+<text x="65" y="317" text-anchor="middle" fill="var(--flow-hw-edge)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700">TXT</text>
+<rect x="110" y="292" width="130" height="40" rx="6" fill="var(--code-bg)" stroke="var(--code-border)" stroke-width="1.5"/>
+<text x="175" y="317" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700">post</text>
+<text x="260" y="317" text-anchor="start" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">read-write en admin, guest niet</text>
+<rect x="30" y="340" width="70" height="40" rx="5" fill="var(--tag-red)" stroke="var(--tag-red-text)" stroke-width="1.5"/>
+<text x="65" y="365" text-anchor="middle" fill="var(--tag-red-text)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700">CLI</text>
+<rect x="110" y="340" width="130" height="40" rx="6" fill="var(--code-bg)" stroke="var(--code-border)" stroke-width="1.5"/>
+<text x="175" y="365" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700">commando</text>
+<text x="260" y="365" text-anchor="start" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">alleen admin, anders geen ACK</text>
+<text x="350" y="414" text-anchor="middle" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">0x04, 0x06 en 0x07 horen bij de sensor- en repeaterfirmware, niet hier</text>
+</svg>

@@ -22,14 +22,30 @@ A channel with a self-chosen, random key that you share only with the intended p
 
 ## Room Servers
 
-A Room Server is a physical node running server firmware that acts as a BBS (Bulletin Board System). It offers:
+A Room Server is a physical node running server firmware that acts as a BBS
+(Bulletin Board System). It offers:
 
-- **Store-and-forward** — messages are stored until the recipient comes online
-- **Member list** — you can see who is in the Room
-- **Management** — moderators can add and remove members
-- **Persistence** — up to 32 messages are retained
+- **Store-and-forward** — messages are held until the recipient is reachable
+  again
+- **Password-based access** — one password for participants, one for the
+  administrator, and the password you enter determines what you may do
+- **A queue of 32 posts** — cyclic, so post 33 overwrites post 1
+- **Pushing rather than fetching** — the server tracks how far each
+  participant has got and sends the next post when their turn comes
 
-Users log in with a password and can later retrieve messages sent while they were offline.
+Users log in with a password and are then sent what was posted while they
+were away.
+
+> [!WARNING]
+> **The queue lives in working memory only.** A restart, a flat battery or a
+> `reboot` wipes all 32 posts. A Room Server bridges hours to days; it is not
+> an archive. There is also *no* member list — not even an administrator can
+> ask who is in the Room — and administration consists of one command that
+> sets rights on a public key, not of adding and removing members.
+
+Exactly how that logging in, pushing and confirming works is covered in
+[What a Room Server Is](../technical/roomserver/introduction.md) and the four
+deeper chapters behind it.
 
 ## Direct Messages (DM)
 
@@ -57,10 +73,11 @@ like and why it carries no region code — see
 
 | Property | Channel | Room Server | Direct Message |
 |---|---|---|---|
-| Storage | None | Store-and-forward | None |
+| Storage | None | 32 posts, in RAM | None |
 | Privacy | Shared key | Password | End-to-end |
-| Member list | No | Yes | N/A |
+| Member list | No | No | N/A |
 | Offline messages | No | Yes | No |
+| Survives a restart | N/A | No | N/A |
 | Server required | No | Yes (dedicated node) | No |
 
 Translated from Dutch by Anthropic Claude

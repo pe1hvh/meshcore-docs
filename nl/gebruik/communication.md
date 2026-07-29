@@ -22,14 +22,31 @@ Een kanaal met een zelf gekozen, willekeurige sleutel die je alleen deelt met de
 
 ## Room Servers
 
-Een Room Server is een fysieke node met server-firmware die werkt als een BBS (Bulletin Board System). Het biedt:
+Een Room Server is een fysieke node met server-firmware die werkt als een BBS
+(Bulletin Board System). Het biedt:
 
-- **Store-and-forward** — berichten worden opgeslagen tot de ontvanger online komt
-- **Ledenlijst** — je ziet wie er in de Room zit
-- **Beheer** — moderators kunnen leden toevoegen en verwijderen
-- **Persistentie** — tot 32 berichten worden bewaard
+- **Store-and-forward** — berichten worden vastgehouden tot de ontvanger weer
+  bereikbaar is
+- **Toegang per wachtwoord** — één wachtwoord voor deelnemers, één voor de
+  beheerder, en het wachtwoord dat je invult bepaalt wat je mag
+- **Een wachtrij van 32 posts** — cyclisch, dus post 33 overschrijft post 1
+- **Duwen in plaats van ophalen** — de server houdt per deelnemer bij tot hoe
+  ver die is en stuurt de volgende post zodra hij aan de beurt is
 
-Gebruikers loggen in met een wachtwoord en kunnen later berichten ophalen die verstuurd zijn terwijl ze offline waren.
+Gebruikers loggen in met een wachtwoord en krijgen daarna alsnog toegestuurd
+wat er is gepost terwijl ze weg waren.
+
+> [!WARNING]
+> **De wachtrij staat alleen in het werkgeheugen.** Een herstart, een lege
+> accu of een `reboot` wist alle 32 posts. Een Room Server overbrugt uren tot
+> dagen; hij is geen archief. Er is bovendien géén ledenlijst — ook een
+> beheerder kan niet opvragen wie er in de Room zit — en beheer bestaat uit
+> één commando dat rechten zet op een publieke sleutel, niet uit het
+> toevoegen en verwijderen van leden.
+
+Hoe dat inloggen, duwen en bevestigen precies werkt, staat in
+[Wat een Room Server is](../techniek/roomserver/introduction.md) en de vier
+verdiepende hoofdstukken daarachter.
 
 ## Direct Messages (DM)
 
@@ -58,8 +75,9 @@ ziet en waarom er geen regiocode in zit — zie
 
 | Eigenschap | Channel | Room Server | Direct Message |
 |---|---|---|---|
-| Opslag | Geen | Store-and-forward | Geen |
+| Opslag | Geen | 32 posts, in RAM | Geen |
 | Privacy | Gedeelde sleutel | Wachtwoord | End-to-end |
-| Ledenlijst | Nee | Ja | N.v.t. |
+| Ledenlijst | Nee | Nee | N.v.t. |
 | Offline berichten | Nee | Ja | Nee |
+| Overleeft een herstart | N.v.t. | Nee | N.v.t. |
 | Server nodig | Nee | Ja (dedicated node) | Nee |

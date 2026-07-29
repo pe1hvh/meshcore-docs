@@ -25,6 +25,12 @@ Off-grid mesh communicatie via LoRa radio.
 - [Regio's en Scopes](techniek/regions-and-scopes.md)
 - [Regio's: bedoeling en praktijk](techniek/regions-in-practice.md)
 - [Direct Messages](techniek/direct-messages.md)
+- **Room Server** — `techniek/roomserver/`
+  - [Wat een Room Server is](techniek/roomserver/introduction.md)
+  - [Inloggen en de ACL](techniek/roomserver/login-and-acl.md)
+  - [Posts en synchronisatie](techniek/roomserver/posts-and-sync.md)
+  - [Requests en CLI](techniek/roomserver/requests-and-cli.md)
+  - [Grenzen en open einden](techniek/roomserver/limits-and-todos.md)
 - [Private & Public Key Encryptie](techniek/key-encryption.md)
 - [Channel Structure & PSK](techniek/channel-structure.md)
 - [Remote Bediening](techniek/remote-control.md)

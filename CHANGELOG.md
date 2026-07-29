@@ -5,7 +5,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
 
 ---
 
-## [Unreleased]
+## [2026-07-29] New Hardware section / RoomServer
 
 ### Added
 
@@ -93,6 +93,94 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
   appear both in `platformio.ini` and in a variant header are counted per
   variant directory.
 
+- **Room Server** (`nl/techniek/roomserver/`, `en/technical/roomserver/`):
+  new subsection of five chapters per language covering the room-server
+  firmware, positioned in both indexes directly after *Direct Messages*
+  because a post travels in the same payload type. `techniek/` ↔
+  `technical/` thereby gains a third directory level, after the model of
+  `libraries/` and `hardware/`. Unlike those two, the overview chapter
+  `introduction.md` lives *inside* the subdirectory rather than one level up,
+  so the section moves as a unit; that was an explicit client decision.
+  Verified against firmware v1.16.0, commit `03b6ef4`, 28 July 2026.
+- `nl/techniek/roomserver/introduction.md` and
+  `en/technical/roomserver/introduction.md`: the room server in plain
+  language — the channel-versus-e-mail comparison from the official FAQ, the
+  four steps a user goes through, and a table of four things that are
+  commonly assumed and that the firmware does not do.
+- `nl/techniek/roomserver/login-and-acl.md` and
+  `en/technical/roomserver/login-and-acl.md`: the `ANON_REQ` login with its
+  extra `sync_since` field, the three password paths, the 13-byte reply byte
+  by byte, and the permission model. The load-bearing finding is that a wrong
+  password produces *no reply at all* (`MyMesh.cpp` r.339-340), so a typo is
+  indistinguishable from an unreachable server.
+- `nl/techniek/roomserver/posts-and-sync.md` and
+  `en/technical/roomserver/posts-and-sync.md`: the cyclic queue, the
+  `TXT_TYPE_SIGNED_PLAIN` payload written out with real values, and the
+  expected ACK as `sha256(plaintext ‖ client pubkey)` truncated to four
+  bytes. `sync_since` advances only on a received ACK, which is what makes
+  the counter the entire bookkeeping.
+- `nl/techniek/roomserver/requests-and-cli.md` and
+  `en/technical/roomserver/requests-and-cli.md`: request types `0x01`,
+  `0x02`, `0x03` and `0x05`, the keep-alive ACK that carries the unsynced
+  counter as an appended byte, and the room-specific CLI commands. Records
+  that `0x05` is admin-only *and* filters out everything that is not an
+  admin.
+- `nl/techniek/roomserver/limits-and-todos.md` and
+  `en/technical/roomserver/limits-and-todos.md`: what the firmware does not
+  do, including all eight `TODO`/`REVISIT` lines in `MyMesh.cpp`. New finding
+  not previously described anywhere: if all 20 ACL slots hold administrators,
+  `ClientACL::putClient()` r.99 leaves `oldest` pointing at `clients[19]` and
+  overwrites an *administrator* — the only path by which an admin leaves the
+  ACL without `setperm`.
+- `images/nl/room-server-overview-1.svg`, `-login-1.svg`, `-sync-1.svg`,
+  `-requests-1.svg` and their `images/en/` counterparts. Named after what
+  they show rather than after their chapter slug: `images/` is flat and
+  `introduction-1.svg` was already taken by `libraries/introduction.md`.
+- `tools/room-server-overview.py`: reproduces the build-target counts, the
+  `ROOM_PASSWORD` defaults, the firmware constants read straight from the
+  source, and the worked push/ACK example. The example identities follow the
+  same convention as `tools/dm-example.py`.
+
+### Fixed
+
+- `nl/gebruik/communication.md`, `en/usage/communication.md`: the *Room
+  Servers* section claimed a **member list** ("je ziet wie er in de Room
+  zit") and **management** ("moderators kunnen leden toevoegen en
+  verwijderen"). Neither exists. The only list is `REQ_TYPE_GET_ACCESS_LIST`
+  (`0x05`), which is admin-only and skips every non-admin entry
+  (`MyMesh.cpp` r.192); administration is one `setperm` command that sets
+  rights on a public key. The same section called the queue **persistence**
+  ("tot 32 berichten worden bewaard") — the 32 slots are an array in RAM that
+  no restart survives, which is now stated as a warning. The comparison table
+  gained a *survives a restart* row and had its *member list* value corrected
+  from yes to no.
+- `nl/gebruik/node-types.md`, `en/usage/node-types.md`: "Beheert een of
+  meerdere Rooms" — the firmware has one room per node and no room concept at
+  all beyond the node itself. Also "Vereist Ultra-licentie voor beheer op
+  afstand": that term appears neither in the firmware nor in the official
+  documentation. `docs/faq.md` describes a T-Deck registration key and an
+  unlock in the smartphone apps, both restrictions in the *client*, and the
+  entry now says that instead.
+- `nl/naslag/terminology.md`, `en/reference/terminology.md`: the *Room
+  Server* entry said "tot 32 berichten" without saying where they live; it
+  now records that the queue is in working memory and does not survive a
+  restart.
+- `nl/gebruik/node-types.md`: removed the stray line `Network diagram SVG`, a
+  leftover from the original HTML-to-Markdown conversion. It had no
+  counterpart in the English file, so this correction is Dutch-only.
+- `nl/gebruik/node-types.md`, `en/usage/node-types.md`: the alt text
+  `Diagram 1 bij node-types` replaced by a description that stands on its
+  own, per the project's own rule.
+- `images/nl/node-types-1.svg`, `images/en/node-types-1.svg`: the diagram
+  showed four of the five node types the chapter lists — the standalone
+  device was missing. Added as a sixth circle at (180, 200) in the empty
+  lower-left quadrant, with a dashed link to the room server in the existing
+  style; no other coordinate moved and the viewBox is unchanged. The two
+  files were byte-identical before this change and still are: every label in
+  this diagram (`COMPANION`, `REPEATER`, `ROOM SERVER`, `TELEMETRY`,
+  `STANDALONE`) is the same in both languages. The alt text now names all
+  five types.
+
 ### Changed
 
 - `nl/README.md`, `en/README.md`: **Hardware** index section added between
@@ -152,6 +240,23 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
   gained a paragraph on slug collisions in the flat `images/` directory,
   written because `hardware/introduction.md` ran into
   `libraries/introduction.md` over `introduction-1.svg`.
+
+- `nl/naslag/terminology.md`, `en/reference/terminology.md`: five terms added
+  in alphabetical position — ACL, BBS, Keep-alive, Post and `sync_since`.
+- `nl/README.md`, `en/README.md`: **Room Server** group added to the
+  *Techniek* / *Technical* section, directly after *Direct Messages*.
+- `README.md`: chapter count 65 → 70 and diagram count 48 → 52 in both
+  language halves; `roomserver/` added to the structure tree under
+  `techniek/` and `technical/`.
+- `CLAUDE.md`: the rule naming `libraries/` and `hardware/` as the only
+  sections with a third level now names three, and records that
+  `roomserver/` deviates by keeping its `introduction.md` inside the
+  subdirectory. Added a rule that directory names are a single word without
+  hyphens — true of all fourteen directories in the repo, but never written
+  down, and the reason this section is `roomserver/` while its label reads
+  *Room Server*. Added a pitfall about counting build targets by section
+  name: that method gives 70 targets in 66 directories where the correct
+  count is 73 in 65.
 
 ---
 

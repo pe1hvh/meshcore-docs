@@ -1,0 +1,35 @@
+<svg style="width:100%;margin:1rem 0" viewBox="0 0 700 370" xmlns="http://www.w3.org/2000/svg">
+<style>
+:root{--bg:#FFFFFF; --grid:#023E8A; --line:#0096C7; --wave:#0096C7; --node:#0077B6; --outer:#0096C7; --text-primary:#0a2540; --text-secondary:#3d6380; --text-muted:#7a9bb5; --link-color:#0077B6; --link-hover:#023E8A; --heading-color:#0077B6; --border-subtle:rgba(0,119,182,0.12); --card-bg:rgba(0,119,182,0.03); --card-border:rgba(0,119,182,0.12); --card-hover:rgba(0,119,182,0.07); --code-bg:rgba(0,119,182,0.04); --code-border:rgba(0,119,182,0.12); --info-bg:rgba(0,119,182,0.04); --info-border:rgba(0,119,182,0.15); --table-header:rgba(0,119,182,0.06); --table-row-alt:rgba(0,119,182,0.02); --table-border:rgba(0,119,182,0.1); --timeline-line:#0096C7; --timeline-dot:#0077B6; --tag-green:rgba(16,185,129,0.1); --tag-green-text:#059669; --tag-red:rgba(239,68,68,0.08); --tag-red-text:#dc2626; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}
+@media (prefers-color-scheme: dark){:root{--bg:#0A1628; --grid:#0077B6; --line:#0077B6; --wave:#48CAE4; --node:#00B4D8; --outer:#0077B6; --text-primary:#e0f0f8; --text-secondary:#8badc4; --text-muted:#4a6a80; --link-color:#48CAE4; --link-hover:#90E0EF; --heading-color:#48CAE4; --border-subtle:rgba(0,119,182,0.15); --card-bg:rgba(0,119,182,0.06); --card-border:rgba(0,119,182,0.15); --card-hover:rgba(0,119,182,0.12); --code-bg:rgba(0,119,182,0.08); --code-border:rgba(0,119,182,0.2); --info-bg:rgba(72,202,228,0.06); --info-border:rgba(72,202,228,0.2); --table-header:rgba(0,119,182,0.1); --table-row-alt:rgba(0,119,182,0.04); --table-border:rgba(0,119,182,0.12); --timeline-line:#0077B6; --timeline-dot:#00B4D8; --tag-green:rgba(16,185,129,0.15); --tag-green-text:#6ee7b7; --tag-red:rgba(239,68,68,0.12); --tag-red-text:#fca5a5; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}}
+</style>
+<rect x="0" y="0" width="700" height="370" fill="var(--bg)"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--line)"/></marker></defs>
+<text x="20" y="32" text-anchor="start" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700">WITHOUT A SERVER — a channel message</text>
+<rect x="60" y="48" width="150" height="54" rx="6" fill="var(--flow-sw-fill)" stroke="var(--flow-sw-edge)" stroke-width="1.5"/>
+<text x="135" y="72" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700">PE1RDP</text>
+<text x="135" y="91" text-anchor="middle" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">post</text>
+<line x1="210" y1="75" x2="470" y2="75" stroke="var(--line)" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="470" y="48" width="150" height="54" rx="6" fill="var(--flow-bg-wait)" stroke="var(--flow-ink-mute)" stroke-width="1.5" stroke-dasharray="4 3"/>
+<text x="545" y="72" text-anchor="middle" fill="var(--flow-ink-mute)" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700">PE1HVH</text>
+<text x="545" y="91" text-anchor="middle" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">switched off</text>
+<text x="340" y="122" text-anchor="middle" fill="var(--flow-warn)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">nobody hears it, the message exists nowhere any more</text>
+<line x1="20" y1="150" x2="680" y2="150" stroke="var(--border-subtle)" stroke-width="1"/>
+<text x="20" y="182" text-anchor="start" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700">WITH A ROOM SERVER</text>
+<rect x="40" y="200" width="140" height="54" rx="6" fill="var(--flow-sw-fill)" stroke="var(--flow-sw-edge)" stroke-width="1.5"/>
+<text x="110" y="224" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700">PE1RDP</text>
+<text x="110" y="243" text-anchor="middle" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">post</text>
+<line x1="180" y1="227" x2="275" y2="227" stroke="var(--line)" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="275" y="194" width="160" height="66" rx="6" fill="var(--flow-hw-fill)" stroke="var(--flow-hw-edge)" stroke-width="1.5"/>
+<text x="355" y="220" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700">room server</text>
+<text x="355" y="240" text-anchor="middle" fill="var(--flow-hw-text-soft)" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400">holds it until the ACK arrives</text>
+<line x1="435" y1="227" x2="520" y2="227" stroke="var(--line)" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="520" y="200" width="140" height="54" rx="6" fill="var(--flow-sw-fill)" stroke="var(--flow-sw-edge)" stroke-width="1.5"/>
+<text x="590" y="224" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700">PE1HVH</text>
+<text x="590" y="243" text-anchor="middle" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">returns later</text>
+<text x="478" y="216" text-anchor="middle" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400">server pushes later</text>
+<rect x="275" y="285" width="160" height="40" rx="6" fill="var(--code-bg)" stroke="var(--code-border)" stroke-width="1.5"/>
+<text x="355" y="310" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400">queue: 32 slots, in RAM only</text>
+<line x1="355" y1="260" x2="355" y2="285" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="3 3"/>
+<text x="350" y="352" text-anchor="middle" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">the server remembers how far each client has got</text>
+</svg>

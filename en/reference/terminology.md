@@ -10,10 +10,12 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | 70 cm band | Amateur radio band 430–440 MHz, licence required |
 | 868 MHz | ISM band frequency for Europe |
 | ACK | Acknowledgement — confirmation that a message has been received |
+| ACL | Access Control List — the table of known clients on a repeater, sensor or room server, holding each client's public key and rights. Room for 20 (`MAX_CLIENTS`) |
 | Advert/Beacon | Periodic signal for presence announcement and public key exchange |
 | AES | Advanced Encryption Standard — encryption algorithm (128/256-bit) |
 | Arduino core | Implementation of the Arduino API for one chip family. MeshCore uses four: Arduino-ESP32, Adafruit nRF52, arduino-pico and STM32duino |
 | ATT | Attribute Protocol — underlying protocol of GATT in BLE |
+| BBS | Bulletin Board System — a central place where participants leave and collect messages without being present at the same time. The model the Room Server goes back to; the default name of an unconfigured room server is `Test BBS` |
 | BLE | Bluetooth Low Energy — energy-efficient connection between node and smartphone |
 | bootloader | Small program that runs first and loads or replaces the actual firmware; determines how a node can be flashed |
 | build flag | Compile option in `platformio.ini` (`-D NAME=value`) that decides which code is compiled in |
@@ -67,6 +69,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | I²C | Inter-Integrated Circuit — bus for connecting sensors and displays |
 | IPEX/U.FL | Small click-on antenna connector for internal antennas |
 | ISM band | Industrial, Scientific, Medical — free frequency band, 868 MHz in Europe |
+| Keep-alive | Periodic request (`0x02`) from a client to a server to keep the connection alive. On a room server the confirmation carries the number of waiting posts. Answered direct only, never by flood |
 | Key Rotation | Periodic replacement of cryptographic keys for extra security |
 | `lib_deps` | Key in `platformio.ini` by which a section states which libraries it needs |
 | Library Dependency Finder (LDF) | Part of PlatformIO that scans the source code for `#include` lines and looks for matching libraries, even undeclared ones |
@@ -103,6 +106,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | Platform | In MeshCore: one of the four build targets `ESP32_PLATFORM`, `NRF52_PLATFORM`, `RP2040_PLATFORM` and `STM32_PLATFORM`. Not the same as a board or a chip |
 | Platform family | Set of SoCs sharing the same platform base in `platformio.ini`, for example ESP32, S3, C3 and C6 under `[esp32_base]` |
 | PlatformIO environment | One `[env:]` block in a `platformio.ini`: the combination of board, role and build flags that yields a single firmware file |
+| Post | A message in a Room Server: 151 characters of plain text with a timestamp from the server clock and the first four bytes of the author's public key |
 | Power amplifier (PA) | Amplifier stage behind the radio chip that raises the transmit power, for example from 22 to 30 dBm |
 | Preamble | Series of identical chirps at the start of each packet for synchronisation |
 | Private Key | Secret key — kept private, used to decrypt messages |
@@ -115,7 +119,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | registry | PlatformIO's package index, from which libraries are fetched by name and version |
 | Repeater | Node that forwards messages to extend network range |
 | RISC-V | Open processor architecture; used in the ESP32-C3 and C6, as opposed to Xtensa in the classic ESP32 and the S3 |
-| Room Server | Physical node with BBS function for store-and-forward (up to 32 messages) |
+| Room Server | Physical node with BBS function for store-and-forward. The queue holds 32 posts, lives in working memory and does not survive a restart |
 | Routing | Determining the best route for a message through the network |
 | RP2040 | Microcontroller from Raspberry Pi with two Cortex-M0+ cores; the only MeshCore chip without a built-in radio |
 | RSSI | Received Signal Strength Indicator — the received signal level in dBm. MeshCore samples it to determine its noise floor |
@@ -141,6 +145,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | SWR | Standing Wave Ratio — the degree to which transmit power is reflected back by the antenna. 1:1 is perfect, infinite is a disconnected antenna |
 | SX1262 | Semtech LoRa radio chip — newer, more efficient version |
 | SX1276 | Semtech LoRa radio chip — older but still widely used version |
+| `sync_since` | Timestamp indicating how far a client has received a room server's posts. Only moves forward once the confirmation is in |
 | Sync Word | Network identifier (2 bytes) to separate different networks |
 | SYSTEMOFF | Deepest sleep mode of the nRF52; almost everything off, waking only through specific pins or LPCOMP |
 | TCP | Transmission Control Protocol — connection-oriented transport layer. A node with a WiFi build opens a server on port 5000 with it |

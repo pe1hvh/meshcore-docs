@@ -10,10 +10,12 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | 70 cm-band | Amateur radioband 430–440 MHz, licentie vereist |
 | 868 MHz | ISM-band frequentie voor Europa |
 | ACK | Acknowledgement — bevestiging dat een bericht is ontvangen |
+| ACL | Access Control List — de tabel met bekende clients van een repeater, sensor of room server, met per client zijn publieke sleutel en rechten. Ruimte voor 20 (`MAX_CLIENTS`) |
 | Advert/Beacon | Periodiek signaal voor aanwezigheidsmelding en public key uitwisseling |
 | AES | Advanced Encryption Standard — versleutelingsalgoritme (128/256-bit) |
 | Arduino-core | Implementatie van de Arduino-API voor één chipfamilie. MeshCore gebruikt er vier: Arduino-ESP32, Adafruit nRF52, arduino-pico en STM32duino |
 | ATT | Attribute Protocol — onderliggend protocol van GATT in BLE |
+| BBS | Bulletin Board System — centrale plek waar deelnemers berichten achterlaten en ophalen zonder tegelijk aanwezig te zijn. Het model waar de Room Server op teruggaat; de standaardnaam van een onbeschreven room server is `Test BBS` |
 | BLE | Bluetooth Low Energy — energiezuinige verbinding tussen node en smartphone |
 | bootloader | Klein programma dat als eerste start en de eigenlijke firmware laadt of vervangt; bepaalt hoe je een node kunt flashen |
 | build flag | Compileeroptie in `platformio.ini` (`-D NAAM=waarde`) die bepaalt welke code wordt meegecompileerd |
@@ -68,6 +70,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | I²C | Inter-Integrated Circuit — bus voor aansluiten van sensoren en displays |
 | IPEX/U.FL | Kleine click-on antenneconnector voor interne antennes |
 | ISM-band | Industrial, Scientific, Medical — vrije frequentieband, 868 MHz in Europa |
+| Keep-alive | Periodiek verzoek (`0x02`) van een client aan een server om de verbinding levend te houden. Bij een room server draagt de bevestiging het aantal wachtende posts mee. Wordt alleen direct beantwoord, nooit via flood |
 | Key Rotation | Periodiek vervangen van cryptografische sleutels voor extra veiligheid |
 | `lib_deps` | Sleutel in `platformio.ini` waarmee een sectie opgeeft welke libraries hij nodig heeft |
 | Library Dependency Finder (LDF) | Onderdeel van PlatformIO dat de broncode op `#include`-regels scant en daar libraries bij zoekt, ook als die niet gedeclareerd zijn |
@@ -103,6 +106,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | Platform | In MeshCore: een van de vier bouwdoelen `ESP32_PLATFORM`, `NRF52_PLATFORM`, `RP2040_PLATFORM` en `STM32_PLATFORM`. Niet hetzelfde als een bord of een chip |
 | Platformfamilie | Verzameling SoC's die dezelfde platformbase in `platformio.ini` delen, bijvoorbeeld ESP32, S3, C3 en C6 onder `[esp32_base]` |
 | PlatformIO environment | Eén `[env:]`-blok in een `platformio.ini`: de combinatie van bord, rol en build flags die samen één firmwarebestand oplevert |
+| Post | Bericht in een Room Server: 151 tekens platte tekst met een tijdstempel van de serverklok en de eerste vier bytes van de publieke sleutel van de auteur |
 | Preamble | Reeks identieke chirps aan het begin van elk packet voor synchronisatie |
 | Private Key | Privésleutel — geheim gehouden, voor ontsleutelen van berichten |
 | Processing Gain | Signaalversterking door spreiding over vele samples (SF12: ~36 dB) |
@@ -114,7 +118,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | registry | Pakketindex van PlatformIO waaruit libraries op naam en versie worden opgehaald |
 | Repeater | Node die berichten doorgeeft om het netwerkbereik te vergroten |
 | RISC-V | Open processorarchitectuur; gebruikt in de ESP32-C3 en C6, tegenover Xtensa in de klassieke ESP32 en de S3 |
-| Room Server | Fysieke node met BBS-functie voor store-and-forward (tot 32 berichten) |
+| Room Server | Fysieke node met BBS-functie voor store-and-forward. De wachtrij telt 32 posts, staat in het werkgeheugen en overleeft geen herstart |
 | Routing | Het bepalen van de beste route voor een bericht door het netwerk |
 | RP2040 | Microcontroller van Raspberry Pi met twee Cortex-M0+-kernen; de enige MeshCore-chip zonder ingebouwde radio |
 | RSSI | Received Signal Strength Indicator — het ontvangen signaalniveau in dBm. MeshCore bemonstert het om zijn ruisvloer te bepalen |
@@ -141,6 +145,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | SWR | Standing Wave Ratio — staandegolfverhouding, de mate waarin zendvermogen door de antenne wordt teruggekaatst. 1:1 is perfect, oneindig is een losse antenne |
 | SX1262 | Semtech LoRa radiochip — nieuwere, efficiëntere versie |
 | SX1276 | Semtech LoRa radiochip — oudere maar nog steeds gebruikte versie |
+| `sync_since` | Tijdstempel die aangeeft tot hoe ver een client de posts van een room server heeft ontvangen. Schuift alleen op wanneer de bevestiging binnen is |
 | Sync Word | Netwerk identifier (2 bytes) om verschillende netwerken te scheiden |
 | SYSTEMOFF | Diepste slaapstand van de nRF52; vrijwel alles uit, wakker worden alleen via specifieke pinnen of LPCOMP |
 | TCP | Transmission Control Protocol — verbindingsgerichte transportlaag. Een node met een WiFi-build opent er een server mee op poort 5000 |

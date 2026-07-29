@@ -17,6 +17,7 @@
 <line opacity="0.3" stroke="var(--line)" stroke-dasharray="4 4" stroke-width="1.5" x1="520" x2="350" y1="80" y2="140"></line>
 <line opacity="0.3" stroke="var(--line)" stroke-dasharray="4 4" stroke-width="1.5" x1="350" x2="350" y1="50" y2="140"></line>
 <line opacity="0.3" stroke="var(--line)" stroke-dasharray="4 4" stroke-width="1.5" x1="350" x2="350" y1="140" y2="230"></line>
+<line opacity="0.3" stroke="var(--line)" stroke-dasharray="4 4" stroke-width="1.5" x1="180" x2="350" y1="200" y2="140"></line>
 <!-- Nodes -->
 <circle cx="180" cy="80" fill="var(--card-bg)" r="22" stroke="var(--node)" stroke-width="2"></circle>
 <text fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="18" text-anchor="middle" x="180" y="84">📱</text>
@@ -33,4 +34,7 @@
 <circle cx="350" cy="230" fill="var(--card-bg)" r="22" stroke="var(--node)" stroke-width="2"></circle>
 <text fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="18" text-anchor="middle" x="350" y="234">🌡️</text>
 <text fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="9" letter-spacing="1" text-anchor="middle" x="350" y="268">TELEMETRY</text>
+<circle cx="180" cy="200" fill="var(--card-bg)" r="22" stroke="var(--node)" stroke-width="2"></circle>
+<text fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="18" text-anchor="middle" x="180" y="205">⌨️</text>
+<text fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="9" letter-spacing="1" text-anchor="middle" x="180" y="238">STANDALONE</text>
 </svg>

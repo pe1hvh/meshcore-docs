@@ -1,0 +1,46 @@
+<svg style="width:100%;margin:1rem 0" viewBox="0 0 700 502" xmlns="http://www.w3.org/2000/svg">
+<style>
+:root{--bg:#FFFFFF; --grid:#023E8A; --line:#0096C7; --wave:#0096C7; --node:#0077B6; --outer:#0096C7; --text-primary:#0a2540; --text-secondary:#3d6380; --text-muted:#7a9bb5; --link-color:#0077B6; --link-hover:#023E8A; --heading-color:#0077B6; --border-subtle:rgba(0,119,182,0.12); --card-bg:rgba(0,119,182,0.03); --card-border:rgba(0,119,182,0.12); --card-hover:rgba(0,119,182,0.07); --code-bg:rgba(0,119,182,0.04); --code-border:rgba(0,119,182,0.12); --info-bg:rgba(0,119,182,0.04); --info-border:rgba(0,119,182,0.15); --table-header:rgba(0,119,182,0.06); --table-row-alt:rgba(0,119,182,0.02); --table-border:rgba(0,119,182,0.1); --timeline-line:#0096C7; --timeline-dot:#0077B6; --tag-green:rgba(16,185,129,0.1); --tag-green-text:#059669; --tag-red:rgba(239,68,68,0.08); --tag-red-text:#dc2626; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}
+@media (prefers-color-scheme: dark){:root{--bg:#0A1628; --grid:#0077B6; --line:#0077B6; --wave:#48CAE4; --node:#00B4D8; --outer:#0077B6; --text-primary:#e0f0f8; --text-secondary:#8badc4; --text-muted:#4a6a80; --link-color:#48CAE4; --link-hover:#90E0EF; --heading-color:#48CAE4; --border-subtle:rgba(0,119,182,0.15); --card-bg:rgba(0,119,182,0.06); --card-border:rgba(0,119,182,0.15); --card-hover:rgba(0,119,182,0.12); --code-bg:rgba(0,119,182,0.08); --code-border:rgba(0,119,182,0.2); --info-bg:rgba(72,202,228,0.06); --info-border:rgba(72,202,228,0.2); --table-header:rgba(0,119,182,0.1); --table-row-alt:rgba(0,119,182,0.04); --table-border:rgba(0,119,182,0.12); --timeline-line:#0077B6; --timeline-dot:#00B4D8; --tag-green:rgba(16,185,129,0.15); --tag-green-text:#6ee7b7; --tag-red:rgba(239,68,68,0.12); --tag-red-text:#fca5a5; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}}
+</style>
+<rect x="0" y="0" width="700" height="502" fill="var(--bg)"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--line)"/></marker></defs>
+<rect x="90" y="20" width="520" height="40" rx="6" fill="var(--code-bg)" stroke="var(--code-border)" stroke-width="1.5"/>
+<text x="350" y="45" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700">ANON_REQ  —  timestamp(4) ‖ sync_since(4) ‖ password</text>
+<line x1="350" y1="60" x2="350" y2="90" stroke="var(--line)" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="90" y="90" width="380" height="48" rx="6" fill="var(--flow-sw-fill)" stroke="var(--flow-sw-edge)" stroke-width="1.5"/>
+<text x="280" y="119" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">password blank and pubkey is in the ACL</text>
+<line x1="470" y1="114" x2="545" y2="114" stroke="var(--line)" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="508" y="106" text-anchor="middle" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400">yes</text>
+<rect x="545" y="90" width="125" height="48" rx="6" fill="var(--tag-green)" stroke="var(--flow-ok)" stroke-width="1.5"/>
+<text x="607" y="119" text-anchor="middle" fill="var(--flow-ok)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700">existing rights</text>
+<text x="330" y="156" text-anchor="end" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400">no</text>
+<line x1="350" y1="138" x2="350" y2="168" stroke="var(--line)" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="90" y="168" width="380" height="48" rx="6" fill="var(--flow-sw-fill)" stroke="var(--flow-sw-edge)" stroke-width="1.5"/>
+<text x="280" y="197" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">password = password (admin)</text>
+<line x1="470" y1="192" x2="545" y2="192" stroke="var(--line)" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="508" y="184" text-anchor="middle" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400">yes</text>
+<rect x="545" y="168" width="125" height="48" rx="6" fill="var(--tag-green)" stroke="var(--flow-ok)" stroke-width="1.5"/>
+<text x="607" y="197" text-anchor="middle" fill="var(--flow-ok)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700">ADMIN  perm 3</text>
+<text x="330" y="234" text-anchor="end" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400">no</text>
+<line x1="350" y1="216" x2="350" y2="246" stroke="var(--line)" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="90" y="246" width="380" height="48" rx="6" fill="var(--flow-sw-fill)" stroke="var(--flow-sw-edge)" stroke-width="1.5"/>
+<text x="280" y="275" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">password = guest.password</text>
+<line x1="470" y1="270" x2="545" y2="270" stroke="var(--line)" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="508" y="262" text-anchor="middle" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400">yes</text>
+<rect x="545" y="246" width="125" height="48" rx="6" fill="var(--tag-green)" stroke="var(--flow-ok)" stroke-width="1.5"/>
+<text x="607" y="275" text-anchor="middle" fill="var(--flow-ok)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700">READ_WRITE  perm 2</text>
+<text x="330" y="312" text-anchor="end" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400">no</text>
+<line x1="350" y1="294" x2="350" y2="324" stroke="var(--line)" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="90" y="324" width="380" height="48" rx="6" fill="var(--flow-sw-fill)" stroke="var(--flow-sw-edge)" stroke-width="1.5"/>
+<text x="280" y="353" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">allow.read.only is on</text>
+<line x1="470" y1="348" x2="545" y2="348" stroke="var(--line)" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="508" y="340" text-anchor="middle" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400">yes</text>
+<rect x="545" y="324" width="125" height="48" rx="6" fill="var(--tag-green)" stroke="var(--flow-ok)" stroke-width="1.5"/>
+<text x="607" y="353" text-anchor="middle" fill="var(--flow-ok)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700">GUEST  perm 0</text>
+<line x1="350" y1="372" x2="350" y2="402" stroke="var(--line)" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="330" y="390" text-anchor="end" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400">none of these</text>
+<rect x="90" y="402" width="580" height="46" rx="6" fill="var(--flow-warn-fill)" stroke="var(--flow-warn)" stroke-width="1.5"/>
+<text x="380" y="430" text-anchor="middle" fill="var(--flow-warn)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700">no reply — the client runs into a timeout</text>
+<text x="350" y="480" text-anchor="middle" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">perm 1 (READ_ONLY) does exist, but is never granted here</text>
+</svg>

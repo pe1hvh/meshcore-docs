@@ -24,6 +24,7 @@ For the table of contents: `nl/README.md` and `en/README.md`.
 ├── nl/                  Dutch chapters (source)
 │   ├── gebruik/         usage, hardware, regulations, privacy
 │   ├── techniek/        protocol, packets, encryption, repeaters
+│   │   └── roomserver/  login, posts, synchronisation, limits
 │   ├── platform/        platform families, chip selection
 │   ├── hardware/        what a node is made of
 │   │   ├── radio/       transceiver, antenna, link budget
@@ -37,6 +38,7 @@ For the table of contents: `nl/README.md` and `en/README.md`.
 ├── en/                  English chapters (translation, 1-to-1 mirror)
 │   ├── usage/
 │   ├── technical/
+│   │   └── roomserver/
 │   ├── platform/
 │   ├── hardware/
 │   │   ├── radio/
@@ -65,22 +67,35 @@ For the table of contents: `nl/README.md` and `en/README.md`.
   and for scripts, diagrams and attachments too. This applies to files;
   directory names are out of scope and follow the section mapping below. If
   no common English term exists, use the firmware term.
+- **Directory names are English, lower case and a single word — no hyphens.**
+  Every directory in the repo follows this, so a section whose name is two
+  words in prose contracts in the path: the Room Server section lives in
+  `roomserver/` while its group label in the README indexes reads *Room
+  Server*. Files inside such a directory keep kebab-case as normal
+  (`roomserver/login-and-acl.md`), and so do the diagrams that belong to it
+  (`room-server-login-1.svg`), because those are files and not directories.
 - **Slugs are English, kebab-case, without a section prefix, and identical
   in both languages.** Only the directory name differs: `gebruik` ↔ `usage`,
   `techniek` ↔ `technical`, `naslag` ↔ `reference`, `platform` ↔ `platform`,
   `hardware` ↔ `hardware`, `libraries` ↔ `libraries`, `project` ↔ `project`. So
   `nl/techniek/packet-structure.md` ↔ `en/technical/packet-structure.md`.
-- **Two sections have a third level: `libraries/` and `hardware/`.** Their
-  chapters live in `libraries/core/`, `libraries/other/`, `hardware/radio/`,
-  `hardware/interfaces/` and `hardware/peripherals/`; those subdirectory names
-  are identical in both languages. The overview chapters —
+- **Three sections have a third level: `libraries/`, `hardware/` and
+  `techniek/` ↔ `technical/`.** Their chapters live in `libraries/core/`,
+  `libraries/other/`, `hardware/radio/`, `hardware/interfaces/`,
+  `hardware/peripherals/` and `techniek/roomserver/` ↔
+  `technical/roomserver/`; those subdirectory names are identical in both
+  languages. In `libraries/` and `hardware/` the overview chapters —
   `libraries/introduction.md`, `libraries/dependencies.md` and
-  `hardware/introduction.md` — stay on the second level. No further level is
-  added without an explicit instruction.
+  `hardware/introduction.md` — stay on the second level. **`roomserver/` is
+  the exception: its `introduction.md` sits inside the subdirectory**, so the
+  whole section moves as one. That deviation was a client decision, not a
+  pattern to copy. No further level is added without an explicit
+  instruction.
 - **A third level appears in the README indexes as a nested bullet** under a
   bold group label that names the subdirectory — *Core libraries* for
   `libraries/core/`, *Supporting libraries* for `libraries/other/`, *Radio*,
-  *Interfaces* and *Peripherals* for the three under `hardware/`. That label
+  *Interfaces* and *Peripherals* for the three under `hardware/`, and *Room
+  Server* for `techniek/roomserver/`. That label
   is deliberately not a link: it is the placeholder standing in for the
   subdirectory, so the entry still reads as a group heading if the nested
   level is flattened. `README.md` in the repo root shows the same
@@ -167,7 +182,8 @@ attribution inaccurate within weeks.
 - Path from an EN chapter: `../../images/en/<slug>-<n>.svg`.
 - Path from a chapter on the third level (`libraries/core/`,
   `libraries/other/`, `hardware/radio/`, `hardware/interfaces/`,
-  `hardware/peripherals/`): `../../../images/nl/<slug>-<n>.svg` and
+  `hardware/peripherals/`, `techniek/roomserver/`):
+  `../../../images/nl/<slug>-<n>.svg` and
   `../../../images/en/<slug>-<n>.svg`. The image directory itself stays
   flat — no `images/nl/libraries/`.
 - Both files always exist and carry the same name. If the diagram contains
@@ -397,6 +413,15 @@ root (`nl/`, `en/`, `images/`, …), naming convention
   chapters cite the figure it produces and the table names the search
   pattern. Figures whose method is unknown cannot be reproduced and must not
   be copied over.
+- **Counting build targets by the name of the `[env:…]` section is wrong.**
+  A section named `…_room_server` is not proof that the room server is
+  compiled, and a target that does compile it need not carry the name —
+  `Generic_ESPNOW_room_svr` does not. Count on `build_src_filter` containing
+  `../examples/simple_room_server`, and resolve `extends` while doing so: six
+  ikoka targets inherit that filter from a shared base section that is not an
+  `[env:…]` itself. The naive name count gives 70 targets in 66 directories,
+  the correct one 73 in 65. `tools/room-server-overview.py` does it the right
+  way; the same trap applies to any other role.
 - **MeshCore's `main` moves daily.** Note the commit you are basing
   yourself on, and do not assume that counts from an earlier session still
   hold. Between `a3a1aa5` (19 July 2026) and `03b6ef4` (28 July 2026), for
@@ -411,6 +436,8 @@ root (`nl/`, `en/`, `images/`, …), naming convention
   data; referenced from `README.md`.
 - **`tools/dm-example.py`** — reproduces the worked example in
   `direct-messages.md`.
+- **`tools/room-server-overview.py`** — reproduces the counts and the worked
+  push/ACK example in `techniek/roomserver/`.
 - **`nl/naslag/terminology.md`** — glossary, authoritative for wording.
 - **`nl/naslag/references.md`** — source list.
 - **[meshcore-dev/MeshCore](https://github.com/meshcore-dev/MeshCore)** —

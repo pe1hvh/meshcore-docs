@@ -18,8 +18,8 @@ hoppen van node naar node tot ze aankomen — zonder internet, zonder zendmast,
 zonder abonnement. **DOMCA** is een initiatief om die kennis toegankelijk te
 maken voor de Nederlandse community.
 
-Deze repository bevat de volledige documentatie: 65 hoofdstukken in het
-Nederlands, dezelfde 65 in het Engels, met 48 diagrammen per taal. De
+Deze repository bevat de volledige documentatie: 70 hoofdstukken in het
+Nederlands, dezelfde 70 in het Engels, met 52 diagrammen per taal. De
 hoofdstuktelling is het aantal `.md`-bestanden per taalboom zonder de
 `README.md`-indexen; de diagramtelling is het aantal SVG's waarnaar een
 hoofdstuk verwijst, niet het aantal bestanden in `images/`.
@@ -69,8 +69,8 @@ een stap verder, en dat is bewust:
 MeshCore turns inexpensive LoRa radios into a network of their own. Messages hop
 from node to node until they arrive — no internet, no cell towers, no
 subscription. **DOMCA** (Dutch Open MeshCore Activity) exists to make that
-knowledge accessible, and this repository holds the full documentation: 65
-chapters in Dutch, the same 65 in English, with 48 diagrams per language. The
+knowledge accessible, and this repository holds the full documentation: 70
+chapters in Dutch, the same 70 in English, with 52 diagrams per language. The
 chapter count is the number of `.md` files per language tree excluding the
 `README.md` indexes; the diagram count is the number of SVGs a chapter
 references, not the number of files in `images/`.
@@ -119,6 +119,7 @@ further, deliberately so:
 ├── nl/                 Nederlandse hoofdstukken
 │   ├── gebruik/          gebruik, hardware, regelgeving
 │   ├── techniek/         protocol, pakketten, encryptie, repeaters
+│   │   └── roomserver/     inloggen, posts, synchronisatie, grenzen
 │   ├── platform/         de vier platformfamilies en de keuze ertussen
 │   ├── hardware/         waar een node uit bestaat
 │   │   ├── radio/          transceiver, antenne, linkbudget
@@ -132,6 +133,7 @@ further, deliberately so:
 ├── en/                 English chapters (same structure)
 │   ├── usage/
 │   ├── technical/
+│   │   └── roomserver/
 │   ├── platform/
 │   ├── hardware/
 │   │   ├── radio/
