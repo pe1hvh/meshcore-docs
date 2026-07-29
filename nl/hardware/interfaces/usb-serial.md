@@ -22,7 +22,7 @@ ontvangende toestandsmachine](../../../images/nl/usb-serial-1.svg)
 ## Eén interface, drie invullingen
 
 Alles wat een companion-app met een node uitwisselt loopt door
-`BaseSerialInterface`. Die kent maar twee werkwoorden:
+`BaseSerialInterface`. Die kent maar twee functies:
 
 `src/helpers/BaseSerialInterface.h` r.16-20
 

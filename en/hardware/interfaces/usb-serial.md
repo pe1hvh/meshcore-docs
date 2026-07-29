@@ -22,7 +22,7 @@ receiving state machine](../../../images/en/usb-serial-1.svg)
 ## One interface, three implementations
 
 Everything a companion app exchanges with a node passes through
-`BaseSerialInterface`. It knows only two verbs:
+`BaseSerialInterface`. It knows only two functions:
 
 `src/helpers/BaseSerialInterface.h` r.16-20
 
