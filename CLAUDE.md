@@ -363,39 +363,17 @@ root (`nl/`, `en/`, `images/`, …), naming convention
 
 ## Known pitfalls
 
-- **Two orphaned SVGs with a Dutch section prefix.**
-  `images/nl/techniek-chirp-2.svg` and `images/en/techniek-chirp-3.svg` do
-  not meet the rule that file names are English, and on top of that are
-  referenced nowhere — the chirp chapters point at `text-to-chirp-*.svg`.
-  Renaming is impossible without colliding with those existing files; they
-  ought to be deleted.
-- **Conversion artefacts from the HTML→markdown migration.** Stray lines
-  such as `Layer stack SVG` in `layer-model.md`, formulas and configuration
-  blocks glued onto a single line, and `####` headings where `##` belongs.
-  Fix them in the files you touch anyway. `regulations.md` still has
-  `####` headings in both languages.
 - **Alt texts do not yet meet the project's own rule.** Several chapters
   use `![Diagram 1 bij …](…)`. New chapters get it right; existing ones are
   picked up at the next substantive change.
-- **Duplicate and orphaned images.** Some PNGs from the website export are
-  identical (`05-group-communication-1.png` and `-2.png`) or are no longer
-  referenced anywhere. Check before reusing them.
 - **Two naming styles in `images/`.** Legacy PNGs with a number prefix
   (`20-channel-structure-psk-1.png`) alongside SVGs with a chapter slug
   (`channel-structure-1.svg`). New files follow the slug style.
-- **The transport code is not a region identifier** — it changes per
-  message. A common mistake in summaries of `packet-structure.md` and
-  `regions-and-scopes.md`.
 - **The firmware default `set dutycycle` is 50 %**, far above H4 (10 %) and
   H5 (0.1 %). That fact must not be lost when shortening `regulations.md`.
 - **Not every chapter has a source block yet.** If it is missing, add it
   when you verify the content; leave it empty if you were unable to check
   anything, rather than guessing a version.
-- **The generator supports a third directory level.** Confirmed by the client
-  on 28 July 2026, on the introduction of `libraries/core/` and
-  `libraries/other/`. `html/` and `include/` are absent from this repo, so
-  the `MenuBuilder` cannot be read here; the confirmation is the only source
-  for this. Sections other than `libraries/` remain flat.
 - **Figures counted over the firmware source tree need their counting method
   recorded.** `tools/library-overview.py` holds a token table for this; the
   chapters cite the figure it produces and the table names the search
