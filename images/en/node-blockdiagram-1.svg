@@ -1,0 +1,60 @@
+<svg style="width:100%;margin:1rem 0" viewBox="0 0 700 470" xmlns="http://www.w3.org/2000/svg">
+<style>
+:root{--bg:#FFFFFF; --grid:#023E8A; --line:#0096C7; --wave:#0096C7; --node:#0077B6; --outer:#0096C7; --text-primary:#0a2540; --text-secondary:#3d6380; --text-muted:#7a9bb5; --link-color:#0077B6; --link-hover:#023E8A; --heading-color:#0077B6; --border-subtle:rgba(0,119,182,0.12); --card-bg:rgba(0,119,182,0.03); --card-border:rgba(0,119,182,0.12); --card-hover:rgba(0,119,182,0.07); --code-bg:rgba(0,119,182,0.04); --code-border:rgba(0,119,182,0.12); --info-bg:rgba(0,119,182,0.04); --info-border:rgba(0,119,182,0.15); --table-header:rgba(0,119,182,0.06); --table-row-alt:rgba(0,119,182,0.02); --table-border:rgba(0,119,182,0.1); --timeline-line:#0096C7; --timeline-dot:#0077B6; --tag-green:rgba(16,185,129,0.1); --tag-green-text:#059669; --tag-red:rgba(239,68,68,0.08); --tag-red-text:#dc2626; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}
+@media (prefers-color-scheme: dark){:root{--bg:#0A1628; --grid:#0077B6; --line:#0077B6; --wave:#48CAE4; --node:#00B4D8; --outer:#0077B6; --text-primary:#e0f0f8; --text-secondary:#8badc4; --text-muted:#4a6a80; --link-color:#48CAE4; --link-hover:#90E0EF; --heading-color:#48CAE4; --border-subtle:rgba(0,119,182,0.15); --card-bg:rgba(0,119,182,0.06); --card-border:rgba(0,119,182,0.15); --card-hover:rgba(0,119,182,0.12); --code-bg:rgba(0,119,182,0.08); --code-border:rgba(0,119,182,0.2); --info-bg:rgba(72,202,228,0.06); --info-border:rgba(72,202,228,0.2); --table-header:rgba(0,119,182,0.1); --table-row-alt:rgba(0,119,182,0.04); --table-border:rgba(0,119,182,0.12); --timeline-line:#0077B6; --timeline-dot:#00B4D8; --tag-green:rgba(16,185,129,0.15); --tag-green-text:#6ee7b7; --tag-red:rgba(239,68,68,0.12); --tag-red-text:#fca5a5; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}}
+</style>
+<rect x="0" y="0" width="700" height="470" fill="var(--bg)"/>
+<rect x="400" y="16" width="282" height="40" rx="6" fill="var(--flow-sw-fill)" stroke="var(--flow-sw-edge)" stroke-width="1.5"/>
+<text x="541" y="41" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700">Companion app or terminal</text>
+<rect x="400" y="92" width="86" height="38" rx="6" fill="var(--flow-sw-fill)" stroke="var(--flow-sw-edge)" stroke-width="1.5"/>
+<text x="443.0" y="116" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700">BLE</text>
+<line x1="443.0" y1="92" x2="443.0" y2="60" stroke="var(--line)" stroke-width="1.5"/>
+<line x1="443.0" y1="166" x2="443.0" y2="132" stroke="var(--line)" stroke-width="1.5"/>
+<rect x="496" y="92" width="90" height="38" rx="6" fill="var(--flow-sw-fill)" stroke="var(--flow-sw-edge)" stroke-width="1.5"/>
+<text x="541.0" y="116" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700">WiFi</text>
+<line x1="541.0" y1="92" x2="541.0" y2="60" stroke="var(--line)" stroke-width="1.5"/>
+<line x1="541.0" y1="166" x2="541.0" y2="132" stroke="var(--line)" stroke-width="1.5"/>
+<rect x="596" y="92" width="86" height="38" rx="6" fill="var(--flow-sw-fill)" stroke="var(--flow-sw-edge)" stroke-width="1.5"/>
+<text x="639.0" y="116" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700">USB serial</text>
+<line x1="639.0" y1="92" x2="639.0" y2="60" stroke="var(--line)" stroke-width="1.5"/>
+<line x1="639.0" y1="166" x2="639.0" y2="132" stroke="var(--line)" stroke-width="1.5"/>
+<rect x="400" y="168" width="282" height="96" rx="6" fill="var(--card-bg)" stroke="var(--node)" stroke-width="2"/>
+<text x="541" y="196" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="13" font-weight="700">SoC — the compute core</text>
+<text x="541" y="220" text-anchor="middle" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">ESP32 · nRF52 · RP2040 · STM32WL</text>
+<text x="541" y="240" text-anchor="middle" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">firmware, flash, RAM, keys</text>
+<rect x="18" y="186" width="86" height="60" rx="6" fill="var(--flow-hw-fill)" stroke="var(--flow-hw-edge)" stroke-width="1.5"/>
+<text x="61" y="212" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700">Antenna</text>
+<text x="61" y="230" text-anchor="middle" fill="var(--flow-hw-text-soft)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">50 ohm</text>
+<rect x="140" y="168" width="170" height="96" rx="6" fill="var(--flow-hw-fill)" stroke="var(--flow-hw-edge)" stroke-width="1.5"/>
+<text x="225" y="200" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700">LoRa transceiver</text>
+<text x="225" y="224" text-anchor="middle" fill="var(--flow-hw-text-soft)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">SX1262 · SX1276 · LR1110</text>
+<line x1="104" y1="216" x2="138" y2="216" stroke="var(--line)" stroke-width="1.5"/>
+<text x="121" y="206" text-anchor="middle" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">RF</text>
+<line x1="310" y1="216" x2="400" y2="216" stroke="var(--line)" stroke-width="1.5"/>
+<text x="355" y="206" text-anchor="middle" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">SPI</text>
+<text x="355" y="236" text-anchor="middle" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">BUSY / DIO1</text>
+<rect x="150" y="348" width="160" height="62" rx="6" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="1.5"/>
+<text x="230.0" y="374" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700">Display</text>
+<text x="230.0" y="394" text-anchor="middle" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">OLED · e-paper · TFT</text>
+<line x1="230.0" y1="300" x2="230.0" y2="346" stroke="var(--line)" stroke-width="1.5"/>
+<text x="230.0" y="292" text-anchor="middle" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">I²C / SPI</text>
+<rect x="330" y="348" width="130" height="62" rx="6" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="1.5"/>
+<text x="395.0" y="374" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700">GPS</text>
+<text x="395.0" y="394" text-anchor="middle" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">NMEA</text>
+<line x1="395.0" y1="300" x2="395.0" y2="346" stroke="var(--line)" stroke-width="1.5"/>
+<text x="395.0" y="292" text-anchor="middle" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">UART</text>
+<rect x="490" y="348" width="192" height="62" rx="6" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="1.5"/>
+<text x="586.0" y="374" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700">Buttons and LEDs</text>
+<text x="586.0" y="394" text-anchor="middle" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">buzzer, vibration motor</text>
+<line x1="586.0" y1="300" x2="586.0" y2="346" stroke="var(--line)" stroke-width="1.5"/>
+<text x="586.0" y="292" text-anchor="middle" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">GPIO</text>
+<line x1="230" y1="300" x2="586" y2="300" stroke="var(--line)" stroke-width="1.5"/>
+<line x1="541" y1="264" x2="541" y2="300" stroke="var(--line)" stroke-width="1.5"/>
+<rect x="18" y="432" width="14" height="14" rx="6" fill="var(--flow-hw-fill)" stroke="var(--flow-hw-edge)" stroke-width="1"/>
+<text x="40" y="444" text-anchor="start" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">radio/</text>
+<rect x="150" y="432" width="14" height="14" rx="6" fill="var(--flow-sw-fill)" stroke="var(--flow-sw-edge)" stroke-width="1"/>
+<text x="172" y="444" text-anchor="start" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">interfaces/</text>
+<rect x="300" y="432" width="14" height="14" rx="6" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="1"/>
+<text x="322" y="444" text-anchor="start" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">peripherals/</text>
+<text x="682" y="444" text-anchor="end" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">colour = the subsection the topic belongs to</text>
+</svg>

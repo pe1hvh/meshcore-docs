@@ -27,7 +27,6 @@ Off-grid mesh communicatie via LoRa radio.
 - [Direct Messages](techniek/direct-messages.md)
 - [Private & Public Key Encryptie](techniek/key-encryption.md)
 - [Channel Structure & PSK](techniek/channel-structure.md)
-- [BLE Architectuur](techniek/ble-architecture.md)
 - [Remote Bediening](techniek/remote-control.md)
 - [Route traceren](techniek/route-tracing.md)
 - [Repeater TX/RX flow](techniek/repeater-flow.md)
@@ -39,6 +38,24 @@ Off-grid mesh communicatie via LoRa radio.
 - [MeshCore Platforms](platform/platforms.md)
 - [De vier platformfamilies](platform/platform-families.md)
 - [Nodematrix](platform/node-matrix.md)
+
+## Hardware
+
+- [Hardware van een node](hardware/introduction.md)
+- **Radio** — `hardware/radio/`
+  - [De LoRa-transceiver](hardware/radio/sx1262.md)
+  - [Antenne](hardware/radio/antenna.md)
+  - [Linkbudget](hardware/radio/link-budget.md)
+- **Interfaces** — `hardware/interfaces/`
+  - [BLE Architectuur](hardware/interfaces/ble-architecture.md)
+  - [WiFi als companion-verbinding](hardware/interfaces/wifi.md)
+  - [USB-serieel](hardware/interfaces/usb-serial.md)
+  - [De I²C-bus](hardware/interfaces/i2c.md)
+  - [De SPI-bus](hardware/interfaces/spi.md)
+- **Randapparatuur** — `hardware/peripherals/`
+  - [Het scherm](hardware/peripherals/display.md)
+  - [GPS](hardware/peripherals/gps.md)
+  - [Knoppen en LED's](hardware/peripherals/buttons-and-leds.md)
 
 ## Libraries
 

@@ -18,8 +18,11 @@ hoppen van node naar node tot ze aankomen — zonder internet, zonder zendmast,
 zonder abonnement. **DOMCA** is een initiatief om die kennis toegankelijk te
 maken voor de Nederlandse community.
 
-Deze repository bevat de volledige documentatie: 54 hoofdstukken in het
-Nederlands, dezelfde 54 in het Engels, met 38 diagrammen per taal.
+Deze repository bevat de volledige documentatie: 65 hoofdstukken in het
+Nederlands, dezelfde 65 in het Engels, met 48 diagrammen per taal. De
+hoofdstuktelling is het aantal `.md`-bestanden per taalboom zonder de
+`README.md`-indexen; de diagramtelling is het aantal SVG's waarnaar een
+hoofdstuk verwijst, niet het aantal bestanden in `images/`.
 
 ### Beginnen
 
@@ -66,8 +69,11 @@ een stap verder, en dat is bewust:
 MeshCore turns inexpensive LoRa radios into a network of their own. Messages hop
 from node to node until they arrive — no internet, no cell towers, no
 subscription. **DOMCA** (Dutch Open MeshCore Activity) exists to make that
-knowledge accessible, and this repository holds the full documentation: 54
-chapters in Dutch, the same 54 in English, with 38 diagrams per language.
+knowledge accessible, and this repository holds the full documentation: 65
+chapters in Dutch, the same 65 in English, with 48 diagrams per language. The
+chapter count is the number of `.md` files per language tree excluding the
+`README.md` indexes; the diagram count is the number of SVGs a chapter
+references, not the number of files in `images/`.
 
 ### Getting started
 
@@ -114,6 +120,10 @@ further, deliberately so:
 │   ├── gebruik/          gebruik, hardware, regelgeving
 │   ├── techniek/         protocol, pakketten, encryptie, repeaters
 │   ├── platform/         de vier platformfamilies en de keuze ertussen
+│   ├── hardware/         waar een node uit bestaat
+│   │   ├── radio/          transceiver, antenne, linkbudget
+│   │   ├── interfaces/     BLE, WiFi, USB-serieel, I²C, SPI
+│   │   └── peripherals/    scherm, GPS, knoppen en LED's
 │   ├── libraries/        welke externe code de firmware in komt
 │   │   ├── core/           kernlibraries, één hoofdstuk per library
 │   │   └── other/          ondersteunende libraries, per functie gegroepeerd
@@ -123,6 +133,10 @@ further, deliberately so:
 │   ├── usage/
 │   ├── technical/
 │   ├── platform/
+│   ├── hardware/
+│   │   ├── radio/
+│   │   ├── interfaces/
+│   │   └── peripherals/
 │   ├── libraries/
 │   │   ├── core/
 │   │   └── other/

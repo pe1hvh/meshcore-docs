@@ -25,6 +25,10 @@ For the table of contents: `nl/README.md` and `en/README.md`.
 │   ├── gebruik/         usage, hardware, regulations, privacy
 │   ├── techniek/        protocol, packets, encryption, repeaters
 │   ├── platform/        platform families, chip selection
+│   ├── hardware/        what a node is made of
+│   │   ├── radio/       transceiver, antenna, link budget
+│   │   ├── interfaces/  BLE, WiFi, USB serial, I²C, SPI
+│   │   └── peripherals/ display, GPS, buttons and LEDs
 │   ├── libraries/       external libraries, dependencies
 │   │   ├── core/        one chapter per core library
 │   │   └── other/       supporting libraries, grouped by function
@@ -34,6 +38,10 @@ For the table of contents: `nl/README.md` and `en/README.md`.
 │   ├── usage/
 │   ├── technical/
 │   ├── platform/
+│   ├── hardware/
+│   │   ├── radio/
+│   │   ├── interfaces/
+│   │   └── peripherals/
 │   ├── libraries/
 │   │   ├── core/
 │   │   └── other/
@@ -60,16 +68,19 @@ For the table of contents: `nl/README.md` and `en/README.md`.
 - **Slugs are English, kebab-case, without a section prefix, and identical
   in both languages.** Only the directory name differs: `gebruik` ↔ `usage`,
   `techniek` ↔ `technical`, `naslag` ↔ `reference`, `platform` ↔ `platform`,
-  `libraries` ↔ `libraries`, `project` ↔ `project`. So
+  `hardware` ↔ `hardware`, `libraries` ↔ `libraries`, `project` ↔ `project`. So
   `nl/techniek/packet-structure.md` ↔ `en/technical/packet-structure.md`.
-- **`libraries/` is the only section with a third level.** Its chapters live
-  in `libraries/core/` and `libraries/other/`; those subdirectory names are
-  identical in both languages. The two overview chapters,
-  `libraries/introduction.md` and `libraries/dependencies.md`, stay on the
-  second level.
+- **Two sections have a third level: `libraries/` and `hardware/`.** Their
+  chapters live in `libraries/core/`, `libraries/other/`, `hardware/radio/`,
+  `hardware/interfaces/` and `hardware/peripherals/`; those subdirectory names
+  are identical in both languages. The overview chapters —
+  `libraries/introduction.md`, `libraries/dependencies.md` and
+  `hardware/introduction.md` — stay on the second level. No further level is
+  added without an explicit instruction.
 - **A third level appears in the README indexes as a nested bullet** under a
   bold group label that names the subdirectory — *Core libraries* for
-  `libraries/core/`, *Supporting libraries* for `libraries/other/`. That label
+  `libraries/core/`, *Supporting libraries* for `libraries/other/`, *Radio*,
+  *Interfaces* and *Peripherals* for the three under `hardware/`. That label
   is deliberately not a link: it is the placeholder standing in for the
   subdirectory, so the entry still reads as a group heading if the nested
   level is flattened. `README.md` in the repo root shows the same
@@ -155,11 +166,18 @@ attribution inaccurate within weeks.
 - Path from an NL chapter: `../../images/nl/<slug>-<n>.svg`.
 - Path from an EN chapter: `../../images/en/<slug>-<n>.svg`.
 - Path from a chapter on the third level (`libraries/core/`,
-  `libraries/other/`): `../../../images/nl/<slug>-<n>.svg` and
+  `libraries/other/`, `hardware/radio/`, `hardware/interfaces/`,
+  `hardware/peripherals/`): `../../../images/nl/<slug>-<n>.svg` and
   `../../../images/en/<slug>-<n>.svg`. The image directory itself stays
   flat — no `images/nl/libraries/`.
 - Both files always exist and carry the same name. If the diagram contains
   no text, the EN version is an identical copy.
+- **`images/` is flat.** A slug that occurs in more than one section — such as
+  `introduction` — therefore cannot use `<slug>-<n>.svg` twice. The second
+  diagram is named after what it shows, not after the chapter it sits in:
+  `node-blockdiagram-1.svg` for `hardware/introduction.md`. Image files are
+  never moved or renamed to resolve this; only new files pick a different
+  name.
 - Alt text is descriptive and readable on its own — not
   `Diagram 1 bij layer-model`.
 - **New diagrams as SVG**, not as PNG.

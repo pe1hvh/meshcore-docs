@@ -5,6 +5,156 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
 
 ---
 
+## [Unreleased]
+
+### Added
+
+- **Hardware** (`nl/hardware/`, `en/hardware/`): new top-level section
+  describing what a MeshCore node is made of — the radio, the connections to
+  the outside world, and the devices hanging off the buses of the SoC. Until
+  now the SX1262, the OLED display and USB serial had no place in the repo:
+  `platform/` covers which board has what, `techniek/` covers the protocol,
+  and the components themselves fell between the two. The section takes a
+  third directory level after the model of `libraries/`, with `radio/`,
+  `interfaces/` and `peripherals/` identical in both language trees.
+- `nl/hardware/introduction.md` and `en/hardware/introduction.md`: block
+  diagram of a node, how the firmware names those blocks (`RADIO_CLASS`,
+  `BaseSerialInterface`, `DisplayDriver`, `SensorManager`), and the criterion
+  separating the three subsections. Verified against firmware v1.16.0, commit
+  `03b6ef4`, 28 July 2026. The chapter also settles the three different
+  meanings of *randapparatuur* / *peripherals* in this documentation, which
+  until now collided silently between `platform/node-matrix.md` table 3 and
+  `libraries/other/peripherals.md`.
+- `images/nl/node-blockdiagram-1.svg` and `images/en/node-blockdiagram-1.svg`.
+  Named after what the diagram shows rather than after its chapter slug:
+  `images/` is flat and `introduction-1.svg` was already taken by
+  `libraries/introduction.md`. No existing image file was moved or renamed.
+- **`hardware/interfaces/`**: four new chapters per language on how a node
+  connects to the outside world and to what is on the board — `wifi.md`,
+  `usb-serial.md`, `i2c.md` and `spi.md`. Verified against firmware v1.16.0,
+  commit `03b6ef4`, 28 July 2026. The load-bearing finding is that BLE, WiFi
+  and serial are mutually exclusive: `examples/companion_radio/main.cpp`
+  r.37-54 compiles in exactly one of them, so which transport a node speaks
+  is a build choice and not a setting. Also documented: the WiFi credentials
+  end up as plain text in the binary, the serial framing byte by byte
+  (`>` / `<` plus a 16-bit length, LSB first, payload up to 176 bytes), the
+  I²C autodetection over addresses `0x08`–`0x77`, and the per-platform
+  differences in how the SPI pins reach RadioLib.
+- Eight diagrams (`images/nl/`, `images/en/`): `wifi-1.svg`,
+  `usb-serial-1.svg`, `i2c-1.svg` and `spi-1.svg`, each in both languages.
+- **`hardware/radio/`**: three new chapters per language — `sx1262.md`,
+  `antenna.md` and `link-budget.md`. Verified against firmware v1.16.0,
+  commit `03b6ef4`, 28 July 2026. The firmware supports six radio families
+  through one pattern, retries initialisation with the TCXO voltage at zero
+  when it fails with `-706`/`-707`, patches register `0x8B5` on three boards
+  while the comment names only one, and measures its own noise floor over 64
+  RSSI samples clamped at −120 dBm. The scope is deliberately narrow: the
+  radiation pattern and the dead zone stay in `techniek/dead-zone.md`, and
+  e.r.p., the dBi/dBd conversion and the duty cycle stay in
+  `gebruik/regulations.md`. Both are referenced, neither is repeated.
+- **`tools/link-budget.py`**: reproduces every figure in `link-budget.md`.
+  Firmware values and external assumptions are kept strictly apart in the
+  script; the two inputs that are not in the firmware repo — receiver noise
+  figure and required SNR per spreading factor — are constants at the top and
+  are marked with `°` in the chapters, following the convention of
+  `platform/node-matrix.md`.
+- Six diagrams (`images/nl/`, `images/en/`): `sx1262-1.svg`, `antenna-1.svg`
+  and `link-budget-1.svg`, each in both languages.
+- **`hardware/peripherals/`**: three new chapters per language —
+  `display.md`, `gps.md` and `buttons-and-leds.md`. Verified against firmware
+  v1.16.0, commit `03b6ef4`, 28 July 2026. Documented for the first time:
+  `DISPLAY_CLASS` has eleven values across 164 build-flag lines, one of which
+  is a complete do-nothing driver used by fifteen targets; the display
+  abstraction replaces every non-ASCII character with a single CP437 block,
+  which is why accented characters show as blocks on an OLED; a shared power
+  rail is reference-counted rather than switched, so one part cannot cut
+  power to another; the GPS enable pin is resolved through a four-layer
+  `#ifndef` cascade that silently ends at `-1`; and one button yields five
+  events with a fixed 280 ms multi-click window.
+- Three diagrams (`images/nl/`, `images/en/`): `display-1.svg`, `gps-1.svg`
+  and `buttons-and-leds-1.svg`, each in both languages.
+- Eight terms in `nl/naslag/terminology.md` and `en/reference/terminology.md`,
+  inserted alphabetically: CP437, debouncing, e-paper, GNSS, NMEA, OLED,
+  RTTTL and XBM. *e-ink* and *GPIO* were already present and were left
+  untouched.
+- Eight terms in `nl/naslag/terminology.md` and `en/reference/terminology.md`,
+  inserted alphabetically: dBd, dBi, FSPL, LNA, noise floor, RSSI, SWR and
+  TCXO. *Link budget* and *Power amplifier (PA)* were already present and
+  were left untouched.
+- Ten terms in `nl/naslag/terminology.md` and `en/reference/terminology.md`,
+  inserted alphabetically: `BUSY`, `MISO`, `MOSI`, `NSS`, `SCL`, `SCLK`,
+  `SDA`, TCP, `TwoWire` and USB CDC-ACM.
+- **`tools/hardware-overview.py`**: recomputes the ten counts that the
+  `hardware/` chapters state, against the pinned commit. Every figure carries
+  its search pattern and its unit, because the difference between a line and a
+  file is where the earlier errors came from: a variant file can hold several
+  `[env:…]` sections that each set the same flag. Commented-out lines are
+  excluded inside the script rather than in the invocation, and flags that
+  appear both in `platformio.ini` and in a variant header are counted per
+  variant directory.
+
+### Changed
+
+- `nl/README.md`, `en/README.md`: **Hardware** index section added between
+  *Platform* and *Libraries*. It lists only `introduction.md`; the chapters of
+  the later phases are deliberately absent rather than present as dead links.
+- `README.md`: `hardware/` with its three subdirectories added to the
+  structure tree in both language trees; chapter count 54 → 55 per language.
+- `README.md`: both count sentences corrected to the state after the
+  `hardware/` section — 55 → 65 chapters per language and 38 → 48 diagrams per
+  language. The counts had stood at the pre-`hardware/` state and were
+  therefore untrue. The counting method is now named in the sentence itself:
+  chapters are `.md` files per language tree excluding the `README.md`
+  indexes, diagrams are the SVGs a chapter actually references. That second
+  method matters because `images/en/` holds one SVG no chapter links to, so
+  files on disk and diagrams in use are 49 and 48.
+- `nl/hardware/peripherals/buttons-and-leds.md`,
+  `en/hardware/peripherals/buttons-and-leds.md`: two counts corrected after
+  `tools/hardware-overview.py` disagreed with them. `PIN_USER_BTN` read
+  forty-four variant files; forty-four is the line count, the file count is
+  forty-two, and the `grep -rl` quoted alongside it returned a third number
+  because it also counted a file where the flag appears only commented out.
+  The sentence now names both units and explains the difference — `rak4631`
+  sets the flag in three `[env:…]` sections. `PIN_BUZZER` read fifteen variant
+  files; in one of those, `minewsemi_me25ls01`, the line is commented out, so
+  fourteen is the count under the project's own rule. The quoted `grep`
+  invocations were replaced by a reference to the script. No other figure in
+  `hardware/` changed: the remaining eight counts the script produces already
+  matched their chapters.
+- `nl/naslag/terminology.md`, `en/reference/terminology.md`: the two
+  consecutive alphabetical runs merged into one. Both lists had a second run
+  starting again at *Regiocode* / *Region code* after `XBM`. In the English
+  list *Power amplifier (PA)* additionally sat in front of *EIRP* and now sits
+  between *PlatformIO environment* and *Preamble*. 154 terms before, 154
+  terms after, in both languages; no term was added, removed or reworded. The
+  sort key ignores case and punctuation, otherwise `ESP-NOW` sorts before
+  `ESP32` and `Standalone` after `ST-Link`.
+- **Moved** `nl/techniek/ble-architecture.md` → `nl/hardware/interfaces/ble-architecture.md`
+  and `en/technical/ble-architecture.md` → `en/hardware/interfaces/ble-architecture.md`.
+  BLE is a connection to a companion, not a protocol internal, so it belongs
+  beside WiFi and USB serial rather than in the protocol section. The slug is
+  unchanged and the content is unchanged; the only edit inside the files is
+  one extra `../` in the image path, because the chapters moved from the
+  second to the third level. `images/nl/ble-architecture-1.svg` and
+  `images/en/ble-architecture-1.svg` stayed exactly where they were —
+  image files are not moved. The unreferenced legacy PNG
+  `18-ble-architecture-1.png` likewise stayed untouched in both image
+  directories.
+- `nl/README.md`, `en/README.md`: the BLE entry moved from *Techniek* /
+  *Technical* to a nested bullet under the non-linking group label
+  **Interfaces**, together with the four new chapters. A second group label
+  **Radio** was added above it with the three `hardware/radio/` chapters, and
+  a third, **Randapparatuur** / **Peripherals**, below it with the three
+  `hardware/peripherals/` chapters.
+- `CLAUDE.md`: section mapping extended with `hardware` ↔ `hardware`. The rule
+  that `libraries/` is the only section with a third level was true when it
+  was written and no longer is; it now names both sections. The image rules
+  gained a paragraph on slug collisions in the flat `images/` directory,
+  written because `hardware/introduction.md` ran into
+  `libraries/introduction.md` over `introduction-1.svg`.
+
+---
+
 ## [2026-07-29] Add libraries section
 
 ### Added
