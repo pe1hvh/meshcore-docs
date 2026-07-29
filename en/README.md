@@ -27,7 +27,6 @@ Off-grid mesh communication over LoRa radio.
 - [Direct Messages](technical/direct-messages.md)
 - [Private & Public Key Encryption](technical/key-encryption.md)
 - [Channel Structure & PSK](technical/channel-structure.md)
-- [BLE Architecture](technical/ble-architecture.md)
 - [Remote Control](technical/remote-control.md)
 - [Route Tracing](technical/route-tracing.md)
 - [Repeater TX/RX flow](technical/repeater-flow.md)
@@ -39,6 +38,24 @@ Off-grid mesh communication over LoRa radio.
 - [MeshCore Platforms](platform/platforms.md)
 - [The Four Platform Families](platform/platform-families.md)
 - [Node Matrix](platform/node-matrix.md)
+
+## Hardware
+
+- [The Hardware of a Node](hardware/introduction.md)
+- **Radio** — `hardware/radio/`
+  - [The LoRa Transceiver](hardware/radio/sx1262.md)
+  - [Antenna](hardware/radio/antenna.md)
+  - [Link Budget](hardware/radio/link-budget.md)
+- **Interfaces** — `hardware/interfaces/`
+  - [BLE Architecture](hardware/interfaces/ble-architecture.md)
+  - [WiFi as a Companion Connection](hardware/interfaces/wifi.md)
+  - [USB Serial](hardware/interfaces/usb-serial.md)
+  - [The I²C Bus](hardware/interfaces/i2c.md)
+  - [The SPI Bus](hardware/interfaces/spi.md)
+- **Peripherals** — `hardware/peripherals/`
+  - [The Display](hardware/peripherals/display.md)
+  - [GPS](hardware/peripherals/gps.md)
+  - [Buttons and LEDs](hardware/peripherals/buttons-and-leds.md)
 
 ## Libraries
 
