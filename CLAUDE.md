@@ -25,12 +25,18 @@ For the table of contents: `nl/README.md` and `en/README.md`.
 │   ├── gebruik/         usage, hardware, regulations, privacy
 │   ├── techniek/        protocol, packets, encryption, repeaters
 │   ├── platform/        platform families, chip selection
+│   ├── libraries/       external libraries, dependencies
+│   │   ├── core/        one chapter per core library
+│   │   └── other/       supporting libraries, grouped by function
 │   ├── naslag/          terminology, references, links
 │   └── project/         about DOMCA, GitHub overview
 ├── en/                  English chapters (translation, 1-to-1 mirror)
 │   ├── usage/
 │   ├── technical/
 │   ├── platform/
+│   ├── libraries/
+│   │   ├── core/
+│   │   └── other/
 │   ├── reference/
 │   └── project/
 ├── images/
@@ -54,8 +60,20 @@ For the table of contents: `nl/README.md` and `en/README.md`.
 - **Slugs are English, kebab-case, without a section prefix, and identical
   in both languages.** Only the directory name differs: `gebruik` ↔ `usage`,
   `techniek` ↔ `technical`, `naslag` ↔ `reference`, `platform` ↔ `platform`,
-  `project` ↔ `project`. So `nl/techniek/packet-structure.md` ↔
-  `en/technical/packet-structure.md`.
+  `libraries` ↔ `libraries`, `project` ↔ `project`. So
+  `nl/techniek/packet-structure.md` ↔ `en/technical/packet-structure.md`.
+- **`libraries/` is the only section with a third level.** Its chapters live
+  in `libraries/core/` and `libraries/other/`; those subdirectory names are
+  identical in both languages. The two overview chapters,
+  `libraries/introduction.md` and `libraries/dependencies.md`, stay on the
+  second level.
+- **A third level appears in the README indexes as a nested bullet** under a
+  bold group label that names the subdirectory — *Core libraries* for
+  `libraries/core/`, *Supporting libraries* for `libraries/other/`. That label
+  is deliberately not a link: it is the placeholder standing in for the
+  subdirectory, so the entry still reads as a group heading if the nested
+  level is flattened. `README.md` in the repo root shows the same
+  subdirectories in its structure tree.
 - **Two tables of contents.** `nl/README.md` and `en/README.md` list the
   same chapters in the same order.
 - **No shared image directory.** Every diagram exists twice, under the same
@@ -99,7 +117,17 @@ not a stylistic preference but the reason it exists:
 - Tables with a separator row `|---|---|`; italic rows for fields that are
   strictly speaking out of scope (see `packet-structure.md`).
 - Code blocks always with a language tag: ` ```text `, ` ```python `,
-  ` ```bash `.
+  ` ```bash `, ` ```cpp `. The list is not exhaustive; `cpp` is in use in
+  `regions-in-practice.md`, `regions-and-scopes.md` and throughout
+  `libraries/`.
+- **Code quoted from the firmware** carries a line above the block naming the
+  file and the line numbers, for example `` `src/Identity.cpp` r.17-23 ``.
+  Excerpts are at most ±15 lines and are copied verbatim — nothing rewritten,
+  nothing "clarified". Omitted lines become `// ...`. If a fragment is
+  unreadable without context, pick a different fragment rather than editing
+  it. Line numbers are those of the commit named in the source block; if the
+  assignment states different ones, that contradiction goes to the client
+  under 🛑 *Stop and ask*.
 - Firmware identifiers, file names, commands and hex values in
   `` `backticks` ``.
 - Matter-of-fact tone, no marketing language, no superlatives.
@@ -126,6 +154,10 @@ attribution inaccurate within weeks.
 
 - Path from an NL chapter: `../../images/nl/<slug>-<n>.svg`.
 - Path from an EN chapter: `../../images/en/<slug>-<n>.svg`.
+- Path from a chapter on the third level (`libraries/core/`,
+  `libraries/other/`): `../../../images/nl/<slug>-<n>.svg` and
+  `../../../images/en/<slug>-<n>.svg`. The image directory itself stays
+  flat — no `images/nl/libraries/`.
 - Both files always exist and carry the same name. If the diagram contains
   no text, the EN version is an identical copy.
 - Alt text is descriptive and readable on its own — not
@@ -359,6 +391,16 @@ root (`nl/`, `en/`, `images/`, …), naming convention
 - **Not every chapter has a source block yet.** If it is missing, add it
   when you verify the content; leave it empty if you were unable to check
   anything, rather than guessing a version.
+- **The generator supports a third directory level.** Confirmed by the client
+  on 28 July 2026, on the introduction of `libraries/core/` and
+  `libraries/other/`. `html/` and `include/` are absent from this repo, so
+  the `MenuBuilder` cannot be read here; the confirmation is the only source
+  for this. Sections other than `libraries/` remain flat.
+- **Figures counted over the firmware source tree need their counting method
+  recorded.** `tools/library-overview.py` holds a token table for this; the
+  chapters cite the figure it produces and the table names the search
+  pattern. Figures whose method is unknown cannot be reproduced and must not
+  be copied over.
 - **MeshCore's `main` moves daily.** Note the commit you are basing
   yourself on, and do not assume that counts from an earlier session still
   hold. Between `a3a1aa5` (19 July 2026) and `03b6ef4` (28 July 2026), for

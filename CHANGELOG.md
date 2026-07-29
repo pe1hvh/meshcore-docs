@@ -5,6 +5,75 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
 
 ---
 
+## [2026-07-29] Add libraries section
+
+### Added
+
+- **Libraries** (`nl/libraries/`, `en/libraries/`): new top-level section of
+  twenty chapters per language describing which external code enters the
+  MeshCore firmware, along which route, and how it is called. Until now the
+  repo described what MeshCore does and which platforms it runs on, but not
+  what it is built out of: the eighty `platformio.ini` files declare
+  fifty-two libraries, six more arrive as undeclared transitive dependencies,
+  and three pieces of external code bypass `lib_deps` altogether. None of
+  that was documented anywhere.
+- `libraries/introduction.md` and `libraries/dependencies.md` carry the two
+  generated tables; the eleven chapters in `libraries/core/` cover one
+  library each, and the seven in `libraries/other/` group the supporting
+  libraries by function.
+- **`tools/library-overview.py`** and `tools/library-metadata-snapshot.json`:
+  the inventory and dependency tables are too large and change too often to
+  maintain by hand. The script parses the root `platformio.ini` plus all
+  seventy-nine variant files, reports `${section.lib_deps}` references
+  separately rather than resolving them, fetches upstream `depends=` metadata
+  from `raw.githubusercontent.com`, and writes between markers so surrounding
+  prose survives. `--offline` uses the bundled snapshot.
+- Twelve diagrams (`images/nl/`, `images/en/`): `introduction-1.svg`,
+  `dependencies-1.svg`, `radiolib-1.svg`, `crypto-1.svg`, `displays-1.svg`
+  and `sensors-1.svg`, each in both languages.
+- Thirteen terms in `nl/naslag/terminology.md` and
+  `en/reference/terminology.md`, inserted alphabetically: `lib_deps`,
+  Library Dependency Finder, `library.properties`, `library.json`,
+  `depends=`, transitive dependency, vendoring, semver caret, framework
+  library, registry, GODMODE, LPP and build target.
+- A `## Library Repositories` section in `nl/naslag/references.md` and
+  `en/reference/references.md` with the upstream repositories of the eleven
+  core libraries.
+
+### Changed
+
+- `nl/README.md` and `en/README.md`: `## Libraries` inserted after
+  `## Platform`, listing all twenty chapters in the order of the section. The
+  eighteen chapters on the third level are nested under a bold group label
+  naming `libraries/core/` and `libraries/other/`, so the index shows the same
+  structure as the directory tree.
+- `README.md`: the `## Structuur · Layout` tree now shows `libraries/` with its
+  `core/` and `other/` subdirectories, in both language branches.
+
+### Fixed
+
+- `README.md`: the chapter and diagram counts in both language sections were
+  stale — they read 30 chapters and 25 diagrams per language while the repo
+  held 34 chapters and 32 SVG diagrams before this change. They now read 54
+  chapters per language and 38 SVG diagrams per language, counted as `.md`
+  files under `nl/` and `en/` excluding `README.md`, and `.svg` files under
+  `images/nl/` and `images/en/`. The twenty legacy PNGs are not counted; see
+  *Known pitfalls* in `CLAUDE.md`.
+- `README.md`: removed the paragraph pointing at `RECONCILIATIE.md` and
+  `OPENSTAAND.md`. Neither file exists in the repository, so both links were
+  dead.
+- `CLAUDE.md`: repo tree, section mapping and image-path rule extended for
+  the third directory level; the convention for firmware code excerpts (file
+  and line numbers above the block, ±15 lines, `// ...` for omissions) added
+  under *Document conventions*; two entries added under *Known pitfalls* —
+  the third level being supported, and the requirement that figures counted
+  over the firmware source tree record their counting method.
+- `nl/platform/platform-families.md` and `en/platform/platform-families.md`:
+  the SubGhz paragraph now links to `libraries/core/subghz.md`. The library
+  is described there instead of being explained twice.
+
+---
+
 ## [2026-07-27] Add NodeMatrix
 
 ### Added

@@ -131,7 +131,9 @@ All four STM32WL variants set `SPI_INTERFACES_COUNT=0` and
 `RADIO_CLASS=CustomSTM32WLx`, and `[stm32_base]` loads the SubGhz library
 from the STM32duino core (`platformio.ini` lines 115, 120). There is no
 separate SX126x and no SPI bus to the radio: the LoRa transceiver sits on
-the same die as the processor.
+the same die as the processor. How that library is pulled in and what
+MeshCore does with it is described in
+[SubGhz](../libraries/core/subghz.md).
 
 ![Two block diagrams side by side. On the left an MCU with six SPI lines
 running to a separate SX1262 radio chip. On the right a single STM32WLE5

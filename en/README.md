@@ -40,6 +40,31 @@ Off-grid mesh communication over LoRa radio.
 - [The Four Platform Families](platform/platform-families.md)
 - [Node Matrix](platform/node-matrix.md)
 
+## Libraries
+
+- [Libraries in MeshCore](libraries/introduction.md)
+- [Dependencies between libraries](libraries/dependencies.md)
+- **Core libraries** — `libraries/core/`
+  - [RadioLib](libraries/core/radiolib.md)
+  - [Crypto: rweather and ed25519](libraries/core/crypto.md)
+  - [CayenneLPP](libraries/core/cayenne-lpp.md)
+  - [RTClib](libraries/core/rtclib.md)
+  - [Melopero RV3028](libraries/core/rv3028.md)
+  - [CustomLFS](libraries/core/custom-lfs.md)
+  - [Adafruit LittleFS for STM32](libraries/core/littlefs-stm32.md)
+  - [SubGhz](libraries/core/subghz.md)
+  - [ESPAsyncWebServer](libraries/core/espasyncwebserver.md)
+  - [AsyncElegantOTA](libraries/core/asyncelegantota.md)
+  - [Wire and SPI](libraries/core/wire-spi.md)
+- **Supporting libraries** — `libraries/other/`
+  - [Display libraries](libraries/other/displays.md)
+  - [Sensor libraries](libraries/other/sensors.md)
+  - [GPS libraries](libraries/other/gps.md)
+  - [Power and energy measurement](libraries/other/power.md)
+  - [Peripherals](libraries/other/peripherals.md)
+  - [Utility libraries](libraries/other/utilities.md)
+  - [Test libraries](libraries/other/testing.md)
+
 ## Reference
 
 - [Terminology](reference/terminology.md)

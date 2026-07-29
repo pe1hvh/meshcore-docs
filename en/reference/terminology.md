@@ -17,6 +17,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | BLE | Bluetooth Low Energy — energy-efficient connection between node and smartphone |
 | bootloader | Small program that runs first and loads or replaces the actual firmware; determines how a node can be flashed |
 | build flag | Compile option in `platformio.ini` (`-D NAME=value`) that decides which code is compiled in |
+| build target | One `[env:…]` section in `platformio.ini`: the combination of board, role and settings that yields one firmware file. MeshCore counts 507 of them, plus `[env:native]` for the tests |
 | BW | Bandwidth — bandwidth in kHz (125/250/500), narrower = more robust |
 | Callsign | Call sign — unique identification for radio amateurs (e.g. PE1HVH) |
 | CCCD | Client Characteristic Configuration Descriptor — on/off switch for BLE Notify |
@@ -28,6 +29,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | CSS | Chirp Spread Spectrum — the modulation method LoRa uses |
 | dBm | Decibel-milliwatt — unit for transmit power (14 dBm = 25 mW) |
 | Dechirp | Demodulation by multiplying received chirp with local down-chirp |
+| `depends=` | Line in `library.properties` by which a library states which other libraries it needs; PlatformIO fetches those automatically |
 | Dest hash / Src hash | First byte of the public key of recipient and sender respectively, unencrypted in the packet |
 | DFU | Device Firmware Update — updating firmware without a programmer. Over Bluetooth on nRF52, over USB on STM32 |
 | Direct routing | Routing along a previously known path; only the repeaters listed in the path forward |
@@ -35,6 +37,13 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | Duty Cycle | Percentage of transmit time allowed (EU: max 1% on 868 MHz) |
 | E2E | End-to-End encryption — only sender and receiver can read messages |
 | e-ink | Electronic paper; holds its image without power and reads well in daylight, but refreshes slowly |
+| framework library | Library shipped inside a platform's framework package, and therefore carrying no author prefix and no version number: `SPI`, `Wire` and `SubGhz` |
+| GODMODE | Build flag `RADIOLIB_GODMODE=1` that makes all `private` and `protected` members of RadioLib public; MeshCore uses it to reach the module layer directly |
+| `lib_deps` | Key in `platformio.ini` by which a section states which libraries it needs |
+| Library Dependency Finder (LDF) | Part of PlatformIO that scans the source code for `#include` lines and looks for matching libraries, even undeclared ones |
+| `library.json` | Metadata file of a PlatformIO library; the `"dependencies"` key plays the same role as `depends=` |
+| `library.properties` | Metadata file of an Arduino library, holding name, version, author and the `depends=` line |
+| LPP | Low Power Payload — compact binary format for sensor data; MeshCore uses CayenneLPP as the wire format for telemetry |
 | Power amplifier (PA) | Amplifier stage behind the radio chip that raises the transmit power, for example from 22 to 30 dBm |
 | EIRP | Effective Isotropic Radiated Power — effective radiated power including antenna |
 | Encrypt-then-MAC | Encrypt first, then compute the MAC over the ciphertext |
@@ -87,12 +96,15 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | PSRAM | Pseudo-static RAM — external memory alongside the internal RAM, up to 8 MB on some ESP32 boards |
 | Public Key | Public key — freely shareable, used to encrypt messages |
 | Region | Named area within which a repeater passes flood traffic. The name yields a key; what travels over the air is a 16-bit transport code |
+| registry | PlatformIO's package index, from which libraries are fetched by name and version |
 | Repeater | Node that forwards messages to extend network range |
 | RISC-V | Open processor architecture; used in the ESP32-C3 and C6, as opposed to Xtensa in the classic ESP32 and the S3 |
 | Room Server | Physical node with BBS function for store-and-forward (up to 32 messages) |
 | Routing | Determining the best route for a message through the network |
 | RP2040 | Microcontroller from Raspberry Pi with two Cortex-M0+ cores; the only MeshCore chip without a built-in radio |
 | Scope | The region a sender attaches to a packet, as `transport_codes[0]` in the header |
+| semver caret (`^`) | Version specification `^7.6.0`: at least 7.6.0, but below the next major version. `~2.0.6` is narrower: below 2.1.0 |
+| transitive dependency | Library that is not declared itself but comes along because another library needs it |
 | Transport code | The 16 bits in `transport_codes[0]`. **Not an identifier of a region** but an HMAC over payload type and payload, keyed with the region key. It changes with every message; a repeater recognises it by recomputing it, not by looking it up |
 | Region code | In the UN/LOCODE sense (see [Regions: intent and practice](../technical/regions-in-practice.md)): the *name* of a region, such as `nl-ov-zwo`. It stays on the node and never goes on air. Not to be confused with the transport code |
 | SF | Spreading Factor — determines range vs speed (SF7–SF12), higher = further |
@@ -117,6 +129,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | UF2 | USB Flashing Format — firmware file you drag onto a USB drive; used by nRF52 and RP2040 |
 | UUID | Universally Unique Identifier — unique identification for BLE services |
 | Variant | Directory under `variants/` holding the board-specific configuration: pins, radio type, display and the matching build targets |
+| vendoring | Including external code as a copy in your own repo instead of fetching it as a dependency. MeshCore does this in `lib/` and `arch/` |
 | Web Flasher | Browser tool to install firmware without special software |
 | Wrap | Frequency jumps back to the start of the band (0) after reaching the maximum |
 | Xtensa | Processor architecture from Cadence; LX6 in the classic ESP32, LX7 in the ESP32-S3 |

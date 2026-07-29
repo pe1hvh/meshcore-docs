@@ -1,0 +1,259 @@
+{
+  "ESP32Async/ESPAsyncWebServer": {
+    "depends": [
+      "AsyncTCP",
+      "ESPAsyncTCP",
+      "Hash",
+      "RPAsyncTCP"
+    ],
+    "url": "https://raw.githubusercontent.com/ESP32Async/ESPAsyncWebServer/main/library.json"
+  },
+  "SPI": {
+    "depends": null,
+    "error": "framework library, ships with the platform package",
+    "url": null
+  },
+  "SubGhz": {
+    "depends": null,
+    "error": "framework library, ships with framework-arduinoststm32",
+    "url": null
+  },
+  "Wire": {
+    "depends": null,
+    "error": "framework library, ships with the platform package",
+    "url": null
+  },
+  "adafruit/Adafruit AHTX0": {
+    "depends": [
+      "Adafruit Unified Sensor",
+      "Adafruit BusIO",
+      "Adafruit SH110X"
+    ],
+    "url": "https://raw.githubusercontent.com/adafruit/Adafruit_AHTX0/master/library.properties"
+  },
+  "adafruit/Adafruit BME280 Library": {
+    "depends": [
+      "Adafruit Unified Sensor",
+      "Adafruit BusIO"
+    ],
+    "url": "https://raw.githubusercontent.com/adafruit/Adafruit_BME280_Library/master/library.properties"
+  },
+  "adafruit/Adafruit BME680 Library": {
+    "depends": [
+      "Adafruit Unified Sensor",
+      "Adafruit GFX Library",
+      "Adafruit SSD1306",
+      "Adafruit BusIO"
+    ],
+    "url": "https://raw.githubusercontent.com/adafruit/Adafruit_BME680/master/library.properties"
+  },
+  "adafruit/Adafruit BMP085 Library": {
+    "depends": [
+      "Adafruit Unified Sensor",
+      "Adafruit BusIO"
+    ],
+    "url": "https://raw.githubusercontent.com/adafruit/Adafruit-BMP085-Library/master/library.properties"
+  },
+  "adafruit/Adafruit BMP280 Library": {
+    "depends": [
+      "Adafruit Unified Sensor",
+      "Adafruit BusIO"
+    ],
+    "url": "https://raw.githubusercontent.com/adafruit/Adafruit_BMP280_Library/master/library.properties"
+  },
+  "adafruit/Adafruit BusIO": {
+    "depends": [],
+    "url": "https://raw.githubusercontent.com/adafruit/Adafruit_BusIO/master/library.properties"
+  },
+  "adafruit/Adafruit EPD": {
+    "depends": [
+      "Adafruit GFX Library"
+    ],
+    "url": "https://raw.githubusercontent.com/adafruit/Adafruit_EPD/master/library.properties"
+  },
+  "adafruit/Adafruit GFX Library": {
+    "depends": [
+      "Adafruit BusIO"
+    ],
+    "url": "https://raw.githubusercontent.com/adafruit/Adafruit-GFX-Library/master/library.properties"
+  },
+  "adafruit/Adafruit INA219": {
+    "depends": [
+      "Adafruit NeoPixel",
+      "Adafruit GFX Library",
+      "Adafruit SSD1306",
+      "Adafruit BusIO"
+    ],
+    "url": "https://raw.githubusercontent.com/adafruit/Adafruit_INA219/master/library.properties"
+  },
+  "adafruit/Adafruit INA260 Library": {
+    "depends": [
+      "Adafruit BusIO",
+      "Adafruit NeoPixel"
+    ],
+    "url": "https://raw.githubusercontent.com/adafruit/Adafruit_INA260/master/library.properties"
+  },
+  "adafruit/Adafruit INA3221 Library": {
+    "depends": [
+      "Adafruit BusIO"
+    ],
+    "url": "https://raw.githubusercontent.com/adafruit/Adafruit_INA3221/main/library.properties"
+  },
+  "adafruit/Adafruit LIS3DH": {
+    "depends": [
+      "Adafruit Unified Sensor",
+      "Adafruit BusIO"
+    ],
+    "url": "https://raw.githubusercontent.com/adafruit/Adafruit_LIS3DH/master/library.properties"
+  },
+  "adafruit/Adafruit MLX90614 Library": {
+    "depends": [
+      "Adafruit BusIO"
+    ],
+    "url": "https://raw.githubusercontent.com/adafruit/Adafruit-MLX90614-Library/master/library.properties"
+  },
+  "adafruit/Adafruit NeoPixel": {
+    "depends": [],
+    "url": "https://raw.githubusercontent.com/adafruit/Adafruit_NeoPixel/master/library.properties"
+  },
+  "adafruit/Adafruit SH110X": {
+    "depends": [
+      "Adafruit GFX Library",
+      "Adafruit BusIO"
+    ],
+    "url": "https://raw.githubusercontent.com/adafruit/Adafruit_SH110x/master/library.properties"
+  },
+  "adafruit/Adafruit SHT4x Library": {
+    "depends": [
+      "Adafruit BusIO",
+      "Adafruit Unified Sensor",
+      "Adafruit SH110X",
+      "Adafruit SSD1306"
+    ],
+    "url": "https://raw.githubusercontent.com/adafruit/Adafruit_SHT4X/master/library.properties"
+  },
+  "adafruit/Adafruit SHTC3 Library": {
+    "depends": [
+      "Adafruit BusIO",
+      "Adafruit Unified Sensor"
+    ],
+    "url": "https://raw.githubusercontent.com/adafruit/Adafruit_SHTC3/master/library.properties"
+  },
+  "adafruit/Adafruit SSD1306": {
+    "depends": [
+      "Adafruit GFX Library"
+    ],
+    "url": "https://raw.githubusercontent.com/adafruit/Adafruit_SSD1306/master/library.properties"
+  },
+  "adafruit/Adafruit ST7735 and ST7789 Library": {
+    "depends": [
+      "Adafruit GFX Library",
+      "Adafruit seesaw Library",
+      "SD"
+    ],
+    "url": "https://raw.githubusercontent.com/adafruit/Adafruit-ST7735-Library/master/library.properties"
+  },
+  "adafruit/Adafruit_VL53L0X": {
+    "depends": [
+      "Adafruit SSD1306",
+      "Adafruit GFX Library"
+    ],
+    "url": "https://raw.githubusercontent.com/adafruit/Adafruit_VL53L0X/master/library.properties"
+  },
+  "adafruit/RTClib": {
+    "depends": [
+      "Adafruit BusIO"
+    ],
+    "url": "https://raw.githubusercontent.com/adafruit/RTClib/master/library.properties"
+  },
+  "arduino-libraries/Arduino_LPS22HB": {
+    "depends": [],
+    "url": "https://raw.githubusercontent.com/arduino-libraries/Arduino_LPS22HB/master/library.properties"
+  },
+  "bakercp/CRC32": {
+    "depends": [],
+    "url": "https://raw.githubusercontent.com/bakercp/CRC32/master/library.properties"
+  },
+  "boschsensortec/BSEC": {
+    "depends": [
+      "BME68x Sensor library"
+    ],
+    "url": "https://raw.githubusercontent.com/boschsensortec/Bosch-BSEC2-Library/master/library.properties"
+  },
+  "densaugeo/base64": {
+    "depends": [],
+    "url": "https://raw.githubusercontent.com/densaugeo/base64_arduino/master/library.properties"
+  },
+  "electroniccats/CayenneLPP": {
+    "depends": [
+      "bblanchon/ArduinoJson"
+    ],
+    "url": "https://raw.githubusercontent.com/ElectronicCats/CayenneLPP/master/library.json"
+  },
+  "end2endzone/NonBlockingRTTTL": {
+    "depends": [],
+    "url": "https://raw.githubusercontent.com/end2endzone/NonBlockingRTTTL/master/library.properties"
+  },
+  "finitespace/BME280": {
+    "depends": [],
+    "url": "https://raw.githubusercontent.com/finitespace/BME280/master/library.properties"
+  },
+  "google/googletest": {
+    "depends": null,
+    "error": "no Arduino metadata; the registry package carries no library.json",
+    "url": null
+  },
+  "jgromes/RadioLib": {
+    "depends": [],
+    "url": "https://raw.githubusercontent.com/jgromes/RadioLib/master/library.properties"
+  },
+  "lewisxhe/XPowersLib": {
+    "depends": [],
+    "url": "https://raw.githubusercontent.com/lewisxhe/XPowersLib/master/library.properties"
+  },
+  "lovyan03/LovyanGFX": {
+    "depends": [],
+    "url": "https://raw.githubusercontent.com/lovyan03/LovyanGFX/master/library.properties"
+  },
+  "maxpromer/PCA9557-arduino": {
+    "depends": [],
+    "url": "https://raw.githubusercontent.com/maxpromer/PCA9557-arduino/master/library.properties"
+  },
+  "melopero/Melopero RV3028": {
+    "depends": null,
+    "error": "repository not found under the expected name on GitHub",
+    "url": null
+  },
+  "olikraus/U8g2": {
+    "depends": [],
+    "url": "https://raw.githubusercontent.com/olikraus/U8g2_Arduino/master/library.properties"
+  },
+  "robtillaart/INA226": {
+    "depends": [],
+    "url": "https://raw.githubusercontent.com/RobTillaart/INA226/master/library.properties"
+  },
+  "rweather/Crypto": {
+    "depends": [],
+    "url": "https://raw.githubusercontent.com/rweather/arduinolibs/master/libraries/Crypto/library.json"
+  },
+  "sensirion/Sensirion I2C SHT4x": {
+    "depends": [
+      "Sensirion Core"
+    ],
+    "url": "https://raw.githubusercontent.com/Sensirion/arduino-i2c-sht4x/master/library.properties"
+  },
+  "sparkfun/SparkFun u-blox GNSS Arduino Library": {
+    "depends": [],
+    "url": "https://raw.githubusercontent.com/sparkfun/SparkFun_u-blox_GNSS_Arduino_Library/main/library.properties"
+  },
+  "stevemarple/MicroNMEA": {
+    "depends": [],
+    "url": "https://raw.githubusercontent.com/stevemarple/MicroNMEA/master/library.properties"
+  },
+  "zinggjm/GxEPD2": {
+    "depends": [
+      "Adafruit GFX Library"
+    ],
+    "url": "https://raw.githubusercontent.com/ZinggJM/GxEPD2/master/library.properties"
+  }
+}

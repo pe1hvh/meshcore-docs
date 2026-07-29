@@ -17,6 +17,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | BLE | Bluetooth Low Energy — energiezuinige verbinding tussen node en smartphone |
 | bootloader | Klein programma dat als eerste start en de eigenlijke firmware laadt of vervangt; bepaalt hoe je een node kunt flashen |
 | build flag | Compileeroptie in `platformio.ini` (`-D NAAM=waarde`) die bepaalt welke code wordt meegecompileerd |
+| build target | Eén `[env:…]`-sectie in `platformio.ini`: de combinatie van bord, rol en instellingen die tot één firmwarebestand leidt. MeshCore telt er 507, plus `[env:native]` voor de tests |
 | BW | Bandwidth — bandbreedte in kHz (125/250/500), smaller = robuuster |
 | Callsign | Roepnaam — unieke identificatie voor radioamateurs (bijv. PE1HVH) |
 | CCCD | Client Characteristic Configuration Descriptor — aan/uit schakelaar voor BLE Notify |
@@ -28,6 +29,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | CSS | Chirp Spread Spectrum — de modulatiemethode die LoRa gebruikt |
 | dBm | Decibel-milliwatt — eenheid voor zendvermogen (14 dBm = 25 mW) |
 | Dechirp | Demodulatie door ontvangen chirp te vermenigvuldigen met lokale down-chirp |
+| `depends=` | Regel in `library.properties` waarmee een library opgeeft welke andere libraries hij nodig heeft; PlatformIO haalt die automatisch op |
 | Dest hash / Src hash | Eerste byte van de public key van ontvanger respectievelijk afzender, onversleuteld in het pakket |
 | DFU | Device Firmware Update — firmware updaten zonder programmer. Op nRF52 via Bluetooth, op STM32 via USB |
 | Direct routing | Routeren langs een vooraf bekend pad; alleen de repeaters die in het pad staan sturen door |
@@ -47,7 +49,9 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | First packet wins | Bij meerdere kopieën van hetzelfde floodbericht wordt de eerst binnengekomene verwerkt; dat pad wordt geleerd, niet per se het kortste |
 | Flood | Routeermodus waarbij elke repeater het pakket doorstuurt en zijn hash aan het pad toevoegt |
 | Flashen | Firmware installeren of updaten op een apparaat |
+| frameworklibrary | Library die meekomt met het frameworkpakket van een platform en dus geen auteursprefix en geen versienummer heeft: `SPI`, `Wire` en `SubGhz` |
 | GATT | Generic Attribute Profile — structuur voor BLE data-uitwisseling |
+| GODMODE | Bouwvlag `RADIOLIB_GODMODE=1` die alle `private`- en `protected`-leden van RadioLib publiek maakt; MeshCore gebruikt dat om rechtstreeks bij de modulelaag te kunnen |
 | GPIO | General Purpose Input/Output — aansluitpinnen voor externe apparaten |
 | GPS/GNSS | Global Navigation Satellite System — satellietnavigatie voor locatiebepaling |
 | HAL | Hardware Abstraction Layer — laag die chipspecifieke registers verbergt achter een uniforme API |
@@ -57,10 +61,15 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | IPEX/U.FL | Kleine click-on antenneconnector voor interne antennes |
 | ISM-band | Industrial, Scientific, Medical — vrije frequentieband, 868 MHz in Europa |
 | Key Rotation | Periodiek vervangen van cryptografische sleutels voor extra veiligheid |
+| `lib_deps` | Sleutel in `platformio.ini` waarmee een sectie opgeeft welke libraries hij nodig heeft |
+| Library Dependency Finder (LDF) | Onderdeel van PlatformIO dat de broncode op `#include`-regels scant en daar libraries bij zoekt, ook als die niet gedeclareerd zijn |
+| `library.json` | Metadatabestand van een PlatformIO-library; de sleutel `"dependencies"` speelt dezelfde rol als `depends=` |
+| `library.properties` | Metadatabestand van een Arduino-library, met naam, versie, auteur en de regel `depends=` |
 | Link Budget | Totaal signaalverlies dat een verbinding kan verdragen en nog decodeerbaar is |
 | LittleFS | Compact filesystem voor microcontrollers, bestand tegen stroomuitval; gebruikt op nRF52, RP2040 en STM32WL |
 | LoRa | Long Range — gepatenteerde modulatietechniek voor langeafstandscommunicatie |
 | LPCOMP | Low-Power Comparator in de nRF52 — kan de chip uit `SYSTEMOFF` wekken op een spanningsverandering |
+| LPP | Low Power Payload — compact binair formaat voor sensordata; MeshCore gebruikt CayenneLPP als draadformaat voor telemetrie |
 | LR1110 | Semtech-transceiver die LoRa combineert met GNSS- en WiFi-scanning voor locatiebepaling zonder losse GPS-module |
 | MAC (cipher) | Message Authentication Code — HMAC-SHA256 over de cijfertekst, afgekapt op 2 bytes. MeshCore gebruikt de term MIC niet |
 | MCU | Microcontroller Unit — de centrale processor van een node |
@@ -87,12 +96,15 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | PSRAM | Pseudo-static RAM — extern geheugen naast het interne RAM, op sommige ESP32-borden tot 8 MB |
 | Public Key | Publieke sleutel — vrij deelbaar, voor versleutelen van berichten |
 | Regio | Benoemd gebied waarbinnen een repeater flood-verkeer doorlaat. De naam levert een sleutel; wat er over de lucht gaat is een 16-bits transport code |
+| registry | Pakketindex van PlatformIO waaruit libraries op naam en versie worden opgehaald |
 | Repeater | Node die berichten doorgeeft om het netwerkbereik te vergroten |
 | RISC-V | Open processorarchitectuur; gebruikt in de ESP32-C3 en C6, tegenover Xtensa in de klassieke ESP32 en de S3 |
 | Room Server | Fysieke node met BBS-functie voor store-and-forward (tot 32 berichten) |
 | Routing | Het bepalen van de beste route voor een bericht door het netwerk |
 | RP2040 | Microcontroller van Raspberry Pi met twee Cortex-M0+-kernen; de enige MeshCore-chip zonder ingebouwde radio |
 | Scope | De regio die een afzender aan een pakket meegeeft, als `transport_codes[0]` in de header |
+| semver-caret (`^`) | Versieaanduiding `^7.6.0`: minimaal 7.6.0, maar onder de volgende hoofdversie. `~2.0.6` is nauwer: onder 2.1.0 |
+| transitieve afhankelijkheid | Library die niet zelf gedeclareerd is maar meekomt omdat een andere library hem nodig heeft |
 | Transport code | De 16 bits in `transport_codes[0]`. **Geen identificatie van een regio** maar een HMAC over payload type en payload, gezet met de regiosleutel. Verandert bij elk bericht; een repeater herkent hem door hem zelf te herberekenen, niet door hem op te zoeken |
 | Regiocode | In de context van UN/LOCODE (zie [Regio's: bedoeling en praktijk](../techniek/regions-in-practice.md)): de *naam* van een regio, zoals `nl-ov-zwo`. Blijft op de node en gaat nooit de lucht in. Niet te verwarren met de transport code |
 | SF | Spreading Factor — bepaalt bereik vs snelheid (SF7–SF12), hoger = verder |
@@ -117,6 +129,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | UF2 | USB Flashing Format — firmwarebestand dat je naar een USB-schijf sleept; gebruikt door nRF52 en RP2040 |
 | UUID | Universally Unique Identifier — unieke identificatie voor BLE services |
 | Variant | Map onder `variants/` met de bord-specifieke configuratie: pinnen, radiotype, display en de bijbehorende build-targets |
+| vendoring | Het opnemen van externe code als kopie in de eigen repo, in plaats van hem als afhankelijkheid op te halen. MeshCore doet dat in `lib/` en `arch/` |
 | Web Flasher | Browser-tool om firmware te installeren zonder speciale software |
 | Wrap | Frequentie springt terug naar begin van de band (0) na bereiken van maximum |
 | Xtensa | Processorarchitectuur van Cadence; LX6 in de klassieke ESP32, LX7 in de ESP32-S3 |

@@ -18,8 +18,8 @@ hoppen van node naar node tot ze aankomen — zonder internet, zonder zendmast,
 zonder abonnement. **DOMCA** is een initiatief om die kennis toegankelijk te
 maken voor de Nederlandse community.
 
-Deze repository bevat de volledige documentatie: 30 hoofdstukken in het
-Nederlands, dezelfde 30 in het Engels, met 25 diagrammen per taal.
+Deze repository bevat de volledige documentatie: 54 hoofdstukken in het
+Nederlands, dezelfde 54 in het Engels, met 38 diagrammen per taal.
 
 ### Beginnen
 
@@ -66,8 +66,8 @@ een stap verder, en dat is bewust:
 MeshCore turns inexpensive LoRa radios into a network of their own. Messages hop
 from node to node until they arrive — no internet, no cell towers, no
 subscription. **DOMCA** (Dutch Open MeshCore Activity) exists to make that
-knowledge accessible, and this repository holds the full documentation: 30
-chapters in Dutch, the same 30 in English, with 25 diagrams per language.
+knowledge accessible, and this repository holds the full documentation: 54
+chapters in Dutch, the same 54 in English, with 38 diagrams per language.
 
 ### Getting started
 
@@ -114,12 +114,18 @@ further, deliberately so:
 │   ├── gebruik/          gebruik, hardware, regelgeving
 │   ├── techniek/         protocol, pakketten, encryptie, repeaters
 │   ├── platform/         de vier platformfamilies en de keuze ertussen
+│   ├── libraries/        welke externe code de firmware in komt
+│   │   ├── core/           kernlibraries, één hoofdstuk per library
+│   │   └── other/          ondersteunende libraries, per functie gegroepeerd
 │   ├── naslag/           terminologie, referenties, links
 │   └── project/          over DOMCA, GitHub-overzicht
 ├── en/                 English chapters (same structure)
 │   ├── usage/
 │   ├── technical/
 │   ├── platform/
+│   ├── libraries/
+│   │   ├── core/
+│   │   └── other/
 │   ├── reference/
 │   └── project/
 ├── images/
@@ -128,9 +134,6 @@ further, deliberately so:
 ├── tools/              narekenscripts bij de techniekhoofdstukken
 └── LICENSE             CC BY-SA 4.0
 ```
-
-`RECONCILIATIE.md` en `OPENSTAAND.md` zijn werkbestanden van de redactie, geen
-hoofdstukken — ze houden bij wat er nog samengevoegd of aangevuld moet worden.
 
 ## Fouten en bijdragen · Errata and contributions
 

@@ -67,6 +67,27 @@ Comprehensive source list organised by category.
 | [MeshCore Map](https://map.meshcore.dev/) | MeshCore | Live map with active MeshCore nodes, repeaters, and room servers |
 | [MeshCore Dutch Forum](https://forum.meshcore-net.nl/) | Community | Dutch-language forum for MeshCore users |
 
+## Library Repositories
+
+Upstream-repo's van de elf kernlibraries uit `libraries/core/`. Zie
+[Libraries in MeshCore](../libraries/introduction.md) voor de volledige
+inventaris van tweeënvijftig libraries.
+
+| Title | Source | Description |
+|---|---|---|
+| [jgromes/RadioLib](https://github.com/jgromes/RadioLib) | GitHub | Transceiverlibrary voor LoRa en FSK; draagt de radio op alle platformen |
+| [rweather/arduinolibs](https://github.com/rweather/arduinolibs) | GitHub | Cryptografiealgoritmen voor Arduino: AES, SHA256, Ed25519 |
+| [ElectronicCats/CayenneLPP](https://github.com/ElectronicCats/CayenneLPP) | GitHub | Low Power Payload — draadformaat voor telemetrie |
+| [adafruit/RTClib](https://github.com/adafruit/RTClib) | GitHub | Real-time clock-chips over I²C, plus het type `DateTime` |
+| Melopero RV3028 | PlatformIO Registry | Library voor de RV-3028-C7-klokchip; upstream-repo niet vindbaar onder de verwachte naam (28 juli 2026) |
+| [oltaco/CustomLFS](https://github.com/oltaco/CustomLFS) | GitHub | Tweede LittleFS-volume op nRF52, vastgepind op tag `0.2.2` |
+| [adafruit/Adafruit_nRF52_Arduino](https://github.com/adafruit/Adafruit_nRF52_Arduino) | GitHub | Herkomst van de LittleFS-port in `arch/stm32/` |
+| [stm32duino/Arduino_Core_STM32](https://github.com/stm32duino/Arduino_Core_STM32) | GitHub | Frameworkpakket met de SubGhz-library voor de STM32WL |
+| [ESP32Async/ESPAsyncWebServer](https://github.com/ESP32Async/ESPAsyncWebServer) | GitHub | Asynchrone HTTP-server voor de OTA-sessie op ESP32 |
+| [ayushsharma82/AsyncElegantOTA](https://github.com/ayushsharma82/AsyncElegantOTA) | GitHub | Uploadpagina voor OTA; gevendord in `arch/esp32/` |
+| [Arduino — Wire](https://docs.arduino.cc/language-reference/en/functions/communication/wire/) | Arduino | API-referentie van de I²C-frameworklibrary |
+| [Arduino — SPI](https://docs.arduino.cc/language-reference/en/functions/communication/SPI/) | Arduino | API-referentie van de SPI-frameworklibrary |
+
 ## Hardware Documentation
 
 | Title | Source | Description |
