@@ -120,6 +120,9 @@ further, deliberately so:
 │   ├── gebruik/          gebruik, hardware, regelgeving
 │   ├── techniek/         protocol, pakketten, encryptie, repeaters
 │   │   └── roomserver/     inloggen, posts, synchronisatie, grenzen
+│   ├── ontwerp/          hoe de firmware in elkaar zit
+│   │   ├── logisch/        rollen, componenten, contracten, variabiliteit
+│   │   └── technisch/      klassen, platformrealisatie, buildsysteem
 │   ├── platform/         de vier platformfamilies en de keuze ertussen
 │   ├── hardware/         waar een node uit bestaat
 │   │   ├── radio/          transceiver, antenne, linkbudget
@@ -134,6 +137,9 @@ further, deliberately so:
 │   ├── usage/
 │   ├── technical/
 │   │   └── roomserver/
+│   ├── design/
+│   │   ├── logical/
+│   │   └── technical/
 │   ├── platform/
 │   ├── hardware/
 │   │   ├── radio/

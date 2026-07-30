@@ -1,0 +1,37 @@
+<svg style="width:100%;margin:1rem 0" viewBox="0 0 700 330" xmlns="http://www.w3.org/2000/svg">
+<style>
+:root{--bg:#FFFFFF; --grid:#023E8A; --line:#0096C7; --wave:#0096C7; --node:#0077B6; --outer:#0096C7; --text-primary:#0a2540; --text-secondary:#3d6380; --text-muted:#7a9bb5; --link-color:#0077B6; --link-hover:#023E8A; --heading-color:#0077B6; --border-subtle:rgba(0,119,182,0.12); --card-bg:rgba(0,119,182,0.03); --card-border:rgba(0,119,182,0.12); --card-hover:rgba(0,119,182,0.07); --code-bg:rgba(0,119,182,0.04); --code-border:rgba(0,119,182,0.12); --info-bg:rgba(0,119,182,0.04); --info-border:rgba(0,119,182,0.15); --table-header:rgba(0,119,182,0.06); --table-row-alt:rgba(0,119,182,0.02); --table-border:rgba(0,119,182,0.1); --timeline-line:#0096C7; --timeline-dot:#0077B6; --tag-green:rgba(16,185,129,0.1); --tag-green-text:#059669; --tag-red:rgba(239,68,68,0.08); --tag-red-text:#dc2626; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}
+@media (prefers-color-scheme: dark){:root{--bg:#0A1628; --grid:#0077B6; --line:#0077B6; --wave:#48CAE4; --node:#00B4D8; --outer:#0077B6; --text-primary:#e0f0f8; --text-secondary:#8badc4; --text-muted:#4a6a80; --link-color:#48CAE4; --link-hover:#90E0EF; --heading-color:#48CAE4; --border-subtle:rgba(0,119,182,0.15); --card-bg:rgba(0,119,182,0.06); --card-border:rgba(0,119,182,0.15); --card-hover:rgba(0,119,182,0.12); --code-bg:rgba(0,119,182,0.08); --code-border:rgba(0,119,182,0.2); --info-bg:rgba(72,202,228,0.06); --info-border:rgba(72,202,228,0.2); --table-header:rgba(0,119,182,0.1); --table-row-alt:rgba(0,119,182,0.04); --table-border:rgba(0,119,182,0.12); --timeline-line:#0077B6; --timeline-dot:#00B4D8; --tag-green:rgba(16,185,129,0.15); --tag-green-text:#6ee7b7; --tag-red:rgba(239,68,68,0.12); --tag-red-text:#fca5a5; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}}
+</style>
+<rect x="0" y="0" width="700" height="330" fill="var(--bg)"/>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--line)"/></marker></defs>
+<text x="20" y="26" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="700" fill="var(--link-color)" text-anchor="start" letter-spacing="2">INFORMATION MODEL</text>
+<rect x="250" y="50" width="200" height="46" rx="6" fill="var(--code-bg)" stroke="var(--code-border)" stroke-width="1.5"/>
+<text x="264" y="72" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" fill="var(--text-primary)" text-anchor="start">Identity</text>
+<text x="264" y="88" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="400" fill="var(--text-secondary)" text-anchor="start">public key</text>
+<rect x="250" y="140" width="200" height="46" rx="6" fill="var(--info-bg)" stroke="var(--info-border)" stroke-width="1.5"/>
+<text x="264" y="162" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" fill="var(--text-primary)" text-anchor="start">Own identity</text>
+<text x="264" y="178" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="400" fill="var(--text-secondary)" text-anchor="start">+ private key</text>
+<rect x="20" y="140" width="200" height="46" rx="6" fill="var(--info-bg)" stroke="var(--info-border)" stroke-width="1.5"/>
+<text x="34" y="162" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" fill="var(--text-primary)" text-anchor="start">Contact</text>
+<text x="34" y="178" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="400" fill="var(--text-secondary)" text-anchor="start">name + path</text>
+<rect x="480" y="140" width="200" height="46" rx="6" fill="var(--info-bg)" stroke="var(--info-border)" stroke-width="1.5"/>
+<text x="494" y="162" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" fill="var(--text-primary)" text-anchor="start">Access entry</text>
+<text x="494" y="178" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="400" fill="var(--text-secondary)" text-anchor="start">permissions + path</text>
+<rect x="20" y="230" width="200" height="46" rx="6" fill="var(--info-bg)" stroke="var(--info-border)" stroke-width="1.5"/>
+<text x="34" y="252" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" fill="var(--text-primary)" text-anchor="start">Channel</text>
+<text x="34" y="268" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="400" fill="var(--text-secondary)" text-anchor="start">shared secret</text>
+<rect x="250" y="230" width="200" height="46" rx="6" fill="var(--code-bg)" stroke="var(--code-border)" stroke-width="1.5"/>
+<text x="264" y="252" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" fill="var(--text-primary)" text-anchor="start">Packet</text>
+<text x="264" y="268" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="400" fill="var(--text-secondary)" text-anchor="start">header + path + payload</text>
+<rect x="480" y="230" width="200" height="46" rx="6" fill="var(--info-bg)" stroke="var(--info-border)" stroke-width="1.5"/>
+<text x="494" y="252" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" fill="var(--text-primary)" text-anchor="start">Preferences</text>
+<text x="494" y="268" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="400" fill="var(--text-secondary)" text-anchor="start">settings</text>
+<line x1="220" y1="118" x2="300" y2="96" stroke="var(--line)" stroke-width="1.5" marker-end="url(#ar)"/>
+<line x1="480" y1="118" x2="400" y2="96" stroke="var(--line)" stroke-width="1.5" marker-end="url(#ar)"/>
+<line x1="350" y1="140" x2="350" y2="100" stroke="var(--line)" stroke-width="1.5" marker-end="url(#ar)"/>
+<rect x="20" y="292" width="200" height="22" rx="6" fill="var(--info-bg)" stroke="var(--info-border)" stroke-width="1.5"/>
+<text x="34" y="308" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="400" fill="var(--text-secondary)" text-anchor="start">survives a restart</text>
+<rect x="250" y="292" width="200" height="22" rx="6" fill="var(--code-bg)" stroke="var(--code-border)" stroke-width="1.5"/>
+<text x="264" y="308" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="400" fill="var(--text-secondary)" text-anchor="start">volatile</text>
+</svg>

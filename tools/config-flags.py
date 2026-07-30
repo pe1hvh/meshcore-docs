@@ -8,9 +8,12 @@ splits the `-D` macros into three groups:
   2. framework        - the macro is consumed by an Arduino core or platform
   3. MeshCore         - the macro is consumed by MeshCore's own sources
 
-Only group 1 is tabulated; that table feeds `libraries/library-configuration.md`.
-Group 2 and 3 are reported as counts only, because they belong to other
-chapters.
+Group 1 is tabulated by default; that table feeds
+`libraries/library-configuration.md`. Groups 2 and 3 are reported as counts
+there, because they belong to `ontwerp/technisch/configuration.md`. Pass
+`--owners` for a markdown table of groups 2 and 3, and `--consumption` for a
+table of every MeshCore macro with the first place it occurs in the source
+tree - including an explicit category for the ones that occur nowhere.
 
 Ownership cannot be derived from the name alone, so it comes from the table
 `NAMESPACES` below. Every entry there was verified by hand against the source
@@ -21,10 +24,20 @@ Commented-out macros are collected separately: a `; -D RADIOLIB_DEBUG_SPI=1`
 line is not part of any build, and counting it would overstate the
 configuration surface.
 
+Reading a macro is measured as the first occurrence of its name in the source
+tree, traversed in the order `src/` -> `examples/` -> `variants/` and
+alphabetically within each directory. That order is part of the figure: a
+different one moves up to 22 macros between buckets. First occurrence is not
+the same as first *read* - `P_LORA_NSS` first appears in a `#define`, not in a
+test - and the chapter says so.
+
 Usage:
     python3 tools/config-flags.py /path/to/MeshCore
     python3 tools/config-flags.py /path/to/MeshCore --write /path/to/docs
     python3 tools/config-flags.py /path/to/MeshCore --all
+    python3 tools/config-flags.py /path/to/MeshCore --owners
+    python3 tools/config-flags.py /path/to/MeshCore --consumption
+    python3 tools/config-flags.py /path/to/MeshCore --misfiled
 
 Part of https://github.com/pe1hvh/meshcore-docs - MIT licence.
 """
@@ -86,6 +99,28 @@ NAMESPACES = OrderedDict([
     ("CFG_", ("Adafruit nRF52 core", "framework", "tuning", "core common_config.h")),
     ("USE_TINYUSB", ("Adafruit nRF52 core", "framework", "feature", "core Adafruit_TinyUSB")),
 ])
+
+# --------------------------------------------------------------------------
+# Macros that NAMESPACES puts in group 3 while a framework actually reads them.
+# They carry no recognisable prefix, so the prefix table cannot catch them.
+# Deliberately NOT merged into NAMESPACES: correcting the ownership table is a
+# separate decision, and silently moving five macros would change the group
+# counts that ontwerp/technisch/configuration.md quotes. Use --misfiled to
+# list them.
+#
+# macro -> (owner, source)
+# --------------------------------------------------------------------------
+MISFILED = OrderedDict([
+    ("BOARD_HAS_PSRAM",  ("Arduino-ESP32", "core esp32-hal-psram.c")),
+    ("ENABLE_HWSERIAL2", ("Arduino-ESP32", "core HardwareSerial.cpp")),
+    ("NDEBUG",           ("C standard library", "assert.h")),
+    ("PIN_SERIAL_RX",    ("Adafruit nRF52 core", "core variant.h")),
+    ("PIN_SERIAL_TX",    ("Adafruit nRF52 core", "core variant.h")),
+])
+
+# Source directories, in the traversal order the figures are counted in.
+SOURCE_DIRS = ("src", "examples", "variants")
+SOURCE_EXT = (".h", ".hpp", ".cpp", ".c", ".ino")
 
 MECHANISM_NL = {
     "exclusion": "uitsluiten",
@@ -236,6 +271,127 @@ def render(active, inactive, sections, lang, show_all, commit="unknown"):
     return "\n".join(out)
 
 
+def source_files(root):
+    """Every source file, in the traversal order the counts depend on."""
+    files = []
+    for base in SOURCE_DIRS:
+        found = []
+        for dirpath, _, names in os.walk(os.path.join(root, base)):
+            for name in names:
+                if name.endswith(SOURCE_EXT):
+                    found.append(os.path.join(dirpath, name))
+        files.extend(sorted(found))
+    return files
+
+
+def bucket(rel):
+    """The directory bucket a reading place is reported under."""
+    for prefix, label in (
+            ("variants/", "variants/"),
+            ("src/helpers/ui/", "src/helpers/ui/"),
+            ("examples/", "examples/"),
+            ("src/helpers/sensors/", "src/helpers/sensors/"),
+            ("src/helpers/esp32/", "src/helpers/esp32,nrf52,stm32/"),
+            ("src/helpers/nrf52/", "src/helpers/esp32,nrf52,stm32/"),
+            ("src/helpers/stm32/", "src/helpers/esp32,nrf52,stm32/"),
+            ("src/helpers/radiolib/", "src/helpers/radiolib/"),
+            ("src/helpers/bridges/", "src/helpers/bridges/"),
+            ("src/helpers/", "src/helpers/ (kern)")):
+        if rel.startswith(prefix):
+            return label
+    return "src/"
+
+
+def consumption(root, macros):
+    """macro -> (relative path, line number) or None if it occurs nowhere."""
+    files = source_files(root)
+    bodies = []
+    for path in files:
+        with open(path, "r", encoding="utf-8", errors="replace") as handle:
+            bodies.append((os.path.relpath(path, root), handle.read()))
+    where = OrderedDict()
+    for macro in macros:
+        pattern = re.compile(r"\b%s\b" % re.escape(macro))
+        where[macro] = None
+        for rel, body in bodies:
+            if not pattern.search(body):
+                continue
+            for number, text in enumerate(body.split("\n"), 1):
+                if pattern.search(text):
+                    where[macro] = (rel, number)
+                    break
+            break
+    return where
+
+
+def render_owners(active, lang):
+    """Groups 2 and 3 as a markdown table."""
+    head = (("| Macro | Groep | Consument |", "|---|---|---|")
+            if lang == "nl" else
+            ("| Macro | Group | Consumer |", "|---|---|---|"))
+    out = [head[0], head[1]]
+    for macro in sorted(active):
+        owner, kind, _, _ = classify(macro)
+        if kind == "library":
+            continue
+        group = "2" if kind == "framework" else "3"
+        out.append("| `%s` | %s | %s |" % (macro, group, owner))
+    return "\n".join(out)
+
+
+def render_consumption(root, active, lang):
+    """Every MeshCore macro with the first place it occurs."""
+    macros = [m for m in sorted(active) if classify(m)[1] == "meshcore"]
+    where = consumption(root, macros)
+    nowhere = ("nergens gelezen" if lang == "nl" else "read nowhere")
+    head = (("| Macro | Eerste voorkomen |", "|---|---|")
+            if lang == "nl" else
+            ("| Macro | First occurrence |", "|---|---|"))
+    out = [head[0], head[1]]
+    counts = Counter()
+    for macro in macros:
+        place = where[macro]
+        if place is None:
+            out.append("| `%s` | *%s* |" % (macro, nowhere))
+            counts[nowhere] += 1
+        else:
+            out.append("| `%s` | `%s` r.%d |" % (macro, place[0], place[1]))
+            counts[bucket(place[0])] += 1
+    read = len(macros) - counts[nowhere]
+    if lang == "nl":
+        out.append("\nVan de %d MeshCore-macro's komen er %d ergens in de "
+                   "bronboom voor en %d nergens." % (len(macros), read,
+                                                     counts[nowhere]))
+        out += ["", "| Waar gelezen | Macro's |", "|---|---|"]
+    else:
+        out.append("\nOf the %d MeshCore macros, %d occur somewhere in the "
+                   "source tree and %d nowhere." % (len(macros), read,
+                                                    counts[nowhere]))
+        out += ["", "| Where read | Macros |", "|---|---|"]
+    for label, number in counts.most_common():
+        if label == nowhere:
+            continue
+        out.append("| `%s` | %d |" % (label, number))
+    return "\n".join(out)
+
+
+def render_misfiled(lang):
+    """The macros NAMESPACES puts in the wrong group, listed but not moved."""
+    if lang == "nl":
+        out = ["Deze macro's staan in groep 3 terwijl een framework ze leest.",
+               "Niet gecorrigeerd in NAMESPACES; dat vraagt een aparte "
+               "opdracht.", "",
+               "| Macro | Werkelijke consument | Bron |", "|---|---|---|"]
+    else:
+        out = ["These macros sit in group 3 while a framework reads them.",
+               "Not corrected in NAMESPACES; that calls for a separate "
+               "instruction.", "",
+               "| Macro | Actual consumer | Source |", "|---|---|---|"]
+    for macro, (owner, source) in MISFILED.items():
+        out.append("| `%s` | %s | %s |" % (macro, owner, source))
+    return "\n".join(out)
+
+
 def write_into(path, block):
     with open(path, "r", encoding="utf-8") as handle:
         text = handle.read()
@@ -257,10 +413,29 @@ def main():
                         help="also dump every macro with its owner")
     parser.add_argument("--commit", metavar="HASH",
                         help="commit hash to print; default is git rev-parse")
+    parser.add_argument("--owners", action="store_true",
+                        help="markdown table of groups 2 and 3")
+    parser.add_argument("--consumption", action="store_true",
+                        help="per MeshCore macro the first place it occurs")
+    parser.add_argument("--misfiled", action="store_true",
+                        help="macros NAMESPACES groups wrongly, listed only")
+    parser.add_argument("--lang", choices=("nl", "en"), default="nl",
+                        help="language of the extra tables; default nl")
     args = parser.parse_args()
 
     active, inactive, sections = scan(args.meshcore)
     commit = commit_of(args.meshcore, args.commit)
+
+    if args.owners or args.consumption or args.misfiled:
+        blocks = []
+        if args.owners:
+            blocks.append(render_owners(active, args.lang))
+        if args.consumption:
+            blocks.append(render_consumption(args.meshcore, active, args.lang))
+        if args.misfiled:
+            blocks.append(render_misfiled(args.lang))
+        print("\n\n".join(blocks))
+        return
 
     if args.write:
         for lang in ("nl", "en"):

@@ -162,6 +162,11 @@ How these four compare on compute, memory, connectivity, storage, power
 and ease of flashing — and which platform suits which role — is covered in
 [MeshCore Platforms](platforms.md).
 
+How the firmware absorbs the four differences technically — which board class
+each family shares, why RP2040 is the only one without, and why the storage
+choice is the sharpest dividing line — is covered in
+[Platform realisation](../design/technical/platform-realisation.md).
+
 ## Sources
 
 Firmware: [meshcore-dev/MeshCore](https://github.com/meshcore-dev/MeshCore),

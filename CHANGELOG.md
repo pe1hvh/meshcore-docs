@@ -5,6 +5,185 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
 
 ---
 
+## [2026-07-30] Add Design section — technical design
+
+### Added
+
+- `nl/ontwerp/technisch/` and `en/design/technical/`: seven chapters
+  completing the Design section. The logical design described *what* MeshCore
+  is; these chapters describe *how* it is realised, with file names and line
+  numbers throughout, so that every claim can be checked against the firmware
+  rather than believed.
+- `nl/ontwerp/technisch/source-layout.md`,
+  `en/design/technical/source-layout.md`: what sits where in the source tree,
+  and the skew between the platform directories — ESP32 has four classes in
+  its platform directory, nRF52 and STM32 one each, RP2040 none at all. The
+  chapter argues that this measures how much there was to share, not how well
+  a platform is supported.
+- `nl/ontwerp/technisch/class-model.md`, `en/design/technical/class-model.md`:
+  the 196 classes split three ways — 14 contract-defining, 50
+  contract-filling, 55 standalone, plus the 77 in `variants/` as a summary.
+  Includes what is *not* a contract, because `ESP32Board`, `BridgeBase` and
+  `RadioLibWrapper` are borderline cases that a reader will otherwise
+  misfile.
+- `nl/ontwerp/technisch/platform-realisation.md`,
+  `en/design/technical/platform-realisation.md`: how four platform families
+  fill one abstraction, with storage as the sharpest dividing line, and why
+  nRF52 needs 366 lines of board code where ESP32 needs 47.
+- `nl/ontwerp/technisch/radio-realisation.md`,
+  `en/design/technical/radio-realisation.md`: the injection point sits in the
+  variant rather than the core, and there are two classes per radio chip
+  because adapting a RadioLib driver and filling the MeshCore contract are
+  different jobs. Records that LLCC68 exists in full and is chosen by no build
+  target.
+- `nl/ontwerp/technisch/build-system.md`,
+  `en/design/technical/build-system.md`: 80 ini files, 616 sections, 508 build
+  targets, 108 base sections, and the two inheritance mechanisms that both
+  have to be followed — following only one loses 28 targets silently.
+- `nl/ontwerp/technisch/configuration.md`,
+  `en/design/technical/configuration.md`: the 277 `-D` macros by owner, and
+  the finding that 53 of the 254 MeshCore macros are defined and read nowhere.
+  Includes the traversal order the distribution table depends on, because a
+  different order moves up to 22 macros between buckets.
+- `nl/ontwerp/technisch/traceability.md`,
+  `en/design/technical/traceability.md`: every component from
+  `logisch/components.md` pointed out in the source tree, plus two empty rows
+  for the routing table and the task model. The empty rows stay in on purpose:
+  a matrix without them suggests everything has been realised.
+- `images/nl/` and `images/en/`: eight new diagrams, both languages —
+  `source-layout-1`, `class-model-1`, `class-model-2`,
+  `platform-realisation-1`, `radio-realisation-1`, `radio-realisation-2`,
+  `build-system-1`, `configuration-1`.
+- `tools/config-flags.py`: `--owners` writes groups 2 and 3 as a markdown
+  table; `--consumption` gives per MeshCore macro the first place its name
+  occurs in the source tree, with an explicit *read nowhere* category;
+  `--misfiled` lists the five macros the ownership table groups wrongly.
+  `--lang` selects the language of those tables. The existing output for
+  `libraries/library-configuration.md` is unchanged byte for byte, verified by
+  running the script before and after and comparing with `diff`.
+- `tools/design-overview.py`: `--classes` reports the class census the two
+  class chapters quote — 119 in the shared tree, 77 in `variants/` under 73
+  unique names, and the per-directory breakdown. Added beyond the assignment
+  because without it those figures are not reproducible from `tools/`, which
+  the verifiability rule requires; flagged rather than done silently.
+- `nl/naslag/terminology.md`, `en/reference/terminology.md`: ten new terms
+  each, inserted alphabetically — board class, contract-defining,
+  contract-filling, shared tree, injection point, platform macro, text
+  splicing, traceability matrix, virtual inheritance, standalone class. The
+  last one carries an explicit warning that it is not the firmware role
+  *Standalone*, which was already in the list.
+
+### Changed
+
+- `nl/README.md`, `en/README.md`: new group **Technisch ontwerp** /
+  **Technical design** under Design, with the seven chapters in reading order.
+- `nl/ontwerp/introduction.md`, `en/design/introduction.md`: the paragraph
+  announcing a second delivery replaced by links to the seven chapters, since
+  they now exist.
+- `nl/platform/platform-families.md`, `en/platform/platform-families.md`:
+  pointer to `platform-realisation.md`, so a reader comparing the four
+  families can follow through to how the firmware absorbs the differences.
+- `nl/libraries/library-configuration.md`,
+  `en/libraries/library-configuration.md`: pointer to `configuration.md`,
+  placing the seventeen library flags in the context of all 277 macros.
+
+### Fixed
+
+- Three figures in the source analysis for this delivery did not match the
+  firmware and were corrected before writing, not afterwards:
+  - `src/helpers/` was stated as holding 40 loose files; it holds **38**. The
+    class count of 33 was correct.
+  - `RADIO_CLASS` and `WRAPPER_CLASS` were stated as occurring on two comment
+    lines in `src/helpers/esp32/TBeamBoard.cpp`, r.313 and r.334. There are
+    **four**: `RADIO_CLASS` on r.313 and r.334, `WRAPPER_CLASS` on r.314 and
+    r.335.
+  - The two unrealised logical components were named as routing and an error
+    model. `logisch/components.md` names the **routing table** and the **task
+    model**, and no error model appears anywhere in the logical design; the
+    matrix follows the chapter it maps from.
+
+### Known issues
+
+- `images/en/` holds two files with no counterpart in `images/nl/`:
+  `05-group-communication-2.png` and `techniek-chirp-3.svg`. That breaks the
+  rule that every diagram exists twice under the same name. Pre-existing and
+  outside the scope of this delivery, so reported rather than repaired.
+- `tools/config-flags.py` still classifies `NDEBUG`, `BOARD_HAS_PSRAM`,
+  `PIN_SERIAL_RX`, `PIN_SERIAL_TX` and `ENABLE_HWSERIAL2` as MeshCore macros
+  while a framework reads them. Not corrected in `NAMESPACES`, because moving
+  them changes the group counts the chapter quotes; `--misfiled` lists them
+  and `configuration.md` states the correction in the text.
+
+---
+
+## [2026-07-30] Add Design section — logical design
+
+### Added
+
+- `nl/ontwerp/` and `en/design/`: new section describing how the firmware is
+  put together, split into a logical and a technical design. This delivery
+  contains the section introduction and the complete logical design; the
+  seven technical chapters follow separately, which is why they are not yet
+  listed in the README indexes.
+- `nl/ontwerp/introduction.md`, `en/design/introduction.md`: positions the two
+  layers against each other and against `techniek/`, `platform/`, `hardware/`
+  and `libraries/`, so the section repeats nothing that already exists
+  elsewhere.
+- `nl/ontwerp/logisch/` and `en/design/logical/`: six chapters — `roles.md`
+  (the six applications and why exactly one lands in each build),
+  `components.md` (responsibilities and, more usefully, what each part does
+  not know), `interfaces.md` (the eight contracts, with the split between
+  mandatory and optional agreements), `information-model.md` (the seven data
+  objects and what survives a restart), `variability.md` (three axes plus
+  mixins, and why counting on target names is wrong), `decisions.md` (seven
+  choices and what each one costs).
+- `tools/design-overview.py`: resolves the build matrix of a MeshCore
+  checkout. Follows both PlatformIO inheritance mechanisms — `extends` and
+  `${section.option}` — normalises CRLF before parsing and skips
+  commented-out `-D` macros. Every figure in the section comes from this
+  script. Cross-checked against `tools/room-server-overview.py`: both arrive
+  at 73 room server targets in 65 variant directories by different routes.
+- Twelve diagrams in `images/nl/` and `images/en/`: `design-layers-1.svg`,
+  `roles-1.svg`, `components-1.svg`, `interfaces-1.svg`,
+  `information-model-1.svg`, `variability-1.svg`.
+- Ten terms in `nl/naslag/terminology.md` and `en/reference/terminology.md`:
+  base section, mixin, source filter, contract, `extends`, KISS, logical
+  design, role, technical design, variability.
+
+### Changed
+
+- `CLAUDE.md`: the rule stating that directory names are English was wrong
+  about the repo's own second level — `gebruik`, `techniek` and `naslag` are
+  Dutch. Rewritten to say that directory names follow the section mapping at
+  every level, with the four third-level directories that predate the rule
+  recorded as a documented exception rather than silently renamed. Also: three
+  sections with a third level becomes four, the image-path rule and the slug
+  mapping list the new directories, and two pitfalls were added — `technical`
+  now occurring on two levels in the English tree, and what
+  `tools/design-overview.py` has to resolve.
+- `nl/README.md`, `en/README.md`: new `## Ontwerp` / `## Design` section after
+  Techniek respectively Technical.
+- `README.md`: structure tree extended with `ontwerp/` and `design/`.
+
+### Notes
+
+Three findings surfaced while verifying against firmware v1.16.0, commit
+`03b6ef4`, 28 July 2026, and are documented in the chapters rather than
+silently corrected. First, `Generic_E22_kiss_modem` cannot compile: it inherits
+a source filter that pulls in `variants/generic-e22/target.cpp`, which uses
+`RADIO_CLASS`, while neither the target nor any section above it defines that
+macro — its sibling targets do. Second, RP2040 has no shared board class;
+ESP32, nRF52 and STM32 each have one in `src/helpers/`, while the four RP2040
+variants each write their own, which is why the board contract has seven
+implementations and not four. Third, `MESH_DEBUG` occurs 387 times in the ini
+files and is genuinely enabled in 36 targets; the rest sit commented out.
+
+The firmware compiles `FIRMWARE_BUILD_DATE "6 Jun 2026"` in four of the six
+applications, which is not the same as the commit date this section is pinned
+to.
+
+---
+
 ## [2026-07-30] Add Library configuration
 
 ### Added

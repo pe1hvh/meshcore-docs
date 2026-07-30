@@ -305,6 +305,12 @@ weten welk van de vier mechanieken bij de betrokken library hoort, want
 `-D IETS_ENABLE=1` toevoegen werkt niet als de library `IETS_EXCLUDE`
 verwacht.
 
+De zeventien vlaggen in dit hoofdstuk zijn het deel van de 277 `-D`-macro's
+dat bij een library uitkomt. De andere 260 — zes voor een Arduino-core en 254
+voor MeshCore zelf — staan in
+[Compile-time configuratie](../ontwerp/technisch/configuration.md), samen met
+de bevinding dat 53 daarvan nergens worden gelezen.
+
 ## Bronnen
 
 - [`platformio.ini`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/platformio.ini)

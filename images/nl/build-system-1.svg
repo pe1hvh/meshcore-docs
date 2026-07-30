@@ -1,0 +1,35 @@
+<svg style="width:100%;margin:1rem 0" viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg">
+<style>
+:root{--bg:#FFFFFF; --text-primary:#0a2540; --text-secondary:#3d6380; --text-muted:#7a9bb5; --link-color:#0077B6; --heading-color:#0077B6; --border-subtle:rgba(0,119,182,0.12); --card-bg:rgba(0,119,182,0.03); --card-border:rgba(0,119,182,0.12); --code-bg:rgba(0,119,182,0.04); --code-border:rgba(0,119,182,0.12); --info-bg:rgba(0,119,182,0.04); --info-border:rgba(0,119,182,0.15); --line:#0096C7; --node:#0077B6; --tag-green:rgba(16,185,129,0.1); --tag-green-text:#059669; --tag-red:rgba(239,68,68,0.08); --tag-red-text:#dc2626;}
+@media (prefers-color-scheme: dark){:root{--bg:#0A1628; --text-primary:#e0f0f8; --text-secondary:#8badc4; --text-muted:#4a6a80; --link-color:#48CAE4; --heading-color:#48CAE4; --border-subtle:rgba(0,119,182,0.15); --card-bg:rgba(0,119,182,0.06); --card-border:rgba(0,119,182,0.15); --code-bg:rgba(0,119,182,0.08); --code-border:rgba(0,119,182,0.2); --info-bg:rgba(72,202,228,0.06); --info-border:rgba(72,202,228,0.2); --line:#0077B6; --node:#00B4D8; --tag-green:rgba(16,185,129,0.15); --tag-green-text:#6ee7b7; --tag-red:rgba(239,68,68,0.12); --tag-red-text:#fca5a5;}}
+</style>
+<rect x="0" y="0" width="700" height="300" fill="var(--bg)"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--line)"/></marker></defs>
+<text x="350" y="26" fill="var(--heading-color)" font-family="'JetBrains Mono',monospace" font-size="13" font-weight="700" text-anchor="middle" letter-spacing="1">HET BUILDSYSTEEM — 108 BASISSECTIES ONDER 508 TARGETS</text>
+<rect x="20" y="45" width="660" height="40" rx="6" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="1.5"/>
+<text x="350.0" y="70" fill="var(--link-color)" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" text-anchor="middle">508 [env:…] — buildtargets</text>
+<rect x="75" y="100" width="550" height="40" rx="6" fill="var(--info-bg)" stroke="var(--info-border)" stroke-width="1.5"/>
+<text x="350.0" y="125" fill="var(--link-color)" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" text-anchor="middle">arduino_base — 507</text>
+<rect x="75" y="160" width="130" height="40" rx="6" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="1.5"/>
+<text x="140" y="178" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="middle">esp32_base</text>
+<text x="140" y="194" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">270 targets</text>
+<line x1="140" y1="158" x2="140" y2="143" stroke="var(--line)" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="215" y="160" width="130" height="40" rx="6" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="1.5"/>
+<text x="280" y="178" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="middle">nrf52_base</text>
+<text x="280" y="194" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">199 targets</text>
+<line x1="280" y1="158" x2="280" y2="143" stroke="var(--line)" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="355" y="160" width="130" height="40" rx="6" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="1.5"/>
+<text x="420" y="178" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="middle">rp2040_base</text>
+<text x="420" y="194" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">22 targets</text>
+<line x1="420" y1="158" x2="420" y2="143" stroke="var(--line)" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="495" y="160" width="130" height="40" rx="6" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="1.5"/>
+<text x="560" y="178" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="middle">stm32_base</text>
+<text x="560" y="194" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">16 targets</text>
+<line x1="560" y1="158" x2="560" y2="143" stroke="var(--line)" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="75" y="218" width="130" height="30" rx="6" fill="var(--code-bg)" stroke="var(--code-border)" stroke-width="1.5"/>
+<text x="140" y="238" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">esp32c6_base — 16</text>
+<line x1="140" y1="216" x2="140" y2="203" stroke="var(--line)" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="235" y="218" width="445" height="30" rx="6" fill="var(--code-bg)" stroke="var(--code-border)" stroke-width="1.5"/>
+<text x="457" y="238" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">bordspecifieke basissecties — nibble_screen_connect_base 8 · Heltec_*_base 6</text>
+<text x="350" y="275" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">esp32c6_base erft van esp32_base en is dus geen vijfde familie</text>
+</svg>

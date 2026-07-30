@@ -301,6 +301,12 @@ know which of the four mechanisms the library in question uses, because adding
 `-D SOMETHING_ENABLE=1` does nothing if the library expects
 `SOMETHING_EXCLUDE`.
 
+The seventeen flags in this chapter are the part of the 277 `-D` macros that
+ends up at a library. The other 260 — six for an Arduino core and 254 for
+MeshCore itself — are in
+[Compile-time configuration](../design/technical/configuration.md), together
+with the finding that 53 of them are read nowhere.
+
 ## Sources
 
 - [`platformio.ini`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/platformio.ini)

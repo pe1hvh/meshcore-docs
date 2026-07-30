@@ -39,6 +39,25 @@ Off-grid mesh communication over LoRa radio.
 - [SenseCap DFU](technical/sensecap-dfu.md)
 - [Higher and stronger isn't always better](technical/dead-zone.md)
 
+## Design
+
+- [Designing MeshCore](design/introduction.md)
+- **Logical design** — `design/logical/`
+  - [Roles](design/logical/roles.md)
+  - [Components](design/logical/components.md)
+  - [Contracts](design/logical/interfaces.md)
+  - [Information model](design/logical/information-model.md)
+  - [Variability](design/logical/variability.md)
+  - [Design decisions](design/logical/decisions.md)
+- **Technical design** — `design/technical/`
+  - [The source tree](design/technical/source-layout.md)
+  - [The class model](design/technical/class-model.md)
+  - [Platform realisation](design/technical/platform-realisation.md)
+  - [Radio realisation](design/technical/radio-realisation.md)
+  - [The build system](design/technical/build-system.md)
+  - [Compile-time configuration](design/technical/configuration.md)
+  - [Traceability](design/technical/traceability.md)
+
 ## Platform
 
 - [MeshCore Platforms](platform/platforms.md)

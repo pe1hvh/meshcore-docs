@@ -1,0 +1,36 @@
+<svg style="width:100%;margin:1rem 0" viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg">
+<style>
+:root{--bg:#FFFFFF; --text-primary:#0a2540; --text-secondary:#3d6380; --text-muted:#7a9bb5; --link-color:#0077B6; --heading-color:#0077B6; --border-subtle:rgba(0,119,182,0.12); --card-bg:rgba(0,119,182,0.03); --card-border:rgba(0,119,182,0.12); --code-bg:rgba(0,119,182,0.04); --code-border:rgba(0,119,182,0.12); --info-bg:rgba(0,119,182,0.04); --info-border:rgba(0,119,182,0.15); --line:#0096C7; --node:#0077B6; --tag-green:rgba(16,185,129,0.1); --tag-green-text:#059669; --tag-red:rgba(239,68,68,0.08); --tag-red-text:#dc2626;}
+@media (prefers-color-scheme: dark){:root{--bg:#0A1628; --text-primary:#e0f0f8; --text-secondary:#8badc4; --text-muted:#4a6a80; --link-color:#48CAE4; --heading-color:#48CAE4; --border-subtle:rgba(0,119,182,0.15); --card-bg:rgba(0,119,182,0.06); --card-border:rgba(0,119,182,0.15); --code-bg:rgba(0,119,182,0.08); --code-border:rgba(0,119,182,0.2); --info-bg:rgba(72,202,228,0.06); --info-border:rgba(72,202,228,0.2); --line:#0077B6; --node:#00B4D8; --tag-green:rgba(16,185,129,0.15); --tag-green-text:#6ee7b7; --tag-red:rgba(239,68,68,0.12); --tag-red-text:#fca5a5;}}
+</style>
+<rect x="0" y="0" width="700" height="300" fill="var(--bg)"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--line)"/></marker></defs>
+<text x="350" y="26" fill="var(--heading-color)" font-family="'JetBrains Mono',monospace" font-size="13" font-weight="700" text-anchor="middle" letter-spacing="1">THE SOURCE TREE</text>
+<rect x="20" y="45" width="150" height="110" rx="6" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="1.5"/>
+<text x="95" y="72" fill="var(--link-color)" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" text-anchor="middle">src/</text>
+<text x="95" y="96" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">11 files</text>
+<text x="95" y="116" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">14 classes</text>
+<text x="95" y="136" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">2332 lines</text>
+<rect x="190" y="45" width="150" height="110" rx="6" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="1.5"/>
+<text x="265" y="72" fill="var(--link-color)" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" text-anchor="middle">src/helpers/</text>
+<text x="265" y="96" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">38 files</text>
+<text x="265" y="116" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">33 classes</text>
+<text x="265" y="136" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">7 subdirectories</text>
+<rect x="360" y="45" width="150" height="110" rx="6" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="1.5"/>
+<text x="435" y="72" fill="var(--link-color)" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" text-anchor="middle">examples/</text>
+<text x="435" y="96" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">6 applications</text>
+<text x="435" y="116" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">25 classes</text>
+<rect x="530" y="45" width="150" height="110" rx="6" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="1.5"/>
+<text x="605" y="72" fill="var(--link-color)" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" text-anchor="middle">variants/</text>
+<text x="605" y="96" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">79 directories</text>
+<text x="605" y="116" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">77 classes</text>
+<line x1="528" y1="100" x2="512" y2="100" stroke="var(--line)" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="358" y1="100" x2="342" y2="100" stroke="var(--line)" stroke-width="1.5" marker-end="url(#a)"/>
+<line x1="188" y1="100" x2="172" y2="100" stroke="var(--line)" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="20" y="185" width="660" height="40" rx="6" fill="var(--info-bg)" stroke="var(--info-border)" stroke-width="1.5"/>
+<text x="40" y="202" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="start">Shared tree: 119 classes</text>
+<text x="40" y="218" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="start">src/ and examples/ — code that can take part in any build</text>
+<rect x="20" y="240" width="660" height="40" rx="6" fill="var(--code-bg)" stroke="var(--code-border)" stroke-width="1.5"/>
+<text x="40" y="257" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="start">Skew between the platform directories</text>
+<text x="40" y="273" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="start">esp32/ 4 classes · nrf52/ 1 · stm32/ 1 · RP2040 no platform directory</text>
+</svg>

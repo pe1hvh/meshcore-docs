@@ -15,8 +15,10 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | AES | Advanced Encryption Standard — encryption algorithm (128/256-bit) |
 | Arduino core | Implementation of the Arduino API for one chip family. MeshCore uses four: Arduino-ESP32, Adafruit nRF52, arduino-pico and STM32duino |
 | ATT | Attribute Protocol — underlying protocol of GATT in BLE |
+| Base section | Section in `platformio.ini` without an `env:` prefix. Not built itself but serves as a parent for build targets that inherit from it through `extends`. MeshCore `03b6ef4` has 108 |
 | BBS | Bulletin Board System — a central place where participants leave and collect messages without being present at the same time. The model the Room Server goes back to; the default name of an unconfigured room server is `Test BBS` |
 | BLE | Bluetooth Low Energy — energy-efficient connection between node and smartphone |
+| Board class | Class that fills the board contract `mesh::MainBoard` for one board or one family. MeshCore counts 71: six in `src/helpers/` and 65 in `variants/` |
 | bootloader | Small program that runs first and loads or replaces the actual firmware; determines how a node can be flashed |
 | build flag | Compile option in `platformio.ini` (`-D NAME=value`) that decides which code is compiled in |
 | build target | One `[env:…]` section in `platformio.ini`: the combination of board, role and settings that yields one firmware file. MeshCore counts 507 of them, plus `[env:native]` for the tests |
@@ -27,6 +29,9 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | Channel | Shared cryptographic key (PSK) for group communication |
 | Chirp | Frequency sweep from low to high (up-chirp) or high to low (down-chirp) |
 | Companion App | Smartphone application to control the MeshCore node |
+| Contract | Abstract agreement between two components, expressed in C++ as a class with virtual methods. Whoever satisfies it can replace any other implementation. MeshCore has eight: radio, board, clock, entropy, seen table, packet pool, display and bridge |
+| Contract-defining | Class that only lays down what a filler must be able to do, with no working code. Group 1 of the class model; 14 in the shared tree |
+| Contract-filling | Class that fills a contract-defining class and is therefore replaceable by any other filler. Group 2 of the class model; 50 in the shared tree |
 | Cortex-M0+/M4/M4F | ARM processor cores. M0+ is the simplest, M4 adds signal-processing instructions, M4F adds a floating-point unit on top |
 | CP437 | The character set of the original IBM PC. MeshCore uses one character from it, the full block `0xDB`, as a replacement for every non-ASCII character on screen |
 | CR | Coding Rate — error correction level (4/5 to 4/8), more = more reliable |
@@ -52,6 +57,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | ESP32 | Popular microcontroller from Espressif with WiFi and Bluetooth |
 | ESP-IDF | Espressif IoT Development Framework — Espressif's native SDK, on which the Arduino-ESP32 core is built |
 | ESP-NOW | Connectionless radio protocol from Espressif between ESP32 chips; in MeshCore available on ESP32 only |
+| `extends` | PlatformIO's inheritance mechanism: a section takes over every option from the named section. Separate from `${section.option}`, which splices in text; following only one of the two loses 28 of the 508 build targets |
 | FFT | Fast Fourier Transform — algorithm for frequency analysis of dechirped signal |
 | Firmware | Software permanently running on the microcontroller of a node |
 | First packet wins | With multiple copies of the same flood message the first to arrive is processed; that path is learned, not necessarily the shortest |
@@ -68,10 +74,12 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | HAM | Amateur radio mode — licence required, no encryption permitted |
 | Hop | One jump between two nodes in the mesh network |
 | I²C | Inter-Integrated Circuit — bus for connecting sensors and displays |
+| Injection point | The place where a concrete class is coupled to a contract. For the radio that is not in the core but in `variants/*/target.h`, through `WRAPPER_CLASS` |
 | IPEX/U.FL | Small click-on antenna connector for internal antennas |
 | ISM band | Industrial, Scientific, Medical — free frequency band, 868 MHz in Europe |
 | Keep-alive | Periodic request (`0x02`) from a client to a server to keep the connection alive. On a room server the confirmation carries the number of waiting posts. Answered direct only, never by flood |
 | Key Rotation | Periodic replacement of cryptographic keys for extra security |
+| KISS | Keep It Simple, Stupid — a packet radio protocol for passing raw frames between a modem and a computer. Name of one of the six MeshCore roles, which largely bypasses the mesh logic |
 | `lib_deps` | Key in `platformio.ini` by which a section states which libraries it needs |
 | Library Dependency Finder (LDF) | Part of PlatformIO that scans the source code for `#include` lines and looks for matching libraries, even undeclared ones |
 | `library.json` | Metadata file of a PlatformIO library; the `"dependencies"` key plays the same role as `depends=` |
@@ -79,6 +87,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | Link Budget | Total signal loss a connection can sustain and still be decodable |
 | LittleFS | Compact filesystem for microcontrollers, resilient to power loss; used on nRF52, RP2040 and STM32WL |
 | LNA | Low Noise Amplifier — amplifier in the receive path, right behind the antenna |
+| Logical design | Description of what a system is: components, responsibilities, contracts and data, without pointing at the implementation. Counterpart of the technical design |
 | LoRa | Long Range — patented modulation technique for long-range communication |
 | LPCOMP | Low-Power Comparator in the nRF52 — can wake the chip from `SYSTEMOFF` on a voltage change |
 | LPP | Low Power Payload — compact binary format for sensor data; MeshCore uses CayenneLPP as the wire format for telemetry |
@@ -89,6 +98,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | Meshtastic | Alternative LoRa mesh firmware — not compatible with MeshCore |
 | MISO | Master In Slave Out — the SPI line the attached device sends data to the SoC on |
 | MIT licence | Open-source licence for free use, modification and distribution |
+| Mixin | Property that can be on or off independently of the three variation axes: radio class, display class, bridge, sensors, logging. Explains why there are 507 build targets with a role and not 474 |
 | MOSI | Master Out Slave In — the SPI line the SoC sends data to the attached device on |
 | NMEA | Line-based text format a GNSS receiver sends position, time and satellite count in. One sentence fits in the hundred-byte buffer |
 | Node | A device/node in the MeshCore network |
@@ -107,6 +117,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | PHY | Physical Layer — the physical radio layer that converts bits to radio signals |
 | Platform | In MeshCore: one of the four build targets `ESP32_PLATFORM`, `NRF52_PLATFORM`, `RP2040_PLATFORM` and `STM32_PLATFORM`. Not the same as a board or a chip |
 | Platform family | Set of SoCs sharing the same platform base in `platformio.ini`, for example ESP32, S3, C3 and C6 under `[esp32_base]` |
+| Platform macro | Build flag marking the platform family: `NRF52_PLATFORM`, `RP2040_PLATFORM`, `STM32_PLATFORM`. `ESP32_PLATFORM` does exist but is read nowhere — ESP32 code uses the core macro `ESP32` |
 | PlatformIO environment | One `[env:]` block in a `platformio.ini`: the combination of board, role and build flags that yields a single firmware file |
 | Post | A message in a Room Server: 151 characters of plain text with a timestamp from the server clock and the first four bytes of the author's public key |
 | Power amplifier (PA) | Amplifier stage behind the radio chip that raises the transmit power, for example from 22 to 30 dBm |
@@ -121,6 +132,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | registry | PlatformIO's package index, from which libraries are fetched by name and version |
 | Repeater | Node that forwards messages to extend network range |
 | RISC-V | Open processor architecture; used in the ESP32-C3 and C6, as opposed to Xtensa in the classic ESP32 and the S3 |
+| Role | One of the six applications MeshCore can be: companion radio, repeater, room server, sensor, terminal chat or KISS modem. Fixed at compile time and not changeable afterwards |
 | Room Server | Physical node with BBS function for store-and-forward. The queue holds 32 posts, lives in working memory and does not survive a restart |
 | Routing | Determining the best route for a message through the network |
 | RP2040 | Microcontroller from Raspberry Pi with two Cortex-M0+ cores; the only MeshCore chip without a built-in radio |
@@ -132,15 +144,18 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | SDA | Serial Data — the data line of the I²C bus (`PIN_BOARD_SDA`) |
 | semver caret (`^`) | Version specification `^7.6.0`: at least 7.6.0, but below the next major version. `~2.0.6` is narrower: below 2.1.0 |
 | SF | Spreading Factor — determines range vs speed (SF7–SF12), higher = further |
+| Shared tree | `src/` and `examples/` together: the code that can take part in any build, as opposed to `variants/`, which is bound to one board. 119 of the 196 classes |
 | SIG | Special Interest Group — organisation behind Bluetooth standards |
 | SMA | SubMiniature version A — threaded antenna connector |
 | SNR | Signal-to-Noise Ratio — ratio of signal to noise in dB |
 | SoC | System on Chip — chip combining processor, memory and often a radio. The ESP32, nRF52840 and STM32WLE5 are SoCs, the RP2040 is not |
 | SoftDevice | Precompiled Bluetooth stack from Nordic that sits alongside the application in an nRF52's flash |
+| Source filter | The `build_src_filter` option in `platformio.ini`, which decides which source files end up in a build target. In MeshCore it decides which of the six applications is compiled — the target's name says nothing about it |
 | SPI | Serial Peripheral Interface — fast bus for LoRa chip and SD card |
 | SPIFFS | Simple filesystem for flash memory; used on ESP32 for identity and contacts |
 | Standalone | Firmware role for a node with its own display and keyboard, working without a companion app |
 | ST-Link | Programming and debug adapter from STMicroelectronics; the usual way to flash an STM32WL |
+| Standalone class | Class that is not a contract and fills none either; nothing depends on it and nothing can replace it. Group 3 of the class model; 55 in the shared tree. Not to be confused with the firmware role *Standalone* |
 | STM32WLE5 | SoC from STMicroelectronics with a Cortex-M4 and the LoRa radio (SubGHz) on the same die |
 | Store-and-forward | Storing messages until the recipient is reachable |
 | SubGHz radio | The radio unit inside the STM32WL; functionally equivalent to an SX126x but without an SPI bus in between |
@@ -152,7 +167,10 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | SYSTEMOFF | Deepest sleep mode of the nRF52; almost everything off, waking only through specific pins or LPCOMP |
 | TCP | Transmission Control Protocol — connection-oriented transport layer. A node with a WiFi build opens a server on port 5000 with it |
 | TCXO | Temperature Compensated Crystal Oscillator — clock source holding its frequency across temperature. On an SX126x it is fed by DIO3 |
+| Technical design | Description of how a system is realised: classes, files, platform realisation and build chain, with file names and line numbers. Counterpart of the logical design |
 | Telemetry | Measurement data from sensors transmitted via the network |
+| Text splicing | PlatformIO's second inheritance mechanism: `${section.option}` replaces the reference literally with the value of that one option. Unlike `extends`, which takes over every option |
+| Traceability matrix | Table pointing out every part of the logical design in the source tree, with file and line number. Empty rows stay in for parts that deliberately have no realisation |
 | transitive dependency | Library that is not declared itself but comes along because another library needs it |
 | Transport code | The 16 bits in `transport_codes[0]`. **Not an identifier of a region** but an HMAC over payload type and payload, keyed with the region key. It changes with every message; a repeater recognises it by recomputing it, not by looking it up |
 | TwoWire | Arduino class for one I²C bus. `Wire` is the first bus, `Wire1` the optional second one for telemetry sensors |
@@ -161,8 +179,10 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | UF2 | USB Flashing Format — firmware file you drag onto a USB drive; used by nRF52 and RP2040 |
 | USB CDC-ACM | Communications Device Class / Abstract Control Model — the USB class a node uses to present itself to the operating system as a serial port |
 | UUID | Universally Unique Identifier — unique identification for BLE services |
+| Variability | The degree and manner in which one codebase yields different products. MeshCore varies along three axes — role, platform family and board — plus mixins, arriving at 508 build targets |
 | Variant | Directory under `variants/` holding the board-specific configuration: pins, radio type, display and the matching build targets |
 | vendoring | Including external code as a copy in your own repo instead of fetching it as a dependency. MeshCore does this in `lib/` and `arch/` |
+| Virtual inheritance | C++ construct (`virtual public`) preventing a class from getting two copies of a base class when that base is reachable along two paths. `NRF52BoardDCDC` uses it for the 30 board classes below it |
 | Web Flasher | Browser tool to install firmware without special software |
 | Wrap | Frequency jumps back to the start of the band (0) after reaching the maximum |
 | XBM | X BitMap — simple monochrome image format living as a C array in the firmware. `drawXbm()` puts it on the screen |

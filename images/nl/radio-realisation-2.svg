@@ -1,0 +1,56 @@
+<svg style="width:100%;margin:1rem 0" viewBox="0 0 700 330" xmlns="http://www.w3.org/2000/svg">
+<style>
+:root{--bg:#FFFFFF; --text-primary:#0a2540; --text-secondary:#3d6380; --text-muted:#7a9bb5; --link-color:#0077B6; --heading-color:#0077B6; --border-subtle:rgba(0,119,182,0.12); --card-bg:rgba(0,119,182,0.03); --card-border:rgba(0,119,182,0.12); --code-bg:rgba(0,119,182,0.04); --code-border:rgba(0,119,182,0.12); --info-bg:rgba(0,119,182,0.04); --info-border:rgba(0,119,182,0.15); --line:#0096C7; --node:#0077B6; --tag-green:rgba(16,185,129,0.1); --tag-green-text:#059669; --tag-red:rgba(239,68,68,0.08); --tag-red-text:#dc2626;}
+@media (prefers-color-scheme: dark){:root{--bg:#0A1628; --text-primary:#e0f0f8; --text-secondary:#8badc4; --text-muted:#4a6a80; --link-color:#48CAE4; --heading-color:#48CAE4; --border-subtle:rgba(0,119,182,0.15); --card-bg:rgba(0,119,182,0.06); --card-border:rgba(0,119,182,0.15); --code-bg:rgba(0,119,182,0.08); --code-border:rgba(0,119,182,0.2); --info-bg:rgba(72,202,228,0.06); --info-border:rgba(72,202,228,0.2); --line:#0077B6; --node:#00B4D8; --tag-green:rgba(16,185,129,0.15); --tag-green-text:#6ee7b7; --tag-red:rgba(239,68,68,0.12); --tag-red-text:#fca5a5;}}
+</style>
+<rect x="0" y="0" width="700" height="330" fill="var(--bg)"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--line)"/></marker></defs>
+<text x="350" y="26" fill="var(--heading-color)" font-family="'JetBrains Mono',monospace" font-size="13" font-weight="700" text-anchor="middle" letter-spacing="1">HET DUBBELPAAR — DRIVER EN CONTRACTINVULLING</text>
+<text x="175" y="52" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="1">RadioLib</text>
+<text x="525" y="52" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="1">MeshCore</text>
+<rect x="60" y="62" width="230" height="30" rx="6" fill="var(--code-bg)" stroke="var(--code-border)" stroke-width="1.5"/>
+<text x="175" y="82" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="middle">PhysicalLayer</text>
+<rect x="410" y="62" width="230" height="30" rx="6" fill="var(--info-bg)" stroke="var(--info-border)" stroke-width="1.5"/>
+<text x="525" y="82" fill="var(--link-color)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="middle">mesh::Radio</text>
+<rect x="410" y="104" width="230" height="30" rx="6" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="1.5"/>
+<text x="525" y="124" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="middle">RadioLibWrapper</text>
+<line x1="525" y1="102" x2="525" y2="94" stroke="var(--line)" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="60" y="150" width="175" height="22" rx="4" fill="var(--card-bg)" stroke="var(--border-subtle)" stroke-width="1.5"/>
+<text x="147" y="166" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">CustomSX1262</text>
+<rect x="400" y="150" width="200" height="22" rx="4" fill="var(--card-bg)" stroke="var(--border-subtle)" stroke-width="1.5"/>
+<text x="500" y="166" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">CustomSX1262Wrapper</text>
+<line x1="238" y1="161" x2="397" y2="161" stroke="var(--line)" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="670" y="166" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="end">424</text>
+<rect x="60" y="178" width="175" height="22" rx="4" fill="var(--card-bg)" stroke="var(--border-subtle)" stroke-width="1.5"/>
+<text x="147" y="194" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">CustomSX1276</text>
+<rect x="400" y="178" width="200" height="22" rx="4" fill="var(--card-bg)" stroke="var(--border-subtle)" stroke-width="1.5"/>
+<text x="500" y="194" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">CustomSX1276Wrapper</text>
+<line x1="238" y1="189" x2="397" y2="189" stroke="var(--line)" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="670" y="194" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="end">29</text>
+<rect x="60" y="206" width="175" height="22" rx="4" fill="var(--card-bg)" stroke="var(--border-subtle)" stroke-width="1.5"/>
+<text x="147" y="222" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">CustomLR1110</text>
+<rect x="400" y="206" width="200" height="22" rx="4" fill="var(--card-bg)" stroke="var(--border-subtle)" stroke-width="1.5"/>
+<text x="500" y="222" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">CustomLR1110Wrapper</text>
+<line x1="238" y1="217" x2="397" y2="217" stroke="var(--line)" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="670" y="222" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="end">20</text>
+<rect x="60" y="234" width="175" height="22" rx="4" fill="var(--card-bg)" stroke="var(--border-subtle)" stroke-width="1.5"/>
+<text x="147" y="250" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">CustomSTM32WLx</text>
+<rect x="400" y="234" width="200" height="22" rx="4" fill="var(--card-bg)" stroke="var(--border-subtle)" stroke-width="1.5"/>
+<text x="500" y="250" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">CustomSTM32WLxWrapper</text>
+<line x1="238" y1="245" x2="397" y2="245" stroke="var(--line)" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="670" y="250" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="end">16</text>
+<rect x="60" y="262" width="175" height="22" rx="4" fill="var(--card-bg)" stroke="var(--border-subtle)" stroke-width="1.5"/>
+<text x="147" y="278" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">CustomSX1268</text>
+<rect x="400" y="262" width="200" height="22" rx="4" fill="var(--card-bg)" stroke="var(--border-subtle)" stroke-width="1.5"/>
+<text x="500" y="278" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">CustomSX1268Wrapper</text>
+<line x1="238" y1="273" x2="397" y2="273" stroke="var(--line)" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="670" y="278" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="end">12</text>
+<rect x="60" y="290" width="175" height="22" rx="4" fill="var(--tag-red)" stroke="var(--tag-red-text)" stroke-width="1.5"/>
+<text x="147" y="306" fill="var(--tag-red-text)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">CustomLLCC68</text>
+<rect x="400" y="290" width="200" height="22" rx="4" fill="var(--tag-red)" stroke="var(--tag-red-text)" stroke-width="1.5"/>
+<text x="500" y="306" fill="var(--tag-red-text)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">CustomLLCC68Wrapper</text>
+<line x1="238" y1="301" x2="397" y2="301" stroke="var(--line)" stroke-width="1.5" marker-end="url(#a)"/>
+<text x="670" y="306" fill="var(--tag-red-text)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="end">0</text>
+<text x="670" y="138" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="end">targets</text>
+<text x="350" y="322" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">LLCC68 bestaat volledig en wordt door geen enkel target gekozen</text>
+</svg>

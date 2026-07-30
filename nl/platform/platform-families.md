@@ -159,6 +159,11 @@ Hoe deze vier zich op rekenkracht, geheugen, connectiviteit, opslag,
 energie en flashgemak tot elkaar verhouden — en welk platform bij welke
 rol past — staat in [MeshCore Platforms](platforms.md).
 
+Hoe de firmware de vier verschillen technisch opvangt — welke bordklasse per
+familie gedeeld wordt, waarom RP2040 er als enige geen heeft, en waarom de
+opslagkeuze de scherpste scheidslijn is — staat in
+[Platformrealisatie](../ontwerp/technisch/platform-realisation.md).
+
 ## Bronnen
 
 Firmware: [meshcore-dev/MeshCore](https://github.com/meshcore-dev/MeshCore),
