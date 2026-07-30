@@ -334,8 +334,10 @@ aside.
 - **Adopt the firmware's wording where it is unambiguous.** The repo speaks
   of *platforms* (`ESP32_PLATFORM`, `NRF52_PLATFORM`, `RP2040_PLATFORM`,
   `STM32_PLATFORM`), not of microcontrollers. Use *platform* and *platform
-  family* for the four build targets, *SoC* for the chip, and *MCU* only
-  where the compute core is genuinely the subject. If you deliberately
+  family* for the four build targets, *MCU* for the chip the firmware runs
+  on, and *SoC* for an MCU that is packaged together with memory and usually
+  a radio. The difference is explained in `hardware/introduction.md`; do not
+  invent a third word for it. If you deliberately
   deviate because the reader's term is different, spell that out in the
   chapter itself — not silently.
 

@@ -93,7 +93,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | LPP | Low Power Payload — compact binary format for sensor data; MeshCore uses CayenneLPP as the wire format for telemetry |
 | LR1110 | Semtech transceiver combining LoRa with GNSS and WiFi scanning for positioning without a separate GPS module |
 | MAC (cipher) | Message Authentication Code — HMAC-SHA256 over the ciphertext, truncated to 2 bytes. MeshCore does not use the term MIC |
-| MCU | Microcontroller Unit — the central processor of a node |
+| MCU | Microcontroller Unit — the chip the firmware runs on, with processor, memory, flash and the buses the rest of the node hangs off. On the ESP32, nRF52840 and STM32WLE5 that MCU sits inside a SoC; the RP2040 is a bare MCU. Every SoC contains an MCU, not every MCU sits in a SoC |
 | Mesh | Network where every device can forward messages to others |
 | Meshtastic | Alternative LoRa mesh firmware — not compatible with MeshCore |
 | MISO | Master In Slave Out — the SPI line the attached device sends data to the SoC on |
@@ -148,7 +148,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | SIG | Special Interest Group — organisation behind Bluetooth standards |
 | SMA | SubMiniature version A — threaded antenna connector |
 | SNR | Signal-to-Noise Ratio — ratio of signal to noise in dB |
-| SoC | System on Chip — chip combining processor, memory and often a radio. The ESP32, nRF52840 and STM32WLE5 are SoCs, the RP2040 is not |
+| SoC | System on Chip — chip combining an MCU, memory and often a radio in one package. The ESP32, nRF52840 and STM32WLE5 are SoCs, the RP2040 is not. The difference from MCU is explained in [The Hardware of a Node](../hardware/introduction.md) |
 | SoftDevice | Precompiled Bluetooth stack from Nordic that sits alongside the application in an nRF52's flash |
 | Source filter | The `build_src_filter` option in `platformio.ini`, which decides which source files end up in a build target. In MeshCore it decides which of the six applications is compiled — the target's name says nothing about it |
 | SPI | Serial Peripheral Interface — fast bus for LoRa chip and SD card |

@@ -42,6 +42,10 @@ So "MeshCore supports four microcontrollers" is a double simplification.
 There are four platform bases in `platformio.ini`, covering at least seven
 different SoCs and two processor architectures.
 
+What exactly distinguishes a SoC from an MCU — and why every SoC contains an
+MCU but not the other way round — is covered in
+[The Hardware of a Node](../hardware/introduction.md).
+
 ## The four families at a glance
 
 | Family | SoCs | Core | Clock | RAM | Flash for the app | Radio | Variants | Build targets |

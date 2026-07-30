@@ -96,7 +96,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | LPP | Low Power Payload — compact binair formaat voor sensordata; MeshCore gebruikt CayenneLPP als draadformaat voor telemetrie |
 | LR1110 | Semtech-transceiver die LoRa combineert met GNSS- en WiFi-scanning voor locatiebepaling zonder losse GPS-module |
 | MAC (cipher) | Message Authentication Code — HMAC-SHA256 over de cijfertekst, afgekapt op 2 bytes. MeshCore gebruikt de term MIC niet |
-| MCU | Microcontroller Unit — de centrale processor van een node |
+| MCU | Microcontroller Unit — de chip waarop de firmware draait, met processor, geheugen, flash en de bussen waaraan de rest van de node hangt. Op ESP32, nRF52840 en STM32WLE5 zit die MCU in een SoC; de RP2040 is een kale MCU. Elke SoC bevat een MCU, niet elke MCU zit in een SoC |
 | Mesh | Netwerk waarbij elk apparaat berichten kan doorsturen naar anderen |
 | Meshtastic | Alternatieve LoRa mesh firmware — niet compatibel met MeshCore |
 | MISO | Master In Slave Out — de SPI-lijn waarover het aangesloten apparaat data naar de SoC stuurt |
@@ -148,7 +148,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | SIG | Special Interest Group — organisatie achter Bluetooth standaarden |
 | SMA | SubMiniature version A — schroefbare antenneconnector |
 | SNR | Signal-to-Noise Ratio — verhouding tussen signaal en ruis in dB |
-| SoC | System on Chip — chip die processor, geheugen en vaak ook een radio combineert. ESP32, nRF52840 en STM32WLE5 zijn SoC's, de RP2040 is dat niet |
+| SoC | System on Chip — chip die een MCU, geheugen en vaak ook een radio in één behuizing combineert. ESP32, nRF52840 en STM32WLE5 zijn SoC's, de RP2040 is dat niet. Het verschil met MCU staat uitgelegd in [Hardware van een node](../hardware/introduction.md) |
 | SoftDevice | Voorgecompileerde Bluetooth-stack van Nordic die naast de applicatie in de flash van een nRF52 staat |
 | SPI | Serial Peripheral Interface — snelle bus voor LoRa chip en SD-kaart |
 | SPIFFS | Eenvoudig filesystem voor flashgeheugen; op ESP32 gebruikt voor identiteit en contacten |

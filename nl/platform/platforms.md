@@ -43,6 +43,10 @@ Alleen de RP2040 is een kale microcontroller.
 versimpeling. Het zijn vier platformbases in `platformio.ini`, met
 minstens zeven verschillende SoC's en twee processorarchitecturen.
 
+Wat een SoC precies onderscheidt van een MCU — en waarom elke SoC een MCU
+bevat maar niet andersom — staat in
+[Hardware van een node](../hardware/introduction.md).
+
 ## De vier families in één oogopslag
 
 | Familie | SoC's | Core | Klok | RAM | Flash voor de app | Radio | Varianten | Build-targets |

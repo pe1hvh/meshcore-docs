@@ -2,9 +2,9 @@
 
 *BLOCK DIAGRAM · RADIO · INTERFACES · PERIPHERALS*
 
-A MeshCore node is a compute core with a radio beside it and a handful of
+A MeshCore node is an MCU with a radio beside it and a handful of
 parts around it. This section describes those parts one by one: what each
-is, how it attaches to the compute core, and what the firmware does with
+is, how it attaches to the MCU, and what the firmware does with
 it. This chapter sets out the block diagram and explains where the
 boundary lies between the three groups the rest of the section is split
 into.
@@ -19,20 +19,53 @@ into.
 ## What is inside a node
 
 ![Block diagram of a MeshCore node: antenna and LoRa transceiver on the
-left, the SoC in the middle, BLE, WiFi and USB serial above it towards the
+left, the MCU in the middle, BLE, WiFi and USB serial above it towards the
 companion app, and display, GPS and buttons below on the buses of the
-SoC](../../images/en/node-blockdiagram-1.svg)
+MCU](../../images/en/node-blockdiagram-1.svg)
 
 On the left is the RF side: an antenna on a transceiver, which hangs off
-the compute core over SPI. In the middle sits the SoC — the only part
-present in every node, and the part that determines what the rest can be.
-Above it the connections to the outside world, along which a phone or a
-terminal operates the node. Below it everything that hangs on the buses of
-the SoC and is optional: a node works without a screen, without GPS and
-without buttons.
+the MCU over SPI. In the middle sits the MCU — the only part present in
+every node, and the part that determines what the rest can be. Above it the
+connections to the outside world, along which a phone or a terminal
+operates the node. Below it everything that hangs on the buses of the MCU
+and is optional: a node works without a screen, without GPS and without
+buttons.
 
 The transceiver is not optional. Without a radio there is no node, just a
 board with a processor on it.
+
+## MCU or SoC
+
+The middle block is called the **MCU** throughout this section: the chip the
+firmware runs on, with processor, memory, flash and the buses the rest hangs
+off. That is the term the rest of the documentation uses too —
+`node-matrix.md` puts the sixty boards under it in a single column.
+
+On three of the four platform families that MCU is not a separate chip on
+the board but part of a **SoC**: a chip that wraps memory, and usually a
+radio, around it. The difference in one line:
+
+| Term | What it names |
+|---|---|
+| MCU | The computing chip: processor, memory, flash, buses |
+| SoC | A chip combining an MCU and more around it in one package |
+
+Every SoC therefore contains an MCU; not every MCU sits in a SoC.
+
+| Family | Chip | SoC? | What else is in it |
+|---|---|---|---|
+| ESP32 | ESP32, ESP32-S3, ESP32-C3, ESP32-C6 | yes | WiFi and BLE |
+| nRF52 | nRF52840 | yes | BLE |
+| STM32 | STM32WLE5 | yes | The LoRa radio itself |
+| RP2040 | RP2040 | no | Bare MCU; everything sits beside it |
+
+The RP2040 is the only bare microcontroller in the set, and that explains why
+an RP2040 node has no BLE and no WiFi: they are in nothing. See
+[MeshCore Platforms](../platform/platforms.md).
+
+The LoRa transceiver stands apart from this. Even on a SoC it is nearly
+always a separate chip — the SX1262 or SX1276 beside the MCU. The STM32WLE5
+is the exception: there the LoRa radio does sit on the same chip.
 
 ## How the firmware names the blocks
 
