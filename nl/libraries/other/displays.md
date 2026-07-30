@@ -6,7 +6,9 @@ MeshCore kent elf waarden voor `DISPLAY_CLASS`, van een OLED van een paar
 centimeter tot een e-inkpaneel en een kleuren-TFT. In de firmware is
 daar bijna niets van te merken: alle schermen zitten achter één interface, en
 welke library daadwerkelijk meegecompileerd wordt, bepaalt één bouwvlag per
-variant.
+variant. Die vlag draagt een klassenaam in plaats van een aan/uit-waarde — een
+van de vier configuratiemechanieken uit
+[`../library-configuration.md`](../library-configuration.md).
 
 > [!NOTE]
 > **Bron.** Deze pagina is geverifieerd tegen de firmware zelf:

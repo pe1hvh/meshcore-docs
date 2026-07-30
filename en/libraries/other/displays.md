@@ -6,6 +6,9 @@ MeshCore knows eleven values for `DISPLAY_CLASS`, from an OLED a couple of
 centimetres across to an e-ink panel and a colour TFT. Almost none of that
 shows in the firmware: all displays sit behind a single interface, and which
 library actually gets compiled in is decided by one build flag per variant.
+That flag carries a class name rather than an on/off value — one of the four
+configuration mechanisms from
+[`../library-configuration.md`](../library-configuration.md).
 
 > [!NOTE]
 > **Source.** This page was verified against the firmware itself:

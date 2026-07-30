@@ -47,6 +47,14 @@ Twee bouwvlaggen in dezelfde sectie horen erbij:
 LittleFS: een inconsistentie in het bestandssysteem laat de node dan
 doorlopen in plaats van hem te laten stoppen.
 
+Die tweede vlag raakt CustomLFS niet zelf — die bevat geen littlefs maar wrapt
+`Adafruit_LittleFS` (`CustomLFS.h` r.30). Hij raakt de littlefs-kopie in het
+nRF52-framework. De tweede kopie in de bouwboom,
+`arch/stm32/Adafruit_LittleFS_stm32/src/littlefs/`, houdt zijn asserts wél,
+omdat `[stm32_base]` de vlag niet zet. Zie
+[`../library-configuration.md`](../library-configuration.md) voor dat
+mechaniek.
+
 ## Hoe MeshCore hem gebruikt
 
 De keuze tussen intern, extra en QSPI valt bij het compileren:

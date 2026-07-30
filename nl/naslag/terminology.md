@@ -97,6 +97,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | NSS | Chip select van de SPI-bus: laag zolang de SoC dit ene apparaat aanspreekt. In MeshCore `P_LORA_NSS`; ook CS genoemd |
 | NUS | Nordic UART Service — BLE service die seriële poort simuleert |
 | OLED | Organic LED — het kleine zelfoplichtende schermpje op veel nodes, meestal een SSD1306 of SH1106 op de I²C-bus |
+| opt-in / opt-out | Twee tegengestelde conventies voor buildvlaggen. Bij opt-in is de standaardtoestand *niets* en voegt een macro iets toe (`ENV_INCLUDE_BME280`); bij opt-out is de standaardtoestand *alles* en haalt een macro iets weg (`RADIOLIB_EXCLUDE_MORSE`) |
 | OTA | Over-The-Air — draadloze firmware update |
 | out_path | Het geleerde pad naar een contact, bewaard in de contactenlijst. `0xFF` (`OUT_PATH_UNKNOWN`) betekent: nog geen pad bekend |
 | Path | Rij node-hashes in een pakket: bij flood het afgelegde pad, bij direct de te volgen route |
@@ -154,8 +155,10 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | transitieve afhankelijkheid | Library die niet zelf gedeclareerd is maar meekomt omdat een andere library hem nodig heeft |
 | Transport code | De 16 bits in `transport_codes[0]`. **Geen identificatie van een regio** maar een HMAC over payload type en payload, gezet met de regiosleutel. Verandert bij elk bericht; een repeater herkent hem door hem zelf te herberekenen, niet door hem op te zoeken |
 | TwoWire | Arduino-klasse voor één I²C-bus. `Wire` is de eerste bus, `Wire1` de optionele tweede voor telemetriesensoren |
+| typeinjectie | Buildvlag die geen aan/uit-waarde draagt maar de naam van een klasse, zodat aanwezigheid en keuze in één macro zitten: `RADIO_CLASS=CustomSX1262`, `DISPLAY_CLASS`, `EINK_DISPLAY_MODEL` |
 | UART | Universal Asynchronous Receiver-Transmitter — seriële communicatie interface |
 | UF2 | USB Flashing Format — firmwarebestand dat je naar een USB-schijf sleept; gebruikt door nRF52 en RP2040 |
+| uitsluitmacro | Macro die code uit de build haalt die zonder die macro meegecompileerd zou worden. RadioLib heeft er vijfentwintig (`RADIOLIB_EXCLUDE_*`), littlefs één (`LFS_NO_ASSERT`), Adafruit SSD1306 één (`SSD1306_NO_SPLASH`) |
 | USB CDC-ACM | Communications Device Class / Abstract Control Model — de USB-klasse waarmee een node zich bij het besturingssysteem als seriële poort aanmeldt |
 | UUID | Universally Unique Identifier — unieke identificatie voor BLE services |
 | Variant | Map onder `variants/` met de bord-specifieke configuratie: pinnen, radiotype, display en de bijbehorende build-targets |

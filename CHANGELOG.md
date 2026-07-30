@@ -5,6 +5,67 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
 
 ---
 
+## [2026-07-30] Add Library configuration
+
+### Added
+
+- `nl/libraries/library-configuration.md` and
+  `en/libraries/library-configuration.md`: new overview chapter in the
+  `libraries/` section, alongside `introduction.md` and `dependencies.md`. It
+  answers a question `core/radiolib.md` raised but did not settle: why a
+  library is configured by *excluding* things when you would expect to include
+  them. The answer is that there is no shared convention, so the chapter
+  documents four of them side by side — exclusion (default is everything),
+  inclusion (default is nothing), override (a value with a default behind
+  `#ifndef`) and type injection (a macro carrying a class name) — plus
+  `lib_deps` as exclusion at project level and forking as the last resort.
+  Verified against firmware v1.16.0, commit `03b6ef4`, 28 July 2026, and
+  against the library sources themselves: RadioLib 7.6.0, both littlefs copies
+  in the build tree, Adafruit SSD1306, Adafruit RTClib, `rweather/Crypto`,
+  ESPAsyncWebServer and CustomLFS 0.2.2.
+- `tools/config-flags.py`: reproducibility script behind the chapter's
+  inventory table. Reads the root `platformio.ini` plus every
+  `variants/*/platformio.ini`, splits the `-D` macros by owner (library,
+  framework, MeshCore) and tabulates the library-directed ones. Ownership does
+  not follow from the macro name, so it comes from a table in the script that
+  records, per namespace, which library source file consumes the macro. Writes
+  between `<!-- config-flags:start -->` and `<!-- config-flags:end -->`, so the
+  surrounding prose is untouched. Commented-out `-D` lines are reported
+  separately rather than counted, because they are part of no build.
+- `images/nl/library-configuration-1.svg` and
+  `images/en/library-configuration-1.svg`: the four mechanisms side by side,
+  each with its default state and what the macro changes.
+- Terminology: *opt-in / opt-out*, *uitsluitmacro* / *exclusion macro* and
+  *typeinjectie* / *type injection* in both language trees.
+
+### Changed
+
+- `nl/libraries/core/radiolib.md` and `en/libraries/core/radiolib.md`: added
+  the missing explanation before the block of fourteen `-D` flags —
+  `RadioLib.h` r.76-124 includes every module driver and every protocol
+  unconditionally and each class sits behind `#if !RADIOLIB_EXCLUDE_<name>`, so
+  exclusion is the only knob the library offers. Cross-reference to the new
+  chapter for the wider picture.
+- `nl/libraries/core/custom-lfs.md` and `en/libraries/core/custom-lfs.md`:
+  recorded that `LFS_NO_ASSERT` does not touch CustomLFS itself, which contains
+  no littlefs but wraps `Adafruit_LittleFS` (`CustomLFS.h` r.30). The build tree
+  holds two littlefs copies and the flag sits in `[nrf52_base]` only, so
+  nRF52 firmware compiles littlefs without asserts and STM32 firmware with them.
+- `nl/libraries/other/displays.md`, `en/libraries/other/displays.md`,
+  `nl/libraries/other/sensors.md` and `en/libraries/other/sensors.md`:
+  cross-references naming the mechanism each chapter is an example of — type
+  injection for `DISPLAY_CLASS`, opt-in for `ENV_INCLUDE_*`.
+- `nl/README.md` and `en/README.md`: menu entry for the new chapter.
+
+### Fixed
+
+- `nl/libraries/core/radiolib.md` and `en/libraries/core/radiolib.md`: the
+  fourteen `RADIOLIB_EXCLUDE_*` flags were described twice as fourteen
+  *protocols*. They are six module drivers and eight protocols, as the
+  paragraph below the code block already stated correctly.
+
+---
+
 ## [2026-07-29] New Hardware section / RoomServer
 
 ### Added

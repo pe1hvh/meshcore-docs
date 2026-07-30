@@ -45,6 +45,14 @@ Two build flags in the same section belong with it:
 out of LittleFS: an inconsistency in the file system then lets the node carry
 on rather than halting it.
 
+That second flag does not touch CustomLFS itself — it contains no littlefs but
+wraps `Adafruit_LittleFS` (`CustomLFS.h` r.30). It touches the littlefs copy
+inside the nRF52 framework. The second copy in the build tree,
+`arch/stm32/Adafruit_LittleFS_stm32/src/littlefs/`, keeps its asserts, because
+`[stm32_base]` does not set the flag. See
+[`../library-configuration.md`](../library-configuration.md) for that
+mechanism.
+
 ## How MeshCore uses it
 
 The choice between internal, extra and QSPI falls at compile time:

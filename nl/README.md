@@ -67,6 +67,7 @@ Off-grid mesh communicatie via LoRa radio.
 
 - [Libraries in MeshCore](libraries/introduction.md)
 - [Afhankelijkheden tussen libraries](libraries/dependencies.md)
+- [Library Configuratie](libraries/library-configuration.md)
 - **Kernlibraries** — `libraries/core/`
   - [RadioLib](libraries/core/radiolib.md)
   - [Crypto: rweather en ed25519](libraries/core/crypto.md)

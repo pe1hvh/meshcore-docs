@@ -5,8 +5,10 @@
 Zeventien sensorlibraries zitten in de firmware, en ze worden allemaal op
 dezelfde manier aangeroepen: een `init_`-functie, een `query_`-functie en een
 regel in één tabel. Wat er in een build zit, bepaalt een reeks
-`ENV_INCLUDE_*`-vlaggen. Eén sensordriver hoort er wel bij maar staat in geen
-enkele `lib_deps`-regel.
+`ENV_INCLUDE_*`-vlaggen: zonder vlag geen driver. Dat is precies het
+omgekeerde van hoe RadioLib zijn protocollen behandelt — zie
+[`../library-configuration.md`](../library-configuration.md). Eén sensordriver
+hoort er wel bij maar staat in geen enkele `lib_deps`-regel.
 
 > [!NOTE]
 > **Bron.** Deze pagina is geverifieerd tegen de firmware zelf:

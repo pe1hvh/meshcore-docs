@@ -4,8 +4,11 @@
 
 Seventeen sensor libraries sit in the firmware, and they are all called the
 same way: an `init_` function, a `query_` function and a row in one table.
-What ends up in a build is decided by a series of `ENV_INCLUDE_*` flags. One
-sensor driver belongs to the group but appears in no `lib_deps` line at all.
+What ends up in a build is decided by a series of `ENV_INCLUDE_*` flags: no
+flag, no driver. That is exactly the reverse of how RadioLib treats its
+protocols — see [`../library-configuration.md`](../library-configuration.md).
+One sensor driver belongs to the group but appears in no `lib_deps` line at
+all.
 
 > [!NOTE]
 > **Source.** This page was verified against the firmware itself:

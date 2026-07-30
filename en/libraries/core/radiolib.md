@@ -5,8 +5,8 @@
 RadioLib is the layer between MeshCore and the radio chip. Six different
 transceivers are driven through it, each with its own wrapper in
 `src/helpers/radiolib/`. MeshCore does not use the library as intended: with
-`RADIOLIB_GODMODE` the internal registers are opened up, and fourteen
-protocols are stripped out at compile time.
+`RADIOLIB_GODMODE` the internal registers are opened up, and fourteen items —
+six chip families and eight protocols — are stripped out at compile time.
 
 > [!NOTE]
 > **Source.** This page was verified against the firmware itself:
@@ -46,7 +46,16 @@ build_flags = -w -DNDEBUG -DRADIOLIB_STATIC_ONLY=1 -DRADIOLIB_GODMODE=1
 `RADIOLIB_GODMODE` makes all `private` and `protected` members public. That
 last one is not a debug option left behind: MeshCore needs it, as shown below.
 
-After that, fourteen protocols are switched off:
+RadioLib has no macro to switch a driver *on*. `RadioLib.h` r.76-124 includes
+every module driver and every protocol unconditionally, and each class sits
+behind a negative test in its own header — `Morse.h` r.1 opens with
+`#if !defined(_RADIOLIB_MORSE_H) && !RADIOLIB_EXCLUDE_MORSE`. An undefined
+macro is `0` in the preprocessor, so anyone who configures nothing compiles the
+complete library. Exclusion is the only knob the library offers. Why one
+library does it this way and another exactly the other way round is in
+[`../library-configuration.md`](../library-configuration.md).
+
+After that, fourteen items are excluded:
 
 `platformio.ini` r.34-47
 

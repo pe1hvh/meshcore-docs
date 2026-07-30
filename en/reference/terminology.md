@@ -47,6 +47,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | EIRP | Effective Isotropic Radiated Power — effective radiated power including antenna |
 | Encrypt-then-MAC | Encrypt first, then compute the MAC over the ciphertext |
 | e-paper | Display technology holding its image without power. Recognisable in MeshCore by `isEink()` and by a lower refresh rate |
+| exclusion macro | Macro that removes code from the build that would be compiled in without it. RadioLib has twenty-five (`RADIOLIB_EXCLUDE_*`), littlefs one (`LFS_NO_ASSERT`), Adafruit SSD1306 one (`SSD1306_NO_SPLASH`) |
 | ERP | Effective Radiated Power — effective radiated power including antenna gain |
 | ESP32 | Popular microcontroller from Espressif with WiFi and Bluetooth |
 | ESP-IDF | Espressif IoT Development Framework — Espressif's native SDK, on which the Arduino-ESP32 core is built |
@@ -97,6 +98,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | NSS | Chip select of the SPI bus: low while the SoC is addressing this one device. In MeshCore `P_LORA_NSS`; also called CS |
 | NUS | Nordic UART Service — BLE service that simulates a serial port |
 | OLED | Organic LED — the small self-illuminating screen on many nodes, usually an SSD1306 or SH1106 on the I²C bus |
+| opt-in / opt-out | Two opposite conventions for build flags. With opt-in the default state is *nothing* and a macro adds something (`ENV_INCLUDE_BME280`); with opt-out the default state is *everything* and a macro takes something away (`RADIOLIB_EXCLUDE_MORSE`) |
 | OTA | Over-The-Air — wireless firmware update |
 | out_path | The learned path to a contact, kept in the contact list. `0xFF` (`OUT_PATH_UNKNOWN`) means no path is known yet |
 | Path | Sequence of node hashes in a packet: the route travelled for flood, the route to follow for direct |
@@ -154,6 +156,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | transitive dependency | Library that is not declared itself but comes along because another library needs it |
 | Transport code | The 16 bits in `transport_codes[0]`. **Not an identifier of a region** but an HMAC over payload type and payload, keyed with the region key. It changes with every message; a repeater recognises it by recomputing it, not by looking it up |
 | TwoWire | Arduino class for one I²C bus. `Wire` is the first bus, `Wire1` the optional second one for telemetry sensors |
+| type injection | Build flag carrying not an on/off value but the name of a class, so that presence and choice sit in one macro: `RADIO_CLASS=CustomSX1262`, `DISPLAY_CLASS`, `EINK_DISPLAY_MODEL` |
 | UART | Universal Asynchronous Receiver-Transmitter — serial communication interface |
 | UF2 | USB Flashing Format — firmware file you drag onto a USB drive; used by nRF52 and RP2040 |
 | USB CDC-ACM | Communications Device Class / Abstract Control Model — the USB class a node uses to present itself to the operating system as a serial port |
