@@ -18,7 +18,7 @@ techniek erachter staat in de vier hoofdstukken die hierop volgen.
 > cijfers over build-targets komen uit
 > [`tools/room-server-overview.py`](https://github.com/pe1hvh/meshcore-docs/blob/main/tools/room-server-overview.py).
 
-## De vergelijking die klopt
+## De vergelijking
 
 De officiële FAQ zet het scherp neer: een kanaal lijkt op roepen, een room
 server op e-mail. Bij een kanaal ontvang je een bericht op het moment dat het
@@ -33,11 +33,6 @@ Dat verschil is de hele reden dat het ding bestaat. Voor een groep die niet
 tegelijk online is — een vereniging, een wijk, een groep wandelaars die
 verspreid onderweg is — is een kanaal onbruikbaar en een room server precies
 wat je zoekt.
-
-De naam *BBS* die je in de firmware tegenkomt (de standaardnaam van een
-onbeschreven room server is letterlijk `Test BBS`) verwijst naar de bulletin
-boards van voor het internet: een centrale plek waar je berichten achterlaat
-en berichten ophaalt, en waar niemand tegelijk aanwezig hoeft te zijn.
 
 ## Wat je als gebruiker doet
 
@@ -58,7 +53,7 @@ en berichten ophaalt, en waar niemand tegelijk aanwezig hoeft te zijn.
    zodra hij tijd heeft. Voor elke post wil hij een ontvangstbevestiging
    terug; blijft die uit, dan probeert hij het opnieuw.
 
-Bij stap 4 zit het grootste verschil met wat mensen verwachten. Er is geen
+Bij stap 4 zit het grootste verschil met wat men er van verwacht. Er is geen
 knop "haal mijn berichten op". De server werkt zijn deelnemers één voor één
 af, in een vaste ronde, en stuurt per beurt één post. Wie lang weg is
 geweest, krijgt zijn achterstand dus druppelsgewijs binnen en niet in één
@@ -96,7 +91,7 @@ De firmware zelf is klein: vijf bestanden, samen 1518 regels, waarvan
 `MyMesh.cpp` er 1030 voor zijn rekening neemt. Dat is te overzien, en het is
 de reden dat de volgende hoofdstukken tot op de byte kunnen gaan.
 
-## Waar dit verder gaat
+## Meer over de roomserver
 
 - [Inloggen en de ACL](login-and-acl.md) — de drie wachtwoordpaden, wat je
   met welk wachtwoord mag, en wat er van je lidmaatschap een herstart
