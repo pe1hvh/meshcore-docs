@@ -35,8 +35,9 @@ vier families vallen daarbij in twee kampen.
 
 ESP32 en RP2040 krijgen `fs::FS`, de Arduino-abstractie boven een
 bestandssysteem. nRF52 en STM32 krijgen `Adafruit_LittleFS`, een aparte
-implementatie met een eigen namespace. Vanaf `IdentityStore` naar boven merkt
-niets van dat verschil: alles werkt met `FILESYSTEM`.
+implementatie met een eigen namespace. Geen enkele component vanaf
+`IdentityStore` naar boven merkt nog verschil tussen beide bestandssystemen:
+alles werkt met `FILESYSTEM`.
 
 ## De asymmetrie in de test zelf
 
@@ -51,10 +52,10 @@ eigen `*_PLATFORM`-macro, één niet:
 | STM32 | `STM32_PLATFORM` | MeshCore |
 
 MeshCore definieert wél een `ESP32_PLATFORM`, maar die wordt in de hele
-bronboom nergens gelezen — niet in `src/`, niet in `examples/`, niet in
-`variants/`. Hij bestaat en doet niets, omdat ESP32-code de core-macro `ESP32`
-gebruikt die er toch al is. Zie
-[Compile-time configuratie](configuration.md).
+broncodestructuur nergens gelezen — niet in `src/`, niet in `examples/`, niet
+in `variants/`. Hij bestaat en doet niets, omdat ESP32-code de core-macro
+`ESP32` gebruikt die er toch al is. Zie [Compile-time
+configuratie](configuration.md).
 
 Dat is geen fout: het werkt. Maar het betekent wel dat wie een vijfde familie
 zou toevoegen, niet één patroon aantreft om na te volgen maar twee.
@@ -63,7 +64,7 @@ zou toevoegen, niet één patroon aantreft om na te volgen maar twee.
 
 Het bordcontract `mesh::MainBoard` (`src/MeshCore.h` r.45) legt vast wat elk
 bord moet kunnen: batterijspanning geven, herstarten, slapen, de opstartreden
-melden. Drie families vullen dat in met een gedeelde klasse waar de
+melden. Drie families implementeren dat met een gedeelde klasse waar de
 variantklassen van erven. De vierde niet.
 
 | Familie | Gedeelde bordklasse | Afgeleiden in `src/` | Targets |
@@ -123,10 +124,10 @@ telefoon-app, niet over BLE of WiFi.
 ## De klok als tegenvoorbeeld
 
 Niet elke abstractie splitst per familie. Het klokcontract `mesh::RTCClock`
-(`src/MeshCore.h` r.80) wordt op drie manieren ingevuld, en die drie snijden
-dwars door de families heen:
+(`src/MeshCore.h` r.80) wordt op drie manieren geïmplementeerd, en die drie
+snijden dwars door de families heen:
 
-| Invulling | Plek | Wanneer |
+| Implementatie | Plek | Wanneer |
 |---|---|---|
 | `ESP32RTCClock` | `src/helpers/ESP32Board.h` r.160 | ESP32 met interne RTC |
 | `AutoDiscoverRTCClock` | `src/helpers/AutoDiscoverRTCClock.h` r.7 | Bord met een RTC-chip op I²C |

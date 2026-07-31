@@ -15,12 +15,12 @@ je accenten op een OLED als blokjes ziet.
 > `src/helpers/ui/SSD1306Display.cpp`, `src/helpers/RefCountedDigitalPin.h`
 > en de `DISPLAY_CLASS`-vlaggen in `variants/`.
 
-## Eén klasse, elf invullingen
+## Eén klasse, elf implementaties
 
-De firmware kent het begrip *scherm* alleen als `DisplayDriver`: een
-abstracte klasse met veertien methodes die elke driver moet invullen, plus
-een handvol hulpmethodes die op die veertien teruggrijpen. Welke driver
-wordt meegecompileerd staat in één buildvlag per bord, `DISPLAY_CLASS`.
+De firmware kent het begrip *scherm* alleen als `DisplayDriver`: een abstracte
+klasse met veertien methodes die elke driver moet implementeren, plus een
+handvol hulpmethodes die op die veertien teruggrijpen. Welke driver wordt
+meegecompileerd staat in één buildvlag per bord, `DISPLAY_CLASS`.
 
 ![De schermabstractie: DisplayDriver met elf implementaties eronder,
 verdeeld over OLED op de I²C-bus, TFT en e-paper op SPI, en een lege

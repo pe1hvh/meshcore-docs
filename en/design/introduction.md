@@ -21,10 +21,11 @@ data travels between them. It does so without pointing at the implementation.
 You can read it without knowing C++ and without knowing that a `Dispatcher.cpp`
 exists.
 
-A technical design describes *how* that is realised. Which class fills which
-role, which files belong together, how the four platform families fill the
-same abstraction in four ways, and how the build system assembles the right
-combination. That is where file names and line numbers live.
+A technical design describes *how* that is realised. Which class implements
+which role, which files belong together, how the four platform families
+implement the same abstraction in four ways, and how the build system
+assembles the right combination. That is where file names and line numbers
+live.
 
 The split is not cosmetic. MeshCore's logical design is remarkably stable: the
 roles, the layers and the contracts between those layers have been settled for
@@ -67,12 +68,17 @@ code.
 
 **Technical design**
 
-- [The source tree](technical/source-layout.md) — what sits where, and the skew
-- [The class model](technical/class-model.md) — contract, filler, standalone
-- [Platform realisation](technical/platform-realisation.md) — four families, one abstraction
-- [Radio realisation](technical/radio-realisation.md) — where the radio choice falls
+- [The source tree](technical/source-layout.md) — what sits where, and the
+  asymmetry
+- [The class model](technical/class-model.md) — contract, implementation,
+  standalone
+- [Platform realisation](technical/platform-realisation.md) — four families,
+  one abstraction
+- [Radio realisation](technical/radio-realisation.md) — where the radio choice
+  falls
 - [The build system](technical/build-system.md) — how 508 targets come about
-- [Compile-time configuration](technical/configuration.md) — 277 macros and their owner
+- [Compile-time configuration](technical/configuration.md) — 277 macros and
+  their owner
 - [Traceability](technical/traceability.md) — logical part to file and line
 
 ## Recomputing

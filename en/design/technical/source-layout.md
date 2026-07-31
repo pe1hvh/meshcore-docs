@@ -1,12 +1,12 @@
 # The source tree
 
-*SRC · HELPERS · EXAMPLES · VARIANTS · SKEW*
+*SRC · HELPERS · EXAMPLES · VARIANTS · ASYMMETRY*
 
 The MeshCore source tree falls into four parts: a core of eleven files, a
 collection of helper classes, six applications and seventy-nine variant
 directories. This chapter describes what sits where and how much of it there
 is. The most interesting finding is not in the numbers themselves but in
-their skew: one platform family has eight shared files, another has none.
+their asymmetry: one platform family has eight shared files, another has none.
 
 > [!NOTE]
 > **Source.** This page was verified against the firmware itself: `MeshCore`
@@ -75,7 +75,7 @@ belong to one subject:
 | `nrf52/` | Platform: the same for nRF52 |
 | `stm32/` | Platform: the same for STM32 |
 
-## The skew between the platform directories
+## The asymmetry between the platform directories
 
 This is the point of this chapter. The three platform directories are filled
 extremely unevenly, and there is a fourth family with none at all.
@@ -128,7 +128,7 @@ demonstrations alongside the product; they *are* the product.
 
 Twenty-five classes, of which a large share are display tasks (`UITask`
 appears six times, in six applications) and five are literally called
-`MyMesh`. Which role each application fills is described in
+`MyMesh`. Which role each application implements is described in
 [Roles](../logical/roles.md).
 
 ## `variants/`: 79 directories, 77 classes
@@ -138,10 +138,10 @@ which radio chip is on it, which display hangs off it. Two directories hold no
 class — those supply only a `platformio.ini` and a `target.h`.
 
 The 77 classes in them are strikingly uniform: 65 board classes, 7 sensor
-managers, 3 displays and 2 entropy sources. They all fill a contract laid down
-in the shared tree. That makes them together good for 39 % of all classes in
-the firmware, while there is hardly any design in them — it is nearly all pin
-assignment.
+managers, 3 displays and 2 entropy sources. They all implement a contract laid
+down in the shared tree. That makes them together good for 39 % of all classes
+in the firmware, while there is hardly any design in them — it is nearly all
+pin assignment.
 
 ## Sources
 

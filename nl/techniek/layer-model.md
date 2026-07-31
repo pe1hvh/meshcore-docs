@@ -20,7 +20,7 @@ De modemlaag vertaalt bits naar radiosignalen via Chirp Spread Spectrum. Bandbre
 
 ## Laag 3: Firmware en Netwerkstack
 
-MeshCore firmware verzorgt routing, berichtafhandeling en netwerkbeheer. Elke node heeft een eigen identiteit in de vorm van een Ed25519-keypair; in pakketten en paden wordt die node aangeduid met de **eerste byte van zijn public key** (zie [MeshCore Packet Structuur](packet-structure.md)). Nodes kunnen routes leren naar andere nodes: **intelligente routing** in plaats van flooding zorgt voor efficiënt netwerkverkeer.
+MeshCore firmware verzorgt routing, berichtafhandeling en netwerkbeheer. Elke node heeft een eigen identiteit in de vorm van een Ed25519-keypair; in pakketten en paden wordt die node aangeduid met de **eerste byte van zijn public key** (zie [MeshCore Pakketstructuur](packet-structure.md)). Nodes kunnen routes leren naar andere nodes: **intelligente routing** in plaats van flooding zorgt voor efficiënt netwerkverkeer.
 
 ## Laag 4: Juridische modus
 

@@ -31,6 +31,6 @@
 <text x="40" y="202" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="start">Shared tree: 119 classes</text>
 <text x="40" y="218" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="start">src/ and examples/ — code that can take part in any build</text>
 <rect x="20" y="240" width="660" height="40" rx="6" fill="var(--code-bg)" stroke="var(--code-border)" stroke-width="1.5"/>
-<text x="40" y="257" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="start">Skew between the platform directories</text>
+<text x="40" y="257" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="start">Asymmetry between the platform directories</text>
 <text x="40" y="273" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="start">esp32/ 4 classes · nrf52/ 1 · stm32/ 1 · RP2040 no platform directory</text>
 </svg>

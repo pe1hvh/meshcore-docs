@@ -84,7 +84,7 @@ inventaris van tweeënvijftig libraries.
 | [adafruit/Adafruit_nRF52_Arduino](https://github.com/adafruit/Adafruit_nRF52_Arduino) | GitHub | Herkomst van de LittleFS-port in `arch/stm32/` |
 | [stm32duino/Arduino_Core_STM32](https://github.com/stm32duino/Arduino_Core_STM32) | GitHub | Frameworkpakket met de SubGhz-library voor de STM32WL |
 | [ESP32Async/ESPAsyncWebServer](https://github.com/ESP32Async/ESPAsyncWebServer) | GitHub | Asynchrone HTTP-server voor de OTA-sessie op ESP32 |
-| [ayushsharma82/AsyncElegantOTA](https://github.com/ayushsharma82/AsyncElegantOTA) | GitHub | Uploadpagina voor OTA; gevendord in `arch/esp32/` |
+| [ayushsharma82/AsyncElegantOTA](https://github.com/ayushsharma82/AsyncElegantOTA) | GitHub | Uploadpagina voor OTA; meegeleverd in `arch/esp32/` |
 | [Arduino — Wire](https://docs.arduino.cc/language-reference/en/functions/communication/wire/) | Arduino | API-referentie van de I²C-frameworklibrary |
 | [Arduino — SPI](https://docs.arduino.cc/language-reference/en/functions/communication/SPI/) | Arduino | API-referentie van de SPI-frameworklibrary |
 

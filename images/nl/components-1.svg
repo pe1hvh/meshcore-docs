@@ -17,10 +17,10 @@
 <text x="38" y="216" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="400" fill="var(--text-secondary)" text-anchor="start">ontvangen, plannen, zenden, budget bewaken</text>
 <rect x="20" y="240" width="420" height="56" rx="6" fill="var(--code-bg)" stroke="var(--code-border)" stroke-width="1.5"/>
 <text x="38" y="264" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" fill="var(--text-primary)" text-anchor="start">Hardware-abstractie</text>
-<text x="38" y="282" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="400" fill="var(--text-secondary)" text-anchor="start">radio · bord · klok · toevalsbron</text>
+<text x="38" y="282" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="400" fill="var(--text-secondary)" text-anchor="start">radio · bord · klok · entropiebron</text>
 <rect x="460" y="42" width="220" height="254" rx="6" fill="var(--table-header)" stroke="var(--table-border)" stroke-width="1.5"/>
 <text x="476" y="64" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="700" fill="var(--link-color)" text-anchor="start" letter-spacing="1.5">ONDERSTEUNEND</text>
-<text x="476" y="86" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400" fill="var(--text-secondary)" text-anchor="start">• Pakketvoorraad</text>
+<text x="476" y="86" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400" fill="var(--text-secondary)" text-anchor="start">• Pakketpool</text>
 <text x="476" y="107" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400" fill="var(--text-secondary)" text-anchor="start">• Gezien-tabel</text>
 <text x="476" y="128" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400" fill="var(--text-secondary)" text-anchor="start">• Identiteit</text>
 <text x="476" y="149" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400" fill="var(--text-secondary)" text-anchor="start">• Rechtenlijst</text>

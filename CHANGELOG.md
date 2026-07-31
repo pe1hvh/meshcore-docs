@@ -5,6 +5,78 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
 
 ---
 
+## [2026-07-31] Result of first review session
+
+### Changed
+
+- **Terminology overhaul across both language trees**, following an external
+  readability review of `nl/ontwerp/`. The Dutch chapters had grown a set of
+  coined terms that readers had to learn before the technical content became
+  accessible. Each has been replaced by the common software term, and the
+  English tree follows so that the two stay in step. Earlier CHANGELOG entries
+  still use the old wording; the table below maps them.
+
+  | Dutch — was | Dutch — is | English — was | English — is |
+  |---|---|---|---|
+  | bronboom / gedeelde boom | broncodestructuur / gedeelde broncode | source tree | source tree (unchanged) |
+  | invulling | implementatie | filler | implementation |
+  | contractdefiniërend | interfaceklasse | contract-defining | interface class |
+  | contractvullend | implementatieklasse | contract-filling | implementation class |
+  | bijmenging | aanvullende buildoptie | mixin / admixture | optional build feature |
+  | productvlak | configuratiematrix | product space | configuration matrix |
+  | injectiepunt | koppelpunt | injection point | coupling point |
+  | dubbelpaar | chipdriver en MeshCore-wrapper | double pair | chip driver and MeshCore wrapper |
+  | pakketvoorraad | pakketpool | packet pool | packet pool (unchanged) |
+  | toevalsbron | entropiebron | entropy source | entropy source (unchanged) |
+  | draagvlak | netwerkinfrastructuur / transportmedium | carrier / fabric | network infrastructure / transport medium |
+  | scheefheid | asymmetrie | skew | asymmetry |
+  | gevendord | meegeleverd | vendored | vendored (unchanged) |
+
+- The verb followed the noun: *een contract invullen* is now *een contract
+  implementeren*, and *to fill a contract* is *to implement a contract*.
+- `nl/techniek/packet-structure.md` is titled **MeshCore Pakketstructuur**
+  instead of *MeshCore Packet Structuur*; the ten link texts that name the
+  chapter were updated with it. The file name is unchanged, so no link breaks.
+- Four sentences reworded on the review's style points: the memory
+  fragmentation metaphor, the impersonal `IdentityStore` sentence, the
+  unresolved references in the battery-voltage paragraph, and the judgemental
+  opening of the traceability matrix. Both languages.
+- `tools/config-flags.py` emits *broncodestructuur* rather than *bronboom* in
+  its Dutch output, so the reproduced text matches the chapter again.
+- Eight Dutch and five English SVG diagrams carry the new labels:
+  `class-model-1`, `components-1`, `interfaces-1`, `variability-1`,
+  `source-layout-1`, `configuration-1`, `design-layers-1` and
+  `radio-realisation-2`.
+
+### Added
+
+- **Reading guide in `README.md`**, both languages: a table stating per section
+  what background a reader needs, from *no programming knowledge required* for
+  the usage chapters to *C++ classes, inheritance and PlatformIO build
+  configurations* for the technical design. The review asked for this per
+  chapter; it lands in the README instead, so the reader can pick a starting
+  point before opening anything.
+- Thirteen glossary entries in `nl/naslag/terminology.md` and
+  `en/reference/terminology.md`, inserted alphabetically: application,
+  bridge, component, entropy source, hardware variant, implementation, macro,
+  packet pool, scheduler, seen table, source tree, vendored code and wrapper.
+  Both files now hold 195 terms.
+- First-mention explanations in `nl/ontwerp/logisch/components.md` for the
+  seen table, the packet pool and the entropy source, so the short term can be
+  used from then on.
+
+### Note
+
+- The review proposed reading *gevendord* as *outdated or leftover code*. That
+  reading is wrong: vendoring means a dependency is kept as a copy in the
+  repository instead of being fetched by the package manager, and says nothing
+  about age or use. The vendored Ed25519 in `lib/ed25519` is the actively used
+  implementation for key generation and key exchange. The Dutch coinage was
+  dropped, but in favour of *meegeleverd* rather than the proposed wording, and
+  the `vendoring` glossary entry now names both.
+- The review's request for a glossary was already met by
+  `naslag/terminology.md`; it was extended rather than duplicated.
+
 ## [2026-07-30] Add Design section — technical design
 
 ### Added

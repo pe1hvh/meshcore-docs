@@ -21,7 +21,7 @@ Off-grid mesh communicatie via LoRa radio.
 - [Van Tekst naar Chirp](techniek/text-to-chirp.md)
 - [Chirp en DeChirp vereenvoudigd voorgesteld](techniek/dechirp.md)
 - [LoRa Modulatie](techniek/lora-modulation.md)
-- [MeshCore Packet Structuur](techniek/packet-structure.md)
+- [MeshCore Pakketstructuur](techniek/packet-structure.md)
 - [Regio's en Scopes](techniek/regions-and-scopes.md)
 - [Regio's: bedoeling en praktijk](techniek/regions-in-practice.md)
 - [Direct Messages](techniek/direct-messages.md)
@@ -50,7 +50,7 @@ Off-grid mesh communicatie via LoRa radio.
   - [Variabiliteit](ontwerp/logisch/variability.md)
   - [Ontwerpbeslissingen](ontwerp/logisch/decisions.md)
 - **Technisch ontwerp** — `ontwerp/technisch/`
-  - [De bronboom](ontwerp/technisch/source-layout.md)
+  - [De broncodestructuur](ontwerp/technisch/source-layout.md)
   - [Het klassenmodel](ontwerp/technisch/class-model.md)
   - [Platformrealisatie](ontwerp/technisch/platform-realisation.md)
   - [Radiorealisatie](ontwerp/technisch/radio-realisation.md)

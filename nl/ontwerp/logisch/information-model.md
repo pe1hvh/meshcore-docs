@@ -68,7 +68,7 @@ kiezen.
 
 Een pakket draagt zijn eigen route mee. Er is geen tabel waarin een node
 opzoekt hoe hij ergens komt; het pad zit in het pakket of wordt gaandeweg
-opgebouwd. Zie [Packet Structuur](../../techniek/packet-structure.md) voor de
+opgebouwd. Zie [Pakketstructuur](../../techniek/packet-structure.md) voor de
 byte-indeling en [Route traceren](../../techniek/route-tracing.md) voor het
 gedrag.
 

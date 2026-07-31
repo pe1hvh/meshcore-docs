@@ -95,7 +95,7 @@ verhogen.
 Niet alle externe code loopt via `lib_deps`. PlatformIO compileert alles in
 de map `lib/` automatisch mee. MeshCore gebruikt dat voor twee dingen:
 
-- `lib/ed25519` — een C-implementatie van Ed25519, gevendord in de repo.
+- `lib/ed25519` — een C-implementatie van Ed25519, meegeleverd in de repo.
   Zie [`core/crypto.md`](core/crypto.md), waar hij naast de
   Ed25519 van `rweather/Crypto` staat.
 - `lib/nrf52` — headers en de SoftDevice-API `s140_nrf52_7.3.0_API` voor

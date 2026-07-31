@@ -107,7 +107,8 @@ needed to run it.
 
 A working network needs at least two roles. Companion radios talk to each
 other, but without repeaters they get no further than each other's direct
-range. Repeaters among themselves form the fabric; room servers hang off it as
+range. Repeaters among themselves form the network infrastructure over which
+other nodes relay their messages; room servers hang off it as
 a service.
 
 | Combination | Sensible |

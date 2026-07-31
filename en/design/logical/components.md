@@ -42,8 +42,8 @@ delay. This is also where the decision lives to drop a packet because it came
 past before.
 
 What this layer does not know: how the radio works, and what the application
-will do with a message. It offers the application a set of hooks and fills in
-nothing itself.
+will do with a message. It offers the application a set of hooks and
+implements nothing itself.
 
 ### Application
 

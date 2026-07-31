@@ -20,7 +20,7 @@
 <text x="376" y="84" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400" fill="var(--text-secondary)" text-anchor="start">• Source layout — where things live</text>
 <text x="376" y="106" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400" fill="var(--text-secondary)" text-anchor="start">• Class model — the concrete inheritance</text>
 <text x="376" y="128" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400" fill="var(--text-secondary)" text-anchor="start">• Platform realisation — 4 families, 1 abstraction</text>
-<text x="376" y="150" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400" fill="var(--text-secondary)" text-anchor="start">• Radio realisation — injecting the radio class</text>
+<text x="376" y="150" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400" fill="var(--text-secondary)" text-anchor="start">• Radio realisation — choosing the radio class</text>
 <text x="376" y="172" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400" fill="var(--text-secondary)" text-anchor="start">• Build system — the inheritance chain</text>
 <text x="376" y="194" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400" fill="var(--text-secondary)" text-anchor="start">• Configuration — the macros</text>
 <text x="376" y="216" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400" fill="var(--text-secondary)" text-anchor="start">• Traceability — logical to file</text>

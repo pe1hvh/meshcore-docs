@@ -19,8 +19,8 @@ MeshCore varies along three independent axes. A build target is a point in that
 space: one role, one platform family, one board.
 
 ![Three axes in a block diagram: role, platform family and board. Beside it a
-separate column with the mixins that can be on or off independently of the
-axes: radio, display, bridge, sensors and logging.](../../../images/en/variability-1.svg)
+separate column with the optional build features that can be on or off
+independently of the axes: radio, display, bridge, sensors and logging.](../../../images/en/variability-1.svg)
 
 | Axis | Values | Fixed by |
 |---|---|---|
@@ -28,9 +28,9 @@ axes: radio, display, bridge, sensors and logging.](../../../images/en/variabili
 | Platform family | 4 | Which platform macro is defined |
 | Board | 79 variants | Which variant file defines the target |
 
-Alongside those are mixins that stand apart from the axes: which radio chip,
-which display type, whether there is a bridge, whether there are sensors, and
-whether logging is on.
+Alongside those are optional build features that stand apart from the axes:
+which radio chip, which display type, whether there is a bridge, whether there
+are sensors, and whether logging is on.
 
 ## The figures
 
@@ -75,17 +75,18 @@ Three cells are zero. There is no room server and no terminal chat on STM32,
 and no sensor on RP2040. That is not a technical impossibility but a choice:
 nobody has needed that combination.
 
-## The product space is not full
+## Not every combination is supported
 
 Six roles on seventy-nine boards would give 474 combinations. There are 507.
-That is not a contradiction but the result of the mixins: the same role on the
-same board exists several times, in variants with and without a bridge, with
-different displays or with a different transport.
+That is not a contradiction but the result of the optional build features: the
+same role on the same board exists several times, in variants with and without
+a bridge, with different displays or with a different transport.
 
-At the same time the space is not full. Far from every board carries all six
-roles. The companion radio exists on 76 of the 79 boards, the sensor on 16.
+At the same time the configuration matrix is not fully populated. Far from
+every board carries all six roles. The companion radio exists on 76 of the 79
+boards, the sensor on 16.
 
-| Mixin | Targets |
+| Optional build feature | Targets |
 |---|---|
 | GPS enabled | 323 |
 | Display present | 309 |
@@ -94,12 +95,12 @@ roles. The companion radio exists on 76 of the 79 boards, the sensor on 16.
 | Debug output on | 36 |
 | Packet logging on | 10 |
 
-## Class injection
+## Selecting classes at compile time
 
-The mixins work through one mechanism: the build system passes a class name
-along as a macro, and the code uses that name as if it had always been there.
-That is how a variant file chooses which radio and which display end up in the
-binary, without the application knowing about it.
+The optional build features work through one mechanism: the build system
+passes a class name along as a macro, and the code uses that name as if it had
+always been there. That is how a variant file chooses which radio and which
+display end up in the binary, without the application knowing about it.
 
 | Macro | Distinct values | Targets that set it |
 |---|---|---|
@@ -121,7 +122,7 @@ This is the most important warning in this chapter, and the reason a script
 comes with it.
 
 The name of an `[env:...]` section is free text. It says nothing about what is
-compiled. Three ways in which the name lies:
+compiled. Three ways in which the name misleads:
 
 **The name does not mention the role.** `Generic_ESPNOW_room_svr` compiles the
 room server, but searching for `_room_server` will not find it. There are also

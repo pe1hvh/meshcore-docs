@@ -29,7 +29,7 @@ Elke MeshCore-node is tegelijkertijd:
 > service layer met aanroepen als `gpio.toggle`, `uart.send` of `i2c.read`, en
 > geen COMMAND-pakkettype. Wat er wél is:
 >
-> - **CLI over de mesh** — een versleuteld tekstbericht met `txt_type` = CLI-commando (zie [MeshCore Packet Structuur](packet-structure.md)). Een ingelogde admin stuurt zo elk CLI-commando naar een node op afstand.
+> - **CLI over de mesh** — een versleuteld tekstbericht met `txt_type` = CLI-commando (zie [MeshCore Pakketstructuur](packet-structure.md)). Een ingelogde admin stuurt zo elk CLI-commando naar een node op afstand.
 > - **Requests** — `REQ` met sub-typen voor status, telemetrie, burentabel en toegangslijst.
 > - **Sensoren** — `sensor get` / `sensor set`, en telemetrie in Cayenne LPP, mits sensorondersteuning meegecompileerd is.
 > - **Eigen uitbreidingen** — `PAYLOAD_TYPE_RAW_CUSTOM` (`0x0F`) laat vrije bytes met eigen encryptie toe, en de firmware is zo gebouwd dat je er eigen afhandeling in kunt bouwen.

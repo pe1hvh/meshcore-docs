@@ -5,7 +5,7 @@
 </style>
 <rect x="0" y="0" width="700" height="250" fill="var(--bg)"/>
 <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--line)"/></marker></defs>
-<text x="350" y="26" fill="var(--heading-color)" font-family="'JetBrains Mono',monospace" font-size="13" font-weight="700" text-anchor="middle" letter-spacing="1">THE INJECTION POINT SITS IN THE VARIANT</text>
+<text x="350" y="26" fill="var(--heading-color)" font-family="'JetBrains Mono',monospace" font-size="13" font-weight="700" text-anchor="middle" letter-spacing="1">THE COUPLING POINT SITS IN THE VARIANT</text>
 <rect x="15" y="60" width="145" height="90" rx="6" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="1.5"/>
 <text x="87" y="84" fill="var(--link-color)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="700" text-anchor="middle">variants/*/platformio.ini</text>
 <text x="87" y="108" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">-D RADIO_CLASS=…</text>

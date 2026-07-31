@@ -106,7 +106,7 @@ and one directory comes entirely from the two inheritance mechanisms above.
 Together 507, plus `[env:native]` without an application. What each role does
 is in [Roles](../logical/roles.md).
 
-## Admixture
+## Optional build features
 
 On top of the combination of board and role come the separate switches. They
 are on or off independently of one another, and explain why there are more

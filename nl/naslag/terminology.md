@@ -9,19 +9,22 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | 18650 | Cilindrische lithium-ioncel van 18 bij 65 mm; op nodes als losse cel in een houder of vast ingebouwd |
 | 70 cm-band | Amateur radioband 430–440 MHz, licentie vereist |
 | 868 MHz | ISM-band frequentie voor Europa |
+| Aanvullende buildopties | Eigenschap die los van de drie variatie-assen aan of uit kan: radioklasse, schermklasse, brug, sensoren, logging. Verklaart waarom er 507 buildtargets met een rol zijn en niet 474 |
 | ACK | Acknowledgement — bevestiging dat een bericht is ontvangen |
 | ACL | Access Control List — de tabel met bekende clients van een repeater, sensor of room server, met per client zijn publieke sleutel en rechten. Ruimte voor 20 (`MAX_CLIENTS`) |
 | Advert/Beacon | Periodiek signaal voor aanwezigheidsmelding en public key uitwisseling |
 | AES | Advanced Encryption Standard — versleutelingsalgoritme (128/256-bit) |
+| Applicatie | Een van de zes programma's in `examples/` die samen met de gedeelde broncode tot één firmwarebestand worden gecompileerd. De applicatie bepaalt welke rol een node vervult |
 | Arduino-core | Implementatie van de Arduino-API voor één chipfamilie. MeshCore gebruikt er vier: Arduino-ESP32, Adafruit nRF52, arduino-pico en STM32duino |
 | ATT | Attribute Protocol — onderliggend protocol van GATT in BLE |
 | Basissectie | Sectie in `platformio.ini` zonder `env:`-voorvoegsel. Wordt niet zelf gebouwd maar dient als ouder voor buildtargets die er via `extends` van erven. MeshCore `03b6ef4` heeft er 108 |
 | BBS | Bulletin Board System — centrale plek waar deelnemers berichten achterlaten en ophalen zonder tegelijk aanwezig te zijn. Het model waar de Room Server op teruggaat; de standaardnaam van een onbeschreven room server is `Test BBS` |
-| Bijmenging | Eigenschap die los van de drie variatie-assen aan of uit kan: radioklasse, schermklasse, brug, sensoren, logging. Verklaart waarom er 507 buildtargets met een rol zijn en niet 474 |
 | BLE | Bluetooth Low Energy — energiezuinige verbinding tussen node en smartphone |
 | bootloader | Klein programma dat als eerste start en de eigenlijke firmware laadt of vervangt; bepaalt hoe je een node kunt flashen |
-| Bordklasse | Klasse die het bordcontract `mesh::MainBoard` invult voor één bord of één familie. MeshCore telt er 71: zes in `src/helpers/` en 65 in `variants/` |
+| Bordklasse | Klasse die het bordcontract `mesh::MainBoard` implementeert voor één bord of één familie. MeshCore telt er 71: zes in `src/helpers/` en 65 in `variants/` |
+| Broncodestructuur | De indeling van de MeshCore-broncode (Engels: *source tree*): elf kernbestanden in `src/`, een verzameling hulpklassen, zes applicaties in `examples/` en negenenzeventig variantmappen in `variants/` |
 | Bronfilter | De optie `build_src_filter` in `platformio.ini`, die bepaalt welke bronbestanden in een buildtarget terechtkomen. In MeshCore bepaalt hij welke van de zes applicaties wordt gecompileerd — de naam van het target zegt daar niets over |
+| Brug | Contract voor een tweede transportweg naast LoRa, waarlangs pakketten een node in en uit kunnen. MeshCore kent er twee implementaties: ESP-NOW en RS232 |
 | build flag | Compileeroptie in `platformio.ini` (`-D NAAM=waarde`) die bepaalt welke code wordt meegecompileerd |
 | build target | Eén `[env:…]`-sectie in `platformio.ini`: de combinatie van bord, rol en instellingen die tot één firmwarebestand leidt. MeshCore telt er 507, plus `[env:native]` voor de tests |
 | BUSY | Signaallijn van een SX126x-radio naar de SoC: actief zolang de chip een opdracht verwerkt. In MeshCore de buildvlag `P_LORA_BUSY` |
@@ -31,9 +34,8 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | Channel | Gedeelde cryptografische sleutel (PSK) voor groepscommunicatie |
 | Chirp | Frequentiesweep van laag naar hoog (up-chirp) of hoog naar laag (down-chirp) |
 | Companion App | Smartphone applicatie om de MeshCore node te bedienen |
-| Contract | Abstracte afspraak tussen twee componenten, in C++ vastgelegd als klasse met virtuele methoden. Wie eraan voldoet kan elke andere invulling vervangen. MeshCore kent er acht: radio, bord, klok, toevalsbron, gezien-tabel, pakketvoorraad, scherm en brug |
-| Contractdefiniërend | Klasse die uitsluitend vastlegt wat een invulling moet kunnen, zonder werkende code. Groep 1 van het klassenmodel; 14 in de gedeelde boom |
-| Contractvullend | Klasse die een contractdefiniërende klasse invult en daardoor door elke andere invulling vervangbaar is. Groep 2 van het klassenmodel; 50 in de gedeelde boom |
+| Component | Afgebakend onderdeel van het logisch ontwerp met een eigen verantwoordelijkheid, zoals radio, bord, klok of pakketafhandeling. Een component is geen bestand en geen klasse, maar een plaats in het ontwerp |
+| Contract | Abstracte afspraak tussen twee componenten, in C++ vastgelegd als klasse met virtuele methoden. Wie eraan voldoet kan elke andere implementatie vervangen. MeshCore kent er acht: radio, bord, klok, entropiebron, gezien-tabel, pakketpool, scherm en brug |
 | Cortex-M0+/M4/M4F | ARM-processorkernen. M0+ is de eenvoudigste, M4 heeft signaalverwerkingsinstructies, M4F daarbovenop een floating-point-eenheid |
 | CP437 | De tekenset van de originele IBM-pc. MeshCore gebruikt er één teken uit, het volle blok `0xDB`, als vervanging voor elk niet-ASCII-teken op het scherm |
 | CR | Coding Rate — foutcorrectieniveau (4/5 tot 4/8), meer = betrouwbaarder |
@@ -54,6 +56,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | e-ink | Elektronisch papier; houdt het beeld vast zonder stroom en is bij daglicht goed leesbaar, maar ververst traag |
 | EIRP | Effective Isotropic Radiated Power — effectief uitgestraald vermogen incl. antenne |
 | Encrypt-then-MAC | Eerst versleutelen, daarna de MAC over de cijfertekst berekenen |
+| Entropiebron | De generator voor willekeurige getallen van een node. MeshCore kent twee implementaties: de ruis van de radio-ontvanger (`RadioNoiseListener`) en de standaardgenerator (`StdRNG`) |
 | e-paper | Schermtechniek die zijn beeld vasthoudt zonder stroom. In MeshCore herkenbaar aan `isEink()` en aan een lagere verversfrequentie |
 | ERP | Effective Radiated Power — effectief uitgestraald vermogen inclusief antenne-winst |
 | ESP32 | Populaire microcontroller van Espressif met WiFi en Bluetooth |
@@ -68,21 +71,26 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | frameworklibrary | Library die meekomt met het frameworkpakket van een platform en dus geen auteursprefix en geen versienummer heeft: `SPI`, `Wire` en `SubGhz` |
 | FSPL | Free Space Path Loss — vrijeruimteverlies, het verlies over de afstand zonder obstakels. `20·log10(km) + 20·log10(MHz) + 32,44` |
 | GATT | Generic Attribute Profile — structuur voor BLE data-uitwisseling |
-| Gedeelde boom | `src/` en `examples/` samen: de code die in elke build kan meedoen, tegenover `variants/` dat aan één bord vastzit. 119 van de 196 klassen |
+| Gedeelde broncode | `src/` en `examples/` samen: de code die in elke build kan meedoen, tegenover `variants/` dat aan één bord vastzit. 119 van de 196 klassen |
+| Gezien-tabel | Lijst waarmee een node controleert of een pakket al eerder is ontvangen — technisch een duplicatendetectietabel. Zonder deze tabel zou een pakket in een netwerk met meerdere repeaters blijven rondgaan |
 | GNSS | Global Navigation Satellite System — verzamelnaam voor GPS, Galileo, GLONASS en BeiDou samen |
 | GODMODE | Bouwvlag `RADIOLIB_GODMODE=1` die alle `private`- en `protected`-leden van RadioLib publiek maakt; MeshCore gebruikt dat om rechtstreeks bij de modulelaag te kunnen |
 | GPIO | General Purpose Input/Output — aansluitpinnen voor externe apparaten |
 | GPS/GNSS | Global Navigation Satellite System — satellietnavigatie voor locatiebepaling |
 | HAL | Hardware Abstraction Layer — laag die chipspecifieke registers verbergt achter een uniforme API |
 | HAM | Amateur radio modus — licentie vereist, geen encryptie toegestaan |
+| Hardwarevariant | Eén map onder `variants/` met de pinbezetting en instellingen van één bord. MeshCore telt er negenenzeventig |
 | Hop | Eén sprong tussen twee nodes in het mesh-netwerk |
 | I²C | Inter-Integrated Circuit — bus voor aansluiten van sensoren en displays |
-| Injectiepunt | De plek waar een concrete klasse aan een contract wordt gekoppeld. Bij de radio ligt dat niet in de kern maar in `variants/*/target.h`, via `WRAPPER_CLASS` |
+| Implementatie | Werkende uitwerking van een contract: de klasse die daadwerkelijk doet wat het contract belooft, en die door elke andere implementatie van hetzelfde contract vervangbaar is |
+| Implementatieklasse | Klasse die een interfaceklasse implementeert en daardoor door elke andere implementatie vervangbaar is. Groep 2 van het klassenmodel; 50 in de gedeelde broncode |
+| Interfaceklasse | Klasse die uitsluitend vastlegt wat een implementatie moet kunnen, zonder werkende code. Groep 1 van het klassenmodel; 14 in de gedeelde broncode |
 | IPEX/U.FL | Kleine click-on antenneconnector voor interne antennes |
 | ISM-band | Industrial, Scientific, Medical — vrije frequentieband, 868 MHz in Europa |
 | Keep-alive | Periodiek verzoek (`0x02`) van een client aan een server om de verbinding levend te houden. Bij een room server draagt de bevestiging het aantal wachtende posts mee. Wordt alleen direct beantwoord, nooit via flood |
 | Key Rotation | Periodiek vervangen van cryptografische sleutels voor extra veiligheid |
 | KISS | Keep It Simple, Stupid — protocol uit de packetradio voor het doorgeven van rauwe frames tussen modem en computer. Naam van een van de zes MeshCore-rollen, die de mesh-logica grotendeels omzeilt |
+| Koppelpunt | De plek waar een concrete klasse aan een contract wordt gekoppeld. Bij de radio ligt dat niet in de kern maar in `variants/*/target.h`, via `WRAPPER_CLASS` |
 | `lib_deps` | Sleutel in `platformio.ini` waarmee een sectie opgeeft welke libraries hij nodig heeft |
 | Library Dependency Finder (LDF) | Onderdeel van PlatformIO dat de broncode op `#include`-regels scant en daar libraries bij zoekt, ook als die niet gedeclareerd zijn |
 | `library.json` | Metadatabestand van een PlatformIO-library; de sleutel `"dependencies"` speelt dezelfde rol als `depends=` |
@@ -96,7 +104,9 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | LPP | Low Power Payload — compact binair formaat voor sensordata; MeshCore gebruikt CayenneLPP als draadformaat voor telemetrie |
 | LR1110 | Semtech-transceiver die LoRa combineert met GNSS- en WiFi-scanning voor locatiebepaling zonder losse GPS-module |
 | MAC (cipher) | Message Authentication Code — HMAC-SHA256 over de cijfertekst, afgekapt op 2 bytes. MeshCore gebruikt de term MIC niet |
+| Macro | Naam die de preprocessor vóór het compileren door een waarde vervangt. In MeshCore dragen macro's zowel aan/uit-keuzes als klassennamen; zie *typeinjectie* |
 | MCU | Microcontroller Unit — de chip waarop de firmware draait, met processor, geheugen, flash en de bussen waaraan de rest van de node hangt. Op ESP32, nRF52840 en STM32WLE5 zit die MCU in een SoC; de RP2040 is een kale MCU. Elke SoC bevat een MCU, niet elke MCU zit in een SoC |
+| Meegeleverde code | Externe code die als kopie in de repo staat in plaats van door de package manager te worden opgehaald (Engels: *vendored*); zie *vendoring* |
 | Mesh | Netwerk waarbij elk apparaat berichten kan doorsturen naar anderen |
 | Meshtastic | Alternatieve LoRa mesh firmware — niet compatibel met MeshCore |
 | MISO | Master In Slave Out — de SPI-lijn waarover het aangesloten apparaat data naar de SoC stuurt |
@@ -112,6 +122,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | opt-in / opt-out | Twee tegengestelde conventies voor buildvlaggen. Bij opt-in is de standaardtoestand *niets* en voegt een macro iets toe (`ENV_INCLUDE_BME280`); bij opt-out is de standaardtoestand *alles* en haalt een macro iets weg (`RADIOLIB_EXCLUDE_MORSE`) |
 | OTA | Over-The-Air — draadloze firmware update |
 | out_path | Het geleerde pad naar een contact, bewaard in de contactenlijst. `0xFF` (`OUT_PATH_UNKNOWN`) betekent: nog geen pad bekend |
+| Pakketpool | Vooraf gereserveerd geheugen voor pakketten, inclusief de wachtrijen naar binnen en naar buiten. De gangbare programmeerterm is *object pool* of *memory pool*. MeshCore kent één implementatie: `StaticPoolPacketManager` |
 | Path | Rij node-hashes in een pakket: bij flood het afgelegde pad, bij direct de te volgen route |
 | PATH-pakket | Payloadtype `0x08`; meldt het afgelegde pad terug aan de afzender. In de FAQ "delivery report" genoemd |
 | Payload type | 4 bits in de header die bepalen wat er in de payload staat (`0x00`-`0x0F`) |
@@ -139,6 +150,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | RSSI | Received Signal Strength Indicator — het ontvangen signaalniveau in dBm. MeshCore bemonstert het om zijn ruisvloer te bepalen |
 | RTTTL | Ring Tone Text Transfer Language — het beltoonformaat van Nokia. MeshCore slaat zijn start- en afsluitgeluid erin op |
 | ruisvloer | Het ruisniveau waar een ontvanger doorheen moet luisteren. MeshCore meet het zelf over 64 monsters en kapt het af op −120 dBm |
+| Scheduler | Taakplanner die bepaalt wanneer welk werk aan de beurt is. MeshCore heeft er geen: alles draait in één `loop()` |
 | SCL | Serial Clock — de kloklijn van de I²C-bus (`PIN_BOARD_SCL`) |
 | SCLK | Serial Clock — de kloklijn van de SPI-bus (`P_LORA_SCLK`). Niet te verwarren met SCL, de kloklijn van I²C |
 | Scope | De regio die een afzender aan een pakket meegeeft, als `transport_codes[0]` in de header |
@@ -168,7 +180,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | Technisch ontwerp | Beschrijving van hoe een systeem gerealiseerd is: klassen, bestanden, platformrealisatie en buildketen, met bestandsnamen en regelnummers. Tegenhanger van het logisch ontwerp |
 | Tekstsplicing | Het tweede overervingsmechanisme van PlatformIO: `${sectie.optie}` vervangt de verwijzing letterlijk door de waarde van die ene optie. Anders dan `extends`, dat alle opties overneemt |
 | Telemetry | Meetgegevens van sensoren die via het netwerk worden verstuurd |
-| Traceerbaarheidsmatrix | Tabel die elk onderdeel uit het logisch ontwerp aanwijst in de bronboom, met bestand en regelnummer. Lege regels blijven staan voor onderdelen die met opzet geen realisatie hebben |
+| Traceerbaarheidsmatrix | Tabel die elk onderdeel uit het logisch ontwerp aanwijst in de broncodestructuur, met bestand en regelnummer. Lege regels blijven staan voor onderdelen die met opzet geen realisatie hebben |
 | transitieve afhankelijkheid | Library die niet zelf gedeclareerd is maar meekomt omdat een andere library hem nodig heeft |
 | Transport code | De 16 bits in `transport_codes[0]`. **Geen identificatie van een regio** maar een HMAC over payload type en payload, gezet met de regiosleutel. Verandert bij elk bericht; een repeater herkent hem door hem zelf te herberekenen, niet door hem op te zoeken |
 | TwoWire | Arduino-klasse voor één I²C-bus. `Wire` is de eerste bus, `Wire1` de optionele tweede voor telemetriesensoren |
@@ -178,13 +190,14 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | uitsluitmacro | Macro die code uit de build haalt die zonder die macro meegecompileerd zou worden. RadioLib heeft er vijfentwintig (`RADIOLIB_EXCLUDE_*`), littlefs één (`LFS_NO_ASSERT`), Adafruit SSD1306 één (`SSD1306_NO_SPLASH`) |
 | USB CDC-ACM | Communications Device Class / Abstract Control Model — de USB-klasse waarmee een node zich bij het besturingssysteem als seriële poort aanmeldt |
 | UUID | Universally Unique Identifier — unieke identificatie voor BLE services |
-| Variabiliteit | De mate waarin en de manier waarop één codebase verschillende producten oplevert. MeshCore varieert langs drie assen — rol, platformfamilie en bord — plus bijmengingen, en komt zo op 508 buildtargets |
+| Variabiliteit | De mate waarin en de manier waarop één codebase verschillende producten oplevert. MeshCore varieert langs drie assen — rol, platformfamilie en bord — plus aanvullende buildopties, en komt zo op 508 buildtargets |
 | Variant | Map onder `variants/` met de bord-specifieke configuratie: pinnen, radiotype, display en de bijbehorende build-targets |
-| vendoring | Het opnemen van externe code als kopie in de eigen repo, in plaats van hem als afhankelijkheid op te halen. MeshCore doet dat in `lib/` en `arch/` |
+| vendoring | Het opnemen van externe code als kopie in de eigen repo, in plaats van hem als afhankelijkheid op te halen. MeshCore doet dat in `lib/` en `arch/`. Deze documentatie noemt zulke code *meegeleverd* |
 | Virtuele overerving | C++-constructie (`virtual public`) die voorkomt dat een klasse twee kopieën van een basisklasse krijgt wanneer die langs twee wegen bereikbaar is. `NRF52BoardDCDC` gebruikt hem voor de 30 bordklassen eronder |
 | Web Flasher | Browser-tool om firmware te installeren zonder speciale software |
 | Wrap | Frequentie springt terug naar begin van de band (0) na bereiken van maximum |
+| Wrapper | Tussenlaag rond een externe driver die het MeshCore-contract draagt. Bij de radio is dat de klasse in `WRAPPER_CLASS`, naast de aangepaste chipdriver in `RADIO_CLASS` |
 | XBM | X BitMap — eenvoudig monochroom beeldformaat dat als C-array in de firmware zit. `drawXbm()` zet het op het scherm |
 | Xtensa | Processorarchitectuur van Cadence; LX6 in de klassieke ESP32, LX7 in de ESP32-S3 |
-| Zelfstandige klasse | Klasse die geen contract is en er ook geen invult; niets hangt ervan af en niets kan hem vervangen. Groep 3 van het klassenmodel; 55 in de gedeelde boom. Niet te verwarren met de firmwarerol *Standalone* |
+| Zelfstandige klasse | Klasse die geen contract is en er ook geen implementeert; niets hangt ervan af en niets kan hem vervangen. Groep 3 van het klassenmodel; 55 in de gedeelde broncode. Niet te verwarren met de firmwarerol *Standalone* |
 | Zero-hop | Direct routeren met een leeg pad: alleen directe buren horen het, niemand stuurt het door |

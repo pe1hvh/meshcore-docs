@@ -34,8 +34,8 @@ fall into two camps.
 
 ESP32 and RP2040 get `fs::FS`, the Arduino abstraction over a file system.
 nRF52 and STM32 get `Adafruit_LittleFS`, a separate implementation with a
-namespace of its own. From `IdentityStore` upwards nothing notices that
-difference: everything works with `FILESYSTEM`.
+namespace of its own. No component from `IdentityStore` upwards notices any
+difference between the two file systems: everything works with `FILESYSTEM`.
 
 ## The asymmetry in the test itself
 
@@ -61,7 +61,7 @@ family finds not one pattern to follow but two.
 
 The board contract `mesh::MainBoard` (`src/MeshCore.h` r.45) lays down what
 every board must be able to do: report battery voltage, restart, sleep, report
-the startup reason. Three families fill that in with a shared class the
+the startup reason. Three families implement that with a shared class the
 variant classes inherit from. The fourth does not.
 
 | Family | Shared board class | Descendants in `src/` | Targets |
@@ -121,10 +121,10 @@ serial, not over BLE or WiFi.
 ## The clock as a counter-example
 
 Not every abstraction splits per family. The clock contract `mesh::RTCClock`
-(`src/MeshCore.h` r.80) is filled in three ways, and those three cut straight
-across the families:
+(`src/MeshCore.h` r.80) is implemented in three ways, and those three cut
+straight across the families:
 
-| Filler | Location | When |
+| Implementation | Location | When |
 |---|---|---|
 | `ESP32RTCClock` | `src/helpers/ESP32Board.h` r.160 | ESP32 with an internal RTC |
 | `AutoDiscoverRTCClock` | `src/helpers/AutoDiscoverRTCClock.h` r.7 | Board with an RTC chip on I²C |

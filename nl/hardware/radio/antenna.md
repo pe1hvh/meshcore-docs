@@ -25,7 +25,7 @@ ontvangstpad schakelt](../../../images/nl/antenna-1.svg)
 Zenden en ontvangen gebeuren over dezelfde antenne, maar niet over hetzelfde
 pad: het zendpad loopt door de eindtrap, het ontvangstpad door de LNA. Er
 zit dus een schakelaar tussen chip en connector. MeshCore kent daar twee
-invullingen voor, en ze sluiten elkaar niet uit.
+implementaties voor, en ze sluiten elkaar niet uit.
 
 | Aansturing | Vlag | Variantmappen |
 |---|---|---|

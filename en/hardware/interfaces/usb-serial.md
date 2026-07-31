@@ -35,8 +35,8 @@ Everything a companion app exchanges with a node passes through
 ```
 
 `ArduinoSerialInterface`, `SerialBLEInterface` and `SerialWifiInterface`
-fill those in. Which one ends up in the firmware is a build choice; see
-[WiFi as a Companion Link](wifi.md).
+implement those three. Which one ends up in the firmware is a build choice;
+see [WiFi as a Companion Link](wifi.md).
 
 The frame size is the same for all three:
 

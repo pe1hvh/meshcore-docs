@@ -1,9 +1,9 @@
 # Radio realisation
 
-*INJECTION POINT · DOUBLE PAIR · WRAPPER · ESP-NOW*
+*COUPLING POINT · CHIP DRIVER · WRAPPER · ESP-NOW*
 
 The radio is the only hardware abstraction where the core does not pick the
-filler itself. This chapter shows where that choice *is* made — in the
+implementation itself. This chapter shows where that choice *is* made — in the
 variant, not in the core — and why there are two classes per radio chip
 instead of one. That last part is not duplication but a division of labour.
 
@@ -23,7 +23,7 @@ hangs underneath it does not know.
 Packet handling holds a `Radio*`. The abstraction goes no further: nowhere in
 `src/` or `examples/` is there a line that determines *which* radio that is.
 
-## The injection point sits in the variant
+## The coupling point sits in the variant
 
 `RADIO_CLASS` and `WRAPPER_CLASS` are the two macros that carry the radio
 choice. In the shared tree they are read **nowhere**. The only hits are four
@@ -48,10 +48,10 @@ extern EnvironmentSensorManager sensors;
 ```
 
 The application includes `target.h` and uses `radio_driver` as a global
-variable. The injection point therefore sits in the variant, not in the core —
+variable. The coupling point therefore sits in the variant, not in the core —
 exactly the reverse of what you would expect from an abstraction layer.
-Normally the core is handed a filler; here the edge defines a global variable
-the core assumes exists.
+Normally the core is handed an implementation; here the edge defines a global
+variable the core assumes exists.
 
 ![From left to right: platformio.ini defines RADIO_CLASS and WRAPPER_CLASS as
 build flags; target.h in the variant directory uses WRAPPER_CLASS to declare
@@ -64,11 +64,11 @@ That explains why the radio does not fit the three-way split of
 board, the variant picks a class that inherits from a shared parent; with the
 radio, the variant picks a class *and* the name under which the core finds it.
 
-## The double pair
+## Chip driver and MeshCore wrapper
 
 There are two classes per radio chip, and that is deliberate.
 
-| Chip | Adapted driver | Contract filler | Targets |
+| Chip | Adapted driver | Implementation | Targets |
 |---|---|---|---|
 | SX1262 | `CustomSX1262` | `CustomSX1262Wrapper` | 424 |
 | SX1276 | `CustomSX1276` | `CustomSX1276Wrapper` | 29 |
@@ -78,11 +78,11 @@ There are two classes per radio chip, and that is deliberate.
 | LLCC68 | `CustomLLCC68` | `CustomLLCC68Wrapper` | **0** |
 
 The left column inherits from RadioLib. `CustomSX1262` is a RadioLib `SX1262`
-with adjustments; it knows nothing of MeshCore and fills no MeshCore contract.
-That is why it sits in group 3 of the class model, among the standalone
-classes.
+with adjustments; it knows nothing of MeshCore and implements no MeshCore
+contract. That is why it sits in group 3 of the class model, among the
+standalone classes.
 
-The right column inherits from `RadioLibWrapper`, which in turn fills
+The right column inherits from `RadioLibWrapper`, which in turn implements
 `mesh::Radio`. That is the class carrying the contract. The separation keeps
 the RadioLib adjustments apart from the MeshCore agreement: whoever has to
 adjust the chip driver touches the left column, whoever changes something on
@@ -122,14 +122,14 @@ to be switched before transmitting — an antenna switch, a transmit-receive
 switch, an LED — and switched back afterwards. The board therefore gets a
 signal before and after every transmission.
 
-In the same file, line 74 holds `RadioNoiseListener`, which fills `mesh::RNG`:
-the noise of the radio receiver as a source of randomness. That is the reason
-entropy is a component of its own in the logical design and not a detail of
-the radio.
+In the same file, line 74 holds `RadioNoiseListener`, which implements
+`mesh::RNG`: the noise of the radio receiver as a source of randomness. That
+is the reason entropy is a component of its own in the logical design and not
+a detail of the radio.
 
 ## Outside the scheme: ESP-NOW
 
-`ESPNOWRadio` (`src/helpers/esp32/ESPNOWRadio.h` r.5) fills `mesh::Radio`
+`ESPNOWRadio` (`src/helpers/esp32/ESPNOWRadio.h` r.5) implements `mesh::Radio`
 directly, without RadioLib and without a wrapper. It uses no LoRa but ESP-NOW,
 Espressif's 2.4 GHz protocol.
 

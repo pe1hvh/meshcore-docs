@@ -218,7 +218,7 @@ versie in bits 6-7. Voor een DM is het payload type `0x02`, dus:
 | `ROUTE_TYPE_TRANSPORT_DIRECT` (`0x03`) | `0B` | Ja, 4 bytes |
 
 De volledige bitindeling staat in
-[MeshCore Packet Structuur](packet-structure.md).
+[MeshCore Pakketstructuur](packet-structure.md).
 
 ### De payload van een TXT_MSG
 

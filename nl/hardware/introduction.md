@@ -110,7 +110,7 @@ implementatie per chip:
 | Knop | `MomentaryButton` | `src/helpers/ui/MomentaryButton.h` |
 
 Dat `BaseSerialInterface` één abstractie is voor BLE, WiFi én USB is geen
-detail: voor de firmware zijn dat drie invullingen van hetzelfde begrip —
+detail: voor de firmware zijn dat drie implementaties van hetzelfde begrip —
 een verbinding waarover frames naar een companion gaan.
 
 ## De drie subsecties

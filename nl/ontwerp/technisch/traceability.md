@@ -3,9 +3,9 @@
 *LOGISCH NAAR TECHNISCH · BESTAND EN REGEL · LEGE REGELS*
 
 Het logisch ontwerp beschrijft zeventien componenten. Dit hoofdstuk wijst elk
-van die zeventien aan in de bronboom, met bestand en regelnummer. Het sluit af
-met de twee dingen die het logisch ontwerp expliciet níét heeft — en die dus
-ook geen realisatie hebben.
+van die zeventien aan in de broncodestructuur, met bestand en regelnummer. Het
+sluit af met de twee dingen die het logisch ontwerp expliciet níét heeft — en
+die dus ook geen realisatie hebben.
 
 > [!NOTE]
 > **Bron.** Deze pagina is geverifieerd tegen de firmware zelf: `MeshCore`
@@ -14,14 +14,15 @@ ook geen realisatie hebben.
 
 ## Waar deze matrix voor is
 
-Een logisch ontwerp dat niet aanwijsbaar is, is een verhaal. Deze tabel maakt
-het controleerbaar: wie twijfelt of de mesh-logica werkelijk niets van de
-radio weet, kan `src/Mesh.h` r.26 opslaan en zelf kijken.
+Door ieder logisch onderdeel aan de broncode te koppelen wordt het ontwerp
+controleerbaar en verifieerbaar. Deze tabel legt die koppeling vast: wie
+twijfelt of de mesh-logica werkelijk niets van de radio weet, kan `src/Mesh.h`
+r.26 opslaan en zelf kijken.
 
 De matrix loopt één kant op. Van logische component naar realisatie, niet
-andersom — niet elke klasse in de bronboom hoort bij een logische component.
-De 55 zelfstandige klassen uit [het klassenmodel](class-model.md) zijn
-grotendeels hulpmiddelen zonder tegenhanger in het logisch ontwerp.
+andersom — niet elke klasse in de broncodestructuur hoort bij een logische
+component. De 55 zelfstandige klassen uit [het klassenmodel](class-model.md)
+zijn grotendeels hulpmiddelen zonder tegenhanger in het logisch ontwerp.
 
 ## De matrix
 
@@ -33,9 +34,9 @@ grotendeels hulpmiddelen zonder tegenhanger in het logisch ontwerp.
 | Radio | `mesh::Radio`, `src/Dispatcher.h` r.22 |
 | Bord | `mesh::MainBoard`, `src/MeshCore.h` r.45 |
 | Klok | `mesh::RTCClock`, `src/MeshCore.h` r.80 |
-| Toevalsbron | `mesh::RNG`, `src/Utils.h` r.9 |
-| Pakketvoorraad | `mesh::PacketManager`, `src/Dispatcher.h` r.85; invulling `StaticPoolPacketManager`, `src/helpers/StaticPoolPacketManager.h` r.21 |
-| Gezien-tabel | `mesh::MeshTables`, `src/Mesh.h` r.16; invulling `SimpleMeshTables`, `src/helpers/SimpleMeshTables.h` r.11 |
+| Entropiebron | `mesh::RNG`, `src/Utils.h` r.9 |
+| Pakketpool | `mesh::PacketManager`, `src/Dispatcher.h` r.85; implementatie `StaticPoolPacketManager`, `src/helpers/StaticPoolPacketManager.h` r.21 |
+| Gezien-tabel | `mesh::MeshTables`, `src/Mesh.h` r.16; implementatie `SimpleMeshTables`, `src/helpers/SimpleMeshTables.h` r.11 |
 | Identiteit | `mesh::Identity`, `src/Identity.h` r.11; `LocalIdentity` r.54 |
 | Rechtenlijst | `ClientACL`, `src/helpers/ClientACL.h` r.40; `ClientInfo` r.15 |
 | Opslag | `IdentityStore`, `src/helpers/IdentityStore.h` r.14 |
@@ -56,8 +57,8 @@ bestand in `src/`, en die zeven bestanden zijn samen 2332 regels. De overige
 tien zitten in `src/helpers/` of in `examples/`.
 
 **Zeven componenten zijn een contract, geen klasse.** Radio, bord, klok,
-toevalsbron, koppelvlak, scherm en sensorbeheer wijzen naar een
-contractdefiniërende klasse. Wat er in een concrete build onder hangt, hangt
+entropiebron, koppelvlak, scherm en sensorbeheer wijzen naar een
+interfaceklasse. Wat er in een concrete build onder hangt, hangt
 van het buildtarget af — zie [Platformrealisatie](platform-realisation.md) en
 [Radiorealisatie](radio-realisation.md).
 

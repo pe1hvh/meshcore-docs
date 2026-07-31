@@ -19,7 +19,7 @@ byte en de toestandsmachine die het uit de bytestroom haalt.
 laagste eerst, gevolgd door de payload, met de vier toestanden van de
 ontvangende toestandsmachine](../../../images/nl/usb-serial-1.svg)
 
-## Eén interface, drie invullingen
+## Eén interface, drie implementaties
 
 Alles wat een companion-app met een node uitwisselt loopt door
 `BaseSerialInterface`. Die kent maar twee functies:
@@ -35,7 +35,7 @@ Alles wat een companion-app met een node uitwisselt loopt door
 ```
 
 `ArduinoSerialInterface`, `SerialBLEInterface` en `SerialWifiInterface`
-vullen die drie in. Welke er in de firmware zit is een buildkeuze; zie
+implementeren die drie. Welke er in de firmware zit is een buildkeuze; zie
 [WiFi als companion-verbinding](wifi.md).
 
 De framegrootte is voor alledrie gelijk:

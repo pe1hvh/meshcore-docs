@@ -10,7 +10,7 @@ MeshCore-macro's worden er 53 gedefinieerd en nergens gelezen.
 > [!NOTE]
 > **Bron.** Deze pagina is geverifieerd tegen de firmware zelf: `MeshCore`
 > v1.16.0, commit `03b6ef4`, 28 juli 2026 — de root `platformio.ini`, alle 79
-> `variants/*/platformio.ini` en de volledige bronboom onder `src/`,
+> `variants/*/platformio.ini` en de volledige broncodestructuur onder `src/`,
 > `examples/` en `variants/`.
 
 ## Drie eigenaren
@@ -27,8 +27,8 @@ verschillende partijen terecht.
 
 ![Drie stapels. Links zeventien macro's met een pijl naar een blok externe
 libraries, in het midden zes met een pijl naar een blok Arduino-core, rechts
-tweehonderdvierenvijftig met een pijl naar de MeshCore-bronboom. Van die derde
-stapel loopt een deel van drieënvijftig naar een leeg vlak zonder
+tweehonderdvierenvijftig met een pijl naar de MeshCore-broncodestructuur. Van
+die derde stapel loopt een deel van drieënvijftig naar een leeg vlak zonder
 lezer.](../../../images/nl/configuration-1.svg)
 
 Groep 1 staat uitgeschreven in
@@ -56,8 +56,8 @@ USB en het serieel-over-USB-gedrag bij het opstarten.
 
 ## Groep 3 — MeshCore (254)
 
-Van de 254 MeshCore-macro's worden er **201** ergens in de bronboom gelezen en
-**53** nergens.
+Van de 254 MeshCore-macro's worden er **201** ergens in de broncodestructuur
+gelezen en **53** nergens.
 
 De 201 naar de plek waar ze voor het eerst voorkomen:
 
@@ -91,9 +91,10 @@ tabel hierboven telt:
 
 > [!NOTE]
 > **Meetmethode.** De verdelingstabel telt per macro het **eerste voorkomen**
-> van de naam in de bronboom, doorlopen in de volgorde `src/` → `examples/` →
-> `variants/` en binnen elke map alfabetisch. Die volgorde hoort bij het
-> cijfer: een andere doorloopvolgorde verschuift de tabel met tot 22 macro's.
+> van de naam in de broncodestructuur, doorlopen in de volgorde `src/` →
+> `examples/` → `variants/` en binnen elke map alfabetisch. Die volgorde hoort
+> bij het cijfer: een andere doorloopvolgorde verschuift de tabel met tot 22
+> macro's.
 >
 > Eerste voorkomen is niet hetzelfde als eerste *lezing*. `P_LORA_NSS` in
 > `MeshadventurerBoard.h` r.7 is een `#define`, dus een herdefinitie en geen

@@ -1,12 +1,12 @@
 # The class model
 
-*CONTRACT · FILLER · STANDALONE · BORDERLINE CASES*
+*CONTRACT · IMPLEMENTATION · STANDALONE · BORDERLINE CASES*
 
 MeshCore's 196 classes fall into three kinds: classes that lay down what
-another part may expect, classes that fill such an agreement, and classes that
-stand on their own. This chapter describes that three-way split, states what a
-contract is and is not, and walks through the 119 classes of the shared tree
-one by one. The 77 from `variants/` appear as a summary at the end.
+another part may expect, classes that implement such an agreement, and classes
+that stand on their own. This chapter describes that three-way split, states
+what a contract is and is not, and walks through the 119 classes of the shared
+tree one by one. The 77 from `variants/` appear as a summary at the end.
 
 > [!NOTE]
 > **Source.** This page was verified against the firmware itself: `MeshCore`
@@ -16,8 +16,8 @@ one by one. The 77 from `variants/` appear as a summary at the end.
 ## What a contract is
 
 A contract is a class that exists solely to lay down what another part may
-expect. It holds no working code, only the list of what a filler must be able
-to do, plus sometimes a default answer for when the hardware cannot do
+expect. It holds no working code, only the list of what an implementation must
+be able to do, plus sometimes a default answer for when the hardware cannot do
 something. In C++ you recognise it by its virtual methods, the mandatory ones
 ending in `= 0`.
 
@@ -27,56 +27,58 @@ Three properties make something a contract:
    SX1262; it lays down that there must be something that sends bytes.
 2. **The user knows only the contract.** Packet handling holds a `Radio*` and
    has no idea which chip hangs off it.
-3. **Fillers are interchangeable.** Every class that fills the contract can
-   replace any other without the user changing.
+3. **Implementations are interchangeable.** Every class that implements the
+   contract can replace any other without the user changing.
 
 The logical side of this story — which agreements exist and what they promise
 — is in [Contracts](../logical/interfaces.md). Here it is about the classes
 that carry them.
 
-![Three columns. On the left fourteen contract-defining classes without code
-of their own, in the middle fifty classes that fill one with arrows pointing
-left, on the right fifty-five standalone classes without arrows. Along the
-bottom a wide bar with the seventy-seven classes from variants runs into the
-middle column.](../../../images/en/class-model-1.svg)
+![Three columns. On the left fourteen interface classes without code of their
+own, in the middle fifty classes that implement one with arrows pointing left,
+on the right fifty-five standalone classes without arrows. Along the bottom a
+wide bar with the seventy-seven classes from variants runs into the middle
+column.](../../../images/en/class-model-1.svg)
 
 ## What is not a contract
 
 A base class that holds shared code is not a contract but a common parent.
-`ESP32Board` is such a case: it fills the board contract *and* offers code the
-derived board classes inherit. It therefore sits in group 2, not group 1.
+`ESP32Board` is such a case: it implements the board contract *and* offers
+code the derived board classes inherit. It therefore sits in group 2, not
+group 1.
 
 The distinction is not always sharp. `BridgeBase` and `RadioLibWrapper` are
-both a filler *and* a parent: they fill `AbstractBridge` and `mesh::Radio`
-respectively, and there are classes hanging under them in turn. Anyone reading
-the three-way split as a hard partition runs into trouble with those two. They
-sit in group 2 because they fill a contract; that they also have children of
-their own changes nothing about that property.
+both an implementation *and* a parent: they implement `AbstractBridge` and
+`mesh::Radio` respectively, and there are classes hanging under them in turn.
+Anyone reading the three-way split as a hard partition runs into trouble with
+those two. They sit in group 2 because they implement a contract; that they
+also have children of their own changes nothing about that property.
 
-**Standalone** is everything that is not a contract and fills none either:
-classes that do one thing and on which nothing depends. `ClientACL` manages
-the access list, `RegionMap` converts region codes, `Packet` is a data object.
-They are not replaceable because there is nothing they would have to replace.
+**Standalone** is everything that is not a contract and implements none
+either: classes that do one thing and on which nothing depends. `ClientACL`
+manages the access list, `RegionMap` converts region codes, `Packet` is a data
+object. They are not replaceable because there is nothing they would have to
+replace.
 
 An instructive case is `CustomSX1262`. It sits in group 3, not group 2. The
-class inherits from RadioLib's `SX1262` and fills no MeshCore contract; it is
-`CustomSX1262Wrapper` that does, via `RadioLibWrapper`. That explains why
-there are two classes per radio chip: one that adapts the chip driver, one
-that pours the result into the MeshCore contract. See
-[Radio realisation](radio-realisation.md).
+class inherits from RadioLib's `SX1262` and implements no MeshCore contract;
+it is `CustomSX1262Wrapper` that does, via `RadioLibWrapper`. That explains
+why there are two classes per radio chip: one that adapts the chip driver, one
+that pours the result into the MeshCore contract. See [Radio
+realisation](radio-realisation.md).
 
 ## The distribution
 
-The shared tree counts 119 classes: **14** contract-defining, **50**
-contract-filling, **55** standalone.
+The shared tree counts 119 classes: **14** interface classes, **50**
+implementation classes and **55** standalone classes.
 
 | Group | Count | Characteristic |
 |---|---|---|
-| 1 — contract-defining | 14 | Virtual methods only, no working code |
-| 2 — contract-filling | 50 | Inherits from a class in group 1 |
-| 3 — standalone | 55 | No contract, fills none either |
+| 1 — interface classes | 14 | Virtual methods only, no working code |
+| 2 — implementation classes | 50 | Inherits from a class in group 1 |
+| 3 — standalone | 55 | No contract, implements none either |
 
-## Group 1 — contract-defining (14)
+## Group 1 — interface classes (14)
 
 | Class | Location |
 |---|---|
@@ -102,13 +104,13 @@ Two things stand out in this list.
 necessary once sensors arrived, and they have not been moved to the core.
 
 `CommonCLICallbacks` and `DataStoreHost` reverse the dependency. They are
-defined by the layer below but filled by the application above — `MyMesh` in
-`examples/simple_repeater/` fills `CommonCLICallbacks` so that the control
-code in `src/helpers/CommonCLI.cpp` can call something without knowing which
-application is running. The lower layer calls the higher one without knowing
-it.
+defined by the layer below but implemented by the application above — `MyMesh`
+in `examples/simple_repeater/` implements `CommonCLICallbacks` so that the
+control code in `src/helpers/CommonCLI.cpp` can call something without knowing
+which application is running. The lower layer calls the higher one without
+knowing it.
 
-## Group 2 — contract-filling (50)
+## Group 2 — implementation classes (50)
 
 | Class | Contract | Location | Inherits from |
 |---|---|---|---|
@@ -248,19 +250,20 @@ application that needs one.
 
 `variants/` counts 77 class declarations under 73 unique names — four names
 occur in more than one variant directory. They are not written out one by one,
-because they all do the same thing: fill a contract with the pin assignment of
-one board.
+because they all do the same thing: implement a contract with the pin
+assignment of one board.
 
-| Contract being filled | Classes |
+| Contract being implemented | Classes |
 |---|---|
 | Board | 65 |
 | Sensor management | 7 |
 | Display | 3 |
 | Entropy | 2 |
 
-The 65 board classes all fill the same contract in the same way. Four of them
-are worth naming separately, because they are the only RP2040 board classes:
-that family is the only one without a shared board class in `src/helpers/`.
+The 65 board classes all implement the same contract in the same way. Four of
+them are worth naming separately, because they are the only RP2040 board
+classes: that family is the only one without a shared board class in
+`src/helpers/`.
 
 | RP2040 board class | Location |
 |---|---|

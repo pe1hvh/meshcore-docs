@@ -32,6 +32,6 @@
 <line x1="527" y1="203" x2="560" y2="188" stroke="var(--line)" stroke-width="1.5"/>
 <line x1="632" y1="203" x2="600" y2="188" stroke="var(--line)" stroke-width="1.5"/>
 <text x="20" y="230" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="start">53 van de 254 worden gedefinieerd</text>
-<text x="20" y="250" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="start">en nergens in de bronboom getest — 21 %</text>
+<text x="20" y="250" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="start">en nergens in de broncode getest — 21 %</text>
 <text x="350" y="285" fill="var(--text-muted)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400" text-anchor="middle">Groep 1 staat uitgeschreven in libraries/library-configuration.md</text>
 </svg>

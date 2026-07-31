@@ -1,12 +1,12 @@
 # Het klassenmodel
 
-*CONTRACT · INVULLING · ZELFSTANDIG · GRENSGEVALLEN*
+*CONTRACT · IMPLEMENTATIE · ZELFSTANDIG · GRENSGEVALLEN*
 
 De 196 klassen van MeshCore vallen in drie soorten uiteen: klassen die
 vastleggen wat een ander onderdeel mag verwachten, klassen die zo'n afspraak
-invullen, en klassen die op zichzelf staan. Dit hoofdstuk beschrijft die
+implementeren, en klassen die op zichzelf staan. Dit hoofdstuk beschrijft die
 driedeling, benoemt wat een contract wél en niet is, en loopt de 119 klassen
-uit de gedeelde boom stuk voor stuk langs. De 77 uit `variants/` staan als
+uit de gedeelde broncode stuk voor stuk langs. De 77 uit `variants/` staan als
 samenvatting aan het eind.
 
 > [!NOTE]
@@ -18,9 +18,9 @@ samenvatting aan het eind.
 
 Een contract is een klasse die uitsluitend bestaat om vast te leggen wat een
 ander onderdeel mag verwachten. Hij bevat geen werkende code, alleen de
-opsomming van wat een invulling moet kunnen, plus soms een standaardantwoord
-voor het geval de hardware iets niet kan. In C++ herken je hem aan virtuele
-methoden, waarvan de verplichte op `= 0` eindigen.
+opsomming van wat een implementatie moet kunnen, plus soms een
+standaardantwoord voor het geval de hardware iets niet kan. In C++ herken je
+hem aan virtuele methoden, waarvan de verplichte op `= 0` eindigen.
 
 Drie eigenschappen maken iets tot contract:
 
@@ -28,57 +28,57 @@ Drie eigenschappen maken iets tot contract:
    aanstuurt; het legt vast dat er iets moet zijn dat bytes verstuurt.
 2. **De gebruiker kent alleen het contract.** De pakketafhandeling houdt een
    `Radio*` vast en heeft geen idee welke chip eraan hangt.
-3. **Invullingen zijn onderling verwisselbaar.** Elke klasse die het contract
-   invult, kan elke andere vervangen zonder dat de gebruiker verandert.
+3. **Implementaties zijn onderling verwisselbaar.** Elke klasse die het
+   contract implementeert, kan elke andere vervangen zonder dat de gebruiker
+   verandert.
 
 De logische kant van dit verhaal — welke afspraken er zijn en wat ze beloven —
 staat in [Contracten](../logisch/interfaces.md). Hier gaat het om de klassen
 die ze dragen.
 
-![Drie kolommen. Links veertien contractdefiniërende klassen zonder eigen
-code, in het midden vijftig klassen die er een invullen met pijlen naar links,
-rechts vijfenvijftig zelfstandige klassen zonder pijlen. Onderaan loopt een
-brede balk met de zevenenzeventig klassen uit variants naar de middelste
-kolom.](../../../images/nl/class-model-1.svg)
+![Drie kolommen. Links veertien interfaceklassen zonder eigen code, in het
+midden vijftig klassen die er een implementeren met pijlen naar links, rechts
+vijfenvijftig zelfstandige klassen zonder pijlen. Onderaan loopt een brede
+balk met de zevenenzeventig klassen uit variants naar de middelste kolom.](../../../images/nl/class-model-1.svg)
 
 ## Wat geen contract is
 
 Een basisklasse waar gedeelde code in zit, is geen contract maar een
-gemeenschappelijke ouder. `ESP32Board` is zo'n geval: hij vult het bordcontract
-in *en* biedt code die de afgeleide bordklassen erven. Hij staat daarom in
-groep 2, niet in groep 1.
+gemeenschappelijke ouder. `ESP32Board` is zo'n geval: hij implementeert het
+bordcontract *en* biedt code die de afgeleide bordklassen erven. Hij staat
+daarom in groep 2, niet in groep 1.
 
 Het onderscheid is niet altijd scherp. `BridgeBase` en `RadioLibWrapper` zijn
-allebei een invulling én een ouder: ze vullen `AbstractBridge` respectievelijk
-`mesh::Radio` in, en er hangen weer klassen onder die van hen erven. Wie de
-driedeling als een harde indeling leest, komt bij die twee in de problemen.
-Ze staan in groep 2 omdat ze een contract invullen; dat ze er zelf ook kinderen
-onder hebben, verandert niets aan die eigenschap.
+allebei een implementatie én een ouder: ze implementeren `AbstractBridge`
+respectievelijk `mesh::Radio`, en er hangen weer klassen onder die van hen
+erven. Wie de driedeling als een harde indeling leest, komt bij die twee in de
+problemen. Ze staan in groep 2 omdat ze een contract implementeren; dat ze er
+zelf ook kinderen onder hebben, verandert niets aan die eigenschap.
 
-**Zelfstandig** is alles wat geen contract is en er ook geen invult: klassen
-die één ding doen en waar niets van af hangt. `ClientACL` beheert de
+**Zelfstandig** is alles wat geen contract is en er ook geen implementeert:
+klassen die één ding doen en waar niets van af hangt. `ClientACL` beheert de
 rechtenlijst, `RegionMap` zet regiocodes om, `Packet` is een gegevensobject.
 Ze zijn niet vervangbaar omdat er niets is dat ze zou moeten kunnen vervangen.
 
 Een leerzaam geval is `CustomSX1262`. Die staat in groep 3, niet in groep 2.
-De klasse erft van RadioLibs `SX1262` en vult geen MeshCore-contract in; het is
-`CustomSX1262Wrapper` die dat doet, via `RadioLibWrapper`. Dat verklaart waarom
-er twee klassen per radiochip zijn: één die de chipdriver aanpast, één die het
-resultaat in het MeshCore-contract giet. Zie
+De klasse erft van RadioLibs `SX1262` en implementeert geen MeshCore-contract;
+het is `CustomSX1262Wrapper` die dat doet, via `RadioLibWrapper`. Dat
+verklaart waarom er twee klassen per radiochip zijn: één die de chipdriver
+aanpast, één die het resultaat in het MeshCore-contract giet. Zie
 [Radiorealisatie](radio-realisation.md).
 
 ## De verdeling
 
-De gedeelde boom telt 119 klassen: **14** contractdefiniërend, **50**
-contractvullend, **55** zelfstandig.
+De gedeelde broncode telt 119 klassen: **14** interfaceklassen, **50**
+implementatieklassen en **55** zelfstandige klassen.
 
 | Groep | Aantal | Kenmerk |
 |---|---|---|
-| 1 — contractdefiniërend | 14 | Alleen virtuele methoden, geen werkende code |
-| 2 — contractvullend | 50 | Erft van een klasse uit groep 1 |
-| 3 — zelfstandig | 55 | Geen contract, vult er ook geen in |
+| 1 — interfaceklassen | 14 | Alleen virtuele methoden, geen werkende code |
+| 2 — implementatieklassen | 50 | Erft van een klasse uit groep 1 |
+| 3 — zelfstandig | 55 | Geen contract, implementeert er ook geen |
 
-## Groep 1 — contractdefiniërend (14)
+## Groep 1 — interfaceklassen (14)
 
 | Klasse | Plek |
 |---|---|
@@ -104,13 +104,13 @@ Twee dingen vallen op aan deze lijst.
 werden toen sensoren erbij kwamen, en ze zijn niet naar de kern verhuisd.
 
 `CommonCLICallbacks` en `DataStoreHost` draaien de afhankelijkheid om. Ze
-worden gedefinieerd door de laag die eronder zit, maar ingevuld door de
-applicatie erboven — `MyMesh` in `examples/simple_repeater/` vult
-`CommonCLICallbacks` in, zodat de bediening in `src/helpers/CommonCLI.cpp`
+worden gedefinieerd door de laag die eronder zit, maar geïmplementeerd door de
+applicatie erboven — `MyMesh` in `examples/simple_repeater/` implementeert
+`CommonCLICallbacks`, zodat de bediening in `src/helpers/CommonCLI.cpp`
 iets kan aanroepen zonder te weten welke applicatie draait. De onderliggende
 laag roept de bovenliggende aan zonder hem te kennen.
 
-## Groep 2 — contractvullend (50)
+## Groep 2 — implementatieklassen (50)
 
 | Klasse | Contract | Plek | Erft van |
 |---|---|---|---|
@@ -142,7 +142,7 @@ laag roept de bovenliggende aan zonder hem te kennen.
 | `MyMesh` | Mesh | `examples/companion_radio/MyMesh.h` r.87 | BaseChatMesh, DataStoreHost |
 | `SensorMesh` | Mesh | `examples/simple_sensor/SensorMesh.h` r.49 | mesh::Mesh, CommonCLICallbacks |
 | `ArduinoMillis` | Millisecondeklok | `src/helpers/ArduinoHelpers.h` r.22 | mesh::MillisecondClock |
-| `StaticPoolPacketManager` | Pakketvoorraad | `src/helpers/StaticPoolPacketManager.h` r.21 | mesh::PacketManager |
+| `StaticPoolPacketManager` | Pakketpool | `src/helpers/StaticPoolPacketManager.h` r.21 | mesh::PacketManager |
 | `CustomLLCC68Wrapper` | Radio | `src/helpers/radiolib/CustomLLCC68Wrapper.h` r.7 | RadioLibWrapper |
 | `CustomLR1110Wrapper` | Radio | `src/helpers/radiolib/CustomLR1110Wrapper.h` r.7 | RadioLibWrapper |
 | `CustomSTM32WLxWrapper` | Radio | `src/helpers/radiolib/CustomSTM32WLxWrapper.h` r.8 | RadioLibWrapper |
@@ -162,8 +162,8 @@ laag roept de bovenliggende aan zonder hem te kennen.
 | `ST7789LCDDisplay` | Scherm | `src/helpers/ui/ST7789LCDDisplay.h` r.10 | DisplayDriver |
 | `U8g2Display` | Scherm | `src/helpers/ui/U8g2Display.h` r.19 | DisplayDriver |
 | `EnvironmentSensorManager` | Sensorbeheer | `src/helpers/sensors/EnvironmentSensorManager.h` r.7 | SensorManager |
-| `RadioNoiseListener` | Toevalsbron | `src/helpers/radiolib/RadioLibWrappers.h` r.74 | mesh::RNG |
-| `StdRNG` | Toevalsbron | `src/helpers/ArduinoHelpers.h` r.27 | mesh::RNG |
+| `RadioNoiseListener` | Entropiebron | `src/helpers/radiolib/RadioLibWrappers.h` r.74 | mesh::RNG |
+| `StdRNG` | Entropiebron | `src/helpers/ArduinoHelpers.h` r.27 | mesh::RNG |
 
 > [!NOTE]
 > De kolom *Erft van* geeft de basisklassen zoals ze in de declaratie staan,
@@ -243,26 +243,28 @@ bestaat twee keer — één voor ESP32, één voor nRF52 — en `MyMesh` vijf ke
 > `OLEDDisplay` komt twee keer voor in `src/helpers/ui/OLEDDisplay.h`, op
 > regel 159 en 161, achter een `#if` — de ene versie erft van `Print`, de
 > andere van `Stream`. `String` op regel 50 in datzelfde bestand is een
-> vooruitverwijzing uit gevendorde code. Beide zijn geen MeshCore-ontwerp maar
-> overgenomen code van ThingPulse; zie [De bronboom](source-layout.md).
+> vooruitverwijzing uit meegeleverde code. Beide zijn geen MeshCore-ontwerp
+> maar overgenomen code van ThingPulse; zie [De
+> broncodestructuur](source-layout.md).
 
 ## De 77 uit `variants/`
 
-`variants/` telt 77 klassendeclaraties onder 73 unieke namen — vier namen komen
-in meer dan één variantmap voor. Ze zijn niet stuk voor stuk uitgeschreven,
-omdat ze alle hetzelfde doen: een contract invullen met de pinbezetting van één
-bord.
+`variants/` telt 77 klassendeclaraties onder 73 unieke namen — vier namen
+komen in meer dan één variantmap voor. Ze zijn niet stuk voor stuk
+uitgeschreven, omdat ze alle hetzelfde doen: een contract implementeren met de
+pinbezetting van één bord.
 
-| Contract dat wordt ingevuld | Klassen |
+| Contract dat wordt geïmplementeerd | Klassen |
 |---|---|
 | Bord | 65 |
 | Sensorbeheer | 7 |
 | Scherm | 3 |
-| Toevalsbron | 2 |
+| Entropiebron | 2 |
 
-De 65 bordklassen vullen alle hetzelfde contract op dezelfde manier in. Vier
-ervan zijn wél apart het noemen waard, omdat ze de enige RP2040-bordklassen
-zijn: die familie heeft als enige geen gedeelde bordklasse in `src/helpers/`.
+De 65 bordklassen implementeren alle hetzelfde contract op dezelfde manier.
+Vier ervan zijn wél apart het noemen waard, omdat ze de enige
+RP2040-bordklassen zijn: die familie heeft als enige geen gedeelde bordklasse
+in `src/helpers/`.
 
 | RP2040-bordklasse | Plek |
 |---|---|

@@ -15,10 +15,10 @@ characters show up as blocks on an OLED.
 > `src/helpers/ui/SSD1306Display.cpp`, `src/helpers/RefCountedDigitalPin.h`
 > and the `DISPLAY_CLASS` flags in `variants/`.
 
-## One class, eleven fillings
+## One class, eleven implementations
 
 The firmware knows the notion *screen* only as `DisplayDriver`: an abstract
-class with fourteen methods every driver has to fill in, plus a handful of
+class with fourteen methods every driver has to implement, plus a handful of
 helper methods falling back on those fourteen. Which driver is compiled in
 sits in one build flag per board, `DISPLAY_CLASS`.
 

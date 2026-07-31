@@ -201,7 +201,7 @@ verwachte ACK    88 C5 39 94   ->  0x9439C588
 Van de 151 beschikbare tekens gebruikt dit voorbeeld er 33. De payload van 42
 bytes gaat daarna nog door de versleuteling en krijgt de gewone
 pakketheaders; hoe dat eruitziet staat in
-[Packet Structuur](../packet-structure.md).
+[Pakketstructuur](../packet-structure.md).
 
 ## De teller schuift pas op bij de ACK
 

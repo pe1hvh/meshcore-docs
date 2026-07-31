@@ -3,7 +3,7 @@
 *ED25519 · SHA256 · AES · TWEE IMPLEMENTATIES*
 
 MeshCore heeft twee Ed25519-implementaties in de build zitten. De ene komt
-uit `rweather/Crypto`, de andere staat gevendord in `lib/ed25519`. Ze worden
+uit `rweather/Crypto`, de andere staat meegeleverd in `lib/ed25519`. Ze worden
 allebei gebruikt, in hetzelfde bestand, voor verschillende bewerkingen — en
 de reden daarvoor staat als commentaar in de broncode.
 
@@ -56,7 +56,7 @@ De regel staat in `[arduino_base]` en geldt dus voor alle 507 build-targets.
 #include <Ed25519.h>
 ```
 
-`ed_25519.h` is de gevendorde versie, `Ed25519.h` die uit `rweather/Crypto`.
+`ed_25519.h` is de meegeleverde versie, `Ed25519.h` die uit `rweather/Crypto`.
 Bij het verifiëren van een handtekening wordt de eerste bewust overgeslagen:
 
 `src/Identity.cpp` r.17-24
@@ -73,7 +73,7 @@ bool Identity::verify(const uint8_t* sig, const uint8_t* message, int msg_len) c
 ```
 
 Verifiëren gaat dus via `rweather/Crypto`. Alle andere Ed25519-bewerkingen
-gaan wél via de gevendorde versie: het aanmaken van een sleutelpaar (r.48),
+gaan wél via de meegeleverde versie: het aanmaken van een sleutelpaar (r.48),
 het afleiden van een publieke sleutel uit een private (r.53 en r.131), het
 ondertekenen (r.136) en de key exchange (r.79-82 en r.140).
 
@@ -108,7 +108,7 @@ eigen `AES.h` en `SHA256.h`; `[env:native]` zet die map op het includepad
 implementatie.
 
 ![De twee Ed25519-paden in MeshCore: ondertekenen, sleutelparen, afgeleide
-publieke sleutels en key exchange lopen via de gevendorde implementatie in
+publieke sleutels en key exchange lopen via de meegeleverde implementatie in
 lib/ed25519, verifiëren loopt via Ed25519 uit rweather/Crypto, en het
 uitgeschakelde pad van ed25519_verify is gestippeld
 weergegeven](../../../images/nl/crypto-1.svg)

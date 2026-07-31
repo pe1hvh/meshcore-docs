@@ -1,18 +1,17 @@
-# De bronboom
+# De broncodestructuur
 
-*SRC · HELPERS · EXAMPLES · VARIANTS · SCHEEFHEID*
+*SRC · HELPERS · EXAMPLES · VARIANTS · ASYMMETRIE*
 
-De MeshCore-bronboom valt in vier stukken uiteen: een kern van elf bestanden,
-een verzameling hulpklassen, zes applicaties en negenenzeventig
+De MeshCore-broncodestructuur valt in vier stukken uiteen: een kern van elf
+bestanden, een verzameling hulpklassen, zes applicaties en negenenzeventig
 variantmappen. Dit hoofdstuk beschrijft wat waar staat en hoeveel het is. De
-interessantste bevinding zit niet in de aantallen zelf maar in hun
-scheefheid: de ene platformfamilie heeft acht gedeelde bestanden, de andere
-geen enkel.
+interessantste bevinding zit niet in de aantallen zelf maar in hun asymmetrie:
+de ene platformfamilie heeft acht gedeelde bestanden, de andere geen enkel.
 
 > [!NOTE]
 > **Bron.** Deze pagina is geverifieerd tegen de firmware zelf: `MeshCore`
-> v1.16.0, commit `03b6ef4`, 28 juli 2026 — de volledige bronboom onder
-> `src/`, `examples/` en `variants/`.
+> v1.16.0, commit `03b6ef4`, 28 juli 2026 — de volledige broncodestructuur
+> onder `src/`, `examples/` en `variants/`.
 
 ## De vier stukken
 
@@ -32,14 +31,14 @@ uit helpers, elke applicatie gebruikt de kern.](../../../images/nl/source-layout
 | `src/helpers/stm32/` | 1 klasse — alleen `STM32Board` |
 | `src/helpers/radiolib/` | 14 klassen, 16 bestanden |
 | `src/helpers/sensors/` | 6 klassen |
-| `src/helpers/ui/` | 18 klassendeclaraties, deels gevendorde code |
+| `src/helpers/ui/` | 18 klassendeclaraties, deels meegeleverde code |
 | `examples/` | 6 applicaties, 25 klassen |
 | `variants/` | 79 directory's, 77 klassen |
 
-De 119 klassen in `src/` en `examples/` samen vormen de gedeelde boom: code
-die in elke build kan meedoen. De 77 in `variants/` horen bij precies één
-bord. Samen 196. Hoe die 196 zijn ingedeeld staat in
-[Het klassenmodel](class-model.md).
+De 119 klassen in `src/` en `examples/` samen vormen de gedeelde broncode:
+code die in elke build kan meedoen. De 77 in `variants/` horen bij precies één
+bord. Samen 196. Hoe die 196 zijn ingedeeld staat in [Het
+klassenmodel](class-model.md).
 
 > [!NOTE]
 > **Telmethode.** Geteld is elke regel van de vorm `class Naam { …` of
@@ -64,7 +63,7 @@ in 508 varianten wordt gebouwd. Alles wat groter is, staat eronder in
 
 De 38 bestanden direct onder `src/helpers/` zijn de onderdelen die niet
 platformgebonden zijn: de rechtenlijst, de opslag, de bediening, de
-regiotabel, de pakketvoorraad. De zeven ondermappen zijn dat wel, of ze horen
+regiotabel, de pakketpool. De zeven ondermappen zijn dat wel, of ze horen
 bij één onderwerp:
 
 | Map | Waarom apart |
@@ -77,7 +76,7 @@ bij één onderwerp:
 | `nrf52/` | Platform: idem voor nRF52 |
 | `stm32/` | Platform: idem voor STM32 |
 
-## De scheefheid tussen de platformmappen
+## De asymmetrie tussen de platformmappen
 
 Dit is het punt van dit hoofdstuk. De drie platformmappen zijn extreem
 ongelijk gevuld, en er is een vierde familie die er helemaal geen heeft.
@@ -101,7 +100,7 @@ alleen BLE en dus alleen `SerialBLEInterface`. RP2040 heeft geen van drieën en
 houdt niets over om te delen; zijn vier bordklassen staan los in `variants/`.
 Zie [Platformrealisatie](platform-realisation.md).
 
-## Gevendorde code in `src/helpers/ui/`
+## Meegeleverde code in `src/helpers/ui/`
 
 Achttien klassendeclaraties in `ui/` is meer dan het aantal schermdrivers, en
 dat komt doordat niet alles in die map van MeshCore is. `OLEDDisplay.h`
@@ -116,10 +115,10 @@ oorspronkelijke codebase.
 
 > [!NOTE]
 > Beide zijn geen MeshCore-ontwerp. Ze staan in de telling omdat ze
-> declaraties in de bronboom zijn, maar wie het klassenmodel leest moet weten
-> dat drie van de achttien uit overgenomen code komen. Waar MeshCore
-> libraries wél als library opneemt, staat in
-> [Libraries in MeshCore](../../libraries/introduction.md).
+> declaraties in de broncodestructuur zijn, maar wie het klassenmodel leest
+> moet weten dat drie van de achttien uit overgenomen code komen. Waar
+> MeshCore libraries wél als library opneemt, staat in [Libraries in
+> MeshCore](../../libraries/introduction.md).
 
 ## `examples/` is geen voorbeeldmap
 
@@ -140,10 +139,10 @@ welke radiochip erop zit, welk scherm eraan hangt. Twee mappen bevatten geen
 klasse — die leveren alleen een `platformio.ini` en een `target.h`.
 
 De 77 klassen daarin zijn opvallend eenvormig: 65 bordklassen, 7
-sensorbeheerders, 3 schermen en 2 toevalsbronnen. Ze vullen alle een contract
-in dat in de gedeelde boom is vastgelegd. Dat maakt ze samen goed voor 39 %
-van alle klassen in de firmware, terwijl er nauwelijks ontwerp in zit — het is
-bijna allemaal pinbezetting.
+sensorbeheerders, 3 schermen en 2 entropiebronnen. Ze vullen alle een contract
+in dat in de gedeelde broncode is vastgelegd. Dat maakt ze samen goed voor 39
+% van alle klassen in de firmware, terwijl er nauwelijks ontwerp in zit — het
+is bijna allemaal pinbezetting.
 
 ## Bronnen
 

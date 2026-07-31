@@ -45,8 +45,8 @@ whether it is dealing with e-ink.
 Packets are not allocated dynamically but taken from a pre-reserved pool.
 
 **Why.** On a microcontroller that has to run for months on end, memory
-fragmentation is a slow killer. A fixed pool cannot fragment and memory use is
-known at startup.
+fragmentation can gradually lead to instability. A fixed pool cannot fragment
+and memory use is known at startup.
 
 **What it costs.** The pool can run out. If more packets are in flight than
 there are slots, one is dropped. That is a design choice — a predictable loss

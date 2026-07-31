@@ -1,6 +1,6 @@
 # AsyncElegantOTA
 
-*GEVENDORD · ACCESSPOINT · UPLOADPAGINA · GEEN UPSTREAM*
+*MEEGELEVERD · ACCESSPOINT · UPLOADPAGINA · GEEN UPSTREAM*
 
 De uploadpagina waarmee een ESP32-node nieuwe firmware binnenkrijgt, komt uit
 AsyncElegantOTA. Die library staat niet in de registry maar als kopie in de

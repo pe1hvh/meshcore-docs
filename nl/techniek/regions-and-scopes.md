@@ -30,7 +30,7 @@ wat ze doen met de eigenschappen van dit mechanisme, zie
 > `src/helpers/CommonCLI.cpp`, `examples/simple_repeater/MyMesh.cpp`,
 > `examples/companion_radio/MyMesh.cpp` en `docs/cli_commands.md`.
 > De pakketopbouw waarin deze codes staan is beschreven in
-> [MeshCore Packet Structuur](packet-structure.md).
+> [MeshCore Pakketstructuur](packet-structure.md).
 ## Waar zit de transport code?
 
 > [!NOTE]

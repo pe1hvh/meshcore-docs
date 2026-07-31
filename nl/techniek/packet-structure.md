@@ -1,4 +1,4 @@
-# MeshCore Packet Structuur
+# MeshCore Pakketstructuur
 
 *HEADER · ROUTE · PATH · PAYLOAD · REGIO-SCOPE*
 

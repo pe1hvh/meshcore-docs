@@ -111,8 +111,8 @@ nodig om hem te draaien.
 
 Een werkend netwerk heeft minstens twee rollen nodig. Companion radio's praten
 met elkaar, maar zonder repeaters komen ze niet verder dan elkaars directe
-bereik. Repeaters onderling vormen het draagvlak; room servers hangen daaraan
-als dienst.
+bereik. Repeaters onderling vormen de netwerkinfrastructuur waarover andere
+nodes hun berichten doorgeven; room servers hangen daaraan als dienst.
 
 | Combinatie | Zinvol |
 |---|---|

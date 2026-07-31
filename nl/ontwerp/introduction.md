@@ -10,8 +10,8 @@ in een logisch en een technisch ontwerp.
 
 > [!NOTE]
 > **Bron.** Deze pagina is geverifieerd tegen de firmware zelf: `MeshCore`
-> v1.16.0, commit `03b6ef4`, 28 juli 2026 — de volledige bronboom, de root
-> `platformio.ini` en alle 79 `variants/*/platformio.ini`.
+> v1.16.0, commit `03b6ef4`, 28 juli 2026 — de volledige broncodestructuur, de
+> root `platformio.ini` en alle 79 `variants/*/platformio.ini`.
 
 ## Twee lagen
 
@@ -23,7 +23,7 @@ en zonder te weten dat er een `Dispatcher.cpp` bestaat.
 
 Een technisch ontwerp beschrijft *hoe* dat gerealiseerd is. Welke klasse welke
 rol vervult, welke bestanden bij elkaar horen, hoe de vier platformfamilies
-dezelfde abstractie op vier manieren invullen, en hoe het buildsysteem de
+dezelfde abstractie op vier manieren implementeren, en hoe het buildsysteem de
 juiste combinatie bij elkaar zoekt. Daar staan bestandsnamen en regelnummers
 in.
 
@@ -47,7 +47,7 @@ staat een verwijzing.
 | Onderwerp | Staat in |
 |---|---|
 | Protocollagen en gedrag over de lucht | [Het Lagenmodel](../techniek/layer-model.md) |
-| Byte-indeling van pakketten | [Packet Structuur](../techniek/packet-structure.md) |
+| Byte-indeling van pakketten | [Pakketstructuur](../techniek/packet-structure.md) |
 | Keuze tussen de vier platformfamilies | [De vier platformfamilies](../platform/platform-families.md) |
 | Fysieke bussen en verbindingen | [Hardware van een node](../hardware/introduction.md) |
 | Externe libraries en hun configuratie | [Libraries in MeshCore](../libraries/introduction.md) |
@@ -69,18 +69,23 @@ MeshCore zelf.
 
 **Technisch ontwerp**
 
-- [De bronboom](technisch/source-layout.md) — wat waar staat, en de scheefheid
-- [Het klassenmodel](technisch/class-model.md) — contract, invulling, zelfstandig
-- [Platformrealisatie](technisch/platform-realisation.md) — vier families, één abstractie
+- [De broncodestructuur](technisch/source-layout.md) — wat waar staat, en de
+  asymmetrie
+- [Het klassenmodel](technisch/class-model.md) — contract, implementatie,
+  zelfstandig
+- [Platformrealisatie](technisch/platform-realisation.md) — vier families, één
+  abstractie
 - [Radiorealisatie](technisch/radio-realisation.md) — waar de radiokeuze valt
 - [Het buildsysteem](technisch/build-system.md) — hoe 508 targets ontstaan
-- [Compile-time configuratie](technisch/configuration.md) — 277 macro's en hun eigenaar
-- [Traceerbaarheid](technisch/traceability.md) — logisch onderdeel naar bestand en regel
+- [Compile-time configuratie](technisch/configuration.md) — 277 macro's en hun
+  eigenaar
+- [Traceerbaarheid](technisch/traceability.md) — logisch onderdeel naar
+  bestand en regel
 
 ## Narekenen
 
 Elk getal in deze sectie komt uit `tools/design-overview.py`. Dat script leest
-een MeshCore-checkout en lost per buildtarget op welke applicatie wordt
+een MeshCore-checkout en bepaalt per buildtarget welke applicatie wordt
 gecompileerd, tot welke platformfamilie het target hoort en welke onderdelen
 zijn ingeschakeld:
 

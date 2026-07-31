@@ -17,9 +17,9 @@ platformfamilies zonder er iets van te merken.
 ## De stapel in één beeld
 
 ![Drie lagen boven elkaar. Onderaan de hardware-abstracties radio, bord, klok
-en toevalsbron; in het midden de pakketafhandeling en de mesh-logica; bovenaan
-de applicatie. Naast de stapel staan de ondersteunende componenten voor opslag,
-rechten, bediening en koppelvlakken.](../../../images/nl/components-1.svg)
+en entropiebron; in het midden de pakketafhandeling en de mesh-logica;
+bovenaan de applicatie. Naast de stapel staan de ondersteunende componenten
+voor opslag, rechten, bediening en koppelvlakken.](../../../images/nl/components-1.svg)
 
 ## De kern
 
@@ -43,7 +43,7 @@ vallen omdat het al eerder langskwam.
 
 Wat deze laag níét weet: hoe de radio werkt, en wat de applicatie met een
 bericht gaat doen. Hij biedt de applicatie een reeks aanknopingspunten aan en
-vult zelf niets in.
+implementeert zelf niets.
 
 ### Applicatie
 
@@ -63,7 +63,10 @@ het bord kan.
 | Radio | Bytes de lucht in en uit krijgen, zendtijd schatten, signaalsterkte melden | Pakketten, adressering, versleuteling |
 | Bord | Batterijspanning, temperatuur, herstart, slaapstand, opstartreden | Radio, netwerk, applicatie |
 | Klok | De huidige tijd in UNIX-seconden | Waar die tijd voor gebruikt wordt |
-| Toevalsbron | Willekeurige bytes leveren | Waar die bytes in terechtkomen |
+| Entropiebron | Willekeurige bytes leveren | Waar die bytes in terechtkomen |
+
+De *entropiebron* is de generator voor willekeurige getallen van de node; de
+naam verwijst naar de bron van willekeur waar die getallen uit komen.
 
 De scheiding tussen radio en bord is scherper dan je zou verwachten. Het bord
 weet wél dat er een moment vóór en na het zenden is — het krijgt een seintje
@@ -72,17 +75,21 @@ er verzonden wordt.
 
 ## De ondersteunende componenten
 
-### Pakketvoorraad
+### Pakketpool
 
-Pakketten worden niet aangevraagd bij het geheugenbeheer van het systeem maar
-uit een vooraf gereserveerde voorraad gehaald. Dat is een bewuste keuze; zie
+De *pakketpool* is vooraf gereserveerd geheugen voor pakketten — de gangbare
+programmeerterm daarvoor is *object pool* of *memory pool*. Pakketten worden
+niet aangevraagd bij het geheugenbeheer van het systeem maar uit die pool
+gehaald. Dat is een bewuste keuze; zie
 [Ontwerpbeslissingen](decisions.md). Dezelfde component beheert ook de
 wachtrijen naar binnen en naar buiten, met prioriteit en een gepland
 verzendmoment per pakket.
 
 ### Gezien-tabel
 
-Houdt bij welke pakketten al langs zijn geweest. Zonder deze component zou elk
+De *gezien-tabel* is de lijst waarmee de node controleert of een pakket al
+eerder is ontvangen — technisch een duplicatendetectietabel. Hij houdt bij
+welke pakketten al langs zijn geweest. Zonder deze component zou elk
 pakket in een netwerk met meerdere repeaters oneindig blijven rondgaan.
 
 ### Identiteit

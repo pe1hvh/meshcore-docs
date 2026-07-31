@@ -1,9 +1,9 @@
 # Radiorealisatie
 
-*INJECTIEPUNT · DUBBELPAAR · WRAPPER · ESP-NOW*
+*KOPPELPUNT · CHIPDRIVER · WRAPPER · ESP-NOW*
 
-De radio is de enige hardware-abstractie waar de kern zelf de invulling niet
-kiest. Dit hoofdstuk laat zien waar die keuze wél wordt gemaakt — in de
+De radio is de enige hardware-abstractie waar de kern zelf de implementatie
+niet kiest. Dit hoofdstuk laat zien waar die keuze wél wordt gemaakt — in de
 variant, niet in de kern — en waarom er per radiochip twee klassen bestaan in
 plaats van één. Dat laatste is geen dubbeling maar een taakverdeling.
 
@@ -24,13 +24,13 @@ De pakketafhandeling houdt een `Radio*` vast. Verder komt de abstractie niet:
 nergens in `src/` of `examples/` staat een regel die bepaalt wélke radio dat
 is.
 
-## Het injectiepunt ligt in de variant
+## Het koppelpunt ligt in de variant
 
 `RADIO_CLASS` en `WRAPPER_CLASS` zijn de twee macro's die de radiokeuze
-dragen. In de gedeelde boom worden ze **nergens gelezen**. De enige treffers
-zijn vier commentaarregels in `src/helpers/esp32/TBeamBoard.cpp`: `RADIO_CLASS`
-op r.313 en r.334, `WRAPPER_CLASS` op r.314 en r.335. Uitgecommentarieerde
-code, geen werkende.
+dragen. In de gedeelde broncode worden ze **nergens gelezen**. De enige
+treffers zijn vier commentaarregels in `src/helpers/esp32/TBeamBoard.cpp`:
+`RADIO_CLASS` op r.313 en r.334, `WRAPPER_CLASS` op r.314 en r.335.
+Uitgecommentarieerde code, geen werkende.
 
 De macro's worden geconsumeerd in `variants/*/target.h` en
 `variants/*/target.cpp`:
@@ -50,10 +50,10 @@ extern EnvironmentSensorManager sensors;
 ```
 
 De applicatie includeert `target.h` en gebruikt `radio_driver` als globale
-variabele. Het injectiepunt ligt dus in de variant, niet in de kern — precies
+variabele. Het koppelpunt ligt dus in de variant, niet in de kern — precies
 omgekeerd aan wat je bij een abstractielaag zou verwachten. Normaal krijgt de
-kern een invulling aangereikt; hier definieert de rand een globale variabele
-waarvan de kern aanneemt dat hij bestaat.
+kern een implementatie aangereikt; hier definieert de rand een globale
+variabele waarvan de kern aanneemt dat hij bestaat.
 
 ![Van links naar rechts: platformio.ini definieert RADIO_CLASS en
 WRAPPER_CLASS als buildvlag; target.h in de variantmap gebruikt WRAPPER_CLASS
@@ -67,11 +67,11 @@ Dat verklaart waarom de radio niet in de driedeling van
 bord kiest de variant een klasse die van een gedeelde ouder erft; bij de radio
 kiest de variant een klasse én de naam waaronder de kern hem terugvindt.
 
-## Het dubbelpaar
+## Chipdriver en MeshCore-wrapper
 
 Per radiochip bestaan er twee klassen, en dat is opzet.
 
-| Chip | Aangepaste driver | Contractinvulling | Targets |
+| Chip | Aangepaste driver | Implementatie | Targets |
 |---|---|---|---|
 | SX1262 | `CustomSX1262` | `CustomSX1262Wrapper` | 424 |
 | SX1276 | `CustomSX1276` | `CustomSX1276Wrapper` | 29 |
@@ -86,7 +86,7 @@ in. Daarom staat hij in groep 3 van het klassenmodel, bij de zelfstandige
 klassen.
 
 De rechterkolom erft van `RadioLibWrapper`, die op zijn beurt `mesh::Radio`
-invult. Dat is de klasse die het contract draagt. De scheiding houdt de
+implementeert. Dat is de klasse die het contract draagt. De scheiding houdt de
 RadioLib-aanpassingen los van de MeshCore-afspraak: wie de chipdriver moet
 bijsturen raakt de linkerkolom aan, wie iets aan de mesh-kant verandert de
 rechter.
@@ -127,9 +127,9 @@ zend-ontvangstschakelaar, een LED — en na afloop weer terug. Het bord krijgt
 daarom een seintje voor en na elke uitzending.
 
 In hetzelfde bestand staat op regel 74 `RadioNoiseListener`, die `mesh::RNG`
-invult: de ruis van de radio-ontvanger als bron van toeval. Dat is de reden
-dat de toevalsbron in het logisch ontwerp een eigen component is en niet een
-detail van de radio.
+implementeert: de ruis van de radio-ontvanger als bron van willekeur. Dat is
+de reden dat de entropiebron in het logisch ontwerp een eigen component is en
+niet een detail van de radio.
 
 ## Buiten het schema: ESP-NOW
 

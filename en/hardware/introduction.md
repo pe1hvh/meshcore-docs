@@ -112,7 +112,7 @@ implementation per chip:
 | Button | `MomentaryButton` | `src/helpers/ui/MomentaryButton.h` |
 
 That `BaseSerialInterface` is a single abstraction for BLE, WiFi *and* USB
-is not a detail: to the firmware these are three fillings of the same
+is not a detail: to the firmware these are three implementations of the same
 notion — a connection carrying frames to a companion.
 
 ## The three subsections

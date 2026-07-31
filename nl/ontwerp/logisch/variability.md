@@ -19,8 +19,8 @@ MeshCore varieert langs drie onafhankelijke assen. Een buildtarget is een punt
 in die ruimte: één rol, één platformfamilie, één bord.
 
 ![Drie assen in een blokdiagram: rol, platformfamilie en bord. Daarnaast een
-losse kolom met de bijmengingen die onafhankelijk van de assen aan of uit
-kunnen: radio, scherm, brug, sensoren en logging.](../../../images/nl/variability-1.svg)
+losse kolom met de aanvullende buildopties die onafhankelijk van de assen aan
+of uit kunnen: radio, scherm, brug, sensoren en logging.](../../../images/nl/variability-1.svg)
 
 | As | Waarden | Vastgelegd door |
 |---|---|---|
@@ -28,9 +28,9 @@ kunnen: radio, scherm, brug, sensoren en logging.](../../../images/nl/variabilit
 | Platformfamilie | 4 | Welke platformmacro is gedefinieerd |
 | Bord | 79 varianten | Welk variantbestand het target definieert |
 
-Daarnaast zijn er bijmengingen die los van de assen staan: welke radiochip,
-welk schermtype, of er een brug is, of er sensoren zijn, en of logging aan
-staat.
+Daarnaast zijn er aanvullende buildopties die los van de assen staan: welke
+radiochip, welk schermtype, of er een brug is, of er sensoren zijn, en of
+logging aan staat.
 
 ## De aantallen
 
@@ -75,17 +75,18 @@ Drie cellen staan op nul. Er is geen room server en geen terminal chat op
 STM32, en geen sensor op RP2040. Dat is geen technische onmogelijkheid maar
 een keuze: niemand heeft die combinatie nodig gehad.
 
-## Het productvlak is niet vol
+## Niet alle combinaties worden ondersteund
 
 Zes rollen op negenenzeventig borden zou 474 combinaties opleveren. Er zijn er
-507. Dat is geen tegenspraak maar het gevolg van de bijmengingen: dezelfde rol
-op hetzelfde bord bestaat meermaals, in varianten met en zonder brug, met
-verschillende schermen of met een andere zendtransport.
+507. Dat is geen tegenspraak maar het gevolg van de aanvullende buildopties:
+dezelfde rol op hetzelfde bord bestaat meermaals, in varianten met en zonder
+brug, met verschillende schermen of met een andere zendtransport.
 
-Tegelijk is het vlak niet vol. Lang niet elk bord kent alle zes de rollen. De
-companion radio bestaat op 76 van de 79 borden, de sensor op 16.
+Tegelijk is de configuratiematrix niet volledig gevuld. Lang niet elk bord
+kent alle zes de rollen. De companion radio bestaat op 76 van de 79 borden, de
+sensor op 16.
 
-| Bijmenging | Targets |
+| Aanvullende buildopties | Targets |
 |---|---|
 | GPS ingeschakeld | 323 |
 | Scherm aanwezig | 309 |
@@ -94,12 +95,12 @@ companion radio bestaat op 76 van de 79 borden, de sensor op 16.
 | Debug-uitvoer aan | 36 |
 | Pakketlogging aan | 10 |
 
-## Injectie van klassen
+## Klassen kiezen tijdens het compileren
 
-De bijmengingen werken via één mechanisme: het buildsysteem geeft een
-klassenaam door als macro, en de code gebruikt die naam alsof hij er altijd
-al stond. Zo kiest een variantbestand welke radio en welk scherm er in de
-binary komen, zonder dat de applicatie ervan weet.
+De aanvullende buildopties werken via één mechanisme: het buildsysteem geeft
+een klassenaam door als macro, en de code gebruikt die naam alsof hij er
+altijd al stond. Zo kiest een variantbestand welke radio en welk scherm er in
+de binary komen, zonder dat de applicatie ervan weet.
 
 | Macro | Verschillende waarden | Targets die hem zetten |
 |---|---|---|
@@ -107,9 +108,9 @@ binary komen, zonder dat de applicatie ervan weet.
 | `WRAPPER_CLASS` | 5 | 501 |
 | `DISPLAY_CLASS` | 11 | 309 |
 
-De vijf radiowaarden dekken vijf chipfamilies. Er is een zesde invulling in de
-broncode aanwezig die door geen enkel target wordt gekozen; hij is beschikbaar
-voor wie hem in een eigen variant nodig heeft.
+De vijf radiowaarden dekken vijf chipfamilies. Er is een zesde implementatie
+in de broncode aanwezig die door geen enkel target wordt gekozen; hij is
+beschikbaar voor wie hem in een eigen variant nodig heeft.
 
 Zeven targets zetten geen `RADIO_CLASS`. Vijf daarvan zijn ESP-NOW-varianten
 die geen LoRa-radio gebruiken, en het zesde is het testtarget. Het zevende is
@@ -121,7 +122,7 @@ Dit is de belangrijkste waarschuwing van dit hoofdstuk, en de reden dat er een
 script bij zit.
 
 De naam van een `[env:...]`-sectie is vrije tekst. Hij zegt niets af over wat
-er wordt gecompileerd. Drie manieren waarop de naam liegt:
+er wordt gecompileerd. Drie manieren waarop de naam misleidt:
 
 **De naam noemt de rol niet.** `Generic_ESPNOW_room_svr` compileert de room
 server, maar wie op `_room_server` zoekt vindt hem niet. Er zijn ook targets
@@ -157,14 +158,14 @@ applicatie zijn bronfilter over meerdere regels verdeelt.
 in de rest staat de regel uitgeschakeld in het bestand als voorbeeld. Hetzelfde
 geldt voor pakketlogging: 385 vermeldingen, 10 daadwerkelijk aan.
 
-## Drie variantbestanden met andere regeleindes
+## Drie variantbestanden met andere regeleinden
 
 `variants/minewsemi_me25ls01`, `variants/nibble_screen_connect` en
-`variants/wio_wm1110` gebruiken Windows-regeleindes. Wie de bestanden regel
+`variants/wio_wm1110` gebruiken Windows-regeleinden. Wie de bestanden regel
 voor regel leest zonder te normaliseren, houdt een onzichtbaar teken over aan
 het eind van elke waarde. De ouder mét dat teken en de ouder zonder tellen dan
 als twee verschillende secties, en de helft van de overervingsketen valt weg.
-Het script normaliseert de regeleindes voordat het iets anders doet.
+Het script normaliseert de regeleinden voordat het iets anders doet.
 
 ## Eén target dat niet kan compileren
 

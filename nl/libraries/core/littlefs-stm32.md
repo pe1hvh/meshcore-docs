@@ -1,6 +1,6 @@
 # Adafruit LittleFS voor STM32
 
-*PORT · GEVENDORD · LOKAAL PAD · BUILD_HEX*
+*PORT · MEEGELEVERD · LOKAAL PAD · BUILD_HEX*
 
 De STM32WL draait dezelfde MeshCore-code als de andere platformen, maar kan
 de LittleFS-implementatie van de nRF52-core niet gebruiken. In `arch/stm32/`

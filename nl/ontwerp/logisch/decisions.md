@@ -43,13 +43,13 @@ of het om e-ink gaat.
 ## 3. Pakketten uit een vaste voorraad
 
 Pakketten worden niet dynamisch aangevraagd maar uit een vooraf gereserveerde
-voorraad gehaald.
+pool gehaald.
 
-**Waarom.** Op een microcontroller die maanden achtereen moet draaien is
-geheugenfragmentatie een sluipmoordenaar. Een vaste voorraad kan niet
-fragmenteren en het geheugengebruik is bij het opstarten bekend.
+**Waarom.** Op een microcontroller die maanden achtereen moet draaien kan
+geheugenfragmentatie geleidelijk tot instabiliteit leiden. Een vaste pool kan
+niet fragmenteren en het geheugengebruik is bij het opstarten bekend.
 
-**Wat het kost.** De voorraad kan op. Als er meer pakketten tegelijk onderweg
+**Wat het kost.** De pool kan op. Als er meer pakketten tegelijk onderweg
 zijn dan er plekken zijn, valt er een af. Dat is een ontwerpkeuze — liever een
 voorspelbaar verlies dan een onvoorspelbare herstart.
 
@@ -67,14 +67,14 @@ dat niet doorkomt.
 Er is geen manier om te ontdekken dat een repeater is uitgevallen behalve door
 te merken dat er niets terugkomt.
 
-## 5. Alles achter een contract, ook wat maar één invulling heeft
+## 5. Alles achter een contract, ook wat maar één implementatie heeft
 
-De gezien-tabel en de pakketvoorraad hebben elk precies één invulling, en toch
+De gezien-tabel en de pakketpool hebben elk precies één implementatie, en toch
 zit er een contract tussen.
 
-**Waarom.** Het contract is geen voorbereiding op toekomstige invullingen maar
-een grens. Het legt vast wat de mesh-logica van die component mag verwachten,
-en dwingt af dat er niets doorheen lekt.
+**Waarom.** Het contract is geen voorbereiding op toekomstige implementaties
+maar een grens. Het legt vast wat de mesh-logica van die component mag
+verwachten, en dwingt af dat er niets doorheen lekt.
 
 **Wat het kost.** Een laag indirectie die op deze schaal niets oplevert aan
 flexibiliteit. Dat is de prijs die het ontwerp bewust betaalt.

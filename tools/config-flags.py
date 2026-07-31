@@ -360,8 +360,8 @@ def render_consumption(root, active, lang):
     read = len(macros) - counts[nowhere]
     if lang == "nl":
         out.append("\nVan de %d MeshCore-macro's komen er %d ergens in de "
-                   "bronboom voor en %d nergens." % (len(macros), read,
-                                                     counts[nowhere]))
+                   "broncodestructuur voor en %d nergens."
+                   % (len(macros), read, counts[nowhere]))
         out += ["", "| Waar gelezen | Macro's |", "|---|---|"]
     else:
         out.append("\nOf the %d MeshCore macros, %d occur somewhere in the "

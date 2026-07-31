@@ -143,7 +143,7 @@ luchtkwaliteitsindex, met een kalibratie die over dagen loopt. In twee
 varianten gedeclareerd, `lilygo_tbeam_SX1276` en `rak4631`, achter de vlag
 `ENV_INCLUDE_BME680_BSEC` met een eigen `query_bme680_bsec`-functie.
 
-## RAK12035_SoilMoisture — gevendord
+## RAK12035_SoilMoisture — meegeleverd
 
 De bodemvochtsensor RAK12035 heeft geen `lib_deps`-regel. Zijn driver staat
 gewoon in de broncode, als `src/helpers/sensors/RAK12035_SoilMoisture.h` en
@@ -169,7 +169,7 @@ een regel in de sensortabel. Wie de sensorlijst opmaakt uit de
 | `adafruit/Adafruit_VL53L0X` | `^1.2.4` | 1 | `ENV_INCLUDE_VL53L0X` |
 | `finitespace/BME280` | `^3.0.0` | 1 | — |
 | `boschsensortec/BSEC Software Library` | `^1.8.1492` | 2 | `ENV_INCLUDE_BME680_BSEC` |
-| *`RAK12035_SoilMoisture`* | *gevendord* | *—* | `ENV_INCLUDE_RAK12035` |
+| *`RAK12035_SoilMoisture`* | *meegeleverd* | *—* | `ENV_INCLUDE_RAK12035` |
 
 ## Bronnen
 

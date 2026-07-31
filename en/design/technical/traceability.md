@@ -14,9 +14,9 @@ therefore have no realisation either.
 
 ## What this matrix is for
 
-A logical design that cannot be pointed at is a story. This table makes it
-checkable: anyone doubting whether the mesh logic really knows nothing of the
-radio can open `src/Mesh.h` r.26 and look.
+Linking every logical element to the source code makes the design checkable
+and verifiable. This table records that link: anyone doubting whether the mesh
+logic really knows nothing of the radio can open `src/Mesh.h` r.26 and look.
 
 The matrix runs one way. From logical component to realisation, not the other
 way round — not every class in the source tree belongs to a logical component.
@@ -34,8 +34,8 @@ utilities without a counterpart in the logical design.
 | Board | `mesh::MainBoard`, `src/MeshCore.h` r.45 |
 | Clock | `mesh::RTCClock`, `src/MeshCore.h` r.80 |
 | Entropy | `mesh::RNG`, `src/Utils.h` r.9 |
-| Packet pool | `mesh::PacketManager`, `src/Dispatcher.h` r.85; filler `StaticPoolPacketManager`, `src/helpers/StaticPoolPacketManager.h` r.21 |
-| Seen table | `mesh::MeshTables`, `src/Mesh.h` r.16; filler `SimpleMeshTables`, `src/helpers/SimpleMeshTables.h` r.11 |
+| Packet pool | `mesh::PacketManager`, `src/Dispatcher.h` r.85; implementation `StaticPoolPacketManager`, `src/helpers/StaticPoolPacketManager.h` r.21 |
+| Seen table | `mesh::MeshTables`, `src/Mesh.h` r.16; implementation `SimpleMeshTables`, `src/helpers/SimpleMeshTables.h` r.11 |
 | Identity | `mesh::Identity`, `src/Identity.h` r.11; `LocalIdentity` r.54 |
 | Access list | `ClientACL`, `src/helpers/ClientACL.h` r.40; `ClientInfo` r.15 |
 | Storage | `IdentityStore`, `src/helpers/IdentityStore.h` r.14 |
@@ -56,7 +56,7 @@ Three things stand out.
 `src/helpers/` or in `examples/`.
 
 **Seven components are a contract, not a class.** Radio, board, clock,
-entropy, interface, display and sensor management point at a contract-defining
+entropy, interface, display and sensor management point at an interface class
 class. What hangs underneath in a concrete build depends on the build target —
 see [Platform realisation](platform-realisation.md) and
 [Radio realisation](radio-realisation.md).

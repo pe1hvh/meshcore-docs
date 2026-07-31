@@ -106,7 +106,7 @@ directory komt geheel uit de twee overervingsmechanismen hierboven.
 Samen 507, plus `[env:native]` zonder applicatie. Welke rol wat doet, staat in
 [Rollen](../logisch/roles.md).
 
-## Bijmenging
+## Aanvullende buildopties
 
 Boven op de combinatie van bord en rol komen de losse schakelaars. Ze staan
 los van elkaar aan of uit, en verklaren waarom er meer targets zijn dan
@@ -130,11 +130,11 @@ actieve regels, overschat de foutopsporing met een factor tien.
 ## Drie bestanden met CRLF
 
 `variants/minewsemi_me25ls01/`, `variants/nibble_screen_connect/` en
-`variants/wio_wm1110/` gebruiken Windows-regeleindes. Zonder normalisatie
+`variants/wio_wm1110/` gebruiken Windows-regeleinden. Zonder normalisatie
 lezen `esp32_base\r` en `esp32_base` als twee verschillende ouders, en vallen
 die targets buiten elke telling.
 
-`tools/design-overview.py` strookt de regeleindes daarom voordat het iets
+`tools/design-overview.py` normaliseert de regeleinden daarom voordat het iets
 anders doet.
 
 ## Wat er niet compileert
@@ -161,11 +161,11 @@ python3 tools/design-overview.py /pad/naar/MeshCore
 python3 tools/design-overview.py /pad/naar/MeshCore --targets simple_room_server
 ```
 
-Het script lost `extends` en `${sectie.optie}` allebei op, strookt CRLF, en
-slaat uitgecommentarieerde regels over. Zijn room-servertelling (73 targets in
-65 directory's) komt overeen met `tools/room-server-overview.py`, dat langs een
-andere weg tot hetzelfde getal komt — die kruiscontrole is het bewijs dat de
-oplosser klopt.
+Het script lost `extends` en `${sectie.optie}` allebei op, normaliseert CRLF,
+en slaat uitgecommentarieerde regels over. Zijn room-servertelling (73 targets
+in 65 directory's) komt overeen met `tools/room-server-overview.py`, dat langs
+een andere weg tot hetzelfde getal komt — die kruiscontrole is het bewijs dat
+de oplosser klopt.
 
 ## Bronnen
 

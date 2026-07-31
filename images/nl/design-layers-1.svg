@@ -17,10 +17,10 @@
 <text x="36" y="220" font-family="'JetBrains Mono',monospace" font-size="9" font-weight="400" fill="var(--text-muted)" text-anchor="start">stabiel over releases</text>
 <rect x="360" y="40" width="320" height="210" rx="6" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="1.5"/>
 <text x="376" y="62" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="700" fill="var(--link-color)" text-anchor="start" letter-spacing="1.5">TECHNISCH ONTWERP</text>
-<text x="376" y="84" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400" fill="var(--text-secondary)" text-anchor="start">• Bronboom — waar staat wat</text>
+<text x="376" y="84" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400" fill="var(--text-secondary)" text-anchor="start">• Broncodestructuur — waar staat wat</text>
 <text x="376" y="106" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400" fill="var(--text-secondary)" text-anchor="start">• Klassenmodel — de concrete overerving</text>
 <text x="376" y="128" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400" fill="var(--text-secondary)" text-anchor="start">• Platformrealisatie — 4 families, 1 abstractie</text>
-<text x="376" y="150" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400" fill="var(--text-secondary)" text-anchor="start">• Radiorealisatie — injectie van de radioklasse</text>
+<text x="376" y="150" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400" fill="var(--text-secondary)" text-anchor="start">• Radiorealisatie — keuze van de radioklasse</text>
 <text x="376" y="172" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400" fill="var(--text-secondary)" text-anchor="start">• Buildsysteem — de overervingsketen</text>
 <text x="376" y="194" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400" fill="var(--text-secondary)" text-anchor="start">• Configuratie — de macro's</text>
 <text x="376" y="216" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="400" fill="var(--text-secondary)" text-anchor="start">• Traceerbaarheid — logisch naar bestand</text>

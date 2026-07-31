@@ -31,12 +31,33 @@ hoofdstuk verwijst, niet het aantal bestanden in `images/`.
 | weten waar dit over gaat | [Wat is MeshCore?](nl/gebruik/what-is-meshcore.md) |
 | een node aan de praat krijgen | [Aan de Slag](nl/gebruik/getting-started.md) · [Hardware](nl/gebruik/hardware.md) |
 | weten wat mag binnen de regels | [Regelgeving & Duty Cycle](nl/gebruik/regulations.md) |
-| begrijpen hoe het écht werkt | [Het Lagenmodel](nl/techniek/layer-model.md) → [Packet Structuur](nl/techniek/packet-structure.md) |
+| begrijpen hoe het écht werkt | [Het Lagenmodel](nl/techniek/layer-model.md) → [Pakketstructuur](nl/techniek/packet-structure.md) |
 | een repeater goed instellen | [Regio's en Scopes](nl/techniek/regions-and-scopes.md) · [Repeater TX/RX flow](nl/techniek/repeater-flow.md) |
 | weten waarom regio's zijn zoals ze zijn | [Regio's: bedoeling en praktijk](nl/techniek/regions-in-practice.md) |
 | een term opzoeken | [Terminologie](nl/naslag/terminology.md) |
 
 Het volledige overzicht staat in **[nl/README.md](nl/README.md)**.
+
+### Leeswijzer
+
+De hoofdstukken lopen sterk uiteen in benodigde voorkennis. Deze tabel zegt
+per sectie welke voorkennis handig is, zodat je weet welk detailniveau je kunt
+verwachten.
+
+| Sectie | Wat je er vindt | Benodigde voorkennis |
+|---|---|---|
+| [Gebruik](nl/gebruik/) | Wat MeshCore is, een node aan de praat krijgen, hardware, regelgeving, privacy | Geen. Geen programmeerkennis vereist |
+| [Techniek](nl/techniek/) | Protocol, pakketopbouw byte voor byte, encryptie, routing, repeaters, room server | Basisbegrip van netwerken en hexadecimale notatie helpt; programmeren niet nodig |
+| [Platform](nl/platform/) | De vier platformfamilies en de keuze ertussen | Geen, afgezien van globale kennis van microcontrollers |
+| [Hardware](nl/hardware/) | Radio, antenne, linkbudget, BLE, WiFi, USB, I²C, SPI, scherm, GPS, knoppen | Basiskennis elektronica aanbevolen; enkele hoofdstukken tonen C++ fragmenten |
+| [Libraries](nl/libraries/) | De tweeënvijftig externe libraries die de firmware in gaan | Kennis van PlatformIO-buildconfiguraties aanbevolen |
+| [Ontwerp → logisch](nl/ontwerp/logisch/) | Rollen, componenten, contracten, informatiemodel, variabiliteit, ontwerpbeslissingen | Basiskennis van klassen en interfaces aanbevolen; de tekst blijft weg bij broncode |
+| [Ontwerp → technisch](nl/ontwerp/technisch/) | Broncodestructuur, klassenmodel, platform- en radiorealisatie, buildsysteem, macro's, traceerbaarheid | C++ klassen, overerving en PlatformIO-buildconfiguraties |
+| [Naslag](nl/naslag/) | Terminologie, referenties, links | Geen. Bedoeld om in op te zoeken, niet om door te lezen |
+| [Project](nl/project/) | Over DOMCA, opzet van de repository | Geen |
+
+Kom je een term tegen die je niet kent, dan staat hij in
+[Terminologie](nl/naslag/terminology.md).
 
 ### Wat dit anders maakt
 
@@ -88,6 +109,26 @@ references, not the number of files in `images/`.
 | look up a term | [Terminology](en/reference/terminology.md) |
 
 The full index is in **[en/README.md](en/README.md)**.
+
+### How to read this
+
+The chapters differ widely in the background they assume. This table states
+per section what you need to bring, so you know what level of detail to expect.
+
+| Section | What you find there | Assumed knowledge |
+|---|---|---|
+| [Usage](en/usage/) | What MeshCore is, getting a node running, hardware, regulations, privacy | None. No programming knowledge required |
+| [Technical](en/technical/) | Protocol, packet layout byte by byte, encryption, routing, repeaters, room server | A basic grasp of networking and hexadecimal notation helps; programming is not needed |
+| [Platform](en/platform/) | The four platform families and choosing between them | None beyond a general idea of microcontrollers |
+| [Hardware](en/hardware/) | Radio, antenna, link budget, BLE, WiFi, USB, I²C, SPI, display, GPS, buttons | Basic electronics recommended; a few chapters show C++ fragments |
+| [Libraries](en/libraries/) | The fifty-two external libraries that go into the firmware | Familiarity with PlatformIO build configurations recommended |
+| [Design → logical](en/design/logical/) | Roles, components, contracts, information model, variability, design decisions | Basic knowledge of classes and interfaces recommended; the text stays away from source code |
+| [Design → technical](en/design/technical/) | Source tree, class model, platform and radio realisation, build system, macros, traceability | C++  classes, inheritance and PlatformIO build configurations |
+| [Reference](en/reference/) | Terminology, references, links | None. Meant for looking things up, not for reading through |
+| [Project](en/project/) | About DOMCA, how the repository is organised | None |
+
+If you hit a term you do not know, it is in
+[Terminology](en/reference/terminology.md).
 
 ### What makes this different
 

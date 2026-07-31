@@ -16,14 +16,14 @@ requires and what it leaves free.
 
 ## Duty and option
 
-Every contract consists of two kinds of agreement. Some must be filled in —
+Every contract consists of two kinds of agreement. Some must be implemented —
 skip them and you get no working node. Others have a sensible default answer
-and only need filling in when the hardware can manage it.
+and only need implementing when the hardware can manage it.
 
-That split is the hinge of the design. Adding a new board means filling in the
-mandatory agreements and leaving the rest alone. A board without a temperature
-sensor simply reports that there is no temperature, and nobody has to account
-for it.
+That split is the hinge of the design. Adding a new board means implementing
+the mandatory agreements and leaving the rest alone. A board without a
+temperature sensor simply reports that there is no temperature, and nobody has
+to account for it.
 
 `src/MeshCore.h` l.45-50
 
@@ -36,9 +36,9 @@ public:
   virtual float getAdcMultiplier() const { return 0.0f; }
 ```
 
-The first line is mandatory — every board must be able to report its battery
-voltage. The three after it have an answer for boards that cannot: no number,
-no, and zero.
+The first method is mandatory — every board must be able to report its battery
+voltage. The three remaining methods return a default value for boards without
+that capability: `NAN`, `false` and `0.0f`.
 
 ![Eight contracts as horizontal bars. Above each bar stands who uses it, below
 it how many implementations exist. Radio and display have six and eleven
@@ -57,15 +57,15 @@ respectively; clock and entropy three and two.](../../../images/en/interfaces-1.
 | Display | On, off, clear, draw, flush | 11 | Application |
 | Bridge | Offer and fetch a packet | 2 | Mesh logic |
 
-The *Implementations* column counts the classes that fill the contract in this
-commit. That there is only one seen table and one packet pool does not make the
-contract redundant: it keeps the mesh logic independent of how that table is
-built.
+The *Implementations* column counts the classes that implement the contract in
+this commit. That there is only one seen table and one packet pool does not
+make the contract redundant: it keeps the mesh logic independent of how that
+table is built.
 
 Two figures need explanation. Radio says 6 + 1: six implementations go through
 the radio library, and one — ESP-NOW — bypasses it entirely and uses WiFi
-hardware as the carrier. Of those six, five are used; the sixth is present but
-selected by no build target.
+hardware as the transport medium. Of those six, five are used; the sixth is
+present but selected by no build target.
 
 Board says 7, not 4. Three implementations are shared per platform family and
 live in `src/helpers/`. The fourth family, RP2040, has no shared
@@ -147,11 +147,12 @@ public:
   virtual void clear() = 0;
 ```
 
-Eleven display types fill this contract. One of them does nothing: nodes
+Eleven display types implement this contract. One of them does nothing: nodes
 without a screen get that implementation, so the application never has to ask
 whether there is a screen.
 
-The contract has one leak. An e-ink screen cannot be treated as an LCD —
+The contract has one limitation that cannot be abstracted away. An e-ink
+screen cannot be treated as an LCD —
 refreshing takes seconds rather than milliseconds — and that difference cannot
 be abstracted away. The contract solves it by letting the application ask what
 kind of screen it is. That is a deliberate concession; see
