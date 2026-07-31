@@ -35,7 +35,7 @@ verwachten.
 
 | Sectie | Wat je er vindt | Benodigde voorkennis |
 |---|---|---|
-| [Gebruik](nl/gebruik/) | Wat MeshCore is, een node aan de praat krijgen, hardware, regelgeving, privacy | Geen. Geen programmeerkennis vereist |
+| [Gebruik](nl/gebruik/) | Wat MeshCore is, een node aan de praat krijgen, hardware, regelgeving, privacy | Geen programmeerkennis vereist |
 | [Techniek](nl/techniek/) | Protocol, pakketopbouw byte voor byte, encryptie, routing, repeaters, room server | Basisbegrip van netwerken en hexadecimale notatie helpt; programmeren niet nodig |
 | [Platform](nl/platform/) | De vier platformfamilies en de keuze ertussen | Geen, afgezien van globale kennis van microcontrollers |
 | [Hardware](nl/hardware/) | Radio, antenne, linkbudget, BLE, WiFi, USB, I²C, SPI, scherm, GPS, knoppen | Basiskennis elektronica aanbevolen; enkele hoofdstukken tonen C++ fragmenten |
@@ -95,7 +95,7 @@ per section what you need to bring, so you know what level of detail to expect.
 
 | Section | What you find there | Assumed knowledge |
 |---|---|---|
-| [Usage](en/usage/) | What MeshCore is, getting a node running, hardware, regulations, privacy | None. No programming knowledge required |
+| [Usage](en/usage/) | What MeshCore is, getting a node running, hardware, regulations, privacy |  No programming knowledge required |
 | [Technical](en/technical/) | Protocol, packet layout byte by byte, encryption, routing, repeaters, room server | A basic grasp of networking and hexadecimal notation helps; programming is not needed |
 | [Platform](en/platform/) | The four platform families and choosing between them | None beyond a general idea of microcontrollers |
 | [Hardware](en/hardware/) | Radio, antenna, link budget, BLE, WiFi, USB, I²C, SPI, display, GPS, buttons | Basic electronics recommended; a few chapters show C++ fragments |
