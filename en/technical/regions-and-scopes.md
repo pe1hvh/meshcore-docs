@@ -145,7 +145,9 @@ but that concerns where the bookkeeping lives, not whether it is possible.
 > [!NOTE]
 > These four commands are absent from `docs/companion_protocol.md`. Anyone
 > building their own app or tool has to read them out of
-> `examples/companion_radio/MyMesh.cpp`.
+> `examples/companion_radio/MyMesh.cpp`. That applies to more than these
+> four: of the 58 companion commands, seven appear in the official spec. See
+> [The command groups](../companion/technical/command-groups.md).
 
 
 ## Channel hash and transport code are not the same thing

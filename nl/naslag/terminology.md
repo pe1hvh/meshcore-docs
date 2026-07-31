@@ -12,7 +12,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | Aanvullende buildopties | Eigenschap die los van de drie variatie-assen aan of uit kan: radioklasse, schermklasse, brug, sensoren, logging. Verklaart waarom er 507 buildtargets met een rol zijn en niet 474 |
 | ACK | Acknowledgement — bevestiging dat een bericht is ontvangen |
 | ACL | Access Control List — de tabel met bekende clients van een repeater, sensor of room server, met per client zijn publieke sleutel en rechten. Ruimte voor 20 (`MAX_CLIENTS`) |
-| Advert/Beacon | Periodiek signaal voor aanwezigheidsmelding en public key uitwisseling |
+| Advert/Beacon | Periodiek signaal voor aanwezigheidsmelding en uitwisseling van de publieke sleutel. In lopende Nederlandse tekst: aankondiging of aankondigingsbericht |
 | AES | Advanced Encryption Standard — versleutelingsalgoritme (128/256-bit) |
 | Applicatie | Een van de zes programma's in `examples/` die samen met de gedeelde broncode tot één firmwarebestand worden gecompileerd. De applicatie bepaalt welke rol een node vervult |
 | Arduino-core | Implementatie van de Arduino-API voor één chipfamilie. MeshCore gebruikt er vier: Arduino-ESP32, Adafruit nRF52, arduino-pico en STM32duino |
@@ -33,7 +33,9 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | CCCD | Client Characteristic Configuration Descriptor — aan/uit schakelaar voor BLE Notify |
 | Channel | Gedeelde cryptografische sleutel (PSK) voor groepscommunicatie |
 | Chirp | Frequentiesweep van laag naar hoog (up-chirp) of hoog naar laag (down-chirp) |
+| app_target_ver | Het protocolniveau dat een app in byte 1 van `CMD_DEVICE_QUERY` opgeeft. De firmware bewaart het in het geheugen en past aan wat hij terugstuurt; bij verbreking valt het terug naar 0 |
 | Companion App | Smartphone applicatie om de MeshCore node te bedienen |
+| Companion-protocol | De binaire afspraak tussen een companion-app en een node: frames van maximaal 176 bytes over BLE, USB of TCP, met 58 commando's, 29 antwoordcodes en 17 pushcodes |
 | Component | Afgebakend onderdeel van het logisch ontwerp met een eigen verantwoordelijkheid, zoals radio, bord, klok of pakketafhandeling. Een component is geen bestand en geen klasse, maar een plaats in het ontwerp |
 | Contract | Abstracte afspraak tussen twee componenten, in C++ vastgelegd als klasse met virtuele methoden. Wie eraan voldoet kan elke andere implementatie vervangen. MeshCore kent er acht: radio, bord, klok, entropiebron, gezien-tabel, pakketpool, scherm en brug |
 | Cortex-M0+/M4/M4F | ARM-processorkernen. M0+ is de eenvoudigste, M4 heeft signaalverwerkingsinstructies, M4F daarbovenop een floating-point-eenheid |
@@ -70,6 +72,8 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | Flood | Routeermodus waarbij elke repeater het pakket doorstuurt en zijn hash aan het pad toevoegt |
 | frameworklibrary | Library die meekomt met het frameworkpakket van een platform en dus geen auteursprefix en geen versienummer heeft: `SPI`, `Wire` en `SubGhz` |
 | FSPL | Free Space Path Loss — vrijeruimteverlies, het verlies over de afstand zonder obstakels. `20·log10(km) + 20·log10(MHz) + 32,44` |
+| FIRMWARE_VER_CODE | Het protocolniveau dat de firmware zelf aankan, los van het versienummer dat mensen zien. Op commit `03b6ef4` staat het op 13. Bepaalt welke velden een app in een antwoord mag verwachten |
+| Frame | Eén bericht op het companion-koppelvlak: één byte opcode gevolgd door de payload, samen maximaal `MAX_FRAME_SIZE` (176) bytes. Niet te verwarren met een LoRa-pakket, dat over de lucht gaat |
 | GATT | Generic Attribute Profile — structuur voor BLE data-uitwisseling |
 | Gedeelde broncode | `src/` en `examples/` samen: de code die in elke build kan meedoen, tegenover `variants/` dat aan één bord vastzit. 119 van de 196 klassen |
 | Gezien-tabel | Lijst waarmee een node controleert of een pakket al eerder is ontvangen — technisch een duplicatendetectietabel. Zonder deze tabel zou een pakket in een netwerk met meerdere repeaters blijven rondgaan |
@@ -117,6 +121,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | Node-hash | Verkorte aanduiding van een node in paden en pakketten: de eerste byte van zijn public key (in ruimere padmodi 2 of 3 bytes). Er is geen 4-byte Node-ID |
 | nRF52840 | Nordic microcontroller met ultra-laag stroomverbruik en Bluetooth |
 | NSS | Chip select van de SPI-bus: laag zolang de SoC dit ene apparaat aanspreekt. In MeshCore `P_LORA_NSS`; ook CS genoemd |
+| Opcode | De eerste byte van een companion-frame, die bepaalt hoe de rest gelezen wordt. Commando's 1-65, antwoordcodes 0-28, pushcodes `0x80`-`0x90` |
 | NUS | Nordic UART Service — BLE service die seriële poort simuleert |
 | OLED | Organic LED — het kleine zelfoplichtende schermpje op veel nodes, meestal een SSD1306 of SH1106 op de I²C-bus |
 | opt-in / opt-out | Twee tegengestelde conventies voor buildvlaggen. Bij opt-in is de standaardtoestand *niets* en voegt een macro iets toe (`ENV_INCLUDE_BME280`); bij opt-out is de standaardtoestand *alles* en haalt een macro iets weg (`RADIOLIB_EXCLUDE_MORSE`) |
@@ -153,7 +158,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | Scheduler | Taakplanner die bepaalt wanneer welk werk aan de beurt is. MeshCore heeft er geen: alles draait in één `loop()` |
 | SCL | Serial Clock — de kloklijn van de I²C-bus (`PIN_BOARD_SCL`) |
 | SCLK | Serial Clock — de kloklijn van de SPI-bus (`P_LORA_SCLK`). Niet te verwarren met SCL, de kloklijn van I²C |
-| Scope | De regio die een afzender aan een pakket meegeeft, als `transport_codes[0]` in de header |
+| Scope | De regio die een afzender aan een pakket meegeeft, als `transport_codes[0]` in de header. In lopende Nederlandse tekst ook: verspreidingsgebied |
 | SDA | Serial Data — de datalijn van de I²C-bus (`PIN_BOARD_SDA`) |
 | semver-caret (`^`) | Versieaanduiding `^7.6.0`: minimaal 7.6.0, maar onder de volgende hoofdversie. `~2.0.6` is nauwer: onder 2.1.0 |
 | SF | Spreading Factor — bepaalt bereik vs snelheid (SF7–SF12), hoger = verder |
@@ -164,6 +169,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | SoftDevice | Voorgecompileerde Bluetooth-stack van Nordic die naast de applicatie in de flash van een nRF52 staat |
 | SPI | Serial Peripheral Interface — snelle bus voor LoRa chip en SD-kaart |
 | SPIFFS | Eenvoudig filesystem voor flashgeheugen; op ESP32 gebruikt voor identiteit en contacten |
+| Pushcode | Een opcode vanaf `0x80` waarmee de node ongevraagd een gebeurtenis meldt, zoals `PUSH_CODE_MSG_WAITING`. Nooit een antwoord op een openstaand verzoek |
 | Standalone | Firmwarerol voor een node met eigen scherm en toetsenbord, die zonder companion-app werkt |
 | ST-Link | Programmeer- en debugadapter van STMicroelectronics; de gebruikelijke manier om een STM32WL te flashen |
 | STM32WLE5 | SoC van STMicroelectronics met een Cortex-M4 en de LoRa-radio (SubGHz) op dezelfde die |

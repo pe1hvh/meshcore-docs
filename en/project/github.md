@@ -11,8 +11,18 @@ Overview of MeshCore-related GitHub repositories for developers. From official l
 | [MeshCore](https://github.com/meshcore-dev/MeshCore) | C++ | The core library: lightweight, portable C++ library for multi-hop packet routing on embedded LoRa devices. Includes sample applications such as Companion Radio, Repeater, Room Server, and Secure Chat. |
 | [meshcore_py](https://github.com/meshcore-dev/meshcore_py) | Python | Official Python bindings for MeshCore. Provides programmatic access to MeshCore nodes via BLE, serial, or TCP for building custom applications and automation. |
 | [meshcore-cli](https://github.com/meshcore-dev/meshcore-cli) | Python | Command line interface for MeshCore nodes. Connects via BLE, TCP, or serial and offers an interactive shell for messages, contact management, remote node management, and scripting. |
-| [meshcore.js](https://github.com/meshcore-dev/meshcore.js) | JavaScript | JavaScript/TypeScript library for decoding MeshCore mesh packets with full cryptographic support. Foundation for web-based MeshCore clients. |
+| [meshcore.js](https://github.com/meshcore-dev/meshcore.js) | JavaScript | Official JavaScript library for the companion protocol. Connects to a node over Web Bluetooth, Web Serial, a serial port or TCP and speaks the commands and responses of the companion firmware. Foundation for web-based MeshCore clients. |
 | [meshcore-ha](https://github.com/meshcore-dev/meshcore-ha) | Python | Home Assistant integration for monitoring and controlling MeshCore radio networks. Brings mesh data to your home automation dashboard. |
+
+> [!NOTE]
+> The MeshCore firmware points at different repositories for the same
+> libraries in two places. `README.md` r.70-71 names
+> `liamcottle/meshcore.js` and `fdlamotte/meshcore-cli`;
+> `docs/companion_protocol.md` r.16-17 names `meshcore-dev/meshcore.js` and
+> `meshcore-dev/meshcore_py`. The projects moved to the organisation and the
+> README did not follow. The table above follows the `meshcore-dev`
+> variants. See
+> [Architecture of a client](../companion/technical/client-architecture.md).
 
 ## Desktop & Terminal Clients
 

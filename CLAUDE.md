@@ -22,10 +22,15 @@ For the table of contents: `nl/README.md` and `en/README.md`.
 
 ```
 ├── nl/                  Dutch chapters (source)
+│   ├── README.md        table of contents
+│   ├── reading-guide.md sections and the background each one assumes
 │   ├── gebruik/         usage, hardware, regulations, privacy
 │   ├── techniek/        protocol, packets, encryption, repeaters
 │   │   └── roomserver/  login, posts, synchronisation, limits
 │   ├── ontwerp/         how the firmware is put together
+│   │   ├── logisch/     roles, components, contracts, variability
+│   │   └── technisch/   classes, platform realisation, build system
+│   ├── companion/       how the firmware is put together
 │   │   ├── logisch/     roles, components, contracts, variability
 │   │   └── technisch/   classes, platform realisation, build system
 │   ├── platform/        platform families, chip selection
@@ -39,10 +44,15 @@ For the table of contents: `nl/README.md` and `en/README.md`.
 │   ├── naslag/          terminology, references, links
 │   └── project/         about DOMCA, GitHub overview
 ├── en/                  English chapters (translation, 1-to-1 mirror)
+│   ├── README.md
+│   ├── reading-guide.md
 │   ├── usage/
 │   ├── technical/
 │   │   └── roomserver/
 │   ├── design/
+│   │   ├── logical/
+│   │   └── technical/
+│   ├── companion/
 │   │   ├── logical/
 │   │   └── technical/
 │   ├── platform/
@@ -59,7 +69,8 @@ For the table of contents: `nl/README.md` and `en/README.md`.
 │   ├── nl/              diagrams (SVG) and photos for the NL chapters
 │   └── en/              diagrams (SVG) and photos for the EN chapters
 ├── tools/               recalculation scripts for the technical chapters
-├── README.md            bilingual landing page
+├── README.md            bilingual switchboard: language choice, disclaimer,
+│                        layout, licence, community
 ├── CHANGELOG.md         Keep a Changelog + semver (English only)
 └── LICENSE              CC BY-SA 4.0
 ```
@@ -123,6 +134,25 @@ For the table of contents: `nl/README.md` and `en/README.md`.
   subdirectories in its structure tree.
 - **Two tables of contents.** `nl/README.md` and `en/README.md` list the
   same chapters in the same order.
+- **One chapter sits outside a section directory**: `nl/reading-guide.md` ↔
+  `en/reading-guide.md`. It shares its link base with the index next to it,
+  so both files point at the chapters in exactly the same way and cannot
+  drift apart. It is reached from three places: the root `README.md`, a
+  pointer line in the index above the first `##` section, and an index entry
+  under *Project* / *Project* — that entry is what puts it in the site menu,
+  even though the file itself does not live in `project/`. The pointer line
+  deliberately carries no `##` heading of its own, so it adds no section to
+  the menu. This is an exception granted by the client, not a pattern to
+  copy; no further chapter is placed at the top of a language tree without an
+  explicit instruction.
+- **The narrative belongs to the language trees.** The introduction, the
+  section table with assumed knowledge, the chapter and diagram counts and
+  the four properties under *What this documentation aims for* live in
+  `reading-guide.md`, once per language. The root `README.md` carries only
+  what is language-neutral or has to be seen before the language choice: the
+  badges, the two language links, the AI disclaimer in both languages, the
+  layout tree, errata, licence and community. Do not restore a Dutch and an
+  English narrative section there.
 - **No shared image directory.** Every diagram exists twice, under the same
   file name: `images/nl/<slug>-<n>.svg` and `images/en/<slug>-<n>.svg`. Even
   when it contains no text.

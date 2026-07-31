@@ -2,6 +2,9 @@
 
 Off-grid mesh communication over LoRa radio.
 
+New here? [How to read this](reading-guide.md) states what each section
+assumes and where to start.
+
 ## Usage
 
 - [What is MeshCore?](usage/what-is-meshcore.md)
@@ -39,7 +42,7 @@ Off-grid mesh communication over LoRa radio.
 - [SenseCap DFU](technical/sensecap-dfu.md)
 - [Higher and stronger isn't always better](technical/dead-zone.md)
 
-## Design
+## Design (Node)
 
 - [Designing MeshCore](design/introduction.md)
 - **Logical design** — `design/logical/`
@@ -57,6 +60,19 @@ Off-grid mesh communication over LoRa radio.
   - [The build system](design/technical/build-system.md)
   - [Compile-time configuration](design/technical/configuration.md)
   - [Traceability](design/technical/traceability.md)
+  
+## Design (Companion)
+
+- [The companion interface](companion/introduction.md)
+- **Logical design** — `companion/logical/`
+  - [Responsibilities](companion/logical/responsibilities.md)
+  - [The interaction model](companion/logical/interaction-model.md)
+  - [Information model](companion/logical/information-model.md)
+- **Technical design** — `companion/technical/`
+  - [The three transports](companion/technical/transports.md)
+  - [The frame](companion/technical/frame-format.md)
+  - [The command groups](companion/technical/command-groups.md)
+  - [Architecture of a client](companion/technical/client-architecture.md)
 
 ## Platform
 
@@ -116,5 +132,6 @@ Off-grid mesh communication over LoRa radio.
 
 ## Project
 
+- [How to read this](reading-guide.md)
 - [About DOMCA](project/about-domca.md)
 - [GitHub Repositories](project/github.md)

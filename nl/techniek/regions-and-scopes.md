@@ -146,6 +146,9 @@ kan.
 > [!NOTE]
 > Deze vier commando's staan niet in `docs/companion_protocol.md`. Wie een eigen
 > app of tool bouwt, moet ze uit `examples/companion_radio/MyMesh.cpp` halen.
+> Dat geldt niet alleen voor deze vier: van de 58 companion-commando's staan er
+> zeven in de officiële spec. Zie
+> [De commandogroepen](../companion/technisch/command-groups.md).
 
 ## Kanaal-hash en transport code zijn niet hetzelfde
 

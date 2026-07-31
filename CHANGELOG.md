@@ -5,6 +5,169 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
 
 ---
 
+## [Unreleased]
+
+### Added
+
+- **`nl/reading-guide.md` and `en/reading-guide.md` — the reading guide as a
+  chapter of its own**, at the top of each language tree rather than inside a
+  section directory, so that it shares its link base with the index beside it
+  and the two cannot drift apart. It holds what the root `README.md` used to
+  carry twice: the introduction, the chapter and diagram counts, the section
+  table stating the background each section assumes, and the four properties
+  that set this documentation apart. The section names in that table now link
+  to the first chapter of each section instead of to a directory; directory
+  links render on GitHub but have no generated page on the site, which would
+  have turned them into dead links the moment the table became a published
+  chapter.
+- **New `companion/` section: the interface between a companion app and a
+  node.** Eight chapters per language — `nl/companion/introduction.md`,
+  `nl/companion/logisch/responsibilities.md`,
+  `nl/companion/logisch/interaction-model.md`,
+  `nl/companion/logisch/information-model.md`,
+  `nl/companion/technisch/transports.md`,
+  `nl/companion/technisch/frame-format.md`,
+  `nl/companion/technisch/command-groups.md`,
+  `nl/companion/technisch/client-architecture.md`, with
+  `en/companion/introduction.md` and the same seven under
+  `en/companion/logical/` and `en/companion/technical/`. The official
+  MeshCore Companion App is closed source, so no design can be read out of an
+  app repository; what is public is the contract every app has to fit, and
+  that is what these chapters describe. Written to be normative — how to
+  build your own client — with an explicit disclaimer in the introduction and
+  repeated in the two chapters where it matters most, because there is no
+  official specification to defer to.
+- **Six diagrams per language**, `images/nl/companion-*.svg` and
+  `images/en/companion-*.svg`: `companion-context-1`,
+  `companion-responsibilities-1`, `companion-interaction-1`,
+  `companion-information-model-1`, `companion-transports-1`,
+  `companion-architecture-1`. All six carry a `companion-` prefix rather than
+  the chapter slug, because `images/` is flat and `information-model-1.svg`
+  was already taken by `ontwerp/logisch/information-model.md`.
+- **`tools/companion-opcodes.py` and `tools/companion-opcodes-snapshot.json`.**
+  Reads the opcode table out of `examples/companion_radio/MyMesh.cpp`,
+  compares coverage against `meshcore_py`, `meshcore.js` and the official
+  `docs/companion_protocol.md`, and resolves the companion build targets to
+  report the real values of `MAX_CONTACTS`, `OFFLINE_QUEUE_SIZE` and
+  `MAX_GROUP_CHANNELS`. Its target count (174) matches
+  `tools/design-overview.py`, which is the cross-check that the resolver is
+  right.
+- **Six terms in both terminology files**, inserted alphabetically:
+  `app_target_ver`, Companion-protocol / Companion protocol,
+  `FIRMWARE_VER_CODE`, Frame, Opcode, Pushcode / Push code.
+
+### Changed
+
+- **`README.md` is now a bilingual switchboard instead of a bilingual
+  article.** It went from 230 to 138 lines and keeps only what is
+  language-neutral or has to be seen before the language choice: badges, the
+  two language links with a one-line pitch each, the AI disclaimer in both
+  languages, the layout tree, errata, licence and community. Reason: a new
+  section had to be registered in six places (the Dutch table in root, the
+  English table in root, both structure trees and both indexes), the reading
+  guide sat one click away from the index it described, and a reader entering
+  through a language index — which is how the site is read — never saw any of
+  it. The `## Nederlands` and `## English` sections are gone; the disclaimer
+  is one block with a Dutch and an English paragraph.
+- **`nl/README.md`, `en/README.md`** — a pointer to the reading guide above
+  the first section, deliberately without a `##` heading of its own so no
+  empty section appears in the site menu, plus an index entry under
+  *Project*, which is what puts the chapter in the menu at all.
+- **`CLAUDE.md`** — the layout tree shows both README indexes and the two
+  reading guides; the root `README.md` is described as a switchboard; two new
+  rules record that one chapter sits outside a section directory and that the
+  narrative belongs to the language trees, so it is not restored in root
+  later on.
+- The chapter count in the reading guide reads 94 per language, up from the
+  93 the root `README.md` stated, because the reading guide itself is a
+  chapter. The diagram count is unchanged at 73 per language.
+- **Review of the Dutch `companion/` section processed** — all eight Dutch
+  chapters revised for readability: key terms are now defined at first use, a
+  glossary table was added to `nl/companion/introduction.md`, and unnecessary
+  English terms in running prose were replaced by Dutch ones with the source
+  term in brackets on first use: `advert` → aankondiging, `scope` →
+  verspreidingsgebied, `build target` → compilatiedoel, `build flag` →
+  compilatieoptie, `binary` → firmwarebestand, `libraries` →
+  softwarebibliotheken, `clientbouwer` → ontwikkelaar van een client. Names of
+  commands and constants (`CMD_SEND_SELF_ADVERT`, `PUSH_CODE_ADVERT`,
+  `flood.max.unscoped`) are unchanged, as is the chapter title
+  `Regio's en Scopes` and every link to it.
+- **Headings made accurate rather than allusive**, in both languages:
+  `De grenzen zijn geen constanten` → `De maximale aantallen verschillen per
+  firmwarevariant` (they are compile-time constants; only their value differs
+  per variant), `Eén transport per binary` → `Eén verbindingstype per
+  firmwarevariant`, `Alle achtenvijftig zijn echt` → `Alle 58 commando's
+  worden door de firmware afgehandeld`, `Serieel: geen verbindingsbegrip` →
+  `Serieel: de firmware detecteert geen verbroken kabel`, `Advert en pad` →
+  `Aankondigingen en routes`, `Laag 6 — Gevel met cache` → `Laag 6 —
+  Publieke API met cache` (NL only; EN keeps *facade*).
+- **Wording corrected where it was imprecise**: sixty milliseconds is a
+  minimum interval and therefore a theoretical maximum of roughly sixteen
+  notifications per second; a frame that is too large is refused only after
+  it has been sent, not "over de lijn"; failing to check the length may lead
+  to reading bytes outside the frame as valid fields or to a read error,
+  rather than "reading memory that is not there"; a new TCP connection drops
+  the existing one without a protocol notification, rather than a "stille
+  aflossing".
+- **Conceptual explanation separated from source evidence** in
+  `nl/companion/logisch/responsibilities.md` and its EN counterpart: the
+  counting method behind the 174 build targets moved from the running text to
+  `## Bronnen` / `## Sources`, and the halved contact count in the
+  `CMD_DEVICE_QUERY` response became a warning with a worked example
+  (175 × 2 = 350).
+- **`nl/naslag/terminology.md`** — `Opcode` now reads *de eerste byte*
+  (`byte` is a de-word in Dutch); the `Advert/Beacon` and `Scope` entries name
+  the Dutch term used in running prose.
+- **`images/nl/companion-architecture-1.svg`,
+  `images/nl/companion-information-model-1.svg`,
+  `images/nl/companion-responsibilities-1.svg`** — diagram labels follow the
+  revised Dutch terms. The English diagrams are unchanged, since English keeps
+  the source terms.
+- `nl/README.md`, `en/README.md` — new `Companion` section between Hardware
+  and Libraries, at the same position in both trees.
+- `README.md` — `companion/` added to the layout tree in both language
+  columns.
+- `nl/techniek/regions-and-scopes.md`, `en/technical/regions-and-scopes.md` —
+  the existing note that four scope commands are missing from
+  `docs/companion_protocol.md` now points at the new command chapter and puts
+  the gap in proportion: seven of the fifty-eight commands are documented,
+  not fifty-four of fifty-eight.
+- `nl/hardware/interfaces/ble-architecture.md`,
+  `en/hardware/interfaces/ble-architecture.md` — closing cross-reference to
+  `companion/technisch/transports.md`, so the reader who has just learned how
+  the link works can find out what travels over it.
+
+### Fixed
+
+- `nl/project/github.md`, `en/project/github.md` — the description of
+  `meshcore.js` said it was a "JavaScript/TypeScript library for decoding
+  MeshCore mesh packets". It is not a packet decoder; it is a companion
+  client library that connects to a node over Web Bluetooth, Web Serial,
+  serial or TCP. Corrected in both languages.
+- `nl/project/github.md`, `en/project/github.md` — added a note that the
+  MeshCore firmware points at two different sets of repositories for the same
+  libraries: `README.md` r.70-71 names `liamcottle/meshcore.js` and
+  `fdlamotte/meshcore-cli`, while `docs/companion_protocol.md` r.16-17 names
+  the `meshcore-dev` variants. The projects moved to the organisation and the
+  README did not follow.
+- `README.md` — the chapter and diagram counts said 70 chapters and 52
+  diagrams per language. Both were already stale before this change: the
+  repository held 85 chapters and 67 referenced diagrams. With this section
+  added the figures are 93 and 73, and the README now says so.
+
+### Note on structure
+
+`CLAUDE.md` states under 🛡️ *Existing content* that no new top-level
+directories are to be created. `companion/` is one. The client chose that
+placement explicitly over the two alternatives (folding the material into
+`ontwerp/`, or splitting it across `hardware/interfaces/` and `techniek/`),
+because `ontwerp/` scopes itself to the structure of the firmware and the
+companion interface is a contract between two systems. The rule is recorded
+here as knowingly set aside, not overlooked. `CLAUDE.md` has not been changed
+in this session.
+
+---
+
 ## [2026-07-31] Result of first review session
 
 ### Changed

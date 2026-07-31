@@ -11,8 +11,18 @@ Overzicht van MeshCore gerelateerde GitHub repositories voor ontwikkelaars. Van 
 | [MeshCore](https://github.com/meshcore-dev/MeshCore) | C++ | De kern-library: lightweight, portable C++ library voor multi-hop packet routing op embedded LoRa-apparaten. Bevat voorbeeldapplicaties zoals Companion Radio, Repeater, Room Server en Secure Chat. |
 | [meshcore_py](https://github.com/meshcore-dev/meshcore_py) | Python | Officiële Python bindings voor MeshCore. Biedt programmatische toegang tot MeshCore nodes via BLE, serieel of TCP voor het bouwen van eigen applicaties en automatisering. |
 | [meshcore-cli](https://github.com/meshcore-dev/meshcore-cli) | Python | Command line interface voor MeshCore nodes. Verbindt via BLE, TCP of serieel en biedt interactieve shell voor berichten, contactbeheer, remote node management en scripting. |
-| [meshcore.js](https://github.com/meshcore-dev/meshcore.js) | JavaScript | JavaScript/TypeScript library voor het decoderen van MeshCore mesh-pakketten met volledige cryptografische ondersteuning. Basis voor web-gebaseerde MeshCore clients. |
+| [meshcore.js](https://github.com/meshcore-dev/meshcore.js) | JavaScript | Officiële JavaScript-library voor het companion-protocol. Verbindt via Web Bluetooth, Web Serial, seriële poort of TCP met een node en spreekt de commando's en antwoorden van de companion-firmware. Basis voor web-gebaseerde MeshCore clients. |
 | [meshcore-ha](https://github.com/meshcore-dev/meshcore-ha) | Python | Home Assistant integratie voor het monitoren en besturen van MeshCore radio-netwerken. Brengt mesh-data naar je domotica-dashboard. |
+
+> [!NOTE]
+> De MeshCore-firmware verwijst op twee plaatsen naar verschillende
+> repositories voor dezelfde libraries. `README.md` r.70-71 noemt
+> `liamcottle/meshcore.js` en `fdlamotte/meshcore-cli`;
+> `docs/companion_protocol.md` r.16-17 noemt `meshcore-dev/meshcore.js` en
+> `meshcore-dev/meshcore_py`. De projecten zijn naar de organisatie verhuisd
+> en de README is niet meegegaan. De tabel hierboven volgt de
+> `meshcore-dev`-varianten. Zie
+> [Architectuur van een client](../companion/technisch/client-architecture.md).
 
 ## Desktop & Terminal Clients
 

@@ -2,6 +2,9 @@
 
 Off-grid mesh communicatie via LoRa radio.
 
+Nieuw hier? De [Leeswijzer](reading-guide.md) zegt wat elke sectie van je
+vraagt en waar je het beste begint.
+
 ## Gebruik
 
 - [Wat is MeshCore?](gebruik/what-is-meshcore.md)
@@ -39,7 +42,7 @@ Off-grid mesh communicatie via LoRa radio.
 - [SenseCap DFU](techniek/sensecap-dfu.md)
 - [Hoger en sterker is niet altijd beter](techniek/dead-zone.md)
 
-## Ontwerp
+## Ontwerp (Node)
 
 - [Ontwerp van MeshCore](ontwerp/introduction.md)
 - **Logisch ontwerp** — `ontwerp/logisch/`
@@ -58,6 +61,19 @@ Off-grid mesh communicatie via LoRa radio.
   - [Compile-time configuratie](ontwerp/technisch/configuration.md)
   - [Traceerbaarheid](ontwerp/technisch/traceability.md)
 
+## Ontwerp (Companion)
+
+- [De companion-interface](companion/introduction.md)
+- **Logisch ontwerp** — `companion/logisch/`
+  - [Verantwoordelijkheden](companion/logisch/responsibilities.md)
+  - [Het interactiemodel](companion/logisch/interaction-model.md)
+  - [Informatiemodel](companion/logisch/information-model.md)
+- **Technisch ontwerp** — `companion/technisch/`
+  - [De drie transporten](companion/technisch/transports.md)
+  - [Het frame](companion/technisch/frame-format.md)
+  - [De commandogroepen](companion/technisch/command-groups.md)
+  - [Architectuur van een client](companion/technisch/client-architecture.md)
+  
 ## Platform
 
 - [MeshCore Platforms](platform/platforms.md)
@@ -116,5 +132,6 @@ Off-grid mesh communicatie via LoRa radio.
 
 ## Project
 
+- [Leeswijzer](reading-guide.md)
 - [Over DOMCA](project/about-domca.md)
 - [GitHub Repositories](project/github.md)

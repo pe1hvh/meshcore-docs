@@ -30,7 +30,9 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | CCCD | Client Characteristic Configuration Descriptor — on/off switch for BLE Notify |
 | Channel | Shared cryptographic key (PSK) for group communication |
 | Chirp | Frequency sweep from low to high (up-chirp) or high to low (down-chirp) |
+| app_target_ver | The protocol level an app declares in byte 1 of `CMD_DEVICE_QUERY`. The firmware keeps it in memory and adapts what it sends back; on disconnect it falls back to 0 |
 | Companion App | Smartphone application to control the MeshCore node |
+| Companion protocol | The binary agreement between a companion app and a node: frames of at most 176 bytes over BLE, USB or TCP, with 58 commands, 29 response codes and 17 push codes |
 | Component | Delimited part of the logical design with a responsibility of its own, such as radio, board, clock or packet handling. A component is not a file and not a class, but a place in the design |
 | Contract | Abstract agreement between two components, expressed in C++ as a class with virtual methods. Whoever satisfies it can replace any other implementation. MeshCore has eight: radio, board, clock, entropy, seen table, packet pool, display and bridge |
 | Entropy source | The random number generator of a node. MeshCore has two implementations: the noise of the radio receiver (`RadioNoiseListener`) and the standard generator (`StdRNG`) |
@@ -71,6 +73,8 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | Flood | Routing mode in which every repeater forwards the packet and appends its hash to the path |
 | framework library | Library shipped inside a platform's framework package, and therefore carrying no author prefix and no version number: `SPI`, `Wire` and `SubGhz` |
 | FSPL | Free Space Path Loss — the loss over distance without obstacles. `20·log10(km) + 20·log10(MHz) + 32.44` |
+| FIRMWARE_VER_CODE | The protocol level the firmware itself supports, independent of the version number people see. At commit `03b6ef4` it stands at 13. Determines which fields an app may expect in a response |
+| Frame | One message on the companion interface: one opcode byte followed by the payload, together at most `MAX_FRAME_SIZE` (176) bytes. Not to be confused with a LoRa packet, which goes over the air |
 | GATT | Generic Attribute Profile — structure for BLE data exchange |
 | GNSS | Global Navigation Satellite System — collective name for GPS, Galileo, GLONASS and BeiDou together |
 | GODMODE | Build flag `RADIOLIB_GODMODE=1` that makes all `private` and `protected` members of RadioLib public; MeshCore uses it to reach the module layer directly |
@@ -113,6 +117,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | noise floor | The noise level a receiver has to listen through. MeshCore measures it itself over 64 samples and clamps it at −120 dBm |
 | nRF52840 | Nordic microcontroller with ultra-low power consumption and Bluetooth |
 | NSS | Chip select of the SPI bus: low while the SoC is addressing this one device. In MeshCore `P_LORA_NSS`; also called CS |
+| Opcode | The first byte of a companion frame, determining how the rest is read. Commands 1-65, response codes 0-28, push codes `0x80`-`0x90` |
 | NUS | Nordic UART Service — BLE service that simulates a serial port |
 | OLED | Organic LED — the small self-illuminating screen on many nodes, usually an SSD1306 or SH1106 on the I²C bus |
 | opt-in / opt-out | Two opposite conventions for build flags. With opt-in the default state is *nothing* and a macro adds something (`ENV_INCLUDE_BME280`); with opt-out the default state is *everything* and a macro takes something away (`RADIOLIB_EXCLUDE_MORSE`) |
@@ -164,6 +169,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | Source tree | The layout of the MeshCore source code: eleven core files in `src/`, a collection of helper classes, six applications in `examples/` and seventy-nine variant directories in `variants/` |
 | SPI | Serial Peripheral Interface — fast bus for LoRa chip and SD card |
 | SPIFFS | Simple filesystem for flash memory; used on ESP32 for identity and contacts |
+| Push code | An opcode from `0x80` upwards with which the node reports an event unsolicited, such as `PUSH_CODE_MSG_WAITING`. Never an answer to an outstanding request |
 | Standalone | Firmware role for a node with its own display and keyboard, working without a companion app |
 | ST-Link | Programming and debug adapter from STMicroelectronics; the usual way to flash an STM32WL |
 | Standalone class | Class that is not a contract and implements none either; nothing depends on it and nothing can replace it. Group 3 of the class model; 55 in the shared tree. Not to be confused with the firmware role *Standalone* |

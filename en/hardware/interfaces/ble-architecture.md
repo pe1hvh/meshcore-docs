@@ -161,6 +161,9 @@ The fix is simple: register a custom D-Bus pairing agent before connecting. This
 
 MeshCore BLE companion works correctly on Linux. The only requirement is: **exactly one active BLE client per radio**. The GATT/NUS architecture ensures reliable communication between node and companion device. On headless systems, a custom D-Bus pairing agent is additionally required for successful PIN verification.
 
+What travels over this link — the frames, the commands and the responses —
+is described in [The three transports](../../companion/technical/transports.md).
+
 *The section on BLE pairing on headless Linux is based on a contribution by PE1HVH to [meshcore_py issue #33 ↗](https://github.com/meshcore-dev/meshcore_py/issues/33#issuecomment-3902438474).*
 
 Translated from Dutch by Anthropic Claude
