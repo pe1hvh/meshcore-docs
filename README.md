@@ -24,21 +24,10 @@ hoofdstuktelling is het aantal `.md`-bestanden per taalboom zonder de
 `README.md`-indexen; de diagramtelling is het aantal SVG's waarnaar een
 hoofdstuk verwijst, niet het aantal bestanden in `images/`.
 
-### Beginnen
 
-| Ik wil… | Begin hier |
-|---|---|
-| weten waar dit over gaat | [Wat is MeshCore?](nl/gebruik/what-is-meshcore.md) |
-| een node aan de praat krijgen | [Aan de Slag](nl/gebruik/getting-started.md) · [Hardware](nl/gebruik/hardware.md) |
-| weten wat mag binnen de regels | [Regelgeving & Duty Cycle](nl/gebruik/regulations.md) |
-| begrijpen hoe het écht werkt | [Het Lagenmodel](nl/techniek/layer-model.md) → [Pakketstructuur](nl/techniek/packet-structure.md) |
-| een repeater goed instellen | [Regio's en Scopes](nl/techniek/regions-and-scopes.md) · [Repeater TX/RX flow](nl/techniek/repeater-flow.md) |
-| weten waarom regio's zijn zoals ze zijn | [Regio's: bedoeling en praktijk](nl/techniek/regions-in-practice.md) |
-| een term opzoeken | [Terminologie](nl/naslag/terminology.md) |
 
-Het volledige overzicht staat in **[nl/README.md](nl/README.md)**.
 
-### Leeswijzer
+### Beginnen/Leeswijzer
 
 De hoofdstukken lopen sterk uiteen in benodigde voorkennis. Deze tabel zegt
 per sectie welke voorkennis handig is, zodat je weet welk detailniveau je kunt
@@ -58,6 +47,8 @@ verwachten.
 
 Kom je een term tegen die je niet kent, dan staat hij in
 [Terminologie](nl/naslag/terminology.md).
+
+Het volledige overzicht staat in **[nl/README.md](nl/README.md)**.
 
 ### Wat dit anders maakt
 
@@ -96,21 +87,8 @@ chapter count is the number of `.md` files per language tree excluding the
 `README.md` indexes; the diagram count is the number of SVGs a chapter
 references, not the number of files in `images/`.
 
-### Getting started
+### Getting started/How to read this
 
-| I want to… | Start here |
-|---|---|
-| know what this is about | [What is MeshCore?](en/usage/what-is-meshcore.md) |
-| get a node running | [Getting Started](en/usage/getting-started.md) · [Hardware](en/usage/hardware.md) |
-| stay within the rules | [Regulations & Duty Cycle](en/usage/regulations.md) |
-| understand how it really works | [The Layer Model](en/technical/layer-model.md) → [Packet Structure](en/technical/packet-structure.md) |
-| configure a repeater properly | [Regions and Scopes](en/technical/regions-and-scopes.md) · [Repeater TX/RX flow](en/technical/repeater-flow.md) |
-| know why regions are the way they are | [Regions: intent and practice](en/technical/regions-in-practice.md) |
-| look up a term | [Terminology](en/reference/terminology.md) |
-
-The full index is in **[en/README.md](en/README.md)**.
-
-### How to read this
 
 The chapters differ widely in the background they assume. This table states
 per section what you need to bring, so you know what level of detail to expect.
@@ -129,6 +107,8 @@ per section what you need to bring, so you know what level of detail to expect.
 
 If you hit a term you do not know, it is in
 [Terminology](en/reference/terminology.md).
+
+The full index is in **[en/README.md](en/README.md)**.
 
 ### What makes this different
 
