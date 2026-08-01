@@ -4,8 +4,60 @@ All notable changes to meshcore-docs are documented in this file.
 Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Versioning](https://semver.org/).
 
 ---
+## [2026-08-01] Result of review session Review3 — Dutch radio parameters
 
-## [Unreleased]
+Scope of this session: the NL/EN *Getting Started* chapter reported the
+pre-switch Dutch radio profile. Corrected there, then traced through the rest
+of both language trees.
+
+### Fixed
+
+- `nl/gebruik/getting-started.md`, `en/usage/getting-started.md` — the step 3
+  configuration table still described the pre-switch Dutch profile: preset
+  `EU/UK (narrow)`, `SF8`, `CR 4/8`. The MeshCore app now carries a
+  **Netherlands** preset (869.618 MHz / BW 62.5 kHz / SF7 / CR5) and the Dutch
+  network switched to SF7 / CR5 in May 2026. Preset name, spreading factor and
+  coding rate corrected in both languages, with a note for users whose app does
+  not show the preset (fall back to Custom) and one naming the old SF8 / CR8
+  values so readers coming from older guides recognise them. Frequency and
+  bandwidth were already right. This also removes a contradiction with
+  `gebruik/regulations.md` r.66-70, which already carried the SF7 / CR 4/5
+  figures.
+
+### Changed
+
+- `nl/gebruik/regulations.md`, `en/usage/regulations.md` — preset name in the
+  practical-configuration block aligned with the app label: `Nederland (EU/UK
+  Narrow)` / `Netherlands (EU/UK Narrow)` are now both `Netherlands`. The app
+  UI is English and carries `Netherlands` as a preset of its own, so the
+  `EU/UK Narrow` parenthetical named a different preset than the one the reader
+  has to pick. The VERON source row further down still quotes `EU/UK Narrow`
+  because that is what the source says.
+- `nl/hardware/radio/link-budget.md`, `en/hardware/radio/link-budget.md`,
+  `nl/hardware/radio/sx1262.md`, `en/hardware/radio/sx1262.md` — added a note
+  that `LORA_SF=8` is the compile-time default from the root `platformio.ini`
+  and not the setting the Dutch network runs on, with a link to *Aan de Slag* /
+  *Getting Started*. The flag values themselves are unchanged: they correctly
+  describe the build, but stood one page away from a table naming SF7 as the
+  network setting. In `link-budget.md` the note also states what the sum would
+  be at SF7 (sensitivity −127.5 dBm, budget 2.5 dB lower); the worked example
+  still runs on the firmware default SF8, as `tools/link-budget.py` does.
+
+### Checked, deliberately not changed
+
+- `nl/naslag/terminology.md`, `nl/techniek/dechirp.md` and their English
+  counterparts describe SF and CR as LoRa concepts (SF7–SF12, CR 4/5 to 4/8),
+  not as the Dutch profile. Correct as they stand.
+- `gebruik/getting-started.md` r.34 gives the power row as `14 dBm — EU limit
+  (25 mW ERP)`, while `regulations.md` concludes the community runs under H4
+  (500 mW e.r.p. / +27 dBm). Raised with the client and placed outside the
+  scope of this session; the same contradiction was corrected in the ISM/HAM
+  table during an earlier session.
+- The phase-8 date for `region denyf *` in `getting-started.md` r.72 (18 July
+  2026) has passed and community sources report it was postponed. Not verified
+  against a primary source in this session, so left unchanged.
+
+---
 
 ### Added
 
@@ -165,6 +217,61 @@ because `ontwerp/` scopes itself to the structure of the firmware and the
 companion interface is a contract between two systems. The rule is recorded
 here as knowingly set aside, not overlooked. `CLAUDE.md` has not been changed
 in this session.
+
+---
+
+## [2026-08-01] Result of review session Review3 — Dutch radio parameters
+
+Scope of this session: the NL/EN *Getting Started* chapter reported the
+pre-switch Dutch radio profile. Corrected there, then traced through the rest
+of both language trees.
+
+### Fixed
+
+- `nl/gebruik/getting-started.md`, `en/usage/getting-started.md` — the step 3
+  configuration table still described the pre-switch Dutch profile: preset
+  `EU/UK (narrow)`, `SF8`, `CR 4/8`. The MeshCore app now carries a
+  **Netherlands** preset (869.618 MHz / BW 62.5 kHz / SF7 / CR5) and the Dutch
+  network switched to SF7 / CR5 in May 2026. Preset name, spreading factor and
+  coding rate corrected in both languages, with a note for users whose app does
+  not show the preset (fall back to Custom) and one naming the old SF8 / CR8
+  values so readers coming from older guides recognise them. Frequency and
+  bandwidth were already right. This also removes a contradiction with
+  `gebruik/regulations.md` r.66-70, which already carried the SF7 / CR 4/5
+  figures.
+
+### Changed
+
+- `nl/gebruik/regulations.md`, `en/usage/regulations.md` — preset name in the
+  practical-configuration block aligned with the app label: `Nederland (EU/UK
+  Narrow)` / `Netherlands (EU/UK Narrow)` are now both `Netherlands`. The app
+  UI is English and carries `Netherlands` as a preset of its own, so the
+  `EU/UK Narrow` parenthetical named a different preset than the one the reader
+  has to pick. The VERON source row further down still quotes `EU/UK Narrow`
+  because that is what the source says.
+- `nl/hardware/radio/link-budget.md`, `en/hardware/radio/link-budget.md`,
+  `nl/hardware/radio/sx1262.md`, `en/hardware/radio/sx1262.md` — added a note
+  that `LORA_SF=8` is the compile-time default from the root `platformio.ini`
+  and not the setting the Dutch network runs on, with a link to *Aan de Slag* /
+  *Getting Started*. The flag values themselves are unchanged: they correctly
+  describe the build, but stood one page away from a table naming SF7 as the
+  network setting. In `link-budget.md` the note also states what the sum would
+  be at SF7 (sensitivity −127.5 dBm, budget 2.5 dB lower); the worked example
+  still runs on the firmware default SF8, as `tools/link-budget.py` does.
+
+### Checked, deliberately not changed
+
+- `nl/naslag/terminology.md`, `nl/techniek/dechirp.md` and their English
+  counterparts describe SF and CR as LoRa concepts (SF7–SF12, CR 4/5 to 4/8),
+  not as the Dutch profile. Correct as they stand.
+- `gebruik/getting-started.md` r.34 gives the power row as `14 dBm — EU limit
+  (25 mW ERP)`, while `regulations.md` concludes the community runs under H4
+  (500 mW e.r.p. / +27 dBm). Raised with the client and placed outside the
+  scope of this session; the same contradiction was corrected in the ISM/HAM
+  table during an earlier session.
+- The phase-8 date for `region denyf *` in `getting-started.md` r.72 (18 July
+  2026) has passed and community sources report it was postponed. Not verified
+  against a primary source in this session, so left unchanged.
 
 ---
 

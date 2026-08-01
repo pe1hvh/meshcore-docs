@@ -22,17 +22,26 @@ Start de **MeshCore Companion App**, kies Scan, selecteer je node en tik Connect
 
 ## Stap 3 — Configureren
 
-Selecteer in de app het preset **EU/UK (narrow)**. Dit stelt automatisch de volgende parameters in:
+Selecteer in de app het preset **Netherlands**. Dit stelt automatisch de volgende parameters in:
 
 | Parameter | Waarde | Toelichting |
 |---|---|---|
-| Preset | EU/UK (narrow) | Aanbevolen voor Europa |
-| Frequentie | 869.618 MHz | EU ISM-band |
-| Bandbreedte | 62.5 kHz | Smal — meer bereik, minder snelheid |
-| Spreading Factor | SF8 | Goede balans bereik/snelheid |
-| Coding Rate | 4/8 | Maximale foutcorrectie |
+| Preset | Netherlands | Nederlandse netwerkinstelling |
+| Frequentie | 869.618 MHz | EU ISM-band (H4/H5, zie *Regelgeving*) |
+| Bandbreedte | 62.5 kHz | Smal — lagere ruisvloer, betere SNR |
+| Spreading Factor | SF7 | Korte time-on-air, minder botsingen |
+| Coding Rate | 4/5 (CR5) | Standaard foutcorrectie |
 | Vermogen | 14 dBm | EU-limiet (25 mW ERP) |
 | Encryptie | Aan (standaard) | AES-128 |
+
+> [!NOTE]
+> **Geen preset Netherlands in je app?** Kies dan **Custom** en zet de vier
+> waarden handmatig: 869.618 MHz, BW 62.5 kHz, SF7, CR5.
+>
+> Oudere handleidingen noemen nog **EU/UK (Narrow)** met **SF8 / CR8**. Het
+> Nederlandse netwerk is in mei 2026 overgestapt op SF7 / CR5 om de time-on-air
+> te verkorten en botsingen te verminderen; de frequentie en bandbreedte bleven
+> gelijk. Een node die op SF8 blijft staan hoort de rest van het mesh niet meer.
 
 
 ## Stap 4 - Regio-instellingen

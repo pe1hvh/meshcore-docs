@@ -36,6 +36,15 @@ ze niet overschrijft:
 | `LORA_BW` | 62.5 kHz |
 | `LORA_SF` | 8 |
 
+> [!NOTE]
+> `LORA_SF=8` is de compile-time default uit `platformio.ini`, niet de
+> instelling waarop het Nederlandse netwerk draait. De radioparameters worden
+> na het flashen door de node-configuratie overschreven; het preset
+> *Netherlands* zet **SF7** met CR5 — zie
+> [Aan de Slag](../../gebruik/getting-started.md). De som verderop op deze
+> pagina rekent met de firmwaredefault SF8 (−130,0 dBm). Met SF7 is de
+> gevoeligheid −127,5 dBm en valt het budget 2,5 dB lager uit.
+
 Het zendvermogen ligt per bord vast. Geteld over
 `variants/*/platformio.ini`, alleen actieve regels:
 

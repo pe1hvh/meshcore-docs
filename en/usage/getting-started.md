@@ -22,17 +22,26 @@ Launch the **MeshCore Companion App**, choose Scan, select your node, and tap Co
 
 ## Step 3 — Configure
 
-In the app, select the **EU/UK (narrow)** preset. This automatically sets the following parameters:
+In the app, select the **Netherlands** preset. This automatically sets the following parameters:
 
 | Parameter | Value | Notes |
 |---|---|---|
-| Preset | EU/UK (narrow) | Recommended for Europe |
-| Frequency | 869.618 MHz | EU ISM band |
-| Bandwidth | 62.5 kHz | Narrow — more range, less speed |
-| Spreading Factor | SF8 | Good balance of range/speed |
-| Coding Rate | 4/8 | Maximum error correction |
+| Preset | Netherlands | Dutch network setting |
+| Frequency | 869.618 MHz | EU ISM band (H4/H5, see *Regulations*) |
+| Bandwidth | 62.5 kHz | Narrow — lower noise floor, better SNR |
+| Spreading Factor | SF7 | Short time-on-air, fewer collisions |
+| Coding Rate | 4/5 (CR5) | Default error correction |
 | Power | 14 dBm | EU limit (25 mW ERP) |
 | Encryption | On (default) | AES-128 |
+
+> [!NOTE]
+> **No Netherlands preset in your app?** Choose **Custom** and set the four
+> values by hand: 869.618 MHz, BW 62.5 kHz, SF7, CR5.
+>
+> Older guides still mention **EU/UK (Narrow)** with **SF8 / CR8**. The Dutch
+> network moved to SF7 / CR5 in May 2026 to shorten time-on-air and reduce
+> collisions; frequency and bandwidth stayed the same. A node left on SF8 no
+> longer hears the rest of the mesh.
 
 
 ## Step 4 - Region settings

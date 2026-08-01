@@ -63,7 +63,7 @@ The Dutch MeshCore community operates within the H4 profile. The VERON news arti
 The practical configuration listed as standard on several Dutch MeshCore sources:
 
 ```text
-Preset:       Netherlands (EU/UK Narrow)
+Preset:       Netherlands
 Frequency:    869.618 MHz
 Bandwidth:    62.5 kHz
 Spreading:    SF7

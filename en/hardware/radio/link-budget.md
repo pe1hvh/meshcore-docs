@@ -36,6 +36,14 @@ does not override them:
 | `LORA_BW` | 62.5 kHz |
 | `LORA_SF` | 8 |
 
+> [!NOTE]
+> `LORA_SF=8` is the compile-time default from `platformio.ini`, not the
+> setting the Dutch network runs on. The radio parameters are overridden by the
+> node configuration after flashing; the *Netherlands* preset sets **SF7** with
+> CR5 — see [Getting Started](../../usage/getting-started.md). The sum further
+> down this page uses the firmware default SF8 (−130.0 dBm). At SF7 the
+> sensitivity is −127.5 dBm and the budget comes out 2.5 dB lower.
+
 Transmit power is fixed per board. Counted across
 `variants/*/platformio.ini`, active lines only:
 
