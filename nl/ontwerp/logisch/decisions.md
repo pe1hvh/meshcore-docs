@@ -22,7 +22,7 @@ geen configuratiebestand dat bepaalt of een node repeater of room server is.
 displaydrivers tegelijk in het geheugen houden. Door bij het compileren te
 kiezen, komt alleen de gekozen code in de binary terecht.
 
-**Wat het kost.** Je kunt een node niet van rol laten wisselen zonder nieuwe
+**De keerzijde.** Je kunt een node niet van rol laten wisselen zonder nieuwe
 firmware te flashen. En het aantal buildtargets groeit met het product van de
 assen — 508 stuks, die allemaal moeten blijven compileren.
 
@@ -35,7 +35,7 @@ prioriteiten tussen taken.
 werkt hetzelfde op vier platformfamilies waarvan er twee geen bruikbaar
 takenmodel hebben.
 
-**Wat het kost.** Elke component moet snel teruggeven. Een displaydriver die
+**De keerzijde.** Elke component moet snel teruggeven. Een displaydriver die
 een e-ink scherm ververst, houdt de radio tegen. Het ontwerp lost dat niet op;
 het maakt het zichtbaar, doordat het schermcontract de applicatie laat vragen
 of het om e-ink gaat.
@@ -49,7 +49,7 @@ pool gehaald.
 geheugenfragmentatie geleidelijk tot instabiliteit leiden. Een vaste pool kan
 niet fragmenteren en het geheugengebruik is bij het opstarten bekend.
 
-**Wat het kost.** De pool kan op. Als er meer pakketten tegelijk onderweg
+**De keerzijde.** De pool kan op. Als er meer pakketten tegelijk onderweg
 zijn dan er plekken zijn, valt er een af. Dat is een ontwerpkeuze — liever een
 voorspelbaar verlies dan een onvoorspelbare herstart.
 
@@ -58,12 +58,12 @@ voorspelbaar verlies dan een onvoorspelbare herstart.
 Een node houdt geen kaart van het netwerk bij. Paden reizen mee met de
 pakketten.
 
-**Waarom.** Een routeringstabel moet worden onderhouden, en dat kost verkeer.
-In een netwerk waar zendtijd wettelijk begrensd is en de bandbreedte in
+**Waarom.** Een routeringstabel moet worden onderhouden, en dat onderhoud
+vergt extra verkeer. In een netwerk waar zendtijd wettelijk begrensd is en de bandbreedte in
 honderden bytes per seconde wordt gemeten, is elk onderhoudsbericht een bericht
 dat niet doorkomt.
 
-**Wat het kost.** Een node weet niet of een pad nog werkt tot hij het probeert.
+**De keerzijde.** Een node weet niet of een pad nog werkt tot hij het probeert.
 Er is geen manier om te ontdekken dat een repeater is uitgevallen behalve door
 te merken dat er niets terugkomt.
 
@@ -76,8 +76,8 @@ zit er een contract tussen.
 maar een grens. Het legt vast wat de mesh-logica van die component mag
 verwachten, en dwingt af dat er niets doorheen lekt.
 
-**Wat het kost.** Een laag indirectie die op deze schaal niets oplevert aan
-flexibiliteit. Dat is de prijs die het ontwerp bewust betaalt.
+**De keerzijde.** Een laag indirectie die op deze schaal niets oplevert aan
+flexibiliteit. Dat is een nadeel dat het ontwerp bewust accepteert.
 
 ## 6. Vier platformfamilies, drie gedeelde bordklassen
 
@@ -88,7 +88,7 @@ RP2040 niet: elk van de vier RP2040-borden schrijft zijn eigen.
 later en met weinig varianten; er was nooit genoeg overlap om een gedeelde
 basis te rechtvaardigen.
 
-**Wat het kost.** Vier keer dezelfde code voor batterijmeting en herstart, op
+**De keerzijde.** Vier keer dezelfde code voor batterijmeting en herstart, op
 vier plekken die apart onderhouden moeten worden. Wie een vijfde RP2040-bord
 toevoegt, kopieert opnieuw.
 
@@ -102,10 +102,10 @@ Contracten geven geen fouten terug. Een radio die niet reageert meldt dat niet;
 hij levert eenvoudigweg geen pakketten. Een schrijfactie naar de opslag die
 mislukt, mislukt stil.
 
-**Waarom.** Foutafhandeling kost code en geheugen, en op een node zonder
-gebruiker is er meestal niemand om de fout aan te melden.
+**Waarom.** Foutafhandeling vraagt extra code en geheugen, en op een node
+zonder gebruiker is er meestal niemand om de fout aan te melden.
 
-**Wat het kost.** Diagnose op afstand is moeilijk. Een repeater die zijn radio
+**De keerzijde.** Diagnose op afstand is moeilijk. Een repeater die zijn radio
 kwijt is, gedraagt zich als een repeater in een stil gebied. De statistieken
 die een node bijhoudt — verzonden, ontvangen, zendtijdbudget — zijn daarom het
 enige gereedschap dat er is.

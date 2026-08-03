@@ -99,9 +99,11 @@ SMA and RP-SMA screw onto each other without making contact in the centre.
 That is the most common fault behind a node that transmits but reaches
 nothing.
 
-Cable is loss. At 868 MHz thin coax easily costs several dB per ten metres.
+Cable introduces loss. At 868 MHz thin coax easily causes several dB of loss
+per ten metres.
 A node close to the antenna with a short cable beats a node indoors with a
-long one. What a dB costs in distance is in [Link Budget](link-budget.md).
+long one. The effect of a dB on distance is discussed in
+[Link Budget](link-budget.md).
 
 ## SWR: what comes back
 

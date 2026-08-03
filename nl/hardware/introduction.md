@@ -124,7 +124,7 @@ het bord ligt:
 | `interfaces/` | BLE, WiFi, USB-serieel, I²C, SPI | een verbinding waarlangs data gaat, niet het apparaat aan het eind |
 | `peripherals/` | display, GPS, knoppen en LED's | het apparaat aan het eind van zo'n verbinding |
 
-De scheidslijn tussen de laatste twee kost af en toe uitleg. SPI staat
+Het onderscheid tussen de laatste twee vraagt af en toe om uitleg. SPI staat
 onder `interfaces/`, de SX1262 die eraan hangt onder `radio/`, en het OLED
 dat aan I²C hangt onder `peripherals/`. De bus en wat eraan hangt zijn twee
 onderwerpen.

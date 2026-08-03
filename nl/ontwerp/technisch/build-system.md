@@ -45,8 +45,8 @@ die ene optie te staan.
 
 Een sectie kan beide gebruiken, en veel secties doen dat. Wie alleen `extends`
 volgt, mist de opties die via `${...}` binnenkomen; wie alleen `${...}` volgt,
-mist alles wat via `extends` erft. In MeshCore `03b6ef4` kost het volgen van
-één van de twee 28 buildtargets: die krijgen hun `build_src_filter` — en dus
+mist alles wat via `extends` erft. In MeshCore `03b6ef4` mis je 28 buildtargets
+als je maar één van de twee volgt: die krijgen hun `build_src_filter` — en dus
 hun applicatie — van een gedeelde basissectie die zelf geen `[env:...]` is.
 
 ## Hoeveel targets uit welke basissectie komen

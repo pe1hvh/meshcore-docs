@@ -128,7 +128,7 @@ result is that the same post is sent all over again.
 ```
 
 There is no brake. A client that sends keep-alives at a high rate is answered
-every time, and every answer costs air time on a band where the duty cycle
+every time, and every answer consumes air time on a band where the duty cycle
 counts. The intended solution is written literally alongside it and has not
 been built. See [Regulations & Duty Cycle](../../usage/regulations.md) for
 why that is more than a cosmetic point.

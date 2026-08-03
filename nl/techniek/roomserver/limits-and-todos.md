@@ -127,7 +127,7 @@ gevolg is dat dezelfde post nog eens wordt verstuurd.
 ```
 
 Er zit geen rem op. Een client die keep-alives in hoog tempo stuurt, wordt
-elke keer beantwoord, en elk antwoord kost zendtijd op een band waar de duty
+elke keer beantwoord, en elk antwoord verbruikt zendtijd op een band waar de duty
 cycle telt. De bedoelde oplossing staat er letterlijk naast en is niet
 gebouwd. Zie [Regelgeving & Duty Cycle](../../gebruik/regulations.md) voor
 waarom dat meer dan een cosmetisch punt is.

@@ -113,7 +113,7 @@ packet — trivial on a laptop — and thereby holds exactly the map the design 
 out to prevent. Which regions are live, where they are live, and which traffic
 belongs to which place.
 
-**The outcome is that you pay the computational cost of a cryptographic scheme
+**The outcome is that you perform the computation of a cryptographic scheme
 and get the security of a readable label.**
 
 With free-form names the picture is materially different. No list exists of
@@ -191,7 +191,7 @@ did not erect bureaucracy; it filled a missing protocol feature with the only
 means available. That it costs the privacy property is not sloppiness but the
 price of the gap.
 
-## What it costs
+## The downside
 
 **A silent failure mode.** Configure a region no repeater in range carries, and
 `findMatch()` returns `NULL`, `recv_pkt_region` stays empty,
@@ -274,11 +274,12 @@ The usual counter-argument is that a table in firmware requires a release for
 every new region. That does not apply here: the codes are already typed in by
 hand, from the same published list. `region put nl-nb` could just as well have
 been `region put nl-nb 0x0042`, with the number taken from the wiki. The same
-effort for the operator, no firmware update, and none of the costs.
+effort for the operator, no firmware update, and without the downsides
+mentioned.
 
 > [!IMPORTANT]
 > **In the way the Netherlands uses regions, the HMAC scheme does nothing a simple
-> lookup table would not also have done.** The computation is paid for, the
+> lookup table would not also have done.** This costs computation, the
 > registry is maintained, the names are enumerable, the codes are recomputable.
 > What remains is the complexity.
 >

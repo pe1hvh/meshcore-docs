@@ -64,7 +64,7 @@ code.
 - [Contracts](logical/interfaces.md) — the agreements between components
 - [Information model](logical/information-model.md) — the data and its relations
 - [Variability](logical/variability.md) — how one codebase becomes 508 builds
-- [Design decisions](logical/decisions.md) — the choices and what they cost
+- [Design decisions](logical/decisions.md) — the choices and their consequences
 
 **Technical design**
 

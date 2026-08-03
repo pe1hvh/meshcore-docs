@@ -126,7 +126,7 @@ board:
 | `interfaces/` | BLE, WiFi, USB serial, I²C, SPI | a connection data travels along, not the device at the far end |
 | `peripherals/` | display, GPS, buttons and LEDs | the device at the far end of such a connection |
 
-The line between the last two occasionally needs explaining. SPI is under
+The distinction between the last two occasionally needs explaining. SPI is under
 `interfaces/`, the SX1262 hanging off it is under `radio/`, and the OLED
 hanging off I²C is under `peripherals/`. The bus and the thing on it are
 two separate topics.

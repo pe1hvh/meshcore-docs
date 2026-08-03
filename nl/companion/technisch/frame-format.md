@@ -69,8 +69,8 @@ firmware wordt afgekapt in plaats van geweigerd.
 
 ## Wat er overblijft voor gegevens
 
-De opcode kost één byte, en de meeste commando's hebben nog een adres, een
-index of een tijdstempel nodig. Voor datagrammen op een kanaal — losse
+De opcode neemt één byte in beslag, en de meeste commando's hebben nog een
+adres, een index of een tijdstempel nodig. Voor datagrammen op een kanaal — losse
 pakketten met gestructureerde gegevens in plaats van tekst — is die overhead
 vastgelegd:
 

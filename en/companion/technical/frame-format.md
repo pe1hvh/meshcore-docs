@@ -68,8 +68,8 @@ truncated by the firmware rather than refused.
 
 ## What is left for data
 
-The opcode costs one byte, and most commands still need an address, an index
-or a timestamp. For datagrams on a channel — separate packets of structured
+The opcode takes up one byte, and most commands still need an address, an
+index or a timestamp. For datagrams on a channel — separate packets of structured
 data rather than text — that overhead is fixed:
 
 `examples/companion_radio/MyMesh.cpp` r.101

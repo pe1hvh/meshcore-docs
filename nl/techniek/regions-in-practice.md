@@ -118,7 +118,7 @@ honderd HMAC's door — triviaal op een laptop — en heeft daarmee exact de kaa
 die het ontwerp wilde voorkomen. Welke regio's bestaan, waar en welk verkeer bij 
 welke plaats hoort.
 
-**De uitkomst is dus dat je het rekenwerk van een cryptografisch schema betaalt
+**De uitkomst is dus dat je het rekenwerk van een cryptografisch schema uitvoert
 en de beveiliging van een leesbaar label krijgt.**
 
 Bij vrije namen ligt dat wezenlijk anders. Van `#hiking`, `#wandelclub-teun` of
@@ -195,7 +195,7 @@ wilde scheppen, maar omdat het protocol hier iets laat liggen en dit het enige
 beschikbare middel was. Dat je regionaam daardoor te achterhalen is, is geen 
 slordigheid maar een bewuste keus.
 
-## Wat het kost
+## De keerzijde
 
 **Een stille faalmodus.** Stel je een regio in die geen repeater in je bereik
 draagt, dan levert `findMatch()` `NULL`, blijft `recv_pkt_region` leeg, geeft
@@ -271,11 +271,11 @@ debugbaarheid — en daar wint de tabel.
 Er is geen tabel in de firmware vereist: de codes worden nu óók met de hand ingetypt, 
 uit dezelfde gepubliceerde lijst. `region put nl-nb` zou net zo goed `region put nl-nb 0x0042` 
 hebben kunnen zijn, met het nummer uit de wiki. Even veel werk voor de operator, 
-geen firmware-update nodig, en geen van de kosten.
+geen firmware-update nodig, en zonder de genoemde nadelen.
 
 > [!Belangrijk]
 > **Zoals Nederland regio's gebruikt, doet het HMAC-schema niets wat een simpele
-> opzoektabel niet ook had gedaan.** Het rekenwerk wordt betaald, het register
+> opzoektabel niet ook had gedaan.** Dit kost rekenwerk, het register
 > wordt bijgehouden, de namen zijn opsombaar, de codes zijn terug te rekenen.
 > Wat overblijft is de complexiteit.
 >

@@ -114,8 +114,8 @@ as long as exactly one `NSS` is low at a time. Which boards have an SPI
 display is in [The Display](../peripherals/display.md).
 
 The radio is the most demanding user here: it wants to be served in time
-when `DIO1` fires. A long display refresh over the same bus can cost a
-packet.
+when `DIO1` fires. A long display refresh over the same bus can result
+in packet loss.
 
 ## Sources
 

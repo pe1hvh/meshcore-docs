@@ -173,8 +173,8 @@ regiofiltering toepassen **zónder ooit een kanaalsleutel te bezitten**. Let wel
 op wat dat precies betekent. Om de code te kunnen herberekenen moet de repeater
 de **volledige payload** door zijn HMAC halen — hij leest dus wel degelijk alle
 bytes. Wat hij niet kan, is ze *ontsleutelen*: zonder de PSK blijft de inhoud
-cijfertekst. Filteren op regio kost hem geen enkel inzicht in het bericht, maar
-het is nadrukkelijk geen kwestie van "even twee bytes bekijken".
+cijfertekst. Filteren op regio levert hem geen enkel inzicht in het bericht
+op, maar het is nadrukkelijk geen kwestie van "even twee bytes bekijken".
 
 > [!NOTE]
 > **Eén kanaal, meerdere scopes.** Omdat de transport code buiten de versleutelde
@@ -467,7 +467,7 @@ de repeater valt terug op de wildcard `*`. Staat daar `denyf` op, dan is
 > encryptie: filteren vereist de *regio*sleutel en levert geen inhoud op,
 > meelezen vereist de *kanaal*sleutel en levert geen filterrecht op.
 
-### Wat dit kost, en wat het niet garandeert
+### Welke gevolgen dit heeft, en wat het niet garandeert
 
 Het herberekenmodel heeft twee consequenties die de rest van dit hoofdstuk niet
 noemt, en die je moet kennen voordat je een grote regioboom uitrolt.

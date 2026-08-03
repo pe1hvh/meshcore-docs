@@ -69,7 +69,7 @@ OTA and ESP-NOW; at the bottom the number of devices in the web
 flasher.](../../images/en/platforms-1.svg)
 
 What each family actually brings — the SoCs under the heading, the cores,
-the power management and what the chip costs in memory and energy — is
+the power management and what the chip demands in memory and energy — is
 worked out family by family in
 [The Four Platform Families](platform-families.md).
 

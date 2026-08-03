@@ -64,7 +64,7 @@ Alle drie de plaatsen waar de library voorkomt zijn e-inkschermdrivers:
 - `src/helpers/ui/E290Display.h` r.8
 
 Elk van die drie houdt een `CRC32 display_crc;` bij. Een e-inkscherm
-verversen kost een seconde of meer, is zichtbaar als geflikker en slijt het
+verversen duurt een seconde of meer, is zichtbaar als geflikker en slijt het
 paneel. Door een controlegetal over de te tekenen inhoud bij te houden, kan
 de driver vaststellen dat het beeld niet veranderd is en de verversing
 overslaan.

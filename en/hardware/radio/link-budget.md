@@ -96,8 +96,8 @@ factor:
 | 11 | −17.5 dB | −137.5 dBm |
 | 12 | −20.0 dB | −140.0 dBm |
 
-Each SF step buys 2.5 dB of sensitivity and costs a doubling of airtime.
-What that airtime costs in duty cycle is in
+Each SF step buys 2.5 dB of sensitivity and doubles the airtime. The effect
+of that airtime on the duty cycle is discussed in
 [Regulations & Duty Cycle](../../usage/regulations.md).
 
 ## The sum
@@ -153,7 +153,7 @@ distance in free space, every 6 dB less halves it:
 | +6 dB | × 2.00 |
 
 That is where the practical value of this whole chapter sits. A bad
-connector costing 3 dB takes almost 30 percent of your distance. One SF step
+connector with 3 dB of loss reduces your range by almost 30 percent. One SF step
 buys 2.5 dB and therefore a good 30 percent — but doubles the airtime. And
 an antenna one metre higher often beats both, because it removes the
 obstacle instead of trying to transmit through it.

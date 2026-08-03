@@ -23,7 +23,7 @@ server.
 display drivers in memory at once. Choosing at compile time means only the
 chosen code ends up in the binary.
 
-**What it costs.** You cannot change a node's role without flashing new
+**The downside.** You cannot change a node's role without flashing new
 firmware. And the number of build targets grows with the product of the axes —
 508 of them, all of which have to keep compiling.
 
@@ -35,7 +35,7 @@ priorities between tasks.
 **Why.** It saves memory, it makes behaviour predictable, and it works the same
 on four platform families, two of which have no usable task model.
 
-**What it costs.** Every component has to return quickly. A display driver
+**The downside.** Every component has to return quickly. A display driver
 refreshing an e-ink screen holds up the radio. The design does not solve that;
 it makes it visible, by letting the display contract tell the application
 whether it is dealing with e-ink.
@@ -48,7 +48,7 @@ Packets are not allocated dynamically but taken from a pre-reserved pool.
 fragmentation can gradually lead to instability. A fixed pool cannot fragment
 and memory use is known at startup.
 
-**What it costs.** The pool can run out. If more packets are in flight than
+**The downside.** The pool can run out. If more packets are in flight than
 there are slots, one is dropped. That is a design choice — a predictable loss
 rather than an unpredictable restart.
 
@@ -56,12 +56,12 @@ rather than an unpredictable restart.
 
 A node keeps no map of the network. Paths travel with the packets.
 
-**Why.** A routing table has to be maintained, and that costs traffic. In a
-network where airtime is legally capped and bandwidth is measured in hundreds
+**Why.** A routing table has to be maintained, and that maintenance
+requires extra traffic. In a network where airtime is legally capped and bandwidth is measured in hundreds
 of bytes per second, every maintenance message is a message that does not get
 through.
 
-**What it costs.** A node does not know whether a path still works until it
+**The downside.** A node does not know whether a path still works until it
 tries. There is no way to discover that a repeater has failed other than by
 noticing that nothing comes back.
 
@@ -74,8 +74,8 @@ still there is a contract in between.
 boundary. It fixes what the mesh logic may expect of that component, and
 enforces that nothing leaks through.
 
-**What it costs.** A layer of indirection that at this scale buys no
-flexibility. That is the price the design knowingly pays.
+**The downside.** A layer of indirection that at this scale buys no
+flexibility. That is a downside the design knowingly accepts.
 
 ## 6. Four platform families, three shared board classes
 
@@ -86,7 +86,7 @@ RP2040 does not: each of the four RP2040 boards writes its own.
 later and with few variants; there was never enough overlap to justify a shared
 base.
 
-**What it costs.** The same code for battery measurement and restart four
+**The downside.** The same code for battery measurement and restart four
 times, in four places that have to be maintained separately. Adding a fifth
 RP2040 board means copying again.
 
@@ -99,10 +99,10 @@ wrong.
 Contracts return no errors. A radio that does not respond does not say so; it
 simply delivers no packets. A write to storage that fails, fails silently.
 
-**Why.** Error handling costs code and memory, and on a node without a user
+**Why.** Error handling requires extra code and memory, and on a node without a user
 there is usually nobody to report the error to.
 
-**What it costs.** Remote diagnosis is hard. A repeater that has lost its radio
+**The downside.** Remote diagnosis is hard. A repeater that has lost its radio
 behaves like a repeater in a quiet area. The statistics a node keeps — sent,
 received, airtime budget — are therefore the only tool there is.
 

@@ -108,7 +108,7 @@ Kantel de antenne enkele graden scheef ten opzichte van de mast. Daarmee kantelt
 
 Plaats een extra repeater op lager niveau — letterlijk onder of naast de dode zone — met een lage-gain antenne en *bewust verlaagd TX-vermogen* (bijvoorbeeld 14 dBm in plaats van het maximum dat de subband toelaat). Deze node gedraagt zich als een "buurt-hub": hij pakt lokale clients op, doet één hop naar de hoge repeater, en de hoge repeater doet de wide-area verspreiding.
 
-Voordelen: redundantie, lokale throughput, en clients hoeven niet meer te worstelen met hun marginale link naar boven. Nadelen zijn een tweede stuk hardware en wat extra airtime-overhead door flood-duplicatie in de overlapzone. Bij vier of meer clients in de dode zone weegt die overhead ruimschoots op tegen de winst: mislukte retransmissies kosten meer airtime dan een goed geconfigureerde tweede repeater.
+Voordelen: redundantie, lokale throughput, en clients hoeven niet meer te worstelen met hun marginale link naar boven. Nadelen zijn een tweede stuk hardware en wat extra airtime-overhead door flood-duplicatie in de overlapzone. Bij vier of meer clients in de dode zone weegt die overhead ruimschoots op tegen de winst: mislukte retransmissies verbruiken meer airtime dan een goed geconfigureerde tweede repeater.
 
 ### 4. Companion- of roomserver-node in plaats van een tweede repeater
 

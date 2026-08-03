@@ -153,7 +153,7 @@ variable width, so it measures.
 
 If `i` and `l` differ in width the font is variable and a space follows the
 dots. On an OLED with a fixed font that space is left out, because there
-every character is precious.
+every character takes up space.
 
 ## The power rail is counted, not switched
 

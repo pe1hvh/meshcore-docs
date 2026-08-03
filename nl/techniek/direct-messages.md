@@ -131,7 +131,7 @@ Dat staat zo becommentarieerd in de firmware zelf (`src/Mesh.cpp:138-141`).
 
 Een pad met vier hops dat toevallig eerder binnenkwam wint dus van een pad met
 twee. Dat is geen fout maar een ontwerpkeuze: het meten en vergelijken van
-routes zou toestandsopslag en extra verkeer kosten.
+routes zou toestandsopslag en extra verkeer vergen.
 
 ### De reciproque padretour
 
@@ -320,7 +320,7 @@ In `src/helpers/RegionMap.h:11-21` staan twee vlaggen: `REGION_DENY_FLOOD`
 *reserved for future* en wordt door geen enkel codepad gelezen. Wie hem in een
 configuratie tegenkomt of erover leest, moet weten dat hij vandaag niets doet.
 
-### Wat het zou kosten als het er wél was
+### Welke gevolgen het zou hebben als het er wél was
 
 Vier bytes per pakket, per hop, plus een HMAC-berekening bij elke repeater. Voor
 het voorbeeldbericht:

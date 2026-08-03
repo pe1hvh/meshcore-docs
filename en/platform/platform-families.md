@@ -5,7 +5,7 @@
 Four families, one firmware. ESP32, nRF52840, RP2040 and STM32WL share the
 same source code, but each chip brings its own cores, memory, transports
 and limits. This chapter walks through them one by one: what the chip
-brings and what it costs. The comparison, the device list and the decision
+brings and what it demands in memory and energy. The comparison, the device list and the decision
 guide are in [MeshCore Platforms](platforms.md).
 
 > [!NOTE]
@@ -48,7 +48,7 @@ four: BLE, WiFi, ESP-NOW, board classes. For comparison:
 `src/helpers/nrf52/` contains only a BLE interface, and
 `src/helpers/rp2040/` does not exist.
 
-### What it costs
+### The downside
 
 The highest clock speed of the four — 240 MHz — and the highest power
 draw. For ESP32 the firmware has no built-in power management like nRF52

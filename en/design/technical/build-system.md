@@ -45,8 +45,8 @@ literally.
 
 A section can use both, and many do. Follow only `extends` and you miss the
 options arriving through `${...}`; follow only `${...}` and you miss
-everything inherited through `extends`. In MeshCore `03b6ef4`, following just
-one of the two costs 28 build targets: those get their `build_src_filter` —
+everything inherited through `extends`. In MeshCore `03b6ef4`, you miss 28 build
+targets if you follow just one of the two: those get their `build_src_filter` —
 and therefore their application — from a shared base section that is not an
 `[env:...]` itself.
 

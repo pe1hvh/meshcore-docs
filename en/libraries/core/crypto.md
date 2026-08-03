@@ -115,7 +115,7 @@ ed25519_verify path is drawn dashed](../../../images/en/crypto-1.svg)
 
 ## What it means for a node
 
-Every node carries both implementations. That costs flash space, and it means
+Every node carries both implementations. That takes up flash space, and it means
 that a signature this node produces is made with different code from the code
 it checks an incoming signature with. Both follow the same standard, so that
 works — but anyone reading MeshCore's crypto code has to know that `Ed25519::`

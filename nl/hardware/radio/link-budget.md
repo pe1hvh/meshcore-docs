@@ -97,8 +97,8 @@ spreidingsfactor:
 | 11 | −17,5 dB | −137,5 dBm |
 | 12 | −20,0 dB | −140,0 dBm |
 
-Elke stap in SF levert 2,5 dB gevoeligheid en kost een verdubbeling van de
-zendtijd. Wat die zendtijd kost aan duty cycle staat in
+Elke stap in SF levert 2,5 dB gevoeligheid en verdubbelt de zendtijd. De
+invloed van die zendtijd op de duty cycle wordt besproken in
 [Regelgeving & Duty Cycle](../../gebruik/regulations.md).
 
 ## De som
@@ -154,7 +154,7 @@ afstand in vrije ruimte, elke 6 dB minder halveert hem:
 | +6 dB | × 2,00 |
 
 Daar zit de praktische waarde van het hele hoofdstuk. Een slechte connector
-die 3 dB kost neemt bijna 30 procent van je afstand. Een SF-stap erbij
+met 3 dB verlies vermindert je bereik met bijna 30 procent. Een SF-stap erbij
 levert 2,5 dB en dus ruim 30 procent — maar verdubbelt de zendtijd. En een
 antenne één meter hoger levert vaak meer dan beide, omdat die het obstakel
 uit de weg haalt in plaats van erdoorheen te proberen te zenden.

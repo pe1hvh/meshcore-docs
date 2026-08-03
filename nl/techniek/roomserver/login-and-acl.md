@@ -93,8 +93,8 @@ bereik is.
 > **Dat is een bewuste keuze en geen bug.** Een server die "verkeerd
 > wachtwoord" zou antwoorden, bevestigt aan iedereen die het probeert dat er
 > een room server op die sleutel luistert, en maakt het uitproberen van
-> wachtwoorden goedkoop. Stilte kost een aanvaller een volledige timeout per
-> poging.
+> wachtwoorden goedkoop. Stilte dwingt een aanvaller tot een volledige
+> timeout per poging.
 
 ## Wat de wachtwoorden zijn
 

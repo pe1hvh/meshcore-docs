@@ -113,7 +113,7 @@ The H-rules describe a single transmitting device. CEPT defines duty cycle as Σ
 
 **2. Relayed traffic counts against your own budget.** A packet your repeater forwards on someone else's behalf is legally your transmission. Where a standalone sensor can compute its duty cycle in advance, a repeater's is a function of third-party traffic — and your budget fills fastest exactly when the network is busiest.
 
-**3. One message costs N transmissions.** MeshCore clients do not repeat; only repeaters and room servers with `repeat on` do. A single flood message is therefore transmitted once by *every* repeater that hears it. Load on the mesh scales with the number of repeaters, not the number of senders.
+**3. One message requires N transmissions.** MeshCore clients do not repeat; only repeaters and room servers with `repeat on` do. A single flood message is therefore transmitted once by *every* repeater that hears it. Load on the mesh scales with the number of repeaters, not the number of senders.
 
 #### How many packets fit in 6 minutes?
 
@@ -145,7 +145,7 @@ These settings are no substitute for RED certification, but they are the practic
 | `set af {0-9}` *(deprecated)* | `1.0` (~50 %) | `9` (~10 %) | Same purpose on firmware older than v1.15.0 |
 | `set loop.detect` | `off` | `minimal` | Prevents packet storms caused by a node with deviant firmware (v1.14.0+) |
 | `set flood.advert.interval {hours}` | 12 | `49` | Less background traffic; adverts are flood packets |
-| `set advert.interval {minutes}` | 0 | `240` | Zero-hop adverts, cost no relay capacity |
+| `set advert.interval {minutes}` | 0 | `240` | Zero-hop adverts require no relay capacity |
 | `set flood.max.advert` | 8 | 8 | Bounds how far an advert floods |
 | `set flood.max.unscoped` | 64 | e.g. `3` | Keeps region-less floods local |
 | `region` (scoping) | — | NL regions | Confines floods to your own region |

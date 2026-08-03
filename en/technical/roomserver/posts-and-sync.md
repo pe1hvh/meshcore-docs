@@ -247,7 +247,7 @@ loop, and only that client. A participant with a large backlog therefore does
 not hold the others up, but does not catch up quickly either — with twenty
 active participants there is at worst some 24 seconds between two of your
 turns; if most are up to date that drops to a few seconds, because an empty
-turn costs only 150 ms.
+turn takes only 150 ms.
 
 Clients that are skipped are those still waiting for an ACK, those that have
 never been active, and those with three failed attempts in a row. That last

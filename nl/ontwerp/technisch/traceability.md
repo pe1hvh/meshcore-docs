@@ -82,8 +82,8 @@ ook geen bestand waar hij zou moeten staan. Zie
 **Takenmodel.** Er is geen scheduler en geen takenmodel. Alles draait in één
 lus, en componenten krijgen om beurten de kans iets te doen. Een component die
 te lang blijft hangen, houdt de rest op. De afwezigheid is een keuze en geen
-gebrek; [Ontwerpbeslissingen](../logisch/decisions.md) gaat in op wat die
-keuze kost.
+gebrek; [Ontwerpbeslissingen](../logisch/decisions.md) gaat in op de gevolgen
+van die keuze.
 
 > [!NOTE]
 > Beide zijn in [Componenten](../logisch/components.md) onder *Wat er niet is*

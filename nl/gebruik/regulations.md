@@ -113,7 +113,7 @@ De H-regels beschrijven een enkel zendend apparaat. CEPT definieert de duty cycl
 
 **2. Doorgegeven verkeer telt mee in je eigen budget.** Een pakket dat je repeater van een ander doorgeeft, is juridisch jouw transmissie. Waar een solo-sensor zijn duty cycle vooraf kan uitrekenen, is die van een repeater een functie van het verkeersaanbod van derden — precies op het moment dat het netwerk druk is, loopt je budget het snelst vol.
 
-**3. Eén bericht kost N transmissies.** MeshCore-clients repeaten niet; alleen repeaters en room servers met `repeat on`. Eén flood-bericht wordt daardoor één keer uitgezonden door élke repeater die het hoort. De belasting van de mesh schaalt met het aantal repeaters, niet met het aantal afzenders.
+**3. Eén bericht vereist N transmissies.** MeshCore-clients repeaten niet; alleen repeaters en room servers met `repeat on`. Eén flood-bericht wordt daardoor één keer uitgezonden door élke repeater die het hoort. De belasting van de mesh schaalt met het aantal repeaters, niet met het aantal afzenders.
 
 #### Hoeveel pakketten past er in 6 minuten?
 
@@ -145,7 +145,7 @@ Deze instellingen zijn géén vervanging van RED-certificering, maar wel de prak
 | `set af {0-9}` *(verouderd)* | `1.0` (~50 %) | `9` (~10 %) | Zelfde doel op firmware ouder dan v1.15.0 |
 | `set loop.detect` | `off` | `minimal` | Voorkomt packet storms door een node met afwijkende firmware (v1.14.0+) |
 | `set flood.advert.interval {uren}` | 12 | `49` | Minder achtergrondverkeer; adverts zijn flood-pakketten |
-| `set advert.interval {minuten}` | 0 | `240` | Zero-hop adverts, kosten geen relay-capaciteit |
+| `set advert.interval {minuten}` | 0 | `240` | Voor zero-hop adverts is geen relay-capaciteit nodig |
 | `set flood.max.advert` | 8 | 8 | Begrenst hoe ver een advert vloeit |
 | `set flood.max.unscoped` | 64 | bijv. `3` | Houdt regioloze floods lokaal |
 | `region` (scoping) | — | NL-regio's | Beperkt floods tot de eigen regio |

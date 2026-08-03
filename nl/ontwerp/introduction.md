@@ -65,7 +65,7 @@ MeshCore zelf.
 - [Contracten](logisch/interfaces.md) — de afspraken tussen componenten
 - [Informatiemodel](logisch/information-model.md) — de gegevens en hun relaties
 - [Variabiliteit](logisch/variability.md) — hoe één codebase 508 builds wordt
-- [Ontwerpbeslissingen](logisch/decisions.md) — de keuzes en wat ze kosten
+- [Ontwerpbeslissingen](logisch/decisions.md) — de keuzes en hun gevolgen
 
 **Technisch ontwerp**
 

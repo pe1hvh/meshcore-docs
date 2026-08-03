@@ -5,8 +5,8 @@
 Vier families, één firmware. ESP32, nRF52840, RP2040 en STM32WL delen
 dezelfde broncode, maar elke chip brengt zijn eigen cores, geheugen,
 transporten en beperkingen mee. Dit hoofdstuk loopt ze één voor één langs:
-wat de chip meebrengt en wat hij kost. De vergelijking, de apparatenlijst
-en de keuzehulp staan in [MeshCore Platforms](platforms.md).
+wat de chip meebrengt en wat hij vraagt aan geheugen en energie. De
+vergelijking, de apparatenlijst en de keuzehulp staan in [MeshCore Platforms](platforms.md).
 
 > [!NOTE]
 > **Bron.** Deze pagina is geverifieerd tegen de firmware zelf:
@@ -47,7 +47,7 @@ nRF52.
 ESP-NOW, bordklassen. Ter vergelijking: `src/helpers/nrf52/` bevat
 alleen een BLE-interface, en `src/helpers/rp2040/` bestaat niet.
 
-### Wat het kost
+### De keerzijde
 
 De hoogste kloksnelheid van de vier — 240 MHz — en het hoogste verbruik.
 De firmware heeft voor ESP32 geen ingebouwd powermanagement zoals nRF52

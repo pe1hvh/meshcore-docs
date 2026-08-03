@@ -249,7 +249,7 @@ beurt, en alleen die client. Een deelnemer met veel achterstand houdt de
 anderen dus niet op, maar loopt zelf ook niet snel bij — bij twintig actieve
 deelnemers zit er in het ongunstigste geval zo'n 24 seconden tussen twee van
 jouw beurten; zijn de meesten bij, dan zakt dat naar enkele seconden omdat
-een lege beurt maar 150 ms kost.
+een lege beurt maar 150 ms duurt.
 
 Overgeslagen worden clients die nog op een ACK wachten, clients die nooit
 actief zijn geweest, en clients met drie mislukte pogingen op rij. Die laatste

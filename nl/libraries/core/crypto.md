@@ -115,8 +115,8 @@ weergegeven](../../../images/nl/crypto-1.svg)
 
 ## Wat het voor een node betekent
 
-Elke node draagt beide implementaties mee. Dat kost flashruimte, en het
-betekent dat een handtekening die deze node zet, met andere code wordt
+Elke node draagt beide implementaties mee. Dat neemt flashruimte in beslag,
+en het betekent dat een handtekening die deze node zet, met andere code wordt
 gemaakt dan waarmee hij een binnenkomende handtekening controleert. Beide
 volgen dezelfde standaard, dus dat werkt — maar wie de crypto-code van
 MeshCore leest, moet weten dat `Ed25519::` en `ed25519_` verschillende

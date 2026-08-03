@@ -81,7 +81,7 @@ no file where one should sit. See
 **Task model.** There is no scheduler and no task model. Everything runs in
 one loop, and components get a turn to do something. A component that hangs
 holds up the rest. The absence is a choice and not a shortcoming;
-[Design decisions](../logical/decisions.md) goes into what that choice costs.
+[Design decisions](../logical/decisions.md) goes into the consequences of that choice.
 
 > [!NOTE]
 > Both are described in [Components](../logical/components.md) under *What is

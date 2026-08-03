@@ -172,7 +172,7 @@ The last row is the whole point of the separation: a repeater can apply region
 filtering **without ever holding a channel key**. Note carefully what that does
 and does not mean. To recompute the code it must push the **entire payload**
 through its HMAC, so it does read every byte. What it cannot do is *decrypt*
-them: without the PSK the content stays ciphertext. Region filtering costs it no
+them: without the PSK the content stays ciphertext. Region filtering gives it no
 insight into the message whatsoever, but it is emphatically not a matter of
 "just glancing at two bytes".
 
@@ -468,7 +468,7 @@ repeater falls back on the wildcard `*`. If that carries `denyf`, then
 > filtering requires the *region* key and yields no content, reading requires the
 > *channel* key and yields no forwarding rights.
 
-### What this costs, and what it does not guarantee
+### What consequences this has, and what it does not guarantee
 
 The recompute model has two consequences the rest of this chapter does not
 mention, and you should know them before rolling out a large region tree.

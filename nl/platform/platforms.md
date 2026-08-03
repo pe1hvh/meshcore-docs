@@ -70,7 +70,7 @@ en ESP-NOW; onderaan het aantal apparaten in de web
 flasher.](../../images/nl/platforms-1.svg)
 
 Wat elke familie precies meebrengt — de SoC's onder de noemer, de cores,
-het powermanagement en wat de chip kost aan geheugen en energie — staat
+het powermanagement en wat de chip vraagt aan geheugen en energie — staat
 per familie uitgewerkt in
 [De vier platformfamilies](platform-families.md).
 

@@ -91,7 +91,7 @@ password is therefore indistinguishable from a server that is out of range.
 > **That is a deliberate choice, not a bug.** A server that answered "wrong
 > password" would confirm to anyone who tried that there is a room server
 > listening on that key, and would make guessing passwords cheap. Silence
-> costs an attacker a full timeout per attempt.
+> forces an attacker into a full timeout per attempt.
 
 ## What the passwords are
 

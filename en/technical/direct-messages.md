@@ -131,8 +131,8 @@ back is therefore that of the fastest copy, not necessarily of the shortest
 route. The firmware says as much in a comment (`src/Mesh.cpp:138-141`).
 
 A four-hop path that happened to arrive earlier thus beats a two-hop one. That is
-not a fault but a design choice: measuring and comparing routes would cost state
-and extra traffic.
+not a fault but a design choice: measuring and comparing routes would require state
+storage and extra traffic.
 
 ### The reciprocal path return
 
@@ -318,7 +318,7 @@ but in this firmware it is used exclusively by `sendZeroHop()` with codes
 future* and is read by no code path at all. Anyone who meets it in a
 configuration or reads about it should know that it does nothing today.
 
-### What it would cost if it were there
+### What consequences it would have if it were there
 
 Four bytes per packet, per hop, plus an HMAC computation at every repeater. For
 the example message:

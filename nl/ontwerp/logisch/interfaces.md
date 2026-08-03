@@ -154,7 +154,7 @@ zonder scherm krijgen die implementatie, zodat de applicatie niet hoeft te
 vragen of er een scherm is.
 
 Het contract kent één beperking die niet is weg te abstraheren. Een e-ink
-scherm laat zich niet behandelen als een LCD — het verversen kost seconden in
+scherm laat zich niet behandelen als een LCD — het verversen duurt seconden in
 plaats van milliseconden — en dat verschil is niet weg te abstraheren. Het
 contract lost dat op door de applicatie te laten vragen om wat voor scherm het
 gaat. Dat is een bewuste concessie; zie [Ontwerpbeslissingen](decisions.md).

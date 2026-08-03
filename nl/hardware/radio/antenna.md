@@ -98,10 +98,10 @@ Niet uit de firmware — algemene radiotechniek.
 SMA en RP-SMA schroeven op elkaar zonder contact te maken in het midden. Dat
 is de meest voorkomende fout bij een node die wel zendt maar niets bereikt.
 
-Kabel is verlies. Op 868 MHz kost dunne coax al snel enkele dB per tien
-meter. Een node dicht bij de antenne met een korte kabel wint het van een
-node binnen met een lange kabel. Wat een dB in afstand kost staat in
-[Linkbudget](link-budget.md).
+Kabel introduceert verlies. Op 868 MHz veroorzaakt dunne coax al snel enkele
+dB verlies per tien meter. Een node dicht bij de antenne met een korte kabel wint het van een
+node binnen met een lange kabel. De invloed van een dB op de afstand wordt
+besproken in [Linkbudget](link-budget.md).
 
 ## SWR: wat er terugkomt
 

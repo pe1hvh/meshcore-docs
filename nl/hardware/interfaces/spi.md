@@ -115,7 +115,7 @@ hebben staat in [Het scherm](../peripherals/display.md).
 
 De radio is daarbij de veeleisendste gebruiker: hij wil op tijd bediend
 worden als `DIO1` afgaat. Een langdurige schermverversing over dezelfde bus
-kan een pakket kosten.
+kan leiden tot pakketverlies.
 
 ## Bronnen
 

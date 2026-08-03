@@ -152,8 +152,8 @@ heeft, dus meet hij het.
 ```
 
 Verschillen `i` en `l` in breedte, dan is het font variabel en komt er een
-spatie achter de puntjes. Op een OLED met vast font blijft die spatie weg,
-want daar is elk teken kostbaar.
+spatie achter de puntjes. Op een OLED met een vast lettertype blijft die
+spatie weg, omdat elk teken ruimte inneemt.
 
 ## De voeding wordt geteld, niet geschakeld
 

@@ -108,7 +108,7 @@ Tilt the antenna a few degrees off-axis relative to the mast. That tips the donu
 
 Install an extra repeater at a lower level — literally under or next to the dead zone — with a low-gain antenna and *deliberately reduced TX power* (e.g. 14 dBm instead of whatever the sub-band allows at maximum). This node acts as a "neighbourhood hub": it picks up local clients, does one hop to the high repeater, and the high repeater handles wide-area distribution.
 
-Advantages: redundancy, local throughput, and clients no longer have to fight their marginal link upwards. Disadvantages are a second piece of hardware and some extra airtime overhead from flood duplication in the overlap zone. With four or more clients in the dead zone that overhead is far outweighed by the gain: failed retransmissions cost more airtime than a well-configured second repeater.
+Advantages: redundancy, local throughput, and clients no longer have to fight their marginal link upwards. Disadvantages are a second piece of hardware and some extra airtime overhead from flood duplication in the overlap zone. With four or more clients in the dead zone that overhead is far outweighed by the gain: failed retransmissions consume more airtime than a well-configured second repeater.
 
 ### 4. Companion or room-server node instead of a second repeater
 
