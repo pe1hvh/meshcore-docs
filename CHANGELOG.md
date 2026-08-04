@@ -7,6 +7,66 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
 
 ## [Unreleased]
 
+### Changed
+
+- `CLAUDE.md` split into `CLAUDE.md` plus eight files under `.claude/rules/`,
+  then trimmed from 578 to 218 lines. At 578 the file was far over the
+  200-line guideline, where longer instruction files consume more context and
+  reduce adherence. It also mixed two things: rules that must apply before any
+  file is opened, and conventions that only matter once work reaches a
+  particular kind of file. The first group stays in `CLAUDE.md`; the second
+  moved into path-scoped rule files. All moved text is verbatim; only the
+  headings, the frontmatter, the *Mandatory reading* section and the shortened
+  *Word choice and nuance* subsection are new.
+- `.claude/` also makes the boundary visible in the tree: everything under it
+  governs how this documentation is written, everything outside it is about
+  MeshCore or about the project itself.
+- *Mandatory reading* now lists all nine documents with whether they load
+  always or on matching paths. The required statement names the four
+  unconditional ones. The five path-scoped files are deliberately excluded:
+  they enter context after the statement is made, so claiming to have read
+  them at the start of a session would be untrue.
+- `.claude/rules/REPO-STRUCTURE.md` also took over *What this documentation
+  aims for* and the rule on the language of the project-wide documents. Both
+  describe what the repo is rather than how to act in a session, and both were
+  the longest blocks left in `CLAUDE.md` that nothing in a session depends on
+  up front.
+- Two rules were stated twice, once under 🛑 *Stop and ask* and once in the
+  checkpoint list: *doubt belongs before the building* and *checkpoint 2 is
+  not optional*. Merged into one formulation, because two wordings of one rule
+  drift apart.
+
+### Fixed
+
+- `.claude/rules/REPO-STRUCTURE.md` — the rule read *file names are always
+  English, kebab-case*, which the repo contradicted on four root files and now
+  on eight rule files. Corrected to state that chapter, script, diagram and
+  attachment names are kebab-case, while process documents keep their
+  conventional upper-case names.
+
+### Added
+
+- `.claude/rules/STYLE-NUANCE.md`, `REPO-STRUCTURE.md`, `PITFALLS.md`
+  (unconditional) and `CHAPTERS.md`, `IMAGES.md`, `TERMINOLOGY.md`,
+  `TOOLS.md`, `CHANGELOG-COMMITS.md` (path-scoped).
+- `.claude/REPO-TREE.md` holds the layout tree, moved out of
+  `REPO-STRUCTURE.md`. It sits outside `rules/` deliberately: a file in
+  `.claude/rules/` without path frontmatter loads at launch, which is what the
+  move was meant to avoid. Nothing loads it automatically; `CLAUDE.md`
+  instructs that it be read when a directory, section or chapter is added.
+  That is an instruction rather than a mechanism, which is acceptable here —
+  if it is skipped, the repo itself gives the same answer.
+
+### Removed
+
+- `STYLE-NUANCE.md` from the repo root; it now lives in `.claude/rules/`.
+- The repo URL, licence line and project description from the top of
+  `CLAUDE.md`; they duplicated `README.md`.
+
+---
+
+## [Unreleased]
+
 ### Added
 
 - `nl/hardware/radio/filters.md`, `en/hardware/radio/filters.md` — new chapter
