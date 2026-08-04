@@ -26,7 +26,7 @@ every assignment, however small:
 | Document | Covers |
 |---|---|
 | `CLAUDE.md` (this file) | binding rules, conventions, working process, pitfalls |
-| `STYLE-NUANCE.md` | word choice and nuance in NL and EN, with the corrections already made |
+| `/.claude/rules/STYLE-NUANCE.md` | word choice and nuance in NL and EN, with the corrections already made |
 
 **The AI states in its first substantive response that both have been read and
 understood**, before anything else, on its own line and in this form:
