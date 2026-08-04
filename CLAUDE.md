@@ -18,6 +18,36 @@ It does **not** describe what MeshCore is or how it works — that belongs in
 the chapters themselves. It does **not** describe how the website is built.
 For the table of contents: `nl/README.md` and `en/README.md`.
 
+## Mandatory reading before every assignment
+
+Two documents are mandatory reading before any work on this repo starts, for
+every assignment, however small:
+
+| Document | Covers |
+|---|---|
+| `CLAUDE.md` (this file) | binding rules, conventions, working process, pitfalls |
+| `STYLE-NUANCE.md` | word choice and nuance in NL and EN, with the corrections already made |
+
+**The AI states in its first substantive response that both have been read and
+understood**, before anything else, on its own line and in this form:
+
+```text
+Mandatory reading: CLAUDE.md and STYLE-NUANCE.md read and understood.
+```
+
+Rules:
+
+- The statement is only made after the files have actually been opened and
+  read in this session. Knowing them from an earlier session does not count —
+  they may have changed.
+- Is one of them missing from the upload or the working directory? Then say
+  so, name which one, and ask for it. That falls under 🛑 *Stop and ask*; do
+  not start on the assignment.
+- Was a rule from either document deliberately not applied? Say which one and
+  why, in the same response.
+- A new project-wide document with rules in it is added to this table in the
+  same session in which it is created.
+
 ## The repo on one screen
 
 ```
@@ -371,6 +401,21 @@ aside.
   deviate because the reader's term is different, spell that out in the
   chapter itself — not silently.
 
+### ✍️ Word choice and nuance
+
+- **`STYLE-NUANCE.md` is binding and is read before you write.** It holds the
+  word-choice rules for both languages, with the corrections already made in
+  this repo as reference pairs.
+- Rule 1 in short: `kosten` / `cost` only for what is genuinely consumed or
+  paid — money, effort, airtime, current, computation. Everywhere else the
+  concrete verb: *neemt in beslag*, *duurt*, *vereist*, *vergt*, *verbruikt*,
+  *veroorzaakt* / *takes up*, *takes*, *requires*, *demands*, *consumes*,
+  *causes*. The passive payment metaphor (`wordt betaald`, `is paid for`) is
+  always wrong. The decision table, the exceptions and the heading convention
+  are in `STYLE-NUANCE.md`; do not paraphrase them from memory.
+- Before delivering, run the two grep checks from that document over every
+  file you touched, and report the result under checkpoint 3.
+
 ### 🛡️ Existing content
 
 - For every file you touch, inventory what is in it before you change
@@ -396,10 +441,13 @@ aside.
 
 ## Working process in a chat session
 
-Three mandatory checkpoints. All three fall under 🛑 *Stop and ask*:
+Four mandatory checkpoints. All four fall under 🛑 *Stop and ask*:
 skipping a checkpoint because the assignment looks clear is itself the
 mistake that rule addresses.
 
+0. **Mandatory reading** (before anything else) — open and read `CLAUDE.md`
+   and `STYLE-NUANCE.md`, then state that both have been read and understood,
+   in the form given under *Mandatory reading before every assignment*.
 1. **Source verification** (first, always) — inventory all available
    sources, including empty directories and directory entries in an
    archive; report which ones you see with timestamps; ask which one leads.
@@ -415,6 +463,9 @@ mistake that rule addresses.
 
 **Delivery checklist:**
 
+- [ ] Mandatory reading stated at the start of the session
+- [ ] `STYLE-NUANCE.md` grep checks run over every file touched, result
+      reported
 - [ ] NL and EN have the same sections, tables, alerts and images
 - [ ] EN file ends with `Translated from Dutch by Anthropic Claude`
 - [ ] All relative links point to existing files
