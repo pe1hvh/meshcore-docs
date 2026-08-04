@@ -490,9 +490,9 @@ beveiligingsmechanisme is.
 
 **Elk flood-pakket kost rekenwerk.** Tot 32 regio's × 4 sleutels = 128
 HMAC-SHA256-berekeningen over 50–190 bytes, op een nRF52 of ESP32, vóórdat er
-ook maar iets besloten is. Bij een dicht mesh met veel flood-verkeer is een
-uitgebreide regioboom dus niet gratis. `region list allowed` kort houden scheelt
-direct.
+ook maar iets besloten is. Bij een dicht mesh met veel flood-verkeer verbruikt een
+uitgebreide regioboom dus merkbaar rekentijd. `region list allowed` kort houden
+scheelt direct.
 
 ## De regio-CLI
 

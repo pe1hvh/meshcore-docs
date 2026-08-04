@@ -411,10 +411,18 @@ aside.
   concrete verb: *neemt in beslag*, *duurt*, *vereist*, *vergt*, *verbruikt*,
   *veroorzaakt* / *takes up*, *takes*, *requires*, *demands*, *consumes*,
   *causes*. The passive payment metaphor (`wordt betaald`, `is paid for`) is
-  always wrong. The decision table, the exceptions and the heading convention
+  always wrong, and so is the negation (`gratis`, `free`) outside a literal
+  price or a technical sense such as *free space*. The decision table, the exceptions and the heading convention
   are in `STYLE-NUANCE.md`; do not paraphrase them from memory.
+- Rule 2 in short: **no invented terms.** A word that does not exist in the
+  target language is not created, not even as an obvious-looking
+  translation. If the field uses the English word in Dutch too, use the
+  English word; if a concept has no name, describe it. Your own earlier
+  output is not a source. The exceptions — terms the project defines itself,
+  firmware identifiers, plain compounds — are in `STYLE-NUANCE.md`.
 - Before delivering, run the two grep checks from that document over every
-  file you touched, and report the result under checkpoint 3.
+  file you touched, and report the result under checkpoint 3. Rule 2 has no
+  grep: list the terms introduced and name a source per term.
 
 ### 🛡️ Existing content
 
@@ -466,6 +474,8 @@ mistake that rule addresses.
 - [ ] Mandatory reading stated at the start of the session
 - [ ] `STYLE-NUANCE.md` grep checks run over every file touched, result
       reported
+- [ ] Every term the delivery introduces listed with the source that uses
+      it, or the chapter that defines it (Rule 2)
 - [ ] NL and EN have the same sections, tables, alerts and images
 - [ ] EN file ends with `Translated from Dutch by Anthropic Claude`
 - [ ] All relative links point to existing files

@@ -492,8 +492,8 @@ a security mechanism.
 **Every flood packet costs computation.** Up to 32 regions × 4 keys = 128
 HMAC-SHA256 computations over 50–190 bytes, on an nRF52 or ESP32, before
 anything at all has been decided. In a dense mesh with heavy flood traffic an
-elaborate region tree is therefore not free. Keeping `region list allowed` short
-pays off directly.
+elaborate region tree therefore consumes noticeable computing time. Keeping
+`region list allowed` short helps immediately.
 
 ## The region CLI
 

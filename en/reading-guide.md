@@ -10,8 +10,8 @@ asks of you.
 
 ## What is here
 
-The documentation holds 94 chapters in Dutch and the same 94 in English,
-with 73 diagrams per language. The chapter count is the number of `.md` files
+The documentation holds 95 chapters in Dutch and the same 95 in English,
+with 77 diagrams per language. The chapter count is the number of `.md` files
 per language tree excluding the `README.md` indexes; the diagram count is the
 number of SVGs a chapter references, not the number of files in `images/`.
 
@@ -28,7 +28,7 @@ expect. Each section name links to its first chapter.
 | [Usage](usage/what-is-meshcore.md) | What MeshCore is, getting a node running, hardware, regulations, privacy | No programming knowledge required |
 | [Technical](technical/layer-model.md) | Protocol, packet layout byte by byte, encryption, routing, repeaters, room server | A basic grasp of networking and hexadecimal notation helps; programming is not needed |
 | [Platform](platform/platforms.md) | The four platform families and choosing between them | None beyond a general idea of microcontrollers |
-| [Hardware](hardware/introduction.md) | Radio, antenna, link budget, BLE, WiFi, USB, I²C, SPI, display, GPS, buttons | Basic electronics recommended; a few chapters show C++ fragments |
+| [Hardware](hardware/introduction.md) | Radio, antenna, link budget, filters, BLE, WiFi, USB, I²C, SPI, display, GPS, buttons | Basic electronics recommended; a few chapters show C++ fragments |
 | [Libraries](libraries/introduction.md) | The fifty-two external libraries that go into the firmware | Familiarity with PlatformIO build configurations recommended |
 | [Design (node) → logical](design/logical/roles.md) | Roles, components, contracts, information model, variability, design decisions | Basic knowledge of classes and interfaces recommended; the text stays away from source code |
 | [Design (node) → technical](design/technical/source-layout.md) | Source tree, class model, platform and radio realisation, build system, macros, traceability | C++ classes, inheritance and PlatformIO build configurations |

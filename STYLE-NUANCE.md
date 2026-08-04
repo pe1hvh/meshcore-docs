@@ -17,7 +17,7 @@ from this repo → exceptions**.
 
 ---
 
-## Rule 1 — "kosten" / "cost" only for what is genuinely consumed or paid
+## Rule 1 — the economic register only for what is genuinely consumed or paid
 
 ### Core rule
 
@@ -34,6 +34,14 @@ The same applies to the passive payment metaphor. `wordt betaald`,
 `de prijs die … betaalt`, `is paid for` and `the price the design pays` are
 **always wrong** in this documentation.
 
+**The negation belongs to the same register.** `gratis` / `free` is the
+opposite of `kosten` / `cost` and fails the same test: it says that nothing
+is given up without saying what *would* have been given up. `is geen gratis
+verbetering` / `is not a free improvement` names no mechanism at all — it
+only denies one. Name what actually happens instead, or what does not
+happen. The word stays where something is literally free of charge or where
+`free` carries a technical meaning that has nothing to do with price.
+
 ### Decision table
 
 | What actually happens | Nederlands | English |
@@ -48,6 +56,10 @@ The same applies to the passive payment metaphor. `wordt betaald`,
 | Has consequences for a trade-off | heeft gevolgen voor | has consequences for |
 | Forces the other party into something | dwingt … tot | forces … into |
 | Is missing from a choice | je mist … | you miss … |
+| Improves one thing at the expense of another | verbetert niet alles tegelijk | does not improve everything at once |
+| Demands nothing extra | vraagt niets extra's | requires nothing extra |
+| Has no drawback | heeft geen keerzijde | has no downside |
+| Is given up without anything in return | zonder er iets voor terug te krijgen | without getting anything in return |
 
 ### Examples from this repo
 
@@ -70,6 +82,9 @@ Dutch, as corrected in August 2026:
 | Dat is de prijs die het ontwerp bewust betaalt | Dat is een nadeel dat het ontwerp bewust accepteert |
 | De scheidslijn kost af en toe uitleg | Het onderscheid vraagt af en toe om uitleg |
 | … kost het volgen van één van de twee 28 buildtargets | … mis je 28 buildtargets als je maar één van de twee volgt |
+| Een filter is geen gratis verbetering | Een filter verbetert niet alles tegelijk |
+| … levert nu gratis het enige in wat de crypto hem te bieden had | … levert nu het enige in wat de crypto hem te bieden had, zonder er iets voor terug te krijgen |
+| … is een uitgebreide regioboom dus niet gratis | … verbruikt een uitgebreide regioboom dus merkbaar rekentijd |
 
 English, same mechanisms in the same order:
 
@@ -88,6 +103,9 @@ English, same mechanisms in the same order:
 | Silence costs an attacker a full timeout | Silence forces an attacker into a full timeout |
 | That is the price the design knowingly pays | That is a downside the design knowingly accepts |
 | … following one of the two costs 28 build targets | … you miss 28 build targets if you follow just one of the two |
+| A filter is not a free improvement | A filter does not improve everything at once |
+| … currently gives away for free the one thing … | … currently gives away the one thing …, without getting anything in return |
+| … an elaborate region tree is therefore not free | … an elaborate region tree therefore consumes noticeable computing time |
 
 ### Headings
 
@@ -121,9 +139,107 @@ A heading `Wat het kost` / `What it costs` is the counterpart of `**Waarom.**`
   - *Dat kost rekenwerk bij elke hop* / *That costs computation at every hop*
   - *Elk flood-pakket kost rekenwerk* / *Every flood packet costs computation*
 
+For `gratis` / `free` the exceptions are:
+
+- Literally free of charge: *De kern is volledig gratis* / *The core is
+  completely free*, *gratis te gebruiken* / *free to use*.
+- `free` in a technical sense that has nothing to do with price:
+  *free-space path loss*, *free-form names*, *license-free band*, *free
+  text*, *free choice of pins*, *the free end of a resonator*, *the top six
+  bits are free*. Dutch uses *vrij* there, not *gratis*, so the ambiguity
+  exists only in English.
+
 Note the boundary: *Dit kost rekenwerk* is right and *Het rekenwerk wordt
 betaald* is wrong. Same quantity — what failed was the payment metaphor, not
-the word itself.
+the word itself. In the same way *De kern is volledig gratis* is right and
+*geen gratis verbetering* is wrong: the first is a price, the second is a
+missing description.
+
+---
+
+## Rule 2 — no invented terms
+
+### Core rule
+
+A term that does not exist in the target language is never created on the
+spot, however reasonable the translation looks. Where the field uses the
+English word in Dutch as well, the chapter uses the English word. Where a
+concept has no name, describe the thing instead of labelling it.
+
+An invented term does real damage because it is indistinguishable from an
+established one: it reads as jargon the reader is supposed to know already, it
+cannot be looked up, and the next author takes it as precedent. It is the word
+equivalent of an unverified figure, and 🔬 *Verifiability* in `CLAUDE.md`
+applies to it unchanged — **invent nothing**.
+
+The test is short. Can you name a source that uses this word: a datasheet, a
+standard, the firmware, an existing chapter, a technical text in that language?
+If not, you made it up. Your own earlier output is not a source.
+
+### Decision table
+
+| Situation | What to do |
+|---|---|
+| The field uses the English term in Dutch as well | keep the English term, untranslated |
+| A term exists in the target language and is in use | use it, and be able to name where |
+| The concept has no name in either language | describe it; do not label it |
+| The project itself defines the concept | coining is allowed — see the exceptions |
+| You are not sure whether the term exists | 🛑 *Stop and ask*; do not translate on the spot |
+| The only place the word occurs is your own earlier text | that is not a source; drop the word |
+
+### Examples from this repo
+
+August 2026, `hardware/radio/filters.md`:
+
+| Wrong | Right |
+|---|---|
+| `Coaxholte` as the row label in the filter type table | `Cavity filter` |
+| `Cavity filter (coaxholte)` | `Cavity filter` |
+| … in het Nederlands ook coaxholte of coaxiale holteresonator | Het Nederlands kent geen eigen term; ook in Nederlandstalige praktijk heet dit filter cavity filter |
+
+Neither *coaxholte* nor *coaxiale holteresonator* is in use in Dutch. Both were
+produced while writing, as literal renderings of *coaxial cavity*, and both
+were presented as though they were established. Dutch radio practice calls this
+filter a cavity filter. The chapter now says so, and `terminology.md` states
+that Dutch has no term of its own, so that no reader goes hunting for one.
+
+The English side needed a correction as well, for a different reason:
+`Cavity filter (coaxial cavity)` was accurate, but the bracket existed only to
+mirror the invented Dutch one. When an invented term goes, check what was built
+on top of it.
+
+**The rule is not "when in doubt, use English".** In the same chapter
+*kwartgolfresonator* stays exactly as it is. Dutch antenna literature uses the
+*kwartgolf-* compound throughout — *kwartgolfstraler*, *kwartgolfstub*,
+*kwartgolf radialen* — and *resonator* is ordinary Dutch technical vocabulary.
+The difference with *coaxholte* is attestation, not language:
+
+| Term | Verdict | Why |
+|---|---|---|
+| *kwartgolfresonator* | keep | regular compound of parts that are in use in Dutch antenna literature |
+| *coaxholte* | remove | occurs nowhere but in the text that introduced it |
+
+So the question is never which language a word looks like. It is whether
+anyone outside this repository already uses it.
+
+### Exceptions
+
+- **A term the project defines itself.** `frameworklibrary` is this
+  documentation's own word, coined because Arduino's *core library* means
+  something else. Coining is allowed on three conditions: the chapter defines
+  it where it first appears, it lands in both terminology files in the same
+  session, and the chapter says why the obvious word was not usable.
+- **Firmware identifiers, file names and macros.** Those are names, not
+  translations. They are quoted verbatim in backticks and never translated.
+- **Ordinary compounds that make no claim to be terms of art.** *zendpad*,
+  *ontvangstpad*, *opstelpunt* are plain language. The line: if it would belong
+  in `terminology.md`, it needs a source.
+
+### Check
+
+Rule 2 cannot be grepped. It is checked at checkpoint 3 by listing every term
+the delivery introduces and naming, per term, the source that uses it or the
+chapter that defines it.
 
 ---
 
@@ -140,9 +256,10 @@ the word itself.
 
 ```bash
 # NL
-grep -rniE "\bkost|\bbetaal" nl/
-# EN — exclude payload, which is a false positive
-grep -rniE "\bcosts?\b|\bpays\b|\bpaid\b|\bexpensive\b" en/ | grep -vi payload
+grep -rniE "\bkost|\bbetaal|\bgratis" nl/
+# EN — the exclusions are the technical senses of "free" and the word payload
+grep -rniE "\bcosts?\b|\bpays\b|\bpaid\b|\bexpensive\b|\bfree\b" en/ \
+  | grep -viE "payload|free[- ]space|free-form|licen[cs]e-free|free text|free choice|free end|ends free"
 ```
 
 Every hit that is not in the list of correct uses is an error.
@@ -151,7 +268,7 @@ Every hit that is not in the list of correct uses is an error.
 
 ## Adding new rules
 
-When a second nuance surfaces, add it here as `## Rule 2` with the same four
+When a further nuance surfaces, add it here as `## Rule 3` with the same four
 parts: core rule, decision table, examples from this repo, exceptions. Real
 sentences in a *wrong → right* pair carry more weight than a description of
 the principle, so lead with those. Note the addition in `CHANGELOG.md` under

@@ -1,0 +1,51 @@
+<svg style="width:100%;margin:1rem 0" aria-label="Twee manieren om een filter in het antennepad van een node te plaatsen" role="img" viewBox="0 0 680 336" xmlns="http://www.w3.org/2000/svg">
+<style>
+:root{--bg:#FFFFFF; --grid:#023E8A; --line:#0096C7; --wave:#0096C7; --node:#0077B6; --outer:#0096C7; --text-primary:#0a2540; --text-secondary:#3d6380; --text-muted:#7a9bb5; --link-color:#0077B6; --link-hover:#023E8A; --heading-color:#0077B6; --border-subtle:rgba(0,119,182,0.12); --card-bg:rgba(0,119,182,0.03); --card-border:rgba(0,119,182,0.12); --card-hover:rgba(0,119,182,0.07); --code-bg:rgba(0,119,182,0.04); --code-border:rgba(0,119,182,0.12); --info-bg:rgba(0,119,182,0.04); --info-border:rgba(0,119,182,0.15); --table-header:rgba(0,119,182,0.06); --table-row-alt:rgba(0,119,182,0.02); --table-border:rgba(0,119,182,0.1); --timeline-line:#0096C7; --timeline-dot:#0077B6; --tag-green:rgba(16,185,129,0.1); --tag-green-text:#059669; --tag-red:rgba(239,68,68,0.08); --tag-red-text:#dc2626; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}
+@media (prefers-color-scheme: dark){:root{--bg:#0A1628; --grid:#0077B6; --line:#0077B6; --wave:#48CAE4; --node:#00B4D8; --outer:#0077B6; --text-primary:#e0f0f8; --text-secondary:#8badc4; --text-muted:#4a6a80; --link-color:#48CAE4; --link-hover:#90E0EF; --heading-color:#48CAE4; --border-subtle:rgba(0,119,182,0.15); --card-bg:rgba(0,119,182,0.06); --card-border:rgba(0,119,182,0.15); --card-hover:rgba(0,119,182,0.12); --code-bg:rgba(0,119,182,0.08); --code-border:rgba(0,119,182,0.2); --info-bg:rgba(72,202,228,0.06); --info-border:rgba(72,202,228,0.2); --table-header:rgba(0,119,182,0.1); --table-row-alt:rgba(0,119,182,0.04); --table-border:rgba(0,119,182,0.12); --timeline-line:#0077B6; --timeline-dot:#00B4D8; --tag-green:rgba(16,185,129,0.15); --tag-green-text:#6ee7b7; --tag-red:rgba(239,68,68,0.12); --tag-red-text:#fca5a5; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}}
+</style>
+<rect x="0" y="0" width="680" height="336" fill="var(--bg)"/>
+
+<title>Filter in gedeeld pad tegenover filter alleen in het ontvangstpad</title>
+
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-primary)" font-size="13" font-weight="600" x="30" y="26">A. Gedeeld zend- en ontvangstpad</text>
+<line stroke="var(--text-primary)" stroke-width="2" x1="70" x2="70" y1="48" y2="90"></line>
+<line stroke="var(--text-primary)" stroke-width="1.6" x1="61" x2="79" y1="56" y2="56"></line>
+<line stroke="var(--text-primary)" stroke-width="1.6" x1="63" x2="77" y1="64" y2="64"></line>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-secondary)" font-size="11" text-anchor="middle" x="70" y="106">antenne</text>
+<line stroke="var(--text-primary)" stroke-width="1.6" x1="84" x2="162" y1="68" y2="68"></line>
+<path d="M160,64 L168,68 L160,72" fill="var(--text-primary)"></path>
+<rect x="170" y="44" width="140" height="48" rx="5" fill="var(--card-bg)" stroke="var(--text-secondary)" stroke-width="1.2"></rect>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-primary)" font-size="13" font-weight="600" text-anchor="middle" x="240.0" y="66.0">filter</text>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-secondary)" font-size="11" text-anchor="middle" x="240.0" y="82.0">circa 2 dB verlies</text>
+<line stroke="var(--text-primary)" stroke-width="1.6" x1="312" x2="390" y1="68" y2="68"></line>
+<path d="M388,64 L396,68 L388,72" fill="var(--text-primary)"></path>
+<rect x="398" y="44" width="130" height="48" rx="5" fill="var(--card-bg)" stroke="var(--text-secondary)" stroke-width="1.2"></rect>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-primary)" font-size="13" font-weight="600" text-anchor="middle" x="463.0" y="72.0">SX1262</text>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-secondary)" font-size="11" x="30" y="132">Eenvoudig, maar het zendvermogen gaat door het filter en moet onder de vermogensgrens blijven.</text>
+<line stroke="var(--text-muted)" stroke-width="1" stroke-dasharray="4 4" x1="30" x2="650" y1="156" y2="156"></line>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-primary)" font-size="13" font-weight="600" x="30" y="186">B. Filter alleen in het ontvangstpad</text>
+<line stroke="var(--text-primary)" stroke-width="2" x1="70" x2="70" y1="220" y2="262"></line>
+<line stroke="var(--text-primary)" stroke-width="1.6" x1="61" x2="79" y1="228" y2="228"></line>
+<line stroke="var(--text-primary)" stroke-width="1.6" x1="63" x2="77" y1="236" y2="236"></line>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-secondary)" font-size="11" text-anchor="middle" x="70" y="278">antenne</text>
+<line stroke="var(--text-primary)" stroke-width="1.6" x1="84" x2="122" y1="240" y2="240"></line>
+<path d="M120,236 L128,240 L120,244" fill="var(--text-primary)"></path>
+<rect x="130" y="216" width="120" height="48" rx="5" fill="var(--card-bg)" stroke="var(--text-secondary)" stroke-width="1.2"></rect>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-primary)" font-size="13" font-weight="600" text-anchor="middle" x="190.0" y="244.0">RF-schakelaar</text>
+<path d="M252,240 L278,240 L278,190 L306,190" fill="none" stroke="var(--text-primary)" stroke-width="1.6"></path>
+<path d="M300,186 L308,190 L300,194" fill="var(--text-primary)"></path>
+<path d="M450,190 L470,190 L470,240 L494,240" fill="none" stroke="var(--text-primary)" stroke-width="1.6"></path>
+<path d="M252,240 L278,240 L278,290 L306,290" fill="none" stroke="var(--text-primary)" stroke-width="1.6"></path>
+<path d="M300,286 L308,290 L300,294" fill="var(--text-primary)"></path>
+<path d="M450,290 L470,290 L470,240 L494,240" fill="none" stroke="var(--text-primary)" stroke-width="1.6"></path>
+<rect x="310" y="168" width="140" height="44" rx="5" fill="var(--card-bg)" stroke="var(--text-secondary)" stroke-width="1.2"></rect>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-primary)" font-size="13" font-weight="600" text-anchor="middle" x="380.0" y="188.0">filter</text>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-secondary)" font-size="11" text-anchor="middle" x="380.0" y="204.0">alleen ontvangst</text>
+<rect x="310" y="268" width="140" height="44" rx="5" fill="var(--card-bg)" stroke="var(--text-secondary)" stroke-width="1.2"></rect>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-primary)" font-size="13" font-weight="600" text-anchor="middle" x="380.0" y="288.0">zendpad</text>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-secondary)" font-size="11" text-anchor="middle" x="380.0" y="304.0">vol vermogen</text>
+<path d="M488,236 L496,240 L488,244" fill="var(--text-primary)"></path>
+<rect x="500" y="216" width="130" height="48" rx="5" fill="var(--card-bg)" stroke="var(--text-secondary)" stroke-width="1.2"></rect>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-primary)" font-size="13" font-weight="600" text-anchor="middle" x="565.0" y="244.0">SX1262</text>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-secondary)" font-size="11" x="30" y="326">Vol zendvermogen behouden, ten koste van een extra schakelaar en een aansturing vanaf DIO2.</text>
+</svg>

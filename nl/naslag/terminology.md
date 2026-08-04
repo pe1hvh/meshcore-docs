@@ -20,6 +20,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | Basissectie | Sectie in `platformio.ini` zonder `env:`-voorvoegsel. Wordt niet zelf gebouwd maar dient als ouder voor buildtargets die er via `extends` van erven. MeshCore `03b6ef4` heeft er 108 |
 | BBS | Bulletin Board System — centrale plek waar deelnemers berichten achterlaten en ophalen zonder tegelijk aanwezig te zijn. Het model waar de Room Server op teruggaat; de standaardnaam van een onbeschreven room server is `Test BBS` |
 | BLE | Bluetooth Low Energy — energiezuinige verbinding tussen node en smartphone |
+| Blokkering | Verhoging van de effectieve ruisvloer doordat een sterk signaal buiten de eigen band de ontvangketen overstuurt. Genormeerd in ETSI EN 300 220-1 |
 | bootloader | Klein programma dat als eerste start en de eigenlijke firmware laadt of vervangt; bepaalt hoe je een node kunt flashen |
 | Bordklasse | Klasse die het bordcontract `mesh::MainBoard` implementeert voor één bord of één familie. MeshCore telt er 71: zes in `src/helpers/` en 65 in `variants/` |
 | Broncodestructuur | De indeling van de MeshCore-broncode (Engels: *source tree*): elf kernbestanden in `src/`, een verzameling hulpklassen, zes applicaties in `examples/` en negenenzeventig variantmappen in `variants/` |
@@ -30,6 +31,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | BUSY | Signaallijn van een SX126x-radio naar de SoC: actief zolang de chip een opdracht verwerkt. In MeshCore de buildvlag `P_LORA_BUSY` |
 | BW | Bandwidth — bandbreedte in kHz (125/250/500), smaller = robuuster |
 | Callsign | Roepnaam — unieke identificatie voor radioamateurs (bijv. PE1HVH) |
+| Cavity filter | Banddoorlaatfilter waarvan elke kring een kwartgolfresonator in een afgesloten metalen kast is. Hoogste Q en laagste invoegverlies van alle filtertypen, maar groot en zwaar. Het Nederlands kent geen eigen term; ook in Nederlandstalige praktijk heet dit filter cavity filter |
 | CCCD | Client Characteristic Configuration Descriptor — aan/uit schakelaar voor BLE Notify |
 | Channel | Gedeelde cryptografische sleutel (PSK) voor groepscommunicatie |
 | Chirp | Frequentiesweep van laag naar hoog (up-chirp) of hoog naar laag (down-chirp) |
@@ -48,6 +50,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | Dechirp | Demodulatie door ontvangen chirp te vermenigvuldigen met lokale down-chirp |
 | dentering | Het onderdrukken van het meermaals schakelen dat een mechanische knop bij één druk veroorzaakt |
 | `depends=` | Regel in `library.properties` waarmee een library opgeeft welke andere libraries hij nodig heeft; PlatformIO haalt die automatisch op |
+| Desensitisatie | Verlies aan gevoeligheid van een ontvanger door signalen die niet in het eigen kanaal zitten; het gevolg van blokkering, intermodulatie of instraling |
 | Dest hash / Src hash | Eerste byte van de public key van ontvanger respectievelijk afzender, onversleuteld in het pakket |
 | DFU | Device Firmware Update — firmware updaten zonder programmer. Op nRF52 via Bluetooth, op STM32 via USB |
 | Direct routing | Routeren langs een vooraf bekend pad; alleen de repeaters die in het pad staan sturen door |
@@ -89,11 +92,14 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | Implementatie | Werkende uitwerking van een contract: de klasse die daadwerkelijk doet wat het contract belooft, en die door elke andere implementatie van hetzelfde contract vervangbaar is |
 | Implementatieklasse | Klasse die een interfaceklasse implementeert en daardoor door elke andere implementatie vervangbaar is. Groep 2 van het klassenmodel; 50 in de gedeelde broncode |
 | Interfaceklasse | Klasse die uitsluitend vastlegt wat een implementatie moet kunnen, zonder werkende code. Groep 1 van het klassenmodel; 14 in de gedeelde broncode |
+| Intermodulatie | Mengproducten die ontstaan wanneer twee of meer sterke signalen een niet-lineair onderdeel passeren. Het verschil van twee zenders kan in de eigen band vallen |
+| Invoegverlies | Demping die een filter of ander passief onderdeel in de doorlaatband veroorzaakt, in dB |
 | IPEX/U.FL | Kleine click-on antenneconnector voor interne antennes |
 | ISM-band | Industrial, Scientific, Medical — vrije frequentieband, 868 MHz in Europa |
 | Keep-alive | Periodiek verzoek (`0x02`) van een client aan een server om de verbinding levend te houden. Bij een room server draagt de bevestiging het aantal wachtende posts mee. Wordt alleen direct beantwoord, nooit via flood |
 | Key Rotation | Periodiek vervangen van cryptografische sleutels voor extra veiligheid |
 | KISS | Keep It Simple, Stupid — protocol uit de packetradio voor het doorgeven van rauwe frames tussen modem en computer. Naam van een van de zes MeshCore-rollen, die de mesh-logica grotendeels omzeilt |
+| kwartgolfresonator | Resonator waarvan de geleider een kwart golflengte lang is en aan één kant is kortgesloten; de bouwsteen van helical-, interdigitaal-, combline- en cavityfilters. Op 869,618 MHz is een kwart golflengte 86,2 mm |
 | Koppelpunt | De plek waar een concrete klasse aan een contract wordt gekoppeld. Bij de radio ligt dat niet in de kern maar in `variants/*/target.h`, via `WRAPPER_CLASS` |
 | `lib_deps` | Sleutel in `platformio.ini` waarmee een sectie opgeeft welke libraries hij nodig heeft |
 | Library Dependency Finder (LDF) | Onderdeel van PlatformIO dat de broncode op `#include`-regels scant en daar libraries bij zoekt, ook als die niet gedeclareerd zijn |
@@ -132,6 +138,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | PATH-pakket | Payloadtype `0x08`; meldt het afgelegde pad terug aan de afzender. In de FAQ "delivery report" genoemd |
 | Payload type | 4 bits in de header die bepalen wat er in de payload staat (`0x00`-`0x0F`) |
 | PHY | Physical Layer — de fysieke radiolaag die bits omzet naar radiosignalen |
+| PIM | Passive Intermodulation — intermodulatie die ontstaat in corroderende metaalovergangen buiten de apparatuur en vervolgens opnieuw wordt uitgestraald; ook bekend als het roestige-boutverschijnsel |
 | Platform | In MeshCore: een van de vier bouwdoelen `ESP32_PLATFORM`, `NRF52_PLATFORM`, `RP2040_PLATFORM` en `STM32_PLATFORM`. Niet hetzelfde als een bord of een chip |
 | Platformfamilie | Verzameling SoC's die dezelfde platformbase in `platformio.ini` delen, bijvoorbeeld ESP32, S3, C3 en C6 onder `[esp32_base]` |
 | PlatformIO environment | Eén `[env:]`-blok in een `platformio.ini`: de combinatie van bord, rol en build flags die samen één firmwarebestand oplevert |
@@ -155,6 +162,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | RSSI | Received Signal Strength Indicator — het ontvangen signaalniveau in dBm. MeshCore bemonstert het om zijn ruisvloer te bepalen |
 | RTTTL | Ring Tone Text Transfer Language — het beltoonformaat van Nokia. MeshCore slaat zijn start- en afsluitgeluid erin op |
 | ruisvloer | Het ruisniveau waar een ontvanger doorheen moet luisteren. MeshCore meet het zelf over 64 monsters en kapt het af op −120 dBm |
+| SAW | Surface Acoustic Wave — filtertechniek waarbij het signaal als akoestische golf over een piëzo-substraat loopt; steile flanken in een kleine behuizing, met een beperkt vermogensbereik |
 | Scheduler | Taakplanner die bepaalt wanneer welk werk aan de beurt is. MeshCore heeft er geen: alles draait in één `loop()` |
 | SCL | Serial Clock — de kloklijn van de I²C-bus (`PIN_BOARD_SCL`) |
 | SCLK | Serial Clock — de kloklijn van de SPI-bus (`P_LORA_SCLK`). Niet te verwarren met SCL, de kloklijn van I²C |

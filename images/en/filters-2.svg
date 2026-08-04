@@ -1,0 +1,28 @@
+<svg style="width:100%;margin:1rem 0" aria-label="Passband response of a band-pass filter showing insertion loss, rejection and a spurious passband" role="img" viewBox="0 0 680 284" xmlns="http://www.w3.org/2000/svg">
+<style>
+:root{--bg:#FFFFFF; --grid:#023E8A; --line:#0096C7; --wave:#0096C7; --node:#0077B6; --outer:#0096C7; --text-primary:#0a2540; --text-secondary:#3d6380; --text-muted:#7a9bb5; --link-color:#0077B6; --link-hover:#023E8A; --heading-color:#0077B6; --border-subtle:rgba(0,119,182,0.12); --card-bg:rgba(0,119,182,0.03); --card-border:rgba(0,119,182,0.12); --card-hover:rgba(0,119,182,0.07); --code-bg:rgba(0,119,182,0.04); --code-border:rgba(0,119,182,0.12); --info-bg:rgba(0,119,182,0.04); --info-border:rgba(0,119,182,0.15); --table-header:rgba(0,119,182,0.06); --table-row-alt:rgba(0,119,182,0.02); --table-border:rgba(0,119,182,0.1); --timeline-line:#0096C7; --timeline-dot:#0077B6; --tag-green:rgba(16,185,129,0.1); --tag-green-text:#059669; --tag-red:rgba(239,68,68,0.08); --tag-red-text:#dc2626; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}
+@media (prefers-color-scheme: dark){:root{--bg:#0A1628; --grid:#0077B6; --line:#0077B6; --wave:#48CAE4; --node:#00B4D8; --outer:#0077B6; --text-primary:#e0f0f8; --text-secondary:#8badc4; --text-muted:#4a6a80; --link-color:#48CAE4; --link-hover:#90E0EF; --heading-color:#48CAE4; --border-subtle:rgba(0,119,182,0.15); --card-bg:rgba(0,119,182,0.06); --card-border:rgba(0,119,182,0.15); --card-hover:rgba(0,119,182,0.12); --code-bg:rgba(0,119,182,0.08); --code-border:rgba(0,119,182,0.2); --info-bg:rgba(72,202,228,0.06); --info-border:rgba(72,202,228,0.2); --table-header:rgba(0,119,182,0.1); --table-row-alt:rgba(0,119,182,0.04); --table-border:rgba(0,119,182,0.12); --timeline-line:#0077B6; --timeline-dot:#00B4D8; --tag-green:rgba(16,185,129,0.15); --tag-green-text:#6ee7b7; --tag-red:rgba(239,68,68,0.12); --tag-red-text:#fca5a5; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}}
+</style>
+<rect x="0" y="0" width="680" height="284" fill="var(--bg)"/>
+
+<title>What the four numbers of a filter mean</title>
+
+<line stroke="var(--text-muted)" stroke-width="1" stroke-dasharray="4 3" x1="60" x2="632" y1="60.0" y2="60.0"></line>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-muted)" font-size="11" text-anchor="end" x="56" y="64.0">0 dB</text>
+<line stroke="var(--text-secondary)" stroke-width="1" x1="60" x2="632" y1="208.0" y2="208.0"></line>
+<path d="M60,208.0 L140,208.0 L150,78.0 L194,78.0 L204,208.0 L402,208.0 L416,112 L450,112 L464,208.0 L632,208.0" fill="#F59E0B" fill-opacity="0.28" stroke="#854F0B" stroke-width="2"></path>
+<line stroke="var(--text-muted)" stroke-width="1" stroke-dasharray="3 3" x1="194" x2="330" y1="78.0" y2="78.0"></line>
+<line stroke="var(--text-primary)" stroke-width="1.5" x1="336" x2="336" y1="78.0" y2="208.0"></line>
+<path d="M332,83.0 L336,78.0 L340,83.0" fill="none" stroke="var(--text-primary)" stroke-width="1.5"></path>
+<path d="M332,203.0 L336,208.0 L340,203.0" fill="none" stroke="var(--text-primary)" stroke-width="1.5"></path>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-primary)" font-size="13" font-weight="600" x="346" y="102">rejection</text>
+<line stroke="var(--text-primary)" stroke-width="1.5" x1="172" x2="172" y1="60.0" y2="78.0"></line>
+<path d="M168,65.0 L172,60.0 L176,65.0" fill="none" stroke="var(--text-primary)" stroke-width="1.5"></path>
+<path d="M168,73.0 L172,78.0 L176,73.0" fill="none" stroke="var(--text-primary)" stroke-width="1.5"></path>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-primary)" font-size="13" font-weight="600" text-anchor="end" x="140" y="40">insertion loss</text>
+<line stroke="var(--text-muted)" stroke-width="1" x1="145" x2="170" y1="36" y2="66"></line>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-primary)" font-size="12" text-anchor="middle" x="172" y="228.0">passband 868-870 MHz</text>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-primary)" font-size="12" text-anchor="middle" x="433" y="228.0">spurious passband</text>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-secondary)" font-size="11" text-anchor="middle" x="433" y="244.0">at 3f, around 2607 MHz</text>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-muted)" font-size="11" x="60" y="270">schematic; the insertion loss is exaggerated to make it visible</text>
+</svg>

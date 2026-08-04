@@ -87,6 +87,7 @@ assumes and where to start.
   - [The LoRa Transceiver](hardware/radio/sx1262.md)
   - [Antenna](hardware/radio/antenna.md)
   - [Link Budget](hardware/radio/link-budget.md)
+  - [Filters](hardware/radio/filters.md)
 - **Interfaces** — `hardware/interfaces/`
   - [BLE Architecture](hardware/interfaces/ble-architecture.md)
   - [WiFi as a Companion Connection](hardware/interfaces/wifi.md)

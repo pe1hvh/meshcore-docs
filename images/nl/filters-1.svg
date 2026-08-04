@@ -1,0 +1,35 @@
+<svg style="width:100%;margin:1rem 0" aria-label="Frequentiekaart van de zenders op een GSM-mast ten opzichte van 869,618 MHz" role="img" viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg">
+<style>
+:root{--bg:#FFFFFF; --grid:#023E8A; --line:#0096C7; --wave:#0096C7; --node:#0077B6; --outer:#0096C7; --text-primary:#0a2540; --text-secondary:#3d6380; --text-muted:#7a9bb5; --link-color:#0077B6; --link-hover:#023E8A; --heading-color:#0077B6; --border-subtle:rgba(0,119,182,0.12); --card-bg:rgba(0,119,182,0.03); --card-border:rgba(0,119,182,0.12); --card-hover:rgba(0,119,182,0.07); --code-bg:rgba(0,119,182,0.04); --code-border:rgba(0,119,182,0.12); --info-bg:rgba(0,119,182,0.04); --info-border:rgba(0,119,182,0.15); --table-header:rgba(0,119,182,0.06); --table-row-alt:rgba(0,119,182,0.02); --table-border:rgba(0,119,182,0.1); --timeline-line:#0096C7; --timeline-dot:#0077B6; --tag-green:rgba(16,185,129,0.1); --tag-green-text:#059669; --tag-red:rgba(239,68,68,0.08); --tag-red-text:#dc2626; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}
+@media (prefers-color-scheme: dark){:root{--bg:#0A1628; --grid:#0077B6; --line:#0077B6; --wave:#48CAE4; --node:#00B4D8; --outer:#0077B6; --text-primary:#e0f0f8; --text-secondary:#8badc4; --text-muted:#4a6a80; --link-color:#48CAE4; --link-hover:#90E0EF; --heading-color:#48CAE4; --border-subtle:rgba(0,119,182,0.15); --card-bg:rgba(0,119,182,0.06); --card-border:rgba(0,119,182,0.15); --card-hover:rgba(0,119,182,0.12); --code-bg:rgba(0,119,182,0.08); --code-border:rgba(0,119,182,0.2); --info-bg:rgba(72,202,228,0.06); --info-border:rgba(72,202,228,0.2); --table-header:rgba(0,119,182,0.1); --table-row-alt:rgba(0,119,182,0.04); --table-border:rgba(0,119,182,0.12); --timeline-line:#0077B6; --timeline-dot:#00B4D8; --tag-green:rgba(16,185,129,0.15); --tag-green-text:#6ee7b7; --tag-red:rgba(239,68,68,0.12); --tag-red-text:#fca5a5; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}}
+</style>
+<rect x="0" y="0" width="680" height="300" fill="var(--bg)"/>
+
+<title>Bandenkaart mast tegenover repeaterfrequentie</title>
+
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-muted)" font-size="11" x="62" y="24">balkhoogte evenredig met vermogen in dBW; frequentie-as logaritmisch (MHz)</text>
+<line stroke="var(--text-secondary)" stroke-width="1" x1="62.0" x2="622.0" y1="210.0" y2="210.0"></line>
+<rect x="88.9" y="190.0" width="10" height="20.0" fill="#F59E0B" fill-opacity="0.55" stroke="#854F0B" stroke-width="1"></rect>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-secondary)" font-size="11" text-anchor="end" transform="rotate(-90 93.9 216)" x="93.9" y="216">773</text>
+<rect x="106.3" y="187.5" width="10" height="22.5" fill="#F59E0B" fill-opacity="0.55" stroke="#854F0B" stroke-width="1"></rect>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-secondary)" font-size="11" text-anchor="end" transform="rotate(-90 111.3 216)" x="111.3" y="216">816</text>
+<rect x="151.7" y="185.5" width="10" height="24.5" fill="#F59E0B" fill-opacity="0.55" stroke="#854F0B" stroke-width="1"></rect>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-secondary)" font-size="11" text-anchor="end" transform="rotate(-90 156.7 216)" x="156.7" y="216">940</text>
+<rect x="296.4" y="178.0" width="10" height="32.0" fill="#F59E0B" fill-opacity="0.55" stroke="#854F0B" stroke-width="1"></rect>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-secondary)" font-size="11" text-anchor="end" transform="rotate(-90 301.4 216)" x="301.4" y="216">1474,5</text>
+<rect x="363.1" y="164.0" width="10" height="46.0" fill="#F59E0B" fill-opacity="0.55" stroke="#854F0B" stroke-width="1"></rect>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-secondary)" font-size="11" text-anchor="end" transform="rotate(-90 368.1 216)" x="368.1" y="216">1815</text>
+<rect x="419.0" y="157.5" width="10" height="52.5" fill="#F59E0B" fill-opacity="0.55" stroke="#854F0B" stroke-width="1"></rect>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-secondary)" font-size="11" text-anchor="end" transform="rotate(-90 424.0 216)" x="424.0" y="216">2160</text>
+<rect x="485.9" y="180.5" width="10" height="29.5" fill="#F59E0B" fill-opacity="0.55" stroke="#854F0B" stroke-width="1"></rect>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-secondary)" font-size="11" text-anchor="end" transform="rotate(-90 490.9 216)" x="490.9" y="216">2660</text>
+<rect x="592.0" y="119.0" width="10" height="91.0" fill="#F59E0B" fill-opacity="0.55" stroke="#854F0B" stroke-width="1"></rect>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-secondary)" font-size="11" text-anchor="end" transform="rotate(-90 597.0 216)" x="597.0" y="216">3700</text>
+<line stroke="var(--text-primary)" stroke-width="2" stroke-dasharray="4 3" x1="131.7" x2="131.7" y1="58" y2="210.0"></line>
+<circle cx="131.7" cy="58" r="3.5" fill="var(--text-primary)"></circle>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-primary)" font-size="13" font-weight="600" x="141.7" y="44">869,618 MHz</text>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-secondary)" font-size="11" x="141.7" y="60">repeater, BW 62,5 kHz</text>
+<line stroke="var(--text-primary)" stroke-width="1" stroke-dasharray="3 3" x1="131.7" x2="131.7" y1="210.0" y2="248"></line>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-primary)" font-size="12" x="62" y="266">tweede-orde verschil 1800-blok min 900-blok: 855-895 MHz — raak</text>
+<text font-family="'JetBrains Mono',monospace" fill="var(--text-primary)" font-size="12" x="62" y="286">2600-blok min 1800-blok: 825-865 of 740-885 MHz, afhankelijk van de aanname</text>
+</svg>
