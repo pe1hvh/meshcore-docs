@@ -46,8 +46,8 @@ Rules:
   in this session. Knowing them from an earlier session does not count.
 - Is one missing from the upload or the working directory? Say so, name it,
   and ask for it. That falls under 🛑 *Stop and ask*; do not start.
-- Was a rule from any of the nine deliberately not applied? Say which and
-  why, in the same response.
+- Was a rule from any of the documents above deliberately not applied? Say
+  which and why, in the same response.
 - A new rule file joins the table in the session it is created, and the
   statement too if it loads unconditionally.
 - **Adding a directory, a section or a new chapter?** Read
@@ -83,7 +83,8 @@ and live in `.claude/rules/`; they load when the work reaches a matching file.
 
 ### 🛑 Stop and ask
 
-**This rule overrides every other rule in this chapter.** If it is broken,
+**This rule overrides every other rule in this document and in every file
+under `.claude/rules/`.** If it is broken,
 the rest of the work is worthless, however correctly it was otherwise
 carried out. No assignment, deadline or apparent self-evidence sets it
 aside.
@@ -184,14 +185,17 @@ Four mandatory checkpoints, all under 🛑 *Stop and ask*.
    the form given there.
 1. **Source verification** (first, always) — inventory all available
    sources, including empty directories and directory entries in an
-   archive; report which ones you see with timestamps; ask which one leads.
-   Start every substantive response with *"Working with: [file name]
-   (uploaded [timestamp])"*.
-2. **Impact analysis** (before implementation) — which files and
-   directories are affected (NL, EN, README indexes, `images/nl/`,
-   `images/en/`, `terminology.md`, `CHANGELOG.md`, `tools/`), what is in
-   them now, and which contradictions the assignment contains; ask for
-   confirmation before you start.
+   archive; report which ones you see, with the timestamp or the commit they
+   carry; ask which one leads. Start every substantive response with
+   *"Working with: [source], [timestamp or commit]"*. An upload, a ZIP and a
+   `git clone` are all valid sources; name which one it is.
+2. **Impact analysis** (before implementation) — which files and directories
+   are affected, what is in them now, and which contradictions the
+   assignment contains; ask for confirmation before you start. The list to
+   walk: NL, EN, README indexes, both reading guides, `images/nl/`,
+   `images/en/`, both terminology files, both reference lists, both link
+   lists, `tools/`, `.claude/rules/` and `CHANGELOG.md`. The reading guides
+   and the reference lists are the ones that get forgotten.
 3. **Delivery validation** (before delivery) — walk through the checklist
    below and report the result per item.
 
@@ -208,6 +212,9 @@ Four mandatory checkpoints, all under 🛑 *Stop and ask*.
 - [ ] Every diagram exists in `images/nl/` **and** `images/en/`, under the
       same name
 - [ ] New terms appear alphabetically in both terminology files
+- [ ] New external sources in both reference lists, new tools or websites in
+      both link lists
+- [ ] Both reading guides updated: chapter count, diagram count, section row
 - [ ] Source block and `## Bronnen` match the firmware version and commit
       used; the links pin that commit
 - [ ] Figures match the output of `tools/`, or are marked as an external
@@ -234,4 +241,6 @@ are pasted into the repo one-to-one.
 
 For more than two files: one ZIP with the directory structure from the repo
 root (`nl/`, `en/`, `images/`, …), naming convention
-`meshcore_docs_[onderwerp]_result.zip`. At most 1 ZIP per chat.
+`meshcore_docs_[onderwerp]_result.zip`. One ZIP per assignment; a new ZIP
+replaces the previous one within the same assignment. A second assignment in
+the same chat gets its own ZIP under its own name.
