@@ -49,6 +49,33 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
 - `.claude/rules/STYLE-NUANCE.md`, `REPO-STRUCTURE.md`, `PITFALLS.md`
   (unconditional) and `CHAPTERS.md`, `IMAGES.md`, `TERMINOLOGY.md`,
   `TOOLS.md`, `CHANGELOG-COMMITS.md` (path-scoped).
+- `CLAUDE.md` — eight defects found by a manual pass of the `/doctor` trim
+  check. Four were wrong: *any of the nine* counted a table that had since
+  grown to ten entries; *overrides every other rule in this chapter* was a
+  leftover from when this was one document, and *chapter* means a content
+  chapter in this repo; the opening line *Working with: [file name] (uploaded
+  [timestamp])* assumed an upload and had no valid form when working from a
+  `git clone`; and *at most 1 ZIP per chat* was broken by any chat holding two
+  assignments. Two were incomplete: the checkpoint 2 file list and the
+  delivery checklist both omitted the reading guides and the reference lists,
+  which is exactly what the first impact analysis for the filters chapter
+  missed. One was a genuine conflict: *a rule you record here you apply in the
+  same session* against *whatever is not in the task is not changed*, with no
+  precedence stated; the first now wins, but only for the corrections the new
+  rule directly causes, each reported separately. The last was duplication:
+  the header and *Purpose of this document* both said the file holds the
+  binding rules, and *When in doubt: STOP and ask* restated the whole section
+  above it.
+- `.claude/settings.json`, `.claude/hooks/`, `.claude/skills/` and
+  `.claude/commands/` — automation for Claude Code sessions. A SessionStart
+  hook prints the checkpoint 0 reminder; a PostToolUse hook runs the two
+  STYLE-NUANCE grep checks on every file written or edited and reports hits
+  back, because that check was a checklist line that got skipped. Skills for
+  the chapter procedure and for diagrams, each with the scripts that remove
+  the judgement calls that went wrong: alphabetical insertion into a glossary
+  that is not consistently sorted, and an SVG render that resolves the CSS
+  variables so the text is visible. A `/commit-msg` command for the commit
+  format. None of this fires in the chat interface; `CLAUDE.md` says so.
 - `.claude/REPO-TREE.md` holds the layout tree, moved out of
   `REPO-STRUCTURE.md`. It sits outside `rules/` deliberately: a file in
   `.claude/rules/` without path frontmatter loads at launch, which is what the

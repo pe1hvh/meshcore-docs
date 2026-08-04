@@ -1,15 +1,12 @@
 # meshcore-docs
 
-Binding rules for anyone working on this documentation: editors,
-translators and AI assistants. What the project is, who publishes it and
-under which licence is in `README.md`.
+Binding rules, conventions and pitfalls for anyone working on this
+documentation: editors, translators and AI assistants. They steer
+behaviour in **every** task.
 
-## Purpose of this document
-
-Holds the rules, conventions and pitfalls that steer behaviour in
-**every** task. Not what MeshCore is or how the website is built —
-that is in the chapters. For the table of contents: `nl/README.md`
-and `en/README.md`.
+Not what MeshCore is, not how the website is built — that is in the
+chapters. What the project is and under which licence: `README.md`.
+Table of contents: `nl/README.md` and `en/README.md`.
 
 ## Mandatory reading before every assignment
 
@@ -58,7 +55,26 @@ Rules:
   it for you.
 - **In the chat interface nothing loads automatically.** Path scoping is a
   Claude Code mechanism; in a chat session every file has to be supplied or
-  fetched before it can be applied.
+  fetched before it can be applied. The same holds for `.claude/hooks/`,
+  `.claude/skills/` and `.claude/commands/`: none of them fire here, so what
+  a hook would have enforced has to be done by hand and reported.
+
+## Automation
+
+Three mechanisms sit alongside the rules. They run in Claude Code only.
+
+| Where | What | Fires |
+|---|---|---|
+| `.claude/hooks/session-start.sh` | prints the checkpoint 0 reminder | at session start |
+| `.claude/hooks/style-check.sh` | the two grep checks from `STYLE-NUANCE.md`, per file | after every `Write` or `Edit` |
+| `.claude/skills/new-chapter/` | the full chapter procedure, the file table and the packaging script | when the task is adding or changing a chapter |
+| `.claude/skills/diagram/` | style block, SVG conventions and the render check | when the task is a diagram |
+| `.claude/commands/commit-msg.md` | drafts the commit message | when you type `/commit-msg` |
+
+Hooks run regardless of what Claude decides; skills are model-invoked and
+only load when the description matches the request. Nothing here replaces a
+rule — the delivery checklist still wants the grep result reported, whether a
+hook produced it or not.
 
 ## Binding rules
 
@@ -157,7 +173,6 @@ aside.
 - Warnings about regulations, duty cycle and encryption in HAM mode are not
   softened, shortened or summarised away.
 - The AI disclaimer in `README.md` and `project/about-domca.md` stays.
-- When in doubt: **STOP and ask.**
 
 ## Working process in a chat session
 
