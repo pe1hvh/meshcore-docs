@@ -19,6 +19,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | Base section | Section in `platformio.ini` without an `env:` prefix. Not built itself but serves as a parent for build targets that inherit from it through `extends`. MeshCore `03b6ef4` has 108 |
 | BBS | Bulletin Board System — a central place where participants leave and collect messages without being present at the same time. The model the Room Server goes back to; the default name of an unconfigured room server is `Test BBS` |
 | BLE | Bluetooth Low Energy — energy-efficient connection between node and smartphone |
+| Blocking | A rise in the effective noise floor because a strong signal outside the receiver's own band overloads the receive chain. Specified in ETSI EN 300 220-1 |
 | Board class | Class that implements the board contract `mesh::MainBoard` for one board or one family. MeshCore counts 71: six in `src/helpers/` and 65 in `variants/` |
 | bootloader | Small program that runs first and loads or replaces the actual firmware; determines how a node can be flashed |
 | Bridge | Contract for a second transport path alongside LoRa, over which packets can enter and leave a node. MeshCore has two implementations: ESP-NOW and RS232 |
@@ -27,6 +28,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | BUSY | Signal line from an SX126x radio to the SoC: active while the chip is processing a command. In MeshCore the build flag `P_LORA_BUSY` |
 | BW | Bandwidth — bandwidth in kHz (125/250/500), narrower = more robust |
 | Callsign | Call sign — unique identification for radio amateurs (e.g. PE1HVH) |
+| Cavity filter | Band-pass filter in which every resonator is a quarter-wave line inside a closed metal can, also called a coaxial cavity. The highest Q and the lowest insertion loss of all filter types, but large and heavy |
 | CCCD | Client Characteristic Configuration Descriptor — on/off switch for BLE Notify |
 | Channel | Shared cryptographic key (PSK) for group communication |
 | Chirp | Frequency sweep from low to high (up-chirp) or high to low (down-chirp) |
@@ -35,10 +37,13 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | Companion protocol | The binary agreement between a companion app and a node: frames of at most 176 bytes over BLE, USB or TCP, with 58 commands, 29 response codes and 17 push codes |
 | Component | Delimited part of the logical design with a responsibility of its own, such as radio, board, clock or packet handling. A component is not a file and not a class, but a place in the design |
 | Contract | Abstract agreement between two components, expressed in C++ as a class with virtual methods. Whoever satisfies it can replace any other implementation. MeshCore has eight: radio, board, clock, entropy, seen table, packet pool, display and bridge |
+| Desensitisation | Loss of receiver sensitivity caused by signals outside its own channel; the result of blocking, intermodulation or coupling |
 | Entropy source | The random number generator of a node. MeshCore has two implementations: the noise of the radio receiver (`RadioNoiseListener`) and the standard generator (`StdRNG`) |
 | Hardware variant | One directory under `variants/` holding the pin assignment and settings of a single board. MeshCore counts seventy-nine |
 | Implementation | Working realisation of a contract: the class that actually does what the contract promises, and that is replaceable by any other implementation of the same contract |
+| Insertion loss | The attenuation a filter or other passive component introduces inside the passband, in dB |
 | Interface class | Class that only lays down what an implementation must be able to do, with no working code. Group 1 of the class model; 14 in the shared tree |
+| Intermodulation | Mixing products arising when two or more strong signals pass through a non-linear component. The difference between two transmitters can fall inside your own band |
 | Implementation class | Class that implements an interface class and is therefore replaceable by any other implementation. Group 2 of the class model; 50 in the shared tree |
 | Cortex-M0+/M4/M4F | ARM processor cores. M0+ is the simplest, M4 adds signal-processing instructions, M4F adds a floating-point unit on top |
 | CP437 | The character set of the original IBM PC. MeshCore uses one character from it, the full block `0xDB`, as a replacement for every non-ASCII character on screen |
@@ -128,6 +133,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | PATH packet | Payload type `0x08`; reports the travelled path back to the sender. Called a "delivery report" in the FAQ |
 | Payload type | 4 bits in the header determining what the payload contains (`0x00`-`0x0F`) |
 | PHY | Physical Layer — the physical radio layer that converts bits to radio signals |
+| PIM | Passive Intermodulation — intermodulation arising in corroding metal junctions outside the equipment and then re-radiated; also known as the rusty bolt effect |
 | Platform | In MeshCore: one of the four build targets `ESP32_PLATFORM`, `NRF52_PLATFORM`, `RP2040_PLATFORM` and `STM32_PLATFORM`. Not the same as a board or a chip |
 | Platform family | Set of SoCs sharing the same platform base in `platformio.ini`, for example ESP32, S3, C3 and C6 under `[esp32_base]` |
 | Platform macro | Build flag marking the platform family: `NRF52_PLATFORM`, `RP2040_PLATFORM`, `STM32_PLATFORM`. `ESP32_PLATFORM` does exist but is read nowhere — ESP32 code uses the core macro `ESP32` |
@@ -140,6 +146,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | PSK | Pre-Shared Key — pre-shared cryptographic key for channels |
 | PSRAM | Pseudo-static RAM — external memory alongside the internal RAM, up to 8 MB on some ESP32 boards |
 | Public Key | Public key — freely shareable, used to encrypt messages |
+| Quarter-wave resonator | Resonator whose conductor is a quarter wavelength long and shorted at one end; the building block of helical, interdigital, combline and cavity filters. At 869.618 MHz a quarter wavelength is 86.2 mm |
 | Region | Named area within which a repeater passes flood traffic. The name yields a key; what travels over the air is a 16-bit transport code |
 | Region code | In the UN/LOCODE sense (see [Regions: intent and practice](../technical/regions-in-practice.md)): the *name* of a region, such as `nl-ov-zwo`. It stays on the node and never goes on air. Not to be confused with the transport code |
 | registry | PlatformIO's package index, from which libraries are fetched by name and version |
@@ -151,6 +158,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | RP2040 | Microcontroller from Raspberry Pi with two Cortex-M0+ cores; the only MeshCore chip without a built-in radio |
 | RSSI | Received Signal Strength Indicator — the received signal level in dBm. MeshCore samples it to determine its noise floor |
 | RTTTL | Ring Tone Text Transfer Language — Nokia's ringtone format. MeshCore stores its startup and shutdown sound in it |
+| SAW | Surface Acoustic Wave — a filter technique in which the signal travels as an acoustic wave across a piezo substrate; steep skirts in a small package, with a limited power range |
 | Scheduler | Task planner that decides which work runs when. MeshCore has none: everything runs in a single `loop()` |
 | SCL | Serial Clock — the clock line of the I²C bus (`PIN_BOARD_SCL`) |
 | SCLK | Serial Clock — the clock line of the SPI bus (`P_LORA_SCLK`). Not to be confused with SCL, the clock line of I²C |

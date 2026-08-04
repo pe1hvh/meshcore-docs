@@ -170,8 +170,8 @@ first finding a Discord server and asking a human. A predictable name is then a
 feature, not a leak. For NoodNet Overijssel the choice is well defensible.
 
 What is missing is that it is ever stated as a choice. A private walking group
-gains nothing from discoverability, and currently gives away for free the one
-thing the cryptography had to offer it. That group should know that
+gains nothing from discoverability, and currently gives away the one thing
+the cryptography had to offer it, without getting anything in return. That group should know that
 `#teuns-walking-club` exists and suits it better.
 
 ## The gap the convention fills

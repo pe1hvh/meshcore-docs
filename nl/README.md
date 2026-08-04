@@ -87,6 +87,7 @@ vraagt en waar je het beste begint.
   - [De LoRa-transceiver](hardware/radio/sx1262.md)
   - [Antenne](hardware/radio/antenna.md)
   - [Linkbudget](hardware/radio/link-budget.md)
+  - [Filters](hardware/radio/filters.md)
 - **Interfaces** — `hardware/interfaces/`
   - [BLE Architectuur](hardware/interfaces/ble-architecture.md)
   - [WiFi als companion-verbinding](hardware/interfaces/wifi.md)

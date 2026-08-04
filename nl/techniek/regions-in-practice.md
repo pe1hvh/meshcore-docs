@@ -175,8 +175,8 @@ Een voorspelbare naam is dan functioneel, geen lek. Voor NoodNet Overijssel is
 de keuze goed verdedigbaar.
 
 Wat ontbreekt is dat hij ergens als keuze wordt benoemd. Een besloten
-wandelgroep heeft niets aan vindbaarheid, en levert nu gratis het enige in wat
-de crypto hem te bieden had. Die groep hoort te weten dat `#wandelclub-teun`
+wandelgroep heeft niets aan vindbaarheid, en levert nu het enige in wat de
+crypto hem te bieden had, zonder er iets voor terug te krijgen. Die groep hoort te weten dat `#wandelclub-teun`
 bestaat en beter bij haar past.
 
 ## De conventie als noodoplossing

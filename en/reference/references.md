@@ -22,6 +22,7 @@ Comprehensive source list organised by category.
 | [AN1200.22 LoRa Modulation Basics](https://www.frugalprototype.com/wp-content/uploads/2016/08/an1200.22.pdf) | Semtech | Fundamental application note on Chirp Spread Spectrum modulation and processing gain |
 | [AN1200.13 LoRa Modem Designer's Guide](https://www.openhacks.com/uploadsproductos/loradesignguide_std.pdf) | Semtech | Technical guide on SNR requirements and spread spectrum processing gain calculations |
 | [RSSI and SNR for LoRa Modulation](https://www.st.com/resource/en/application_note/an5664-rssi-and-snr-for-lora-modulation-on-stm32wl-series-stmicroelectronics.pdf) | STMicroelectronics | Application note on processing gain calculation and detection of signals below the noise floor |
+| [Passive Intermodulation Effects in Base Stations](https://www.analog.com/en/resources/analog-dialogue/articles/passive-intermodulation-effects-in-base-stations-understanding-the-challenges-and-solutions.html) | Analog Devices | The rusty bolt effect and receiver desensitisation caused by PIM |
 
 ## Academic Papers
 
@@ -51,6 +52,9 @@ Comprehensive source list organised by category.
 |---|---|---|
 | [Spreading Factors](https://www.thethingsnetwork.org/docs/lorawan/spreading-factors/) | TTN | Official documentation on spreading factors and receiver sensitivity |
 | [ETSI EN 300 220](https://www.etsi.org/) | ETSI | European standard for short-range devices in the 868 MHz ISM band |
+| [ETSI EN 300 220-1 V3.1.1](https://www.etsi.org/deliver/etsi_en/300200_300299/30022001/03.01.01_60/en_30022001v030101p.pdf) | ETSI | Receiver categories and the description of blocking for short-range devices |
+| [ETSI EN 300 220-2 V3.1.1](https://www.etsi.org/deliver/etsi_en/300200_300299/30022002/03.01.01_60/en_30022002v030101p.pdf) | ETSI | Blocking limits, and why intermodulation is deliberately not specified |
+| [Antenneregister](https://antenneregister.nl/) | Rijksinspectie Digitale Infrastructuur | Public register of Dutch transmitter sites with height, bearing, frequency and power |
 | [LoRa Alliance Regional Parameters](https://www.lora-alliance.org/) | LoRa Alliance | Official specifications for regional frequency plans (EU868, US915) |
 | [LoRa (Wikipedia)](https://en.wikipedia.org/wiki/LoRa) | Wikipedia | Overview of cyclically shifted chirps, spreading factor selection (SF5–SF12) |
 

@@ -5,6 +5,100 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
 
 ---
 
+## [Unreleased]
+
+### Added
+
+- `nl/hardware/radio/filters.md`, `en/hardware/radio/filters.md` — new chapter
+  on RF filtering for a node sited in a strong RF field. `link-budget.md`
+  treats the noise floor as a fixed number, which it is not next to a mast:
+  the chapter shows where the extra noise comes from, which filter answers
+  it, and when a filter makes the situation worse instead of better. Covers
+  desensitisation, the four mechanisms (blocking, second-order
+  intermodulation, transmitter noise, passive intermodulation), the five
+  filter families with indicative Q, insertion loss and power handling,
+  band-pass against band-stop, the spurious passband at 3f and temperature
+  drift, placement in the shared path against the receive path only, and the
+  break-even calculation. A section on the quarter-wave resonator precedes
+  the filter types, because helical, interdigital, combline and cavity
+  filters are all built from it and the spurious passband at 3f cannot be
+  explained without it — the chapter previously reasoned about a component it
+  never showed. Worked case: two repeaters in Zwolle reading −90 dBm and
+  −117 dBm.
+- `images/nl/filters-1..4.svg`, `images/en/filters-1..4.svg` — band map of a
+  mast site against the repeater frequency, filter response with the four
+  defining numbers, the two placement options, and a cross-section of a
+  quarter-wave resonator.
+- `tools/filter-planning.py` — recomputes every figure in the chapter and
+  reports how sensitive each result is to its assumptions, so a reader can
+  substitute their own distance and pattern suppression.
+- `nl/naslag/terminology.md`, `en/reference/terminology.md` — seven terms the
+  chapter introduces: blokkering/blocking, desensitisatie/desensitisation,
+  intermodulatie/intermodulation, invoegverlies/insertion loss, PIM, SAW and
+  cavity filter, plus kwartgolfresonator / quarter-wave resonator. The Dutch
+  cavity entry states that Dutch has no term of its own for this filter, so
+  that a reader does not go looking for one.
+- `nl/naslag/references.md`, `en/reference/references.md` — ETSI EN 300 220-1
+  and EN 300 220-2 (the generic EN 300 220 entry did not identify which part
+  specifies blocking), the Analog Devices article on passive intermodulation,
+  and the Antenneregister as the source of the mast data.
+
+### Changed
+
+- `STYLE-NUANCE.md` — Rule 1 extended with its negation: `gratis` / `free` is
+  the opposite of `kosten` / `cost` and fails the same test, because it denies
+  a mechanism instead of naming one. Heading widened to *the economic
+  register*, four rows added to the decision table, three wrong/right pairs per
+  language, a separate exceptions block for literal price and for the technical
+  senses of `free` (free space, free-form, license-free), and both grep checks
+  widened accordingly.
+- `CLAUDE.md` — the one-line summary of Rule 1 under *Word choice and nuance*
+  now names the negation as well, so the summary and the guide agree. A
+  summary of Rule 2 was added beside it, and the delivery checklist gained a
+  line requiring every introduced term to be listed with its source.
+- `STYLE-NUANCE.md` — Rule 2 added: no invented terms. A word that does not
+  exist in the target language must not be created, because an invented term
+  is indistinguishable from an established one, cannot be looked up, and is
+  taken as precedent by the next author. Written after *coaxholte* and
+  *coaxiale holteresonator* were coined during this session and presented as
+  Dutch usage; neither exists. Includes a decision table, the corrections as
+  wrong/right pairs, and three exceptions — terms the project defines itself
+  such as `frameworklibrary`, firmware identifiers, and plain compounds. A
+  boundary case was added so the rule is not read as "when in doubt, use
+  English": *kwartgolfresonator* stays, because Dutch antenna literature uses
+  the *kwartgolf-* compound, while *coaxholte* goes, because it occurs nowhere
+  outside the text that introduced it. The rule has no grep check and is
+  verified at checkpoint 3 instead. The *Adding new rules* section now points
+  at `## Rule 3`.
+
+### Changed
+
+- `nl/README.md`, `en/README.md` — Filters added to the Radio subsection,
+  after Link Budget.
+- `nl/hardware/radio/filters.md`, `en/hardware/radio/filters.md` — the filter
+  type is named *cavity filter* in both languages. The chapter first called it
+  *coaxholte* in Dutch, which is not a term that exists: Dutch radio practice
+  uses the English name. The invented translation made the chapter
+  unsearchable for a reader who has the filter in front of them.
+- `nl/reading-guide.md`, `en/reading-guide.md` — chapter count 94 to 95,
+  diagram count 73 to 77, and filters added to the Hardware row.
+
+### Fixed
+
+- `nl/hardware/radio/filters.md`, `en/hardware/radio/filters.md` — "Een filter
+  is geen gratis verbetering" / "A filter is not a free improvement" replaced
+  by "verbetert niet alles tegelijk" / "does not improve everything at once".
+- `nl/techniek/regions-in-practice.md`, `en/technical/regions-in-practice.md` —
+  "levert nu gratis het enige in" / "gives away for free the one thing" now
+  states what is given up and that nothing comes back in return.
+- `nl/techniek/regions-and-scopes.md`, `en/technical/regions-and-scopes.md` —
+  "is een uitgebreide regioboom dus niet gratis" / "an elaborate region tree is
+  therefore not free" replaced by the mechanism that was meant: it consumes
+  noticeable computing time. In the English sentence that follows, "pays off
+  directly" was also a Rule 1 violation and became "helps immediately".
+
+---
+
 ## [2026-08-01] Correct Dutch radio parameters to SF7 / CR5
 
 ### Fixed
