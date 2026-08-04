@@ -116,8 +116,13 @@ dezelfde licentie.
 De licentie dekt de tekst, diagrammen en afbeeldingen in deze repository. De
 MeshCore-firmware valt er niet onder — die wordt door de eigen auteurs onder
 eigen voorwaarden verspreid. Code in `tools/` staat onder de MIT-licentie.
-
 Copyright © 2025-2026 PE1HVH and contributors.
+
+## Disclaimer
+
+This is an independent community project and is not affiliated with or endorsed by the official [MeshCore](https://github.com/meshcore-dev) development team. It documents the open-source `MeshCore` firmware, pinned to commit `03b6ef4` (v1.16.0). Firmware behaviour may differ in other versions.
+
+
 
 ## Community
 
