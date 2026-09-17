@@ -46,8 +46,6 @@ get cad
   -> > on
 ```
 
-**Netherlands:** no agreed setting.
-
 ### radio.fem.rxgain
 
 The LNA of an external front-end module (FEM), separate from `radio.rxgain`.
@@ -61,8 +59,6 @@ roles (for example `simple_room_server/MyMesh.cpp` r.684).
 set radio.fem.rxgain on
   -> OK - LoRa FEM RX gain on
 ```
-
-**Netherlands:** no agreed setting.
 
 ### radio.fem.txgain
 
@@ -78,8 +74,6 @@ get radio.fem.txgain
   -> Error: unsupported
 ```
 
-**Netherlands:** no agreed setting.
-
 ### extra.sf
 
 Not in the official documentation. `set` exists only in builds with `USE_LR2021`
@@ -94,8 +88,6 @@ get extra.sf
   -> No extra SF configured
 ```
 
-**Netherlands:** no agreed setting.
-
 ### eth.status
 
 Status of the Ethernet connection on nRF52 boards with Ethernet. The reply is
@@ -108,8 +100,6 @@ default (`nrf52/EthernetCLI.h` r.21).
 eth.status
   -> ETH: not connected
 ```
-
-**Netherlands:** no agreed setting.
 
 ## Sources
 

@@ -4,9 +4,9 @@
 
 Repeaters, room servers and sensors have a command line, on the serial console
 or remotely from an app. This section describes every command the firmware
-knows, by category: which role it works for, the default value, an example and
-the Dutch setting. The companion has no such command line, only an emergency
-console.
+knows, by category: which role it works for, the default value, an example and,
+where one is agreed, the Dutch setting. The companion has no such command line,
+only an emergency console.
 
 > [!NOTE]
 > **Source.** This page was verified against the firmware itself: `MeshCore`

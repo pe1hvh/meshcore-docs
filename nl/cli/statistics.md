@@ -43,8 +43,6 @@ clear stats
   -> (OK - stats reset)
 ```
 
-**NL:** geen afspraak.
-
 ### stats-core
 
 Batterijspanning in mV, uptime in seconden, foutvlaggen en de lengte van de
@@ -56,8 +54,6 @@ zendwachtrij (`StatsFormatHelper.h` r.12–13).
 stats-core
   -> {"battery_mv":<mV>,"uptime_secs":<s>,"errors":<n>,"queue_len":<n>}
 ```
-
-**NL:** geen afspraak.
 
 ### stats-radio
 
@@ -71,8 +67,6 @@ stats-radio
   -> {"noise_floor":<dBm>,"last_rssi":<dBm>,"last_snr":<dB>,"tx_air_secs":<s>,"rx_air_secs":<s>}
 ```
 
-**NL:** geen afspraak.
-
 ### stats-packets
 
 Pakkettellers: ontvangen, verzonden, flood en direct per richting, en
@@ -84,8 +78,6 @@ ontvangstfouten (`StatsFormatHelper.h` r.44–45).
 stats-packets
   -> {"recv":<n>,"sent":<n>,"flood_tx":<n>,"direct_tx":<n>,"flood_rx":<n>,"direct_rx":<n>,"recv_errors":<n>}
 ```
-
-**NL:** geen afspraak.
 
 ## Bronnen
 

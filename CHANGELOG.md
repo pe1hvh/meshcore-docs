@@ -84,8 +84,8 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
   `roomserver/requests-and-cli.md` and `regulations.md`. Every command is
   verified against `03b6ef4` with its line number, a role marker only where a
   command excludes a device type or applies to one only, the default per
-  role, an example with the literal reply and the Dutch setting from
-  `gebruik/regulations.md` ↔ `usage/regulations.md` and
+  role, an example with the literal reply and, only where one is agreed, the
+  Dutch setting from `gebruik/regulations.md` ↔ `usage/regulations.md` and
   `gebruik/getting-started.md` ↔ `usage/getting-started.md`. The pages follow
   the firmware where `docs/cli_commands.md` differs, and list each difference.
   Commands that exist only on `main` (`0679dbe`) are on a separate page,

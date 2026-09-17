@@ -51,8 +51,6 @@ EA1F69C3:1840:-6
 seconden geleden met −1,5 dB. Alleen de eerste regel krijgt het voorvoegsel
 `  -> `.
 
-**NL:** geen afspraak.
-
 ### neighbor.remove
 
 Verwijdert elke buur waarvan de public key met het opgegeven hex-prefix begint
@@ -68,8 +66,6 @@ neighbor.remove E3A0313A
   -> OK
 ```
 
-**NL:** geen afspraak.
-
 ### discover.neighbors
 
 Stuurt een discovery-verzoek naar directe buren. Het commando kent geen opties;
@@ -81,8 +77,6 @@ met extra tekst is het antwoord `Err - discover.neighbors has no options`.
 discover.neighbors
   -> OK - Discover sent
 ```
-
-**NL:** geen afspraak.
 
 ## Bronnen
 

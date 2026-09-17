@@ -40,8 +40,6 @@ log start
   ->    logging on
 ```
 
-**NL:** geen afspraak.
-
 ### log stop
 
 Stopt met loggen.
@@ -53,8 +51,6 @@ log stop
   ->    logging off
 ```
 
-**NL:** geen afspraak.
-
 ### log erase
 
 Wist het logbestand.
@@ -65,8 +61,6 @@ Wist het logbestand.
 log erase
   ->    log erased
 ```
-
-**NL:** geen afspraak.
 
 ### log
 
@@ -81,8 +75,6 @@ log
 ```
 
 Bij een leeg logbestand is `EOF` het enige wat verschijnt.
-
-**NL:** geen afspraak.
 
 ## Bronnen
 

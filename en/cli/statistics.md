@@ -42,8 +42,6 @@ clear stats
   -> (OK - stats reset)
 ```
 
-**Netherlands:** no agreed setting.
-
 ### stats-core
 
 Battery voltage in mV, uptime in seconds, error flags and the length of the
@@ -55,8 +53,6 @@ transmit queue (`StatsFormatHelper.h` r.12–13).
 stats-core
   -> {"battery_mv":<mV>,"uptime_secs":<s>,"errors":<n>,"queue_len":<n>}
 ```
-
-**Netherlands:** no agreed setting.
 
 ### stats-radio
 
@@ -70,8 +66,6 @@ stats-radio
   -> {"noise_floor":<dBm>,"last_rssi":<dBm>,"last_snr":<dB>,"tx_air_secs":<s>,"rx_air_secs":<s>}
 ```
 
-**Netherlands:** no agreed setting.
-
 ### stats-packets
 
 Packet counters: received, sent, flood and direct per direction, and receive
@@ -83,8 +77,6 @@ errors (`StatsFormatHelper.h` r.44–45).
 stats-packets
   -> {"recv":<n>,"sent":<n>,"flood_tx":<n>,"direct_tx":<n>,"flood_rx":<n>,"direct_rx":<n>,"recv_errors":<n>}
 ```
-
-**Netherlands:** no agreed setting.
 
 ## Sources
 

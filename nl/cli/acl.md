@@ -51,8 +51,6 @@ setperm E3A0313A 0
 Andere antwoorden: `Err - bad pubkey` bij ongeldige hex en
 `Err - invalid params` als de sleutel te kort is of niet bestaat.
 
-**NL:** geen afspraak.
-
 ### get acl
 
 Schrijft de tabel naar de seriële console: per client de rechten in hex en de
@@ -68,8 +66,6 @@ ACL:
 03 E3A0313ACE439E364C44894F5151D53A35E7D70523B45A69794CCD30E484FCE7
 ```
 
-**NL:** geen afspraak.
-
 ### allow.read.only
 
 Alleen de room server gebruikt deze vlag: bij een fout wachtwoord krijgt de
@@ -83,8 +79,6 @@ set allow.read.only on
 get allow.read.only
   -> > on
 ```
-
-**NL:** geen afspraak.
 
 ## Bronnen
 

@@ -40,8 +40,6 @@ get bootloader.ver
   -> ERROR: unsupported
 ```
 
-**Netherlands:** no agreed setting.
-
 ### pwrmgt.support
 
 `> supported` if the build sets `NRF52_POWER_MANAGEMENT`, such as the SenseCap
@@ -55,8 +53,6 @@ get pwrmgt.support
   -> > supported
 ```
 
-**Netherlands:** no agreed setting.
-
 ### pwrmgt.source
 
 `> external` or `> battery`. Without power management:
@@ -68,8 +64,6 @@ get pwrmgt.support
 get pwrmgt.source
   -> > battery
 ```
-
-**Netherlands:** no agreed setting.
 
 ### pwrmgt.bootreason
 
@@ -86,8 +80,6 @@ get pwrmgt.bootreason
 With power management the form is `> Reset: <reason>; Shutdown: <reason>`, for
 example with reset reason `Reset Pin`.
 
-**Netherlands:** no agreed setting.
-
 ### pwrmgt.bootmv
 
 Voltage at start-up, as `> <n> mV`.
@@ -98,8 +90,6 @@ Voltage at start-up, as `> <n> mV`.
 get pwrmgt.bootmv
   -> ERROR: Power management not supported
 ```
-
-**Netherlands:** no agreed setting.
 
 ## Sources
 

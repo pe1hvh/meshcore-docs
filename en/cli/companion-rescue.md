@@ -55,8 +55,6 @@ set pin 123456
   > pin is now 123456
 ```
 
-**Netherlands:** no agreed setting.
-
 ### rebuild
 
 Formats the file system and then writes the identity, settings, contacts and
@@ -68,8 +66,6 @@ channels back from memory. If formatting fails: `  Error: erase failed`.
 rebuild
   > erase and rebuild done
 ```
-
-**Netherlands:** no agreed setting.
 
 ### erase
 
@@ -86,8 +82,6 @@ erase
 > After `erase` the companion's identity is gone. Use `rebuild` if you want to
 > keep it.
 
-**Netherlands:** no agreed setting.
-
 ### ls
 
 Lists directories and files. A path starting with `UserData/` refers to the
@@ -103,8 +97,6 @@ Listing files in /
 [file] UserData//<file> (<n> bytes)
 ```
 
-**Netherlands:** no agreed setting.
-
 ### cat
 
 Shows the contents of a file as hex. The path must start with `UserData/` or
@@ -117,8 +109,6 @@ Shows the contents of a file as hex. The path must start with `UserData/` or
 cat notes.txt
 Invalid path provided, must start with UserData/ or ExtraFS/
 ```
-
-**Netherlands:** no agreed setting.
 
 ### rm
 
@@ -133,8 +123,6 @@ rm UserData/adv_blobs
 File removed
 ```
 
-**Netherlands:** no agreed setting.
-
 ### reboot
 
 Restarts the companion. No reply.
@@ -144,8 +132,6 @@ Restarts the companion. No reply.
 ```text
 reboot
 ```
-
-**Netherlands:** no agreed setting.
 
 If you send a command from the companion app to a repeater, the repeater carries
 it out. The other pages of this section apply to that.

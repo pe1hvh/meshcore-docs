@@ -62,8 +62,6 @@ region
    nl-ov F
 ```
 
-**NL:** geen afspraak.
-
 ### region put
 
 Maakt een regio aan onder de opgegeven ouder, of onder `*` als die ontbreekt.
@@ -106,8 +104,6 @@ region def eu nl nl-ov
    nl-ov F
 ```
 
-**NL:** geen afspraak.
-
 ### region load
 
 Laadt een boom regel voor regel. Het aantal spaties aan het begin bepaalt het
@@ -129,8 +125,6 @@ region load
   -> OK - loaded 3 regions
 ```
 
-**NL:** geen afspraak.
-
 ### region save
 
 Schrijft de regio's naar het bestandssysteem. De sensor antwoordt
@@ -142,8 +136,6 @@ Schrijft de regio's naar het bestandssysteem. De sensor antwoordt
 region save
   -> OK
 ```
-
-**NL:** geen afspraak.
 
 ### region allowf / region denyf
 
@@ -173,8 +165,6 @@ region get nl-ov
   ->  nl-ov (nl) F
 ```
 
-**NL:** geen afspraak.
-
 ### region home
 
 Toont of zet de thuisregio. Zonder thuisregio is het antwoord ` home is *`.
@@ -185,8 +175,6 @@ Toont of zet de thuisregio. Zonder thuisregio is het antwoord ` home is *`.
 region home nl-ov
   ->  home is now nl-ov
 ```
-
-**NL:** geen afspraak.
 
 ### region default
 
@@ -215,8 +203,6 @@ region remove nl-ov
   -> OK
 ```
 
-**NL:** geen afspraak.
-
 ### region list
 
 Namen van de regio's die flood wel of niet mogen doorsturen, gescheiden door
@@ -229,8 +215,6 @@ alleen-serieel; de firmware controleert dat niet.
 region list allowed
   -> *,eu,nl,nl-ov
 ```
-
-**NL:** geen afspraak.
 
 ## Bronnen
 

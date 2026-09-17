@@ -44,8 +44,6 @@ get bridge.type
   -> > none
 ```
 
-**NL:** geen afspraak.
-
 ### bridge.enabled
 
 Zet de bridge aan of uit, direct. De firmware zet de standaard op `on`
@@ -60,8 +58,6 @@ set bridge.enabled off
   -> OK
 ```
 
-**NL:** geen afspraak.
-
 ### bridge.delay
 
 Vertraging in milliseconden voor pakketten via de bridge, 0–10000. Anders
@@ -73,8 +69,6 @@ Vertraging in milliseconden voor pakketten via de bridge, 0–10000. Anders
 set bridge.delay 1000
   -> OK
 ```
-
-**NL:** geen afspraak.
 
 ### bridge.source
 
@@ -92,8 +86,6 @@ get bridge.source
   -> > logRx
 ```
 
-**NL:** geen afspraak.
-
 ### bridge.baud
 
 Alleen RS232. Snelheid van 9600 tot 115200 (`BRIDGE_MAX_BAUD`, `CommonCLI.cpp`
@@ -106,8 +98,6 @@ set bridge.baud 57600
   -> OK
 ```
 
-**NL:** geen afspraak.
-
 ### bridge.channel
 
 Alleen ESP-NOW. WiFi-kanaal 1–14; anders `Error: channel must be between 1-14`.
@@ -118,8 +108,6 @@ Alleen ESP-NOW. WiFi-kanaal 1–14; anders `Error: channel must be between 1-14`
 set bridge.channel 6
   -> OK
 ```
-
-**NL:** geen afspraak.
 
 ### bridge.secret
 
@@ -133,8 +121,6 @@ r.904); de officiële documentatie zegt dat de standaard per board verschilt.
 get bridge.secret
   -> > LVSITANOS
 ```
-
-**NL:** geen afspraak.
 
 ## Bronnen
 

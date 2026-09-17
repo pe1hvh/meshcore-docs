@@ -39,8 +39,6 @@ ver
   -> v1.16.0 (Build: 6 Jun 2026)
 ```
 
-**NL:** geen afspraak.
-
 ### board
 
 De naam die het board zelf opgeeft.
@@ -51,8 +49,6 @@ De naam die het board zelf opgeeft.
 board
   -> Seeed SenseCap Solar
 ```
-
-**NL:** geen afspraak.
 
 ## Bronnen
 

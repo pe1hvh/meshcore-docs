@@ -43,8 +43,6 @@ sensor list
   -> no custom var
 ```
 
-**NL:** geen afspraak.
-
 ### sensor get / sensor set
 
 Leest of zet één instelling. Een onbekende sleutel geeft bij `get` het antwoord
@@ -56,8 +54,6 @@ Leest of zet één instelling. Een onbekende sleutel geeft bij `get` het antwoor
 sensor get gps
   -> null
 ```
-
-**NL:** geen afspraak.
 
 ### io
 
@@ -74,8 +70,6 @@ io s1
   -> 0
 ```
 
-**NL:** geen afspraak.
-
 ### magic
 
 Een voorbeeld van een eigen commando: `simple_sensor/main.cpp` laat zien hoe een
@@ -89,8 +83,6 @@ doet verder niets.
 magic
   -> **Magic now done**
 ```
-
-**NL:** geen afspraak.
 
 ## Bronnen
 

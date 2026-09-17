@@ -42,8 +42,6 @@ sensor list
   -> no custom var
 ```
 
-**Netherlands:** no agreed setting.
-
 ### sensor get / sensor set
 
 Reads or sets one setting. An unknown key gives `null` for `get` and
@@ -55,8 +53,6 @@ Reads or sets one setting. An unknown key gives `null` for `get` and
 sensor get gps
   -> null
 ```
-
-**Netherlands:** no agreed setting.
 
 ### io
 
@@ -73,8 +69,6 @@ io s1
   -> 0
 ```
 
-**Netherlands:** no agreed setting.
-
 ### magic
 
 An example of a custom command: `simple_sensor/main.cpp` shows how a sensor
@@ -87,8 +81,6 @@ It is in every build of this example firmware and does nothing else.
 magic
   -> **Magic now done**
 ```
-
-**Netherlands:** no agreed setting.
 
 ## Sources
 

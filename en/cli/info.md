@@ -39,8 +39,6 @@ ver
   -> v1.16.0 (Build: 6 Jun 2026)
 ```
 
-**Netherlands:** no agreed setting.
-
 ### board
 
 The name the board reports for itself.
@@ -51,8 +49,6 @@ The name the board reports for itself.
 board
   -> Seeed SenseCap Solar
 ```
-
-**Netherlands:** no agreed setting.
 
 ## Sources
 

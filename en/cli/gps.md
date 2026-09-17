@@ -44,8 +44,6 @@ gps
   -> Can't find GPS
 ```
 
-**Netherlands:** no agreed setting.
-
 ### gps on / gps off
 
 Switches the receiver on or off and saves that. Without a switchable receiver:
@@ -57,8 +55,6 @@ Switches the receiver on or off and saves that. Without a switchable receiver:
 gps on
   -> ok
 ```
-
-**Netherlands:** no agreed setting.
 
 ### gps sync
 
@@ -72,8 +68,6 @@ gps sync
   -> ok
 ```
 
-**Netherlands:** no agreed setting.
-
 ### gps setloc
 
 Copies the GPS position into `lat` and `lon` and saves it.
@@ -84,8 +78,6 @@ Copies the GPS position into `lat` and `lon` and saves it.
 gps setloc
   -> ok
 ```
-
-**Netherlands:** no agreed setting.
 
 ### gps advert
 
@@ -100,8 +92,6 @@ gps advert
 gps advert none
   -> ok
 ```
-
-**Netherlands:** no agreed setting.
 
 ## Sources
 

@@ -46,8 +46,6 @@ get cad
   -> > on
 ```
 
-**NL:** geen afspraak.
-
 ### radio.fem.rxgain
 
 De LNA van een externe front-end module (FEM), los van `radio.rxgain`. Zonder
@@ -61,8 +59,6 @@ de rollen (bijvoorbeeld `simple_room_server/MyMesh.cpp` r.684).
 set radio.fem.rxgain on
   -> OK - LoRa FEM RX gain on
 ```
-
-**NL:** geen afspraak.
 
 ### radio.fem.txgain
 
@@ -78,8 +74,6 @@ get radio.fem.txgain
   -> Error: unsupported
 ```
 
-**NL:** geen afspraak.
-
 ### extra.sf
 
 Niet in de officiële documentatie. `set` bestaat alleen in builds met
@@ -94,8 +88,6 @@ get extra.sf
   -> No extra SF configured
 ```
 
-**NL:** geen afspraak.
-
 ### eth.status
 
 Status van de Ethernet-verbinding op nRF52-boards met Ethernet. Het antwoord is
@@ -108,8 +100,6 @@ Status van de Ethernet-verbinding op nRF52-boards met Ethernet. Het antwoord is
 eth.status
   -> ETH: not connected
 ```
-
-**NL:** geen afspraak.
 
 ## Bronnen
 

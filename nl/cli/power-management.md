@@ -42,8 +42,6 @@ get bootloader.ver
   -> ERROR: unsupported
 ```
 
-**NL:** geen afspraak.
-
 ### pwrmgt.support
 
 `> supported` als de build `NRF52_POWER_MANAGEMENT` zet, zoals de SenseCap Solar
@@ -56,8 +54,6 @@ get pwrmgt.support
   -> > supported
 ```
 
-**NL:** geen afspraak.
-
 ### pwrmgt.source
 
 `> external` of `> battery`. Zonder energiebeheer:
@@ -69,8 +65,6 @@ get pwrmgt.support
 get pwrmgt.source
   -> > battery
 ```
-
-**NL:** geen afspraak.
 
 ### pwrmgt.bootreason
 
@@ -87,8 +81,6 @@ get pwrmgt.bootreason
 Met energiebeheer is de vorm `> Reset: <reden>; Shutdown: <reden>`, bijvoorbeeld
 met resetreden `Reset Pin`.
 
-**NL:** geen afspraak.
-
 ### pwrmgt.bootmv
 
 Spanning bij het opstarten, als `> <n> mV`.
@@ -99,8 +91,6 @@ Spanning bij het opstarten, als `> <n> mV`.
 get pwrmgt.bootmv
   -> ERROR: Power management not supported
 ```
-
-**NL:** geen afspraak.
 
 ## Bronnen
 

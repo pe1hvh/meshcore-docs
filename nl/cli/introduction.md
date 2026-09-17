@@ -5,8 +5,8 @@
 Repeaters, room servers en sensoren hebben een commandoregel, via de seriële
 console of op afstand vanuit een app. Deze sectie beschrijft elk commando dat de
 firmware kent, per categorie: voor welke rol het werkt, de standaardwaarde, een
-voorbeeld en de Nederlandse invulling. De companion heeft zo'n commandoregel
-niet, alleen een console voor noodgevallen.
+voorbeeld en, waar die is afgesproken, de Nederlandse invulling. De companion
+heeft zo'n commandoregel niet, alleen een console voor noodgevallen.
 
 > [!NOTE]
 > **Bron.** Deze pagina is geverifieerd tegen de firmware zelf: `MeshCore`

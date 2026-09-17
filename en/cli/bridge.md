@@ -43,8 +43,6 @@ get bridge.type
   -> > none
 ```
 
-**Netherlands:** no agreed setting.
-
 ### bridge.enabled
 
 Switches the bridge on or off, immediately. The firmware sets the default to
@@ -59,8 +57,6 @@ set bridge.enabled off
   -> OK
 ```
 
-**Netherlands:** no agreed setting.
-
 ### bridge.delay
 
 Delay in milliseconds for packets through the bridge, 0–10000. Otherwise
@@ -72,8 +68,6 @@ Delay in milliseconds for packets through the bridge, 0–10000. Otherwise
 set bridge.delay 1000
   -> OK
 ```
-
-**Netherlands:** no agreed setting.
 
 ### bridge.source
 
@@ -91,8 +85,6 @@ get bridge.source
   -> > logRx
 ```
 
-**Netherlands:** no agreed setting.
-
 ### bridge.baud
 
 RS232 only. Speed from 9600 to 115200 (`BRIDGE_MAX_BAUD`, `CommonCLI.cpp` r.9);
@@ -104,8 +96,6 @@ the bridge restarts immediately.
 set bridge.baud 57600
   -> OK
 ```
-
-**Netherlands:** no agreed setting.
 
 ### bridge.channel
 
@@ -119,8 +109,6 @@ set bridge.channel 6
   -> OK
 ```
 
-**Netherlands:** no agreed setting.
-
 ### bridge.secret
 
 ESP-NOW only. Key for the XOR encryption of bridge packets, at most 15
@@ -133,8 +121,6 @@ r.904); the official documentation says the default differs per board.
 get bridge.secret
   -> > LVSITANOS
 ```
-
-**Netherlands:** no agreed setting.
 
 ## Sources
 

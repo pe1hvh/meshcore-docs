@@ -44,8 +44,6 @@ gps
   -> Can't find GPS
 ```
 
-**NL:** geen afspraak.
-
 ### gps on / gps off
 
 Zet de ontvanger aan of uit en slaat dat op. Zonder schakelbare ontvanger:
@@ -59,8 +57,6 @@ gps on
   -> ok
 ```
 
-**NL:** geen afspraak.
-
 ### gps sync
 
 Zet de klok gelijk met de GPS-tijd. Zonder ontvanger: `gps provider not found`.
@@ -72,8 +68,6 @@ gps sync
   -> ok
 ```
 
-**NL:** geen afspraak.
-
 ### gps setloc
 
 Neemt de GPS-positie over als `lat` en `lon` en slaat die op.
@@ -84,8 +78,6 @@ Neemt de GPS-positie over als `lat` en `lon` en slaat die op.
 gps setloc
   -> ok
 ```
-
-**NL:** geen afspraak.
 
 ### gps advert
 
@@ -101,8 +93,6 @@ gps advert
 gps advert none
   -> ok
 ```
-
-**NL:** geen afspraak.
 
 ## Bronnen
 

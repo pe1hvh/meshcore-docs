@@ -62,8 +62,6 @@ region
    nl-ov F
 ```
 
-**Netherlands:** no agreed setting.
-
 ### region put
 
 Creates a region under the given parent, or under `*` if none is given. A new
@@ -105,8 +103,6 @@ region def eu nl nl-ov
    nl-ov F
 ```
 
-**Netherlands:** no agreed setting.
-
 ### region load
 
 Loads a tree line by line. The number of leading spaces sets the level (1–7), an
@@ -128,8 +124,6 @@ region load
   -> OK - loaded 3 regions
 ```
 
-**Netherlands:** no agreed setting.
-
 ### region save
 
 Writes the regions to the file system. The sensor replies `Err - save failed`.
@@ -140,8 +134,6 @@ Writes the regions to the file system. The sensor replies `Err - save failed`.
 region save
   -> OK
 ```
-
-**Netherlands:** no agreed setting.
 
 ### region allowf / region denyf
 
@@ -170,8 +162,6 @@ region get nl-ov
   ->  nl-ov (nl) F
 ```
 
-**Netherlands:** no agreed setting.
-
 ### region home
 
 Shows or sets the home region. Without a home region the reply is ` home is *`.
@@ -182,8 +172,6 @@ Shows or sets the home region. Without a home region the reply is ` home is *`.
 region home nl-ov
   ->  home is now nl-ov
 ```
-
-**Netherlands:** no agreed setting.
 
 ### region default
 
@@ -213,8 +201,6 @@ region remove nl-ov
   -> OK
 ```
 
-**Netherlands:** no agreed setting.
-
 ### region list
 
 Names of the regions that may or may not forward flood traffic, separated by
@@ -227,8 +213,6 @@ command serial-only; the firmware does not check that.
 region list allowed
   -> *,eu,nl,nl-ov
 ```
-
-**Netherlands:** no agreed setting.
 
 ## Sources
 

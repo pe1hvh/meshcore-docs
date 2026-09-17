@@ -51,8 +51,6 @@ setperm E3A0313A 0
 Other replies: `Err - bad pubkey` for invalid hex and `Err - invalid params` if
 the key is too short or unknown.
 
-**Netherlands:** no agreed setting.
-
 ### get acl
 
 Writes the table to the serial console: per client the permissions in hex and
@@ -68,8 +66,6 @@ ACL:
 03 E3A0313ACE439E364C44894F5151D53A35E7D70523B45A69794CCD30E484FCE7
 ```
 
-**Netherlands:** no agreed setting.
-
 ### allow.read.only
 
 Only the room server uses this flag: with a wrong password the client still gets
@@ -83,8 +79,6 @@ set allow.read.only on
 get allow.read.only
   -> > on
 ```
-
-**Netherlands:** no agreed setting.
 
 ## Sources
 

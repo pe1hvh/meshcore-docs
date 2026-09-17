@@ -83,8 +83,6 @@ get path.hash.mode
   -> > 1
 ```
 
-**NL:** geen afspraak.
-
 ### loop.detect
 
 Gooit flood-pakketten weg waarin de eigen hash al te vaak in het pad staat.
@@ -144,8 +142,6 @@ get rxdelay
   -> > 0.0
 ```
 
-**NL:** geen afspraak.
-
 ### dutycycle
 
 Maximaal percentage zendtijd. De firmware rekent het om naar de airtime factor:
@@ -191,8 +187,6 @@ get int.thresh
   -> > 0
 ```
 
-**NL:** geen afspraak.
-
 ### agc.reset.interval
 
 Interval in seconden waarop de AGC van de ontvanger wordt gereset; 0 zet het
@@ -204,8 +198,6 @@ uit. De waarde wordt naar beneden afgerond op een veelvoud van 4.
 set agc.reset.interval 17
   -> OK - interval rounded to 16
 ```
-
-**NL:** geen afspraak.
 
 ### multi.acks
 
@@ -219,8 +211,6 @@ gebruikt de instelling niet.
 set multi.acks 1
   -> OK
 ```
-
-**NL:** geen afspraak.
 
 ### flood.advert.interval
 
@@ -268,8 +258,6 @@ Maximaal aantal hops voor elk flood-pakket. Boven 64: `Error, max 64`.
 get flood.max
   -> > 64
 ```
-
-**NL:** geen afspraak.
 
 ### flood.max.unscoped
 

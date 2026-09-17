@@ -53,8 +53,6 @@ get name
 
 ¹ Terugvalwaarden van `ADVERT_NAME`; de meeste builds zetten een eigen naam.
 
-**NL:** geen afspraak.
-
 ### lat / lon
 
 Breedte- en lengtegraad in decimale graden, zonder controle op het bereik. `get`
@@ -74,8 +72,6 @@ get lon
   -> > 6.0830001
 ```
 
-**NL:** geen afspraak.
-
 ### prv.key
 
 Het sleutelpaar van de node. `set` verwacht de privésleutel als 128 hextekens
@@ -93,8 +89,6 @@ set prv.key 00
 Bij een geldige sleutel is het antwoord `OK, reboot to apply! New pubkey: `
 gevolgd door 64 hextekens.
 
-**NL:** geen afspraak.
-
 ### password
 
 Het beheerderswachtwoord, maximaal 15 tekens (`CommonCLI.h` r.26). Het antwoord
@@ -110,8 +104,6 @@ password Zwolle2026
 > [!WARNING]
 > De standaard `password` is voor iedereen bekend. Zolang die staat, kan elke
 > client met dat wachtwoord de node beheren.
-
-**NL:** geen afspraak.
 
 ### guest.password
 
@@ -132,8 +124,6 @@ get guest.password
 ¹ Alleen als de build `ROOM_PASSWORD` zet (`simple_room_server/MyMesh.cpp`
 r.653–655). De officiële documentatie noemt leeg als standaard.
 
-**NL:** geen afspraak.
-
 ### owner.info
 
 Vrije tekst over de eigenaar, maximaal 119 tekens (`CommonCLI.h` r.62). Een `|`
@@ -148,8 +138,6 @@ set owner.info PE1HVH|Zwolle
 get owner.info
   -> > PE1HVH|Zwolle
 ```
-
-**NL:** geen afspraak.
 
 ### adc.multiplier
 
@@ -167,8 +155,6 @@ set adc.multiplier 0
   -> OK - using default board multiplier
 ```
 
-**NL:** geen afspraak.
-
 ### public.key
 
 De public key van de node als 64 hextekens.
@@ -179,8 +165,6 @@ De public key van de node als 64 hextekens.
 get public.key
   -> > EA1F69C38A415ABDD55590ECC796DE3D04FE6D80FAEE006A37021432804CBDCC
 ```
-
-**NL:** geen afspraak.
 
 ### role
 
@@ -193,8 +177,6 @@ De rol waarvoor de firmware is gebouwd: `repeater`, `room_server` of `sensor`
 get role
   -> > repeater
 ```
-
-**NL:** geen afspraak.
 
 ### powersaving
 
@@ -212,8 +194,6 @@ powersaving on
 powersaving
   -> on
 ```
-
-**NL:** geen afspraak.
 
 ## Bronnen
 

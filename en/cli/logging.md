@@ -39,8 +39,6 @@ log start
   ->    logging on
 ```
 
-**Netherlands:** no agreed setting.
-
 ### log stop
 
 Stops logging.
@@ -52,8 +50,6 @@ log stop
   ->    logging off
 ```
 
-**Netherlands:** no agreed setting.
-
 ### log erase
 
 Erases the log file.
@@ -64,8 +60,6 @@ Erases the log file.
 log erase
   ->    log erased
 ```
-
-**Netherlands:** no agreed setting.
 
 ### log
 
@@ -80,8 +74,6 @@ log
 ```
 
 With an empty log file, `EOF` is all that appears.
-
-**Netherlands:** no agreed setting.
 
 ## Sources
 

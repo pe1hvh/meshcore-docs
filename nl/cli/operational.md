@@ -47,8 +47,6 @@ terugkeert.
 reboot
 ```
 
-**NL:** geen afspraak.
-
 ### poweroff / shutdown
 
 Zet de node uit. De twee namen doen hetzelfde. Ook hier komt geen antwoord.
@@ -58,8 +56,6 @@ Zet de node uit. De twee namen doen hetzelfde. Ook hier komt geen antwoord.
 ```text
 poweroff
 ```
-
-**NL:** geen afspraak.
 
 ### clkreboot
 
@@ -73,8 +69,6 @@ tijd die vóór de huidige ligt. Geen antwoord.
 clkreboot
 ```
 
-**NL:** geen afspraak.
-
 ### clock
 
 Toont de huidige tijd in UTC, in de vorm `uu:mm - d/m/jjjj UTC`.
@@ -85,8 +79,6 @@ Toont de huidige tijd in UTC, in de vorm `uu:mm - d/m/jjjj UTC`.
 clock
   -> 12:00 - 30/7/2026 UTC
 ```
-
-**NL:** geen afspraak.
 
 ### clock sync
 
@@ -105,8 +97,6 @@ clock sync
 Op afstand, met afzendertijd `1785412800` en een klok die achterloopt, is het
 antwoord `OK - clock set: 12:00 - 30/7/2026 UTC`.
 
-**NL:** geen afspraak.
-
 ### time
 
 Zet de klok op een Unix-tijd, maar alleen vooruit. Een tijd die niet later is
@@ -119,8 +109,6 @@ dan bij `clock sync`.
 time 1785412800
   -> OK - clock set: 12:00 - 30/7/2026 UTC
 ```
-
-**NL:** geen afspraak.
 
 ### advert
 
@@ -135,8 +123,6 @@ advert
   -> OK - Advert sent
 ```
 
-**NL:** geen afspraak.
-
 ### advert.zerohop
 
 Stuurt een zero-hop advert, alleen voor directe buren, eveneens na 1500 ms.
@@ -147,8 +133,6 @@ Stuurt een zero-hop advert, alleen voor directe buren, eveneens na 1500 ms.
 advert.zerohop
   -> OK - zerohop advert sent
 ```
-
-**NL:** geen afspraak.
 
 ### start ota
 
@@ -166,8 +150,6 @@ start ota
   -> Error
 ```
 
-**NL:** geen afspraak.
-
 ### erase
 
 Formatteert het bestandssysteem. Alleen via de seriële console.
@@ -182,8 +164,6 @@ erase
 > [!WARNING]
 > Dit wist alles wat de node heeft opgeslagen, inclusief instellingen, regio's
 > en de ACL. Er is geen bevestiging.
-
-**NL:** geen afspraak.
 
 ## Bronnen
 

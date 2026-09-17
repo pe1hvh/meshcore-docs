@@ -56,8 +56,6 @@ set pin 123456
   > pin is now 123456
 ```
 
-**NL:** geen afspraak.
-
 ### rebuild
 
 Formatteert het bestandssysteem en schrijft daarna de identiteit, de
@@ -70,8 +68,6 @@ formatteren: `  Error: erase failed`.
 rebuild
   > erase and rebuild done
 ```
-
-**NL:** geen afspraak.
 
 ### erase
 
@@ -88,8 +84,6 @@ erase
 > Na `erase` is de identiteit van de companion weg. Gebruik `rebuild` als je die
 > wilt houden.
 
-**NL:** geen afspraak.
-
 ### ls
 
 Toont mappen en bestanden. Een pad dat met `UserData/` begint verwijst naar het
@@ -105,8 +99,6 @@ Listing files in /
 [file] UserData//<bestand> (<n> bytes)
 ```
 
-**NL:** geen afspraak.
-
 ### cat
 
 Toont de inhoud van een bestand als hex. Het pad moet met `UserData/` of
@@ -119,8 +111,6 @@ Toont de inhoud van een bestand als hex. Het pad moet met `UserData/` of
 cat notes.txt
 Invalid path provided, must start with UserData/ or ExtraFS/
 ```
-
-**NL:** geen afspraak.
 
 ### rm
 
@@ -135,8 +125,6 @@ rm UserData/adv_blobs
 File removed
 ```
 
-**NL:** geen afspraak.
-
 ### reboot
 
 Herstart de companion. Geen antwoord.
@@ -146,8 +134,6 @@ Herstart de companion. Geen antwoord.
 ```text
 reboot
 ```
-
-**NL:** geen afspraak.
 
 Stuur je vanuit de companion-app een commando naar een repeater, dan voert de
 repeater het uit. Daarvoor gelden de andere pagina's van deze sectie.

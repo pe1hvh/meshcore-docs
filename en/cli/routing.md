@@ -83,8 +83,6 @@ get path.hash.mode
   -> > 1
 ```
 
-**Netherlands:** no agreed setting.
-
 ### loop.detect
 
 Drops flood packets in which the node's own hash already appears too often in
@@ -144,8 +142,6 @@ get rxdelay
   -> > 0.0
 ```
 
-**Netherlands:** no agreed setting.
-
 ### dutycycle
 
 Maximum share of airtime. The firmware converts it to the airtime factor:
@@ -191,8 +187,6 @@ get int.thresh
   -> > 0
 ```
 
-**Netherlands:** no agreed setting.
-
 ### agc.reset.interval
 
 Interval in seconds at which the receiver's AGC is reset; 0 switches it off. The
@@ -204,8 +198,6 @@ value is rounded down to a multiple of 4.
 set agc.reset.interval 17
   -> OK - interval rounded to 16
 ```
-
-**Netherlands:** no agreed setting.
 
 ### multi.acks
 
@@ -219,8 +211,6 @@ the setting.
 set multi.acks 1
   -> OK
 ```
-
-**Netherlands:** no agreed setting.
 
 ### flood.advert.interval
 
@@ -268,8 +258,6 @@ Maximum number of hops for any flood packet. Above 64: `Error, max 64`.
 get flood.max
   -> > 64
 ```
-
-**Netherlands:** no agreed setting.
 
 ### flood.max.unscoped
 

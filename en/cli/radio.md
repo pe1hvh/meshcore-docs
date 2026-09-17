@@ -88,8 +88,6 @@ tempradio 869.618,62.5,7,5,30
   -> OK - temp params for 30 mins
 ```
 
-**Netherlands:** no agreed setting.
-
 ### freq
 
 The frequency only. `set freq` works on the serial console only and takes effect
@@ -126,8 +124,6 @@ get radio.rxgain
 ¹ For SX1262/SX1268 builds, unless `SX126X_RX_BOOSTED_GAIN` says otherwise
 (`MyMesh.cpp` r.913–919). In LR1110 builds the repeater does not set the value
 and it is `off`.
-
-**Netherlands:** no agreed setting.
 
 ## Sources
 

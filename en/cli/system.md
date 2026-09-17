@@ -53,8 +53,6 @@ get name
 
 ¹ Fallback values of `ADVERT_NAME`; most builds set a name of their own.
 
-**Netherlands:** no agreed setting.
-
 ### lat / lon
 
 Latitude and longitude in decimal degrees, without a range check. `get` uses the
@@ -74,8 +72,6 @@ get lon
   -> > 6.0830001
 ```
 
-**Netherlands:** no agreed setting.
-
 ### prv.key
 
 The node's key pair. `set` expects the private key as 128 hex characters
@@ -93,8 +89,6 @@ set prv.key 00
 With a valid key the reply is `OK, reboot to apply! New pubkey: ` followed by 64
 hex characters.
 
-**Netherlands:** no agreed setting.
-
 ### password
 
 The admin password, at most 15 characters (`CommonCLI.h` r.26). The reply
@@ -110,8 +104,6 @@ password Zwolle2026
 > [!WARNING]
 > The default `password` is known to everyone. As long as it is in place, any
 > client with that password can manage the node.
-
-**Netherlands:** no agreed setting.
 
 ### guest.password
 
@@ -132,8 +124,6 @@ get guest.password
 ¹ Only if the build sets `ROOM_PASSWORD` (`simple_room_server/MyMesh.cpp`
 r.653–655). The official documentation states empty as the default.
 
-**Netherlands:** no agreed setting.
-
 ### owner.info
 
 Free text about the owner, at most 119 characters (`CommonCLI.h` r.62). A `|` is
@@ -148,8 +138,6 @@ set owner.info PE1HVH|Zwolle
 get owner.info
   -> > PE1HVH|Zwolle
 ```
-
-**Netherlands:** no agreed setting.
 
 ### adc.multiplier
 
@@ -167,8 +155,6 @@ set adc.multiplier 0
   -> OK - using default board multiplier
 ```
 
-**Netherlands:** no agreed setting.
-
 ### public.key
 
 The node's public key as 64 hex characters.
@@ -179,8 +165,6 @@ The node's public key as 64 hex characters.
 get public.key
   -> > EA1F69C38A415ABDD55590ECC796DE3D04FE6D80FAEE006A37021432804CBDCC
 ```
-
-**Netherlands:** no agreed setting.
 
 ### role
 
@@ -193,8 +177,6 @@ The role the firmware was built for: `repeater`, `room_server` or `sensor`
 get role
   -> > repeater
 ```
-
-**Netherlands:** no agreed setting.
 
 ### powersaving
 
@@ -213,8 +195,6 @@ powersaving on
 powersaving
   -> on
 ```
-
-**Netherlands:** no agreed setting.
 
 ## Sources
 

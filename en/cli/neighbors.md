@@ -50,8 +50,6 @@ EA1F69C3:1840:-6
 `E3A0313A` was heard 312 seconds ago at SNR 6.5 dB, `EA1F69C3` 1840 seconds ago
 at −1.5 dB. Only the first line gets the `  -> ` prefix.
 
-**Netherlands:** no agreed setting.
-
 ### neighbor.remove
 
 Removes every neighbour whose public key starts with the given hex prefix
@@ -67,8 +65,6 @@ neighbor.remove E3A0313A
   -> OK
 ```
 
-**Netherlands:** no agreed setting.
-
 ### discover.neighbors
 
 Sends a discovery request to direct neighbours. The command takes no options;
@@ -80,8 +76,6 @@ with extra text the reply is `Err - discover.neighbors has no options`.
 discover.neighbors
   -> OK - Discover sent
 ```
-
-**Netherlands:** no agreed setting.
 
 ## Sources
 

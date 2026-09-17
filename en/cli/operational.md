@@ -45,8 +45,6 @@ does not return.
 reboot
 ```
 
-**Netherlands:** no agreed setting.
-
 ### poweroff / shutdown
 
 Powers the node off. Both names do the same. Again there is no reply.
@@ -56,8 +54,6 @@ Powers the node off. Both names do the same. Again there is no reply.
 ```text
 poweroff
 ```
-
-**Netherlands:** no agreed setting.
 
 ### clkreboot
 
@@ -71,8 +67,6 @@ time earlier than the current one. No reply.
 clkreboot
 ```
 
-**Netherlands:** no agreed setting.
-
 ### clock
 
 Shows the current time in UTC, in the form `hh:mm - d/m/yyyy UTC`.
@@ -83,8 +77,6 @@ Shows the current time in UTC, in the form `hh:mm - d/m/yyyy UTC`.
 clock
   -> 12:00 - 30/7/2026 UTC
 ```
-
-**Netherlands:** no agreed setting.
 
 ### clock sync
 
@@ -102,8 +94,6 @@ clock sync
 Remotely, with sender time `1785412800` and a clock that runs behind, the reply
 is `OK - clock set: 12:00 - 30/7/2026 UTC`.
 
-**Netherlands:** no agreed setting.
-
 ### time
 
 Sets the clock to a Unix time, but only forwards. A time that is not later than
@@ -116,8 +106,6 @@ unlike `clock sync`.
 time 1785412800
   -> OK - clock set: 12:00 - 30/7/2026 UTC
 ```
-
-**Netherlands:** no agreed setting.
 
 ### advert
 
@@ -132,8 +120,6 @@ advert
   -> OK - Advert sent
 ```
 
-**Netherlands:** no agreed setting.
-
 ### advert.zerohop
 
 Sends a zero-hop advert, for direct neighbours only, also after 1500 ms.
@@ -144,8 +130,6 @@ Sends a zero-hop advert, for direct neighbours only, also after 1500 ms.
 advert.zerohop
   -> OK - zerohop advert sent
 ```
-
-**Netherlands:** no agreed setting.
 
 ### start ota
 
@@ -163,8 +147,6 @@ start ota
   -> Error
 ```
 
-**Netherlands:** no agreed setting.
-
 ### erase
 
 Formats the file system. Serial console only.
@@ -179,8 +161,6 @@ erase
 > [!WARNING]
 > This erases everything the node has stored, including settings, regions and
 > the ACL. There is no confirmation.
-
-**Netherlands:** no agreed setting.
 
 ## Sources
 
