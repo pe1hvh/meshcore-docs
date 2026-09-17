@@ -125,6 +125,26 @@ assumes and where to start.
   - [Utility libraries](libraries/other/utilities.md)
   - [Test libraries](libraries/other/testing.md)
 
+## CLI reference
+
+- [CLI reference](cli/introduction.md)
+- [Operational](cli/operational.md)
+- [Neighbors](cli/neighbors.md)
+- [Statistics](cli/statistics.md)
+- [Logging](cli/logging.md)
+- [Info](cli/info.md)
+- [Radio](cli/radio.md)
+- [System](cli/system.md)
+- [Routing](cli/routing.md)
+- [ACL](cli/acl.md)
+- [Regions](cli/regions.md)
+- [GPS](cli/gps.md)
+- [Sensors](cli/sensors.md)
+- [Bridge](cli/bridge.md)
+- [Power management (nRF52)](cli/power-management.md)
+- [Companion: CLI Rescue](cli/companion-rescue.md)
+- [After the pinned commit](cli/after-pinned-commit.md)
+
 ## Reference
 
 - [Terminology](reference/terminology.md)

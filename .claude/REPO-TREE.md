@@ -42,6 +42,7 @@ this tree; the annotations are what it does not give you.
 │   ├── libraries/       external libraries, dependencies
 │   │   ├── core/        one chapter per core library
 │   │   └── other/       supporting libraries, grouped by function
+│   ├── cli/             CLI reference, one page per command category
 │   ├── naslag/          terminology, references, links
 │   └── project/         about DOMCA, GitHub overview
 ├── en/                  English chapters (translation, 1-to-1 mirror)
@@ -64,6 +65,7 @@ this tree; the annotations are what it does not give you.
 │   ├── libraries/
 │   │   ├── core/
 │   │   └── other/
+│   ├── cli/
 │   ├── reference/
 │   └── project/
 ├── images/

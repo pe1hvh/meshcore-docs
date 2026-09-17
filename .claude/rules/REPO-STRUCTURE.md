@@ -31,7 +31,7 @@ Everything outside it is about MeshCore, or about the project itself.
   level: `gebruik` ↔ `usage`, `techniek` ↔ `technical`, `naslag` ↔
   `reference`, `ontwerp` ↔ `design`, `logisch` ↔ `logical`, `technisch` ↔
   `technical`. Where the word is the same in both languages the two names
-  coincide: `platform`, `hardware`, `libraries`, `project`, `radio`,
+  coincide: `platform`, `hardware`, `libraries`, `project`, `cli`, `radio`,
   `interfaces`. A section whose name is two words in prose contracts in the
   path: the Room Server section lives in `roomserver/` while its group label
   in the README indexes reads *Room Server*. Files inside such a directory
@@ -49,7 +49,7 @@ Everything outside it is about MeshCore, or about the project itself.
   in both languages.** Only the directory name differs: `gebruik` ↔ `usage`,
   `techniek` ↔ `technical`, `naslag` ↔ `reference`, `platform` ↔ `platform`,
   `hardware` ↔ `hardware`, `libraries` ↔ `libraries`, `project` ↔ `project`,
-  `ontwerp` ↔ `design`. So `nl/techniek/packet-structure.md` ↔
+  `cli` ↔ `cli`, `ontwerp` ↔ `design`. So `nl/techniek/packet-structure.md` ↔
   `en/technical/packet-structure.md`.
 - **Four sections have a third level: `libraries/`, `hardware/`, `techniek/`
   ↔ `technical/` and `ontwerp/` ↔ `design/`.** Their chapters live in
@@ -74,6 +74,11 @@ Everything outside it is about MeshCore, or about the project itself.
   subdirectory, so the entry still reads as a group heading if the nested
   level is flattened. `README.md` in the repo root shows the same
   subdirectories in its structure tree.
+- **`cli/` is a top-level section added by explicit client decision**
+  (17 September 2026), as an exception to *No new top-level directories* in
+  `CLAUDE.md`. It holds `introduction.md` plus one chapter per command
+  category, sits in the README indexes directly before *Naslag* /
+  *Reference*, and has no third level.
 - **Two tables of contents.** `nl/README.md` and `en/README.md` list the
   same chapters in the same order.
 - **One chapter sits outside a section directory**: `nl/reading-guide.md` ↔
@@ -141,6 +146,9 @@ not covered by this rule.
   push/ACK example in `techniek/roomserver/`.
 - **`tools/design-overview.py`** — resolves the build matrix and reproduces
   every figure in `ontwerp/` ↔ `design/`.
+- **`tools/cli-commands.py`** — reproduces the command lists, line numbers,
+  defaults per role, role markers and example replies in `cli/`, and lists the
+  commands that exist on a newer checkout only.
 - **`nl/naslag/terminology.md`** — glossary, authoritative for wording.
 - **`nl/naslag/references.md`** — source list.
 - **[meshcore-dev/MeshCore](https://github.com/meshcore-dev/MeshCore)** —

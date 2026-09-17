@@ -13,6 +13,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | ACL | Access Control List — the table of known clients on a repeater, sensor or room server, holding each client's public key and rights. Room for 20 (`MAX_CLIENTS`) |
 | Advert/Beacon | Periodic signal for presence announcement and public key exchange |
 | AES | Advanced Encryption Standard — encryption algorithm (128/256-bit) |
+| AGC | Automatic Gain Control — the receiver's automatic regulation of its amplification; see `set agc.reset.interval` in [Routing](../cli/routing.md) |
 | Application | One of the six programs in `examples/` that is compiled together with the shared tree into a single firmware file. The application determines which role a node performs |
 | Arduino core | Implementation of the Arduino API for one chip family. MeshCore uses four: Arduino-ESP32, Adafruit nRF52, arduino-pico and STM32duino |
 | ATT | Attribute Protocol — underlying protocol of GATT in BLE |
@@ -27,12 +28,14 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | build target | One `[env:…]` section in `platformio.ini`: the combination of board, role and settings that yields one firmware file. MeshCore counts 507 of them, plus `[env:native]` for the tests |
 | BUSY | Signal line from an SX126x radio to the SoC: active while the chip is processing a command. In MeshCore the build flag `P_LORA_BUSY` |
 | BW | Bandwidth — bandwidth in kHz (125/250/500), narrower = more robust |
+| CAD | Channel Activity Detection — function of the LoRa chip that detects whether a LoRa signal is on the channel; see [After the pinned commit](../cli/after-pinned-commit.md) |
 | Callsign | Call sign — unique identification for radio amateurs (e.g. PE1HVH) |
 | Cavity filter | Band-pass filter in which every resonator is a quarter-wave line inside a closed metal can, also called a coaxial cavity. The highest Q and the lowest insertion loss of all filter types, but large and heavy |
 | CCCD | Client Characteristic Configuration Descriptor — on/off switch for BLE Notify |
 | Channel | Shared cryptographic key (PSK) for group communication |
 | Chirp | Frequency sweep from low to high (up-chirp) or high to low (down-chirp) |
 | app_target_ver | The protocol level an app declares in byte 1 of `CMD_DEVICE_QUERY`. The firmware keeps it in memory and adapts what it sends back; on disconnect it falls back to 0 |
+| CLI | Command Line Interface — the command line of repeater, room server and sensor, on the serial console or remotely; see [CLI reference](../cli/introduction.md) |
 | Companion App | Smartphone application to control the MeshCore node |
 | Companion protocol | The binary agreement between a companion app and a node: frames of at most 176 bytes over BLE, USB or TCP, with 58 commands, 29 response codes and 17 push codes |
 | Component | Delimited part of the logical design with a responsibility of its own, such as radio, board, clock or packet handling. A component is not a file and not a class, but a place in the design |
@@ -71,6 +74,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | ESP-IDF | Espressif IoT Development Framework — Espressif's native SDK, on which the Arduino-ESP32 core is built |
 | ESP-NOW | Connectionless radio protocol from Espressif between ESP32 chips; in MeshCore available on ESP32 only |
 | `extends` | PlatformIO's inheritance mechanism: a section takes over every option from the named section. Separate from `${section.option}`, which splices in text; following only one of the two loses 28 of the 508 build targets |
+| FEM | Front-End Module — module with amplifiers and antenna switch between radio chip and antenna |
 | FFT | Fast Fourier Transform — algorithm for frequency analysis of dechirped signal |
 | Firmware | Software permanently running on the microcontroller of a node |
 | First packet wins | With multiple copies of the same flood message the first to arrive is processed; that path is learned, not necessarily the shortest |

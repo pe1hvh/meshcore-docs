@@ -9,6 +9,22 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
 
 ### Changed
 
+- `nl/README.md` ↔ `en/README.md`: new section *CLI-referentie* / *CLI
+  reference* directly before *Naslag* / *Reference*.
+- `nl/reading-guide.md` ↔ `en/reading-guide.md`: chapter count from 95 to 112,
+  and a row for the new section. The diagram count (77) is unchanged: the
+  section has no diagrams.
+- `README.md` and `.claude/REPO-TREE.md`: `cli/` added to both structure trees.
+- `.claude/rules/REPO-STRUCTURE.md`: `cli` ↔ `cli` added to the section and
+  slug mapping, the exception for the new top-level directory recorded, and
+  `tools/cli-commands.py` added to the references. `.claude/rules/TOOLS.md`:
+  the counting method for commands and role usage.
+- `nl/gebruik/regulations.md` ↔ `en/usage/regulations.md`,
+  `nl/gebruik/getting-started.md` ↔ `en/usage/getting-started.md`,
+  `nl/techniek/regions-and-scopes.md` ↔ `en/technical/regions-and-scopes.md`
+  and `nl/techniek/roomserver/requests-and-cli.md` ↔
+  `en/technical/roomserver/requests-and-cli.md`: one reference to the new
+  section each. The text around it is unchanged.
 - `CLAUDE.md` split into `CLAUDE.md` plus eight files under `.claude/rules/`,
   then trimmed from 578 to 218 lines. At 578 the file was far over the
   200-line guideline, where longer instruction files consume more context and
@@ -38,6 +54,18 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
 
 ### Fixed
 
+- `nl/techniek/regions-and-scopes.md` ↔ `en/technical/regions-and-scopes.md`
+  named the command `set flood.advert.max <n>`. The firmware only knows
+  `set flood.max.advert` (`src/helpers/CommonCLI.cpp` r.624, r.817 at
+  `03b6ef4`); the old name gives `unknown config`.
+- `nl/gebruik/regulations.md` ↔ `en/usage/regulations.md`, table of behaviour
+  rules, column *Firmware-default*: `set flood.advert.interval` read 12; the
+  firmware sets 47 on repeater and room server and 0 on the sensor.
+  `set advert.interval` read 0; a new installation starts at 2 minutes and
+  drops to 0 at the first saved change (`CommonCLI.cpp` r.196–198).
+  `direct.txdelay` read 0.2; the repeater sets 0.3, room server and sensor 0.2.
+  The 12 and 0.2 came from `docs/cli_commands.md`, which differs from the
+  firmware here.
 - `.claude/rules/REPO-STRUCTURE.md` — the rule read *file names are always
   English, kebab-case*, which the repo contradicted on four root files and now
   on eight rule files. Corrected to state that chapter, script, diagram and
@@ -46,6 +74,35 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
 
 ### Added
 
+- `nl/cli/` and `en/cli/`: a new top-level section *CLI-referentie* / *CLI
+  reference*, with `introduction.md` and sixteen chapters: `operational.md`,
+  `neighbors.md`, `statistics.md`, `logging.md`, `info.md`, `radio.md`,
+  `system.md`, `routing.md`, `acl.md`, `regions.md`, `gps.md`, `sensors.md`,
+  `bridge.md`, `power-management.md`, `companion-rescue.md` and
+  `after-pinned-commit.md`. The repo had no place where a node administrator
+  finds every command; they were scattered over `regions-and-scopes.md`,
+  `roomserver/requests-and-cli.md` and `regulations.md`. Every command is
+  verified against `03b6ef4` with its line number, a role marker only where a
+  command excludes a device type or applies to one only, the default per
+  role, an example with the literal reply and the Dutch setting from
+  `gebruik/regulations.md` ↔ `usage/regulations.md` and
+  `gebruik/getting-started.md` ↔ `usage/getting-started.md`. The pages follow
+  the firmware where `docs/cli_commands.md` differs, and list each difference.
+  Commands that exist only on `main` (`0679dbe`) are on a separate page,
+  marked as not verified against the pin. The undocumented sensor commands
+  `io` and `magic` are included.
+- `nl/cli/` ↔ `en/cli/` is a new top-level directory by explicit client
+  decision, an exception to *No new top-level directories* in `CLAUDE.md`.
+  The single-word name follows `.claude/rules/REPO-STRUCTURE.md`.
+- `tools/cli-commands.py` reproduces the command lists, line numbers, role
+  usage, defaults per role, the comparison with `docs/cli_commands.md` and the
+  example replies, including the firmware's truncating float formatting that
+  makes `get radio` show `869.6179809`. With a second checkout it lists the
+  commands that exist there only.
+- `nl/naslag/terminology.md` ↔ `en/reference/terminology.md`: AGC, CAD, CLI
+  and FEM, introduced by the new section.
+- `nl/naslag/references.md` ↔ `en/reference/references.md`: the official CLI
+  command overview, pinned to `03b6ef4`.
 - `.claude/rules/STYLE-NUANCE.md`, `REPO-STRUCTURE.md`, `PITFALLS.md`
   (unconditional) and `CHAPTERS.md`, `IMAGES.md`, `TERMINOLOGY.md`,
   `TOOLS.md`, `CHANGELOG-COMMITS.md` (path-scoped).

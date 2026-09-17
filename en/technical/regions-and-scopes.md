@@ -410,7 +410,7 @@ Alongside the hard yes/no filter there is a second brake on unscoped traffic:
 |---|---|
 | `set flood.max <n>` | Maximum hop count for any flood packet |
 | `set flood.max.unscoped <n>` | The same, but only for packets without a scope |
-| `set flood.advert.max <n>` | The same, for adverts only |
+| `set flood.max.advert <n>` | The same, for adverts only |
 
 A gentler alternative to `region denyf *` is therefore
 `set flood.max.unscoped 3`: local unscoped traffic keeps working, but it no
@@ -514,6 +514,9 @@ elaborate region tree therefore consumes noticeable computing time. Keeping
 Up to 32 regions per node (`MAX_REGION_ENTRIES`), names up to 30 characters, a
 hierarchy up to 8 levels deep. A repeater command line is 160 characters; split
 larger trees across multiple `region def` commands.
+
+Replies and examples per command are in [Regions](../cli/regions.md) in the CLI
+reference.
 
 For the practical side — which regions to configure and with what tools — see
 [Getting Started](../usage/getting-started.md).

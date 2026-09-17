@@ -198,7 +198,8 @@ weigering, geen ACK.
 ### De room-specifieke commando's
 
 De meeste commando's komen uit `CommonCLI` en zijn gelijk aan die van een
-repeater. Vier zijn hier van belang:
+repeater; ze staan allemaal in de [CLI-referentie](../../cli/introduction.md).
+Vier zijn hier van belang:
 
 | Commando | Wat het doet | Alleen serieel |
 |---|---|---|

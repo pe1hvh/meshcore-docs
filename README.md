@@ -65,6 +65,7 @@ states what each section assumes, or go straight to the
 │   ├── libraries/        welke externe code de firmware in komt
 │   │   ├── core/           kernlibraries, één hoofdstuk per library
 │   │   └── other/          ondersteunende libraries, per functie gegroepeerd
+│   ├── cli/              CLI-referentie, één pagina per categorie
 │   ├── naslag/           terminologie, referenties, links
 │   └── project/          over DOMCA, GitHub-overzicht
 ├── en/                 English chapters (same structure)
@@ -87,6 +88,7 @@ states what each section assumes, or go straight to the
 │   ├── libraries/
 │   │   ├── core/
 │   │   └── other/
+│   ├── cli/
 │   ├── reference/
 │   └── project/
 ├── images/

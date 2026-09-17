@@ -10,7 +10,7 @@ community. Deze pagina zegt waar je begint en wat elke sectie van je vraagt.
 
 ## Wat hier staat
 
-De documentatie telt 95 hoofdstukken in het Nederlands en dezelfde 95 in het
+De documentatie telt 112 hoofdstukken in het Nederlands en dezelfde 112 in het
 Engels, met 77 diagrammen per taal. De hoofdstuktelling is het aantal
 `.md`-bestanden per taalboom zonder de `README.md`-indexen; de
 diagramtelling is het aantal SVG's waarnaar een hoofdstuk verwijst, niet het
@@ -35,6 +35,7 @@ kunt verwachten. Elke sectienaam linkt naar het eerste hoofdstuk ervan.
 | [Ontwerp Node → technisch](ontwerp/technisch/source-layout.md) | Broncodestructuur, klassenmodel, platform- en radiorealisatie, buildsysteem, macro's, traceerbaarheid | C++ klassen, overerving en PlatformIO-buildconfiguraties |
 | [Ontwerp Companion → logisch](companion/logisch/responsibilities.md) | Wie bewaart wat, vraag-antwoord en push, versieonderhandeling, informatiemodel | Basisbegrip van verkeer tussen twee systemen; enkele C++ fragmenten |
 | [Ontwerp Companion → technisch](companion/technisch/transports.md) | De drie transporten, het frameformaat, alle achtenvijftig commando's, de lagen van een client | Programmeerervaring; kennis van binaire protocollen helpt |
+| [CLI-referentie](cli/introduction.md) | Elk commando van repeater, room server en sensor, per categorie, met standaardwaarden, voorbeelden en de Nederlandse invulling | Geen programmeerkennis vereist; handig als je een node via de seriële console of een app beheert |
 | [Naslag](naslag/terminology.md) | Terminologie, referenties, links | Geen. Bedoeld om in op te zoeken, niet om door te lezen |
 | [Project](project/about-domca.md) | Over DOMCA, opzet van de repository | Geen |
 

@@ -144,13 +144,16 @@ Deze instellingen zijn géén vervanging van RED-certificering, maar wel de prak
 | `set dutycycle {1-100}` | 50 % | `10` | Harde limiter tegen het H4-plafond (v1.15.0+) |
 | `set af {0-9}` *(verouderd)* | `1.0` (~50 %) | `9` (~10 %) | Zelfde doel op firmware ouder dan v1.15.0 |
 | `set loop.detect` | `off` | `minimal` | Voorkomt packet storms door een node met afwijkende firmware (v1.14.0+) |
-| `set flood.advert.interval {uren}` | 12 | `49` | Minder achtergrondverkeer; adverts zijn flood-pakketten |
-| `set advert.interval {minuten}` | 0 | `240` | Voor zero-hop adverts is geen relay-capaciteit nodig |
+| `set flood.advert.interval {uren}` | 47 (sensor: 0) | `49` | Minder achtergrondverkeer; adverts zijn flood-pakketten |
+| `set advert.interval {minuten}` | 2, na de eerste opgeslagen wijziging 0 | `240` | Voor zero-hop adverts is geen relay-capaciteit nodig |
 | `set flood.max.advert` | 8 | 8 | Begrenst hoe ver een advert vloeit |
 | `set flood.max.unscoped` | 64 | bijv. `3` | Houdt regioloze floods lokaal |
 | `region` (scoping) | — | NL-regio's | Beperkt floods tot de eigen regio |
-| `set txdelay` / `direct.txdelay` | `0.5` / `0.2` | default | Willekeurig venster tegen gelijktijdige retransmissies |
+| `set txdelay` / `direct.txdelay` | `0.5` / `0.3` (repeater), `0.2` (room server, sensor) | default | Willekeurig venster tegen gelijktijdige retransmissies |
 | `set repeat` | `on` | `on` | Uitzetten betekent geen relay |
+
+Alle commando's, met standaardwaarden per rol, staan in de
+[CLI-referentie](../cli/introduction.md).
 
 Een repeater hoort bovendien zo min mogelijk *eigen* verkeer te genereren: gebruik zo mogelijk een apart apparaat als je eigen node.
 

@@ -65,6 +65,7 @@ Comprehensive source list organised by category.
 | [MeshCore Official Website](https://meshcore.co.uk/) | MeshCore | Official website with product information, downloads, and documentation |
 | [MeshCore GitHub Repository](https://github.com/meshcore-dev/MeshCore) | GitHub | Open-source repository with MeshCore firmware and sample code |
 | [MeshCore FAQ](https://github.com/meshcore-dev/MeshCore/wiki/FAQ) | GitHub Wiki | Frequently asked questions about advertising, frequencies, firmware, and licences |
+| [MeshCore CLI Commands](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/docs/cli_commands.md) | GitHub | Official overview of the CLI commands of repeater, room server and sensor, at commit `03b6ef4`; compared against the firmware in the CLI reference |
 | [MeshCore Web Flasher](https://flasher.meshcore.co.uk/) | MeshCore | Web-based firmware flash tool for supported devices |
 | [MeshCore Companion Apps](https://meshcore.co.uk/apps.html) | MeshCore | Overview of available client applications for Android, iOS, and web |
 | [MeshCore Discord Server](https://discord.gg/ZVH2ujy9ex) | Discord | Official community server for support and development discussion |

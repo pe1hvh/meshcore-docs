@@ -411,7 +411,7 @@ Naast de harde ja/nee-filter staat er een tweede rem op unscoped verkeer:
 |---|---|
 | `set flood.max <n>` | Maximaal aantal hops voor elk flood-pakket |
 | `set flood.max.unscoped <n>` | Idem, maar alleen voor pakketten zónder scope |
-| `set flood.advert.max <n>` | Idem, alleen voor adverts |
+| `set flood.max.advert <n>` | Idem, alleen voor adverts |
 
 Een zachtere variant van `region denyf *` is dus `set flood.max.unscoped 3`:
 lokaal ongescoopt verkeer blijft werken, maar het komt niet meer het hele land
@@ -513,6 +513,9 @@ scheelt direct.
 Maximaal 32 regio's per node (`MAX_REGION_ENTRIES`), namen tot 30 tekens,
 hiërarchie tot 8 niveaus diep. Een repeaterregel is 160 tekens; grotere bomen
 splits je over meerdere `region def`-commando's.
+
+Antwoorden en voorbeelden per commando staan in
+[Regio's](../cli/regions.md) in de CLI-referentie.
 
 Voor de praktische kant — welke regio's je in Nederland instelt en met welke
 hulpmiddelen — zie [Aan de Slag](../gebruik/getting-started.md).

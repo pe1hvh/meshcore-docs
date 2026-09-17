@@ -44,3 +44,11 @@ paths:
   36 targets. Its room server count (73 targets in 65 directories) matches
   `tools/room-server-overview.py`, which is the cross-check that the resolver
   is right.
+- **`tools/cli-commands.py` counts commands on the literal, not on the
+  documentation.** A command is a string compared against the command buffer
+  in `CommonCLI.cpp` or a role's `handleCommand()`; the two dispatch literals
+  `get ` and `set ` are not commands, and `off`/`minimal`/`none`/… are values
+  of the command before them. Whether a role *uses* a setting is decided by
+  where the role reads the field outside its constructor, not by whether the
+  command is accepted: `loop.detect` is accepted everywhere and read only by
+  the repeater. Derived from the documentation, `io` and `magic` are missed.

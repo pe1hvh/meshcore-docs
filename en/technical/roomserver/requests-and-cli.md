@@ -193,8 +193,8 @@ ACK.
 
 ### The room-specific commands
 
-Most commands come from `CommonCLI` and are the same as on a repeater. Four
-matter here:
+Most commands come from `CommonCLI` and are the same as on a repeater; they are
+all in the [CLI reference](../../cli/introduction.md). Four matter here:
 
 | Command | What it does | Serial only |
 |---|---|---|

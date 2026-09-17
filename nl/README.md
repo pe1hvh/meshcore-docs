@@ -125,6 +125,26 @@ vraagt en waar je het beste begint.
   - [Hulplibraries](libraries/other/utilities.md)
   - [Testlibraries](libraries/other/testing.md)
 
+## CLI-referentie
+
+- [CLI-referentie](cli/introduction.md)
+- [Bediening](cli/operational.md)
+- [Buren](cli/neighbors.md)
+- [Statistieken](cli/statistics.md)
+- [Logging](cli/logging.md)
+- [Informatie](cli/info.md)
+- [Radio](cli/radio.md)
+- [Systeem](cli/system.md)
+- [Routing](cli/routing.md)
+- [ACL](cli/acl.md)
+- [Regio's](cli/regions.md)
+- [GPS](cli/gps.md)
+- [Sensoren](cli/sensors.md)
+- [Bridge](cli/bridge.md)
+- [Energiebeheer (nRF52)](cli/power-management.md)
+- [Companion: CLI Rescue](cli/companion-rescue.md)
+- [Na de gepinde commit](cli/after-pinned-commit.md)
+
 ## Naslag
 
 - [Terminologie](naslag/terminology.md)

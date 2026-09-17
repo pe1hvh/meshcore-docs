@@ -10,7 +10,7 @@ asks of you.
 
 ## What is here
 
-The documentation holds 95 chapters in Dutch and the same 95 in English,
+The documentation holds 112 chapters in Dutch and the same 112 in English,
 with 77 diagrams per language. The chapter count is the number of `.md` files
 per language tree excluding the `README.md` indexes; the diagram count is the
 number of SVGs a chapter references, not the number of files in `images/`.
@@ -34,6 +34,7 @@ expect. Each section name links to its first chapter.
 | [Design (node) → technical](design/technical/source-layout.md) | Source tree, class model, platform and radio realisation, build system, macros, traceability | C++ classes, inheritance and PlatformIO build configurations |
 | [Design (companion) → logical](companion/logical/responsibilities.md) | Who keeps what, request-response and push, version negotiation, information model | A basic grasp of traffic between two systems; a few C++ fragments |
 | [Design (companion) → technical](companion/technical/transports.md) | The three transports, the frame format, all fifty-eight commands, the layers of a client | Programming experience; familiarity with binary protocols helps |
+| [CLI reference](cli/introduction.md) | Every command of repeater, room server and sensor, by category, with defaults, examples and the Dutch settings | No programming knowledge required; useful if you manage a node from the serial console or an app |
 | [Reference](reference/terminology.md) | Terminology, references, links | None. Meant for looking things up, not for reading through |
 | [Project](project/about-domca.md) | About DOMCA, how the repository is organised | None |
 

@@ -144,13 +144,16 @@ These settings are no substitute for RED certification, but they are the practic
 | `set dutycycle {1-100}` | 50 % | `10` | Hard limiter against the H4 ceiling (v1.15.0+) |
 | `set af {0-9}` *(deprecated)* | `1.0` (~50 %) | `9` (~10 %) | Same purpose on firmware older than v1.15.0 |
 | `set loop.detect` | `off` | `minimal` | Prevents packet storms caused by a node with deviant firmware (v1.14.0+) |
-| `set flood.advert.interval {hours}` | 12 | `49` | Less background traffic; adverts are flood packets |
-| `set advert.interval {minutes}` | 0 | `240` | Zero-hop adverts require no relay capacity |
+| `set flood.advert.interval {hours}` | 47 (sensor: 0) | `49` | Less background traffic; adverts are flood packets |
+| `set advert.interval {minutes}` | 2, 0 after the first saved change | `240` | Zero-hop adverts require no relay capacity |
 | `set flood.max.advert` | 8 | 8 | Bounds how far an advert floods |
 | `set flood.max.unscoped` | 64 | e.g. `3` | Keeps region-less floods local |
 | `region` (scoping) | — | NL regions | Confines floods to your own region |
-| `set txdelay` / `direct.txdelay` | `0.5` / `0.2` | default | Random window against simultaneous retransmissions |
+| `set txdelay` / `direct.txdelay` | `0.5` / `0.3` (repeater), `0.2` (room server, sensor) | default | Random window against simultaneous retransmissions |
 | `set repeat` | `on` | `on` | Turning it off means no relaying |
+
+All commands, with defaults per role, are in the
+[CLI reference](../cli/introduction.md).
 
 A repeater should also generate as little traffic of its own as possible: where you can, use a separate device as your personal node.
 

@@ -14,6 +14,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | ACL | Access Control List — de tabel met bekende clients van een repeater, sensor of room server, met per client zijn publieke sleutel en rechten. Ruimte voor 20 (`MAX_CLIENTS`) |
 | Advert/Beacon | Periodiek signaal voor aanwezigheidsmelding en uitwisseling van de publieke sleutel. In lopende Nederlandse tekst: aankondiging of aankondigingsbericht |
 | AES | Advanced Encryption Standard — versleutelingsalgoritme (128/256-bit) |
+| AGC | Automatic Gain Control — automatische versterkingsregeling in de ontvanger; zie `set agc.reset.interval` in [Routing](../cli/routing.md) |
 | Applicatie | Een van de zes programma's in `examples/` die samen met de gedeelde broncode tot één firmwarebestand worden gecompileerd. De applicatie bepaalt welke rol een node vervult |
 | Arduino-core | Implementatie van de Arduino-API voor één chipfamilie. MeshCore gebruikt er vier: Arduino-ESP32, Adafruit nRF52, arduino-pico en STM32duino |
 | ATT | Attribute Protocol — onderliggend protocol van GATT in BLE |
@@ -30,12 +31,14 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | build target | Eén `[env:…]`-sectie in `platformio.ini`: de combinatie van bord, rol en instellingen die tot één firmwarebestand leidt. MeshCore telt er 507, plus `[env:native]` voor de tests |
 | BUSY | Signaallijn van een SX126x-radio naar de SoC: actief zolang de chip een opdracht verwerkt. In MeshCore de buildvlag `P_LORA_BUSY` |
 | BW | Bandwidth — bandbreedte in kHz (125/250/500), smaller = robuuster |
+| CAD | Channel Activity Detection — functie van de LoRa-chip die vaststelt of er een LoRa-signaal op het kanaal is; zie [Na de gepinde commit](../cli/after-pinned-commit.md) |
 | Callsign | Roepnaam — unieke identificatie voor radioamateurs (bijv. PE1HVH) |
 | Cavity filter | Banddoorlaatfilter waarvan elke kring een kwartgolfresonator in een afgesloten metalen kast is. Hoogste Q en laagste invoegverlies van alle filtertypen, maar groot en zwaar. Het Nederlands kent geen eigen term; ook in Nederlandstalige praktijk heet dit filter cavity filter |
 | CCCD | Client Characteristic Configuration Descriptor — aan/uit schakelaar voor BLE Notify |
 | Channel | Gedeelde cryptografische sleutel (PSK) voor groepscommunicatie |
 | Chirp | Frequentiesweep van laag naar hoog (up-chirp) of hoog naar laag (down-chirp) |
 | app_target_ver | Het protocolniveau dat een app in byte 1 van `CMD_DEVICE_QUERY` opgeeft. De firmware bewaart het in het geheugen en past aan wat hij terugstuurt; bij verbreking valt het terug naar 0 |
+| CLI | Command Line Interface — de commandoregel van repeater, room server en sensor, via de seriële console of op afstand; zie [CLI-referentie](../cli/introduction.md) |
 | Companion App | Smartphone applicatie om de MeshCore node te bedienen |
 | Companion-protocol | De binaire afspraak tussen een companion-app en een node: frames van maximaal 176 bytes over BLE, USB of TCP, met 58 commando's, 29 antwoordcodes en 17 pushcodes |
 | Component | Afgebakend onderdeel van het logisch ontwerp met een eigen verantwoordelijkheid, zoals radio, bord, klok of pakketafhandeling. Een component is geen bestand en geen klasse, maar een plaats in het ontwerp |
@@ -68,6 +71,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | ESP-IDF | Espressif IoT Development Framework — de native SDK van Espressif waar de Arduino-ESP32-core bovenop draait |
 | ESP-NOW | Verbindingsloos radioprotocol van Espressif tussen ESP32-chips onderling; in MeshCore alleen op ESP32 beschikbaar |
 | `extends` | Overervingsmechanisme van PlatformIO: een sectie neemt alle opties van de genoemde sectie over. Staat los van `${sectie.optie}`, dat tekst invoegt; wie maar één van de twee volgt, mist 28 van de 508 buildtargets |
+| FEM | Front-End Module — module met versterkers en antenneschakelaar tussen radiochip en antenne |
 | FFT | Fast Fourier Transform — algoritme voor frequentieanalyse van gedechirpt signaal |
 | Firmware | Software die permanent op de microcontroller van een node draait |
 | First packet wins | Bij meerdere kopieën van hetzelfde floodbericht wordt de eerst binnengekomene verwerkt; dat pad wordt geleerd, niet per se het kortste |

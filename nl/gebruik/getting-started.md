@@ -84,6 +84,9 @@ Een zachtere tussenstap is `set flood.max.unscoped 3`. Ongescoopt verkeer blijft
 dan lokaal werken, maar reist niet meer het hele land door — zonder dat je nodes
 zonder regio-instelling volledig afsnijdt.
 
+Alle commando's met voorbeelden staan in de
+[CLI-referentie](../cli/introduction.md).
+
 In de Companion App stel je per kanaal een scope in (bijvoorbeeld landelijk, provinciaal of lokaal); de community bepaalt lokale codes onderling. De app stuurt daarbij de 16-byte sleutel naar de node, niet de naam, en zet die per verzending. Wat er over de lucht gaat is een 16-bits code die uit die sleutel en de berichtinhoud wordt berekend — zie [MeshCore Pakketstructuur](../techniek/packet-structure.md). Voor de actuele configuratie en hulpmiddelen:
 
 - Regiocodes instellen (stap-voor-stap configurator): mesh-up.nl/tools/regiocodes-instellen
