@@ -10,12 +10,16 @@ covered in [The Four Platform Families](platform-families.md).
 
 > [!NOTE]
 > **Source.** This page has been verified against the firmware itself:
-> `MeshCore` v1.16.0 (`FIRMWARE_BUILD_DATE "6 Jun 2026"`), commit
-> `03b6ef4`, 28 July 2026 — `platformio.ini`, `variants/*/platformio.ini`
-> (79 directories, 507 build targets), `boards/*.json` (41 definitions),
+> `MeshCore` v1.17.1 (`FIRMWARE_BUILD_DATE "14 Aug 2026"`), commit
+> `d929643`, 14 August 2026 — `platformio.ini`, `variants/*/platformio.ini`
+> (87 directories, 584 build targets), `boards/*.json` (44 definitions),
 > `examples/companion_radio/main.cpp`, `src/helpers/IdentityStore.h` and
-> `src/Utils.cpp`. Every count in this chapter was also checked against
-> commit `a3a1aa5` (19 July 2026) and is identical there. To reproduce:
+> `src/Utils.cpp`. Every count was also run against the previous pin
+> `03b6ef4`; the difference is listed in
+> [Changes in v1.17.1](../project/release-v1-17-1.md). The device list comes
+> from `config.json` in
+> [meshcore-dev/flasher.meshcore.io](https://github.com/meshcore-dev/flasher.meshcore.io),
+> commit `b84f889`, 9 September 2026. To reproduce:
 > [`tools/platform-overview.py`](https://github.com/pe1hvh/meshcore-docs/blob/main/tools/platform-overview.py).
 
 ## Why the platform matters
@@ -50,8 +54,8 @@ MCU but not the other way round — is covered in
 
 | Family | SoCs | Core | Clock | RAM | Flash for the app | Radio | Variants | Build targets |
 |---|---|---|---|---|---|---|---|---|
-| ESP32 | ESP32, S3, C3, C6 | Xtensa LX6/LX7 + RISC-V | 160–240 MHz | 320 KB, up to 8 MB with PSRAM | 4–16 MB | external, over SPI | 37 | 270 |
-| nRF52 | nRF52840 | Cortex-M4F | 64 MHz | 230 KB | 792–796 KB | external, over SPI | 34 | 199 |
+| ESP32 | ESP32, S3, C3, C6 | Xtensa LX6/LX7 + RISC-V | 160–240 MHz | 320 KB, up to 8 MB with PSRAM | 4–16 MB | external, over SPI | 43 | 332 |
+| nRF52 | nRF52840 | Cortex-M4F | 64 MHz | 230 KB | 792–796 KB | external, over SPI | 36 | 214 |
 | RP2040 | RP2040 | 2× Cortex-M0+ | 133 MHz \* | 264 KB \* | 2 MB \* | external, over SPI | 4 | 22 |
 | STM32WL | STM32WLE5CCU | Cortex-M4 | 48 MHz | 64 KB | 224 KB | on the die (SubGHz) | 4 | 16 |
 
@@ -99,22 +103,29 @@ yields five to ten targets.
 
 | Role | ESP32 | nRF52 | RP2040 | STM32WL |
 |---|---|---|---|---|
-| companion BLE | 38 | 40 | 0 | 0 |
-| companion WiFi | 17 | 0 | 0 | 0 |
-| companion USB | 33 | 35 | 4 | 4 |
+| companion BLE | 46 | 42 | 0 | 0 |
+| companion WiFi | 25 | 0 | 0 | 0 |
+| companion USB | 41 | 37 | 4 | 4 |
 | companion serial | 3 | 0 | 0 | 0 |
-| repeater | 83 | 42 | 6 | 5 |
-| room server | 34 | 35 | 4 | **0** |
-| sensor | 9 | 6 | **0** | 3 |
-| KISS modem | 36 | 36 | 4 | 4 |
-| terminal chat | 17 | 5 | 4 | 0 |
-| **total** | **270** | **199** | **22** | **16** |
+| companion Ethernet | 1 | 1 | 0 | 0 |
+| repeater | 95 | 45 | 6 | 5 |
+| room server | 42 | 38 | 4 | **0** |
+| sensor | 14 | 6 | **0** | 3 |
+| KISS modem | 43 | 40 | 4 | 4 |
+| terminal chat | 22 | 5 | 4 | 0 |
+| **total** | **332** | **214** | **22** | **16** |
 
 Two gaps stand out. STM32WL has no room server at all, and RP2040 has no
 sensor build. That is not a limitation of the chip but a choice in the
 variants: nobody has created them.
 
-Of the 270 ESP32 targets, sixteen come from the three C6 variants: five
+The *companion Ethernet* row is new in v1.17.1 and holds two targets:
+`RAK_4631_companion_radio_ethernet` and
+`ThinkNode_M7_companion_radio_ethernet`. There is also one repeater and one
+room server over Ethernet, counted in their own rows. What you can do with
+it is described in [Ethernet](../cli/ethernet.md).
+
+Of the 332 ESP32 targets, sixteen come from the three C6 variants: five
 repeater, five companion BLE, three KISS modem, two room server and one
 companion USB.
 
@@ -122,14 +133,19 @@ companion USB.
 
 The firmware builds for four families. The
 [web flasher](https://flasher.meshcore.io) — the route most people take —
-offers two. The saved page of 27 July 2026 lists sixty devices:
+offers two. The flasher's `config.json` holds 66 entries for sixty-five
+devices; the LilyGo T-Lora Pager appears twice, once per firmware project:
 
 | Family | Devices in the flasher | Share | Variants in the repo |
 |---|---|---|---|
-| ESP32 | 32 | 53 % | 37 |
-| nRF52840 | 27 | 45 % | 34 |
+| ESP32 | 35 | 54 % | 43 |
+| nRF52840 | 29 | 45 % | 36 |
 | RP2040 | 1, and not flashable through the web flasher | 2 % | 4 |
 | STM32WL | 0 | 0 % | 4 |
+
+Nine of those sixty-five devices cannot run MeshCore at all: the flasher
+offers only Ripple firmware for them. Which ones is listed in
+[Node matrix](node-matrix.md).
 
 The single RP2040 device in the list, the Pico with a WaveShare SX1262
 module, gets no platform icon but a generic glyph. The flasher's own
@@ -140,9 +156,11 @@ For STM32WL there is nothing at all. Anyone who wants such a node compiles
 it themselves and flashes it with ST-Link or DFU. Within MeshCore,
 STM32WL is not a consumer platform but a builder's platform.
 
-Within ESP32 the S3 dominates: 27 of the 32 devices. Alongside it four
-with the classic ESP32 (Heltec v2, LilyGo LoRa32 V2.1_1.6 and the two
-T-Beams) and one with a C3 (Seeed Xiao C3). Of the C6, the sub-SoC
+Within ESP32 the S3 dominates: 28 of the 35 devices. Alongside it five with
+the classic ESP32 (Heltec v2, LilyGo LoRa32 v2.1_1.6 and the three T-Beams)
+and one with a C3 (Seeed Xiao C3); the sub-SoC of the T-Deck Pro v1.1 is
+unknown. The previous pin named four classic ESP32s where there were five —
+the T-Beam 1W was missing from that list. Of the C6, the sub-SoC
 carrying the "experimental" label, not a single device appears in the
 list.
 
@@ -161,7 +179,7 @@ list.
 
 `framework = arduino` appears exactly once in the entire repo:
 `platformio.ini` line 17, in `[arduino_base]`. All four platform bases
-extend it, and none of the 79 variants overrides it.
+extend it, and none of the 87 variants overrides it.
 
 Even so, these are four different Arduino cores: Arduino-ESP32 on ESP-IDF,
 the Adafruit nRF52 core on the SoftDevice, the earlephilhower arduino-pico,
@@ -236,21 +254,27 @@ Which specific board fits is covered in
 ## Sources
 
 Firmware: [meshcore-dev/MeshCore](https://github.com/meshcore-dev/MeshCore),
-branch `main`, commit `03b6ef4`, 28 July 2026, v1.16.0.
+tag `companion-v1.17.1`, commit `d929643`, 14 August 2026, v1.17.1.
 
-- [`platformio.ini`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/platformio.ini)
+Device list: `config.json` from
+[meshcore-dev/flasher.meshcore.io](https://github.com/meshcore-dev/flasher.meshcore.io),
+commit `b84f889`, 9 September 2026.
+
+- [`platformio.ini`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/platformio.ini)
   — lines 16-53 `[arduino_base]` with `framework = arduino` on line 17;
   67-70 `[esp32_ota]`; 158-168 `[env:native]`
-- [`variants/`](https://github.com/meshcore-dev/MeshCore/tree/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/variants)
-  — 79 directories holding 507 `[env:]` blocks between them
-- [`boards/`](https://github.com/meshcore-dev/MeshCore/tree/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/boards)
-  — 41 board definitions with `mcu`, `f_cpu`, `maximum_ram_size` and
-  `maximum_size`
-- [`examples/companion_radio/main.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/examples/companion_radio/main.cpp)
+- [`variants/`](https://github.com/meshcore-dev/MeshCore/tree/d92964352441e53b93e8667b802e04f6e072b39e/variants)
+  — 87 directories holding 584 `[env:]` blocks between them
+- [`boards/`](https://github.com/meshcore-dev/MeshCore/tree/d92964352441e53b93e8667b802e04f6e072b39e/boards)
+  — 44 board definitions with `mcu`, `f_cpu`, `maximum_ram_size` and
+  `maximum_size`. The previous pin said 41; that was the number of files in
+  the directory, four linker scripts included, not the number of `.json`
+  definitions (37).
+- [`examples/companion_radio/main.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/examples/companion_radio/main.cpp)
   — lines 5-6 the hand-written `_atoi()`
-- [`src/helpers/IdentityStore.h`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/src/helpers/IdentityStore.h)
+- [`src/helpers/IdentityStore.h`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/src/helpers/IdentityStore.h)
   — lines 3-11, the `FILESYSTEM` abstraction
-- [`src/Utils.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/src/Utils.cpp)
+- [`src/Utils.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/src/Utils.cpp)
   — lines 5-7, `#ifdef ARDUINO`
 - `merge-bin.py`, `create-uf2.py` and `arch/stm32/build_hex.py` — the
   three build scripts that produce the flash artefacts

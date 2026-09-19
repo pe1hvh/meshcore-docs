@@ -9,9 +9,10 @@ probeert ze tijdelijk uit.
 
 > [!NOTE]
 > **Bron.** Deze pagina is geverifieerd tegen de firmware zelf: `MeshCore`
-> v1.16.0, commit `03b6ef4`, 28 juli 2026 — bestanden
+> v1.17.1, commit `d929643`, 14 augustus 2026 — bestanden
 > `src/helpers/CommonCLI.cpp`, `platformio.ini`,
-> `examples/simple_repeater/MyMesh.cpp`, `src/helpers/TxtDataHelpers.cpp`, en de
+> `examples/simple_repeater/MyMesh.cpp`, `examples/simple_room_server/MyMesh.cpp`,
+> `examples/simple_sensor/SensorMesh.cpp`, `src/helpers/TxtDataHelpers.cpp`, en de
 > officiële `docs/cli_commands.md`. Regelnummers verwijzen naar deze commit en
 > zijn te reproduceren met
 > [`tools/cli-commands.py`](https://github.com/pe1hvh/meshcore-docs/blob/main/tools/cli-commands.py).
@@ -24,13 +25,17 @@ room server en sensor.
 
 | Commando | Rol | Standaard | Alleen serieel | Bron |
 |---|---|---|---|---|
-| `get radio` / `set radio <freq>,<bw>,<sf>,<cr>` | | `869.618,62.5,8,5` | | `CommonCLI.cpp` r.571, r.808 |
-| `get tx` / `set tx <dbm>` | | per board, terugvalwaarde 20 | | `CommonCLI.cpp` r.691, r.847 |
-| `tempradio <freq>,<bw>,<sf>,<cr>,<timeout_mins>` | | — | | `CommonCLI.cpp` r.274 |
-| `get freq` / `set freq <frequency>` | | `869.618` | alleen `set` | `CommonCLI.cpp` r.696, r.849 |
-| `get radio.rxgain` / `set radio.rxgain <on\|off>` | `build flag` · `effect: repeater` | R `on` ¹ · RS/S `off` | | `CommonCLI.cpp` r.565, r.805 |
+| `get radio` / `set radio <freq>,<bw>,<sf>,<cr>` | | `869.618,62.5,8,5` | | `CommonCLI.cpp` r.588, r.859 |
+| `get tx` / `set tx <dbm>` | | per board, terugvalwaarde 20 | | `CommonCLI.cpp` r.708, r.898 |
+| `tempradio <freq>,<bw>,<sf>,<cr>,<timeout_mins>` | | — | | `CommonCLI.cpp` r.241 |
+| `get freq` / `set freq <frequency>` | | `869.618` | alleen `set` | `CommonCLI.cpp` r.713, r.900 |
+| `get radio.rxgain` / `set radio.rxgain <on\|off>` | `effect: repeater, room server` | R/RS `on` ¹ · S `off` | | `CommonCLI.cpp` r.535, r.845 |
+| `get cad` / `set cad <on\|off>` | | `off` | | `CommonCLI.cpp` r.470, r.818 |
+| `get radio.fem.rxgain` / `set radio.fem.rxgain <on\|off>` | board met regelbare FEM | `on` | | `CommonCLI.cpp` r.544, r.847 |
+| `get radio.fem.txgain` / `set radio.fem.txgain <on\|off>` | board met regelbare FEM | `off` | | `CommonCLI.cpp` r.566, r.853 |
+| `get extra.sf` / `set extra.sf <sf>[,<sf>…]` | `build flag` (`set`) | — | | `CommonCLI.cpp` r.780, r.976 |
 
-De standaard `869.618,62.5,8,5` komt uit `platformio.ini` r.28–30 (frequentie,
+De standaard `869.618,62.5,8,5` komt uit `platformio.ini` r.29–31 (frequentie,
 bandbreedte, SF) en de terugvalwaarde `LORA_CR 5`; geen enkele variant
 overschrijft ze. De officiële documentatie noemt `869.525,250,11,5`. Een
 ongewijzigde build staat dus op **SF8**, terwijl het Nederlandse netwerk SF7
@@ -62,7 +67,7 @@ overgestapt op SF7; een node op SF8 hoort de rest niet.
 
 Zendvermogen van de LoRa-chip in dBm. Het gaat direct in. `set tx` controleert
 geen grenzen; bij de volgende start beperkt de firmware de waarde tot −9…30
-(`CommonCLI.cpp` r.105). Een versterker op het board komt daar nog bovenop.
+(`CommonCLI.cpp` r.116). Een versterker op het board komt daar nog bovenop.
 
 **Voorbeeld:**
 
@@ -109,10 +114,13 @@ ook de build-standaard.
 
 ### radio.rxgain
 
-Boosted gain van de ontvanger. Bestaat alleen in builds met `USE_SX1262`,
-`USE_SX1268` of `USE_LR1110`. Alleen de repeater past de instelling toe, bij het
-opstarten en direct na `set` (`MyMesh.cpp` r.965, r.1063). De officiële
-documentatie noemt `on` als standaard voor alle rollen.
+Boosted gain van de ontvanger. Tot v1.16.0 bestond het commando alleen in
+builds met `USE_SX1262`, `USE_SX1268` of `USE_LR1110`; sinds v1.17.1 staat het
+er altijd in en antwoordt een board dat het niet kan met `Error: unsupported`.
+Repeater en room server passen de instelling toe, bij het opstarten en direct na
+`set` (`simple_repeater/MyMesh.cpp` r.981, r.1080,
+`simple_room_server/MyMesh.cpp` r.727). De sensor doet er niets mee. De
+officiële documentatie noemt `on` als standaard voor alle rollen.
 
 **Voorbeeld:**
 
@@ -124,13 +132,77 @@ get radio.rxgain
 ```
 
 ¹ Voor SX1262/SX1268-builds, tenzij `SX126X_RX_BOOSTED_GAIN` iets anders zegt
-(`MyMesh.cpp` r.913–919). In LR1110-builds zet de repeater de waarde niet en is
-hij `off`.
+(`simple_repeater/MyMesh.cpp` r.927–933, `simple_room_server/MyMesh.cpp`
+r.677–683). In LR1110-builds zetten ze de waarde niet en is hij `off`. De room
+server zette hem tot v1.16.0 ook niet; dat is met v1.17.1 gelijkgetrokken met de
+repeater.
+
+### cad
+
+Hardwarematige Channel Activity Detection vóór het zenden. `on` zet het aan,
+elke andere waarde uit. Alle drie de rollen zetten de standaard op `off`
+(`simple_repeater/MyMesh.cpp` r.909, `simple_room_server/MyMesh.cpp` r.667,
+`simple_sensor/SensorMesh.cpp` r.731). Volgens de officiële documentatie staat
+het los van `int.thresh`. Dit is geen gecertificeerde LBT; de duty-cycle-limiet
+blijft gelden, zie [Regelgeving & Duty Cycle](../usage/regulations.md).
+
+**Voorbeeld:**
+
+```text
+set cad on
+  -> OK
+get cad
+  -> > on
+```
+
+### radio.fem.rxgain
+
+De LNA van een externe front-end module (FEM), los van `radio.rxgain`. Zonder
+regelbare FEM is het antwoord `Error: unsupported`; een andere waarde dan
+`on`/`off` geeft `Error: state must be on or off`. Standaard `on` bij alle drie
+de rollen (bijvoorbeeld `simple_room_server/MyMesh.cpp` r.684).
+
+**Voorbeeld:**
+
+```text
+set radio.fem.rxgain on
+  -> OK - LoRa FEM RX gain on
+```
+
+### radio.fem.txgain
+
+Idem voor de zendversterking van de FEM. Standaard `off`
+(`simple_room_server/MyMesh.cpp` r.685). De officiële documentatie noemt de
+Station G3 als voorbeeld en waarschuwt dat de gekozen stand aan de lokale
+limieten moet voldoen.
+
+**Voorbeeld:**
+
+```text
+get radio.fem.txgain
+  -> Error: unsupported
+```
+
+### extra.sf
+
+Niet in de officiële documentatie. `set` bestaat alleen in builds met
+`USE_LR2021` en neemt tot drie extra spreading factors, gescheiden door komma's;
+het antwoord is `OK - extra SFs set` of `Invalid extra SF config`. `get` toont
+de lijst of `No extra SF configured`.
+
+**Voorbeeld:**
+
+```text
+get extra.sf
+  -> No extra SF configured
+```
 
 ## Bronnen
 
-- [MeshCore firmware — `src/helpers/CommonCLI.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/src/helpers/CommonCLI.cpp)
-- [MeshCore firmware — `platformio.ini`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/platformio.ini)
-- [MeshCore firmware — `examples/simple_repeater/MyMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/examples/simple_repeater/MyMesh.cpp)
-- [MeshCore firmware — `src/helpers/TxtDataHelpers.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/src/helpers/TxtDataHelpers.cpp)
-- [MeshCore firmware — `docs/cli_commands.md`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/docs/cli_commands.md)
+- [MeshCore firmware — `src/helpers/CommonCLI.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/src/helpers/CommonCLI.cpp)
+- [MeshCore firmware — `platformio.ini`](https://github.com/meshcore-dev/MeshCore/blob/d929643/platformio.ini)
+- [MeshCore firmware — `examples/simple_repeater/MyMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/examples/simple_repeater/MyMesh.cpp)
+- [MeshCore firmware — `examples/simple_room_server/MyMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/examples/simple_room_server/MyMesh.cpp)
+- [MeshCore firmware — `examples/simple_sensor/SensorMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/examples/simple_sensor/SensorMesh.cpp)
+- [MeshCore firmware — `src/helpers/TxtDataHelpers.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/src/helpers/TxtDataHelpers.cpp)
+- [MeshCore firmware — `docs/cli_commands.md`](https://github.com/meshcore-dev/MeshCore/blob/d929643/docs/cli_commands.md)

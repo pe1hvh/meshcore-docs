@@ -10,8 +10,9 @@ community. Deze pagina zegt waar je begint en wat elke sectie van je vraagt.
 
 ## Wat hier staat
 
-De documentatie telt 113 hoofdstukken in het Nederlands en dezelfde 113 in het
-Engels, met 77 diagrammen per taal. De hoofdstuktelling is het aantal
+De documentatie telt 117 hoofdstukken in het Nederlands en dezelfde 117 in het
+Engels, met 81 SVG's per taal, waarvan 77 diagrammen en vier boardtekeningen
+uit een externe bron. De hoofdstuktelling is het aantal
 `.md`-bestanden per taalboom zonder de `README.md`-indexen; de
 diagramtelling is het aantal SVG's waarnaar een hoofdstuk verwijst, niet het
 aantal bestanden in `images/`.
@@ -28,7 +29,7 @@ kunt verwachten. Elke sectienaam linkt naar het eerste hoofdstuk ervan.
 |---|---|---|
 | [Gebruik](usage/what-is-meshcore.md) | Wat MeshCore is, een node aan de praat krijgen, hardware, regelgeving, privacy | Geen programmeerkennis vereist |
 | [Techniek](technical/layer-model.md) | Protocol, pakketopbouw byte voor byte, encryptie, routing, repeaters, room server | Basisbegrip van netwerken en hexadecimale notatie helpt; programmeren niet nodig |
-| [Platform](platform/platforms.md) | De vier platformfamilies en de keuze ertussen | Geen, afgezien van globale kennis van microcontrollers |
+| [Platform](platform/platforms.md) | De vier platformfamilies, de keuze ertussen en de pinbezetting per variant | Geen, afgezien van globale kennis van microcontrollers |
 | [Hardware](hardware/introduction.md) | Radio, antenne, linkbudget, filters, BLE, WiFi, USB, I²C, SPI, scherm, GPS, knoppen | Basiskennis elektronica aanbevolen; enkele hoofdstukken tonen C++ fragmenten |
 | [Libraries](libraries/introduction.md) | De tweeënvijftig externe libraries die de firmware in gaan | Kennis van PlatformIO-buildconfiguraties aanbevolen |
 | [Ontwerp Node → logisch](design/logical/roles.md) | Rollen, componenten, contracten, informatiemodel, variabiliteit, ontwerpbeslissingen | Basiskennis van klassen en interfaces aanbevolen; de tekst blijft weg bij broncode |

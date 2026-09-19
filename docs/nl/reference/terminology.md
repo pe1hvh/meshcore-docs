@@ -31,7 +31,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | build target | Eén `[env:…]`-sectie in `platformio.ini`: de combinatie van bord, rol en instellingen die tot één firmwarebestand leidt. MeshCore telt er 507, plus `[env:native]` voor de tests |
 | BUSY | Signaallijn van een SX126x-radio naar de SoC: actief zolang de chip een opdracht verwerkt. In MeshCore de buildvlag `P_LORA_BUSY` |
 | BW | Bandwidth — bandbreedte in kHz (125/250/500), smaller = robuuster |
-| CAD | Channel Activity Detection — functie van de LoRa-chip die vaststelt of er een LoRa-signaal op het kanaal is; zie [Na de gepinde commit](../cli/after-pinned-commit.md) |
+| CAD | Channel Activity Detection — functie van de LoRa-chip die vaststelt of er een LoRa-signaal op het kanaal is; zie `set cad` in [Radio](../cli/radio.md) |
 | Callsign | Roepnaam — unieke identificatie voor radioamateurs (bijv. PE1HVH) |
 | Cavity filter | Banddoorlaatfilter waarvan elke kring een kwartgolfresonator in een afgesloten metalen kast is. Hoogste Q en laagste invoegverlies van alle filtertypen, maar groot en zwaar. Het Nederlands kent geen eigen term; ook in Nederlandstalige praktijk heet dit filter cavity filter |
 | CCCD | Client Characteristic Configuration Descriptor — aan/uit schakelaar voor BLE Notify |
@@ -118,6 +118,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | LPCOMP | Low-Power Comparator in de nRF52 — kan de chip uit `SYSTEMOFF` wekken op een spanningsverandering |
 | LPP | Low Power Payload — compact binair formaat voor sensordata; MeshCore gebruikt CayenneLPP als draadformaat voor telemetrie |
 | LR1110 | Semtech-transceiver die LoRa combineert met GNSS- en WiFi-scanning voor locatiebepaling zonder losse GPS-module |
+| LR2021 | Semtech-transceiver die MeshCore sinds v1.17.0 ondersteunt; alleen in `USE_LR2021`-builds is `set extra.sf` beschikbaar |
 | MAC (cipher) | Message Authentication Code — HMAC-SHA256 over de cijfertekst, afgekapt op 2 bytes. MeshCore gebruikt de term MIC niet |
 | Macro | Naam die de preprocessor vóór het compileren door een waarde vervangt. In MeshCore dragen macro's zowel aan/uit-keuzes als klassennamen; zie *typeinjectie* |
 | MCU | Microcontroller Unit — de chip waarop de firmware draait, met processor, geheugen, flash en de bussen waaraan de rest van de node hangt. Op ESP32, nRF52840 en STM32WLE5 zit die MCU in een SoC; de RP2040 is een kale MCU. Elke SoC bevat een MCU, niet elke MCU zit in een SoC |

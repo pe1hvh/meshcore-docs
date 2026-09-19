@@ -10,12 +10,16 @@ staat in [De vier platformfamilies](platform-families.md).
 
 > [!NOTE]
 > **Bron.** Deze pagina is geverifieerd tegen de firmware zelf:
-> `MeshCore` v1.16.0 (`FIRMWARE_BUILD_DATE "6 Jun 2026"`), commit
-> `03b6ef4`, 28 juli 2026 — `platformio.ini`, `variants/*/platformio.ini`
-> (79 mappen, 507 build-targets), `boards/*.json` (41 definities),
+> `MeshCore` v1.17.1 (`FIRMWARE_BUILD_DATE "14 Aug 2026"`), commit
+> `d929643`, 14 augustus 2026 — `platformio.ini`, `variants/*/platformio.ini`
+> (87 mappen, 584 build-targets), `boards/*.json` (44 definities),
 > `examples/companion_radio/main.cpp`, `src/helpers/IdentityStore.h` en
-> `src/Utils.cpp`. Alle tellingen in dit hoofdstuk zijn ook gecontroleerd
-> op commit `a3a1aa5` (19 juli 2026) en daar identiek. Reproduceren kan
+> `src/Utils.cpp`. Alle tellingen zijn ook tegen de vorige pin `03b6ef4`
+> gedraaid; het verschil staat in
+> [Wijzigingen in v1.17.1](../project/release-v1-17-1.md). De apparatenlijst
+> komt uit `config.json` van
+> [meshcore-dev/flasher.meshcore.io](https://github.com/meshcore-dev/flasher.meshcore.io),
+> commit `b84f889`, 9 september 2026. Reproduceren kan
 > met [`tools/platform-overview.py`](https://github.com/pe1hvh/meshcore-docs/blob/main/tools/platform-overview.py).
 
 ## Waarom het platform uitmaakt
@@ -51,8 +55,8 @@ bevat maar niet andersom — staat in
 
 | Familie | SoC's | Core | Klok | RAM | Flash voor de app | Radio | Varianten | Build-targets |
 |---|---|---|---|---|---|---|---|---|
-| ESP32 | ESP32, S3, C3, C6 | Xtensa LX6/LX7 + RISC-V | 160–240 MHz | 320 KB, tot 8 MB met PSRAM | 4–16 MB | extern, via SPI | 37 | 270 |
-| nRF52 | nRF52840 | Cortex-M4F | 64 MHz | 230 KB | 792–796 KB | extern, via SPI | 34 | 199 |
+| ESP32 | ESP32, S3, C3, C6 | Xtensa LX6/LX7 + RISC-V | 160–240 MHz | 320 KB, tot 8 MB met PSRAM | 4–16 MB | extern, via SPI | 43 | 332 |
+| nRF52 | nRF52840 | Cortex-M4F | 64 MHz | 230 KB | 792–796 KB | extern, via SPI | 36 | 214 |
 | RP2040 | RP2040 | 2× Cortex-M0+ | 133 MHz \* | 264 KB \* | 2 MB \* | extern, via SPI | 4 | 22 |
 | STM32WL | STM32WLE5CCU | Cortex-M4 | 48 MHz | 64 KB | 224 KB | op de die (SubGHz) | 4 | 16 |
 
@@ -100,22 +104,29 @@ levert meestal vijf tot tien targets.
 
 | Rol | ESP32 | nRF52 | RP2040 | STM32WL |
 |---|---|---|---|---|
-| companion BLE | 38 | 40 | 0 | 0 |
-| companion WiFi | 17 | 0 | 0 | 0 |
-| companion USB | 33 | 35 | 4 | 4 |
+| companion BLE | 46 | 42 | 0 | 0 |
+| companion WiFi | 25 | 0 | 0 | 0 |
+| companion USB | 41 | 37 | 4 | 4 |
 | companion serial | 3 | 0 | 0 | 0 |
-| repeater | 83 | 42 | 6 | 5 |
-| room server | 34 | 35 | 4 | **0** |
-| sensor | 9 | 6 | **0** | 3 |
-| KISS modem | 36 | 36 | 4 | 4 |
-| terminal chat | 17 | 5 | 4 | 0 |
-| **totaal** | **270** | **199** | **22** | **16** |
+| companion Ethernet | 1 | 1 | 0 | 0 |
+| repeater | 95 | 45 | 6 | 5 |
+| room server | 42 | 38 | 4 | **0** |
+| sensor | 14 | 6 | **0** | 3 |
+| KISS modem | 43 | 40 | 4 | 4 |
+| terminal chat | 22 | 5 | 4 | 0 |
+| **totaal** | **332** | **214** | **22** | **16** |
 
 Twee gaten vallen op. STM32WL heeft geen enkele room server, en RP2040
 geen enkele sensor-build. Dat is geen beperking van de chip maar een
 keuze in de varianten: niemand heeft ze aangemaakt.
 
-Van de 270 ESP32-targets komen er zestien van de drie C6-varianten: vijf
+De rij *companion Ethernet* is nieuw in v1.17.1 en telt twee targets:
+`RAK_4631_companion_radio_ethernet` en
+`ThinkNode_M7_companion_radio_ethernet`. Er is ook één repeater en één room
+server over Ethernet; die tellen mee in hun eigen rij. Wat je ermee kunt,
+staat in [Ethernet](../cli/ethernet.md).
+
+Van de 332 ESP32-targets komen er zestien van de drie C6-varianten: vijf
 repeater, vijf companion BLE, drie KISS modem, twee room server en één
 companion USB.
 
@@ -123,15 +134,20 @@ companion USB.
 
 De firmware bouwt voor vier families. De
 [web flasher](https://flasher.meshcore.io) — de weg die de meeste mensen
-nemen — biedt er twee. Op de opgeslagen pagina van 27 juli 2026 staan
-zestig apparaten:
+nemen — biedt er twee. In `config.json` van de flasher staan 66 regels voor
+vijfenzestig apparaten; de LilyGo T-Lora Pager staat er twee keer in, één
+keer per firmwareproject:
 
 | Familie | Apparaten in de flasher | Aandeel | Varianten in de repo |
 |---|---|---|---|
-| ESP32 | 32 | 53 % | 37 |
-| nRF52840 | 27 | 45 % | 34 |
+| ESP32 | 35 | 54 % | 43 |
+| nRF52840 | 29 | 45 % | 36 |
 | RP2040 | 1, en niet via de webflasher te flashen | 2 % | 4 |
 | STM32WL | 0 | 0 % | 4 |
+
+Negen van die vijfenzestig apparaten kunnen geen MeshCore draaien: de
+flasher biedt er alleen Ripple-firmware voor aan. Welke dat zijn, staat in
+[Nodematrix](node-matrix.md).
 
 Het enige RP2040-apparaat in de lijst, de Pico met een WaveShare
 SX1262-module, krijgt geen platform-icoon maar een generieke glyph. In de
@@ -142,9 +158,11 @@ Voor STM32WL staat er niets. Wie zo'n node wil, compileert zelf en flasht
 met ST-Link of DFU. Binnen MeshCore is STM32WL geen consumentenplatform
 maar een bouwerplatform.
 
-Binnen ESP32 is de S3 dominant: 27 van de 32 apparaten. Daarnaast vier met
-de klassieke ESP32 (Heltec v2, LilyGo LoRa32 V2.1_1.6 en de twee
-T-Beams) en één met een C3 (Seeed Xiao C3). Van de C6, het sub-SoC met
+Binnen ESP32 is de S3 dominant: 28 van de 35 apparaten. Daarnaast vijf met
+de klassieke ESP32 (Heltec v2, LilyGo LoRa32 v2.1_1.6 en de drie T-Beams)
+en één met een C3 (Seeed Xiao C3); bij de T-Deck Pro v1.1 is het sub-SoC
+onbekend. Op de vorige pin stonden hier vier klassieke ESP32's genoemd
+terwijl het er vijf waren — de T-Beam 1W ontbrak in die opsomming. Van de C6, het sub-SoC met
 het "experimenteel"-label, staat er geen enkel apparaat in de lijst.
 
 > [!NOTE]
@@ -162,7 +180,7 @@ het "experimenteel"-label, staat er geen enkel apparaat in de lijst.
 
 `framework = arduino` staat precies één keer in de hele repo:
 `platformio.ini` r.17, in `[arduino_base]`. Alle vier de platformbases
-erven daarvan, en geen van de 79 varianten overschrijft het.
+erven daarvan, en geen van de 87 varianten overschrijft het.
 
 Toch zijn het vier verschillende Arduino-cores: Arduino-ESP32 op ESP-IDF,
 de Adafruit nRF52-core op de SoftDevice, de earlephilhower arduino-pico,
@@ -238,21 +256,27 @@ Welk concreet bord daarbij past, staat in
 ## Bronnen
 
 Firmware: [meshcore-dev/MeshCore](https://github.com/meshcore-dev/MeshCore),
-branch `main`, commit `03b6ef4`, 28 juli 2026, v1.16.0.
+tag `companion-v1.17.1`, commit `d929643`, 14 augustus 2026, v1.17.1.
 
-- [`platformio.ini`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/platformio.ini)
+Apparatenlijst: `config.json` uit
+[meshcore-dev/flasher.meshcore.io](https://github.com/meshcore-dev/flasher.meshcore.io),
+commit `b84f889`, 9 september 2026.
+
+- [`platformio.ini`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/platformio.ini)
   — r.16-53 `[arduino_base]` met `framework = arduino` op r.17; r.67-70
   `[esp32_ota]`; r.158-168 `[env:native]`
-- [`variants/`](https://github.com/meshcore-dev/MeshCore/tree/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/variants)
-  — 79 mappen met samen 507 `[env:]`-blokken
-- [`boards/`](https://github.com/meshcore-dev/MeshCore/tree/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/boards)
-  — 41 borddefinities met `mcu`, `f_cpu`, `maximum_ram_size` en
-  `maximum_size`
-- [`examples/companion_radio/main.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/examples/companion_radio/main.cpp)
+- [`variants/`](https://github.com/meshcore-dev/MeshCore/tree/d92964352441e53b93e8667b802e04f6e072b39e/variants)
+  — 87 mappen met samen 584 `[env:]`-blokken
+- [`boards/`](https://github.com/meshcore-dev/MeshCore/tree/d92964352441e53b93e8667b802e04f6e072b39e/boards)
+  — 44 borddefinities met `mcu`, `f_cpu`, `maximum_ram_size` en
+  `maximum_size`. Op de vorige pin stond hier 41; dat was het aantal
+  bestanden in de map, inclusief vier linkerscripts, en niet het aantal
+  `.json`-definities (37).
+- [`examples/companion_radio/main.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/examples/companion_radio/main.cpp)
   — r.5-6 de eigen `_atoi()`
-- [`src/helpers/IdentityStore.h`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/src/helpers/IdentityStore.h)
+- [`src/helpers/IdentityStore.h`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/src/helpers/IdentityStore.h)
   — r.3-11 de `FILESYSTEM`-abstractie
-- [`src/Utils.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/src/Utils.cpp)
+- [`src/Utils.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/src/Utils.cpp)
   — r.5-7 `#ifdef ARDUINO`
 - `merge-bin.py`, `create-uf2.py` en `arch/stm32/build_hex.py` — de drie
   buildscripts die de flashartefacten maken

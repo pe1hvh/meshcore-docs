@@ -200,7 +200,13 @@ def scan(root, rel, only_funcs=None):
 
 def ctor_defaults(root, rel):
     lines = read(root, rel)
-    start = next(i for i, l in enumerate(lines) if "memset(&_prefs" in l)
+    # Up to v1.16.0 the constructor cleared the struct with memset(&_prefs, ...)
+    # first. Since the JSON config rework (v1.17.0) that memset is gone and the
+    # block starts at the "// defaults" comment.
+    start = next((i for i, l in enumerate(lines) if "memset(&_prefs" in l), None)
+    if start is None:
+        start = next(i for i, l in enumerate(lines)
+                     if re.match(r"(\w+)::\1\s*\(", l))
     vals, guards = {}, []
     for no in range(start + 1, len(lines)):
         ln = lines[no]

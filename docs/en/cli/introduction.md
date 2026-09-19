@@ -10,7 +10,7 @@ only an emergency console.
 
 > [!NOTE]
 > **Source.** This page was verified against the firmware itself: `MeshCore`
-> v1.16.0, commit `03b6ef4`, 28 July 2026 — files `src/helpers/CommonCLI.cpp`,
+> v1.17.1, commit `d929643`, 14 August 2026 — files `src/helpers/CommonCLI.cpp`,
 > `src/helpers/CommonCLI.h`, `examples/simple_repeater/MyMesh.cpp`,
 > `examples/simple_repeater/main.cpp`, `examples/simple_room_server/MyMesh.cpp`,
 > `examples/simple_sensor/SensorMesh.cpp`, `examples/simple_sensor/main.cpp`,
@@ -35,8 +35,8 @@ an emergency console: [Companion: CLI Rescue](companion-rescue.md).
 ## How to give a command
 
 On the serial console you type the command and press Enter. The repeater puts
-`  -> ` in front of each reply (`simple_repeater/main.cpp` r.127); a reply is at
-most 159 characters (r.124). When a reply spans several lines, only the first
+`  -> ` in front of each reply (`simple_repeater/main.cpp` r.154); a reply is at
+most 159 characters (r.144). When a reply spans several lines, only the first
 line gets that prefix.
 
 Remotely, an admin sends the same command from an app, see
@@ -82,22 +82,27 @@ filled when the firmware checks that the command comes from the serial console.
 - [Bridge](bridge.md) — RS232 and ESP-NOW bridge
 - [Power management (nRF52)](power-management.md) — nRF52 power and bootloader
 - [Companion: CLI Rescue](companion-rescue.md) — the companion's emergency console
-- [After the pinned commit](after-pinned-commit.md) — commands that exist only on `main`
+- [Ethernet](ethernet.md) — status of the Ethernet connection
 
 ## Defaults per role
 
 The firmware sets these values in each role's constructor
-(`simple_repeater/MyMesh.cpp` r.876–925, `simple_room_server/MyMesh.cpp`
-r.632–669, `simple_sensor/SensorMesh.cpp` r.710–736). They apply to a freshly
+(`simple_repeater/MyMesh.cpp` r.861–941, `simple_room_server/MyMesh.cpp`
+r.630–694, `simple_sensor/SensorMesh.cpp` r.700–741). They apply to a freshly
 flashed node; if the node already has a settings file, `loadPrefs()` overrides
-them (`CommonCLI.cpp` r.40–130). A ⚠ means the official documentation states
+them (`CommonCLI.cpp` r.30–47). Since v1.17.0 that file is JSON, in
+`/prefs.json`; if it does not exist yet, `loadPrefs()` reads the old binary
+`/com_prefs` once and writes out the JSON version. The old file is left in
+place. A ⚠ means the official documentation states
 something else.
 
 | Setting | Repeater | Room server | Sensor |
 |---|---|---|---|
 | `radio` ⚠ | `869.618,62.5,8,5` | same | same |
 | `tx` | per board, fallback `20` | per board, fallback `20` | per board, fallback `20` |
-| `radio.rxgain` ⚠ | `on` (SX1262/SX1268) | `off` | `off` |
+| `radio.rxgain` ⚠ | `on` (SX1262/SX1268) | `on` (SX1262/SX1268) | `off` |
+| `radio.fem.rxgain` | `on` | `on` | `on` |
+| `radio.fem.txgain` | `off` | `off` | `off` |
 | `name` | `repeater` | `Test BBS` | `sensor` |
 | `lat` / `lon` | `0.0` | `0.0` | `0.0` |
 | `password` | `password` | `password` | `password` |
@@ -113,6 +118,7 @@ something else.
 | `rxdelay` | `0.0` | `0.0` | `0.0` |
 | `dutycycle` / `af` | `50` / `1.0` | `50` / `1.0` | `50` / `1.0` |
 | `int.thresh` | `0` | `0` | `0` |
+| `cad` | `off` | `off` | `off` |
 | `agc.reset.interval` | `0` | `0` | `0` |
 | `multi.acks` | `0` | `0` | `0` |
 | `flood.advert.interval` ⚠ | `47` | `47` | `0` |
@@ -136,10 +142,12 @@ builds set a name of their own.
 This reference follows the firmware. Where `docs/cli_commands.md` at the same
 commit says something else, this is noted at the command. The overview:
 
-| Topic | Official documentation | Firmware at `03b6ef4` | Page |
+| Topic | Official documentation | Firmware at `d929643` | Page |
 |---|---|---|---|
 | default `radio` | `869.525,250,11,5` | `869.618,62.5,8,5` | [Radio](radio.md) |
-| default `radio.rxgain` | `on` | `on` only on the repeater in SX1262/SX1268 builds | [Radio](radio.md) |
+| default `radio.rxgain` | `on` | `on` on repeater and room server in SX1262/SX1268 builds, `off` on the sensor | [Radio](radio.md) |
+| `extra.sf` | missing | `get` and `set` exist, `set` only in `USE_LR2021` builds | [Radio](radio.md) |
+| `eth.status` | under *Ethernet* | not in `CommonCLI.cpp` but in `nrf52/EthernetCLI.h` | [Ethernet](ethernet.md) |
 | limits `tempradio` | 300–2500 MHz, 7.8–500 kHz | 150–2500 MHz, 7–500 kHz | [Radio](radio.md) |
 | `neighbors`, second field | timestamp | seconds ago | [Neighbors](neighbors.md) |
 | `set prv.key` | 64 hex characters | 128 hex characters | [System](system.md) |
@@ -180,19 +188,26 @@ repeats the setting.
 
 ## Newer firmware
 
-Commands added after `03b6ef4` are listed separately, marked as not verified
-against the pin: [After the pinned commit](after-pinned-commit.md).
+This section is pinned to release v1.17.1. The commands that used to sit apart
+under "After the pinned commit" — `cad`, `radio.fem.rxgain`,
+`radio.fem.txgain`, `extra.sf` and `eth.status` — belong to this release and are
+now on [Radio](radio.md) and [Ethernet](ethernet.md). That page has therefore
+been dropped.
+
+Whatever lands on `main` and `dev` after v1.17.1 is not covered here. See
+[Changes in v1.17.1](../project/release-v1-17-1.md) for what this release
+changes relative to the previous pin.
 
 ## Sources
 
-- [MeshCore firmware — `src/helpers/CommonCLI.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/src/helpers/CommonCLI.cpp)
-- [MeshCore firmware — `src/helpers/CommonCLI.h`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/src/helpers/CommonCLI.h)
-- [MeshCore firmware — `examples/simple_repeater/MyMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/examples/simple_repeater/MyMesh.cpp)
-- [MeshCore firmware — `examples/simple_repeater/main.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/examples/simple_repeater/main.cpp)
-- [MeshCore firmware — `examples/simple_room_server/MyMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/examples/simple_room_server/MyMesh.cpp)
-- [MeshCore firmware — `examples/simple_sensor/SensorMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/examples/simple_sensor/SensorMesh.cpp)
-- [MeshCore firmware — `examples/simple_sensor/main.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/examples/simple_sensor/main.cpp)
-- [MeshCore firmware — `platformio.ini`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/platformio.ini)
-- [MeshCore firmware — `docs/cli_commands.md`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/docs/cli_commands.md)
+- [MeshCore firmware — `src/helpers/CommonCLI.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/src/helpers/CommonCLI.cpp)
+- [MeshCore firmware — `src/helpers/CommonCLI.h`](https://github.com/meshcore-dev/MeshCore/blob/d929643/src/helpers/CommonCLI.h)
+- [MeshCore firmware — `examples/simple_repeater/MyMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/examples/simple_repeater/MyMesh.cpp)
+- [MeshCore firmware — `examples/simple_repeater/main.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/examples/simple_repeater/main.cpp)
+- [MeshCore firmware — `examples/simple_room_server/MyMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/examples/simple_room_server/MyMesh.cpp)
+- [MeshCore firmware — `examples/simple_sensor/SensorMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/examples/simple_sensor/SensorMesh.cpp)
+- [MeshCore firmware — `examples/simple_sensor/main.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/examples/simple_sensor/main.cpp)
+- [MeshCore firmware — `platformio.ini`](https://github.com/meshcore-dev/MeshCore/blob/d929643/platformio.ini)
+- [MeshCore firmware — `docs/cli_commands.md`](https://github.com/meshcore-dev/MeshCore/blob/d929643/docs/cli_commands.md)
 
 Translated from Dutch by Anthropic Claude

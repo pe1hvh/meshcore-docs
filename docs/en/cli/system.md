@@ -7,7 +7,7 @@ passwords, plus the battery correction and the repeater's power saving.
 
 > [!NOTE]
 > **Source.** This page was verified against the firmware itself: `MeshCore`
-> v1.16.0, commit `03b6ef4`, 28 July 2026 — files `src/helpers/CommonCLI.cpp`,
+> v1.17.1, commit `d929643`, 14 August 2026 — files `src/helpers/CommonCLI.cpp`,
 > `src/helpers/CommonCLI.h`, `examples/simple_repeater/MyMesh.cpp`,
 > `examples/simple_repeater/main.cpp`, `examples/simple_repeater/MyMesh.h`,
 > `examples/simple_room_server/MyMesh.h`, `examples/simple_sensor/SensorMesh.h`,
@@ -23,24 +23,33 @@ server and sensor.
 
 | Command | Role | Default | Serial only | Source |
 |---|---|---|---|---|
-| `get name` / `set name <name>` | | R `repeater` · RS `Test BBS` · S `sensor` ¹ | | `CommonCLI.cpp` r.552, r.796 |
-| `get lat` / `set lat <degrees>` / `get lon` / `set lon <degrees>` | | `0.0` | | `CommonCLI.cpp` r.589, r.593, r.800, r.802 |
-| `get prv.key` / `set prv.key <private_key>` | | — | `get` only | `CommonCLI.cpp` r.539, r.791 |
-| `password <new_password>` | | `password` | | `CommonCLI.cpp` r.289 |
-| `get guest.password` / `set guest.password <password>` | `effect: repeater, room server` | RS `ROOM_PASSWORD` ¹, otherwise empty | | `CommonCLI.cpp` r.535, r.789 |
-| `get owner.info` / `set owner.info <text>` | `effect: repeater` | `empty` | | `CommonCLI.cpp` r.651, r.825 |
-| `get adc.multiplier` / `set adc.multiplier <value>` | | `0.0` (board value) | | `CommonCLI.cpp` r.749, r.895 |
-| `get public.key` | | — | | `CommonCLI.cpp` r.851 |
-| `get role` | | — | | `CommonCLI.cpp` r.854 |
-| `powersaving` / `powersaving on` / `powersaving off` | `effect: repeater` | `off` | | `CommonCLI.cpp` r.434–458 |
+| `get name` / `set name <name>` | | R `repeater` · RS `Test BBS` · S `sensor` ¹ | | `CommonCLI.cpp` r.523, r.837 |
+| `get lat` / `set lat <degrees>` / `get lon` / `set lon <degrees>` | | `0.0` | | `CommonCLI.cpp` r.606, r.610, r.841, r.843 |
+| `get prv.key` / `set prv.key <private_key>` | | — | `get` only | `CommonCLI.cpp` r.510, r.832 |
+| `password <new_password>` | | `password` | | `CommonCLI.cpp` r.256 |
+| `get guest.password` / `set guest.password <password>` | `effect: repeater, room server` | RS `ROOM_PASSWORD` ¹, otherwise empty | | `CommonCLI.cpp` r.506, r.830 |
+| `get owner.info` / `set owner.info <text>` | `effect: repeater` | `empty` | | `CommonCLI.cpp` r.668, r.876 |
+| `get adc.multiplier` / `set adc.multiplier <value>` | | `0.0` (board value) | | `CommonCLI.cpp` r.766, r.946 |
+| `get public.key` | | — | | `CommonCLI.cpp` r.902 |
+| `get role` | | — | | `CommonCLI.cpp` r.905 |
+| `powersaving` / `powersaving on` / `powersaving off` | `effect: repeater` | `off` | | `CommonCLI.cpp` r.401–419 |
 
 ## Commands
 
 ### name
 
-The name in the adverts. The field is 32 bytes (`CommonCLI.h` r.24). The
+The name in the adverts. The field is 32 bytes (`CommonCLI.h` r.27). The
 characters `[ ] \ : , ? *` are not allowed; the reply is then
 `Error, bad chars`.
+
+The advert itself has less room. The whole appdata block is 32 bytes
+(`MAX_ADVERT_DATA_SIZE`, `MeshCore.h` r.12), one byte of which goes to the flags
+and eight to the location when it is included. That leaves 31 bytes of name
+without location and 23 bytes with location. Whatever does not fit is truncated
+at a valid UTF-8 code point boundary (`AdvertDataHelpers.cpp` r.21,
+`UTF8Helpers.h`); an emoji or an accented letter takes more than one byte and is
+therefore dropped as a whole. Up to and including v1.16.0 the name was copied
+byte by byte until the block was full, which could cut a character in half.
 
 **Example:**
 
@@ -91,7 +100,7 @@ hex characters.
 
 ### password
 
-The admin password, at most 15 characters (`CommonCLI.h` r.26). The reply
+The admin password, at most 15 characters (`CommonCLI.h` r.29). The reply
 repeats the new password.
 
 **Example:**
@@ -108,8 +117,8 @@ password Zwolle2026
 ### guest.password
 
 The password for ordinary participants, at most 15 characters (`CommonCLI.h`
-r.34). Repeater and room server use it at login (`simple_repeater/MyMesh.cpp`
-r.104, `simple_room_server/MyMesh.cpp` r.334). See
+r.37). Repeater and room server use it at login (`simple_repeater/MyMesh.cpp`
+r.104, `simple_room_server/MyMesh.cpp` r.348). See
 [Logging In and the ACL](../technical/roomserver/login-and-acl.md).
 
 **Example:**
@@ -122,13 +131,13 @@ get guest.password
 ```
 
 ¹ Only if the build sets `ROOM_PASSWORD` (`simple_room_server/MyMesh.cpp`
-r.653–655). The official documentation states empty as the default.
+r.668–670). The official documentation states empty as the default.
 
 ### owner.info
 
-Free text about the owner, at most 119 characters (`CommonCLI.h` r.62). A `|` is
+Free text about the owner, at most 119 characters (`CommonCLI.h` r.65). A `|` is
 stored as a line break and shown as `|` again by `get`. Only the repeater does
-anything with it (`simple_repeater/MyMesh.cpp` r.179, r.376).
+anything with it (`simple_repeater/MyMesh.cpp` r.177, r.373).
 
 **Example:**
 
@@ -181,7 +190,7 @@ get role
 ### powersaving
 
 Lets the repeater sleep when there is nothing to do. Only the repeater's main
-loop reads the flag (`simple_repeater/main.cpp` r.155). The reply to
+loop reads the flag (`simple_repeater/main.cpp` r.198). The reply to
 `powersaving on` depends on the platform: on nRF52 `on - Immediate effect`, on
 ESP32 `on - After 2 minutes`, in a build with a bridge `Bridge not supported`
 and elsewhere `Board not supported`. Without an argument the command shows `on`
@@ -198,14 +207,16 @@ powersaving
 
 ## Sources
 
-- [MeshCore firmware — `src/helpers/CommonCLI.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/src/helpers/CommonCLI.cpp)
-- [MeshCore firmware — `src/helpers/CommonCLI.h`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/src/helpers/CommonCLI.h)
-- [MeshCore firmware — `examples/simple_repeater/MyMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/examples/simple_repeater/MyMesh.cpp)
-- [MeshCore firmware — `examples/simple_repeater/main.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/examples/simple_repeater/main.cpp)
-- [MeshCore firmware — `examples/simple_repeater/MyMesh.h`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/examples/simple_repeater/MyMesh.h)
-- [MeshCore firmware — `examples/simple_room_server/MyMesh.h`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/examples/simple_room_server/MyMesh.h)
-- [MeshCore firmware — `examples/simple_sensor/SensorMesh.h`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/examples/simple_sensor/SensorMesh.h)
-- [MeshCore firmware — `src/MeshCore.h`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/src/MeshCore.h)
-- [MeshCore firmware — `docs/cli_commands.md`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/docs/cli_commands.md)
+- [MeshCore firmware — `src/helpers/CommonCLI.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/src/helpers/CommonCLI.cpp)
+- [MeshCore firmware — `src/helpers/CommonCLI.h`](https://github.com/meshcore-dev/MeshCore/blob/d929643/src/helpers/CommonCLI.h)
+- [MeshCore firmware — `examples/simple_repeater/MyMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/examples/simple_repeater/MyMesh.cpp)
+- [MeshCore firmware — `examples/simple_repeater/main.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/examples/simple_repeater/main.cpp)
+- [MeshCore firmware — `examples/simple_repeater/MyMesh.h`](https://github.com/meshcore-dev/MeshCore/blob/d929643/examples/simple_repeater/MyMesh.h)
+- [MeshCore firmware — `examples/simple_room_server/MyMesh.h`](https://github.com/meshcore-dev/MeshCore/blob/d929643/examples/simple_room_server/MyMesh.h)
+- [MeshCore firmware — `examples/simple_sensor/SensorMesh.h`](https://github.com/meshcore-dev/MeshCore/blob/d929643/examples/simple_sensor/SensorMesh.h)
+- [MeshCore firmware — `src/MeshCore.h`](https://github.com/meshcore-dev/MeshCore/blob/d929643/src/MeshCore.h)
+- [MeshCore firmware — `src/helpers/AdvertDataHelpers.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/src/helpers/AdvertDataHelpers.cpp)
+- [MeshCore firmware — `src/helpers/UTF8Helpers.h`](https://github.com/meshcore-dev/MeshCore/blob/d929643/src/helpers/UTF8Helpers.h)
+- [MeshCore firmware — `docs/cli_commands.md`](https://github.com/meshcore-dev/MeshCore/blob/d929643/docs/cli_commands.md)
 
 Translated from Dutch by Anthropic Claude

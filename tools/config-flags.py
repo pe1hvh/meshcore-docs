@@ -98,15 +98,21 @@ NAMESPACES = OrderedDict([
     ("CORE_DEBUG_", ("Arduino-ESP32", "framework", "tuning", "core esp32-hal-log.h")),
     ("CFG_", ("Adafruit nRF52 core", "framework", "tuning", "core common_config.h")),
     ("USE_TINYUSB", ("Adafruit nRF52 core", "framework", "feature", "core Adafruit_TinyUSB")),
+    # Macros without a recognisable prefix that a framework nevertheless reads.
+    # They sat in group 3 until v1.17.1; corrected here by explicit decision,
+    # which moves five macros from group 3 to group 2. See MISFILED below.
+    ("BOARD_HAS_PSRAM", ("Arduino-ESP32", "framework", "feature", "core esp32-hal-psram.c")),
+    ("ENABLE_HWSERIAL2", ("Arduino-ESP32", "framework", "feature", "core HardwareSerial.cpp")),
+    ("NDEBUG", ("C standard library", "framework", "exclusion", "assert.h")),
+    ("PIN_SERIAL_RX", ("Adafruit nRF52 core", "framework", "tuning", "core variant.h")),
+    ("PIN_SERIAL_TX", ("Adafruit nRF52 core", "framework", "tuning", "core variant.h")),
 ])
 
 # --------------------------------------------------------------------------
-# Macros that NAMESPACES puts in group 3 while a framework actually reads them.
-# They carry no recognisable prefix, so the prefix table cannot catch them.
-# Deliberately NOT merged into NAMESPACES: correcting the ownership table is a
-# separate decision, and silently moving five macros would change the group
-# counts that ontwerp/technisch/configuration.md quotes. Use --misfiled to
-# list them.
+# The five macros that used to sit in group 3 while a framework reads them.
+# They carry no recognisable prefix, so the prefix table could not catch them.
+# They are now entries in NAMESPACES above and land in group 2; this table is
+# kept so `--misfiled` can report what moved and when.
 #
 # macro -> (owner, source)
 # --------------------------------------------------------------------------
@@ -375,17 +381,57 @@ def render_consumption(root, active, lang):
     return "\n".join(out)
 
 
+def commented_only(root):
+    """Macros that appear ONLY on commented-out -D lines in the .ini files.
+
+    "Uitgecommentarieerd telt niet mee" applies to the group counts, so these
+    macros are absent from groups 1 to 3. They are worth naming all the same:
+    a commented-out flag is a switch somebody left behind.
+    """
+    active, commented = set(), set()
+    for dirpath, _, names in os.walk(root):
+        if ".git" in dirpath:
+            continue
+        for name in names:
+            if not name.endswith(".ini"):
+                continue
+            path = os.path.join(dirpath, name)
+            with open(path, "r", encoding="utf-8", errors="replace") as handle:
+                for line in handle:
+                    bare = line.strip()
+                    target = commented if bare.startswith((";", "#")) else active
+                    for match in re.finditer(r"-D\s+([A-Za-z_][A-Za-z0-9_]*)", bare):
+                        target.add(match.group(1))
+    return sorted(commented - active)
+
+
+def render_commented(root, lang):
+    macros = commented_only(root)
+    if lang == "nl":
+        out = ["%d macro's komen uitsluitend op uitgecommentarieerde "
+               "`-D`-regels voor." % len(macros),
+               "Ze zijn in geen enkele build actief en tellen niet mee in de "
+               "groepen 1 tot en met 3.", ""]
+    else:
+        out = ["%d macros occur only on commented-out `-D` lines." % len(macros),
+               "They are active in no build and do not count towards groups "
+               "1 to 3.", ""]
+    out += ["`" + "`, `".join(macros) + "`."]
+    return "\n".join(out)
+
+
 def render_misfiled(lang):
     """The macros NAMESPACES puts in the wrong group, listed but not moved."""
     if lang == "nl":
-        out = ["Deze macro's staan in groep 3 terwijl een framework ze leest.",
-               "Niet gecorrigeerd in NAMESPACES; dat vraagt een aparte "
-               "opdracht.", "",
+        out = ["Deze macro's stonden tot en met v1.16.0 in groep 3 terwijl "
+               "een framework ze leest.",
+               "Sinds v1.17.1 staan ze in NAMESPACES en dus in groep 2.", "",
                "| Macro | Werkelijke consument | Bron |", "|---|---|---|"]
     else:
-        out = ["These macros sit in group 3 while a framework reads them.",
-               "Not corrected in NAMESPACES; that calls for a separate "
-               "instruction.", "",
+        out = ["Up to and including v1.16.0 these macros sat in group 3 "
+               "while a framework reads them.",
+               "Since v1.17.1 they are in NAMESPACES and therefore group 2.",
+               "",
                "| Macro | Actual consumer | Source |", "|---|---|---|"]
     for macro, (owner, source) in MISFILED.items():
         out.append("| `%s` | %s | %s |" % (macro, owner, source))
@@ -419,6 +465,8 @@ def main():
                         help="per MeshCore macro the first place it occurs")
     parser.add_argument("--misfiled", action="store_true",
                         help="macros NAMESPACES groups wrongly, listed only")
+    parser.add_argument("--commented", action="store_true",
+                        help="macros that appear only on commented-out -D lines")
     parser.add_argument("--lang", choices=("nl", "en"), default="nl",
                         help="language of the extra tables; default nl")
     args = parser.parse_args()
@@ -426,7 +474,7 @@ def main():
     active, inactive, sections = scan(args.meshcore)
     commit = commit_of(args.meshcore, args.commit)
 
-    if args.owners or args.consumption or args.misfiled:
+    if args.owners or args.consumption or args.misfiled or args.commented:
         blocks = []
         if args.owners:
             blocks.append(render_owners(active, args.lang))
@@ -434,6 +482,8 @@ def main():
             blocks.append(render_consumption(args.meshcore, active, args.lang))
         if args.misfiled:
             blocks.append(render_misfiled(args.lang))
+        if args.commented:
+            blocks.append(render_commented(args.meshcore, args.lang))
         print("\n\n".join(blocks))
         return
 

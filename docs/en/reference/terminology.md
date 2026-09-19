@@ -28,7 +28,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | build target | One `[env:…]` section in `platformio.ini`: the combination of board, role and settings that yields one firmware file. MeshCore counts 507 of them, plus `[env:native]` for the tests |
 | BUSY | Signal line from an SX126x radio to the SoC: active while the chip is processing a command. In MeshCore the build flag `P_LORA_BUSY` |
 | BW | Bandwidth — bandwidth in kHz (125/250/500), narrower = more robust |
-| CAD | Channel Activity Detection — function of the LoRa chip that detects whether a LoRa signal is on the channel; see [After the pinned commit](../cli/after-pinned-commit.md) |
+| CAD | Channel Activity Detection — function of the LoRa chip that detects whether a LoRa signal is on the channel; see `set cad` in [Radio](../cli/radio.md) |
 | Callsign | Call sign — unique identification for radio amateurs (e.g. PE1HVH) |
 | Cavity filter | Band-pass filter in which every resonator is a quarter-wave line inside a closed metal can, also called a coaxial cavity. The highest Q and the lowest insertion loss of all filter types, but large and heavy |
 | CCCD | Client Characteristic Configuration Descriptor — on/off switch for BLE Notify |
@@ -112,6 +112,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | LPCOMP | Low-Power Comparator in the nRF52 — can wake the chip from `SYSTEMOFF` on a voltage change |
 | LPP | Low Power Payload — compact binary format for sensor data; MeshCore uses CayenneLPP as the wire format for telemetry |
 | LR1110 | Semtech transceiver combining LoRa with GNSS and WiFi scanning for positioning without a separate GPS module |
+| LR2021 | Semtech transceiver supported by MeshCore since v1.17.0; `set extra.sf` is available only in `USE_LR2021` builds |
 | MAC (cipher) | Message Authentication Code — HMAC-SHA256 over the ciphertext, truncated to 2 bytes. MeshCore does not use the term MIC |
 | Macro | Name that the preprocessor replaces by a value before compiling. In MeshCore, macros carry both on/off choices and class names; see *type injection* |
 | MCU | Microcontroller Unit — the chip the firmware runs on, with processor, memory, flash and the buses the rest of the node hangs off. On the ESP32, nRF52840 and STM32WLE5 that MCU sits inside a SoC; the RP2040 is a bare MCU. Every SoC contains an MCU, not every MCU sits in a SoC |

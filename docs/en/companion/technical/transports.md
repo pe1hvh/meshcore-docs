@@ -1,16 +1,16 @@
-# The three transports
+# The transports
 
-*BLE · USB · TCP · QUEUES · ONE CLIENT · RECONNECTING*
+*BLE · USB · TCP · ETHERNET · QUEUES · ONE CLIENT · RECONNECTING*
 
-The companion protocol runs over three connections, and the firmware does
-not know the difference: above `BaseSerialInterface` there is only a frame.
+The companion protocol runs over five kinds of connection, and the firmware
+does not know the difference: above `BaseSerialInterface` there is only a frame.
 For a client it is different. This chapter describes what each transport
 imposes on the side building the app — not what the bytes look like, because
 that is documented elsewhere.
 
 > [!NOTE]
 > **Source.** This page has been verified against the firmware itself:
-> `MeshCore` v1.16.0, commit `03b6ef4`, 28 July 2026 — files
+> `MeshCore` v1.17.1, commit `d929643`, 14 August 2026 — files
 > `examples/companion_radio/main.cpp`,
 > `src/helpers/esp32/SerialBLEInterface.cpp`,
 > `src/helpers/esp32/SerialBLEInterface.h`,
@@ -29,26 +29,64 @@ implementations, each with its own demands on the client](../../../images/en/com
 > [BLE Architecture](../../hardware/interfaces/ble-architecture.md). This
 > chapter is about the consequences of those for a client.
 
-## One transport per firmware variant
+## More than one transport at a time
 
-Which of the three is in there is chosen at compile time and is not a
-setting. The
-branches in `main.cpp` are mutually exclusive: with `WIFI_SSID` it becomes
-TCP, with `BLE_PIN_CODE` it becomes BLE, and otherwise serial. A node
-flashed as a BLE companion has no TCP port, and vice versa.
+Up to and including v1.16.0 a build held exactly one transport and the
+branches in `main.cpp` were mutually exclusive. Since v1.17.1 that is no
+longer so. `MultiSerialInterface` is itself a `BaseSerialInterface` that holds
+a set of other interfaces underneath and serves them all at once; `main.cpp`
+registers them one by one and then hands the set to the mesh as a single
+interface:
+
+`examples/companion_radio/main.cpp` r.188-191
+
+```cpp
+#if defined(BLE_PIN_CODE)
+  bluetooth_interface.begin(BLE_NAME_PREFIX, the_mesh.getNodePrefs()->node_name, the_mesh.getBLEPin());
+  interface_manager.addInterface(InterfaceType::Bluetooth, &bluetooth_interface);
+#endif
+```
+
+The blocks after it have the same shape and are independent: `WIFI_SSID` adds
+WiFi, `ENABLE_USB_INTERFACE` the USB console, `ETHERNET_ENABLED` ethernet and
+`SERIAL_RX` a second hardware serial port. They are no longer `else` branches,
+so a build can have several. Which transports are in there is still decided at
+compile time and is not a setting.
+
+Five kinds, then. `InterfaceType` knows `Bluetooth`, `USB`, `WiFi`,
+`Ethernet` and `HardwareSerial`
+(`src/helpers/MultiSerialInterface.h` r.10-17).
+
+> [!WARNING]
+> **Five kinds, four slots.** `MAX_INTERFACES` defaults to four, with the
+> comment `ble, usb, wifi, ethernet`
+> (`src/helpers/MultiSerialInterface.h` r.5-8). `addInterface()` looks for the
+> first free slot and returns `false` when there is none; in `main.cpp` that
+> outcome is nowhere checked. A build that sets all five `#define`s therefore
+> loses the last one silently. Among the shipped variants that combination
+> does not occur — the two ethernet targets, `thinknode_m7` and `rak4631`, set
+> no `SERIAL_RX` — but anyone building a variant of their own runs into a
+> limit that gives no error.
 
 For a client that means the transport is a property of the device someone
-holds, not something the app can choose. A full client therefore supports
-all three. `meshcore_py` does that with `ble_cx`, `serial_cx` and `tcp_cx`
-behind one protocol interface; see
-[Architecture of a client](client-architecture.md).
+holds, not something the app can choose — but a device can now offer more than
+one. A full client therefore supports BLE, serial and TCP. `meshcore_py` does
+that with `ble_cx`, `serial_cx` and `tcp_cx` behind one protocol interface;
+see [Architecture of a client](client-architecture.md).
+
+> [!NOTE]
+> `isConnected()` on `MultiSerialInterface` returns `true` as soon as one of
+> the underlying interfaces is connected, and `writeFrame()` writes to every
+> connected interface. Two clients attached at the same time on different
+> transports therefore see each other's replies. The protocol still assumes
+> one client at a time; see *What a client must assume per transport*.
 
 ## BLE: the node sends at intervals
 
 The BLE implementation does not write directly but queues frames and drains
 that queue with a fixed minimum interval:
 
-`src/helpers/esp32/SerialBLEInterface.cpp` r.183-192
+`src/helpers/esp32/SerialBLEInterface.cpp` r.189-198
 
 ```cpp
 #define  BLE_WRITE_MIN_INTERVAL   60
@@ -147,15 +185,15 @@ the node is zero again and the opening has to be redone: first
 
 ## Sources
 
-Firmware, commit `03b6ef4` (v1.16.0, 28 July 2026):
+Firmware, commit `d929643` (v1.17.1, 14 August 2026):
 
-- [`examples/companion_radio/main.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/examples/companion_radio/main.cpp)
+- [`examples/companion_radio/main.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/examples/companion_radio/main.cpp)
   — which interface belongs to which build flag
-- [`src/helpers/esp32/SerialBLEInterface.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/src/helpers/esp32/SerialBLEInterface.cpp)
+- [`src/helpers/esp32/SerialBLEInterface.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/src/helpers/esp32/SerialBLEInterface.cpp)
   — `BLE_WRITE_MIN_INTERVAL` and the send queue
-- [`src/helpers/esp32/SerialWifiInterface.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/src/helpers/esp32/SerialWifiInterface.cpp)
+- [`src/helpers/esp32/SerialWifiInterface.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/src/helpers/esp32/SerialWifiInterface.cpp)
   — displacing an existing client
-- [`src/helpers/ArduinoSerialInterface.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/src/helpers/ArduinoSerialInterface.cpp)
+- [`src/helpers/ArduinoSerialInterface.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/src/helpers/ArduinoSerialInterface.cpp)
   — `isConnected()`, which always answers affirmatively
 
 Related chapters:

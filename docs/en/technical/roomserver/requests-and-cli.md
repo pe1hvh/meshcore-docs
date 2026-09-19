@@ -10,7 +10,7 @@ entire CLI over the radio — the same command set you get over USB.
 
 > [!NOTE]
 > **Source.** This page has been verified against the firmware itself:
-> `MeshCore` v1.16.0, commit `03b6ef4`, 28 July 2026 — files
+> `MeshCore` v1.17.1, commit `d929643`, 14 August 2026 — files
 > `examples/simple_room_server/MyMesh.cpp`,
 > `examples/simple_repeater/MyMesh.cpp`,
 > `examples/simple_sensor/SensorMesh.cpp`, `src/helpers/CommonCLI.cpp`,
@@ -81,7 +81,7 @@ much is waiting for it.
 
 The reply is not a `RESPONSE` but an ACK with one byte appended:
 
-`examples/simple_room_server/MyMesh.cpp` r.554-561
+`examples/simple_room_server/MyMesh.cpp` r.568-575
 
 ```cpp
           uint32_t ack_hash; // calc ACK to prove to sender that we got request
@@ -119,13 +119,13 @@ sensors are added if present.
 The client sends a mask that determines which channels it wants to see. For a
 guest that mask is ignored and set to `0x00`: they get the base values only,
 whatever they ask for
-(`examples/simple_room_server/MyMesh.cpp` r.170-172).
+(`examples/simple_room_server/MyMesh.cpp` r.187-189).
 
 ## 0x05 — access list
 
 Administrators only, and the answer is narrower than the name suggests.
 
-`examples/simple_room_server/MyMesh.cpp` r.185-195
+`examples/simple_room_server/MyMesh.cpp` r.202-214
 
 ```cpp
   if (payload[0] == REQ_TYPE_GET_ACCESS_LIST && sender->isAdmin()) {
@@ -139,6 +139,7 @@ Administrators only, and the answer is narrower than the name suggests.
         memcpy(&reply_data[ofs], c->id.pub_key, 6); ofs += 6;  // just 6-byte pub_key prefix
         reply_data[ofs++] = c->permissions;
       }
+      return ofs;
     }
 ```
 
@@ -164,7 +165,7 @@ An administrator can send any CLI command to the server as a text message
 with flags `TXT_TYPE_CLI_DATA` instead of `TXT_TYPE_PLAIN`. The answer comes
 back as a text message with the same flags.
 
-`examples/simple_room_server/MyMesh.cpp` r.452-464
+`examples/simple_room_server/MyMesh.cpp` r.466-478
 
 ```cpp
       if (flags == TXT_TYPE_CLI_DATA) {
@@ -202,6 +203,7 @@ all in the [CLI reference](../../cli/introduction.md). Four matter here:
 | `set allow.read.only on\|off` | reading along without a valid password | no |
 | `setperm <pubkey-hex> <number>` | set rights on a public key | no |
 | `get acl` | dump the ACL to the console | **yes** |
+| `room.post <text>` | post a message on behalf of the server | no |
 
 `setperm` is all the administration there is. It takes a public key in hex —
 a prefix is allowed, provided it is an even number of characters — and a
@@ -214,6 +216,25 @@ themselves by logging in.
 for input over the serial console. Over the radio this command does not
 exist; it then falls through to ordinary CLI handling, which does not know
 it.
+
+`room.post` is new in v1.17.1. It places a post in the room as though the
+server wrote it itself: `addSystemPost()` calls `storePost()` with `self_id`
+as the author, where an ordinary post carries the identity of the client
+(`examples/simple_room_server/MyMesh.cpp` r.45-51). The post gets a timestamp
+from the real-time clock and is pushed to the participants along the ordinary
+route; the `n_posted` counter runs along with it.
+
+The command has no `sender_timestamp == 0` check and therefore works over the
+radio as well, provided the sender is an admin — that is the condition for
+every CLI command over RF. The text is truncated at `MAX_POST_TEXT_LEN`, which
+is set to `160-9`, so 151 characters. An empty message yields `ERR empty
+message`, a successful one `OK`.
+
+> [!NOTE]
+> The author of such a post is the server itself. A client receiving the posts
+> sees the public key of the room server as the sender and not that of the
+> admin who issued the command. Anyone wanting to know who was really behind
+> it has to work it out from the text.
 
 ### Remote administration from a client
 
@@ -232,13 +253,13 @@ therefore a restriction in the client software, not in the room server.
 
 ## Sources
 
-- [MeshCore firmware — `examples/simple_room_server/MyMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/examples/simple_room_server/MyMesh.cpp)
-- [MeshCore firmware — `examples/simple_repeater/MyMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/examples/simple_repeater/MyMesh.cpp)
-- [MeshCore firmware — `examples/simple_sensor/SensorMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/examples/simple_sensor/SensorMesh.cpp)
-- [MeshCore firmware — `src/helpers/CommonCLI.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/src/helpers/CommonCLI.cpp)
-- [MeshCore firmware — `src/helpers/ClientACL.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/src/helpers/ClientACL.cpp)
-- [MeshCore firmware — `docs/cli_commands.md`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/docs/cli_commands.md)
-- [MeshCore firmware — `docs/payloads.md`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/docs/payloads.md)
-- [MeshCore firmware — `docs/faq.md`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/docs/faq.md)
+- [MeshCore firmware — `examples/simple_room_server/MyMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/examples/simple_room_server/MyMesh.cpp)
+- [MeshCore firmware — `examples/simple_repeater/MyMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/examples/simple_repeater/MyMesh.cpp)
+- [MeshCore firmware — `examples/simple_sensor/SensorMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/examples/simple_sensor/SensorMesh.cpp)
+- [MeshCore firmware — `src/helpers/CommonCLI.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/src/helpers/CommonCLI.cpp)
+- [MeshCore firmware — `src/helpers/ClientACL.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/src/helpers/ClientACL.cpp)
+- [MeshCore firmware — `docs/cli_commands.md`](https://github.com/meshcore-dev/MeshCore/blob/d929643/docs/cli_commands.md)
+- [MeshCore firmware — `docs/payloads.md`](https://github.com/meshcore-dev/MeshCore/blob/d929643/docs/payloads.md)
+- [MeshCore firmware — `docs/faq.md`](https://github.com/meshcore-dev/MeshCore/blob/d929643/docs/faq.md)
 
 Translated from Dutch by Anthropic Claude
