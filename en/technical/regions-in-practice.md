@@ -288,6 +288,13 @@ mentioned.
 > anyone using the published list is effectively using a lookup table, and should
 > hold a lookup table's expectations of it.
 
+> [!NOTE]
+> Such a table now exists, albeit outside upstream: the MeshCoreNG fork holds a
+> Dutch region lookup table in flash — 2484 places across twelve provinces,
+> generated from the MeshWiki list, with a `regiondb` command of its own and
+> explicitly beside the editable region map. See
+> [Forks & variants](../project/forks.md).
+
 ## What would fix it
 
 One protocol feature: a repeater that announces its regions. Then no central

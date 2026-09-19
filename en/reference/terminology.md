@@ -89,6 +89,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | GODMODE | Build flag `RADIOLIB_GODMODE=1` that makes all `private` and `protected` members of RadioLib public; MeshCore uses it to reach the module layer directly |
 | GPIO | General Purpose Input/Output — connection pins for external devices |
 | GPS/GNSS | Global Navigation Satellite System — satellite navigation for location |
+| GPX | GPS Exchange Format — XML format for exchanging routes, tracks and waypoints between navigation devices and software |
 | HAL | Hardware Abstraction Layer — layer that hides chip-specific registers behind a uniform API |
 | HAM | Amateur radio mode — licence required, no encryption permitted |
 | Hop | One jump between two nodes in the mesh network |

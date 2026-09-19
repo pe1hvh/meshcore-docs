@@ -21,7 +21,9 @@ komen uit [Regelgeving & Duty Cycle](../gebruik/regulations.md).
 > De firmware-standaard van `dutycycle` is 50 %. Dat ligt ver boven de 10 % die
 > in Nederland geldt. Een vers geflashte node is dus niet conform tot je
 > `set dutycycle 10` geeft. Zie
-> [Regelgeving & Duty Cycle](../gebruik/regulations.md).
+> [Regelgeving & Duty Cycle](../gebruik/regulations.md). De fork Dutch-MeshCore
+> lost dit op met `set dutycycle auto`, dat de limiet uit de subband afleidt —
+> zie [Forks & varianten](../project/forks.md).
 
 ## Overzicht
 

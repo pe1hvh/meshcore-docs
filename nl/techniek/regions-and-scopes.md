@@ -417,6 +417,13 @@ Een zachtere variant van `region denyf *` is dus `set flood.max.unscoped 3`:
 lokaal ongescoopt verkeer blijft werken, maar het komt niet meer het hele land
 door.
 
+> [!NOTE]
+> Dezelfde hiërarchie wordt in de fork Dutch-MeshCore hergebruikt voor
+> congestiebeheer: stijgt de eigen duty cycle boven een drempel, dan sluit de
+> repeater regio's tijdelijk van buiten naar binnen af, zonder dat naar de
+> regioconfiguratie te schrijven. Zie
+> [Forks & varianten](../project/forks.md).
+
 ### Stap voor stap
 
 Neem een repeater die regio `nl-ov-zwo` kent en het kanaal `#zwolle` níet. Het

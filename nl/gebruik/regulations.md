@@ -131,6 +131,9 @@ Onder H4 is er dus ruimte zat voor een normale repeater. Onder H5 zou dezelfde r
 > **⚠ De firmware-default voldoet niet aan de Nederlandse limiet**
 > MeshCore's `set dutycycle` staat standaard op **50 %**, en de verouderde `set af` op `1.0` (eveneens ~50 %). Beide liggen ver boven zowel H4 (10 %) als H5 (0,1 %). Een vers geflashte repeater is dus **niet conform** tot je dit expliciet aanpast: `set dutycycle 10` (firmware v1.15.0 en nieuwer).
 
+> [!NOTE]
+> In de fork Dutch-MeshCore is `auto` de standaard: daar leidt de firmware de limiet zelf af uit de subband waarop de node is afgestemd, en bepaalt hem opnieuw zodra `set freq` of `set radio` de frequentie verandert. Dat lost het bovenstaande op in de firmware in plaats van in de handleiding. Zie [Forks & varianten](../project/forks.md).
+
 #### LBT+AFA is voor MeshCore geen alternatief
 
 De regelgeving biedt LBT+AFA als uitweg uit de duty-cycle-limiet, maar AFA staat voor *Adaptive Frequency Agility* — springen tussen kanalen. MeshCore draait in Nederland op één vaste draaggolf, dus die voorwaarde wordt niet gehaald. De `txdelay`- en `rxdelay`-mechanismen zijn collision-avoidance, geen gecertificeerde LBT volgens ETSI EN 300 220. Voor NL-nodes geldt daarom in de praktijk uitsluitend de duty-cycle-route.

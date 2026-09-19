@@ -284,6 +284,13 @@ geen firmware-update nodig, en zonder de genoemde nadelen.
 > gepubliceerde lijst gebruikt, gebruikt in feite een opzoektabel, en zou daar
 > ook de verwachtingen van een opzoektabel bij moeten hebben.
 
+> [!NOTE]
+> Zo'n tabel bestaat inmiddels, zij het buiten upstream: de fork MeshCoreNG
+> bevat een Nederlandse regio-opzoektabel in flash — 2484 plaatsen over twaalf
+> provincies, gegenereerd uit de MeshWiki-lijst, met een eigen
+> `regiondb`-commando en nadrukkelijk náást de bewerkbare regiomap. Zie
+> [Forks & varianten](../project/forks.md).
+
 ## Wat het zou oplossen
 
 Eén protocolfunctie: een repeater die zijn regio's aankondigt. Dan is er geen

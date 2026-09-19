@@ -21,7 +21,9 @@ travel. Most of the Dutch agreements are here; they come from
 > The firmware default for `dutycycle` is 50 %. That is far above the 10 % that
 > applies in the Netherlands. A freshly flashed node is therefore not compliant
 > until you give `set dutycycle 10`. See
-> [Regulations & Duty Cycle](../usage/regulations.md).
+> [Regulations & Duty Cycle](../usage/regulations.md). The Dutch-MeshCore fork
+> solves this with `set dutycycle auto`, which derives the limit from the
+> sub-band — see [Forks & variants](../project/forks.md).
 
 ## Overview
 

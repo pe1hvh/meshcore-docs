@@ -7,7 +7,41 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
 
 ## [Unreleased]
 
+### Added
+
+- `nl/project/forks.md` ↔ `en/project/forks.md`: new chapter *Forks & varianten*
+  / *Forks & variants*, in the *Project* section directly after *GitHub
+  Repositories*. `project/github.md` catalogues what exists; this chapter
+  describes what the forks do differently. Twelve forks of
+  `meshcore-dev/MeshCore` measured against upstream `dev` on 19 September 2026
+  with `git merge-base` and `git rev-list`, with the method and its limits in a
+  `[!NOTE]` block: no upstream commit hash was recorded, and none of the
+  firmware was tested on hardware. The volatile part — own commits, commits
+  behind, date of the last commit — is one contiguous block under *Stand per
+  fork op de peildatum* / *State per fork on the reference date*, so a later
+  update does not touch the rest of the page.
+- `nl/naslag/terminology.md` ↔ `en/reference/terminology.md`: `GPX`, introduced
+  in the new chapter.
+
 ### Changed
+
+- `nl/README.md` ↔ `en/README.md`: *Forks & varianten* / *Forks & variants*
+  added to *Project*, at the same position in both.
+- `nl/reading-guide.md` ↔ `en/reading-guide.md`: chapter count from 112 to 113,
+  and the *Project* row now names the GitHub and fork overviews. The diagram
+  count (77) is unchanged: the new chapter has no diagrams.
+- `nl/gebruik/regulations.md` ↔ `en/usage/regulations.md`: a `[!NOTE]` under the
+  existing duty cycle warning, stating that the Dutch-MeshCore fork derives the
+  limit from the sub-band with `auto`. The warning itself is unchanged.
+- `nl/cli/routing.md` ↔ `en/cli/routing.md`: one line added to the existing
+  `[!WARNING]`, naming `set dutycycle auto` and the fork that has it.
+- `nl/techniek/regions-and-scopes.md` ↔ `en/technical/regions-and-scopes.md`: a
+  `[!NOTE]` after the unscoped flood limits, on the reuse of the region
+  hierarchy for congestion management in a fork.
+- `nl/techniek/regions-in-practice.md` ↔ `en/technical/regions-in-practice.md`:
+  a `[!NOTE]` after *Een opzoektabel had volstaan* / *A lookup table would have
+  sufficed*. The chapter argues that a lookup table would have been enough; one
+  now exists in MeshCoreNG, with 2484 places in flash.
 
 - `nl/README.md` ↔ `en/README.md`: new section *CLI-referentie* / *CLI
   reference* directly before *Naslag* / *Reference*.

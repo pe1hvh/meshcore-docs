@@ -416,6 +416,12 @@ A gentler alternative to `region denyf *` is therefore
 `set flood.max.unscoped 3`: local unscoped traffic keeps working, but it no
 longer crosses the whole country.
 
+> [!NOTE]
+> The same hierarchy is reused in the Dutch-MeshCore fork for congestion
+> management: if the node's own duty cycle rises above a threshold, the repeater
+> temporarily closes regions from the outside in, without writing that to the
+> region configuration. See [Forks & variants](../project/forks.md).
+
 
 ### Step by step
 

@@ -88,6 +88,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | GODMODE | Bouwvlag `RADIOLIB_GODMODE=1` die alle `private`- en `protected`-leden van RadioLib publiek maakt; MeshCore gebruikt dat om rechtstreeks bij de modulelaag te kunnen |
 | GPIO | General Purpose Input/Output — aansluitpinnen voor externe apparaten |
 | GPS/GNSS | Global Navigation Satellite System — satellietnavigatie voor locatiebepaling |
+| GPX | GPS Exchange Format — XML-formaat voor het uitwisselen van routes, sporen en waypoints tussen navigatieapparatuur en -software |
 | HAL | Hardware Abstraction Layer — laag die chipspecifieke registers verbergt achter een uniforme API |
 | HAM | Amateur radio modus — licentie vereist, geen encryptie toegestaan |
 | Hardwarevariant | Eén map onder `variants/` met de pinbezetting en instellingen van één bord. MeshCore telt er negenenzeventig |
