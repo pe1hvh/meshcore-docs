@@ -9,36 +9,204 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
 
 ### Added
 
-- `mkdocs.yml`, `requirements.txt`, `docs/CNAME` and
-  `.github/workflows/docs.yml`: the documentation is now built with MkDocs and
-  the Material theme and published by GitHub Pages on `docs.domca.nl`. It used
-  to be regenerated into HTML fragments by a PHP pipeline on domca.nl, which
-  had to follow every directory change by hand and silently dropped SVG
-  references. Versions are pinned and MkDocs is held below 2.0: that release
-  removes the plugin system without a migration path, which would take i18n,
-  the navigation plugin and the search index with it.
-- `tools/gen_nav_pages.py`: generates an `.pages` file per directory from
-  `docs/nl/README.md` and `docs/en/README.md`, so the tables of contents remain
-  the single source for order and section titles instead of a 113-line `nav:`
-  block in `mkdocs.yml`. A file present on disk but absent from a README is
-  placed last with a warning rather than dropped. The build workflow runs it
-  with `--check`, so a moved chapter that was not added to both READMEs fails
-  the pull request.
-- `nl/project/forks.md` ↔ `en/project/forks.md`: new chapter *Forks & varianten*
-  / *Forks & variants*, in the *Project* section directly after *GitHub
-  Repositories*. `project/github.md` catalogues what exists; this chapter
-  describes what the forks do differently. Twelve forks of
-  `meshcore-dev/MeshCore` measured against upstream `dev` on 19 September 2026
-  with `git merge-base` and `git rev-list`, with the method and its limits in a
-  `[!NOTE]` block: no upstream commit hash was recorded, and none of the
-  firmware was tested on hardware. The volatile part — own commits, commits
-  behind, date of the last commit — is one contiguous block under *Stand per
-  fork op de peildatum* / *State per fork on the reference date*, so a later
-  update does not touch the rest of the page.
-- `nl/naslag/terminology.md` ↔ `en/reference/terminology.md`: `GPX`, introduced
-  in the new chapter.
+- `nl/cli/ethernet.md` <-> `en/cli/ethernet.md`: new chapter *Ethernet*, in the
+  *CLI reference* section after *Companion: CLI Rescue*. Documents `eth.status`,
+  the TCP port 23 the CLI listens on with `ETHERNET_ENABLED`, the port 5000 the
+  companion protocol uses over Ethernet, and the four `_ethernet` build targets
+  (RAK4631 with RAK13800, ThinkNode M7 with CH390). Ethernet support did not
+  exist at the previous pin.
+- `nl/project/release-v1-17-1.md` <-> `en/project/release-v1-17-1.md`: new
+  chapter *Wijzigingen in v1.17.1* / *Changes in v1.17.1*, in the *Project*
+  section after *GitHub Repositories*. Lists the delta between the old pin
+  `03b6ef4` and release v1.17.1, what was dropped, and which chapters have been
+  re-verified against the new pin and which have not.
+- `tools/diff-impact.py`: lists the chapters that cite a firmware file which
+  changed between two commits, so the re-verification set after a version bump
+  is reproducible rather than estimated. On the state of this commit it reports
+  83 of 114 chapters per language for `03b6ef4` -> `d929643`.
+
+
+- `nl/cli/` and `en/cli/`: a new top-level section *CLI-referentie* / *CLI
+  reference*, with `introduction.md` and sixteen chapters: `operational.md`,
+  `neighbors.md`, `statistics.md`, `logging.md`, `info.md`, `radio.md`,
+  `system.md`, `routing.md`, `acl.md`, `regions.md`, `gps.md`, `sensors.md`,
+  `bridge.md`, `power-management.md`, `companion-rescue.md` and
+  `after-pinned-commit.md`. The repo had no place where a node administrator
+  finds every command; they were scattered over `regions-and-scopes.md`,
+  `roomserver/requests-and-cli.md` and `regulations.md`. Every command is
+  verified against `03b6ef4` with its line number, a role marker only where a
+  command excludes a device type or applies to one only, the default per
+  role, an example with the literal reply and, only where one is agreed, the
+  Dutch setting from `gebruik/regulations.md` ↔ `usage/regulations.md` and
+  `gebruik/getting-started.md` ↔ `usage/getting-started.md`. The pages follow
+  the firmware where `docs/cli_commands.md` differs, and list each difference.
+  Commands that exist only on `main` (`0679dbe`) are on a separate page,
+  marked as not verified against the pin. The undocumented sensor commands
+  `io` and `magic` are included.
+- `nl/cli/` ↔ `en/cli/` is a new top-level directory by explicit client
+  decision, an exception to *No new top-level directories* in `CLAUDE.md`.
+  The single-word name follows `.claude/rules/REPO-STRUCTURE.md`.
+- `tools/cli-commands.py` reproduces the command lists, line numbers, role
+  usage, defaults per role, the comparison with `docs/cli_commands.md` and the
+  example replies, including the firmware's truncating float formatting that
+  makes `get radio` show `869.6179809`. With a second checkout it lists the
+  commands that exist there only.
+- `nl/naslag/terminology.md` ↔ `en/reference/terminology.md`: AGC, CAD, CLI
+  and FEM, introduced by the new section.
+- `nl/naslag/references.md` ↔ `en/reference/references.md`: the official CLI
+  command overview, pinned to `03b6ef4`.
+- `.claude/rules/STYLE-NUANCE.md`, `REPO-STRUCTURE.md`, `PITFALLS.md`
+  (unconditional) and `CHAPTERS.md`, `IMAGES.md`, `TERMINOLOGY.md`,
+  `TOOLS.md`, `CHANGELOG-COMMITS.md` (path-scoped).
+- `CLAUDE.md` — eight defects found by a manual pass of the `/doctor` trim
+  check. Four were wrong: *any of the nine* counted a table that had since
+  grown to ten entries; *overrides every other rule in this chapter* was a
+  leftover from when this was one document, and *chapter* means a content
+  chapter in this repo; the opening line *Working with: [file name] (uploaded
+  [timestamp])* assumed an upload and had no valid form when working from a
+  `git clone`; and *at most 1 ZIP per chat* was broken by any chat holding two
+  assignments. Two were incomplete: the checkpoint 2 file list and the
+  delivery checklist both omitted the reading guides and the reference lists,
+  which is exactly what the first impact analysis for the filters chapter
+  missed. One was a genuine conflict: *a rule you record here you apply in the
+  same session* against *whatever is not in the task is not changed*, with no
+  precedence stated; the first now wins, but only for the corrections the new
+  rule directly causes, each reported separately. The last was duplication:
+  the header and *Purpose of this document* both said the file holds the
+  binding rules, and *When in doubt: STOP and ask* restated the whole section
+  above it.
+- `.claude/settings.json`, `.claude/hooks/`, `.claude/skills/` and
+  `.claude/commands/` — automation for Claude Code sessions. A SessionStart
+  hook prints the checkpoint 0 reminder; a PostToolUse hook runs the two
+  STYLE-NUANCE grep checks on every file written or edited and reports hits
+  back, because that check was a checklist line that got skipped. Skills for
+  the chapter procedure and for diagrams, each with the scripts that remove
+  the judgement calls that went wrong: alphabetical insertion into a glossary
+  that is not consistently sorted, and an SVG render that resolves the CSS
+  variables so the text is visible. A `/commit-msg` command for the commit
+  format. None of this fires in the chat interface; `CLAUDE.md` says so.
+- `.claude/REPO-TREE.md` holds the layout tree, moved out of
+  `REPO-STRUCTURE.md`. It sits outside `rules/` deliberately: a file in
+  `.claude/rules/` without path frontmatter loads at launch, which is what the
+  move was meant to avoid. Nothing loads it automatically; `CLAUDE.md`
+  instructs that it be read when a directory, section or chapter is added.
+  That is an instruction rather than a mechanism, which is acceptable here —
+  if it is skipped, the repo itself gives the same answer.
+
+
+- `nl/hardware/radio/filters.md`, `en/hardware/radio/filters.md` — new chapter
+  on RF filtering for a node sited in a strong RF field. `link-budget.md`
+  treats the noise floor as a fixed number, which it is not next to a mast:
+  the chapter shows where the extra noise comes from, which filter answers
+  it, and when a filter makes the situation worse instead of better. Covers
+  desensitisation, the four mechanisms (blocking, second-order
+  intermodulation, transmitter noise, passive intermodulation), the five
+  filter families with indicative Q, insertion loss and power handling,
+  band-pass against band-stop, the spurious passband at 3f and temperature
+  drift, placement in the shared path against the receive path only, and the
+  break-even calculation. A section on the quarter-wave resonator precedes
+  the filter types, because helical, interdigital, combline and cavity
+  filters are all built from it and the spurious passband at 3f cannot be
+  explained without it — the chapter previously reasoned about a component it
+  never showed. Worked case: two repeaters in Zwolle reading −90 dBm and
+  −117 dBm.
+- `images/nl/filters-1..4.svg`, `images/en/filters-1..4.svg` — band map of a
+  mast site against the repeater frequency, filter response with the four
+  defining numbers, the two placement options, and a cross-section of a
+  quarter-wave resonator.
+- `tools/filter-planning.py` — recomputes every figure in the chapter and
+  reports how sensitive each result is to its assumptions, so a reader can
+  substitute their own distance and pattern suppression.
+- `nl/naslag/terminology.md`, `en/reference/terminology.md` — seven terms the
+  chapter introduces: blokkering/blocking, desensitisatie/desensitisation,
+  intermodulatie/intermodulation, invoegverlies/insertion loss, PIM, SAW and
+  cavity filter, plus kwartgolfresonator / quarter-wave resonator. The Dutch
+  cavity entry states that Dutch has no term of its own for this filter, so
+  that a reader does not go looking for one.
+- `nl/naslag/references.md`, `en/reference/references.md` — ETSI EN 300 220-1
+  and EN 300 220-2 (the generic EN 300 220 entry did not identify which part
+  specifies blocking), the Analog Devices article on passive intermodulation,
+  and the Antenneregister as the source of the mast data.
+
+- `tools/variant-pins.py`: lists the pin assignments of a variant with the
+  file and line they come from. The nRF52 variants define their pins in
+  `variant.h` or `pins_arduino.h`, the ESP32 variants in the `build_flags` of
+  `platformio.ini`; the script reads both and groups the signals by LoRa
+  radio, I2C, SPI, display, GPS, buttons and LED, power and battery.
+  Commented-out lines do not count, and radio settings that look like pins
+  (`LORA_TX_POWER`, `SX126X_DIO3_TCXO_VOLTAGE`, `BLE_PIN_CODE`) are reported
+  separately instead of appearing in the table.
+- `docs/images/{nl,en}/board-heltec-tower-v2.svg`,
+  `board-meshtracker-x1.svg`, `board-thinknode-m7.svg` and
+  `board-thinknode-m9.svg`: board drawings of the four devices v1.17.1 adds
+  and the web flasher carries, taken from `meshcore-dev/flasher.meshcore.io`
+  at commit `b84f889`, MIT licensed, Copyright (c) 2025 Rastislav Vysoky.
+  Drawings rather than photographs: the firmware source gives signal names and
+  GPIO numbers but no physical layout, so a pinout drawn from it would be
+  invention, and vendor photographs do not sit well beside the CC BY-SA of
+  this repository. The copyright notice travels with the files into the
+  chapter that uses them.
+- `nl/platform/pins/` <-> `en/platform/pins/`: a new *Pinbezetting* / *Pin
+  assignments* subsection with one chapter per platform family — `esp32.md`
+  (43 variants), `nrf52.md` (36), `rp2040.md` (4) and `stm32wl.md` (4) — and a
+  menu group of its own under *Platform*. Every signal is listed with its
+  value and the file and line it is defined on, generated by
+  `tools/variant-pins.py` at commit `d929643`. Split by family because that is
+  where the pins live and how they read: the ESP32 variants put 948 of their
+  signals in the `build_flags` of `platformio.ini` against 149 in a header,
+  the nRF52 variants the other way round (1463 against 430), and only the
+  nRF52 side writes `(0 + 30)` for P0.30 — port times 32 plus pin. Not folded
+  into `node-matrix.md`: that chapter is keyed on the 65 devices the flasher
+  offers, while these tables are keyed on the 87 variants in the firmware
+  repo, and three of the variants added in v1.17.1 have no device in the
+  flasher at all.
+- `nl/hardware/radio/lr2021.md` <-> `en/hardware/radio/lr2021.md`: new chapter
+  *De LR2021* / *The LR2021*, in the *Radio* section directly after *De
+  LoRa-transceiver* / *The LoRa Transceiver*. The LR2021 is the seventh radio
+  wrapper and the first that does not fully follow the shared pattern: it can
+  run up to three side detectors on additional spreading factors, it times out
+  interrupt flags that get stuck, and its `USE_LR2021` flag is tested outside
+  `src/helpers/radiolib/` — in `src/helpers/CommonCLI.cpp` for `set extra.sf`
+  and in `RadioLibWrappers.cpp` for a `standby()` before `startReceive()`. Two
+  boards carry the chip, `meshtracker_x1` and `meshnology_w12`. Only the
+  repeater implements `configSideDetectors()`, so on companion firmware the
+  command exists but always answers `Invalid extra SF config`.
+- `tools/cite-check.py`: new. Checks every `` `file` r.N `` citation in a
+  chapter against a MeshCore checkout. For a line range it compares the fenced
+  code block below the citation with the file and reports the correct range
+  when the block has moved; for a single line it verifies that the name in the
+  same table row is declared there. `--alle` runs over both language trees.
+  This is what surfaced two code blocks that had been edited by hand and were
+  therefore no longer verbatim excerpts — both already wrong on `03b6ef4`.
+- `tools/class-groups.py`: new. Derives the three groups of the class model.
+  Group 1 is a named list, because contract-ness cannot be read off
+  mechanically — `DisplayDriver` has method bodies and is a contract,
+  `ESP32Board` has virtual methods and is not. Groups 2 and 3 follow
+  mechanically from it. `--taal en` emits the English contract labels,
+  `--vergelijk` diffs two checkouts.
+- `tools/config-flags.py`: `--commented` lists the macros that occur only on
+  commented-out `-D` lines: fourteen on `03b6ef4`, sixteen on `d929643`.
 
 ### Changed
+
+- `nl/cli/introduction.md`, `nl/cli/radio.md`, `nl/cli/system.md` and their
+  English mirrors are now pinned to MeshCore v1.17.1, commit `d929643`, 14
+  August 2026, instead of `03b6ef4`. All line numbers were recomputed against
+  that commit with `tools/cli-commands.py`. The rest of the documentation stays
+  pinned to `03b6ef4`; each chapter's own source block states which pin applies.
+- `nl/cli/introduction.md` <-> `en/cli/introduction.md`: the settings file is now
+  JSON in `/prefs.json`, with a one-off migration from the old binary
+  `/com_prefs`, which is left in place. Added `cad`, `radio.fem.rxgain` and
+  `radio.fem.txgain` to the defaults table, and `extra.sf` and `eth.status` to
+  the table of deviations from the official documentation.
+- `nl/reference/terminology.md` <-> `en/reference/terminology.md`: added `LR2021`
+  in alphabetical position; the `CAD` entry now points at `set cad` in *Radio*
+  instead of the removed chapter.
+- `tools/cli-commands.py`: the defaults block in each role's constructor is no
+  longer preceded by `memset(&_prefs, ...)` since the JSON config rework, so the
+  script anchors on the constructor signature instead. Without this it aborted
+  on v1.17.1.
+
 
 - Dutch directory names brought in line with the English ones:
   `nl/gebruik` → `docs/nl/usage`, `nl/techniek` → `docs/nl/technical`,
@@ -121,150 +289,6 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
   not optional*. Merged into one formulation, because two wordings of one rule
   drift apart.
 
-### Fixed
-
-- `nl/techniek/regions-and-scopes.md` ↔ `en/technical/regions-and-scopes.md`
-  named the command `set flood.advert.max <n>`. The firmware only knows
-  `set flood.max.advert` (`src/helpers/CommonCLI.cpp` r.624, r.817 at
-  `03b6ef4`); the old name gives `unknown config`.
-- `nl/gebruik/regulations.md` ↔ `en/usage/regulations.md`, table of behaviour
-  rules, column *Firmware-default*: `set flood.advert.interval` read 12; the
-  firmware sets 47 on repeater and room server and 0 on the sensor.
-  `set advert.interval` read 0; a new installation starts at 2 minutes and
-  drops to 0 at the first saved change (`CommonCLI.cpp` r.196–198).
-  `direct.txdelay` read 0.2; the repeater sets 0.3, room server and sensor 0.2.
-  The 12 and 0.2 came from `docs/cli_commands.md`, which differs from the
-  firmware here.
-- `.claude/rules/REPO-STRUCTURE.md` — the rule read *file names are always
-  English, kebab-case*, which the repo contradicted on four root files and now
-  on eight rule files. Corrected to state that chapter, script, diagram and
-  attachment names are kebab-case, while process documents keep their
-  conventional upper-case names.
-
-### Added
-
-- `nl/cli/` and `en/cli/`: a new top-level section *CLI-referentie* / *CLI
-  reference*, with `introduction.md` and sixteen chapters: `operational.md`,
-  `neighbors.md`, `statistics.md`, `logging.md`, `info.md`, `radio.md`,
-  `system.md`, `routing.md`, `acl.md`, `regions.md`, `gps.md`, `sensors.md`,
-  `bridge.md`, `power-management.md`, `companion-rescue.md` and
-  `after-pinned-commit.md`. The repo had no place where a node administrator
-  finds every command; they were scattered over `regions-and-scopes.md`,
-  `roomserver/requests-and-cli.md` and `regulations.md`. Every command is
-  verified against `03b6ef4` with its line number, a role marker only where a
-  command excludes a device type or applies to one only, the default per
-  role, an example with the literal reply and, only where one is agreed, the
-  Dutch setting from `gebruik/regulations.md` ↔ `usage/regulations.md` and
-  `gebruik/getting-started.md` ↔ `usage/getting-started.md`. The pages follow
-  the firmware where `docs/cli_commands.md` differs, and list each difference.
-  Commands that exist only on `main` (`0679dbe`) are on a separate page,
-  marked as not verified against the pin. The undocumented sensor commands
-  `io` and `magic` are included.
-- `nl/cli/` ↔ `en/cli/` is a new top-level directory by explicit client
-  decision, an exception to *No new top-level directories* in `CLAUDE.md`.
-  The single-word name follows `.claude/rules/REPO-STRUCTURE.md`.
-- `tools/cli-commands.py` reproduces the command lists, line numbers, role
-  usage, defaults per role, the comparison with `docs/cli_commands.md` and the
-  example replies, including the firmware's truncating float formatting that
-  makes `get radio` show `869.6179809`. With a second checkout it lists the
-  commands that exist there only.
-- `nl/naslag/terminology.md` ↔ `en/reference/terminology.md`: AGC, CAD, CLI
-  and FEM, introduced by the new section.
-- `nl/naslag/references.md` ↔ `en/reference/references.md`: the official CLI
-  command overview, pinned to `03b6ef4`.
-- `.claude/rules/STYLE-NUANCE.md`, `REPO-STRUCTURE.md`, `PITFALLS.md`
-  (unconditional) and `CHAPTERS.md`, `IMAGES.md`, `TERMINOLOGY.md`,
-  `TOOLS.md`, `CHANGELOG-COMMITS.md` (path-scoped).
-- `CLAUDE.md` — eight defects found by a manual pass of the `/doctor` trim
-  check. Four were wrong: *any of the nine* counted a table that had since
-  grown to ten entries; *overrides every other rule in this chapter* was a
-  leftover from when this was one document, and *chapter* means a content
-  chapter in this repo; the opening line *Working with: [file name] (uploaded
-  [timestamp])* assumed an upload and had no valid form when working from a
-  `git clone`; and *at most 1 ZIP per chat* was broken by any chat holding two
-  assignments. Two were incomplete: the checkpoint 2 file list and the
-  delivery checklist both omitted the reading guides and the reference lists,
-  which is exactly what the first impact analysis for the filters chapter
-  missed. One was a genuine conflict: *a rule you record here you apply in the
-  same session* against *whatever is not in the task is not changed*, with no
-  precedence stated; the first now wins, but only for the corrections the new
-  rule directly causes, each reported separately. The last was duplication:
-  the header and *Purpose of this document* both said the file holds the
-  binding rules, and *When in doubt: STOP and ask* restated the whole section
-  above it.
-- `.claude/settings.json`, `.claude/hooks/`, `.claude/skills/` and
-  `.claude/commands/` — automation for Claude Code sessions. A SessionStart
-  hook prints the checkpoint 0 reminder; a PostToolUse hook runs the two
-  STYLE-NUANCE grep checks on every file written or edited and reports hits
-  back, because that check was a checklist line that got skipped. Skills for
-  the chapter procedure and for diagrams, each with the scripts that remove
-  the judgement calls that went wrong: alphabetical insertion into a glossary
-  that is not consistently sorted, and an SVG render that resolves the CSS
-  variables so the text is visible. A `/commit-msg` command for the commit
-  format. None of this fires in the chat interface; `CLAUDE.md` says so.
-- `.claude/REPO-TREE.md` holds the layout tree, moved out of
-  `REPO-STRUCTURE.md`. It sits outside `rules/` deliberately: a file in
-  `.claude/rules/` without path frontmatter loads at launch, which is what the
-  move was meant to avoid. Nothing loads it automatically; `CLAUDE.md`
-  instructs that it be read when a directory, section or chapter is added.
-  That is an instruction rather than a mechanism, which is acceptable here —
-  if it is skipped, the repo itself gives the same answer.
-
-### Removed
-
-- `nl/project/forks.md` ↔ `en/project/forks.md`: *Forks & varianten* /
-  *Forks & variants* moved to domca.nl, at `#analyse/forks-en-varianten` and
-  `#analysis/forks-and-variants`. The chapter measures twelve forks, draws
-  conclusions and makes a recommendation to upstream; it is an assessment, not
-  reference material, and it said so itself by expressly declining to state a
-  preference. Its fork table also ages daily, which suits a site that already
-  carries live measurements. The five references per language now point at the
-  absolute URL, and both READMEs keep one line under *Project* as a signpost.
-- `STYLE-NUANCE.md` from the repo root; it now lives in `.claude/rules/`.
-- The repo URL, licence line and project description from the top of
-  `CLAUDE.md`; they duplicated `README.md`.
-
----
-
-## [Unreleased]
-
-### Added
-
-- `nl/hardware/radio/filters.md`, `en/hardware/radio/filters.md` — new chapter
-  on RF filtering for a node sited in a strong RF field. `link-budget.md`
-  treats the noise floor as a fixed number, which it is not next to a mast:
-  the chapter shows where the extra noise comes from, which filter answers
-  it, and when a filter makes the situation worse instead of better. Covers
-  desensitisation, the four mechanisms (blocking, second-order
-  intermodulation, transmitter noise, passive intermodulation), the five
-  filter families with indicative Q, insertion loss and power handling,
-  band-pass against band-stop, the spurious passband at 3f and temperature
-  drift, placement in the shared path against the receive path only, and the
-  break-even calculation. A section on the quarter-wave resonator precedes
-  the filter types, because helical, interdigital, combline and cavity
-  filters are all built from it and the spurious passband at 3f cannot be
-  explained without it — the chapter previously reasoned about a component it
-  never showed. Worked case: two repeaters in Zwolle reading −90 dBm and
-  −117 dBm.
-- `images/nl/filters-1..4.svg`, `images/en/filters-1..4.svg` — band map of a
-  mast site against the repeater frequency, filter response with the four
-  defining numbers, the two placement options, and a cross-section of a
-  quarter-wave resonator.
-- `tools/filter-planning.py` — recomputes every figure in the chapter and
-  reports how sensitive each result is to its assumptions, so a reader can
-  substitute their own distance and pattern suppression.
-- `nl/naslag/terminology.md`, `en/reference/terminology.md` — seven terms the
-  chapter introduces: blokkering/blocking, desensitisatie/desensitisation,
-  intermodulatie/intermodulation, invoegverlies/insertion loss, PIM, SAW and
-  cavity filter, plus kwartgolfresonator / quarter-wave resonator. The Dutch
-  cavity entry states that Dutch has no term of its own for this filter, so
-  that a reader does not go looking for one.
-- `nl/naslag/references.md`, `en/reference/references.md` — ETSI EN 300 220-1
-  and EN 300 220-2 (the generic EN 300 220 entry did not identify which part
-  specifies blocking), the Analog Devices article on passive intermodulation,
-  and the Antenneregister as the source of the mast data.
-
-### Changed
 
 - `STYLE-NUANCE.md` — Rule 1 extended with its negation: `gratis` / `free` is
   the opposite of `kosten` / `cost` and fails the same test, because it denies
@@ -292,7 +316,6 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
   verified at checkpoint 3 instead. The *Adding new rules* section now points
   at `## Rule 3`.
 
-### Changed
 
 - `nl/README.md`, `en/README.md` — Filters added to the Radio subsection,
   after Link Budget.
@@ -304,7 +327,237 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
 - `nl/reading-guide.md`, `en/reading-guide.md` — chapter count 94 to 95,
   diagram count 73 to 77, and filters added to the Hardware row.
 
+- `mkdocs.yml`: the `nav:` block regenerated with `tools/gen_nav.py`, so
+  `nl/cli/ethernet.md` and `nl/project/release-v1-17-1.md` appear in the menu
+  and the removed CLI chapter no longer does. The previous entry updated both
+  READMEs and the generated `.pages` files but not this block, which is the
+  one the site is built from; the build workflow would have failed on it.
+- `tools/platform-overview.py`: table 4 now reads `config.json` from a clone of
+  `meshcore-dev/flasher.meshcore.io` instead of a manually saved HTML page of
+  the web flasher. The flasher is open source and its device list is a JSON
+  manifest with `name`, `maker`, `type` and the firmware roles per device, so
+  the source can be pinned to a commit like the firmware is, and the device
+  table becomes reproducible rather than a snapshot nobody can redo. The
+  option is `--flasher-config`; `--flasher` is gone.
+- `tools/platform-overview.py`: `rol_van()` classifies the four `_ethernet`
+  build targets that v1.17.1 adds. Without that,
+  `RAK_4631_companion_radio_ethernet` and
+  `ThinkNode_M7_companion_radio_ethernet` fell through as `companion ?` and
+  `RAK_4631_room_server_ethernet` as `overig`, so the role table was one target
+  short per family and did not add up to the family totals. Table 3 has a
+  `companion Ethernet` row as a result.
+- `tools/variant-pins.py`: `--familie` selects the variants of one platform
+  family, resolved from `extends = *_base` with the same table
+  `tools/platform-overview.py` uses, so both scripts split the 87 variants
+  identically. `--taal en` switches the column headings, signal groups and the
+  line abbreviation for the English chapter, and `--kopniveau` sets the heading
+  level of the per-variant heading, so one script feeds both language trees.
+- `nl/platform/node-matrix.md` <-> `en/platform/node-matrix.md`: the device
+  list no longer rests on a saved page of the web flasher but on `config.json`
+  from `meshcore-dev/flasher.meshcore.io`, commit `b84f889`, 9 September 2026,
+  so the source is pinned like the firmware is and the chapter is
+  reproducible. Sixty-five devices instead of sixty: `MeshTower V2`,
+  `SenseCAP MeshTracker X1`, `ThinkNode M7`, `ThinkNode M9` and
+  `T-Deck Pro v1.1` are new. The manifest holds 66 entries for those 65
+  devices because the LilyGo T-Lora Pager appears once per firmware project.
+  Core, RAM, clock speed, radio, display and GPS of the four devices that also
+  have a firmware variant come from `boards/*.json` and the `build_flags` of
+  `variants/*/platformio.ini` at commit `d929643`; battery, enclosure and
+  price are unknown for all five and carry the existing `°`.
+- `nl/platform/node-matrix.md` <-> `en/platform/node-matrix.md`: a `†` marks
+  the nine devices for which the flasher offers no MeshCore firmware, only
+  Ripple. `config.json` gives every firmware block a `class`, `community` or
+  `ripple`, which the saved HTML page could not show: it rendered icons, not
+  firmware classes. Four of the nine were already in the chapter as if they
+  were MeshCore nodes. The ThinkNode M9 is the reverse case — a
+  `thinknode_m9` variant with six build targets exists in the firmware repo
+  while the flasher carries only Ripple for it.
+- `nl/platform/node-matrix.md` <-> `en/platform/node-matrix.md`: two device
+  names follow the manifest — `T5 E-Paper S3 Pro` becomes
+  `T5 E-Paper S3 Pro (H752-XX)` and `T-Beam Supreme` becomes
+  `T-Beam Supreme (SX1262)`. `ProMicro nRF52 (faketec)` deliberately does not:
+  the manifest writes `nrf52`, and the chip is named `nRF52`. A `—` in a cell
+  now means the sources say nothing; the legend states it.
+- `nl/reading-guide.md` <-> `en/reading-guide.md`: chapter count from 113 to
+  117 and the SVG count from 77 to 81, now split as 77 diagrams and four board
+  drawings from an external source. The *Platform* row names the pin
+  assignments.
+- `nl/README.md` <-> `en/README.md`, `mkdocs.yml`: the new *Pin assignments*
+  subsection added under *Platform* at the same position in both, and the menu
+  regenerated with `tools/gen_nav.py`.
+- `nl/platform/platforms.md` <-> `en/platform/platforms.md` and
+  `nl/platform/platform-families.md` <-> `en/platform/platform-families.md`:
+  pinned to v1.17.1, commit `d929643`, instead of `03b6ef4`. Variants 79 ->
+  87, build targets 507 -> 584, ESP32 37/270 -> 43/332, nRF52 34/199 ->
+  36/214, devices in the flasher 60 -> 65. The role table gains a
+  `companion Ethernet` row holding the two companion targets v1.17.1 adds;
+  the repeater and room server over Ethernet are counted in their own rows.
+  The ESP32 sub-SoC split is now thirty S3 against six classic, four C3 and
+  three C6.
+- `nl/platform/platform-families.md` <-> `en/platform/platform-families.md`:
+  the heading *De meeste BLE-targets van allemaal* / *The most BLE targets of
+  all* no longer held. On `03b6ef4` nRF52 had forty BLE companion targets
+  against thirty-eight for ESP32; on `d929643` ESP32 has 46 against 42, so the
+  section is now *BLE-targets: niet langer de meeste* / *BLE targets: no
+  longer the most* and states both pins.
+- `nl/design/technical/configuration.md` <->
+  `en/design/technical/configuration.md`: re-counted against `d929643`. The 88
+  `platformio.ini` files now define 330 unique `-D` macros instead of 277: 17
+  library, 6 framework and 307 MeshCore, of which 247 are read somewhere and 60
+  nowhere. The distribution over first occurrence shifted with it —
+  `variants/` 48 -> 63, `src/helpers/ui/` 35 -> 47, `src/helpers/` core 28 ->
+  38, `examples/` 29 -> 36, `src/helpers/sensors/` 28 -> 27,
+  `src/helpers/radiolib/` 8 -> 11, the rest unchanged. Board markers 35 -> 42:
+  eight variants added their own name (`HELTEC_RC32`, `HELTEC_T1`,
+  `HELTEC_TOWER_V2`, `HELTEC_V4_R8`, `MESHNOLOGY_W12`, `MESH_TRACKER_X1`,
+  `NIBBLE_ZERO_CONNECT`, `THINKNODE_M7`) and `HELTEC_LORA_V3` now has a reader.
+  In the group of seventeen, `PIN_RESET` takes the place of
+  `P_LORA_TX_LED_ON`, which is read since v1.17.1. `WITH_RS232_BRIDGE` moved
+  from `src/helpers/CommonCLI.cpp` r.720 to r.737; the other four example
+  citations are unchanged. `images/{nl,en}/configuration-1.svg` carries the new
+  numbers.
+- `nl/design/technical/class-model.md` <-> `en/design/technical/class-model.md`
+  are pinned to MeshCore v1.17.1, commit `d929643`. This was a recount rather
+  than a line-number refresh: 196 -> 233 classes, shared tree 119 -> 144,
+  `variants/` 77 -> 89. The largest item is the conversion of the settings to
+  JSON: `ConfigSerializer` plus twelve `*Prefs` blocks, thirteen of the 25 new
+  classes. `ConfigSerializer` is placed in group 1 even though it carries
+  working code; the reasoning is written out in *Wat geen contract is* / *What
+  is not a contract*. For the first time `variants/` holds classes that fill no
+  contract at all — three copies of `LoRaFEMControl`. The two per-variant
+  `NullDisplayDriver` copies were merged into one shared
+  `src/helpers/ui/NullDisplayDriver.h`, which is why the display classes in
+  `variants/` fall from three to one. `images/{nl,en}/class-model-1.svg` and
+  `class-model-2.svg` carry the new numbers.
+- `nl/companion/technical/transports.md` and its English mirror are pinned to
+  `d929643`. The chapter stated that the branches in `main.cpp` are mutually
+  exclusive and that a build holds exactly one transport. Since
+  `MultiSerialInterface` that is no longer true: the blocks are independent
+  `#if`s and a build can hold several. `InterfaceType` knows five kinds —
+  `Bluetooth`, `USB`, `WiFi`, `Ethernet`, `HardwareSerial` — while
+  `MAX_INTERFACES` defaults to four and `main.cpp` never checks the return
+  value of `addInterface()`, so a build setting all five `#define`s loses the
+  last one silently. None of the shipped variants hits that combination. Title
+  and subtitle changed from *De drie transporten* / *The three transports*
+  accordingly.
+- `nl/technical/roomserver/requests-and-cli.md` and its English mirror are
+  pinned to `d929643` and document `room.post <text>`, new in v1.17.1. It
+  stores a post under the server's own identity through `addSystemPost()`, has
+  no `sender_timestamp == 0` guard and therefore works over RF for an admin,
+  and truncates at `MAX_POST_TEXT_LEN` (`160-9`, so 151 characters). Clients
+  see the room server's public key as the author, not the admin who issued the
+  command.
+- `nl/hardware/radio/sx1262.md` and its English mirror are pinned to `d929643`
+  and count seven wrappers instead of six. `std_init()` gained a
+  `useRegulatorLDO` argument and a debug line on the TCXO fallback. A
+  cross-reference to the new LR2021 chapter was added, along with a note that
+  the LR2021 is the one chip whose flag is tested outside
+  `src/helpers/radiolib/`.
+- `nl/platform/node-matrix.md` and its English mirror state the naming
+  convention explicitly under *Hoe je deze tabellen leest* / *How to read these
+  tables*: `config.json` carries the maker inside the device name and writes
+  chip names in lower case, while the tables keep the maker in its own column
+  and regularise `nrf52` to `nRF52`. That normalisation is applied to all 65
+  devices, so the ProMicro is not an exception to it. One genuine departure is
+  named: `config.json` gives that device the maker `promicro` where the table
+  says `DIY`.
+
+### Removed
+
+- `nl/cli/after-pinned-commit.md` <-> `en/cli/after-pinned-commit.md`: the page
+  listed the commands that existed only on `main` — `cad`, `radio.fem.rxgain`,
+  `radio.fem.txgain`, `extra.sf` and `eth.status`. All five are part of v1.17.1,
+  so the page had no content left under the new pin. The commands moved to
+  *Radio* and the new *Ethernet* chapter; both READMEs and the generated
+  `.pages` files were updated.
+
+- `mkdocs.yml`, `requirements.txt`, `docs/CNAME` and
+  `.github/workflows/docs.yml`: the documentation is now built with MkDocs and
+  the Material theme and published by GitHub Pages on `docs.domca.nl`. It used
+  to be regenerated into HTML fragments by a PHP pipeline on domca.nl, which
+  had to follow every directory change by hand and silently dropped SVG
+  references. Versions are pinned and MkDocs is held below 2.0: that release
+  removes the plugin system without a migration path, which would take i18n,
+  the navigation plugin and the search index with it.
+- `tools/gen_nav_pages.py`: generates an `.pages` file per directory from
+  `docs/nl/README.md` and `docs/en/README.md`, so the tables of contents remain
+  the single source for order and section titles instead of a 113-line `nav:`
+  block in `mkdocs.yml`. A file present on disk but absent from a README is
+  placed last with a warning rather than dropped. The build workflow runs it
+  with `--check`, so a moved chapter that was not added to both READMEs fails
+  the pull request.
+- `nl/project/forks.md` ↔ `en/project/forks.md`: new chapter *Forks & varianten*
+  / *Forks & variants*, in the *Project* section directly after *GitHub
+  Repositories*. `project/github.md` catalogues what exists; this chapter
+  describes what the forks do differently. Twelve forks of
+  `meshcore-dev/MeshCore` measured against upstream `dev` on 19 September 2026
+  with `git merge-base` and `git rev-list`, with the method and its limits in a
+  `[!NOTE]` block: no upstream commit hash was recorded, and none of the
+  firmware was tested on hardware. The volatile part — own commits, commits
+  behind, date of the last commit — is one contiguous block under *Stand per
+  fork op de peildatum* / *State per fork on the reference date*, so a later
+  update does not touch the rest of the page.
+- `nl/naslag/terminology.md` ↔ `en/reference/terminology.md`: `GPX`, introduced
+  in the new chapter.
+
+
+- `nl/project/forks.md` ↔ `en/project/forks.md`: *Forks & varianten* /
+  *Forks & variants* moved to domca.nl, at `#analyse/forks-en-varianten` and
+  `#analysis/forks-and-variants`. The chapter measures twelve forks, draws
+  conclusions and makes a recommendation to upstream; it is an assessment, not
+  reference material, and it said so itself by expressly declining to state a
+  preference. Its fork table also ages daily, which suits a site that already
+  carries live measurements. The five references per language now point at the
+  absolute URL, and both READMEs keep one line under *Project* as a signpost.
+- `STYLE-NUANCE.md` from the repo root; it now lives in `.claude/rules/`.
+- The repo URL, licence line and project description from the top of
+  `CLAUDE.md`; they duplicated `README.md`.
+
+- `docs/**/.pages` (42 files) and `tools/gen_nav_pages.py`: the `.pages` files
+  are read by `mkdocs-awesome-pages-plugin`, which is neither installed nor
+  listed in `requirements.txt`. `mkdocs-static-i18n` rebuilds the navigation
+  per language and discards whatever that plugin assembled, which is why
+  `tools/gen_nav.py` and the `nav:` block in `mkdocs.yml` took over. The
+  generator and its output stayed behind and kept being regenerated, so the
+  repo held two representations of the same menu of which only one reached the
+  site — and only that one is verified by the build workflow. One route
+  remains: README -> `gen_nav.py` -> `mkdocs.yml`.
 ### Fixed
+
+- `nl/cli/radio.md` <-> `en/cli/radio.md`: `radio.rxgain` was described as
+  existing only in builds with `USE_SX1262`, `USE_SX1268` or `USE_LR1110`, and
+  as applied by the repeater only. Both were true for `03b6ef4` and are wrong
+  for v1.17.1: the build guard around the command is gone, and the room server
+  applies the setting as well. Readers of the old text may have concluded that a
+  room server ignores `set radio.rxgain`, which it does not.
+- `nl/cli/introduction.md` <-> `en/cli/introduction.md`: the defaults table gave
+  `off` as the room server default for `radio.rxgain`. That was correct for
+  `03b6ef4`; in v1.17.1 the room server uses the same SX126x default as the
+  repeater. This is the only default that changed between the two commits.
+- `nl/cli/system.md` <-> `en/cli/system.md`: the chapter stated the 32-byte name
+  field but not the space actually available in an advert. It is 31 bytes
+  without a location and 23 with one, and since v1.17.1 the name is truncated at
+  a valid UTF-8 code point boundary instead of byte by byte.
+
+
+- `nl/techniek/regions-and-scopes.md` ↔ `en/technical/regions-and-scopes.md`
+  named the command `set flood.advert.max <n>`. The firmware only knows
+  `set flood.max.advert` (`src/helpers/CommonCLI.cpp` r.624, r.817 at
+  `03b6ef4`); the old name gives `unknown config`.
+- `nl/gebruik/regulations.md` ↔ `en/usage/regulations.md`, table of behaviour
+  rules, column *Firmware-default*: `set flood.advert.interval` read 12; the
+  firmware sets 47 on repeater and room server and 0 on the sensor.
+  `set advert.interval` read 0; a new installation starts at 2 minutes and
+  drops to 0 at the first saved change (`CommonCLI.cpp` r.196–198).
+  `direct.txdelay` read 0.2; the repeater sets 0.3, room server and sensor 0.2.
+  The 12 and 0.2 came from `docs/cli_commands.md`, which differs from the
+  firmware here.
+- `.claude/rules/REPO-STRUCTURE.md` — the rule read *file names are always
+  English, kebab-case*, which the repo contradicted on four root files and now
+  on eight rule files. Corrected to state that chapter, script, diagram and
+  attachment names are kebab-case, while process documents keep their
+  conventional upper-case names.
+
 
 - `nl/hardware/radio/filters.md`, `en/hardware/radio/filters.md` — "Een filter
   is geen gratis verbetering" / "A filter is not a free improvement" replaced
@@ -319,6 +572,50 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
   directly" was also a Rule 1 violation and became "helps immediately".
 
 ---
+
+- `CHANGELOG.md` held two `## [Unreleased]` sections, and the first of the two
+  repeated four of its own subsections. Merged into one section with each
+  subsection appearing once, in Keep a Changelog order. The entries themselves
+  are untouched and keep their relative order within their own subsection.
+- `nl/platform/platforms.md` <-> `en/platform/platforms.md`: the source block
+  and the sources list called `boards/*.json` 41 definitions. That was the
+  number of files in `boards/`, four linker scripts included; on `03b6ef4`
+  there were 37 `.json` files and on `d929643` there are 44. The chapter now
+  states 44 and names the miscount.
+- `nl/platform/platforms.md` <-> `en/platform/platforms.md`: the sentence on
+  the ESP32 sub-SoCs listed four devices with a classic ESP32 where the node
+  matrix held five — the T-Beam 1W was missing from the list.
+- `tools/config-flags.py`: `BOARD_HAS_PSRAM`, `ENABLE_HWSERIAL2`, `NDEBUG`,
+  `PIN_SERIAL_RX` and `PIN_SERIAL_TX` sat in group 3 while an Arduino core or
+  the C standard library reads them. They carry no recognisable name prefix, so
+  the `NAMESPACES` prefix table did not catch them; they are separate entries
+  in it now. Group 2 goes from 6 to 11, group 3 from 307 to 302 and the unread
+  macros from 60 to 55. `--misfiled` now reports what moved instead of what
+  still had to move. `nl/design/technical/configuration.md`, its English mirror
+  and `images/{nl,en}/configuration-1.svg` carry the new numbers.
+- `nl/design/technical/configuration.md` <-> `en/design/technical/configuration.md`:
+  the chapter said two macros are commented out, naming `RADIOLIB_DEBUG_BASIC`
+  and `RADIOLIB_DEBUG_SPI`. That holds only for the library macros of group 1.
+  Across the whole set there are sixteen on `d929643` and fourteen on
+  `03b6ef4`; `GPS_NMEA_DEBUG` and `MESH_PACKET_LOGGING` were added in v1.17.1.
+  All sixteen are now listed and the figure is reproducible with
+  `config-flags.py --commented`.
+- `en/design/technical/configuration.md` opened with "All 277 are set in
+  MeshCore's own ini files" where the Dutch chapter already said 330. A
+  bilingual parity slip from the previous delivery.
+- `nl/design/technical/class-model.md` <-> `en/design/technical/class-model.md`:
+  `BaseChatMesh`, `LocalIdentity` and the `MyMesh` from `simple_secure_chat`
+  sat in group 2 with *Mesh* and *Identity* in the *Contract* column. Neither
+  name ever appeared in the group 1 contract table, so the classification did
+  not close. Their parents carry working code and implement no contract, which
+  makes them common parents rather than contracts; the three descendants move
+  to group 3. Already wrong on `03b6ef4`.
+- `nl/technical/roomserver/requests-and-cli.md` and its English mirror: the
+  excerpt at `MyMesh.cpp` r.185-195 had a closing brace added by hand and
+  `return ofs;` left out, so it was not a verbatim excerpt. Same pattern in
+  `nl/hardware/radio/sx1262.md` and its mirror, where the noise floor excerpt
+  omitted `if (!isReceivingPacket()) {`. Both were already wrong on `03b6ef4`
+  and both are now checked by `tools/cite-check.py`.
 
 ## [2026-08-01] Correct Dutch radio parameters to SF7 / CR5
 

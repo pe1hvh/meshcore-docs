@@ -9,21 +9,26 @@ een naslagtabel, geen keuzehulp: waarom het platform uitmaakt staat in
 [De vier platformfamilies](platform-families.md).
 
 > [!NOTE]
-> **Bron.** Deze pagina is **niet** tegen de firmware geverifieerd, en kan
-> dat ook niet zijn: geen enkele kolom komt uit de firmware-repo. De
-> apparatenlijst is de opgeslagen pagina van de
-> [MeshCore web flasher](https://flasher.meshcore.io) van 27 juli 2026,
-> zestig apparaten — dezelfde lijst waarop de tellingen in
-> [MeshCore Platforms](platforms.md) rusten. RAM, kloksnelheid en
-> koppelingsmogelijkheden volgen uit de SoC en staan in de datasheets;
-> radio, display, GPS, accu, behuizing en prijs komen van fabrikants- en
-> communitybronnen. Herkomst per kolom staat onder [Bronnen](#bronnen). Er
-> is geen script in `tools/` dat deze cijfers narekent.
+> **Bron.** De apparatenlijst komt uit `config.json` van
+> [meshcore-dev/flasher.meshcore.io](https://github.com/meshcore-dev/flasher.meshcore.io), commit `b84f889`,
+> 9 september 2026 — de bronrepo van de web flasher, MIT-licentie. Daaruit
+> komen naam, fabrikant, platformfamilie en de firmware die de flasher per
+> apparaat aanbiedt; na te rekenen met
+> [`tools/platform-overview.py`](https://github.com/pe1hvh/meshcore-docs/blob/main/tools/platform-overview.py) via
+> `--flasher-config`. Voor de vier apparaten die MeshCore v1.17.1 toevoegt
+> komen core, RAM, kloksnelheid, radio, display en GPS uit de firmware
+> zelf, commit `d929643`, 14 augustus 2026: `boards/*.json` en de
+> `build_flags` van `variants/*/platformio.ini`, na te lopen met
+> [`tools/variant-pins.py`](https://github.com/pe1hvh/meshcore-docs/blob/main/tools/variant-pins.py). Voor de overige
+> apparaten volgen RAM, kloksnelheid en koppelingsmogelijkheden uit de SoC
+> en staan ze in de datasheets; accu, behuizing en prijs komen van
+> fabrikants- en communitybronnen. Herkomst per kolom staat onder
+> [Bronnen](#bronnen).
 
 ## Wat er in de lijst staat
 
-Zestig apparaten over drie platformfamilies: 32 met een ESP32, 27 met een
-nRF52840 en één met een RP2040. Voor STM32WL biedt de flasher niets aan.
+Vijfenzestig apparaten over drie platformfamilies: 35 met een ESP32, 29
+met een nRF52840 en één met een RP2040. Voor STM32WL biedt de flasher niets aan.
 Waarom die verdeling zo ligt, staat in
 [MeshCore Platforms](platforms.md).
 
@@ -32,14 +37,43 @@ flasher als ESP-NOW-bord; ESP-NOW werkt op 2,4 GHz en is geen LoRa. Het
 apparaat staat hieronder gewoon mee, met `n.v.t.` in de kolom
 zendvermogen.
 
+### Twee firmwareprojecten in één flasher
+
+Niet elk apparaat in de lijst kan MeshCore draaien. Elk firmwareblok in
+`config.json` draagt een `class`: `community` voor MeshCore en `ripple`
+voor de Ripple-firmware, een ander project dat dezelfde flasher gebruikt.
+Negen van de vijfenzestig apparaten hebben uitsluitend `ripple`-builds. Ze
+staan hieronder gewoon mee, met een `†` achter de naam:
+
+T-Deck Max · T-Deck Pro · T-Deck Pro v1.1 · T5 E-Paper S3 Pro (H752-XX) ·
+T-Lora Pager · T-Display Pro · T-Watch S3 Plus · T-Watch Ultra ·
+ThinkNode M9
+
+Bij de ThinkNode M9 wringt dat. De firmware-repo heeft sinds v1.17.1 een
+variant `thinknode_m9` met zes build-targets, maar de flasher biedt er
+alleen Ripple voor aan. Wie daar MeshCore op wil, bouwt zelf.
+
 ## Hoe je deze tabellen leest
 
-De vier tabellen beschrijven dezelfde zestig apparaten in dezelfde
+De vier tabellen beschrijven dezelfde vijfenzestig apparaten in dezelfde
 volgorde, met de nodenaam als sleutel.
 
 - **`°` achter de naam** — minstens één waarde van dit apparaat is nog
   niet bevestigd. Welke, staat in [Nog te bevestigen](#nog-te-bevestigen).
-  Vijfentwintig van de zestig apparaten dragen zo'n teken.
+  Dertig van de vijfenzestig apparaten dragen zo'n teken.
+- **`†` achter de naam** — de flasher biedt voor dit apparaat geen
+  MeshCore-firmware, alleen Ripple. Negen apparaten dragen dit teken; zie
+  [Twee firmwareprojecten in één flasher](#twee-firmwareprojecten-in-een-flasher).
+- **De namen zijn genormaliseerd.** `config.json` zet de fabrikant in de
+  apparaatnaam (`LilyGo T-Echo Lite`, `Elecrow ThinkNode M7`); hier staat de
+  fabrikant in een eigen kolom en is hij uit de naam gehaald. Ook de
+  schrijfwijze van chipnamen is rechtgezet: `nrf52` wordt `nRF52`, `esp32`
+  wordt `ESP32`. Dat geldt voor alle vijfenzestig apparaten. Eén afwijking
+  gaat verder dan schrijfwijze: `config.json` geeft de ProMicro nRF52 de
+  fabrikant `promicro`, hier staat **DIY**. Dat is een redactionele keuze —
+  er is geen fabrikant ProMicro; het is een bordformaat dat door meerdere
+  partijen wordt gemaakt en als zelfbouw wordt verkocht.
+- **`—` in een cel** — de gebruikte bronnen zeggen hier niets over.
 - **ja · optie · nee** in de kolommen GPS, WiFi, BLE en USB. *Optie*
   betekent: afhankelijk van uitvoering, revisie of een losse module.
 - **Prijzen** zijn indicatieve straatprijzen in euro, exclusief verzending
@@ -67,6 +101,8 @@ verder ook zijn.
 | ThinkNode M3° | Elecrow | nRF52 | nRF52840 · Cortex-M4F | 256 KB | 64 MHz |
 | ThinkNode M5 | Elecrow | ESP32 | ESP32-S3 · 2× Xtensa LX7 | 512 KB | 240 MHz |
 | ThinkNode M6 | Elecrow | nRF52 | nRF52840 · Cortex-M4F | 256 KB | 64 MHz |
+| ThinkNode M7° | Elecrow | ESP32 | ESP32-S3 · 2× Xtensa LX7 | 512 KB | 240 MHz |
+| ThinkNode M9†° | Elecrow | ESP32 | ESP32-S3 · 2× Xtensa LX7 | 512 KB | 240 MHz |
 | GAT562 30s | GAT-IoT | nRF52 | nRF52840 · Cortex-M4F | 256 KB | 64 MHz |
 | GAT562 Tracker° | GAT-IoT | nRF52 | nRF52840 · Cortex-M4F | 256 KB | 64 MHz |
 | Wireless Paper | Heltec | ESP32 | ESP32-S3 · 2× Xtensa LX7 | 512 KB | 240 MHz |
@@ -74,6 +110,7 @@ verder ook zijn.
 | Mesh Node T1° | Heltec | nRF52 | nRF52840 · Cortex-M4F | 256 KB | 64 MHz |
 | MeshPocket° | Heltec | nRF52 | nRF52840 · Cortex-M4F | 256 KB | 64 MHz |
 | MeshSolar / MeshTower | Heltec | nRF52 | nRF52840 · Cortex-M4F | 256 KB | 64 MHz |
+| MeshTower V2° | Heltec | nRF52 | nRF52840 · Cortex-M4F | 256 KB | 64 MHz |
 | T114 | Heltec | nRF52 | nRF52840 · Cortex-M4F | 256 KB | 64 MHz |
 | WiFi LoRa 32 v2 | Heltec | ESP32 | ESP32 · 2× Xtensa LX6 | 520 KB | 240 MHz |
 | WiFi LoRa 32 v3 | Heltec | ESP32 | ESP32-S3 · 2× Xtensa LX7 | 512 KB | 240 MHz |
@@ -91,20 +128,21 @@ verder ook zijn.
 | T-Beam (SX1262) | LilyGo | ESP32 | ESP32 · 2× Xtensa LX6 | 520 KB | 240 MHz |
 | T-Beam 1.2 (SX1276) | LilyGo | ESP32 | ESP32 · 2× Xtensa LX6 | 520 KB | 240 MHz |
 | T-Beam 1W° | LilyGo | ESP32 | ESP32 · 2× Xtensa LX6 | 520 KB | 240 MHz |
-| T-Beam Supreme | LilyGo | ESP32 | ESP32-S3 · 2× Xtensa LX7 | 512 KB + 8 MB PSRAM | 240 MHz |
+| T-Beam Supreme (SX1262) | LilyGo | ESP32 | ESP32-S3 · 2× Xtensa LX7 | 512 KB + 8 MB PSRAM | 240 MHz |
 | T-Deck | LilyGo | ESP32 | ESP32-S3 · 2× Xtensa LX7 | 512 KB + 8 MB PSRAM | 240 MHz |
-| T-Deck Max° | LilyGo | ESP32 | ESP32-S3 · 2× Xtensa LX7 | 512 KB + PSRAM | 240 MHz |
-| T-Deck Pro° | LilyGo | ESP32 | ESP32-S3 · 2× Xtensa LX7 | 512 KB + 8 MB PSRAM | 240 MHz |
-| T-Display Pro° | LilyGo | ESP32 | ESP32-S3 · 2× Xtensa LX7 | 512 KB + PSRAM | 240 MHz |
+| T-Deck Max†° | LilyGo | ESP32 | ESP32-S3 · 2× Xtensa LX7 | 512 KB + PSRAM | 240 MHz |
+| T-Deck Pro†° | LilyGo | ESP32 | ESP32-S3 · 2× Xtensa LX7 | 512 KB + 8 MB PSRAM | 240 MHz |
+| T-Deck Pro v1.1†° | LilyGo | ESP32 | — | — | — |
+| T-Display Pro†° | LilyGo | ESP32 | ESP32-S3 · 2× Xtensa LX7 | 512 KB + PSRAM | 240 MHz |
 | T-Echo | LilyGo | nRF52 | nRF52840 · Cortex-M4F | 256 KB | 64 MHz |
 | T-Echo Card° | LilyGo | nRF52 | nRF52840 · Cortex-M4F | 256 KB | 64 MHz |
 | T-Echo Lite° | LilyGo | nRF52 | nRF52840 · Cortex-M4F | 256 KB | 64 MHz |
-| T-Lora Pager° | LilyGo | ESP32 | ESP32-S3 · 2× Xtensa LX7 | 512 KB + 8 MB PSRAM | 240 MHz |
-| T-Watch S3 Plus | LilyGo | ESP32 | ESP32-S3 · 2× Xtensa LX7 | 512 KB + 8 MB PSRAM | 240 MHz |
-| T-Watch Ultra° | LilyGo | ESP32 | ESP32-S3 · 2× Xtensa LX7 | 512 KB + PSRAM | 240 MHz |
+| T-Lora Pager†° | LilyGo | ESP32 | ESP32-S3 · 2× Xtensa LX7 | 512 KB + 8 MB PSRAM | 240 MHz |
+| T-Watch S3 Plus† | LilyGo | ESP32 | ESP32-S3 · 2× Xtensa LX7 | 512 KB + 8 MB PSRAM | 240 MHz |
+| T-Watch Ultra†° | LilyGo | ESP32 | ESP32-S3 · 2× Xtensa LX7 | 512 KB + PSRAM | 240 MHz |
 | T3 S3 (SX126x) | LilyGo | ESP32 | ESP32-S3 · 2× Xtensa LX7 | 512 KB | 240 MHz |
 | T3 S3 (SX127x) | LilyGo | ESP32 | ESP32-S3 · 2× Xtensa LX7 | 512 KB | 240 MHz |
-| T5 E-Paper S3 Pro° | LilyGo | ESP32 | ESP32-S3 · 2× Xtensa LX7 | 512 KB + PSRAM | 240 MHz |
+| T5 E-Paper S3 Pro (H752-XX)†° | LilyGo | ESP32 | ESP32-S3 · 2× Xtensa LX7 | 512 KB + PSRAM | 240 MHz |
 | R1 Neo | Muzi Works | nRF52 | nRF52840 · Cortex-M4F (RAK4631) | 256 KB | 64 MHz |
 | ProMicro nRF52 (faketec)° | DIY | nRF52 | nRF52840 · Cortex-M4F | 256 KB | 64 MHz |
 | WisBlock / WisMesh RAK4631 | RAK | nRF52 | nRF52840 · Cortex-M4F | 256 KB | 64 MHz |
@@ -114,6 +152,7 @@ verder ook zijn.
 | Pico 2040 + WaveShare SX1262° | Raspberry Pi | RP2040 | RP2040 · 2× Cortex-M0+ | 264 KB | 133 MHz |
 | SenseCAP Solar | Seeed | nRF52 | nRF52840 · Cortex-M4F (XIAO Plus) | 256 KB | 64 MHz |
 | SenseCAP T1000-E | Seeed | nRF52 | nRF52840 · Cortex-M4F (WM1110) | 256 KB | 64 MHz |
+| SenseCAP MeshTracker X1° | Seeed | nRF52 | nRF52840 · Cortex-M4F | 256 KB | 64 MHz |
 | Wio Tracker L1 EINK° | Seeed | nRF52 | nRF52840 · Cortex-M4F | 256 KB | 64 MHz |
 | Wio Tracker L1 Pro° | Seeed | nRF52 | nRF52840 · Cortex-M4F | 256 KB | 64 MHz |
 | Xiao C3 | Seeed | ESP32 | ESP32-C3 · RISC-V single-core | 400 KB | 160 MHz |
@@ -140,6 +179,8 @@ verder ook zijn.
 | ThinkNode M3° | nRF52 | LR1110 | 22 dBm |
 | ThinkNode M5 | ESP32 | SX1262 | 22 dBm |
 | ThinkNode M6 | nRF52 | SX1262 (nRFLR1262) | 22 dBm |
+| ThinkNode M7° | ESP32 | LR1110 | 22 dBm |
+| ThinkNode M9†° | ESP32 | LR1110 | 22 dBm |
 | GAT562 30s | nRF52 | SX1262 + 30 dBm PA | 30 dBm |
 | GAT562 Tracker° | nRF52 | SX1262 | 22 dBm |
 | Wireless Paper | ESP32 | SX1262 | 21 dBm |
@@ -147,6 +188,7 @@ verder ook zijn.
 | Mesh Node T1° | nRF52 | SX1262 | 22 dBm |
 | MeshPocket° | nRF52 | SX1262 | 22 dBm |
 | MeshSolar / MeshTower | nRF52 | SX1262 + PA tot 1 W | 30 dBm |
+| MeshTower V2° | nRF52 | SX1262 + PA (KCT8103L) | 22 dBm |
 | T114 | nRF52 | SX1262 | 22 dBm |
 | WiFi LoRa 32 v2 | ESP32 | SX1276 | 20 dBm |
 | WiFi LoRa 32 v3 | ESP32 | SX1262 | 21 dBm |
@@ -164,20 +206,21 @@ verder ook zijn.
 | T-Beam (SX1262) | ESP32 | SX1262 | 22 dBm |
 | T-Beam 1.2 (SX1276) | ESP32 | SX1276 | 20 dBm |
 | T-Beam 1W° | ESP32 | SX1262 + 1 W PA | 30 dBm |
-| T-Beam Supreme | ESP32 | SX1262 | 22 dBm |
+| T-Beam Supreme (SX1262) | ESP32 | SX1262 | 22 dBm |
 | T-Deck | ESP32 | SX1262 | 22 dBm |
-| T-Deck Max° | ESP32 | SX1262 | 22 dBm |
-| T-Deck Pro° | ESP32 | SX1262 | 22 dBm |
-| T-Display Pro° | ESP32 | geen LoRa · ESP-NOW | n.v.t. |
+| T-Deck Max†° | ESP32 | SX1262 | 22 dBm |
+| T-Deck Pro†° | ESP32 | SX1262 | 22 dBm |
+| T-Deck Pro v1.1†° | ESP32 | — | — |
+| T-Display Pro†° | ESP32 | geen LoRa · ESP-NOW | n.v.t. |
 | T-Echo | nRF52 | SX1262 | 22 dBm |
 | T-Echo Card° | nRF52 | SX1262 | 22 dBm |
 | T-Echo Lite° | nRF52 | SX1262 | 22 dBm |
-| T-Lora Pager° | ESP32 | SX1262 (SX1280 optie) | 22 dBm |
-| T-Watch S3 Plus | ESP32 | SX1262 | 22 dBm |
-| T-Watch Ultra° | ESP32 | SX1262 | 22 dBm |
+| T-Lora Pager†° | ESP32 | SX1262 (SX1280 optie) | 22 dBm |
+| T-Watch S3 Plus† | ESP32 | SX1262 | 22 dBm |
+| T-Watch Ultra†° | ESP32 | SX1262 | 22 dBm |
 | T3 S3 (SX126x) | ESP32 | SX1262 | 22 dBm |
 | T3 S3 (SX127x) | ESP32 | SX1276 | 20 dBm |
-| T5 E-Paper S3 Pro° | ESP32 | SX1262 | 22 dBm |
+| T5 E-Paper S3 Pro (H752-XX)†° | ESP32 | SX1262 | 22 dBm |
 | R1 Neo | nRF52 | SX1262 | 22 dBm |
 | ProMicro nRF52 (faketec)° | nRF52 | SX1262 / E22 | 22 dBm |
 | WisBlock / WisMesh RAK4631 | nRF52 | SX1262 | 22 dBm |
@@ -187,6 +230,7 @@ verder ook zijn.
 | Pico 2040 + WaveShare SX1262° | RP2040 | SX1262 (WaveShare HAT) | 22 dBm |
 | SenseCAP Solar | nRF52 | SX1262 | 22 dBm |
 | SenseCAP T1000-E | nRF52 | LR1110 | 22 dBm |
+| SenseCAP MeshTracker X1° | nRF52 | LR2021 | 22 dBm |
 | Wio Tracker L1 EINK° | nRF52 | LR1110 | 22 dBm |
 | Wio Tracker L1 Pro° | nRF52 | LR1110 | 22 dBm |
 | Xiao C3 | ESP32 | SX1262 (Wio-module) | 22 dBm |
@@ -210,6 +254,8 @@ laat beide buiten de build — vandaar *optie* en niet *ja*.
 | ThinkNode M3° | geen | ja | ja | nee | ja | ja |
 | ThinkNode M5 | 1,54″ e-ink | ja | ja | ja | ja | ja |
 | ThinkNode M6 | geen | ja | ja | nee | ja | ja |
+| ThinkNode M7° | geen | nee | ja | ja | ja | ja |
+| ThinkNode M9†° | TFT (ST7789) | ja | ja | ja | ja | ja |
 | GAT562 30s | 1,3″ OLED | ja | ja | nee | ja | ja |
 | GAT562 Tracker° | 1,3″ OLED | ja | ja | nee | ja | ja |
 | Wireless Paper | 2,13″ e-ink | nee | ja | ja | ja | ja |
@@ -217,6 +263,7 @@ laat beide buiten de build — vandaar *optie* en niet *ja*.
 | Mesh Node T1° | OLED | ja | ja | nee | ja | ja |
 | MeshPocket° | geen (led) | nee | ja | nee | ja | ja |
 | MeshSolar / MeshTower | geen | optie | nee (repeater) | nee | ja | ja |
+| MeshTower V2° | geen | ja | ja | nee | ja | ja |
 | T114 | 1,14″ TFT (optie) | optie | ja | nee | ja | ja |
 | WiFi LoRa 32 v2 | 0,96″ OLED | nee | ja | ja | ja | ja |
 | WiFi LoRa 32 v3 | 0,96″ OLED | nee | ja | ja | ja | ja |
@@ -234,20 +281,21 @@ laat beide buiten de build — vandaar *optie* en niet *ja*.
 | T-Beam (SX1262) | 0,96″ OLED | ja | ja | ja | ja | ja |
 | T-Beam 1.2 (SX1276) | 0,96″ OLED | ja | ja | ja | ja | ja |
 | T-Beam 1W° | 0,96″ OLED | ja | ja | ja | ja | ja |
-| T-Beam Supreme | 0,96″ OLED | ja | ja | ja | ja | ja |
+| T-Beam Supreme (SX1262) | 0,96″ OLED | ja | ja | ja | ja | ja |
 | T-Deck | 2,8″ IPS touch + QWERTY | optie | nee (standalone) | ja | ja | ja |
-| T-Deck Max° | groot IPS touch + QWERTY | ja | nee (standalone) | ja | ja | ja |
-| T-Deck Pro° | 3,1″ e-ink touch + QWERTY | ja | nee (standalone) | ja | ja | ja |
-| T-Display Pro° | IPS touch | nee | nee (standalone) | ja | ja | ja |
+| T-Deck Max†° | groot IPS touch + QWERTY | ja | nee (standalone) | ja | ja | ja |
+| T-Deck Pro†° | 3,1″ e-ink touch + QWERTY | ja | nee (standalone) | ja | ja | ja |
+| T-Deck Pro v1.1†° | — | — | — | — | — | — |
+| T-Display Pro†° | IPS touch | nee | nee (standalone) | ja | ja | ja |
 | T-Echo | 1,54″ e-ink | ja | ja | nee | ja | ja |
 | T-Echo Card° | e-ink | ja | ja | nee | ja | ja |
 | T-Echo Lite° | e-ink | optie | ja | nee | ja | ja |
-| T-Lora Pager° | 2,33″ IPS + QWERTY | ja | nee (standalone) | ja | ja | ja |
-| T-Watch S3 Plus | 1,54″ touch | nee | nee (standalone) | ja | ja | ja |
-| T-Watch Ultra° | AMOLED touch | nee | nee (standalone) | ja | ja | ja |
+| T-Lora Pager†° | 2,33″ IPS + QWERTY | ja | nee (standalone) | ja | ja | ja |
+| T-Watch S3 Plus† | 1,54″ touch | nee | nee (standalone) | ja | ja | ja |
+| T-Watch Ultra†° | AMOLED touch | nee | nee (standalone) | ja | ja | ja |
 | T3 S3 (SX126x) | 0,96″ OLED | nee | ja | ja | ja | ja |
 | T3 S3 (SX127x) | 0,96″ OLED | nee | ja | ja | ja | ja |
-| T5 E-Paper S3 Pro° | 4,7″ e-paper touch | nee | nee (standalone) | ja | ja | ja |
+| T5 E-Paper S3 Pro (H752-XX)†° | 4,7″ e-paper touch | nee | nee (standalone) | ja | ja | ja |
 | R1 Neo | geen | nee | ja | nee | ja | ja |
 | ProMicro nRF52 (faketec)° | OLED (optie) | optie | ja | nee | ja | ja |
 | WisBlock / WisMesh RAK4631 | OLED (optie) | optie | ja | nee | ja | ja |
@@ -257,6 +305,7 @@ laat beide buiten de build — vandaar *optie* en niet *ja*.
 | Pico 2040 + WaveShare SX1262° | geen | nee | ja (via USB) | optie | optie | ja |
 | SenseCAP Solar | geen | ja | nee (repeater) | nee | ja | ja |
 | SenseCAP T1000-E | geen | ja | ja | nee | ja | ja |
+| SenseCAP MeshTracker X1° | geen | ja | ja | nee | ja | ja |
 | Wio Tracker L1 EINK° | e-ink | ja | ja | nee | ja | ja |
 | Wio Tracker L1 Pro° | 1,3″ LCD | ja | ja | nee | ja | ja |
 | Xiao C3 | geen | nee | ja | ja | ja | ja |
@@ -279,6 +328,8 @@ wisselen dit per revisie en veel bronnen zwijgen erover; zie
 | ThinkNode M3° | intern, klein | weerbestendig, draagoog | €38–42 |
 | ThinkNode M5 | 1200 mAh intern | kunststof, optionele case | €48–58 |
 | ThinkNode M6 | 7000 mAh + 6 W zon | IP65 buitenkast | €70–82 |
+| ThinkNode M7° | — | — | — |
+| ThinkNode M9†° | — | — | — |
 | GAT562 30s | extern | kaal board, case optioneel | €65–75 |
 | GAT562 Tracker° | intern | kaal board, case optioneel | €60–88 |
 | Wireless Paper | extern (JST) | kaal board | €20–25 |
@@ -286,6 +337,7 @@ wisselen dit per revisie en veel bronnen zwijgen erover; zie
 | Mesh Node T1° | intern | kunststof behuizing | €35–50 |
 | MeshPocket° | 6000 mAh powerbank | kunststof, Qi2-magneet | €45–55 |
 | MeshSolar / MeshTower | 3x 18650 + 10 W zon | buitenkast, weerbestendig | €95–120 |
+| MeshTower V2° | — | — | — |
 | T114 | extern (JST) | kaal board, case optioneel | €25–45 |
 | WiFi LoRa 32 v2 | extern (JST) | kaal board | €14–24 |
 | WiFi LoRa 32 v3 | extern (JST) | kaal board | €16–32 |
@@ -303,20 +355,21 @@ wisselen dit per revisie en veel bronnen zwijgen erover; zie
 | T-Beam (SX1262) | 18650-houder | kaal board | €28–38 |
 | T-Beam 1.2 (SX1276) | 18650-houder | kaal board | €28–34 |
 | T-Beam 1W° | 18650-houder | kaal board | €45–60 |
-| T-Beam Supreme | 18650-houder | kaal board | €44–62 |
+| T-Beam Supreme (SX1262) | 18650-houder | kaal board | €44–62 |
 | T-Deck | 2000 mAh (Plus) | kunststof, metaal bij Plus | €40–90 |
-| T-Deck Max° | intern | kunststof/metaal | €95–130 |
-| T-Deck Pro° | intern | kunststof behuizing | €75–90 |
-| T-Display Pro° | intern | kunststof behuizing | €45–65 |
+| T-Deck Max†° | intern | kunststof/metaal | €95–130 |
+| T-Deck Pro†° | intern | kunststof behuizing | €75–90 |
+| T-Deck Pro v1.1†° | — | — | — |
+| T-Display Pro†° | intern | kunststof behuizing | €45–65 |
 | T-Echo | 850 mAh intern | kunststof behuizing | €50–62 |
 | T-Echo Card° | intern | kaartformaat behuizing | €55–70 |
 | T-Echo Lite° | intern | kunststof behuizing | €40–55 |
-| T-Lora Pager° | intern (18650) | kunststof behuizing | €80–105 |
-| T-Watch S3 Plus | ca. 300 mAh intern | horlogekast | €55–70 |
-| T-Watch Ultra° | intern | horlogekast | €85–110 |
+| T-Lora Pager†° | intern (18650) | kunststof behuizing | €80–105 |
+| T-Watch S3 Plus† | ca. 300 mAh intern | horlogekast | €55–70 |
+| T-Watch Ultra†° | intern | horlogekast | €85–110 |
 | T3 S3 (SX126x) | extern (JST) | kaal board | €22–28 |
 | T3 S3 (SX127x) | extern (JST) | kaal board | €20–26 |
-| T5 E-Paper S3 Pro° | intern | kunststof behuizing | €75–100 |
+| T5 E-Paper S3 Pro (H752-XX)†° | intern | kunststof behuizing | €75–100 |
 | R1 Neo | intern | weerbestendig, SMA | €80–90 |
 | ProMicro nRF52 (faketec)° | extern | zelfbouw, geen case | €12–25 |
 | WisBlock / WisMesh RAK4631 | extern (JST) | kaal board, case optioneel | €26–38 |
@@ -326,6 +379,7 @@ wisselen dit per revisie en veel bronnen zwijgen erover; zie
 | Pico 2040 + WaveShare SX1262° | via USB | zelfbouw, geen case | €12–25 |
 | SenseCAP Solar | intern + 5 W zon | IPX5 buitenkast | €70–130 |
 | SenseCAP T1000-E | 700 mAh intern | IP65 kaartformaat | €32–42 |
+| SenseCAP MeshTracker X1° | — | — | — |
 | Wio Tracker L1 EINK° | extern | kaal board | €28–38 |
 | Wio Tracker L1 Pro° | intern | kunststof behuizing | €37–45 |
 | Xiao C3 | extern | kaal board | €10–18 |
@@ -335,23 +389,55 @@ wisselen dit per revisie en veel bronnen zwijgen erover; zie
 | Station G2 | USB-PD gevoed | kunststof behuizing | €100–115 |
 | Voyage Station G3° | USB-PD gevoed | kunststof behuizing | €110–140 |
 
+## Nieuw in v1.17.1
+
+Vier apparaten kwamen er met deze release bij, elk met een eigen variant in
+de firmware-repo. De tekeningen komen uit de bronrepo van de web flasher,
+MIT-licentie, Copyright (c) 2025 Rastislav Vysoky.
+
+**Heltec MeshTower V2** — nRF52840 met een SX1262 en een KCT8103L-eindtrap.
+GPS aan boord, geen scherm. In `variants/heltec_tower_v2/platformio.ini`
+r.15 tekent de firmwareschrijver aan dat de eindtrap aan de antenne
+ongeveer 29 dBm haalt; dat is zijn opmerking, geen meting.
+
+![Heltec MeshTower V2](../../images/nl/board-heltec-tower-v2.svg)
+
+**Seeed SenseCAP MeshTracker X1** — nRF52840 met een LR2021, de eerste
+variant in de repo die die transceiver gebruikt. GPS aan boord, geen
+scherm.
+
+![Seeed SenseCAP MeshTracker X1](../../images/nl/board-meshtracker-x1.svg)
+
+**Elecrow ThinkNode M7** — ESP32-S3 met een LR1110. Het enige nieuwe bord
+met `ETHERNET_ENABLED`; wat dat oplevert staat in
+[Ethernet](../cli/ethernet.md).
+
+![Elecrow ThinkNode M7](../../images/nl/board-thinknode-m7.svg)
+
+**Elecrow ThinkNode M9** — ESP32-S3 met een LR1110 en een ST7789-scherm,
+GPS aan boord. De flasher biedt er geen MeshCore-firmware voor aan; zie
+[Twee firmwareprojecten in één flasher](#twee-firmwareprojecten-in-een-flasher).
+
+![Elecrow ThinkNode M9](../../images/nl/board-thinknode-m9.svg)
+
 ## Snel filteren
 
-Zes doorsneden door dezelfde zestig apparaten.
+Zes doorsneden door dezelfde vijfenzestig apparaten.
 
-**Met GPS (32)** — inclusief de apparaten waar GPS optie of
+**Met GPS (35)** — inclusief de apparaten waar GPS optie of
 uitvoeringsafhankelijk is.
 
 ThinkNode M1 · ThinkNode M3 · ThinkNode M5 · ThinkNode M6 · GAT562 30s ·
 GAT562 Tracker · Mesh Node T096 · Mesh Node T1 · MeshSolar / MeshTower ·
 T114 · Wireless Tracker · Wireless Tracker v2 · LT1 · T-Beam (SX1262) ·
-T-Beam 1.2 (SX1276) · T-Beam 1W · T-Beam Supreme · T-Deck · T-Deck Max ·
+T-Beam 1.2 (SX1276) · T-Beam 1W · T-Beam Supreme (SX1262) · T-Deck · T-Deck Max ·
 T-Deck Pro · T-Echo · T-Echo Card · T-Echo Lite · T-Lora Pager ·
 ProMicro nRF52 (faketec) · WisBlock / WisMesh RAK4631 · WisMesh Tag ·
 SenseCAP Solar · SenseCAP T1000-E · Wio Tracker L1 EINK · Wio Tracker L1 Pro ·
-Nano G2 Ultra
+Nano G2 Ultra ·
+MeshTower V2 · SenseCAP MeshTracker X1 · ThinkNode M9
 
-**Met display (42)** — inclusief optionele schermmodules. De
+**Met display (43)** — inclusief optionele schermmodules. De
 MeshPocket telt hier niet mee: die heeft alleen een led.
 
 ThinkNode M1 · ThinkNode M2 · ThinkNode M5 · GAT562 30s · GAT562 Tracker ·
@@ -359,32 +445,34 @@ Wireless Paper · Mesh Node T096 · Mesh Node T1 · T114 · WiFi LoRa 32 v2 ·
 WiFi LoRa 32 v3 · WiFi LoRa 32 v4 · v4 + Expansion Kit (Touch) ·
 Vision Master E213 · Vision Master E290 · Wireless Tracker ·
 Wireless Tracker v2 · Stick · LT1 · LoRa32 v2.1_1.6 · T-Beam (SX1262) ·
-T-Beam 1.2 (SX1276) · T-Beam 1W · T-Beam Supreme · T-Deck · T-Deck Max ·
+T-Beam 1.2 (SX1276) · T-Beam 1W · T-Beam Supreme (SX1262) · T-Deck · T-Deck Max ·
 T-Deck Pro · T-Display Pro · T-Echo · T-Echo Card · T-Echo Lite ·
 T-Lora Pager · T-Watch S3 Plus · T-Watch Ultra · T3 S3 (SX126x) ·
-T3 S3 (SX127x) · T5 E-Paper S3 Pro · ProMicro nRF52 (faketec) ·
+T3 S3 (SX127x) · T5 E-Paper S3 Pro (H752-XX) · ProMicro nRF52 (faketec) ·
 WisBlock / WisMesh RAK4631 · Wio Tracker L1 EINK · Wio Tracker L1 Pro ·
-Nano G2 Ultra
+Nano G2 Ultra ·
+ThinkNode M9
 
 **Werkt zonder telefoon-app (14)** — standalone boards,
 repeaters en room servers.
 
 MeshSolar / MeshTower · v4 + Expansion Kit (Touch) · T-Deck · T-Deck Max ·
 T-Deck Pro · T-Display Pro · T-Lora Pager · T-Watch S3 Plus · T-Watch Ultra ·
-T5 E-Paper S3 Pro · WisMesh 1W Booster · SenseCAP Solar · Station G2 ·
+T5 E-Paper S3 Pro (H752-XX) · WisMesh 1W Booster · SenseCAP Solar · Station G2 ·
 Voyage Station G3
 
-**Met WiFi (32)** — allemaal ESP32; de Pico W valt af omdat
+**Met WiFi (34)** — allemaal ESP32; de Pico W valt af omdat
 MeshCore WiFi daar niet meebouwt.
 
 ThinkNode M2 · ThinkNode M5 · Wireless Paper · WiFi LoRa 32 v2 ·
 WiFi LoRa 32 v3 · WiFi LoRa 32 v4 · v4 + Expansion Kit (Touch) ·
 Vision Master E213 · Vision Master E290 · Wireless Tracker ·
 Wireless Tracker v2 · Wireless Stick Lite v3 · LoRa32 v2.1_1.6 ·
-T-Beam (SX1262) · T-Beam 1.2 (SX1276) · T-Beam 1W · T-Beam Supreme · T-Deck ·
+T-Beam (SX1262) · T-Beam 1.2 (SX1276) · T-Beam 1W · T-Beam Supreme (SX1262) · T-Deck ·
 T-Deck Max · T-Deck Pro · T-Display Pro · T-Lora Pager · T-Watch S3 Plus ·
-T-Watch Ultra · T3 S3 (SX126x) · T3 S3 (SX127x) · T5 E-Paper S3 Pro ·
-WisBlock 3112 · Xiao C3 · Xiao S3 WIO · Station G2 · Voyage Station G3
+T-Watch Ultra · T3 S3 (SX126x) · T3 S3 (SX127x) · T5 E-Paper S3 Pro (H752-XX) ·
+WisBlock 3112 · Xiao C3 · Xiao S3 WIO · Station G2 · Voyage Station G3 ·
+ThinkNode M7 · ThinkNode M9
 
 **28 dBm of meer (8)** — lees eerst de waarschuwing bij
 tabel 2.
@@ -397,15 +485,15 @@ losse JST-aansluiting.
 
 ThinkNode M1 · ThinkNode M2 · ThinkNode M3 · ThinkNode M5 · ThinkNode M6 ·
 GAT562 Tracker · Mesh Node T1 · MeshPocket · MeshSolar / MeshTower · LT1 ·
-T-Beam (SX1262) · T-Beam 1.2 (SX1276) · T-Beam 1W · T-Beam Supreme · T-Deck ·
+T-Beam (SX1262) · T-Beam 1.2 (SX1276) · T-Beam 1W · T-Beam Supreme (SX1262) · T-Deck ·
 T-Deck Max · T-Deck Pro · T-Display Pro · T-Echo · T-Echo Card · T-Echo Lite ·
-T-Lora Pager · T-Watch S3 Plus · T-Watch Ultra · T5 E-Paper S3 Pro · R1 Neo ·
+T-Lora Pager · T-Watch S3 Plus · T-Watch Ultra · T5 E-Paper S3 Pro (H752-XX) · R1 Neo ·
 WisMesh Tag · SenseCAP Solar · SenseCAP T1000-E · Wio Tracker L1 Pro ·
 Nano G2 Ultra
 
 ## Nog te bevestigen
 
-Vijfentwintig apparaten dragen een `°`. Wat er per apparaat onbevestigd
+Dertig apparaten dragen een `°`. Wat er per apparaat onbevestigd
 is, staat hieronder, in de bewoording van de bron.
 
 - **ThinkNode M3** — Tracker; GNSS via LR1110, schermloos — bevestigen ·
@@ -434,7 +522,7 @@ is, staat hieronder, in de bewoording van de bron.
 - **T-Lora Pager** — accutype per uitvoering
 - **T-Watch Ultra** — Nieuw model — GPS en schermmaat bevestigen · TX, GPS en
   accu niet bevestigd
-- **T5 E-Paper S3 Pro** — Radiomodule en GPS per uitvoering verschillend ·
+- **T5 E-Paper S3 Pro (H752-XX)** — Radiomodule en GPS per uitvoering verschillend ·
   radiomodule, GPS en accu per uitvoering
 - **ProMicro nRF52 (faketec)** — TX hangt af van de gekozen radiomodule (22-33
   dBm)
@@ -447,6 +535,12 @@ is, staat hieronder, in de bewoording van de bron.
   radio-IC per revisie verschillend
 - **Voyage Station G3** — Nieuw model — vermogen en uitrusting bevestigen · TX
   en uitrusting niet bevestigd
+- **MeshTower V2** — accu, behuizing en prijs niet bevestigd
+- **SenseCAP MeshTracker X1** — accu, behuizing en prijs niet bevestigd
+- **ThinkNode M7** — accu, behuizing en prijs niet bevestigd
+- **ThinkNode M9** — schermmaat, accu, behuizing en prijs niet bevestigd
+- **T-Deck Pro v1.1** — geen variant in de firmware-repo en geen eigen
+  gegevens in `config.json`; alleen naam, fabrikant en familie staan vast
 
 ## Over de cijfers
 
@@ -469,12 +563,15 @@ Welk concreet bord bij welke rol past, staat in
 
 ## Bronnen
 
-Deze pagina is niet tegen de firmware geverifieerd. Alle kolommen komen
-van buiten [meshcore-dev/MeshCore](https://github.com/meshcore-dev/MeshCore).
+Apparatenlijst: `config.json` uit
+[meshcore-dev/flasher.meshcore.io](https://github.com/meshcore-dev/flasher.meshcore.io), commit `b84f889`,
+9 september 2026, 66 regels voor 65 apparaten — de LilyGo T-Lora Pager
+staat er twee keer in, één keer per firmwareproject.
 
-Apparatenlijst: opgeslagen pagina van de
-[MeshCore web flasher](https://flasher.meshcore.io), 27 juli 2026,
-zestig apparaten.
+Uit [meshcore-dev/MeshCore](https://github.com/meshcore-dev/MeshCore),
+commit `d929643`: core, RAM, kloksnelheid, radio, display en GPS van de
+vier apparaten die v1.17.1 toevoegt. Alle overige kolommen komen van
+buiten de firmware-repo.
 
 Niet uit de firmware-repo:
 
@@ -491,7 +588,7 @@ Niet uit de firmware-repo:
 Verwant in deze documentatie:
 
 - [MeshCore Platforms](platforms.md) — waarom het platform uitmaakt, en de
-  verdeling van deze zestig apparaten over de vier families
+  verdeling van deze vijfenzestig apparaten over de vier families
 - [De vier platformfamilies](platform-families.md) — wat er per familie in
   de chip zit
 - [Hardware Overzicht](../usage/hardware.md) — vier apparaten uitgebreid

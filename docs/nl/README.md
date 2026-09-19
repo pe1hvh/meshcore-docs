@@ -79,12 +79,18 @@ vraagt en waar je het beste begint.
 - [MeshCore Platforms](platform/platforms.md)
 - [De vier platformfamilies](platform/platform-families.md)
 - [Nodematrix](platform/node-matrix.md)
+- **Pinbezetting** — `platform/pins/`
+  - [ESP32](platform/pins/esp32.md)
+  - [nRF52](platform/pins/nrf52.md)
+  - [RP2040](platform/pins/rp2040.md)
+  - [STM32WL](platform/pins/stm32wl.md)
 
 ## Hardware
 
 - [Hardware van een node](hardware/introduction.md)
 - **Radio** — `hardware/radio/`
   - [De LoRa-transceiver](hardware/radio/sx1262.md)
+  - [De LR2021](hardware/radio/lr2021.md)
   - [Antenne](hardware/radio/antenna.md)
   - [Linkbudget](hardware/radio/link-budget.md)
   - [Filters](hardware/radio/filters.md)
@@ -143,7 +149,7 @@ vraagt en waar je het beste begint.
 - [Bridge](cli/bridge.md)
 - [Energiebeheer (nRF52)](cli/power-management.md)
 - [Companion: CLI Rescue](cli/companion-rescue.md)
-- [Na de gepinde commit](cli/after-pinned-commit.md)
+- [Ethernet](cli/ethernet.md)
 
 ## Naslag
 
@@ -156,4 +162,5 @@ vraagt en waar je het beste begint.
 - [Leeswijzer](reading-guide.md)
 - [Over DOMCA](project/about-domca.md)
 - [GitHub Repositories](project/github.md)
+- [Wijzigingen in v1.17.1](project/release-v1-17-1.md)
 - [Forks & varianten](https://domca.nl/#analyse/forks-en-varianten) — analyse op domca.nl

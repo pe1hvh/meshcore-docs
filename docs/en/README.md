@@ -79,12 +79,18 @@ assumes and where to start.
 - [MeshCore Platforms](platform/platforms.md)
 - [The Four Platform Families](platform/platform-families.md)
 - [Node Matrix](platform/node-matrix.md)
+- **Pin assignments** — `platform/pins/`
+  - [ESP32](platform/pins/esp32.md)
+  - [nRF52](platform/pins/nrf52.md)
+  - [RP2040](platform/pins/rp2040.md)
+  - [STM32WL](platform/pins/stm32wl.md)
 
 ## Hardware
 
 - [The Hardware of a Node](hardware/introduction.md)
 - **Radio** — `hardware/radio/`
   - [The LoRa Transceiver](hardware/radio/sx1262.md)
+  - [The LR2021](hardware/radio/lr2021.md)
   - [Antenna](hardware/radio/antenna.md)
   - [Link Budget](hardware/radio/link-budget.md)
   - [Filters](hardware/radio/filters.md)
@@ -143,7 +149,7 @@ assumes and where to start.
 - [Bridge](cli/bridge.md)
 - [Power management (nRF52)](cli/power-management.md)
 - [Companion: CLI Rescue](cli/companion-rescue.md)
-- [After the pinned commit](cli/after-pinned-commit.md)
+- [Ethernet](cli/ethernet.md)
 
 ## Reference
 
@@ -156,4 +162,5 @@ assumes and where to start.
 - [How to read this](reading-guide.md)
 - [About DOMCA](project/about-domca.md)
 - [GitHub Repositories](project/github.md)
+- [Changes in v1.17.1](project/release-v1-17-1.md)
 - [Forks & variants](https://domca.nl/#analysis/forks-and-variants) — analysis on domca.nl

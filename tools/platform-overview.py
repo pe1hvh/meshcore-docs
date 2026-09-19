@@ -6,19 +6,22 @@
      variants/*/platformio.ini   79 varianten, 507 [env:]-blokken
      boards/*.json               board-definities met mcu, f_cpu, ram, flash
 
-   Bron 2 — een opgeslagen pagina van de MeshCore web flasher. Elk apparaat
-   draagt daar een icoon met een title-attribuut dat de platformfamilie
-   noemt: <img class="icon" title="nrf52" ...><span>Elecrow ThinkNode M1</span>
+   Bron 2 — config.json uit een kloon van meshcore-dev/flasher.meshcore.io,
+   de bronrepo van de MeshCore web flasher (MIT). Het veld "device" is een
+   lijst apparaten met "name", "maker", "type" (esp32 / nrf52 / noflash) en
+   per apparaat de firmwarerollen die de flasher aanbiedt. Pin deze bron op
+   een commit, net als de firmware; een opgeslagen HTML-pagina is niet meer
+   nodig.
 
    Gebruik:
-     python3 tools/platform-overview.py --repo ../MeshCore [--flasher flasher.html]
+     python3 tools/platform-overview.py --repo ../MeshCore [--flasher-config ../flasher.meshcore.io/config.json]
 
-   Zonder --flasher blijft tabel 4 leeg; de overige tabellen werken dan wel.
+   Zonder --flasher-config blijft tabel 4 leeg; de overige tabellen werken dan wel.
    Alle getallen in het hoofdstuk moeten met de uitvoer van dit script
    overeenkomen. Cijfers die hier niet uit komen (RP2040-datasheet,
    Espressif-datasheets) staan in het hoofdstuk als externe bron gemarkeerd.
 """
-import argparse, glob, html, json, os, re
+import argparse, glob, json, os, re
 from collections import Counter, defaultdict
 
 FAMILIES = ['ESP32', 'nRF52', 'RP2040', 'STM32WL']
@@ -74,11 +77,12 @@ def rol_van(env):
     n = env.strip().strip('_').lower()
     if 'companion' in n or '_comp_radio' in n:
         for staart, rol in (('ble', 'companion BLE'), ('wifi', 'companion WiFi'),
-                            ('usb', 'companion USB'), ('serial', 'companion serial')):
+                            ('usb', 'companion USB'), ('serial', 'companion serial'),
+                            ('ethernet', 'companion Ethernet')):
             if n.endswith(staart):
                 return rol
         return 'companion ?'
-    if n.endswith('room_server') or n.endswith('room_svr'):
+    if n.endswith('room_server') or n.endswith('room_svr') or n.endswith('room_server_ethernet'):
         return 'room server'
     if n.endswith('kiss_modem'):
         return 'KISS modem'
@@ -107,18 +111,20 @@ def lees_boards(repo):
 
 
 def lees_flasher(pad):
-    """Trekt (familie, apparaatnaam) uit een opgeslagen flasher-pagina."""
-    tekst = open(pad, encoding='utf-8', errors='replace').read()
-    paren = re.findall(
-        r'<img class="icon" title="([^"]*)"[^>]*>\s*<span>([^<]*)</span>', tekst)
-    apparaten = [{'familie': {'esp32': 'ESP32', 'nrf52': 'nRF52'}.get(t, t),
-                  'naam': html.unescape(n).strip()} for t, n in paren]
-    # Apparaten zonder MCU-icoon krijgen een material-glyph; die zijn niet
-    # via de webflasher te flashen (config.json: "type": "noflash").
-    geen_icoon = re.findall(
-        r'<i>developer_board</i><span>([^<]*)</span>', tekst)
-    for n in geen_icoon:
-        apparaten.append({'familie': 'geen icoon', 'naam': html.unescape(n).strip()})
+    """Leest config.json van de web flasher: (familie, fabrikant, naam, rollen)."""
+    with open(pad, encoding='utf-8') as fh:
+        config = json.load(fh)
+    makers = {k: v.get('name', k) for k, v in config.get('maker', {}).items()}
+    familie_van = {'esp32': 'ESP32', 'nrf52': 'nRF52'}
+    apparaten = []
+    for dev in config.get('device', []):
+        rollen = sorted({fw.get('role') for fw in dev.get('firmware', []) if fw.get('role')})
+        apparaten.append({
+            'familie': familie_van.get(dev.get('type'), dev.get('type') or 'onbekend'),
+            'fabrikant': makers.get(dev.get('maker'), dev.get('maker') or ''),
+            'naam': dev.get('name', '').strip(),
+            'rollen': rollen,
+        })
     return apparaten
 
 
@@ -131,7 +137,8 @@ def kop(titel):
 def main():
     p = argparse.ArgumentParser()
     p.add_argument('--repo', required=True, help='pad naar een kloon van meshcore-dev/MeshCore')
-    p.add_argument('--flasher', help='pad naar een opgeslagen pagina van de web flasher')
+    p.add_argument('--flasher-config', dest='flasher_config',
+                   help='pad naar config.json van meshcore-dev/flasher.meshcore.io')
     args = p.parse_args()
 
     varianten = lees_varianten(args.repo)
@@ -199,15 +206,16 @@ def main():
         for e in v['envs']:
             rollen[v['familie']][rol_van(e)] += 1
     volgorde = ['companion BLE', 'companion WiFi', 'companion USB',
-                'companion serial', 'repeater', 'room server', 'sensor',
+                'companion serial', 'companion Ethernet', 'repeater',
+                'room server', 'sensor',
                 'KISS modem', 'terminal chat', 'overig']
-    print('%-16s %7s %7s %7s %9s' % ('rol', *FAMILIES))
+    print('%-18s %7s %7s %7s %9s' % ('rol', *FAMILIES))
     for rol in volgorde:
-        print('%-16s %7d %7d %7d %9d'
+        print('%-18s %7d %7d %7d %9d'
               % (rol, *[rollen[f][rol] for f in FAMILIES]))
     print()
     for kenmerk in ('espnow', 'ota'):
-        print('%-16s %7d %7d %7d %9d' % (
+        print('%-18s %7d %7d %7d %9d' % (
             kenmerk + ' (varianten)',
             *[sum(1 for v in varianten if v['familie'] == f and v[kenmerk])
               for f in FAMILIES]))
@@ -221,20 +229,24 @@ def main():
 
     # -- tabel 4 -------------------------------------------------------------
     kop('TABEL 4 — apparaten in de web flasher')
-    if not args.flasher:
-        print('(geen --flasher opgegeven)')
+    if not args.flasher_config:
+        print('(geen --flasher-config opgegeven)')
         return
-    apparaten = lees_flasher(args.flasher)
+    apparaten = lees_flasher(args.flasher_config)
     telling = Counter(a['familie'] for a in apparaten)
     print('totaal apparaten:', len(apparaten))
     for fam, n in telling.most_common():
         print('  %-12s %3d' % (fam, n))
+    rolteller = Counter(r for a in apparaten for r in a['rollen'])
+    print('rollen over alle apparaten:')
+    for rol, n in sorted(rolteller.items()):
+        print('  %-14s %3d' % (rol, n))
     for fam in sorted(telling):
         print()
         print('%s (%d):' % (fam, telling[fam]))
         for a in apparaten:
             if a['familie'] == fam:
-                print('  -', a['naam'])
+                print('  - %-45s %-14s %s' % (a['naam'], a['fabrikant'], ' '.join(a['rollen'])))
 
 
 if __name__ == '__main__':

@@ -10,9 +10,9 @@ guide are in [MeshCore Platforms](platforms.md).
 
 > [!NOTE]
 > **Source.** This page has been verified against the firmware itself:
-> `MeshCore` v1.16.0 (`FIRMWARE_BUILD_DATE "6 Jun 2026"`), commit
-> `03b6ef4`, 28 July 2026 — `platformio.ini`, `variants/*/platformio.ini`
-> (79 directories, 507 build targets), `boards/*.json` (41 definitions),
+> `MeshCore` v1.17.1 (`FIRMWARE_BUILD_DATE "14 Aug 2026"`), commit
+> `d929643`, 14 August 2026 — `platformio.ini`, `variants/*/platformio.ini`
+> (87 directories, 584 build targets), `boards/*.json` (44 definitions),
 > `examples/companion_radio/main.cpp` and
 > `docs/nrf52_power_management.md`. Every count in this chapter was also
 > checked against commit `a3a1aa5` (19 July 2026) and is identical there.
@@ -23,8 +23,8 @@ guide are in [MeshCore Platforms](platforms.md).
 ### Four SoCs under one heading
 
 `[esp32_base]` (`platformio.ini` lines 57-65) covers four different chips.
-The 37 variants divide up roughly like this: about 24 use an ESP32-S3, six
-the classic ESP32, four a C3 and three a C6. Those are also two different
+The 43 variants divide up like this: thirty use an ESP32-S3, six the
+classic ESP32, four a C3 and three a C6. Those are also two different
 processor architectures: Xtensa LX6 in the classic ESP32, Xtensa LX7 in
 the S3, and RISC-V in the C3 and C6.
 
@@ -72,7 +72,7 @@ The reason is in the comment next to it: a patch to the BLE stack that
 prevents firmware lockups during rapid connect and disconnect cycles
 (PR #1177 and #1295).
 
-Two of the 34 nRF52 variants are exceptions:
+Two of the 36 nRF52 variants are exceptions:
 `variants/heltec_mesh_solar/platformio.ini` line 4 and
 `variants/mesh_pocket/platformio.ini` line 4 set
 `platform_packages = framework-arduinoadafruitnrf52` without a URL, so the
@@ -101,10 +101,13 @@ M1/M3/M6.
 "nRF52 is the frugal family" holds at chip level. Whether your particular
 board actually benefits is in that table.
 
-### The most BLE targets of all
+### BLE targets: no longer the most
 
-Forty of the 199 nRF52 build targets are a BLE companion. That is two more
-than the entire ESP32 family, which has three times as many targets.
+Forty-two of the 214 nRF52 build targets are a BLE companion. On the
+previous pin that was forty against thirty-eight for ESP32, so nRF52 had two
+more than the entire ESP32 family. In v1.17.1 that has flipped: ESP32 stands
+at 46. The ratio still says something, because ESP32 has one and a half
+times as many targets in total.
 
 ## RP2040 — the simple one
 
@@ -170,30 +173,30 @@ choice is the sharpest dividing line — is covered in
 ## Sources
 
 Firmware: [meshcore-dev/MeshCore](https://github.com/meshcore-dev/MeshCore),
-branch `main`, commit `03b6ef4`, 28 July 2026, v1.16.0.
+tag `companion-v1.17.1`, commit `d929643`, 14 August 2026, v1.17.1.
 
-- [`platformio.ini`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/platformio.ini)
+- [`platformio.ini`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/platformio.ini)
   — lines 57-65 `[esp32_base]`; 72-76 `[esp32c6_base]` with the
   "experimental" comment on line 73; 80-95 `[nrf52_base]` with the
   Adafruit fork; 98-104 `[rp2040_base]`; 108-120 `[stm32_base]` with the
   SubGhz library on lines 115 and 120
-- [`variants/heltec_mesh_solar/platformio.ini`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/variants/heltec_mesh_solar/platformio.ini)
+- [`variants/heltec_mesh_solar/platformio.ini`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/variants/heltec_mesh_solar/platformio.ini)
   line 4 and
-  [`variants/mesh_pocket/platformio.ini`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/variants/mesh_pocket/platformio.ini)
+  [`variants/mesh_pocket/platformio.ini`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/variants/mesh_pocket/platformio.ini)
   line 4 — the core override without a URL
-- [`variants/rak3x72/platformio.ini`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/variants/rak3x72/platformio.ini)
+- [`variants/rak3x72/platformio.ini`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/variants/rak3x72/platformio.ini)
   line 4 and
-  [`variants/tiny_relay/platformio.ini`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/variants/tiny_relay/platformio.ini)
+  [`variants/tiny_relay/platformio.ini`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/variants/tiny_relay/platformio.ini)
   line 4 — `board_upload.maximum_size`
-- [`boards/rak3172.json`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/boards/rak3172.json),
-  [`boards/tiny_relay.json`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/boards/tiny_relay.json)
+- [`boards/rak3172.json`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/boards/rak3172.json),
+  [`boards/tiny_relay.json`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/boards/tiny_relay.json)
   and
-  [`boards/rak4631.json`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/boards/rak4631.json)
+  [`boards/rak4631.json`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/boards/rak4631.json)
   — `mcu`, `f_cpu`, `maximum_ram_size` and `maximum_size`
-- [`examples/companion_radio/main.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/examples/companion_radio/main.cpp)
+- [`examples/companion_radio/main.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/examples/companion_radio/main.cpp)
   — lines 15-35 the filesystem per platform; 37-85 the transport layer per
   platform; 55-66 the commented-out WiFi and BLE branches for RP2040
-- [`docs/nrf52_power_management.md`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/docs/nrf52_power_management.md)
+- [`docs/nrf52_power_management.md`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/docs/nrf52_power_management.md)
   — 217 lines, with the *Supported Boards* table on lines 38-57
 
 Not from the firmware repo:

@@ -10,7 +10,7 @@ CLI over de radio bedienen — hetzelfde commandostel dat je via USB krijgt.
 
 > [!NOTE]
 > **Bron.** Deze pagina is geverifieerd tegen de firmware zelf: `MeshCore`
-> v1.16.0, commit `03b6ef4`, 28 juli 2026 — bestanden
+> v1.17.1, commit `d929643`, 14 augustus 2026 — bestanden
 > `examples/simple_room_server/MyMesh.cpp`,
 > `examples/simple_repeater/MyMesh.cpp`,
 > `examples/simple_sensor/SensorMesh.cpp`, `src/helpers/CommonCLI.cpp`,
@@ -81,7 +81,7 @@ bijstellen, en horen hoeveel er voor hem klaarstaat.
 
 Het antwoord is geen `RESPONSE` maar een ACK met één byte eraan geplakt:
 
-`examples/simple_room_server/MyMesh.cpp` r.554-561
+`examples/simple_room_server/MyMesh.cpp` r.568-575
 
 ```cpp
           uint32_t ack_hash; // calc ACK to prove to sender that we got request
@@ -120,14 +120,14 @@ processor. Externe sensoren komen erbij als ze aanwezig zijn.
 De client stuurt een masker mee dat bepaalt welke kanalen hij wil zien. Voor
 een gast wordt dat masker genegeerd en op `0x00` gezet: die krijgt alleen de
 basiswaarden, ongeacht wat hij vraagt
-(`examples/simple_room_server/MyMesh.cpp` r.170-172).
+(`examples/simple_room_server/MyMesh.cpp` r.187-189).
 
 ## 0x05 — access list
 
 Alleen voor een beheerder, en het antwoord is smaller dan de naam doet
 vermoeden.
 
-`examples/simple_room_server/MyMesh.cpp` r.185-195
+`examples/simple_room_server/MyMesh.cpp` r.202-214
 
 ```cpp
   if (payload[0] == REQ_TYPE_GET_ACCESS_LIST && sender->isAdmin()) {
@@ -141,6 +141,7 @@ vermoeden.
         memcpy(&reply_data[ofs], c->id.pub_key, 6); ofs += 6;  // just 6-byte pub_key prefix
         reply_data[ofs++] = c->permissions;
       }
+      return ofs;
     }
 ```
 
@@ -167,7 +168,7 @@ Een beheerder kan elk CLI-commando naar de server sturen als tekstbericht met
 vlaggen `TXT_TYPE_CLI_DATA` in plaats van `TXT_TYPE_PLAIN`. Het antwoord komt
 terug als tekstbericht met dezelfde vlaggen.
 
-`examples/simple_room_server/MyMesh.cpp` r.452-464
+`examples/simple_room_server/MyMesh.cpp` r.466-478
 
 ```cpp
       if (flags == TXT_TYPE_CLI_DATA) {
@@ -207,6 +208,7 @@ Vier zijn hier van belang:
 | `set allow.read.only on\|off` | meelezen zonder geldig wachtwoord | nee |
 | `setperm <pubkey-hex> <getal>` | rechten zetten op een publieke sleutel | nee |
 | `get acl` | de ACL op de console dumpen | **ja** |
+| `room.post <tekst>` | een bericht namens de server plaatsen | nee |
 
 `setperm` is het enige beheer dat er is. Het neemt een publieke sleutel in
 hex — een prefix mag, mits een even aantal tekens — en een getal met de
@@ -218,6 +220,25 @@ door in te loggen.
 `get acl` controleert expliciet op `sender_timestamp == 0`, wat alleen zo is
 bij invoer via de seriële console. Over de radio bestaat dit commando niet;
 het valt dan door naar de gewone CLI-afhandeling, die het niet kent.
+
+`room.post` is nieuw in v1.17.1. Het plaatst een post in de room alsof de
+server hem zelf schreef: `addSystemPost()` roept `storePost()` aan met
+`self_id` als auteur, waar een gewone post de identiteit van de client
+meekrijgt (`examples/simple_room_server/MyMesh.cpp` r.45-51). De post krijgt
+een tijdstempel van de realtimeklok en wordt langs de gewone weg naar de
+deelnemers geduwd; de teller `n_posted` loopt mee.
+
+Het commando kent geen `sender_timestamp == 0`-controle en werkt dus ook over
+de radio, mits de afzender beheerder is — dat is de voorwaarde voor elk
+CLI-commando over RF. De tekst wordt afgekapt op `MAX_POST_TEXT_LEN`, dat op
+`160-9` staat, dus 151 tekens. Een leeg bericht levert `ERR empty message`,
+een geslaagd bericht `OK`.
+
+> [!NOTE]
+> De auteur van zo'n post is de server zelf. Een client die de posts
+> binnenkrijgt, ziet de publieke sleutel van de room server als afzender en
+> niet die van de beheerder die het commando gaf. Wie wil weten wie er
+> werkelijk achter zat, moet dat uit de tekst opmaken.
 
 ### Beheer op afstand vanaf een client
 
@@ -236,11 +257,11 @@ dus een beperking in de clientsoftware en niet in de room server.
 
 ## Bronnen
 
-- [MeshCore firmware — `examples/simple_room_server/MyMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/examples/simple_room_server/MyMesh.cpp)
-- [MeshCore firmware — `examples/simple_repeater/MyMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/examples/simple_repeater/MyMesh.cpp)
-- [MeshCore firmware — `examples/simple_sensor/SensorMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/examples/simple_sensor/SensorMesh.cpp)
-- [MeshCore firmware — `src/helpers/CommonCLI.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/src/helpers/CommonCLI.cpp)
-- [MeshCore firmware — `src/helpers/ClientACL.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/src/helpers/ClientACL.cpp)
-- [MeshCore firmware — `docs/cli_commands.md`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/docs/cli_commands.md)
-- [MeshCore firmware — `docs/payloads.md`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/docs/payloads.md)
-- [MeshCore firmware — `docs/faq.md`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4/docs/faq.md)
+- [MeshCore firmware — `examples/simple_room_server/MyMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/examples/simple_room_server/MyMesh.cpp)
+- [MeshCore firmware — `examples/simple_repeater/MyMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/examples/simple_repeater/MyMesh.cpp)
+- [MeshCore firmware — `examples/simple_sensor/SensorMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/examples/simple_sensor/SensorMesh.cpp)
+- [MeshCore firmware — `src/helpers/CommonCLI.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/src/helpers/CommonCLI.cpp)
+- [MeshCore firmware — `src/helpers/ClientACL.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/src/helpers/ClientACL.cpp)
+- [MeshCore firmware — `docs/cli_commands.md`](https://github.com/meshcore-dev/MeshCore/blob/d929643/docs/cli_commands.md)
+- [MeshCore firmware — `docs/payloads.md`](https://github.com/meshcore-dev/MeshCore/blob/d929643/docs/payloads.md)
+- [MeshCore firmware — `docs/faq.md`](https://github.com/meshcore-dev/MeshCore/blob/d929643/docs/faq.md)

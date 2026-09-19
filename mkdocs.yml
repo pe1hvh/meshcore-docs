@@ -51,6 +51,7 @@ plugins:
             Logisch ontwerp: Logical design
             Technisch ontwerp: Technical design
             Ontwerp (Companion): Design (Companion)
+            Pinbezetting: Pin assignments
             Randapparatuur: Peripherals
             Kernlibraries: Core libraries
             Ondersteunende libraries: Supporting libraries
@@ -137,10 +138,16 @@ nav:
       - nl/platform/platforms.md
       - nl/platform/platform-families.md
       - nl/platform/node-matrix.md
+      - Pinbezetting:
+          - nl/platform/pins/esp32.md
+          - nl/platform/pins/nrf52.md
+          - nl/platform/pins/rp2040.md
+          - nl/platform/pins/stm32wl.md
   - Hardware:
       - nl/hardware/introduction.md
       - Radio:
           - nl/hardware/radio/sx1262.md
+          - nl/hardware/radio/lr2021.md
           - nl/hardware/radio/antenna.md
           - nl/hardware/radio/link-budget.md
           - nl/hardware/radio/filters.md
@@ -195,7 +202,7 @@ nav:
       - nl/cli/bridge.md
       - nl/cli/power-management.md
       - nl/cli/companion-rescue.md
-      - nl/cli/after-pinned-commit.md
+      - nl/cli/ethernet.md
   - Naslag:
       - nl/reference/terminology.md
       - nl/reference/references.md
@@ -203,4 +210,5 @@ nav:
   - Project:
       - nl/project/about-domca.md
       - nl/project/github.md
+      - nl/project/release-v1-17-1.md
 # END NAV
