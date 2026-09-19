@@ -6,7 +6,7 @@ behaviour in **every** task.
 
 Not what MeshCore is, not how the website is built — that is in the
 chapters. What the project is and under which licence: `README.md`.
-Table of contents: `nl/README.md` and `en/README.md`.
+Table of contents: `docs/nl/README.md` and `docs/en/README.md`.
 
 ## Mandatory reading before every assignment
 
@@ -20,9 +20,9 @@ split by subject.
 | `.claude/rules/STYLE-NUANCE.md` | word choice and nuance in NL and EN | always |
 | `.claude/rules/REPO-STRUCTURE.md` | layout, directory and slug conventions, key files | always |
 | `.claude/rules/PITFALLS.md` | open defects and traps not tied to one file type | always |
-| `.claude/rules/CHAPTERS.md` | page structure, text, source attribution, links | on `nl/**/*.md`, `en/**/*.md` |
-| `.claude/rules/IMAGES.md` | paths, naming, alt text, SVG convention | on `images/**` |
-| `.claude/rules/TERMINOLOGY.md` | glossary, source list, link list | on `nl/naslag/*.md`, `en/reference/*.md` |
+| `.claude/rules/CHAPTERS.md` | page structure, text, source attribution, links | on `docs/nl/**/*.md`, `docs/en/**/*.md` |
+| `.claude/rules/IMAGES.md` | paths, naming, alt text, SVG convention | on `docs/images/**` |
+| `.claude/rules/TERMINOLOGY.md` | glossary, source list, link list | on `docs/nl/reference/*.md`, `docs/en/reference/*.md` |
 | `.claude/rules/TOOLS.md` | recalculation scripts and counting traps | on `tools/**/*.py` |
 | `.claude/rules/CHANGELOG-COMMITS.md` | entry format and commit convention | on `CHANGELOG.md` |
 | `.claude/REPO-TREE.md` | the current layout, one screen | on request |
@@ -123,7 +123,7 @@ aside.
 - Heading structure, table columns, alerts, images and ordering are
   identical in NL and EN. Only the language differs.
 - The slug stays the same; only the directory name differs.
-- New or renamed chapter → update `nl/README.md` **and** `en/README.md`, at
+- New or renamed chapter → update `docs/nl/README.md` **and** `docs/en/README.md`, at
   the same position in the same section.
 - If a correction only affects the translation (language error, missing
   section), the EN version may change on its own — report that explicitly.
@@ -192,8 +192,8 @@ Four mandatory checkpoints, all under 🛑 *Stop and ask*.
 2. **Impact analysis** (before implementation) — which files and directories
    are affected, what is in them now, and which contradictions the
    assignment contains; ask for confirmation before you start. The list to
-   walk: NL, EN, README indexes, both reading guides, `images/nl/`,
-   `images/en/`, both terminology files, both reference lists, both link
+   walk: NL, EN, README indexes, both reading guides, `docs/images/nl/`,
+   `docs/images/en/`, both terminology files, both reference lists, both link
    lists, `tools/`, `.claude/rules/` and `CHANGELOG.md`. The reading guides
    and the reference lists are the ones that get forgotten.
 3. **Delivery validation** (before delivery) — walk through the checklist
@@ -209,7 +209,7 @@ Four mandatory checkpoints, all under 🛑 *Stop and ask*.
 - [ ] NL and EN have the same sections, tables, alerts and images
 - [ ] EN file ends with `Translated from Dutch by Anthropic Claude`
 - [ ] All relative links point to existing files
-- [ ] Every diagram exists in `images/nl/` **and** `images/en/`, under the
+- [ ] Every diagram exists in `docs/images/nl/` **and** `docs/images/en/`, under the
       same name
 - [ ] New terms appear alphabetically in both terminology files
 - [ ] New external sources in both reference lists, new tools or websites in
@@ -240,7 +240,7 @@ No fragments and no `…unchanged…` markers in markdown deliveries: the files
 are pasted into the repo one-to-one.
 
 For more than two files: one ZIP with the directory structure from the repo
-root (`nl/`, `en/`, `images/`, …), naming convention
+root (`docs/nl/`, `docs/en/`, `docs/images/`, …), naming convention
 `meshcore_docs_[onderwerp]_result.zip`. One ZIP per assignment; a new ZIP
 replaces the previous one within the same assignment. A second assignment in
 the same chat gets its own ZIP under its own name.

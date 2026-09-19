@@ -1,0 +1,13 @@
+title: Core libraries
+nav:
+  - radiolib.md
+  - crypto.md
+  - cayenne-lpp.md
+  - rtclib.md
+  - rv3028.md
+  - custom-lfs.md
+  - littlefs-stm32.md
+  - subghz.md
+  - espasyncwebserver.md
+  - asyncelegantota.md
+  - wire-spi.md

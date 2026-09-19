@@ -11,9 +11,9 @@ shortened at all.
   when you verify the content; leave it empty if you were unable to check
   anything, rather than guessing a version.
 - **`technical` occurs on two levels in the English tree.**
-  `en/technical/` is the section that mirrors `nl/techniek/`;
-  `en/design/technical/` is the subsection that mirrors
-  `nl/ontwerp/technisch/`. They are unrelated. A relative link or an image
+  `docs/en/technical/` is the section that mirrors `docs/nl/technical/`;
+  `docs/en/design/technical/` is the subsection that mirrors
+  `docs/nl/design/technical/`. They are unrelated. A relative link or an image
   path that resolves one level too high lands in the wrong one without
   erroring, so check the depth rather than the name.
 - **MeshCore's `main` moves daily.** Note the commit you are basing

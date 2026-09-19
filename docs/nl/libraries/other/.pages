@@ -1,0 +1,9 @@
+title: Ondersteunende libraries
+nav:
+  - displays.md
+  - sensors.md
+  - gps.md
+  - power.md
+  - peripherals.md
+  - utilities.md
+  - testing.md

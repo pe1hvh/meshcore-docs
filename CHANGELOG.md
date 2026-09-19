@@ -9,6 +9,21 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
 
 ### Added
 
+- `mkdocs.yml`, `requirements.txt`, `docs/CNAME` and
+  `.github/workflows/docs.yml`: the documentation is now built with MkDocs and
+  the Material theme and published by GitHub Pages on `docs.domca.nl`. It used
+  to be regenerated into HTML fragments by a PHP pipeline on domca.nl, which
+  had to follow every directory change by hand and silently dropped SVG
+  references. Versions are pinned and MkDocs is held below 2.0: that release
+  removes the plugin system without a migration path, which would take i18n,
+  the navigation plugin and the search index with it.
+- `tools/gen_nav_pages.py`: generates an `.pages` file per directory from
+  `docs/nl/README.md` and `docs/en/README.md`, so the tables of contents remain
+  the single source for order and section titles instead of a 113-line `nav:`
+  block in `mkdocs.yml`. A file present on disk but absent from a README is
+  placed last with a warning rather than dropped. The build workflow runs it
+  with `--check`, so a moved chapter that was not added to both READMEs fails
+  the pull request.
 - `nl/project/forks.md` ↔ `en/project/forks.md`: new chapter *Forks & varianten*
   / *Forks & variants*, in the *Project* section directly after *GitHub
   Repositories*. `project/github.md` catalogues what exists; this chapter
@@ -25,6 +40,26 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
 
 ### Changed
 
+- Dutch directory names brought in line with the English ones:
+  `nl/gebruik` → `docs/nl/usage`, `nl/techniek` → `docs/nl/technical`,
+  `nl/ontwerp` → `docs/nl/design`, `nl/naslag` → `docs/nl/reference`, and
+  `logisch`/`technisch` → `logical`/`technical` under both `design/` and
+  `companion/`. The chapter file names were already identical in both
+  languages; only the directories differed. `mkdocs-static-i18n` pairs the
+  languages on path equality, so this replaces the positional coupling through
+  the READMEs — which silently dropped a chapter from both menus whenever the
+  two lists drifted apart. Dutch remains the language of the text; only the
+  path is English.
+- `nl/`, `en/` and `images/` moved under `docs/`. MkDocs does not accept a
+  repository root as `docs_dir`, and the move keeps the build configuration
+  next to, rather than inside, the chapters.
+- Links to `tools/*.py` in both languages now point at GitHub rather than at a
+  relative path: those scripts sit outside `docs/` and a relative link to them
+  cannot resolve in the built site.
+- `README.md`, `CLAUDE.md` and everything under `.claude/` follow the new
+  paths, including the `paths:` frontmatter of `CHAPTERS.md`, `IMAGES.md` and
+  `TERMINOLOGY.md`. Without that the rule files would stop loading on the
+  chapters they govern — a failure that shows up as nothing happening.
 - `nl/README.md` ↔ `en/README.md`: *Forks & varianten* / *Forks & variants*
   added to *Project*, at the same position in both.
 - `nl/reading-guide.md` ↔ `en/reading-guide.md`: chapter count from 112 to 113,
@@ -177,6 +212,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
 
 ### Removed
 
+- `nl/project/forks.md` ↔ `en/project/forks.md`: *Forks & varianten* /
+  *Forks & variants* moved to domca.nl, at `#analyse/forks-en-varianten` and
+  `#analysis/forks-and-variants`. The chapter measures twelve forks, draws
+  conclusions and makes a recommendation to upstream; it is an assessment, not
+  reference material, and it said so itself by expressly declining to state a
+  preference. Its fork table also ages daily, which suits a site that already
+  carries live measurements. The five references per language now point at the
+  absolute URL, and both READMEs keep one line under *Project* as a signpost.
 - `STYLE-NUANCE.md` from the repo root; it now lives in `.claude/rules/`.
 - The repo URL, licence line and project description from the top of
   `CLAUDE.md`; they duplicated `README.md`.

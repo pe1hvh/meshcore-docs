@@ -1,14 +1,14 @@
 ---
 paths:
-  - "nl/naslag/*.md"
-  - "en/reference/*.md"
+  - "docs/nl/reference/*.md"
+  - "docs/en/reference/*.md"
 ---
 
 # Terminology and reference
 
 *Glossary, source list and link list.*
 
-- `nl/naslag/terminology.md` and `en/reference/terminology.md` are sorted
+- `docs/nl/reference/terminology.md` and `docs/en/reference/terminology.md` are sorted
   **alphabetically** — new terms are inserted in place, not tacked on at
   the bottom.
 - If you introduce an abbreviation in a chapter, it also goes into the

@@ -1,6 +1,6 @@
 ---
 name: new-chapter
-description: Use when adding, splitting, renaming or substantially rewriting a chapter in this bilingual MeshCore documentation repo — anything that creates or moves a file under nl/ or en/. Walks the mandatory checkpoints, lists every file a chapter touches in both languages, and packages the result under the required ZIP name.
+description: Use when adding, splitting, renaming or substantially rewriting a chapter in this bilingual MeshCore documentation repo — anything that creates or moves a file under docs/nl/ or docs/en/. Walks the mandatory checkpoints, lists every file a chapter touches in both languages, and packages the result under the required ZIP name.
 ---
 
 # Adding or changing a chapter
@@ -23,15 +23,15 @@ before the answer comes back.
 
 | File | When |
 |---|---|
-| `nl/<section>/<slug>.md` | always — Dutch is the source |
-| `en/<section>/<slug>.md` | always — same slug, section name translated |
-| `images/nl/<slug>-<n>.svg` | if the chapter has diagrams |
-| `images/en/<slug>-<n>.svg` | always when the NL one exists, even without text |
-| `nl/README.md`, `en/README.md` | new or renamed chapter, same position |
-| `nl/reading-guide.md`, `en/reading-guide.md` | chapter count, diagram count, and the section row |
-| `nl/naslag/terminology.md`, `en/reference/terminology.md` | every term or abbreviation the chapter introduces |
-| `nl/naslag/references.md`, `en/reference/references.md` | every external source cited |
-| `nl/naslag/links.md`, `en/reference/links.md` | new tool or website |
+| `docs/nl/<section>/<slug>.md` | always — Dutch is the source |
+| `docs/en/<section>/<slug>.md` | always — same slug, section name translated |
+| `docs/images/nl/<slug>-<n>.svg` | if the chapter has diagrams |
+| `docs/images/en/<slug>-<n>.svg` | always when the NL one exists, even without text |
+| `docs/nl/README.md`, `docs/en/README.md` | new or renamed chapter, same position |
+| `docs/nl/reading-guide.md`, `docs/en/reading-guide.md` | chapter count, diagram count, and the section row |
+| `docs/nl/reference/terminology.md`, `docs/en/reference/terminology.md` | every term or abbreviation the chapter introduces |
+| `docs/nl/reference/references.md`, `docs/en/reference/references.md` | every external source cited |
+| `docs/nl/reference/links.md`, `docs/en/reference/links.md` | new tool or website |
 | `tools/<name>.py` | if the chapter carries figures that must be reproducible |
 | `CHANGELOG.md` | always, under `[Unreleased]`, both language paths named |
 
@@ -45,7 +45,7 @@ so in Claude Code they load when you open a matching file; in a chat session
 you have to fetch them yourself.
 
 Use `scripts/terminology-insert.py` for glossary rows rather than editing by
-hand. `en/reference/terminology.md` is not consistently sorted — it has two
+hand. `docs/en/reference/terminology.md` is not consistently sorted — it has two
 separate I-clusters and rows left in their Dutch sort position — so eyeballing
 the alphabet gets it wrong. The script reports the neighbours it inserted
 between; check them.

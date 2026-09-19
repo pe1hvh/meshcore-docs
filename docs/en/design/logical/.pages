@@ -1,0 +1,8 @@
+title: Logical design
+nav:
+  - roles.md
+  - components.md
+  - interfaces.md
+  - information-model.md
+  - variability.md
+  - decisions.md

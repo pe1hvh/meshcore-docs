@@ -1,0 +1,53 @@
+site_name: DOMCA — MeshCore documentatie
+site_url: https://docs.domca.nl/
+repo_url: https://github.com/pe1hvh/meshcore-docs
+repo_name: pe1hvh/meshcore-docs
+edit_uri: edit/main/docs/
+copyright: CC BY-SA 4.0 — PE1HVH
+
+theme:
+  name: material
+  language: nl
+  features:
+    - navigation.tracking
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - search.suggest
+    - search.highlight
+    - content.action.edit
+    - toc.follow
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue
+      toggle: {icon: material/weather-night, name: Donker thema}
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue
+      toggle: {icon: material/weather-sunny, name: Licht thema}
+
+plugins:
+  - search:
+      lang: [nl, en]
+  - awesome-pages
+  - i18n:
+      docs_structure: folder
+      languages:
+        - locale: nl
+          name: Nederlands
+          default: true
+          build: true
+        - locale: en
+          name: English
+          build: true
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc: {permalink: true}
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight

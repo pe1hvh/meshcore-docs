@@ -1,0 +1,18 @@
+title: Technical
+nav:
+  - layer-model.md
+  - text-to-chirp.md
+  - dechirp.md
+  - lora-modulation.md
+  - packet-structure.md
+  - regions-and-scopes.md
+  - regions-in-practice.md
+  - direct-messages.md
+  - roomserver
+  - key-encryption.md
+  - channel-structure.md
+  - remote-control.md
+  - route-tracing.md
+  - repeater-flow.md
+  - sensecap-dfu.md
+  - dead-zone.md

@@ -1,7 +1,7 @@
 ---
 paths:
-  - "nl/**/*.md"
-  - "en/**/*.md"
+  - "docs/nl/**/*.md"
+  - "docs/en/**/*.md"
 ---
 
 # Chapters
@@ -64,7 +64,7 @@ attribution inaccurate within weeks.
 
 ### Links
 
-- Relative links within the same language tree. **Never** from `nl/` to
-  `en/` or the other way round.
+- Relative links within the same language tree. **Never** from `docs/nl/` to
+  `docs/en/` or the other way round.
 - References to the firmware point at the concrete file in
   `meshcore-dev/MeshCore`, not at the repo root.

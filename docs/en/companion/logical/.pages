@@ -1,0 +1,5 @@
+title: Logical design
+nav:
+  - responsibilities.md
+  - interaction-model.md
+  - information-model.md

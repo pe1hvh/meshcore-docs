@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Inserts a glossary row and reports which rows it landed between.
 
-Both terminology files are meant to be alphabetical, but en/reference/
+Both terminology files are meant to be alphabetical, but docs/en/reference/
 terminology.md is not consistently sorted: it has two separate I-clusters and
 several rows left in the sort position of their Dutch counterpart. Sorting by
 eye therefore puts new rows in the wrong place, which has happened.
@@ -10,8 +10,8 @@ This script does not resort the file. It finds the position, inserts, and
 prints the neighbours so a human can see whether the result is sensible.
 
 Usage:
-    python3 terminology-insert.py nl/naslag/terminology.md "Term" "Meaning"
-    python3 terminology-insert.py --after "| Callsign |" en/reference/terminology.md "Term" "Meaning"
+    python3 terminology-insert.py docs/nl/reference/terminology.md "Term" "Meaning"
+    python3 terminology-insert.py --after "| Callsign |" docs/en/reference/terminology.md "Term" "Meaning"
 """
 import pathlib
 import sys

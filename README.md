@@ -7,7 +7,7 @@ Tweetalige documentatie: van je eerste node tot de bits op de radio.
 [![Talen](https://img.shields.io/badge/talen-NL%20%7C%20EN-informational.svg)](#)
 [![Website](https://img.shields.io/badge/web-domca.nl-brightgreen.svg)](https://domca.nl)
 
-### 📖 [Lees in het Nederlands →](nl/README.md)  ·  🇬🇧 [Read in English →](en/README.md)
+### 📖 [Lees in het Nederlands →](docs/nl/README.md)  ·  🇬🇧 [Read in English →](docs/en/README.md)
 
 ---
 
@@ -15,15 +15,15 @@ Tweetalige documentatie: van je eerste node tot de bits op de radio.
 
 **Nederlands** — MeshCore laat goedkope LoRa-radiootjes een eigen netwerk
 vormen: berichten hoppen van node naar node tot ze aankomen, zonder internet
-en zonder zendmast. Begin bij de [Leeswijzer](nl/reading-guide.md) — die zegt
+en zonder zendmast. Begin bij de [Leeswijzer](docs/nl/reading-guide.md) — die zegt
 wat elke sectie van je vraagt — of ga rechtstreeks naar de
-[inhoudsopgave](nl/README.md).
+[inhoudsopgave](docs/nl/README.md).
 
 **English** — MeshCore turns inexpensive LoRa radios into a network of their
 own: messages hop from node to node until they arrive, with no internet and
-no cell towers. Start with [How to read this](en/reading-guide.md), which
+no cell towers. Start with [How to read this](docs/en/reading-guide.md), which
 states what each section assumes, or go straight to the
-[index](en/README.md).
+[index](docs/en/README.md).
 
 > [!WARNING]
 > **Disclaimer.** Deze documentatie is samengesteld met hulp van AI-tools
@@ -45,7 +45,7 @@ states what each section assumes, or go straight to the
 ## Structuur · Layout
 
 ```
-├── nl/                 Nederlandse hoofdstukken
+├── docs/nl/                 Nederlandse hoofdstukken
 │   ├── README.md         inhoudsopgave
 │   ├── reading-guide.md  leeswijzer: secties en benodigde voorkennis
 │   ├── gebruik/          gebruik, hardware, regelgeving
@@ -68,7 +68,7 @@ states what each section assumes, or go straight to the
 │   ├── cli/              CLI-referentie, één pagina per categorie
 │   ├── naslag/           terminologie, referenties, links
 │   └── project/          over DOMCA, GitHub-overzicht
-├── en/                 English chapters (same structure)
+├── docs/en/                 English chapters (same structure)
 │   ├── README.md
 │   ├── reading-guide.md
 │   ├── usage/
@@ -91,9 +91,9 @@ states what each section assumes, or go straight to the
 │   ├── cli/
 │   ├── reference/
 │   └── project/
-├── images/
-│   ├── nl/               diagrammen met Nederlandse tekst
-│   └── en/               diagrammen met Engelse tekst
+├── docs/images/
+│   ├── docs/nl/               diagrammen met Nederlandse tekst
+│   └── docs/en/               diagrammen met Engelse tekst
 ├── tools/              narekenscripts bij de techniekhoofdstukken
 └── LICENSE             CC BY-SA 4.0
 ```

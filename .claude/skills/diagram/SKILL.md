@@ -1,6 +1,6 @@
 ---
 name: diagram
-description: Use when creating or editing an SVG diagram for this documentation repo, anything under images/nl/ or images/en/. Supplies the DOMCA style block, the viewBox and font conventions, and a render check that resolves the CSS variables so text and lines are visible in the preview instead of invisible.
+description: Use when creating or editing an SVG diagram for this documentation repo, anything under docs/images/nl/ or docs/images/en/. Supplies the DOMCA style block, the viewBox and font conventions, and a render check that resolves the CSS variables so text and lines are visible in the preview instead of invisible.
 ---
 
 # Diagrams
@@ -13,7 +13,7 @@ covers the making of the file itself.
 Every diagram carries the same inline `<style>` with the DOMCA variables and
 an `@media (prefers-color-scheme: dark)` block. It is in
 `assets/style-block.txt`. Copy it verbatim. Do not reconstruct it from another
-SVG by hand, and do not copy it from `images/nl/dead-zone-1.svg` — that file
+SVG by hand, and do not copy it from `docs/images/nl/dead-zone-1.svg` — that file
 predates the convention and lacks both the `style` attribute and the font
 family.
 
@@ -56,6 +56,6 @@ invisible.
 
 ## Both languages
 
-A diagram exists twice, under the same name, in `images/nl/` and
-`images/en/` — even when it contains no text. Generate both from one script so
+A diagram exists twice, under the same name, in `docs/images/nl/` and
+`docs/images/en/` — even when it contains no text. Generate both from one script so
 they cannot drift apart; only the strings differ.

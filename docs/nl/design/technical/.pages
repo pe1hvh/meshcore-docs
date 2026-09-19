@@ -1,0 +1,9 @@
+title: Technisch ontwerp
+nav:
+  - source-layout.md
+  - class-model.md
+  - platform-realisation.md
+  - radio-realisation.md
+  - build-system.md
+  - configuration.md
+  - traceability.md

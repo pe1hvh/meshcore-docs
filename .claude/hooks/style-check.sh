@@ -17,8 +17,8 @@ FILE=$(printf '%s' "$INPUT" | python3 -c \
 [ -f "$FILE" ] || exit 0
 
 case "$FILE" in
-  *nl/*.md) PATTERN='\bkost|\bbetaal|\bgratis' ; EXCLUDE='kost rekenwerk|volledig gratis|gratis te gebruiken|ten koste van' ;;
-  *en/*.md) PATTERN='\bcosts?\b|\bpays\b|\bpaid\b|\bexpensive\b|\bfree\b'
+  *docs/nl/*.md) PATTERN='\bkost|\bbetaal|\bgratis' ; EXCLUDE='kost rekenwerk|volledig gratis|gratis te gebruiken|ten koste van' ;;
+  *docs/en/*.md) PATTERN='\bcosts?\b|\bpays\b|\bpaid\b|\bexpensive\b|\bfree\b'
             EXCLUDE='payload|free[- ]space|free-form|licen[cs]e-free|free text|free choice|free end|ends free|free use|free frequency|costs computation|costs current|at the cost of' ;;
   *) exit 0 ;;
 esac

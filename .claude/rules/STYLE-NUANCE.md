@@ -256,9 +256,9 @@ chapter that defines it.
 
 ```bash
 # NL
-grep -rniE "\bkost|\bbetaal|\bgratis" nl/
+grep -rniE "\bkost|\bbetaal|\bgratis" docs/nl/
 # EN — the exclusions are the technical senses of "free" and the word payload
-grep -rniE "\bcosts?\b|\bpays\b|\bpaid\b|\bexpensive\b|\bfree\b" en/ \
+grep -rniE "\bcosts?\b|\bpays\b|\bpaid\b|\bexpensive\b|\bfree\b" docs/en/ \
   | grep -viE "payload|free[- ]space|free-form|licen[cs]e-free|free text|free choice|free end|ends free"
 ```
 

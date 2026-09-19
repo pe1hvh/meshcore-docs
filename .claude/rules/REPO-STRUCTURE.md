@@ -42,21 +42,21 @@ Everything outside it is about MeshCore, or about the project itself.
   name in the Dutch tree too**: `libraries/core/`, `libraries/other/`,
   `hardware/peripherals/` and `techniek/roomserver/`. They are not renamed
   without an explicit instruction — a rename breaks every relative link and
-  every image path in the chapters concerned. `ontwerp/logisch/` and
-  `ontwerp/technisch/` are the first third-level directories that do follow
+  every image path in the chapters concerned. `ontwerp/logical/` and
+  `ontwerp/technical/` are the first third-level directories that do follow
   the mapping.
 - **Slugs are English, kebab-case, without a section prefix, and identical
   in both languages.** Only the directory name differs: `gebruik` ↔ `usage`,
   `techniek` ↔ `technical`, `naslag` ↔ `reference`, `platform` ↔ `platform`,
   `hardware` ↔ `hardware`, `libraries` ↔ `libraries`, `project` ↔ `project`,
-  `cli` ↔ `cli`, `ontwerp` ↔ `design`. So `nl/techniek/packet-structure.md` ↔
-  `en/technical/packet-structure.md`.
+  `cli` ↔ `cli`, `ontwerp` ↔ `design`. So `docs/nl/technical/packet-structure.md` ↔
+  `docs/en/technical/packet-structure.md`.
 - **Four sections have a third level: `libraries/`, `hardware/`, `techniek/`
   ↔ `technical/` and `ontwerp/` ↔ `design/`.** Their chapters live in
   `libraries/core/`, `libraries/other/`, `hardware/radio/`,
   `hardware/interfaces/`, `hardware/peripherals/`, `techniek/roomserver/` ↔
-  `technical/roomserver/` and `ontwerp/logisch/` ↔ `design/logical/` plus
-  `ontwerp/technisch/` ↔ `design/technical/`. The first six subdirectory
+  `technical/roomserver/` and `ontwerp/logical/` ↔ `design/logical/` plus
+  `ontwerp/technical/` ↔ `design/technical/`. The first six subdirectory
   names are identical in both languages; the two under `ontwerp/` ↔
   `design/` follow the section mapping. In `libraries/` and `hardware/` the overview chapters —
   `libraries/introduction.md`, `libraries/dependencies.md` and
@@ -79,10 +79,10 @@ Everything outside it is about MeshCore, or about the project itself.
   `CLAUDE.md`. It holds `introduction.md` plus one chapter per command
   category, sits in the README indexes directly before *Naslag* /
   *Reference*, and has no third level.
-- **Two tables of contents.** `nl/README.md` and `en/README.md` list the
+- **Two tables of contents.** `docs/nl/README.md` and `docs/en/README.md` list the
   same chapters in the same order.
-- **One chapter sits outside a section directory**: `nl/reading-guide.md` ↔
-  `en/reading-guide.md`. It shares its link base with the index next to it,
+- **One chapter sits outside a section directory**: `docs/nl/reading-guide.md` ↔
+  `docs/en/reading-guide.md`. It shares its link base with the index next to it,
   so both files point at the chapters in exactly the same way and cannot
   drift apart. It is reached from three places: the root `README.md`, a
   pointer line in the index above the first `##` section, and an index entry
@@ -101,7 +101,7 @@ Everything outside it is about MeshCore, or about the project itself.
   layout tree, errata, licence and community. Do not restore a Dutch and an
   English narrative section there.
 - **No shared image directory.** Every diagram exists twice, under the same
-  file name: `images/nl/<slug>-<n>.svg` and `images/en/<slug>-<n>.svg`. Even
+  file name: `docs/images/nl/<slug>-<n>.svg` and `docs/images/en/<slug>-<n>.svg`. Even
   when it contains no text.
 
 ## What this documentation aims for
@@ -135,7 +135,7 @@ not covered by this rule.
 
 ## References
 
-- **`nl/README.md` · `en/README.md`** — table of contents per language.
+- **`docs/nl/README.md` · `docs/en/README.md`** — table of contents per language.
 - **`README.md`** — landing page, structure overview, licence, disclaimer.
 - **`CHANGELOG.md`** — what changed per revision and why.
 - **`tools/example-calculation.py`** — reproduces the project-wide example
@@ -149,8 +149,8 @@ not covered by this rule.
 - **`tools/cli-commands.py`** — reproduces the command lists, line numbers,
   defaults per role, role markers and example replies in `cli/`, and lists the
   commands that exist on a newer checkout only.
-- **`nl/naslag/terminology.md`** — glossary, authoritative for wording.
-- **`nl/naslag/references.md`** — source list.
+- **`docs/nl/reference/terminology.md`** — glossary, authoritative for wording.
+- **`docs/nl/reference/references.md`** — source list.
 - **[meshcore-dev/MeshCore](https://github.com/meshcore-dev/MeshCore)** —
   firmware source code, the ground truth for technical chapters.
 - **[docs.meshcore.io](https://docs.meshcore.io/)** — official

@@ -22,7 +22,7 @@ this tree; the annotations are what it does not give you.
 │       ├── TERMINOLOGY.md        glossary and source lists
 │       ├── TOOLS.md              recalculation scripts
 │       └── CHANGELOG-COMMITS.md  entry and commit format
-├── nl/                  Dutch chapters (source)
+├── docs/nl/                  Dutch chapters (source)
 │   ├── README.md        table of contents
 │   ├── reading-guide.md sections and the background each one assumes
 │   ├── gebruik/         usage, hardware, regulations, privacy
@@ -45,7 +45,7 @@ this tree; the annotations are what it does not give you.
 │   ├── cli/             CLI reference, one page per command category
 │   ├── naslag/          terminology, references, links
 │   └── project/         about DOMCA, GitHub overview
-├── en/                  English chapters (translation, 1-to-1 mirror)
+├── docs/en/                  English chapters (translation, 1-to-1 mirror)
 │   ├── README.md
 │   ├── reading-guide.md
 │   ├── usage/
@@ -68,9 +68,9 @@ this tree; the annotations are what it does not give you.
 │   ├── cli/
 │   ├── reference/
 │   └── project/
-├── images/
-│   ├── nl/              diagrams (SVG) and photos for the NL chapters
-│   └── en/              diagrams (SVG) and photos for the EN chapters
+├── docs/images/
+│   ├── docs/nl/              diagrams (SVG) and photos for the NL chapters
+│   └── docs/en/              diagrams (SVG) and photos for the EN chapters
 ├── tools/               recalculation scripts for the technical chapters
 ├── README.md            bilingual switchboard: language choice, disclaimer,
 │                        layout, licence, community

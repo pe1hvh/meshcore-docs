@@ -1,0 +1,7 @@
+title: Libraries
+nav:
+  - introduction.md
+  - dependencies.md
+  - library-configuration.md
+  - core
+  - other

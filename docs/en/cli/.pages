@@ -1,0 +1,19 @@
+title: CLI reference
+nav:
+  - introduction.md
+  - operational.md
+  - neighbors.md
+  - statistics.md
+  - logging.md
+  - info.md
+  - radio.md
+  - system.md
+  - routing.md
+  - acl.md
+  - regions.md
+  - gps.md
+  - sensors.md
+  - bridge.md
+  - power-management.md
+  - companion-rescue.md
+  - after-pinned-commit.md

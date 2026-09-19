@@ -11,7 +11,7 @@ rendering, and additionally estimates the width of every <text> element to
 report labels that run outside the viewBox.
 
 Usage:
-    python3 render-check.py images/nl/filters-1.svg [out.png]
+    python3 render-check.py docs/images/nl/filters-1.svg [out.png]
 """
 import pathlib
 import re
