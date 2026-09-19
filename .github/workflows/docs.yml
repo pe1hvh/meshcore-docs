@@ -29,8 +29,8 @@ jobs:
       - name: Installeer toolchain
         run: pip install -r requirements.txt
 
-      - name: Controleer of .pages gelijk loopt met de README's
-        run: python3 tools/gen_nav_pages.py --check
+      - name: Controleer of het menu gelijk loopt met de READMEs
+        run: python3 tools/gen_nav.py --check
 
       - name: Bouw de site
         run: mkdocs build --strict

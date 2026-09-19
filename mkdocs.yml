@@ -27,10 +27,12 @@ theme:
       primary: blue
       toggle: {icon: material/weather-sunny, name: Licht thema}
 
+extra_css:
+  - stylesheets/extra.css
+
 plugins:
   - search:
       lang: [nl, en]
-  - awesome-pages
   - i18n:
       docs_structure: folder
       languages:
@@ -41,6 +43,20 @@ plugins:
         - locale: en
           name: English
           build: true
+          # BEGIN NAV_TRANSLATIONS
+          nav_translations:
+            Gebruik: Usage
+            Techniek: Technical
+            Ontwerp (Node): Design (Node)
+            Logisch ontwerp: Logical design
+            Technisch ontwerp: Technical design
+            Ontwerp (Companion): Design (Companion)
+            Randapparatuur: Peripherals
+            Kernlibraries: Core libraries
+            Ondersteunende libraries: Supporting libraries
+            CLI-referentie: CLI reference
+            Naslag: Reference
+          # END NAV_TRANSLATIONS
 
 markdown_extensions:
   - admonition
@@ -51,3 +67,140 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.highlight
+
+# BEGIN NAV
+nav:
+  - nl/README.md
+  - nl/reading-guide.md
+  - Gebruik:
+      - nl/usage/what-is-meshcore.md
+      - nl/usage/history.md
+      - nl/usage/node-types.md
+      - nl/usage/getting-started.md
+      - nl/usage/communication.md
+      - nl/usage/privacy.md
+      - nl/usage/applications.md
+      - nl/usage/hardware.md
+      - nl/usage/off-grid.md
+      - nl/usage/regulations.md
+  - Techniek:
+      - nl/technical/layer-model.md
+      - nl/technical/text-to-chirp.md
+      - nl/technical/dechirp.md
+      - nl/technical/lora-modulation.md
+      - nl/technical/packet-structure.md
+      - nl/technical/regions-and-scopes.md
+      - nl/technical/regions-in-practice.md
+      - nl/technical/direct-messages.md
+      - Room Server:
+          - nl/technical/roomserver/introduction.md
+          - nl/technical/roomserver/login-and-acl.md
+          - nl/technical/roomserver/posts-and-sync.md
+          - nl/technical/roomserver/requests-and-cli.md
+          - nl/technical/roomserver/limits-and-todos.md
+          - nl/technical/key-encryption.md
+          - nl/technical/channel-structure.md
+          - nl/technical/remote-control.md
+          - nl/technical/route-tracing.md
+          - nl/technical/repeater-flow.md
+          - nl/technical/sensecap-dfu.md
+          - nl/technical/dead-zone.md
+  - Ontwerp (Node):
+      - nl/design/introduction.md
+      - Logisch ontwerp:
+          - nl/design/logical/roles.md
+          - nl/design/logical/components.md
+          - nl/design/logical/interfaces.md
+          - nl/design/logical/information-model.md
+          - nl/design/logical/variability.md
+          - nl/design/logical/decisions.md
+      - Technisch ontwerp:
+          - nl/design/technical/source-layout.md
+          - nl/design/technical/class-model.md
+          - nl/design/technical/platform-realisation.md
+          - nl/design/technical/radio-realisation.md
+          - nl/design/technical/build-system.md
+          - nl/design/technical/configuration.md
+          - nl/design/technical/traceability.md
+  - Ontwerp (Companion):
+      - nl/companion/introduction.md
+      - Logisch ontwerp:
+          - nl/companion/logical/responsibilities.md
+          - nl/companion/logical/interaction-model.md
+          - nl/companion/logical/information-model.md
+      - Technisch ontwerp:
+          - nl/companion/technical/transports.md
+          - nl/companion/technical/frame-format.md
+          - nl/companion/technical/command-groups.md
+          - nl/companion/technical/client-architecture.md
+  - Platform:
+      - nl/platform/platforms.md
+      - nl/platform/platform-families.md
+      - nl/platform/node-matrix.md
+  - Hardware:
+      - nl/hardware/introduction.md
+      - Radio:
+          - nl/hardware/radio/sx1262.md
+          - nl/hardware/radio/antenna.md
+          - nl/hardware/radio/link-budget.md
+          - nl/hardware/radio/filters.md
+      - Interfaces:
+          - nl/hardware/interfaces/ble-architecture.md
+          - nl/hardware/interfaces/wifi.md
+          - nl/hardware/interfaces/usb-serial.md
+          - nl/hardware/interfaces/i2c.md
+          - nl/hardware/interfaces/spi.md
+      - Randapparatuur:
+          - nl/hardware/peripherals/display.md
+          - nl/hardware/peripherals/gps.md
+          - nl/hardware/peripherals/buttons-and-leds.md
+  - Libraries:
+      - nl/libraries/introduction.md
+      - nl/libraries/dependencies.md
+      - nl/libraries/library-configuration.md
+      - Kernlibraries:
+          - nl/libraries/core/radiolib.md
+          - nl/libraries/core/crypto.md
+          - nl/libraries/core/cayenne-lpp.md
+          - nl/libraries/core/rtclib.md
+          - nl/libraries/core/rv3028.md
+          - nl/libraries/core/custom-lfs.md
+          - nl/libraries/core/littlefs-stm32.md
+          - nl/libraries/core/subghz.md
+          - nl/libraries/core/espasyncwebserver.md
+          - nl/libraries/core/asyncelegantota.md
+          - nl/libraries/core/wire-spi.md
+      - Ondersteunende libraries:
+          - nl/libraries/other/displays.md
+          - nl/libraries/other/sensors.md
+          - nl/libraries/other/gps.md
+          - nl/libraries/other/power.md
+          - nl/libraries/other/peripherals.md
+          - nl/libraries/other/utilities.md
+          - nl/libraries/other/testing.md
+  - CLI-referentie:
+      - nl/cli/introduction.md
+      - nl/cli/operational.md
+      - nl/cli/neighbors.md
+      - nl/cli/statistics.md
+      - nl/cli/logging.md
+      - nl/cli/info.md
+      - nl/cli/radio.md
+      - nl/cli/system.md
+      - nl/cli/routing.md
+      - nl/cli/acl.md
+      - nl/cli/regions.md
+      - nl/cli/gps.md
+      - nl/cli/sensors.md
+      - nl/cli/bridge.md
+      - nl/cli/power-management.md
+      - nl/cli/companion-rescue.md
+      - nl/cli/after-pinned-commit.md
+  - Naslag:
+      - nl/reference/terminology.md
+      - nl/reference/references.md
+      - nl/reference/links.md
+  - Project:
+      - nl/project/about-domca.md
+      - nl/project/github.md
+# END NAV
