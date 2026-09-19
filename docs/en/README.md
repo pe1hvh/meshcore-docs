@@ -103,7 +103,7 @@ assumes and where to start.
 - **Peripherals** — `hardware/peripherals/`
   - [The Display](hardware/peripherals/display.md)
   - [GPS](hardware/peripherals/gps.md)
-  - [Buttons and LEDs](hardware/peripherals/buttons-and-leds.md)
+  - [Feedback](hardware/peripherals/feedback.md)
 
 ## Libraries
 

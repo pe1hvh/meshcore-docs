@@ -1,6 +1,15 @@
 # Private & Public Key Encryption
 
-*IDENTITY · TRUST · CONFIDENTIALITY · WITHOUT INTERNET*
+*IDENTITY · TRUST · CONFIDENTIALITY · WITHOUT INTERNET · CC310*
+
+> [!NOTE]
+> **Source.** The section *Hardware crypto on nRF52* has been verified against
+> the firmware itself: `MeshCore` v1.17.1, commit `d929643`, 14 August 2026 —
+> files `platformio.ini`, `src/Utils.cpp`, `src/Identity.cpp`,
+> `src/helpers/NRF52Board.cpp` and
+> `src/helpers/radiolib/RadioLibWrappers.h`. The rest of this chapter
+> describes the protocol and the kinds of key; that text has not yet been
+> checked against a specific commit and therefore carries no pin of its own.
 
 ## The problem: communication without authority
 
@@ -202,5 +211,153 @@ The public keys thus function on **two levels** simultaneously:
 - **Cryptographic foundation** — the complete public key is the raw material for ECDH shared secrets (DM's) and signature verification (ADVERT's)
 
 This dual use makes the system elegant: the same identity that makes a node unique on the network is simultaneously the key to secure communication — all without ever involving a server, a provider, or a certificate authority.
+
+## Hardware crypto on nRF52
+
+Everything above describes *what* happens computationally. Since v1.17.1,
+what changed on nRF52 boards is *who* does it: not the processor, but the
+CryptoCell CC310, a separate unit inside the same chip. The same operations,
+the same results, no protocol change — two nodes notice nothing of the
+difference between them. The consequence sits in the device, not in the
+network.
+
+### The flag belongs to the family, not to a board
+
+`USE_CC310_HW_CRYPTO` is not a board property. The flag sits in
+`[nrf52_base]` (r.81) in the `platformio.ini` at the repository root, the
+section every nRF52 variant file inherits from:
+
+`platformio.ini` r.90-94
+
+```text
+build_flags = ${arduino_base.build_flags}
+  -D NRF52_PLATFORM
+  -D LFS_NO_ASSERT=1
+  -D EXTRAFS=1
+  -D USE_CC310_HW_CRYPTO=1
+```
+
+So there is no nRF52 build without hardware crypto — this holds for **every**
+nRF52 build, not for a single board. ESP32, RP2040 and STM32 do not have the
+flag and follow the software path everywhere. Which variant runs on which
+family is in [MeshCore Platforms](../platform/platforms.md).
+
+The unit is switched on in `NRF52Board::begin()`, at
+`src/helpers/NRF52Board.cpp` r.29, and shut down again when the peripherals
+are powered off before deep sleep, at r.364. Outside those two places there
+is nothing to configure.
+
+### Six operations move
+
+Each of the six sits in the source as an `#ifdef USE_CC310_HW_CRYPTO` with
+the software path in the `#else` branch. Both branches therefore stay in the
+repository; which one is compiled in depends on the flag alone.
+
+| Operation | Function | Software path | Hardware path | Location |
+|---|---|---|---|---|
+| SHA-256 over one block | `Utils::sha256` | `SHA256` from the Crypto library | `CRYS_HASH` | `src/Utils.cpp` r.24 |
+| SHA-256 over two fragments | `Utils::sha256` (overload) | same, with `update()` per fragment | `CRYS_HASH_Init` / `_Update` / `_Finish` | `src/Utils.cpp` r.36 |
+| AES-ECB decryption | `Utils::decrypt` | `AES128` | `SaSi_Aes*` | `src/Utils.cpp` r.53 |
+| AES-ECB encryption | `Utils::encrypt` | `AES128` | `SaSi_Aes*` | `src/Utils.cpp` r.85 |
+| Signature verification | `Identity::verify` | `Ed25519::verify` | `CRYS_ECEDW_Verify` | `src/Identity.cpp` r.22 |
+| Random numbers | `RadioNoiseListener::random` | radio noise | `nRFCrypto.Random`, combined with radio noise | `src/helpers/radiolib/RadioLibWrappers.h` r.93 |
+
+The first four and the sixth are a swap of library: same input, same output, a
+different performer. The fifth is the only one where the firmware itself
+explains why.
+
+### The signature check, written out
+
+An ADVERT comes in, the node has to verify the Ed25519 signature, and that
+happens in the radio's receive path. The reason for the hardware path is in
+the source code itself:
+
+`src/Identity.cpp` r.22-33
+
+```cpp
+bool Identity::verify(const uint8_t* sig, const uint8_t* message, int msg_len) const {
+#ifdef USE_CC310_HW_CRYPTO
+  // nRF52840 CryptoCell CC310 hardware Ed25519 verification. The software
+  // implementations need ~3KB of stack (which can overflow the Adafruit core's
+  // 4KB loop task stack from the advert receive path); the hardware path
+  // needs much less, around 600-700bytes. The CC310 workspace is static, faster,
+  // should save power at scale as well.
+  static CRYS_ECEDW_TempBuff_t cc310_tmp;
+  CRYSError_t rc = CRYS_ECEDW_Verify((uint8_t*)sig, CRYS_ECEDW_SIGNATURE_BYTES,
+                                     (uint8_t*)pub_key, CRYS_ECEDW_MOD_SIZE_IN_BYTES,
+                                     (uint8_t*)message, (size_t)msg_len, &cc310_tmp);
+  return rc == CRYS_OK;
+```
+
+The software verification takes up around 3 kB of stack. The Adafruit core's
+loop task has 4 kB, and the verification is called from the advert receive
+path — so from a call chain that already uses stack itself. That can overflow.
+The hardware path requires 600 to 700 bytes and puts its working memory down
+statically as well, outside the stack.
+
+So this is not a speed-up that was gone looking for. It is a stack problem
+being solved; the comment mentions the gain in speed and the lower current
+draw second and third.
+
+### The random generator does not replace the radio noise
+
+In the five operations above the hardware takes the work over. In the sixth
+something is added. `RadioNoiseListener` draws its entropy from the noise on
+the radio input; with the CC310 present that noise is not replaced but XORed
+with the hardware output:
+
+`src/helpers/radiolib/RadioLibWrappers.h` r.93-103
+
+```cpp
+  void random(uint8_t* dest, size_t sz) override {
+#ifdef USE_CC310_HW_CRYPTO
+    nRFCrypto.Random.generate(dest, (uint16_t)sz);
+    for (int i = 0; i < sz; i++) {
+      dest[i] ^= _radio->randomByte() ^ (::random(0, 256) & 0xFF); // combine with Radio's entropy
+    }
+#else
+    for (int i = 0; i < sz; i++) {
+      dest[i] = _radio->randomByte() ^ (::random(0, 256) & 0xFF);
+    }
+#endif
+```
+
+Note the difference between the two branches: `^=` against `=`. In the
+software branch the radio noise is the only source; in the hardware branch the
+CC310 fills the buffer and that same radio noise is then mixed in. Two
+independent sources combined is no weaker than the stronger of the two, and
+the comment at `src/helpers/NRF52Board.cpp` r.30 says why the CC310 was
+brought in: its output does not depend on the environment, and radio noise
+does.
+
+This is the only one of the six where the hardware adds something to the
+result instead of computing it a different way. Where the keypair made with it
+comes from is above, under
+[The Ed25519 Keypair](#the-ed25519-keypair-your-identity-on-the-mesh).
+
+## Sources
+
+Firmware, commit `d929643` (v1.17.1, 14 August 2026) — for the section
+*Hardware crypto on nRF52*:
+
+- [`platformio.ini`](https://github.com/meshcore-dev/MeshCore/blob/d929643/platformio.ini)
+  — `USE_CC310_HW_CRYPTO` in `[nrf52_base]`
+- [`src/Utils.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/src/Utils.cpp)
+  — hash and AES, both branches
+- [`src/Identity.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/src/Identity.cpp)
+  — the signature check and the stack reasoning
+- [`src/helpers/NRF52Board.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/src/helpers/NRF52Board.cpp)
+  — starting and shutting down the unit
+- [`src/helpers/radiolib/RadioLibWrappers.h`](https://github.com/meshcore-dev/MeshCore/blob/d929643/src/helpers/radiolib/RadioLibWrappers.h)
+  — the random generator
+
+Related in this documentation:
+
+- [Crypto: rweather and ed25519](../libraries/core/crypto.md) — the libraries
+  behind the software path
+- [Platform realisation](../design/technical/platform-realisation.md) — what
+  the nRF52 family does differently elsewhere
+- [MeshCore Packet Structure](packet-structure.md) — where the signature sits
+  in the packet
 
 Translated from Dutch by Anthropic Claude

@@ -31,6 +31,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | CAD | Channel Activity Detection — function of the LoRa chip that detects whether a LoRa signal is on the channel; see `set cad` in [Radio](../cli/radio.md) |
 | Callsign | Call sign — unique identification for radio amateurs (e.g. PE1HVH) |
 | Cavity filter | Band-pass filter in which every resonator is a quarter-wave line inside a closed metal can, also called a coaxial cavity. The highest Q and the lowest insertion loss of all filter types, but large and heavy |
+| CC310 | See CryptoCell CC310 |
 | CCCD | Client Characteristic Configuration Descriptor — on/off switch for BLE Notify |
 | Channel | Shared cryptographic key (PSK) for group communication |
 | Chirp | Frequency sweep from low to high (up-chirp) or high to low (down-chirp) |
@@ -52,6 +53,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | CP437 | The character set of the original IBM PC. MeshCore uses one character from it, the full block `0xDB`, as a replacement for every non-ASCII character on screen |
 | CR | Coding Rate — error correction level (4/5 to 4/8), more = more reliable |
 | CSS | Chirp Spread Spectrum — the modulation method LoRa uses |
+| CryptoCell CC310 | Arm's cryptographic accelerator, built into the nRF52840. MeshCore has it perform six operations on every nRF52 build instead of the processor; see [Private & Public Key Encryption](../technical/key-encryption.md) |
 | dBd | Antenna gain relative to a half-wave dipole. The regulations on 868 MHz count in this. `dBd = dBi − 2.15` |
 | dBi | Antenna gain relative to an isotropic radiator — the imagined antenna radiating equally in every direction. Datasheets usually use this reference |
 | dBm | Decibel-milliwatt — unit for transmit power (14 dBm = 25 mW) |
@@ -163,6 +165,7 @@ Alphabetical overview of all technical terms and abbreviations used in this docu
 | Routing | Determining the best route for a message through the network |
 | RP2040 | Microcontroller from Raspberry Pi with two Cortex-M0+ cores; the only MeshCore chip without a built-in radio |
 | RSSI | Received Signal Strength Indicator — the received signal level in dBm. MeshCore samples it to determine its noise floor |
+| RGB565 | Colour encoding with 16 bits per pixel: 5 bits red, 6 green, 5 blue. The colour mode of the NV3001B screen driver |
 | RTTTL | Ring Tone Text Transfer Language — Nokia's ringtone format. MeshCore stores its startup and shutdown sound in it |
 | SAW | Surface Acoustic Wave — a filter technique in which the signal travels as an acoustic wave across a piezo substrate; steep skirts in a small package, with a limited power range |
 | Scheduler | Task planner that decides which work runs when. MeshCore has none: everything runs in a single `loop()` |

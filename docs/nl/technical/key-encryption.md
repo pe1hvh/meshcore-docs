@@ -1,6 +1,15 @@
 # Private & Public Key Encryptie
 
-*IDENTITEIT · VERTROUWEN · VERTROUWELIJKHEID · ZONDER INTERNET*
+*IDENTITEIT · VERTROUWEN · VERTROUWELIJKHEID · ZONDER INTERNET · CC310*
+
+> [!NOTE]
+> **Bron.** De sectie *Hardwarecrypto op nRF52* is geverifieerd tegen de
+> firmware zelf: `MeshCore` v1.17.1, commit `d929643`, 14 augustus 2026 —
+> bestanden `platformio.ini`, `src/Utils.cpp`, `src/Identity.cpp`,
+> `src/helpers/NRF52Board.cpp` en
+> `src/helpers/radiolib/RadioLibWrappers.h`. De rest van dit hoofdstuk
+> beschrijft het protocol en de sleutelsoorten; die tekst is nog niet tegen
+> een afzonderlijke commit getoetst en draagt daarom geen eigen pin.
 
 ## Het probleem: communicatie zonder autoriteit
 
@@ -202,3 +211,149 @@ De public keys functioneren dus op **twee niveaus** tegelijk:
 - **Cryptografische basis** — de volledige public key is de grondstof voor ECDH shared secrets (DM's) en handtekeningverificatie (ADVERT's)
 
 Dit dubbele gebruik maakt het systeem elegant: dezelfde identiteit die een node uniek maakt op het netwerk, is tegelijk de sleutel tot beveiligde communicatie — allemaal zonder dat er ooit een server, een provider of een certificaatautoriteit aan te pas komt.
+
+## Hardwarecrypto op nRF52
+
+Alles hierboven beschrijft wát er rekenkundig gebeurt. Sinds v1.17.1 is op
+nRF52-borden veranderd wíe het doet: niet de processor, maar de CryptoCell
+CC310, een aparte eenheid in dezelfde chip. Dezelfde bewerkingen, dezelfde
+uitkomsten, geen protocolwijziging — twee nodes merken onderling niets van het
+verschil. Het gevolg zit in het apparaat, niet in het netwerk.
+
+### De vlag hangt aan de familie, niet aan een bord
+
+`USE_CC310_HW_CRYPTO` is geen bordeigenschap. De vlag staat in `[nrf52_base]`
+(r.81) in de `platformio.ini` in de repository-root, de sectie waarvan elk
+nRF52-variantbestand erft:
+
+`platformio.ini` r.90-94
+
+```text
+build_flags = ${arduino_base.build_flags}
+  -D NRF52_PLATFORM
+  -D LFS_NO_ASSERT=1
+  -D EXTRAFS=1
+  -D USE_CC310_HW_CRYPTO=1
+```
+
+Er is dus geen nRF52-build zonder hardwarecrypto — dit geldt voor **elke**
+nRF52-build, niet voor een enkel bord. ESP32, RP2040 en STM32 kennen de vlag
+niet en volgen overal de softwareweg. Welke variant op welke familie draait
+staat in [MeshCore Platforms](../platform/platforms.md).
+
+De eenheid wordt aangezet in `NRF52Board::begin()`, op
+`src/helpers/NRF52Board.cpp` r.29, en weer afgesloten bij het uitschakelen van
+de randapparatuur vóór de diepe slaapstand, op r.364. Buiten die twee plekken
+is er niets om in te stellen.
+
+### Zes bewerkingen verhuizen
+
+Elk van de zes staat in de broncode als een `#ifdef USE_CC310_HW_CRYPTO` met
+de softwareweg in de `#else`-tak. Beide takken blijven dus in de repository
+staan; welke wordt meegecompileerd hangt alleen van de vlag af.
+
+| Bewerking | Functie | Softwareweg | Hardwareweg | Plek |
+|---|---|---|---|---|
+| SHA-256 over één blok | `Utils::sha256` | `SHA256` uit de Crypto-library | `CRYS_HASH` | `src/Utils.cpp` r.24 |
+| SHA-256 over twee fragmenten | `Utils::sha256` (overload) | idem, met `update()` per fragment | `CRYS_HASH_Init` / `_Update` / `_Finish` | `src/Utils.cpp` r.36 |
+| AES-ECB ontsleutelen | `Utils::decrypt` | `AES128` | `SaSi_Aes*` | `src/Utils.cpp` r.53 |
+| AES-ECB versleutelen | `Utils::encrypt` | `AES128` | `SaSi_Aes*` | `src/Utils.cpp` r.85 |
+| Handtekening controleren | `Identity::verify` | `Ed25519::verify` | `CRYS_ECEDW_Verify` | `src/Identity.cpp` r.22 |
+| Toevalsgetallen | `RadioNoiseListener::random` | radioruis | `nRFCrypto.Random`, gecombineerd met radioruis | `src/helpers/radiolib/RadioLibWrappers.h` r.93 |
+
+De eerste vier en de zesde zijn een ruil van bibliotheek: dezelfde invoer,
+dezelfde uitvoer, een andere uitvoerder. De vijfde is de enige waar de
+firmware zelf uitlegt waarom.
+
+### De handtekeningcontrole, uitgeschreven
+
+Een ADVERT komt binnen, de node moet de Ed25519-handtekening controleren, en
+dat gebeurt in het ontvangstpad van de radio. De reden voor de hardwareweg
+staat letterlijk in de broncode:
+
+`src/Identity.cpp` r.22-33
+
+```cpp
+bool Identity::verify(const uint8_t* sig, const uint8_t* message, int msg_len) const {
+#ifdef USE_CC310_HW_CRYPTO
+  // nRF52840 CryptoCell CC310 hardware Ed25519 verification. The software
+  // implementations need ~3KB of stack (which can overflow the Adafruit core's
+  // 4KB loop task stack from the advert receive path); the hardware path
+  // needs much less, around 600-700bytes. The CC310 workspace is static, faster,
+  // should save power at scale as well.
+  static CRYS_ECEDW_TempBuff_t cc310_tmp;
+  CRYSError_t rc = CRYS_ECEDW_Verify((uint8_t*)sig, CRYS_ECEDW_SIGNATURE_BYTES,
+                                     (uint8_t*)pub_key, CRYS_ECEDW_MOD_SIZE_IN_BYTES,
+                                     (uint8_t*)message, (size_t)msg_len, &cc310_tmp);
+  return rc == CRYS_OK;
+```
+
+De softwarematige controle neemt ongeveer 3 kB stack in beslag. De loop-taak
+van de Adafruit-core heeft er 4 kB, en de controle wordt aangeroepen vanuit
+het advert-ontvangstpad — dus vanuit een aanroepketen die zelf ook al stack
+gebruikt. Dat kan overlopen. De hardwareweg heeft 600 à 700 bytes nodig en
+zet zijn werkgeheugen bovendien statisch neer, buiten de stack om.
+
+Het is dus geen versnelling die erbij is gezocht. Het is een
+stackprobleem dat wordt opgelost; de snelheidswinst en het lagere
+stroomverbruik noemt het commentaar er als tweede en derde bij.
+
+### De toevalsgenerator vervangt de radioruis niet
+
+Bij de vijf bewerkingen hierboven neemt de hardware het werk over. Bij de
+zesde komt er iets bíj. `RadioNoiseListener` haalt zijn entropie uit de ruis
+op de radio-ingang; met de CC310 erbij wordt die ruis niet vervangen maar
+ge-XOR'd met de hardwarematige uitvoer:
+
+`src/helpers/radiolib/RadioLibWrappers.h` r.93-103
+
+```cpp
+  void random(uint8_t* dest, size_t sz) override {
+#ifdef USE_CC310_HW_CRYPTO
+    nRFCrypto.Random.generate(dest, (uint16_t)sz);
+    for (int i = 0; i < sz; i++) {
+      dest[i] ^= _radio->randomByte() ^ (::random(0, 256) & 0xFF); // combine with Radio's entropy
+    }
+#else
+    for (int i = 0; i < sz; i++) {
+      dest[i] = _radio->randomByte() ^ (::random(0, 256) & 0xFF);
+    }
+#endif
+```
+
+Let op het verschil tussen de twee takken: `^=` tegenover `=`. In de
+softwaretak is de radioruis de enige bron; in de hardwaretak wordt de CC310
+gevuld en daarna met diezelfde radioruis bewerkt. Twee onafhankelijke bronnen
+door elkaar is niet zwakker dan de sterkste van de twee, en het commentaar op
+`src/helpers/NRF52Board.cpp` r.30 zegt waarom de CC310 erbij is gehaald: zijn
+uitvoer hangt niet af van de omgeving, en radioruis wel.
+
+Dit is het enige punt van de zes waar de hardware iets toevoegt aan het
+resultaat in plaats van het op een andere manier uit te rekenen. Waar het
+keypair vandaan komt dat hiermee wordt gemaakt, staat hierboven onder
+[Het Ed25519 Keypair](#het-ed25519-keypair-je-identiteit-op-het-mesh).
+
+## Bronnen
+
+Firmware, commit `d929643` (v1.17.1, 14 augustus 2026) — voor de sectie
+*Hardwarecrypto op nRF52*:
+
+- [`platformio.ini`](https://github.com/meshcore-dev/MeshCore/blob/d929643/platformio.ini)
+  — `USE_CC310_HW_CRYPTO` in `[nrf52_base]`
+- [`src/Utils.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/src/Utils.cpp)
+  — hash en AES, beide takken
+- [`src/Identity.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/src/Identity.cpp)
+  — de handtekeningcontrole en de stackredenering
+- [`src/helpers/NRF52Board.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/src/helpers/NRF52Board.cpp)
+  — starten en afsluiten van de eenheid
+- [`src/helpers/radiolib/RadioLibWrappers.h`](https://github.com/meshcore-dev/MeshCore/blob/d929643/src/helpers/radiolib/RadioLibWrappers.h)
+  — de toevalsgenerator
+
+Verwant in deze documentatie:
+
+- [Crypto: rweather en ed25519](../libraries/core/crypto.md) — de libraries
+  achter de softwareweg
+- [Platformrealisatie](../design/technical/platform-realisation.md) — wat de
+  nRF52-familie verder apart doet
+- [MeshCore Pakketstructuur](packet-structure.md) — waar de handtekening in
+  het pakket zit

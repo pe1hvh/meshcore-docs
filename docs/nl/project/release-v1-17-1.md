@@ -9,6 +9,13 @@ staat is afgeleid uit de broncode zelf; de officiële release notes zijn als
 index gebruikt, niet als bewijs.
 
 > [!NOTE]
+> **Let op de woordkeuze bij `UIColor`.** De officiële release-tabel noemt dit
+> "een nieuw kleurenschema op de companion-UI". Dat dekt de lading niet: een
+> schema is een vastgelegde verzameling kleuren, terwijl `UIColor` een lijst
+> van negen rollen zónder waarden is, die elke schermdriver apart invult. Deze
+> documentatie gebruikt de term kleurenschema er daarom niet voor.
+
+> [!NOTE]
 > **Bron.** Deze pagina is geverifieerd tegen de firmware zelf: `MeshCore`
 > v1.17.1, commit `d929643`, 14 augustus 2026, vergeleken met de vorige pin
 > `03b6ef4` van 28 juli 2026. De vergelijking is te reproduceren met
@@ -37,19 +44,22 @@ broncode:
 
 | Onderwerp | Bewijs | Hoofdstuk |
 |---|---|---|
-| Configuratie in JSON, in `/prefs.json` | `src/helpers/ConfigSerializer.{h,cpp}` nieuw; `CommonCLI.cpp` r.30–47 | [CLI-referentie](../cli/introduction.md) |
-| `get`/`set cad` — hardwarematige CAD vóór het zenden | `CommonCLI.cpp` r.470, r.818 | [Radio](../cli/radio.md) |
-| `get`/`set radio.fem.rxgain` en `radio.fem.txgain` | `CommonCLI.cpp` r.544, r.566, r.847, r.853 | [Radio](../cli/radio.md) |
-| `get`/`set extra.sf`, `set` alleen in `USE_LR2021`-builds | `CommonCLI.cpp` r.780, r.976 | [Radio](../cli/radio.md) |
-| `radio.rxgain` niet langer achter een buildoptie; room server past hem nu ook toe | `CommonCLI.cpp` r.535; `simple_room_server/MyMesh.cpp` r.727 | [Radio](../cli/radio.md) |
+| Configuratie in JSON, in `/prefs.json` | `src/helpers/ConfigSerializer.{h,cpp}` nieuw; `src/helpers/CommonCLI.cpp` r.30–47 | [CLI-referentie](../cli/introduction.md) |
+| `cad` — hardwarematige CAD vóór het zenden, via `get`/`set` | `src/helpers/CommonCLI.cpp` r.470, r.818 | [Radio](../cli/radio.md) |
+| `radio.fem.rxgain` en `radio.fem.txgain`, in te stellen en op te vragen | `src/helpers/CommonCLI.cpp` r.544, r.566, r.847, r.853 | [Radio](../cli/radio.md) |
+| `extra.sf`, op te vragen in elke build maar alleen in te stellen in LR2021-builds | schrijven staat achter `USE_LR2021` op `src/helpers/CommonCLI.cpp` r.779, met de setter op r.780 en de getter op r.976 | [Radio](../cli/radio.md) |
+| `radio.rxgain` niet langer achter een buildoptie; room server past hem nu ook toe | `src/helpers/CommonCLI.cpp` r.535; `examples/simple_room_server/MyMesh.cpp` r.727 | [Radio](../cli/radio.md) |
 | `eth.status` en Ethernet-ondersteuning (RAK13800, CH390, serieel) | `src/helpers/ethernet/`, `nrf52/EthernetCLI.h` nieuw | [Ethernet](../cli/ethernet.md) |
-| Naam in de advert afgekapt op een UTF-8-codepointgrens | `AdvertDataHelpers.cpp` r.21, `UTF8Helpers.h` nieuw | [Systeem](../cli/system.md) |
-| `room.post` — een room server plaatst zelf een bericht | `simple_room_server/MyMesh.cpp` r.977 | nog niet verwerkt |
-| LR2021-radio | `src/helpers/radiolib/CustomLR2021.h` nieuw | nog niet verwerkt |
-| Tot vier seriële interfaces naast elkaar op de companion | `src/helpers/MultiSerialInterface.h` nieuw | nog niet verwerkt |
-| Hardwarecrypto (CC310) op nRF52 | `nRFCrypto` in vier bestanden, in `03b6ef4` nog nergens | nog niet verwerkt |
-| Nieuw kleurenschema op de companion-UI | `UIColor` in 32 bestanden, in `03b6ef4` nog nergens | nog niet verwerkt |
-| Negen nieuwe varianten: `heltec_tower_v2`, `heltec_rc32`, `heltec_v4_r8`, `meshnology_w12`, `meshtracker_x1`, `nibble_zero_connect`, `station_g3_esp32`, `thinknode_m7`, `thinknode_m9` | nieuwe mappen onder `variants/` | nog niet verwerkt |
+| Naam in de advert afgekapt op een UTF-8-codepointgrens | `src/helpers/AdvertDataHelpers.cpp` r.21, `UTF8Helpers.h` nieuw | [Systeem](../cli/system.md) |
+| `room.post` — een room server plaatst zelf een bericht | `examples/simple_room_server/MyMesh.cpp` r.977 | [Requests en CLI](../technical/roomserver/requests-and-cli.md) |
+| LR2021-radio | `src/helpers/radiolib/CustomLR2021.h` nieuw | [De LR2021](../hardware/radio/lr2021.md) |
+| Tot vier seriële interfaces naast elkaar op de companion | `src/helpers/MultiSerialInterface.h` nieuw | [De drie transporten](../companion/technical/transports.md) |
+| Hardwarecrypto (CC310) op nRF52, voor elke nRF52-build | `nRFCrypto` in vier bestanden, in `03b6ef4` nog nergens | [Private & Public Key Encryptie](../technical/key-encryption.md) |
+| Kleur als rol op de companion-UI: negen rollen die elke schermdriver zelf invult | `UIColor` in 32 bestanden, in `03b6ef4` nog nergens | [Het scherm](../hardware/peripherals/display.md) |
+| Routeringsbeleid in een eigen bestand: drie hoplimieten, vier antwoordroutes, drie antwoordscopes | `src/helpers/RoutingPolicy.h` nieuw, 68 regels; ingesloten door `examples/simple_repeater/MyMesh.h` r.37 en `examples/simple_room_server/MyMesh.h` r.24 | [Regio's en Scopes](../technical/regions-and-scopes.md) |
+| Schermdriver NV3001B, de enige die de UI-coördinaten opschaalt | `src/helpers/ui/NV3001BDisplay.{h,cpp}` nieuw; `variants/heltec_rc32/` | [Het scherm](../hardware/peripherals/display.md) |
+| Trilling via een DRV2605-aanstuurchip, naast de bestaande pinaansturing | `src/helpers/ui/DRV2605Vibration.h` nieuw; `GenericVibration.h` bestond al | [Terugkoppeling](../hardware/peripherals/feedback.md) |
+| Negen nieuwe varianten: `heltec_tower_v2`, `heltec_rc32`, `heltec_v4_r8`, `meshnology_w12`, `meshtracker_x1`, `nibble_zero_connect`, `station_g3_esp32`, `thinknode_m7`, `thinknode_m9` | nieuwe mappen onder `variants/` | gedeeltelijk: vijf staan in [Nodematrix](../platform/node-matrix.md), `heltec_rc32` in [ESP32](../platform/pins/esp32.md) en [Het scherm](../hardware/peripherals/display.md); `heltec_v4_r8`, `meshnology_w12` en `nibble_zero_connect` nog niet |
 
 Twee dingen uit de release notes van v1.17.0 zaten al ín de vorige pin en zijn
 dus geen wijziging voor deze documentatie: `get pwrmgt.bootreason` en de
@@ -70,11 +80,14 @@ node:
 | `variants/minewsemi_me25ls01/NullDisplayDriver.h` | verplaatst naar de gedeelde `src/helpers/ui/NullDisplayDriver.cpp` |
 | `variants/wio-e5-mini/NullDisplayDriver.h` | idem |
 
-Binnen deze documentatie is wél iets vervallen: de pagina *Na de gepinde
-commit*. Die beschreef de commando's die alleen op `main` bestonden —
-`cad`, `radio.fem.rxgain`, `radio.fem.txgain`, `extra.sf` en `eth.status`. Ze
-horen alle vijf bij v1.17.1 en staan nu op [Radio](../cli/radio.md) en
-[Ethernet](../cli/ethernet.md).
+Binnen deze documentatie is de pagina *Na de gepinde commit* uit de
+inhoudsopgave gehaald. Die beschreef de commando's die alleen op `main`
+bestonden — `cad`, `radio.fem.rxgain`, `radio.fem.txgain`, `extra.sf` en
+`eth.status`. Ze horen alle vijf bij v1.17.1 en staan nu op
+[Radio](../cli/radio.md) en [Ethernet](../cli/ethernet.md). Het bestand
+`cli/after-pinned-commit.md` staat nog wel in beide taalbomen, zonder
+verwijzing vanuit een README en zonder plek in het menu; het verwijderen
+ervan wacht op een uitdrukkelijke opdracht.
 
 ## Wat nog op de oude pin staat
 
@@ -85,24 +98,31 @@ horen alle vijf bij v1.17.1 en staan nu op [Radio](../cli/radio.md) en
 > gecontroleerd. Ga bij elk hoofdstuk af op het bronblok bovenaan die pagina,
 > niet op deze pagina.
 
-Wel getoetst tegen v1.17.1:
+Drieëntwintig hoofdstukken per taal noemen `d929643` in hun bronblok. Te
+herhalen met `grep -rl d929643 docs/nl --include='*.md'`.
 
-| Hoofdstuk | Wat er is bijgewerkt |
+| Sectie | Hoofdstukken op `d929643` |
 |---|---|
-| [CLI-referentie](../cli/introduction.md) | regelnummers, JSON-configuratie, standaardwaarden, afwijkingentabel |
-| [Radio](../cli/radio.md) | vier nieuwe commando's, `radio.rxgain` gecorrigeerd |
-| [Systeem](../cli/system.md) | regelnummers, naamlengte en UTF-8-afkapping |
-| [Ethernet](../cli/ethernet.md) | nieuw hoofdstuk |
+| CLI-referentie | [CLI-referentie](../cli/introduction.md), [Radio](../cli/radio.md), [Systeem](../cli/system.md), [Ethernet](../cli/ethernet.md) |
+| Techniek | [Private & Public Key Encryptie](../technical/key-encryption.md)°, [Regio's en Scopes](../technical/regions-and-scopes.md)°, [Requests en CLI](../technical/roomserver/requests-and-cli.md) |
+| Hardware | [De LoRa-transceiver](../hardware/radio/sx1262.md), [De LR2021](../hardware/radio/lr2021.md), [Het scherm](../hardware/peripherals/display.md), [Terugkoppeling](../hardware/peripherals/feedback.md) |
+| Platform | [MeshCore Platforms](../platform/platforms.md), [De vier platformfamilies](../platform/platform-families.md), [Nodematrix](../platform/node-matrix.md) en de vier pinbezettingen |
+| Ontwerp Node | [Het klassenmodel](../design/technical/class-model.md), [Compile-time configuratie](../design/technical/configuration.md), [Platformrealisatie](../design/technical/platform-realisation.md)° |
+| Ontwerp Companion | [De drie transporten](../companion/technical/transports.md) |
+| Project | deze pagina |
+
+° Gedeeltelijk: het bronblok van dat hoofdstuk zegt welke secties tegen
+`d929643` zijn getoetst en welke tekst nog op de oude pin staat.
 
 Nog niet hertoetst, gemeten met
 [`tools/diff-impact.py`](https://github.com/pe1hvh/meshcore-docs/blob/main/tools/diff-impact.py):
-83 van de 114 hoofdstukken per taal noemen in hun bronblok minstens één bestand
-dat tussen `03b6ef4` en `d929643` is gewijzigd. Vijf daarvan zijn de hierboven
-genoemde hoofdstukken plus deze pagina; de overige 78 staan nog op de oude pin.
-Een gewijzigd bronbestand is geen bewijs dat de tekst fout is, maar het is wel
-de lijst die nagelopen moet worden. De zwaartepunten zijn
-`design/technical/class-model.md`, de `platform/`-sectie en de
-`companion/`-sectie.
+87 van de 119 hoofdstukken per taal noemen in hun bronblok minstens één bestand
+dat tussen `03b6ef4` en `d929643` is gewijzigd. Negentien daarvan staan in de
+tabel hierboven; de overige 68 staan nog op de oude pin. Een gewijzigd
+bronbestand is geen bewijs dat de tekst fout is, maar het is wel de lijst die
+nagelopen moet worden. De zwaartepunten zijn nu [Direct
+Messages](../technical/direct-messages.md), de overige `cli/`-hoofdstukken en
+de `companion/`-sectie.
 
 ## Bronnen
 

@@ -2,4 +2,4 @@ title: Peripherals
 nav:
   - display.md
   - gps.md
-  - buttons-and-leds.md
+  - feedback.md

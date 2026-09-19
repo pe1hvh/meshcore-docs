@@ -17,3 +17,4 @@ nav:
   - power-management.md
   - companion-rescue.md
   - ethernet.md
+  - after-pinned-commit.md

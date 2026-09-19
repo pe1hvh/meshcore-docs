@@ -13,6 +13,11 @@ gegroeid.
 > v1.16.0, commit `03b6ef4`, 28 juli 2026 — `src/helpers/IdentityStore.h`,
 > `src/helpers/ESP32Board.h`, `src/helpers/NRF52Board.h`,
 > `src/helpers/stm32/STM32Board.h` en de bordklassen in `variants/`.
+> Twee punten zijn daarna tegen `MeshCore` v1.17.1, commit `d929643`,
+> 14 augustus 2026 nagelopen: de plek van `ESP32RTCClock` in
+> `src/helpers/ESP32Board.h`, en de hardwarecrypto van de nRF52-familie in
+> `platformio.ini`. De overige tellingen op deze pagina staan nog op de
+> oude pin.
 
 ## Opslag is de scheidslijn
 
@@ -106,6 +111,14 @@ STM32 komt met 44 regels in één header toe en heeft geen `.cpp`. Er zijn 16
 targets, alle op dezelfde SoC-familie, met dezelfde radio erop — er valt weinig
 te variëren.
 
+Sinds v1.17.1 komt er een tweede nRF52-eigenschap bij die geen andere familie
+heeft: de cryptografie loopt daar niet over de processor maar over de
+CryptoCell CC310. De buildvlag `USE_CC310_HW_CRYPTO` staat in `[nrf52_base]`
+in de `platformio.ini` in de repository-root en geldt daarmee voor elke
+nRF52-build, niet voor een enkel bord. Welke zes bewerkingen verhuizen en
+waarom de handtekeningcontrole de aanleiding was, staat in
+[Private & Public Key Encryptie](../../technical/key-encryption.md).
+
 ## Wat een familie verder deelt
 
 Naast de bordklasse hebben ESP32, nRF52 en STM32 een eigen map onder
@@ -129,7 +142,7 @@ snijden dwars door de families heen:
 
 | Implementatie | Plek | Wanneer |
 |---|---|---|
-| `ESP32RTCClock` | `src/helpers/ESP32Board.h` r.160 | ESP32 met interne RTC |
+| `ESP32RTCClock` | `src/helpers/ESP32Board.h` r.200 | ESP32 met interne RTC |
 | `AutoDiscoverRTCClock` | `src/helpers/AutoDiscoverRTCClock.h` r.7 | Bord met een RTC-chip op I²C |
 | `VolatileRTCClock` | `src/helpers/ArduinoHelpers.h` r.6 | Bord zonder RTC |
 

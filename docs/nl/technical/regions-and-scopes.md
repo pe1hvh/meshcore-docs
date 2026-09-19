@@ -29,6 +29,10 @@ wat ze doen met de eigenschappen van dit mechanisme, zie
 > — `src/helpers/RegionMap.cpp`, `src/helpers/TransportKeyStore.cpp`,
 > `src/helpers/CommonCLI.cpp`, `examples/simple_repeater/MyMesh.cpp`,
 > `examples/companion_radio/MyMesh.cpp` en `docs/cli_commands.md`.
+> De twee secties over het routeringsbeleid zijn geverifieerd tegen `MeshCore`
+> v1.17.1, commit `d929643`, 14 augustus 2026 — `src/helpers/RoutingPolicy.h`,
+> `examples/simple_repeater/MyMesh.{h,cpp}` en
+> `examples/simple_room_server/MyMesh.{h,cpp}`.
 > De pakketopbouw waarin deze codes staan is beschreven in
 > [MeshCore Pakketstructuur](packet-structure.md).
 ## Waar zit de transport code?
@@ -424,6 +428,113 @@ door.
 > regioconfiguratie te schrijven. Zie
 > [Forks & varianten](https://domca.nl/#analyse/forks-en-varianten).
 
+### Het beleid staat sinds v1.17.1 in een eigen bestand
+
+Wat hierboven als gedrag is beschreven, staat sinds v1.17.1 als expliciete
+regels in `src/helpers/RoutingPolicy.h`. Dat bestand telt 68 regels en bevat
+geen klasse: drie `inline`-functies en twee opsommingen in `namespace mesh`.
+Het wordt ingesloten door `examples/simple_repeater/MyMesh.h` r.37 en
+`examples/simple_room_server/MyMesh.h` r.24 — een repeater en een room server
+gebruiken dus letterlijk dezelfde regels.
+
+| Functie | Plek | Uitkomsten |
+|---|---|---|
+| `isFloodHopLimitExceeded` | `src/helpers/RoutingPolicy.h` r.15 | drie hoplimieten naast elkaar |
+| `chooseReplyRoute` | `src/helpers/RoutingPolicy.h` r.39 | vier manieren om een antwoord terug te sturen |
+| `chooseReplyScope` | `src/helpers/RoutingPolicy.h` r.60 | drie scopes voor dat antwoord |
+
+De drie limieten uit de CLI-tabel hierboven worden in de eerste functie tegen
+elkaar gezet. Ze werken niet na elkaar maar naast elkaar: het pakket sneuvelt
+op de eerste die het raakt.
+
+`src/helpers/RoutingPolicy.h` r.15-22
+
+```cpp
+inline bool isFloodHopLimitExceeded(const Packet* packet, uint8_t flood_max,
+                                    uint8_t flood_max_unscoped, uint8_t flood_max_advert) {
+  uint8_t hops = packet->getPathHashCount();
+  if (hops >= flood_max) return true;
+  if (packet->getRouteType() == ROUTE_TYPE_FLOOD && hops >= flood_max_unscoped) return true;
+  if (packet->getPayloadType() == PAYLOAD_TYPE_ADVERT && hops >= flood_max_advert) return true;
+  return false;
+}
+```
+
+De tweede en de derde regel zijn voorwaardelijk. `flood_max_unscoped` telt
+alleen voor `ROUTE_TYPE_FLOOD`, dus voor verkeer zonder transport codes;
+`flood_max_advert` alleen voor adverts. Een gescoopt tekstbericht loopt dus
+alleen tegen `flood_max` aan, een ongescoopte advert tegen alle drie. De
+repeater roept dit aan in `examples/simple_repeater/MyMesh.cpp` r.437, de room
+server in `examples/simple_room_server/MyMesh.cpp` r.303.
+
+### Hoe een antwoord terugkomt
+
+Hierboven staat dat een repeater die zelf antwoordt, dat met dezelfde scope
+doet als de binnenkomende vraag. Dat is de hoofdregel, maar er zitten twee
+beslissingen onder, en die zijn sinds v1.17.1 benoemd in plaats van impliciet.
+
+De eerste gaat over de *route*: langs welke weg gaat het antwoord terug.
+
+`src/helpers/RoutingPolicy.h` r.39-44
+
+```cpp
+inline ReplyRoute chooseReplyRoute(bool inbound_is_flood, bool have_supplied_path, bool have_out_path) {
+  if (inbound_is_flood) return REPLY_ROUTE_PATH_RETURN;
+  if (have_supplied_path) return REPLY_ROUTE_DIRECT_SUPPLIED;
+  if (have_out_path) return REPLY_ROUTE_DIRECT_OUT_PATH;
+  return REPLY_ROUTE_FLOOD;
+}
+```
+
+| Uitkomst | Wanneer | Wat er gebeurt |
+|---|---|---|
+| `REPLY_ROUTE_PATH_RETURN` | de vraag kwam als flood binnen | het antwoord gaat terug als PATH-return, geflood |
+| `REPLY_ROUTE_DIRECT_SUPPLIED` | de vraag droeg zelf een terugpad mee | direct, langs dat meegegeven pad |
+| `REPLY_ROUTE_DIRECT_OUT_PATH` | deze server heeft al een `out_path` voor deze client | direct, langs het opgeslagen pad |
+| `REPLY_ROUTE_FLOOD` | geen van de drie | geen terugweg bekend, dus flood |
+
+Een flood-vraag levert dus altijd een PATH-return op, ook als de server al een
+pad naar die client kent. Het pad dat de vraag zelf aflegde is verser dan wat
+er opgeslagen staat. De aanroep staat in
+`examples/simple_repeater/MyMesh.cpp` r.600.
+
+De tweede beslissing gaat over de *scope* van dat antwoord, en alleen als het
+geflood wordt:
+
+`src/helpers/RoutingPolicy.h` r.60-66
+
+```cpp
+inline ReplyScope chooseReplyScope(bool request_scope_known, bool request_was_unscoped_flood,
+                                   bool default_scope_known) {
+  if (request_scope_known) return REPLY_SCOPE_REQUEST;
+  if (request_was_unscoped_flood) return REPLY_SCOPE_NONE;  // requester chose un-scoped, so mirror it
+  if (default_scope_known) return REPLY_SCOPE_DEFAULT;      // scope unknowable: DIRECT, or unresolved Region
+  return REPLY_SCOPE_NONE;
+}
+```
+
+De volgorde van de drie tests is zelf beleid en niet willekeurig. Dat de
+tweede regel vóór de derde staat betekent: wie ongescoopt vraagt, krijgt
+ongescoopt antwoord — ook als deze node een bruikbare standaardregio heeft.
+Spiegelen gaat vóór terugvallen. Stond het andersom, dan zou een ongescoopte
+vraag uit een andere regio een antwoord krijgen dat in de regio van de
+antwoorder blijft steken, en dan komt het nooit aan.
+
+| Uitkomst | Wanneer |
+|---|---|
+| `REPLY_SCOPE_REQUEST` | de vraag kwam gescoopt binnen en de sleutel van die regio is herkend |
+| `REPLY_SCOPE_NONE` | de vraag kwam ongescoopt binnen, óf er is geen enkele bruikbare scope |
+| `REPLY_SCOPE_DEFAULT` | de scope is niet af te leiden, maar deze node heeft een standaardregio met een bruikbare sleutel |
+
+Beide functies zijn zuiver: ze lezen niets en schrijven niets, ze krijgen drie
+`bool`s en geven een uitkomst terug. Dat is de reden dat ze in een eigen
+bestand konden — de firmware toetst ze apart in
+`test/test_routing_policy/test_routing_policy.cpp`.
+
+Hoe deze beslissingen in de volgorde van een repeatercyclus vallen, staat in
+[Repeater TX/RX flow](repeater-flow.md); het sequencediagram daar toont het
+verloop, deze sectie de regels.
+
 ### Stap voor stap
 
 Neem een repeater die regio `nl-ov-zwo` kent en het kanaal `#zwolle` níet. Het
@@ -534,3 +645,13 @@ hulpmiddelen — zie [Aan de Slag](../usage/getting-started.md).
 - [MeshCore firmware — `src/helpers/CommonCLI.cpp`](https://github.com/meshcore-dev/MeshCore/blob/main/src/helpers/CommonCLI.cpp)
 - [MeshCore firmware — `docs/cli_commands.md`](https://github.com/meshcore-dev/MeshCore/blob/main/docs/cli_commands.md)
 - [MeshCore firmware — `examples/companion_radio/MyMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/main/examples/companion_radio/MyMesh.cpp)
+
+Firmware, commit `d929643` (v1.17.1, 14 augustus 2026) — voor het
+routeringsbeleid:
+
+- [`src/helpers/RoutingPolicy.h`](https://github.com/meshcore-dev/MeshCore/blob/d929643/src/helpers/RoutingPolicy.h)
+  — de drie beslisfuncties en de twee opsommingen
+- [`examples/simple_repeater/MyMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/examples/simple_repeater/MyMesh.cpp)
+  — waar de repeater ze aanroept
+- [`examples/simple_room_server/MyMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/examples/simple_room_server/MyMesh.cpp)
+  — waar de room server ze aanroept

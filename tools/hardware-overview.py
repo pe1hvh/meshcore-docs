@@ -36,6 +36,10 @@ COMMIT = '03b6ef4'
 VERSIE = 'v1.16.0'
 DATUM = '28 juli 2026'
 
+# Hoofdstukken worden in fasen op een nieuwe pin gezet. Draai je het script
+# tegen een andere checkout dan de standaardpin, geef dan --pin, --versie en
+# --datum mee, zodat de kop zegt waar de cijfers vandaan komen.
+
 
 def is_commentaar(regel, pad):
     """Uitgecommentarieerd volgens de conventie van het bestandstype."""
@@ -117,6 +121,9 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument('--repo', required=True,
                    help='pad naar een uitgepakte MeshCore-kloon')
+    p.add_argument('--pin', default=COMMIT, help='commit die de kop noemt')
+    p.add_argument('--versie', default=VERSIE, help='firmwareversie in de kop')
+    p.add_argument('--datum', default=DATUM, help='datum van de commit')
     args = p.parse_args()
     repo = args.repo
 
@@ -125,7 +132,7 @@ def main():
         [d for d in os.listdir(os.path.join(repo, 'variants'))
          if os.path.isdir(os.path.join(repo, 'variants', d))])
 
-    print(f'hardware-overview.py — MeshCore {VERSIE}, commit {COMMIT}, {DATUM}')
+    print(f'hardware-overview.py — MeshCore {args.versie}, commit {args.pin}, {args.datum}')
     print('=' * 72)
     print(f'variantmappen: {aantal_mappen}')
 
@@ -187,27 +194,39 @@ def main():
     print('   eenheid: regels')
     print(f'   regels               {w.get("NullDisplayDriver", 0)}')
 
-    # ---- 7, 8 en 9. Knoppen, LEDs, zoemer ----------------------------------
-    kop('7. PIN_USER_BTN — hardware/peripherals/buttons-and-leds.md')
+    # ---- 7, 8, 9 en 9b. Knoppen, LEDs, zoemer, trilmotor -------------------
+    kop('7. PIN_USER_BTN — hardware/peripherals/feedback.md')
     print('   patroon: -D PIN_USER_BTN=, alleen platformio.ini')
     print('   eenheid: het hoofdstuk noemt beide; regels en bestanden verschillen')
     r, m, b, _ = tel(repo, r'-D\s*PIN_USER_BTN\s*=')
     print(f'   regels               {r}')
     print(f'   bestanden            {b}')
 
-    kop('8. LED-vlaggen — hardware/peripherals/buttons-and-leds.md')
+    kop('8. LED-vlaggen — hardware/peripherals/feedback.md')
     print('   patroon: -D <vlag>=, alleen platformio.ini')
     print('   eenheid: regels')
     for vlag in ('P_LORA_TX_LED', 'PIN_STATUS_LED', 'PIN_LED'):
         r, m, b, _ = tel(repo, rf'-D\s*{vlag}\s*=')
         print(f'   {vlag:<16} {r:>4} regels   {b:>3} bestanden')
 
-    kop('9. PIN_BUZZER — hardware/peripherals/buttons-and-leds.md')
+    kop('9. PIN_BUZZER — hardware/peripherals/feedback.md')
     print('   patroon: -D PIN_BUZZER=, alleen platformio.ini')
     print('   eenheid: regels én bestanden')
     r, m, b, _ = tel(repo, r'-D\s*PIN_BUZZER\s*=')
     print(f'   regels               {r}')
     print(f'   bestanden            {b}')
+
+    kop('9b. Trilmotor — hardware/peripherals/feedback.md')
+    print('   patroon: -D PIN_VIBRATION= en -D HAS_DRV2605=, alleen platformio.ini')
+    print('   eenheid: regels én bestanden')
+    for vlag in ('PIN_VIBRATION', 'HAS_DRV2605'):
+        r, m, b, _ = tel(repo, rf'-D\s*{vlag}\s*=')
+        print(f'   {vlag:<16} {r:>4} regels   {b:>3} bestanden')
+    r, mappen = tel_uitgecommentarieerd(repo, r'-D\s*PIN_VIBRATION\s*=')
+    print(f'   PIN_VIBRATION uitgecommentarieerd: {r} regels'
+          + (f'  ({", ".join(mappen)})' if mappen else ''))
+    print('   let op: een uitgecommentarieerde vlag telt nergens mee, ook niet')
+    print('   als de variant de bijbehorende .cpp wél meecompileert')
 
     kop('10. PIN_GPS_RX — hardware/peripherals/gps.md')
     print('   patroon: -D PIN_GPS_RX=, alleen platformio.ini')

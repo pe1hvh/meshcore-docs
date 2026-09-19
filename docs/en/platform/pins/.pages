@@ -1,0 +1,6 @@
+title: Pin assignments
+nav:
+  - esp32.md
+  - nrf52.md
+  - rp2040.md
+  - stm32wl.md

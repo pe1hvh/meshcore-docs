@@ -28,6 +28,10 @@ conventions, see [Regions: intent and practice](regions-in-practice.md).
 > — `src/helpers/RegionMap.cpp`, `src/helpers/TransportKeyStore.cpp`,
 > `src/helpers/CommonCLI.cpp`, `examples/simple_repeater/MyMesh.cpp`,
 > `examples/companion_radio/MyMesh.cpp`, and `docs/cli_commands.md`.
+> The two sections on routing policy have been verified against `MeshCore`
+> v1.17.1, commit `d929643`, 14 August 2026 — `src/helpers/RoutingPolicy.h`,
+> `examples/simple_repeater/MyMesh.{h,cpp}` and
+> `examples/simple_room_server/MyMesh.{h,cpp}`.
 > The packet layout these codes live in is described in
 > [MeshCore Packet Structure](packet-structure.md).
 
@@ -422,6 +426,112 @@ longer crosses the whole country.
 > temporarily closes regions from the outside in, without writing that to the
 > region configuration. See [Forks & variants](https://domca.nl/#analysis/forks-and-variants).
 
+### Since v1.17.1 the policy sits in a file of its own
+
+What is described above as behaviour has sat as explicit rules in
+`src/helpers/RoutingPolicy.h` since v1.17.1. That file runs to 68 lines and
+holds no class: three `inline` functions and two enums in `namespace mesh`.
+It is included by `examples/simple_repeater/MyMesh.h` r.37 and
+`examples/simple_room_server/MyMesh.h` r.24 — a repeater and a room server
+therefore use literally the same rules.
+
+| Function | Location | Outcomes |
+|---|---|---|
+| `isFloodHopLimitExceeded` | `src/helpers/RoutingPolicy.h` r.15 | three hop limits side by side |
+| `chooseReplyRoute` | `src/helpers/RoutingPolicy.h` r.39 | four ways to send a reply back |
+| `chooseReplyScope` | `src/helpers/RoutingPolicy.h` r.60 | three scopes for that reply |
+
+The three limits from the CLI table above are set against each other in the
+first function. They do not work one after the other but alongside each other:
+the packet dies on the first one it hits.
+
+`src/helpers/RoutingPolicy.h` r.15-22
+
+```cpp
+inline bool isFloodHopLimitExceeded(const Packet* packet, uint8_t flood_max,
+                                    uint8_t flood_max_unscoped, uint8_t flood_max_advert) {
+  uint8_t hops = packet->getPathHashCount();
+  if (hops >= flood_max) return true;
+  if (packet->getRouteType() == ROUTE_TYPE_FLOOD && hops >= flood_max_unscoped) return true;
+  if (packet->getPayloadType() == PAYLOAD_TYPE_ADVERT && hops >= flood_max_advert) return true;
+  return false;
+}
+```
+
+The second and the third rule are conditional. `flood_max_unscoped` counts
+only for `ROUTE_TYPE_FLOOD`, so for traffic without transport codes;
+`flood_max_advert` only for adverts. A scoped text message therefore only runs
+into `flood_max`, an unscoped advert into all three. The repeater calls this
+in `examples/simple_repeater/MyMesh.cpp` r.437, the room server in
+`examples/simple_room_server/MyMesh.cpp` r.303.
+
+### How a reply comes back
+
+Above it says that a repeater answering for itself does so with the same scope
+as the incoming request. That is the main rule, but two decisions sit
+underneath it, and since v1.17.1 they are named instead of implicit.
+
+The first is about the *route*: which way the reply travels back.
+
+`src/helpers/RoutingPolicy.h` r.39-44
+
+```cpp
+inline ReplyRoute chooseReplyRoute(bool inbound_is_flood, bool have_supplied_path, bool have_out_path) {
+  if (inbound_is_flood) return REPLY_ROUTE_PATH_RETURN;
+  if (have_supplied_path) return REPLY_ROUTE_DIRECT_SUPPLIED;
+  if (have_out_path) return REPLY_ROUTE_DIRECT_OUT_PATH;
+  return REPLY_ROUTE_FLOOD;
+}
+```
+
+| Outcome | When | What happens |
+|---|---|---|
+| `REPLY_ROUTE_PATH_RETURN` | the request arrived as a flood | the reply goes back as a PATH return, flooded |
+| `REPLY_ROUTE_DIRECT_SUPPLIED` | the request carried a return path itself | direct, along that supplied path |
+| `REPLY_ROUTE_DIRECT_OUT_PATH` | this server already has an `out_path` for this client | direct, along the stored path |
+| `REPLY_ROUTE_FLOOD` | none of the three | no return path known, so flood |
+
+A flood request therefore always yields a PATH return, even when the server
+already knows a path to that client. The path the request itself travelled is
+fresher than what sits in storage. The call is in
+`examples/simple_repeater/MyMesh.cpp` r.600.
+
+The second decision is about the *scope* of that reply, and only when it is
+flooded:
+
+`src/helpers/RoutingPolicy.h` r.60-66
+
+```cpp
+inline ReplyScope chooseReplyScope(bool request_scope_known, bool request_was_unscoped_flood,
+                                   bool default_scope_known) {
+  if (request_scope_known) return REPLY_SCOPE_REQUEST;
+  if (request_was_unscoped_flood) return REPLY_SCOPE_NONE;  // requester chose un-scoped, so mirror it
+  if (default_scope_known) return REPLY_SCOPE_DEFAULT;      // scope unknowable: DIRECT, or unresolved Region
+  return REPLY_SCOPE_NONE;
+}
+```
+
+The order of the three tests is itself policy, and not arbitrary. That the
+second rule sits before the third means: whoever asks unscoped gets an
+unscoped answer — even when this node has a usable default region. Mirroring
+comes before falling back. Were it the other way round, an unscoped request
+from another region would get a reply that stays stuck inside the answering
+node's own region, and then it never arrives.
+
+| Outcome | When |
+|---|---|
+| `REPLY_SCOPE_REQUEST` | the request arrived scoped and that region's key was recognised |
+| `REPLY_SCOPE_NONE` | the request arrived unscoped, or there is no usable scope at all |
+| `REPLY_SCOPE_DEFAULT` | the scope cannot be derived, but this node has a default region with a usable key |
+
+Both functions are pure: they read nothing and write nothing, they take three
+`bool`s and return an outcome. That is why they could live in a file of their
+own — the firmware tests them separately in
+`test/test_routing_policy/test_routing_policy.cpp`.
+
+How these decisions fall within the order of a repeater cycle is in
+[Repeater TX/RX flow](repeater-flow.md); the sequence diagram there shows the
+course of events, this section the rules.
 
 ### Step by step
 
@@ -534,5 +644,14 @@ For the practical side — which regions to configure and with what tools — se
 - [MeshCore firmware — `src/helpers/CommonCLI.cpp`](https://github.com/meshcore-dev/MeshCore/blob/main/src/helpers/CommonCLI.cpp)
 - [MeshCore firmware — `docs/cli_commands.md`](https://github.com/meshcore-dev/MeshCore/blob/main/docs/cli_commands.md)
 - [MeshCore firmware — `examples/companion_radio/MyMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/main/examples/companion_radio/MyMesh.cpp)
+
+Firmware, commit `d929643` (v1.17.1, 14 August 2026) — for the routing policy:
+
+- [`src/helpers/RoutingPolicy.h`](https://github.com/meshcore-dev/MeshCore/blob/d929643/src/helpers/RoutingPolicy.h)
+  — the three decision functions and the two enums
+- [`examples/simple_repeater/MyMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/examples/simple_repeater/MyMesh.cpp)
+  — where the repeater calls them
+- [`examples/simple_room_server/MyMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d929643/examples/simple_room_server/MyMesh.cpp)
+  — where the room server calls them
 
 Translated from Dutch by Anthropic Claude

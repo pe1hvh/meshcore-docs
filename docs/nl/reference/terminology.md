@@ -34,6 +34,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | CAD | Channel Activity Detection — functie van de LoRa-chip die vaststelt of er een LoRa-signaal op het kanaal is; zie `set cad` in [Radio](../cli/radio.md) |
 | Callsign | Roepnaam — unieke identificatie voor radioamateurs (bijv. PE1HVH) |
 | Cavity filter | Banddoorlaatfilter waarvan elke kring een kwartgolfresonator in een afgesloten metalen kast is. Hoogste Q en laagste invoegverlies van alle filtertypen, maar groot en zwaar. Het Nederlands kent geen eigen term; ook in Nederlandstalige praktijk heet dit filter cavity filter |
+| CC310 | Zie CryptoCell CC310 |
 | CCCD | Client Characteristic Configuration Descriptor — aan/uit schakelaar voor BLE Notify |
 | Channel | Gedeelde cryptografische sleutel (PSK) voor groepscommunicatie |
 | Chirp | Frequentiesweep van laag naar hoog (up-chirp) of hoog naar laag (down-chirp) |
@@ -47,6 +48,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | CP437 | De tekenset van de originele IBM-pc. MeshCore gebruikt er één teken uit, het volle blok `0xDB`, als vervanging voor elk niet-ASCII-teken op het scherm |
 | CR | Coding Rate — foutcorrectieniveau (4/5 tot 4/8), meer = betrouwbaarder |
 | CSS | Chirp Spread Spectrum — de modulatiemethode die LoRa gebruikt |
+| CryptoCell CC310 | Cryptografische versneller van Arm, ingebouwd in de nRF52840. MeshCore laat er op elke nRF52-build zes bewerkingen door uitvoeren in plaats van door de processor; zie [Private & Public Key Encryptie](../technical/key-encryption.md) |
 | dBd | Antennewinst ten opzichte van een halvegolf-dipool. De regelgeving op 868 MHz rekent hierin. `dBd = dBi − 2,15` |
 | dBi | Antennewinst ten opzichte van een isotrope straler — de gedachte antenne die in alle richtingen even hard straalt. Datasheets gebruiken meestal deze referentie |
 | dBm | Decibel-milliwatt — eenheid voor zendvermogen (14 dBm = 25 mW) |
@@ -166,6 +168,7 @@ Alfabetisch overzicht van alle technische termen en afkortingen in deze document
 | Routing | Het bepalen van de beste route voor een bericht door het netwerk |
 | RP2040 | Microcontroller van Raspberry Pi met twee Cortex-M0+-kernen; de enige MeshCore-chip zonder ingebouwde radio |
 | RSSI | Received Signal Strength Indicator — het ontvangen signaalniveau in dBm. MeshCore bemonstert het om zijn ruisvloer te bepalen |
+| RGB565 | Kleurcodering met 16 bits per pixel: 5 bits rood, 6 groen, 5 blauw. De kleurmodus van de NV3001B-schermdriver |
 | RTTTL | Ring Tone Text Transfer Language — het beltoonformaat van Nokia. MeshCore slaat zijn start- en afsluitgeluid erin op |
 | ruisvloer | Het ruisniveau waar een ontvanger doorheen moet luisteren. MeshCore meet het zelf over 64 monsters en kapt het af op −120 dBm |
 | SAW | Surface Acoustic Wave — filtertechniek waarbij het signaal als akoestische golf over een piëzo-substraat loopt; steile flanken in een kleine behuizing, met een beperkt vermogensbereik |
