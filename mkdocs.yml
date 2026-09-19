@@ -98,13 +98,13 @@ nav:
           - nl/technical/roomserver/posts-and-sync.md
           - nl/technical/roomserver/requests-and-cli.md
           - nl/technical/roomserver/limits-and-todos.md
-          - nl/technical/key-encryption.md
-          - nl/technical/channel-structure.md
-          - nl/technical/remote-control.md
-          - nl/technical/route-tracing.md
-          - nl/technical/repeater-flow.md
-          - nl/technical/sensecap-dfu.md
-          - nl/technical/dead-zone.md
+      - nl/technical/key-encryption.md
+      - nl/technical/channel-structure.md
+      - nl/technical/remote-control.md
+      - nl/technical/route-tracing.md
+      - nl/technical/repeater-flow.md
+      - nl/technical/sensecap-dfu.md
+      - nl/technical/dead-zone.md
   - Ontwerp (Node):
       - nl/design/introduction.md
       - Logisch ontwerp:

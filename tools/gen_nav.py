@@ -24,7 +24,7 @@ from pathlib import Path
 
 GROUP_RE = re.compile(r"^##\s+(?P<title>.+?)\s*$")
 BOLD_RE = re.compile(r"^\s*-\s+\*\*(?P<title>[^*]+)\*\*")
-LINK_RE = re.compile(r"^\s*-\s+\[(?P<label>[^\]]+)\]\((?P<href>[^)#]+\.md)\)")
+LINK_RE = re.compile(r"^(?P<indent>\s*)-\s+\[(?P<label>[^\]]+)\]\((?P<href>[^)#]+\.md)\)")
 TOP_FILES = ("README.md", "reading-guide.md")
 
 
@@ -45,6 +45,11 @@ def parse(readme: Path):
         m = LINK_RE.match(raw)
         if not m or not groups:
             continue
+        # Een niet-ingesprongen regel staat weer op het niveau van de groep:
+        # de subkop erboven is daarmee afgesloten. Zonder deze regel slikt
+        # een subkop als "Room Server" de rest van het hoofdstuk op.
+        if not m.group("indent"):
+            sub = None
         href = m.group("href").strip()
         if href.startswith("../") or href.startswith("http") or "/" not in href:
             continue
