@@ -5,7 +5,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
 
 ---
 
-## [Unreleased]
+## [2026-09-19] Re-verify against MeshCore v1.17.1 (d929643)
 
 ### Added
 
