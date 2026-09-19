@@ -9,6 +9,13 @@ was derived from the source code itself; the official release notes were used as
 an index, not as evidence.
 
 > [!NOTE]
+> **Mind the wording around `UIColor`.** The official release table calls this
+> "a new colour scheme on the companion UI". That does not cover it: a scheme
+> is a fixed set of colours, whereas `UIColor` is a list of nine roles
+> *without* values which every screen driver fills in separately. This
+> documentation therefore does not use the term colour scheme for it.
+
+> [!NOTE]
 > **Source.** This page was verified against the firmware itself: `MeshCore`
 > v1.17.1, commit `d929643`, 14 August 2026, compared with the previous pin
 > `03b6ef4` of 28 July 2026. The comparison can be reproduced with
@@ -36,19 +43,22 @@ and 1,783 removed. By topic, with the evidence in the source:
 
 | Topic | Evidence | Chapter |
 |---|---|---|
-| Configuration in JSON, in `/prefs.json` | `src/helpers/ConfigSerializer.{h,cpp}` new; `CommonCLI.cpp` r.30–47 | [CLI reference](../cli/introduction.md) |
-| `get`/`set cad` — hardware CAD before transmitting | `CommonCLI.cpp` r.470, r.818 | [Radio](../cli/radio.md) |
-| `get`/`set radio.fem.rxgain` and `radio.fem.txgain` | `CommonCLI.cpp` r.544, r.566, r.847, r.853 | [Radio](../cli/radio.md) |
-| `get`/`set extra.sf`, `set` only in `USE_LR2021` builds | `CommonCLI.cpp` r.780, r.976 | [Radio](../cli/radio.md) |
-| `radio.rxgain` no longer behind a build option; the room server now applies it too | `CommonCLI.cpp` r.535; `simple_room_server/MyMesh.cpp` r.727 | [Radio](../cli/radio.md) |
+| Configuration in JSON, in `/prefs.json` | `src/helpers/ConfigSerializer.{h,cpp}` new; `src/helpers/CommonCLI.cpp` r.30–47 | [CLI reference](../cli/introduction.md) |
+| `cad` — hardware CAD before transmitting, through `get`/`set` | `src/helpers/CommonCLI.cpp` r.470, r.818 | [Radio](../cli/radio.md) |
+| `radio.fem.rxgain` and `radio.fem.txgain`, settable and readable | `src/helpers/CommonCLI.cpp` r.544, r.566, r.847, r.853 | [Radio](../cli/radio.md) |
+| `extra.sf`, readable in every build but settable only in LR2021 builds | writing sits behind `USE_LR2021` at `src/helpers/CommonCLI.cpp` r.779, with the setter at r.780 and the getter at r.976 | [Radio](../cli/radio.md) |
+| `radio.rxgain` no longer behind a build option; the room server now applies it too | `src/helpers/CommonCLI.cpp` r.535; `examples/simple_room_server/MyMesh.cpp` r.727 | [Radio](../cli/radio.md) |
 | `eth.status` and Ethernet support (RAK13800, CH390, serial) | `src/helpers/ethernet/`, `nrf52/EthernetCLI.h` new | [Ethernet](../cli/ethernet.md) |
-| Advert name truncated at a UTF-8 code point boundary | `AdvertDataHelpers.cpp` r.21, `UTF8Helpers.h` new | [System](../cli/system.md) |
-| `room.post` — a room server posts a message itself | `simple_room_server/MyMesh.cpp` r.977 | not yet covered |
-| LR2021 radio | `src/helpers/radiolib/CustomLR2021.h` new | not yet covered |
-| Up to four serial interfaces side by side on the companion | `src/helpers/MultiSerialInterface.h` new | not yet covered |
-| Hardware crypto (CC310) on nRF52 | `nRFCrypto` in four files, nowhere in `03b6ef4` | not yet covered |
-| New colour scheme on the companion UI | `UIColor` in 32 files, nowhere in `03b6ef4` | not yet covered |
-| Nine new variants: `heltec_tower_v2`, `heltec_rc32`, `heltec_v4_r8`, `meshnology_w12`, `meshtracker_x1`, `nibble_zero_connect`, `station_g3_esp32`, `thinknode_m7`, `thinknode_m9` | new directories under `variants/` | not yet covered |
+| Advert name truncated at a UTF-8 code point boundary | `src/helpers/AdvertDataHelpers.cpp` r.21, `UTF8Helpers.h` new | [System](../cli/system.md) |
+| `room.post` — a room server posts a message itself | `examples/simple_room_server/MyMesh.cpp` r.977 | [Requests and CLI](../technical/roomserver/requests-and-cli.md) |
+| LR2021 radio | `src/helpers/radiolib/CustomLR2021.h` new | [The LR2021](../hardware/radio/lr2021.md) |
+| Up to four serial interfaces side by side on the companion | `src/helpers/MultiSerialInterface.h` new | [The three transports](../companion/technical/transports.md) |
+| Hardware crypto (CC310) on nRF52, for every nRF52 build | `nRFCrypto` in four files, nowhere in `03b6ef4` | [Private & Public Key Encryption](../technical/key-encryption.md) |
+| Colour as a role on the companion UI: nine roles every screen driver fills in itself | `UIColor` in 32 files, nowhere in `03b6ef4` | [The Display](../hardware/peripherals/display.md) |
+| Routing policy in a file of its own: three hop limits, four reply routes, three reply scopes | `src/helpers/RoutingPolicy.h` new, 68 lines; included by `examples/simple_repeater/MyMesh.h` r.37 and `examples/simple_room_server/MyMesh.h` r.24 | [Regions and Scopes](../technical/regions-and-scopes.md) |
+| Screen driver NV3001B, the only one that scales up the UI coordinates | `src/helpers/ui/NV3001BDisplay.{h,cpp}` new; `variants/heltec_rc32/` | [The Display](../hardware/peripherals/display.md) |
+| Vibration through a DRV2605 driver chip, beside the existing pin control | `src/helpers/ui/DRV2605Vibration.h` new; `GenericVibration.h` already existed | [Feedback](../hardware/peripherals/feedback.md) |
+| Nine new variants: `heltec_tower_v2`, `heltec_rc32`, `heltec_v4_r8`, `meshnology_w12`, `meshtracker_x1`, `nibble_zero_connect`, `station_g3_esp32`, `thinknode_m7`, `thinknode_m9` | new directories under `variants/` | partly: five are in [Node Matrix](../platform/node-matrix.md), `heltec_rc32` in [ESP32](../platform/pins/esp32.md) and [The Display](../hardware/peripherals/display.md); `heltec_v4_r8`, `meshnology_w12` and `nibble_zero_connect` not yet |
 
 Two items from the v1.17.0 release notes were already in the previous pin and
 are therefore not a change for this documentation: `get pwrmgt.bootreason` and
@@ -68,11 +78,13 @@ The comparison removes three files, none of them a function of a node:
 | `variants/minewsemi_me25ls01/NullDisplayDriver.h` | moved to the shared `src/helpers/ui/NullDisplayDriver.cpp` |
 | `variants/wio-e5-mini/NullDisplayDriver.h` | the same |
 
-Within this documentation something was dropped: the page *After the pinned
-commit*. It described the commands that existed only on `main` — `cad`,
-`radio.fem.rxgain`, `radio.fem.txgain`, `extra.sf` and `eth.status`. All five
-belong to v1.17.1 and are now on [Radio](../cli/radio.md) and
-[Ethernet](../cli/ethernet.md).
+Within this documentation the page *After the pinned commit* was taken out of
+the table of contents. It described the commands that existed only on `main` —
+`cad`, `radio.fem.rxgain`, `radio.fem.txgain`, `extra.sf` and `eth.status`.
+All five belong to v1.17.1 and are now on [Radio](../cli/radio.md) and
+[Ethernet](../cli/ethernet.md). The file `cli/after-pinned-commit.md` is still
+present in both language trees, with no reference from a README and no place
+in the menu; removing it awaits an explicit instruction.
 
 ## What is still on the old pin
 
@@ -82,24 +94,31 @@ belong to v1.17.1 and are now on [Radio](../cli/radio.md) and
 > `03b6ef4` in their own `Source.` block and have not been re-checked. Go by
 > the source block at the top of each chapter, not by this page.
 
-Verified against v1.17.1:
+Twenty-three chapters per language name `d929643` in their source block.
+Reproducible with `grep -rl d929643 docs/en --include='*.md'`.
 
-| Chapter | What was updated |
+| Section | Chapters on `d929643` |
 |---|---|
-| [CLI reference](../cli/introduction.md) | line numbers, JSON configuration, defaults, deviation table |
-| [Radio](../cli/radio.md) | four new commands, `radio.rxgain` corrected |
-| [System](../cli/system.md) | line numbers, name length and UTF-8 truncation |
-| [Ethernet](../cli/ethernet.md) | new chapter |
+| CLI reference | [CLI reference](../cli/introduction.md), [Radio](../cli/radio.md), [System](../cli/system.md), [Ethernet](../cli/ethernet.md) |
+| Technical | [Private & Public Key Encryption](../technical/key-encryption.md)°, [Regions and Scopes](../technical/regions-and-scopes.md)°, [Requests and CLI](../technical/roomserver/requests-and-cli.md) |
+| Hardware | [The LoRa Transceiver](../hardware/radio/sx1262.md), [The LR2021](../hardware/radio/lr2021.md), [The Display](../hardware/peripherals/display.md), [Feedback](../hardware/peripherals/feedback.md) |
+| Platform | [MeshCore Platforms](../platform/platforms.md), [The Four Platform Families](../platform/platform-families.md), [Node Matrix](../platform/node-matrix.md) and the four pin layouts |
+| Node design | [The class model](../design/technical/class-model.md), [Compile-time configuration](../design/technical/configuration.md), [Platform realisation](../design/technical/platform-realisation.md)° |
+| Companion design | [The three transports](../companion/technical/transports.md) |
+| Project | this page |
+
+° Partly: the source block of that chapter says which sections were verified
+against `d929643` and which text is still on the old pin.
 
 Not yet re-verified, measured with
 [`tools/diff-impact.py`](https://github.com/pe1hvh/meshcore-docs/blob/main/tools/diff-impact.py):
-83 of the 114 chapters per language name at least one file in their source block
-that changed between `03b6ef4` and `d929643`. Five of those are the chapters
-listed above plus this page; the remaining 78 are still on the old pin. A
-changed source file is not proof that the text is wrong, but it is the list that
-has to be worked through. The main concentrations are
-`design/technical/class-model.md`, the `platform/` section and the `companion/`
-section.
+87 of the 119 chapters per language name at least one file in their source block
+that changed between `03b6ef4` and `d929643`. Nineteen of those are in the table
+above; the remaining 68 are still on the old pin. A changed source file is not
+proof that the text is wrong, but it is the list that has to be worked through.
+The main concentrations are now [Direct
+Messages](../technical/direct-messages.md), the remaining `cli/` chapters and
+the `companion/` section.
 
 ## Sources
 

@@ -5,6 +5,143 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
 
 ---
 
+## [2026-09-20] Re-verify against MeshCore v1.17.1 part 2 (d929643)
+
+### Added
+
+- `nl/technical/key-encryption.md` <-> `en/technical/key-encryption.md`: section
+  *Hardwarecrypto op nRF52* / *Hardware crypto on nRF52*, covering the CryptoCell
+  CC310. The chapter had neither a `Bron.` block nor a `## Bronnen` section; both
+  were added, scoped to the part that was actually verified. The section states
+  that `USE_CC310_HW_CRYPTO` sits in `[nrf52_base]` in the root `platformio.ini`
+  and therefore applies to every nRF52 build rather than to one board, lists the
+  six operations that move to hardware, writes out the Ed25519 verification with
+  the stack reasoning the firmware itself gives (~3 kB software against 600-700
+  bytes hardware, against a 4 kB loop task stack), and states that the CC310
+  random output is XORed with the radio noise instead of replacing it.
+- `nl/technical/regions-and-scopes.md` <-> `en/technical/regions-and-scopes.md`:
+  two sections under *Hoe een repeater beslist* / *How a repeater decides*,
+  documenting `src/helpers/RoutingPolicy.h`: the three hop limits that apply
+  alongside each other, the four reply routes and the three reply scopes,
+  including why mirroring an unscoped request comes before falling back to the
+  node's own default region. `technical/repeater-flow.md` was deliberately left
+  untouched; the new text cross-references it.
+- `nl/hardware/peripherals/display.md` <-> `en/hardware/peripherals/display.md`:
+  sections on `UIColor` and on the NV3001B screen driver. `UIColor` is described
+  as a list of nine roles that twelve screen drivers each fill in separately, not
+  as a colour scheme. The NV3001B section keeps the three pairs of dimensions
+  apart (panel 128x220 portrait, screen 220x128 landscape, logical area 128x64)
+  and names the scaling as the distinguishing property.
+- `docs/images/nl/display-2.svg` and `docs/images/en/display-2.svg`: the logical
+  area, the screen and the logical area stretched across the screen, drawn to
+  scale against each other, with a 4x2 grid that is square in the logical area
+  and taller than wide on the screen.
+- `tools/display-scaling.py`: reproduces `display-2.svg` in both languages. It
+  reads the style block from `.claude/skills/diagram/assets/style-block.txt`, so
+  the colour variables and the dark-mode block have a single source.
+- `nl/hardware/peripherals/feedback.md` <->
+  `en/hardware/peripherals/feedback.md`: the *Trillen* / *Vibration* section was
+  extended from four lines to a full section covering both implementations,
+  `GenericVibration` and the new `DRV2605Vibration`.
+- `tools/hardware-overview.py`: section 9b counts `PIN_VIBRATION` and
+  `HAS_DRV2605`, and reports the commented-out `PIN_VIBRATION` line separately so
+  that the difference between "supported" and "enabled" stays visible. The script
+  also takes `--pin`, `--versie` and `--datum`, so its header states which commit
+  the figures come from when it is run against a checkout other than the default
+  pin.
+- `nl/design/technical/platform-realisation.md` <->
+  `en/design/technical/platform-realisation.md`: a cross-reference to the CC310
+  section at the nRF52 family.
+- `nl/reference/terminology.md` <-> `en/reference/terminology.md`: CC310 as a
+  pointer entry, CryptoCell CC310 and RGB565, introduced by the new sections.
+
+### Changed
+
+- `nl/hardware/peripherals/buttons-and-leds.md` <->
+  `en/hardware/peripherals/buttons-and-leds.md` renamed to `feedback.md` in both
+  language trees, with the titles *Terugkoppeling* / *Feedback*. The chapter
+  already covered buttons, LEDs and RTTTL melodies; with vibration added it
+  describes the whole of the feedback a node gives its user, and the old title no
+  longer covered that. Both `README.md` indexes, both
+  `hardware/peripherals/.pages` files and the `nav:` block in `mkdocs.yml` point
+  at the new path. The diagram keeps its name `buttons-and-leds-1.svg`, because
+  `.claude/rules/IMAGES.md` states that image files are never moved or renamed;
+  the chapter carries a note saying so, so that a later reader does not take the
+  divergence for a mistake.
+- `nl/hardware/peripherals/display.md` <-> `en/hardware/peripherals/display.md`:
+  the driver overview was recounted against `d929643`. 205 uncommented
+  `-D DISPLAY_CLASS=` lines over 65 variant files instead of 164 over 57, twelve
+  drivers instead of eleven, `SSD1306Display` from 88 to 110 and
+  `NullDisplayDriver` from 15 to 26. Adding only the `NV3001BDisplay` row would
+  have left the table half on the old pin. Subtitle, introduction and the alt
+  text follow.
+- `docs/images/nl/display-1.svg` and `docs/images/en/display-1.svg` rebuilt for
+  the same reason: twelve implementations, the new counts, and the `viewBox`
+  height from 400 to 420 for the seventh SPI row. The counts are now separate
+  right-aligned text elements instead of space-padded strings, because SVG
+  collapses consecutive spaces and the columns never lined up.
+- `nl/hardware/peripherals/feedback.md` <->
+  `en/hardware/peripherals/feedback.md`: flag counts recounted against
+  `d929643` — `PIN_USER_BTN` 47 files and 50 lines (`rak4631` sets it four
+  times), `P_LORA_TX_LED` 49/45, `PIN_STATUS_LED` 9/9, `PIN_BUZZER` 18 files and
+  26 lines.
+- `nl/project/release-v1-17-1.md` <-> `en/project/release-v1-17-1.md`: the *what
+  is new* table now points every topic at its chapter. `room.post`, the LR2021
+  radio and `MultiSerialInterface` still said *not yet covered* while they had
+  already been written; CC310 and `UIColor` moved to their new chapters; three
+  rows were added for the routing policy, the NV3001B driver and the vibration.
+  The *verified against v1.17.1* table was replaced by the measured state: 23
+  chapters per language name `d929643`, not five. A note explains why this
+  documentation does not use the term colour scheme for `UIColor`.
+- `nl/reading-guide.md` <-> `en/reading-guide.md`: 119 chapters per language
+  instead of 117, and 82 SVGs of which 78 diagrams instead of 81 of which 77.
+- `docs/{nl,en}/cli/.pages`, `docs/{nl,en}/hardware/radio/.pages`,
+  `docs/{nl,en}/platform/.pages` and the new `docs/{nl,en}/platform/pins/.pages`:
+  regenerated by `tools/gen_nav_pages.py`. These were drift from earlier
+  sessions, not part of this assignment; the generator picks them up because the
+  README is its only source.
+- Source blocks re-pinned to `d929643` in `display.md`, `feedback.md` and,
+  scoped to the new sections, in `key-encryption.md`, `regions-and-scopes.md` and
+  `platform-realisation.md`.
+
+### Removed
+
+- `nl/hardware/peripherals/buttons-and-leds.md` <->
+  `en/hardware/peripherals/buttons-and-leds.md`: the old path no longer exists.
+  The chapter itself was not removed but continues as `feedback.md`; see
+  *Changed*. A ZIP delivery cannot express a rename, so `hernoem-bestanden.sh`
+  accompanies this change and has to be run from the repository root before the
+  ZIP is applied.
+
+### Fixed
+
+- `nl/hardware/peripherals/display.md` <-> `en/hardware/peripherals/display.md`:
+  the section *Kleur op een zwart-wit scherm* / *Colour on a black-and-white
+  screen* quoted `enum Color` from `src/helpers/ui/DisplayDriver.h` r.11. On
+  `d929643` that enumeration sits at r.19 and is commented out; r.11 is now part
+  of `UIColor`. The section was replaced by the `UIColor` section, which names
+  the commented-out line for what it is. Shifted citations corrected in the same
+  chapter: `DisplayDriver.h` r.47-60 to r.55-68 and r.79-86 to r.87-94,
+  `SSD1306Display.cpp` r.11 and r.23-24 to r.22 and r.33-35, and the
+  `NullDisplayDriver.h` r.5-14 excerpt, whose `startFrame` signature changed from
+  `Color bkg = DARK` to `ColorVal bkg = UIColor::window_bkg`.
+- `nl/hardware/peripherals/feedback.md` <->
+  `en/hardware/peripherals/feedback.md`: citation `src/helpers/ESP32Board.h`
+  r.39-42 corrected to r.40-43.
+- `nl/design/technical/platform-realisation.md` <->
+  `en/design/technical/platform-realisation.md`: citation
+  `src/helpers/ESP32Board.h` r.160 for `ESP32RTCClock` corrected to r.200.
+- `nl/project/release-v1-17-1.md` <-> `en/project/release-v1-17-1.md`: the page
+  stated that the chapter *Na de gepinde commit* / *After the pinned commit* had
+  been dropped. The file `cli/after-pinned-commit.md` is still present in both
+  language trees; it is out of the table of contents and out of the menu, but not
+  gone. The text now says that, and notes that deleting it awaits an explicit
+  instruction. The figures 83 of 114 chapters and 78 on the old pin were also
+  stale; `tools/diff-impact.py` now reports 87 of 119, of which 19 are on the new
+  pin and 68 on the old one.
+
+---
+
 ## [2026-09-19] Re-verify against MeshCore v1.17.1 (d929643)
 
 ### Added

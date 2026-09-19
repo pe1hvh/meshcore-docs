@@ -12,6 +12,11 @@ made says something about how support has grown.
 > v1.16.0, commit `03b6ef4`, 28 July 2026 — `src/helpers/IdentityStore.h`,
 > `src/helpers/ESP32Board.h`, `src/helpers/NRF52Board.h`,
 > `src/helpers/stm32/STM32Board.h` and the board classes in `variants/`.
+> Two points have since been rechecked against `MeshCore` v1.17.1, commit
+> `d929643`, 14 August 2026: the location of `ESP32RTCClock` in
+> `src/helpers/ESP32Board.h`, and the hardware crypto of the nRF52 family in
+> `platformio.ini`. The remaining counts on this page are still on the old
+> pin.
 
 ## Storage is the dividing line
 
@@ -103,6 +108,14 @@ STM32 makes do with 44 lines in one header and has no `.cpp` at all. There are
 16 targets, all on the same SoC family, with the same radio on them — there is
 little to vary.
 
+Since v1.17.1 a second nRF52 property joins that, one no other family has:
+there, the cryptography does not run over the processor but over the
+CryptoCell CC310. The build flag `USE_CC310_HW_CRYPTO` sits in `[nrf52_base]`
+in the `platformio.ini` at the repository root and therefore holds for every
+nRF52 build, not for a single board. Which six operations move, and why the
+signature check was the reason, is in
+[Private & Public Key Encryption](../../technical/key-encryption.md).
+
 ## What else a family shares
 
 Besides the board class, ESP32, nRF52 and STM32 each have their own directory
@@ -126,7 +139,7 @@ straight across the families:
 
 | Implementation | Location | When |
 |---|---|---|
-| `ESP32RTCClock` | `src/helpers/ESP32Board.h` r.160 | ESP32 with an internal RTC |
+| `ESP32RTCClock` | `src/helpers/ESP32Board.h` r.200 | ESP32 with an internal RTC |
 | `AutoDiscoverRTCClock` | `src/helpers/AutoDiscoverRTCClock.h` r.7 | Board with an RTC chip on I²C |
 | `VolatileRTCClock` | `src/helpers/ArduinoHelpers.h` r.6 | Board without an RTC |
 

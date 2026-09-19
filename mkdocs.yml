@@ -160,7 +160,7 @@ nav:
       - Randapparatuur:
           - nl/hardware/peripherals/display.md
           - nl/hardware/peripherals/gps.md
-          - nl/hardware/peripherals/buttons-and-leds.md
+          - nl/hardware/peripherals/feedback.md
   - Libraries:
       - nl/libraries/introduction.md
       - nl/libraries/dependencies.md

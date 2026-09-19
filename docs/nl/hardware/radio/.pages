@@ -1,6 +1,7 @@
 title: Radio
 nav:
   - sx1262.md
+  - lr2021.md
   - antenna.md
   - link-budget.md
   - filters.md

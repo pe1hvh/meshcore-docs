@@ -103,7 +103,7 @@ vraagt en waar je het beste begint.
 - **Randapparatuur** — `hardware/peripherals/`
   - [Het scherm](hardware/peripherals/display.md)
   - [GPS](hardware/peripherals/gps.md)
-  - [Knoppen en LED's](hardware/peripherals/buttons-and-leds.md)
+  - [Terugkoppeling](hardware/peripherals/feedback.md)
 
 ## Libraries
 
