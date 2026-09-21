@@ -5,6 +5,21 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
 
 ---
 
+## [2026-09-21] Nested lists on the landing page
+
+### Fixed
+
+- `nl/README.md` <-> `en/README.md`: the sub-items under the subgroups (Room
+  Server, Logisch ontwerp / Logical design, Technisch ontwerp / Technical design,
+  Pinbezetting / Pin assignment, Radio, Interfaces, Randapparatuur / Peripherals,
+  Kernlibraries / Core libraries, Ondersteunende libraries / Supporting libraries)
+  were indented by 2 spaces. Python-Markdown, which MkDocs uses, only nests a list
+  at 4 spaces, so the landing page rendered them at the top level while the
+  navigation on the left showed them nested. Indentation raised to 4 spaces
+  (60 lines per language); no text changed.
+
+---
+
 ## [2026-09-20] Re-verify against MeshCore v1.17.1 part 2 (d929643)
 
 ### Added
