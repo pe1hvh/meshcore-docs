@@ -5,6 +5,24 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
 
 ---
 
+## [2026-09-23] Fix line spacing
+
+### Fixed
+
+- `nl/usage/regulations.md` <-> `en/usage/regulations.md`,
+  `nl/technical/channel-structure.md` <-> `en/technical/channel-structure.md` and
+  `nl/technical/route-tracing.md`: the separator lines made of `═` or `─`
+  characters (42 in total: 9+9, 7+7 and 10) did not shrink with the screen.
+  The browser treats such a run as a single word without a break point, so on a
+  narrow screen it stuck out of the text column and made the whole page wider.
+  New `tools/line-hook.py`, enabled under `hooks:` in `mkdocs.yml`, wraps each
+  such line inside a paragraph in `<span class="domca-lijn">` at build time;
+  `docs/stylesheets/extra.css` clips that span at the column width. Code blocks
+  are not touched. No markdown file changed, so the files read the same on
+  GitHub.
+
+---
+
 ## [2026-09-21] Nested lists on the landing page
 
 ### Fixed

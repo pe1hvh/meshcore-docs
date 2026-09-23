@@ -74,3 +74,19 @@
    Alleen een lijn erboven? Haal dan ook `border-bottom:` weg.
 
    Geleidelijn niet gewenst? Haal het blok met `border-left:` weg. */
+
+/* ---- lijnregels in de tekst ----
+
+   Losse regels van ═ of ─ tekens (regulations, channel-structure,
+   route-tracing) zijn voor de browser één woord zonder breekpunt en duwden
+   de pagina op een smal scherm breder dan de kolom. tools/line-hook.py
+   zet er bij de build een span om; hier wordt die op de kolombreedte
+   afgekapt. Op een breed scherm verandert er niets. */
+
+.md-typeset .domca-lijn {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: bottom;
+}
