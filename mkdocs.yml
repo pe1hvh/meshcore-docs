@@ -30,6 +30,9 @@ theme:
 extra_css:
   - stylesheets/extra.css
 
+hooks:
+  - tools/line-hook.py
+
 plugins:
   - search:
       lang: [nl, en]
