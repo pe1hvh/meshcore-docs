@@ -11,7 +11,7 @@ asks of you.
 ## What is here
 
 The documentation holds 119 chapters in Dutch and the same 119 in English,
-with 82 SVGs per language: 78 diagrams and four board drawings from an
+with 84 SVGs per language: 80 diagrams and four board drawings from an
 external source. The chapter count is the number of `.md` files
 per language tree excluding the `README.md` indexes; the diagram count is the
 number of SVGs a chapter references, not the number of files in `images/`.

@@ -11,7 +11,7 @@ go.
 
 > [!NOTE]
 > **Source.** This page has been verified against the firmware itself:
-> `MeshCore` v1.16.0, commit `03b6ef4`, 28 July 2026 — files
+> `MeshCore` v1.17.1, commit `d929643`, 14 August 2026 — files
 > `src/helpers/BaseSerialInterface.h` and
 > `examples/companion_radio/MyMesh.cpp`. The byte layout of the transport
 > header is in [USB Serial](../../hardware/interfaces/usb-serial.md) and is
@@ -57,9 +57,6 @@ There is one frame size for all transports:
 #define MAX_FRAME_SIZE  176   // +4 for transport codes (region scoping)
 ```
 
-The comment refers to the four bytes a packet can carry extra for region
-scoping; see [Regions and Scopes](../../technical/regions-and-scopes.md).
-
 For a client there are two consequences. When sending you have to check
 yourself whether it fits — the firmware refuses what is too large, but only
 after it has already been sent. When receiving you must count on a
@@ -81,7 +78,7 @@ data rather than text — that overhead is fixed:
 Nine bytes of overhead, so 167 bytes of data. Offer more and you get an
 error back:
 
-`examples/companion_radio/MyMesh.cpp` r.1169-1171
+`examples/companion_radio/MyMesh.cpp` r.1183-1185
 
 ```cpp
     } else if (payload_len > MAX_CHANNEL_DATA_LENGTH) {
@@ -110,7 +107,7 @@ anyway, it has been solved case by case:
 That third case is the only one where the app has to split things itself.
 The node reports at `CMD_SIGN_START` how much it can take:
 
-`examples/companion_radio/MyMesh.cpp` r.1712-1717
+`examples/companion_radio/MyMesh.cpp` r.1732-1737
 
 ```cpp
   } else if (cmd_frame[0] == CMD_SIGN_START) {
@@ -121,7 +118,7 @@ The node reports at `CMD_SIGN_START` how much it can take:
     _serial->writeFrame(out_frame, 6);
 ```
 
-`MAX_SIGN_DATA_LEN` is 8 KiB (`MyMesh.cpp` r.137). The app sends that in
+`MAX_SIGN_DATA_LEN` is 8 KiB (`examples/companion_radio/MyMesh.cpp` r.137). The app sends that in
 chunks of at most 175 bytes with `CMD_SIGN_DATA` and closes with
 `CMD_SIGN_FINISH`.
 
@@ -142,11 +139,11 @@ frame as valid fields, or trigger a read error. See
 
 ## Sources
 
-Firmware, commit `03b6ef4` (v1.16.0, 28 July 2026):
+Firmware, commit `d929643` (v1.17.1, 14 August 2026):
 
-- [`src/helpers/BaseSerialInterface.h`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/src/helpers/BaseSerialInterface.h)
+- [`src/helpers/BaseSerialInterface.h`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/src/helpers/BaseSerialInterface.h)
   — `MAX_FRAME_SIZE`
-- [`examples/companion_radio/MyMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/examples/companion_radio/MyMesh.cpp)
+- [`examples/companion_radio/MyMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/examples/companion_radio/MyMesh.cpp)
   — `MAX_CHANNEL_DATA_LENGTH`, `MAX_SIGN_DATA_LEN`, the length checks
 
 Related chapters:

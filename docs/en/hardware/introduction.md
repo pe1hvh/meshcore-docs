@@ -11,7 +11,7 @@ into.
 
 > [!NOTE]
 > **Source.** This page has been verified against the firmware itself:
-> `MeshCore` v1.16.0, commit `03b6ef4`, 28 July 2026 — files
+> `MeshCore` v1.17.1, commit `d929643`, 14 August 2026 — files
 > `variants/heltec_v3/platformio.ini`, `variants/heltec_v3/target.h`,
 > `src/helpers/BaseSerialInterface.h`, `src/helpers/ui/DisplayDriver.h` and
 > `src/helpers/SensorManager.h`.
@@ -111,9 +111,11 @@ implementation per chip:
 | Sensors and GPS | `SensorManager` | `src/helpers/SensorManager.h` |
 | Button | `MomentaryButton` | `src/helpers/ui/MomentaryButton.h` |
 
-That `BaseSerialInterface` is a single abstraction for BLE, WiFi *and* USB
-is not a detail: to the firmware these are three implementations of the same
-notion — a connection carrying frames to a companion.
+That `BaseSerialInterface` is a single abstraction for BLE, WiFi, USB, a
+serial port on pins and Ethernet is not a detail: to the firmware these are
+implementations of the same notion — a connection carrying frames to a
+companion. Since v1.17.1 a companion can serve several of them at once; see
+[USB Serial](interfaces/usb-serial.md).
 
 ## The three subsections
 
@@ -163,17 +165,17 @@ documented elsewhere, and those counts are not repeated here:
 
 ## Sources
 
-Firmware, commit `03b6ef4` (v1.16.0, 28 July 2026):
+Firmware, commit `d929643` (v1.17.1, 14 August 2026):
 
-- [`variants/heltec_v3/platformio.ini`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/variants/heltec_v3/platformio.ini)
+- [`variants/heltec_v3/platformio.ini`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/variants/heltec_v3/platformio.ini)
   — pin definitions of the example board
-- [`variants/heltec_v3/target.h`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/variants/heltec_v3/target.h)
+- [`variants/heltec_v3/target.h`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/variants/heltec_v3/target.h)
   — which blocks that board instantiates
-- [`src/helpers/BaseSerialInterface.h`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/src/helpers/BaseSerialInterface.h)
-  — the shared abstraction for BLE, WiFi and USB serial
-- [`src/helpers/ui/DisplayDriver.h`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/src/helpers/ui/DisplayDriver.h)
+- [`src/helpers/BaseSerialInterface.h`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/src/helpers/BaseSerialInterface.h)
+  — the shared abstraction for BLE, WiFi, USB serial and Ethernet
+- [`src/helpers/ui/DisplayDriver.h`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/src/helpers/ui/DisplayDriver.h)
   — the abstraction covering all screen types
-- [`src/helpers/SensorManager.h`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/src/helpers/SensorManager.h)
+- [`src/helpers/SensorManager.h`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/src/helpers/SensorManager.h)
   — sensors and location providers
 
 Translated from Dutch by Anthropic Claude

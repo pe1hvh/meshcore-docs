@@ -11,7 +11,7 @@ community. Deze pagina zegt waar je begint en wat elke sectie van je vraagt.
 ## Wat hier staat
 
 De documentatie telt 119 hoofdstukken in het Nederlands en dezelfde 119 in het
-Engels, met 82 SVG's per taal, waarvan 78 diagrammen en vier boardtekeningen
+Engels, met 84 SVG's per taal, waarvan 80 diagrammen en vier boardtekeningen
 uit een externe bron. De hoofdstuktelling is het aantal
 `.md`-bestanden per taalboom zonder de `README.md`-indexen; de
 diagramtelling is het aantal SVG's waarnaar een hoofdstuk verwijst, niet het
