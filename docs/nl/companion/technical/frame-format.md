@@ -10,7 +10,7 @@ en legt tegelijk een harde grens op aan wat er in één keer overheen kan.
 
 > [!NOTE]
 > **Bron.** Deze pagina is geverifieerd tegen de firmware zelf:
-> `MeshCore` v1.16.0, commit `03b6ef4`, 28 juli 2026 — bestanden
+> `MeshCore` v1.17.1, commit `d929643`, 14 augustus 2026 — bestanden
 > `src/helpers/BaseSerialInterface.h` en
 > `examples/companion_radio/MyMesh.cpp`. De byte-indeling van de
 > transportheader staat in
@@ -57,10 +57,6 @@ Er is één framegrootte voor alle transporten:
 #define MAX_FRAME_SIZE  176   // +4 for transport codes (region scoping)
 ```
 
-Het commentaar verwijst naar de vier bytes die een pakket extra kan dragen
-om het tot een verspreidingsgebied te beperken (*region scoping*); zie
-[Regio's en Scopes](../../technical/regions-and-scopes.md).
-
 Voor een client zijn er twee gevolgen. Bij verzenden moet je zelf
 controleren of het past — de firmware weigert wat te groot is, maar pas
 nadat het al is verstuurd. Bij ontvangen moet je erop rekenen dat een
@@ -83,7 +79,7 @@ vastgelegd:
 Negen bytes overhead, dus 167 bytes gegevens. Wie meer aanbiedt, krijgt een
 fout terug:
 
-`examples/companion_radio/MyMesh.cpp` r.1169-1171
+`examples/companion_radio/MyMesh.cpp` r.1183-1185
 
 ```cpp
     } else if (payload_len > MAX_CHANNEL_DATA_LENGTH) {
@@ -112,7 +108,7 @@ het per geval opgelost:
 Dat derde geval is het enige waar de app zelf moet opdelen. De node meldt
 bij `CMD_SIGN_START` hoeveel hij aankan:
 
-`examples/companion_radio/MyMesh.cpp` r.1712-1717
+`examples/companion_radio/MyMesh.cpp` r.1732-1737
 
 ```cpp
   } else if (cmd_frame[0] == CMD_SIGN_START) {
@@ -123,7 +119,7 @@ bij `CMD_SIGN_START` hoeveel hij aankan:
     _serial->writeFrame(out_frame, 6);
 ```
 
-`MAX_SIGN_DATA_LEN` is 8 KiB (`MyMesh.cpp` r.137). De app stuurt dat in
+`MAX_SIGN_DATA_LEN` is 8 KiB (`examples/companion_radio/MyMesh.cpp` r.137). De app stuurt dat in
 brokken van maximaal 175 bytes met `CMD_SIGN_DATA` en sluit af met
 `CMD_SIGN_FINISH`.
 
@@ -144,11 +140,11 @@ veroorzaken. Zie [Het interactiemodel](../logical/interaction-model.md).
 
 ## Bronnen
 
-Firmware, commit `03b6ef4` (v1.16.0, 28 juli 2026):
+Firmware, commit `d929643` (v1.17.1, 14 augustus 2026):
 
-- [`src/helpers/BaseSerialInterface.h`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/src/helpers/BaseSerialInterface.h)
+- [`src/helpers/BaseSerialInterface.h`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/src/helpers/BaseSerialInterface.h)
   — `MAX_FRAME_SIZE`
-- [`examples/companion_radio/MyMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/examples/companion_radio/MyMesh.cpp)
+- [`examples/companion_radio/MyMesh.cpp`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/examples/companion_radio/MyMesh.cpp)
   — `MAX_CHANNEL_DATA_LENGTH`, `MAX_SIGN_DATA_LEN`, de lengtecontroles
 
 Verwante hoofdstukken:

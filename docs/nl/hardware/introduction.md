@@ -10,7 +10,7 @@ de drie groepen waarin de rest van de sectie is ingedeeld.
 
 > [!NOTE]
 > **Bron.** Deze pagina is geverifieerd tegen de firmware zelf:
-> `MeshCore` v1.16.0, commit `03b6ef4`, 28 juli 2026 — bestanden
+> `MeshCore` v1.17.1, commit `d929643`, 14 augustus 2026 — bestanden
 > `variants/heltec_v3/platformio.ini`, `variants/heltec_v3/target.h`,
 > `src/helpers/BaseSerialInterface.h`, `src/helpers/ui/DisplayDriver.h` en
 > `src/helpers/SensorManager.h`.
@@ -109,9 +109,11 @@ implementatie per chip:
 | Sensoren en GPS | `SensorManager` | `src/helpers/SensorManager.h` |
 | Knop | `MomentaryButton` | `src/helpers/ui/MomentaryButton.h` |
 
-Dat `BaseSerialInterface` één abstractie is voor BLE, WiFi én USB is geen
-detail: voor de firmware zijn dat drie implementaties van hetzelfde begrip —
-een verbinding waarover frames naar een companion gaan.
+Dat `BaseSerialInterface` één abstractie is voor BLE, WiFi, USB, een seriële
+poort op pinnen en Ethernet is geen detail: voor de firmware zijn dat
+implementaties van hetzelfde begrip — een verbinding waarover frames naar een
+companion gaan. Sinds v1.17.1 kan een companion er meerdere tegelijk
+bedienen; zie [USB-serieel](interfaces/usb-serial.md).
 
 ## De drie subsecties
 
@@ -161,15 +163,15 @@ staat ergens anders, en die tellingen worden hier niet herhaald:
 
 ## Bronnen
 
-Firmware, commit `03b6ef4` (v1.16.0, 28 juli 2026):
+Firmware, commit `d929643` (v1.17.1, 14 augustus 2026):
 
-- [`variants/heltec_v3/platformio.ini`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/variants/heltec_v3/platformio.ini)
+- [`variants/heltec_v3/platformio.ini`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/variants/heltec_v3/platformio.ini)
   — pindefinities van het voorbeeldbord
-- [`variants/heltec_v3/target.h`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/variants/heltec_v3/target.h)
+- [`variants/heltec_v3/target.h`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/variants/heltec_v3/target.h)
   — welke blokken dat bord instantieert
-- [`src/helpers/BaseSerialInterface.h`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/src/helpers/BaseSerialInterface.h)
-  — de gedeelde abstractie voor BLE, WiFi en USB-serieel
-- [`src/helpers/ui/DisplayDriver.h`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/src/helpers/ui/DisplayDriver.h)
+- [`src/helpers/BaseSerialInterface.h`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/src/helpers/BaseSerialInterface.h)
+  — de gedeelde abstractie voor BLE, WiFi, USB-serieel en Ethernet
+- [`src/helpers/ui/DisplayDriver.h`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/src/helpers/ui/DisplayDriver.h)
   — de abstractie waar alle schermtypes onder vallen
-- [`src/helpers/SensorManager.h`](https://github.com/meshcore-dev/MeshCore/blob/03b6ef4b0de98fc70b49ef10a6d0d61f8381fb7a/src/helpers/SensorManager.h)
+- [`src/helpers/SensorManager.h`](https://github.com/meshcore-dev/MeshCore/blob/d92964352441e53b93e8667b802e04f6e072b39e/src/helpers/SensorManager.h)
   — sensoren en locatiebronnen

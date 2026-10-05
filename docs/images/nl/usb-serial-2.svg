@@ -1,0 +1,96 @@
+<svg style="width:100%;margin:1rem 0" viewBox="0 0 680 840" xmlns="http://www.w3.org/2000/svg">
+<style>
+:root{--bg:#FFFFFF; --grid:#023E8A; --line:#0096C7; --wave:#0096C7; --node:#0077B6; --outer:#0096C7; --text-primary:#0a2540; --text-secondary:#3d6380; --text-muted:#7a9bb5; --link-color:#0077B6; --link-hover:#023E8A; --heading-color:#0077B6; --border-subtle:rgba(0,119,182,0.12); --card-bg:rgba(0,119,182,0.03); --card-border:rgba(0,119,182,0.12); --card-hover:rgba(0,119,182,0.07); --code-bg:rgba(0,119,182,0.04); --code-border:rgba(0,119,182,0.12); --info-bg:rgba(0,119,182,0.04); --info-border:rgba(0,119,182,0.15); --table-header:rgba(0,119,182,0.06); --table-row-alt:rgba(0,119,182,0.02); --table-border:rgba(0,119,182,0.1); --timeline-line:#0096C7; --timeline-dot:#0077B6; --tag-green:rgba(16,185,129,0.1); --tag-green-text:#059669; --tag-red:rgba(239,68,68,0.08); --tag-red-text:#dc2626; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}
+@media (prefers-color-scheme: dark){:root{--bg:#0A1628; --grid:#0077B6; --line:#0077B6; --wave:#48CAE4; --node:#00B4D8; --outer:#0077B6; --text-primary:#e0f0f8; --text-secondary:#8badc4; --text-muted:#4a6a80; --link-color:#48CAE4; --link-hover:#90E0EF; --heading-color:#48CAE4; --border-subtle:rgba(0,119,182,0.15); --card-bg:rgba(0,119,182,0.06); --card-border:rgba(0,119,182,0.15); --card-hover:rgba(0,119,182,0.12); --code-bg:rgba(0,119,182,0.08); --code-border:rgba(0,119,182,0.2); --info-bg:rgba(72,202,228,0.06); --info-border:rgba(72,202,228,0.2); --table-header:rgba(0,119,182,0.1); --table-row-alt:rgba(0,119,182,0.04); --table-border:rgba(0,119,182,0.12); --timeline-line:#0077B6; --timeline-dot:#00B4D8; --tag-green:rgba(16,185,129,0.15); --tag-green-text:#6ee7b7; --tag-red:rgba(239,68,68,0.12); --tag-red-text:#fca5a5; --flow-hw:#b45309; --flow-hw-edge:#92400e; --flow-hw-fill:#fef3c7; --flow-hw-tint:#fffbeb; --flow-hw-text-soft:#78350f; --flow-hw-text-italic:#a16207; --flow-hw-divider:#d6a55c; --flow-sw:#1e40af; --flow-sw-edge:#1e3a8a; --flow-sw-fill:#dbeafe; --flow-sw-tint:#eff6ff; --flow-sw-divider:#93b8ff; --flow-warn:#b91c1c; --flow-warn-fill:#fee2e2; --flow-ok:#15803d; --flow-ink:#1c1917; --flow-ink-soft:#57534e; --flow-ink-mute:#78716c; --flow-bg-wait:#fafaf7; --flow-interface-bg:#f5f5f4; --flow-paper:#ffffff;}}
+</style>
+<defs><marker id="u" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--line)"/></marker><marker id="l" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="var(--flow-hw)"/></marker></defs>
+<rect x="0" y="0" width="680" height="840" fill="var(--bg)"/>
+<title>Verkeer tussen app en companion-node over USB</title>
+<rect x="15" y="14" width="150" height="34" rx="6" fill="var(--card-bg)" stroke="var(--node)" stroke-width="1.5"/>
+<text x="90" y="36" text-anchor="middle" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="13" font-weight="600">App</text>
+<line x1="90" y1="48" x2="90" y2="796" stroke="var(--text-muted)" stroke-width="1" stroke-dasharray="3 4"/>
+<rect x="270" y="14" width="150" height="34" rx="6" fill="var(--card-bg)" stroke="var(--node)" stroke-width="1.5"/>
+<text x="345" y="36" text-anchor="middle" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="13" font-weight="600">Companion-node</text>
+<line x1="345" y1="48" x2="345" y2="796" stroke="var(--text-muted)" stroke-width="1" stroke-dasharray="3 4"/>
+<rect x="515" y="14" width="150" height="34" rx="6" fill="var(--card-bg)" stroke="var(--node)" stroke-width="1.5"/>
+<text x="590" y="36" text-anchor="middle" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="13" font-weight="600">Repeater</text>
+<line x1="590" y1="48" x2="590" y2="796" stroke="var(--text-muted)" stroke-width="1" stroke-dasharray="3 4"/>
+<rect x="12" y="64" width="656" height="24" rx="4" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="1"/>
+<text x="24" y="80" text-anchor="start" fill="var(--heading-color)" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="600">A  Schrijfopdracht: alleen tussen app en node</text>
+<line x1="102" y1="122" x2="345" y2="122" stroke="var(--line)" stroke-width="1.6" marker-end="url(#u)"/>
+<circle cx="90" cy="122" r="9" fill="var(--bg)" stroke="var(--line)" stroke-width="1.4"/>
+<text x="90" y="126" text-anchor="middle" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600">1</text>
+<text x="217.5" y="115" text-anchor="middle" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">&lt; CMD_SET_ADVERT_NAME (8)</text>
+<text x="217.5" y="138" text-anchor="middle" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">naam 'PE1HVH'</text>
+<rect x="270.0" y="144" width="150" height="24" rx="5" fill="var(--flow-hw-fill)" stroke="var(--flow-hw-edge)" stroke-width="1"/>
+<text x="345" y="161" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">savePrefs()</text>
+<circle cx="270.0" cy="156.0" r="9" fill="var(--bg)" stroke="var(--flow-hw-edge)" stroke-width="1.4"/>
+<text x="270.0" y="160.0" text-anchor="middle" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600">2</text>
+<line x1="333" y1="196" x2="90" y2="196" stroke="var(--line)" stroke-width="1.6" marker-end="url(#u)"/>
+<circle cx="345" cy="196" r="9" fill="var(--bg)" stroke="var(--line)" stroke-width="1.4"/>
+<text x="345" y="200" text-anchor="middle" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600">3</text>
+<text x="217.5" y="189" text-anchor="middle" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">&gt; RESP_CODE_OK (0)</text>
+<rect x="12" y="222" width="656" height="24" rx="4" fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="1"/>
+<text x="24" y="238" text-anchor="start" fill="var(--heading-color)" font-family="'JetBrains Mono',monospace" font-size="12" font-weight="600">B  CLI-commando op afstand, na inloggen als admin</text>
+<line x1="102" y1="280" x2="345" y2="280" stroke="var(--line)" stroke-width="1.6" marker-end="url(#u)"/>
+<circle cx="90" cy="280" r="9" fill="var(--bg)" stroke="var(--line)" stroke-width="1.4"/>
+<text x="90" y="284" text-anchor="middle" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600">4</text>
+<text x="217.5" y="273" text-anchor="middle" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">&lt; CMD_SEND_TXT_MSG (2)</text>
+<text x="217.5" y="296" text-anchor="middle" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">txt_type 1, tekst 'ver'</text>
+<line x1="333" y1="330" x2="90" y2="330" stroke="var(--line)" stroke-width="1.6" marker-end="url(#u)"/>
+<circle cx="345" cy="330" r="9" fill="var(--bg)" stroke="var(--line)" stroke-width="1.4"/>
+<text x="345" y="334" text-anchor="middle" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600">5</text>
+<text x="217.5" y="323" text-anchor="middle" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">&gt; RESP_CODE_SENT (6)</text>
+<text x="217.5" y="346" text-anchor="middle" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">verzonden, niet uitgevoerd</text>
+<line x1="357" y1="380" x2="590" y2="380" stroke="var(--flow-hw)" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#l)"/>
+<circle cx="345" cy="380" r="9" fill="var(--bg)" stroke="var(--flow-hw)" stroke-width="1.4"/>
+<text x="345" y="384" text-anchor="middle" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600">6</text>
+<text x="467.5" y="373" text-anchor="middle" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">TXT_MSG via LoRa</text>
+<text x="467.5" y="396" text-anchor="middle" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">sendCommandData()</text>
+<rect x="515.0" y="402" width="150" height="40" rx="5" fill="var(--flow-hw-fill)" stroke="var(--flow-hw-edge)" stroke-width="1"/>
+<text x="590" y="419" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">isAdmin()</text>
+<text x="590" y="435" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">handleCommand()</text>
+<circle cx="515.0" cy="422.0" r="9" fill="var(--bg)" stroke="var(--flow-hw-edge)" stroke-width="1.4"/>
+<text x="515.0" y="426.0" text-anchor="middle" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600">7</text>
+<line x1="578" y1="470" x2="345" y2="470" stroke="var(--flow-hw)" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#l)"/>
+<circle cx="590" cy="470" r="9" fill="var(--bg)" stroke="var(--flow-hw)" stroke-width="1.4"/>
+<text x="590" y="474" text-anchor="middle" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600">8</text>
+<text x="467.5" y="463" text-anchor="middle" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">TXT_MSG via LoRa</text>
+<text x="467.5" y="486" text-anchor="middle" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">TXT_TYPE_CLI_DATA</text>
+<rect x="250.0" y="492" width="190" height="56" rx="5" fill="var(--flow-hw-fill)" stroke="var(--flow-hw-edge)" stroke-width="1"/>
+<text x="345" y="509" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">onCommandDataRecv()</text>
+<text x="345" y="525" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">queueMessage()</text>
+<text x="345" y="541" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">in de offline queue</text>
+<circle cx="250.0" cy="520.0" r="9" fill="var(--bg)" stroke="var(--flow-hw-edge)" stroke-width="1.4"/>
+<text x="250.0" y="524.0" text-anchor="middle" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600">9</text>
+<line x1="333" y1="578" x2="90" y2="578" stroke="var(--line)" stroke-width="1.6" marker-end="url(#u)"/>
+<circle cx="345" cy="578" r="9" fill="var(--bg)" stroke="var(--line)" stroke-width="1.4"/>
+<text x="345" y="582" text-anchor="middle" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600">10</text>
+<text x="217.5" y="571" text-anchor="middle" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">&gt; PUSH_CODE_MSG_WAITING (0x83)</text>
+<line x1="102" y1="618" x2="345" y2="618" stroke="var(--line)" stroke-width="1.6" marker-end="url(#u)"/>
+<circle cx="90" cy="618" r="9" fill="var(--bg)" stroke="var(--line)" stroke-width="1.4"/>
+<text x="90" y="622" text-anchor="middle" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600">11</text>
+<text x="217.5" y="611" text-anchor="middle" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">&lt; CMD_SYNC_NEXT_MESSAGE (10)</text>
+<line x1="333" y1="650" x2="90" y2="650" stroke="var(--line)" stroke-width="1.6" marker-end="url(#u)"/>
+<circle cx="345" cy="650" r="9" fill="var(--bg)" stroke="var(--line)" stroke-width="1.4"/>
+<text x="345" y="654" text-anchor="middle" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600">12</text>
+<text x="217.5" y="643" text-anchor="middle" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">&gt; RESP_CODE_CONTACT_MSG_RECV_V3</text>
+<text x="217.5" y="666" text-anchor="middle" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">(16), txt_type 1, antwoord</text>
+<rect x="30.0" y="680" width="120" height="40" rx="5" fill="var(--flow-hw-fill)" stroke="var(--flow-hw-edge)" stroke-width="1"/>
+<text x="90" y="697" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">tekst in het</text>
+<text x="90" y="713" text-anchor="middle" fill="var(--flow-ink)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">CLI-scherm</text>
+<circle cx="30.0" cy="700.0" r="9" fill="var(--bg)" stroke="var(--flow-hw-edge)" stroke-width="1.4"/>
+<text x="30.0" y="704.0" text-anchor="middle" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600">13</text>
+<line x1="102" y1="748" x2="345" y2="748" stroke="var(--line)" stroke-width="1.6" marker-end="url(#u)"/>
+<circle cx="90" cy="748" r="9" fill="var(--bg)" stroke="var(--line)" stroke-width="1.4"/>
+<text x="90" y="752" text-anchor="middle" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600">14</text>
+<text x="217.5" y="741" text-anchor="middle" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">&lt; CMD_SYNC_NEXT_MESSAGE (10)</text>
+<line x1="333" y1="788" x2="90" y2="788" stroke="var(--line)" stroke-width="1.6" marker-end="url(#u)"/>
+<circle cx="345" cy="788" r="9" fill="var(--bg)" stroke="var(--line)" stroke-width="1.4"/>
+<text x="345" y="792" text-anchor="middle" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="600">15</text>
+<text x="217.5" y="781" text-anchor="middle" fill="var(--text-primary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">&gt; RESP_CODE_NO_MORE_MESSAGES (10)</text>
+<line x1="24" y1="816" x2="64" y2="816" stroke="var(--line)" stroke-width="1.6"/>
+<text x="72" y="820" text-anchor="start" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">doorgetrokken: frame over USB</text>
+<line x1="370" y1="816" x2="410" y2="816" stroke="var(--flow-hw)" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="418" y="820" text-anchor="start" fill="var(--text-secondary)" font-family="'JetBrains Mono',monospace" font-size="11" font-weight="400">gestreept: pakket over LoRa</text>
+</svg>
