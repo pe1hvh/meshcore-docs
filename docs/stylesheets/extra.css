@@ -8,62 +8,83 @@
    moet op label.md-nav__link staan. De hoofdstukken eronder zitten in een
    geneste <nav>, niet rechtstreeks in een <ul>. */
 
-/* ---- sectie (## in de README): Gebruik, Techniek, Ontwerp, ... ---- */
+/* De opmaak hieronder geldt alleen als de zijbalk vast in beeld staat
+   (breed scherm, breekpunt van Material). Op een telefoon is het menu een
+   uitschuifpaneel waarin een sectie een submenu opent; daar moet een sectie
+   juist als aantikbare regel met pijltje verschijnen. Zonder deze grens
+   zagen de secties er op de telefoon uit als kopjes waar je niet op kon
+   tikken, met een lege strook eronder. */
 
-.md-nav--primary .md-nav__item--section > label.md-nav__link {
-  display: block;
-  margin: 1.4em 0 0.5em;
-  padding: 0.45em 0.6rem;
+@media screen and (min-width: 76.25em) {
 
-  border-top: 1px solid var(--md-default-fg-color--lighter);
-  border-bottom: 1px solid var(--md-default-fg-color--lighter);
-  background-color: var(--md-default-fg-color--lightest);
+  /* ---- sectie (## in de README): Gebruik, Techniek, Ontwerp, ... ---- */
 
-  color: var(--md-primary-fg-color);
-  font-size: 0.66rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  cursor: default;
-  opacity: 1;
+  .md-nav--primary .md-nav__item--section > label.md-nav__link {
+    display: block;
+    margin: 1.4em 0 0.5em;
+    padding: 0.45em 0.6rem;
+
+    border-top: 1px solid var(--md-default-fg-color--lighter);
+    border-bottom: 1px solid var(--md-default-fg-color--lighter);
+    background-color: var(--md-default-fg-color--lightest);
+
+    color: var(--md-primary-fg-color);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: default;
+    opacity: 1;
+  }
+
+  /* De eerste sectie hoeft niet zo ver van de bovenkant af te staan. */
+  .md-nav--primary > .md-nav__list > .md-nav__item--section:first-of-type
+    > label.md-nav__link {
+    margin-top: 0.7em;
+  }
+
+  /* Het uitklap-pijltje hoort niet bij een kop die niets uitklapt. */
+  .md-nav--primary .md-nav__item--section > label.md-nav__link
+    > .md-nav__icon {
+    display: none;
+  }
+
+  /* ---- hoofdstukken onder een sectie ---- */
+
+  /* Verticale geleidelijn, zodat te zien is wat onder welke sectie valt. */
+  .md-nav--primary .md-nav__item--section > nav.md-nav > ul.md-nav__list {
+    margin-left: 0.35rem;
+    padding-left: 0.5rem;
+    border-left: 1px solid var(--md-default-fg-color--lightest);
+  }
+
+  .md-nav--primary .md-nav__item--section a.md-nav__link {
+    font-weight: 400;
+  }
+
+  /* ---- subsectie (vette tussenkop in de README) ----
+     Room Server, Logisch ontwerp, Kernlibraries, Randapparatuur, ...
+     Zwaarder dan een hoofdstuk, maar zonder balk. */
+
+  .md-nav--primary
+    .md-nav__item--nested:not(.md-nav__item--section)
+    > label.md-nav__link {
+    margin-top: 0.5em;
+    color: var(--md-default-fg-color);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
 }
 
-/* De eerste sectie hoeft niet zo ver van de bovenkant af te staan. */
-.md-nav--primary > .md-nav__list > .md-nav__item--section:first-of-type
-  > label.md-nav__link {
-  margin-top: 0.7em;
-}
+/* ---- menu op een telefoon (uitschuifpaneel) ----
+   Secties krijgen het pijltje en de scheidingslijnen van Material, en een
+   kleur en gewicht waarmee ze zich van losse hoofdstukken onderscheiden. */
 
-/* Het uitklap-pijltje hoort niet bij een kop die niets uitklapt. */
-.md-nav--primary .md-nav__item--section > label.md-nav__link
-  > .md-nav__icon {
-  display: none;
-}
-
-/* ---- hoofdstukken onder een sectie ---- */
-
-/* Verticale geleidelijn, zodat te zien is wat onder welke sectie valt. */
-.md-nav--primary .md-nav__item--section > nav.md-nav > ul.md-nav__list {
-  margin-left: 0.35rem;
-  padding-left: 0.5rem;
-  border-left: 1px solid var(--md-default-fg-color--lightest);
-}
-
-.md-nav--primary .md-nav__item--section a.md-nav__link {
-  font-weight: 400;
-}
-
-/* ---- subsectie (vette tussenkop in de README) ----
-   Room Server, Logisch ontwerp, Kernlibraries, Randapparatuur, ...
-   Zwaarder dan een hoofdstuk, maar zonder balk. */
-
-.md-nav--primary
-  .md-nav__item--nested:not(.md-nav__item--section)
-  > label.md-nav__link {
-  margin-top: 0.5em;
-  color: var(--md-default-fg-color);
-  font-weight: 600;
-  letter-spacing: 0.02em;
+@media screen and (max-width: 76.234375em) {
+  .md-nav--primary > .md-nav__list > .md-nav__item--section > label.md-nav__link {
+    color: var(--md-primary-fg-color);
+    font-weight: 700;
+  }
 }
 
 /* ---- knoppen om aan te draaien ----
@@ -89,4 +110,38 @@
   overflow: hidden;
   white-space: nowrap;
   vertical-align: bottom;
+}
+
+/* ---- leesbaarheid van de tekst ----
+
+   Material zet de paginatitel (h1) in 54 % grijs en een dunne letter, en
+   citaten in dezelfde grijstint. Op een telefoon in het lichte thema is dat
+   slecht leesbaar. Hier krijgen beide de volle tekstkleur. */
+
+.md-typeset h1 {
+  color: var(--md-default-fg-color);
+  font-weight: 400;
+}
+
+.md-typeset blockquote {
+  color: var(--md-default-fg-color);
+}
+
+/* Iets meer lucht boven tussenkoppen, zodat lange technische tekst zich
+   duidelijker in delen opsplitst. Material: 1.6em boven h2 en h3. */
+
+.md-typeset h2 {
+  margin-top: 2em;
+}
+
+.md-typeset h3 {
+  margin-top: 1.8em;
+}
+
+/* Meer ruimte tussen lijstitems, zodat links in de lijsten op een
+   telefoon makkelijker los aan te tikken zijn. Material: 0.5em. */
+
+.md-typeset ul li,
+.md-typeset ol li {
+  margin-bottom: 0.7em;
 }

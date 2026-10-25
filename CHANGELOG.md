@@ -5,6 +5,43 @@ Format follows [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ver
 
 ---
 
+## [2026-10-25] Mobile readability (tester feedback, DOMCA Docs app)
+
+### Fixed
+
+- All chapters, NL and EN: the GitHub alerts (`> [!NOTE]`, `[!WARNING]`,
+  `[!IMPORTANT]`, `[!CAUTION]`; 434 blocks in 218 files) rendered on the site and in
+  the app as a grey quotation with the literal text `[!NOTE]` in it, because
+  MkDocs does not know that syntax. New `tools/alert-hook.py`, enabled under
+  `hooks:` in `mkdocs.yml`, converts each block into a Material admonition at
+  build time, with a heading in the language of the page (Opmerking / Note,
+  Waarschuwing / Warning, Belangrijk / Important, Let op / Caution). Blocks
+  inside code fences are not touched. No chapter changed, so the files read the
+  same on GitHub.
+- `docs/stylesheets/extra.css`: the section styling in the sidebar also applied
+  on a phone, where the menu is a slide-out panel in which a section opens a
+  submenu. Sections there looked like headings that could not be tapped (no
+  arrow, no pointer) with an empty strip underneath. The section, chapter and
+  subsection styling is now limited to screens where the sidebar is fixed
+  (Material breakpoint 76.25em); on a phone sections keep Material's arrow and
+  dividers and are set in the primary colour and bold.
+
+### Changed
+
+- `nl/README.md` <-> `en/README.md`: the pointer line *Nieuw hier?* / *New
+  here?* above the first section is now a `> [!NOTE]` that also links to *Wat
+  is MeshCore?* / *What is MeshCore?* and *Aan de Slag* / *Getting Started*, so
+  the starting point stands out on the landing page. It still carries no `##`
+  heading, so the menu does not change (`tools/gen_nav.py --check`: unchanged).
+- `docs/stylesheets/extra.css`: page title (h1) and quotations in the full text
+  colour instead of Material's 54 % grey, h1 in weight 400 instead of 300; more
+  space above h2 (2em) and h3 (1.8em) and between list items (0.7em), so links
+  in lists are easier to tap on a phone.
+- `mkdocs.yml`: the language selector shows a globe (`material/web`) instead of
+  the translate icon; a tester found the latter hard to recognise.
+
+---
+
 ## [2026-09-23] Fix line spacing
 
 ### Fixed

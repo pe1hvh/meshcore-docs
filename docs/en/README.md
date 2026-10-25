@@ -2,8 +2,11 @@
 
 Off-grid mesh communication over LoRa radio.
 
-New here? [How to read this](reading-guide.md) states what each section
-assumes and where to start.
+> [!NOTE]
+> **New here?** Start with [What is MeshCore?](usage/what-is-meshcore.md) and
+> [Getting Started](usage/getting-started.md): the first installation in three
+> steps. [How to read this](reading-guide.md) states what each section assumes
+> and where to start.
 
 ## Usage
 

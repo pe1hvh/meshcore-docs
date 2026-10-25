@@ -8,6 +8,10 @@ copyright: CC BY-SA 4.0 — PE1HVH
 theme:
   name: material
   language: nl
+  icon:
+    # Wereldbol in plaats van het vertaalicoon (文A) voor de taalkeuze:
+    # herkenbaarder voor nieuwe gebruikers.
+    alternate: material/web
   features:
     - navigation.tracking
     - navigation.sections
@@ -32,6 +36,7 @@ extra_css:
 
 hooks:
   - tools/line-hook.py
+  - tools/alert-hook.py
 
 plugins:
   - search:
