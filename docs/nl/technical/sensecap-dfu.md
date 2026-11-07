@@ -38,8 +38,6 @@ Inhoudsopgave
 8. Overzichtstabel: goed vs. fout
 9. Bronnen
 
-1
-
 ## 1 · Aanbevolen DFU-instellingen
 
 De onderstaande instellingen gelden voor de **nRF Device Firmware Update** app van Nordic Semiconductor (Android). Ze zijn getest en werken betrouwbaar met OTAFIX 2.1 op de SenseCAP Solar Node P1-Pro. Met deze instellingen verloopt het proces volledig geautomatiseerd.
@@ -63,7 +61,6 @@ Disable resume
 veroorzaakt een een foute installatie zonder
 Disable resume: ON
 (zie §1). De combinatie van beide maakt het proces volledig automatisch.
-2
 
 ## 2 · Het `start ota` CLI-commando
 
@@ -98,7 +95,6 @@ Firmware triggert buttonless DFU:
 > niet meer actief
 > totdat de update voltooid is.
 
-2
 
 ## 3 · Het volledige OTA-proces stap voor stap
 
@@ -120,7 +116,6 @@ Met de aanbevolen instellingen (zie §1) verloopt het proces volledig geautomati
 
 Bootloader enabled, maar installatie mislukt?
 Zie §5.
-3
 
 ## 4 · Technische verklaring van het twee-fasen DFU-protocol
 
@@ -154,8 +149,6 @@ Fase 2 — Data Object (Firmware payload)
 
 De naamswijziging van `SENSECAP_SOLAR_OTA` naar `XIAO_DFU` is **geen bug** — het is het ontworpen gedrag van de OTAFIX bootloader. Na succesvolle validatie van het Command Object verlaat de bootloader de applicatie-geïnitieerde DFU-modus en stapt over naar de bootloader-native DFU-modus met een andere BLE-advertisement identity.
 
-4
-
 ## 5 · Wat te doen als het proces fout gaat na Bootloader enabled
 
 Wanneer de DFU-app "Bootloader enabled" toont maar de firmware-overdracht vervolgens mislukt of vastloopt, is er geen reden tot paniek. Dankzij de OTAFIX bootloader herstart het apparaat bij een mislukte OTA **niet** naar USB/UF2-modus — het blijft adverteren en is bereikbaar via Bluetooth.
@@ -174,8 +167,6 @@ Na een mislukte overdracht bevindt de bootloader zich in OTA DFU-modus en advert
 > De OTAFIX bootloader valt bij een mislukte OTA terug op OTA DFU-modus (adverteert als
 > XIAO_DFU
 > ) in plaats van op USB/UF2-modus. Het apparaat blijft daardoor volledig bereikbaar via Bluetooth — ook op een dak of mast — en een nieuwe poging is altijd mogelijk zonder fysieke toegang.
-
-5
 
 ## 6 · De twee BLE-advertentienamen verklaard
 
@@ -196,8 +187,6 @@ De twee namen die tijdens het OTA-proces verschijnen, komen uit **verschillende 
 |---|---|---|---|
 | `SENSECAP_SOLAR_OTA` | Applicatie | MeshCore firmware | Zelfde naam — ongewijzigd |
 | `XIAO_DFU` | Bootloader | OTAFIX bootloader | `AdaDFU` (Adafruit generiek) |
-
-8
 
 ## 7 · Waarom de OTAFIX
 
@@ -226,10 +215,8 @@ OTAFIX lost daarnaast ook een **tweede probleem** op: de stock bootloader had `H
 > [!NOTE]
 > De naam zegt het letterlijk:
 > OTAFIX fixt het OTA-proces — niet door OTA beter te maken, maar door de
-> gevolgen van een mislukte OTA beheersbaar te houden
-> .
+> gevolgen van een mislukte OTA beheersbaar te houden.
 
-10
 
 ## 8 · Overzichtstabel: goed vs. fout
 
@@ -241,7 +228,6 @@ OTAFIX lost daarnaast ook een **tweede probleem** op: de stock bootloader had `H
 | OTA zonder OTAFIX bootloader, update mislukt | ❌ Brick | Stock bootloader valt terug op UF2, niet op OTA DFU |
 | OTA met OTAFIX bootloader, update mislukt | ✅ Herstelbaar via BLE | OTAFIX herstart in OTA DFU modus, niet in UF2 |
 
-footer
 
 ## Bronnen
 
